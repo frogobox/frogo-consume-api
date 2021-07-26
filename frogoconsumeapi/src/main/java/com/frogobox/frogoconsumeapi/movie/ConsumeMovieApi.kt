@@ -1,9 +1,9 @@
 package com.frogobox.frogoconsumeapi.movie
 
 import android.content.Context
-import com.frogobox.frogoconsumeapi.movie.data.model.*
-import com.frogobox.frogoconsumeapi.movie.data.response.*
-import com.frogobox.frogoconsumeapi.movie.data.source.MovieRemoteDataSource
+import com.frogobox.frogoconsumeapi.movie.model.*
+import com.frogobox.frogoconsumeapi.movie.response.*
+import com.frogobox.frogoconsumeapi.movie.source.MovieRemoteDataSource
 import com.frogobox.frogoconsumeapi.movie.util.MovieConstant
 import com.frogobox.frogosdk.core.FrogoResponseCallback
 

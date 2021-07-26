@@ -1,4 +1,4 @@
-package com.frogobox.frogoconsumeapi.movie
+package com.frogobox.frogoconsumeapi.movie.source
 
 import android.content.Context
 import com.frogobox.frogoconsumeapi.movie.model.*
@@ -19,10 +19,10 @@ import com.frogobox.frogosdk.core.FrogoResponseCallback
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- * com.frogobox.frogoconsumeapi.movie
+ * com.frogobox.frogoconsumeapi.movie.data.source
  *
  */
-interface IConsumeMovieApi {
+interface MovieDataSource {
 
     // Switch For Using Chuck Interceptor
     fun usingChuckInterceptor(context: Context)
@@ -31,17 +31,24 @@ interface IConsumeMovieApi {
 
     // CERTIFICATIONS
     // Get Movie Certifications
-    fun getMovieCertifications(callback: FrogoResponseCallback<Certifications<CertificationMovie>>)
+    fun getMovieCertifications(
+        apiKey: String,
+        callback: FrogoResponseCallback<Certifications<CertificationMovie>>
+    )
 
     // CERTIFICATIONS
     // Get TV Certifications
-    fun getTvCertifications(callback: FrogoResponseCallback<Certifications<CertificationTv>>)
+    fun getTvCertifications(
+        apiKey: String,
+        callback: FrogoResponseCallback<Certifications<CertificationTv>>
+    )
 
     // ---------------------------------------------------------------------------------------------
 
     // CHANGES
     // Get Movie Change List
     fun getMovieChangeList(
+        apiKey: String,
         endDate: String?,
         startDate: String?,
         page: Int?,
@@ -51,6 +58,7 @@ interface IConsumeMovieApi {
     // CHANGES
     // Get TV Change List
     fun getTvChangeList(
+        apiKey: String,
         endDate: String?,
         startDate: String?,
         page: Int?,
@@ -60,6 +68,7 @@ interface IConsumeMovieApi {
     // CHANGES
     // Get Person Change List
     fun getPersonChangeList(
+        apiKey: String,
         endDate: String?,
         startDate: String?,
         page: Int?,
@@ -72,6 +81,7 @@ interface IConsumeMovieApi {
     // Get Details
     fun getCollectionDetails(
         collection_id: Int,
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<CollectionsDetail>
     )
@@ -80,6 +90,7 @@ interface IConsumeMovieApi {
     // Get Images
     fun getCollectionImages(
         collection_id: Int,
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<CollectionsImage>
     )
@@ -88,6 +99,7 @@ interface IConsumeMovieApi {
     // Get Translations
     fun getCollectionTranslations(
         collection_id: Int,
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<CollectionsTranslation>
     )
@@ -98,6 +110,7 @@ interface IConsumeMovieApi {
     // Get Details
     fun getCompaniesDetails(
         company_id: Int,
+        apiKey: String,
         callback: FrogoResponseCallback<CompaniesDetail>
     )
 
@@ -105,6 +118,7 @@ interface IConsumeMovieApi {
     // Get Alternative Names
     fun getCompaniesAlternativeName(
         company_id: Int,
+        apiKey: String,
         callback: FrogoResponseCallback<CompaniesAlternateName>
     )
 
@@ -112,6 +126,7 @@ interface IConsumeMovieApi {
     // Get Images
     fun getCompaniesImage(
         company_id: Int,
+        apiKey: String,
         callback: FrogoResponseCallback<CompaniesImage>
     )
 
@@ -119,39 +134,47 @@ interface IConsumeMovieApi {
 
     // CONFIGURATION
     // Get API Configuration
-    fun getConfigurationApi(callback: FrogoResponseCallback<ConfigurationApi>)
+    fun getConfigurationApi(apiKey: String, callback: FrogoResponseCallback<ConfigurationApi>)
 
     // CONFIGURATION
     // Get Countries
-    fun getConfigurationCountries(callback: FrogoResponseCallback<List<ConfigurationCountry>>)
+    fun getConfigurationCountries(
+        apiKey: String,
+        callback: FrogoResponseCallback<List<ConfigurationCountry>>
+    )
 
     // CONFIGURATION
     // Get Jobs
-    fun getConfigurationJobs(callback: FrogoResponseCallback<List<ConfigurationJob>>)
+    fun getConfigurationJobs(apiKey: String, callback: FrogoResponseCallback<List<ConfigurationJob>>)
 
     // CONFIGURATION
     // Get Languages
-    fun getConfigurationLanguages(callback: FrogoResponseCallback<List<ConfigurationLanguage>>)
+    fun getConfigurationLanguages(
+        apiKey: String,
+        callback: FrogoResponseCallback<List<ConfigurationLanguage>>
+    )
 
     // CONFIGURATION
     // Get Primary Translations
-    fun getConfigurationTranslations(callback: FrogoResponseCallback<List<String>>)
+    fun getConfigurationTranslations(apiKey: String, callback: FrogoResponseCallback<List<String>>)
 
     // CONFIGURATION
     // Get Timezones
-    fun getConfigurationTimezones(callback: FrogoResponseCallback<List<ConfigurationTimezone>>)
+    fun getConfigurationTimezones(
+        apiKey: String,
+        callback: FrogoResponseCallback<List<ConfigurationTimezone>>
+    )
 
     // ---------------------------------------------------------------------------------------------
 
     // CREDITS
     // Get Details
-    fun getCreditsDetails(credit_id: String, callback: FrogoResponseCallback<Credits>)
-
-    // ---------------------------------------------------------------------------------------------
+    fun getCreditsDetails(credit_id: String, apiKey: String, callback: FrogoResponseCallback<Credits>)
 
     // DISCOVER
     // Movie Discover
     fun getDiscoverMovie(
+        apiKey: String,
         language: String?,
         region: String?,
         sort_by: String?,
@@ -185,11 +208,15 @@ interface IConsumeMovieApi {
         with_runtime_lte: Double?,
         with_original_language: String?,
         callback: FrogoResponseCallback<Discover<DiscoverMovie>>
+
     )
+
+    // ---------------------------------------------------------------------------------------------
 
     // DISCOVER
     // TV Discover
     fun getDiscoverTv(
+        apiKey: String,
         language: String?,
         sort_by: String?,
         air_date_gte: String?,
@@ -221,6 +248,7 @@ interface IConsumeMovieApi {
     // Find by ID
     fun getFindById(
         external_id: String,
+        apiKey: String,
         external_source: String,
         language: String?,
         callback: FrogoResponseCallback<Find>
@@ -231,6 +259,7 @@ interface IConsumeMovieApi {
     // GENRES
     // Get Movie List
     fun getGenresMovie(
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<Genres>
     )
@@ -238,6 +267,7 @@ interface IConsumeMovieApi {
     // GENRES
     // Get TV List
     fun getGenresTv(
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<Genres>
     )
@@ -248,6 +278,7 @@ interface IConsumeMovieApi {
     // Get Details
     fun getKeywordsDetail(
         keyword_id: Int,
+        apiKey: String,
         callback: FrogoResponseCallback<KeywordsDetail>
     )
 
@@ -255,6 +286,7 @@ interface IConsumeMovieApi {
     // Get Movies
     fun getKeywordsMovie(
         keyword_id: Int,
+        apiKey: String,
         language: String?,
         include_adult: Boolean?,
         callback: FrogoResponseCallback<KeywordsMovies>
@@ -266,6 +298,7 @@ interface IConsumeMovieApi {
     // Get Details
     fun getMoviesDetails(
         movie_id: Int,
+        apiKey: String,
         language: String?,
         append_to_response: String?,
         callback: FrogoResponseCallback<MovieDetail>
@@ -275,6 +308,7 @@ interface IConsumeMovieApi {
     // Get Account States
     fun getMoviesAccountState(
         movie_id: Int,
+        apiKey: String,
         session_id: String,
         guest_session_id: String?,
         callback: FrogoResponseCallback<MovieAccountState>
@@ -284,6 +318,7 @@ interface IConsumeMovieApi {
     // Get Alternative Titles
     fun getMoviesAlternativeTitles(
         movie_id: Int,
+        apiKey: String,
         country: String?,
         callback: FrogoResponseCallback<MovieAlternativeTitle>
     )
@@ -292,6 +327,7 @@ interface IConsumeMovieApi {
     // Get Changes
     fun getMoviesChanges(
         movie_id: Int,
+        apiKey: String,
         start_date: String?,
         end_date: String?,
         page: Int?,
@@ -302,6 +338,7 @@ interface IConsumeMovieApi {
     // Get Credits
     fun getMoviesCredits(
         movie_id: Int,
+        apiKey: String,
         callback: FrogoResponseCallback<MovieCredit>
     )
 
@@ -309,6 +346,7 @@ interface IConsumeMovieApi {
     // Get External Ids
     fun getMoviesExternalIds(
         movie_id: Int,
+        apiKey: String,
         callback: FrogoResponseCallback<MovieExternalId>
     )
 
@@ -316,6 +354,7 @@ interface IConsumeMovieApi {
     // Get Images
     fun getMoviesImages(
         movie_id: Int,
+        apiKey: String,
         language: String?,
         include_image_language: String?,
         callback: FrogoResponseCallback<MovieImages>
@@ -325,6 +364,7 @@ interface IConsumeMovieApi {
     // Get Keywords
     fun getMoviesKeywords(
         movie_id: Int,
+        apiKey: String,
         callback: FrogoResponseCallback<MovieKeywords>
     )
 
@@ -332,6 +372,7 @@ interface IConsumeMovieApi {
     // Get Release Dates
     fun getMoviesReleaseDates(
         movie_id: Int,
+        apiKey: String,
         callback: FrogoResponseCallback<MovieReleaseDates>
     )
 
@@ -339,6 +380,7 @@ interface IConsumeMovieApi {
     // Get Videos
     fun getMoviesVideos(
         movie_id: Int,
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<MovieVideos>
     )
@@ -347,6 +389,7 @@ interface IConsumeMovieApi {
     // Get Translations
     fun getMoviesTranslations(
         movie_id: Int,
+        apiKey: String,
         callback: FrogoResponseCallback<MovieTranslations>
     )
 
@@ -354,6 +397,7 @@ interface IConsumeMovieApi {
     // Get Recommendations
     fun getMoviesRecommendations(
         movie_id: Int,
+        apiKey: String,
         language: String?,
         page: Int?,
         callback: FrogoResponseCallback<MovieRecommendations>
@@ -363,6 +407,7 @@ interface IConsumeMovieApi {
     // Get Similar Movies
     fun getMoviesSimilarMovies(
         movie_id: Int,
+        apiKey: String,
         language: String?,
         page: Int?,
         callback: FrogoResponseCallback<MovieSimilarMovies>
@@ -372,6 +417,7 @@ interface IConsumeMovieApi {
     // Get Reviews
     fun getMoviesReviews(
         movie_id: Int,
+        apiKey: String,
         language: String?,
         page: Int?,
         callback: FrogoResponseCallback<MovieReviews>
@@ -381,6 +427,7 @@ interface IConsumeMovieApi {
     // Get Lists
     fun getMoviesLists(
         movie_id: Int,
+        apiKey: String,
         language: String?,
         page: Int?,
         callback: FrogoResponseCallback<MovieLists>
@@ -389,6 +436,7 @@ interface IConsumeMovieApi {
     // MOVIES
     // Get Latest
     fun getMoviesLatest(
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<MovieLatest>
     )
@@ -396,6 +444,7 @@ interface IConsumeMovieApi {
     // MOVIES
     // Get Now Playing
     fun getMoviesNowPlaying(
+        apiKey: String,
         language: String?,
         page: Int?,
         region: String?,
@@ -405,6 +454,7 @@ interface IConsumeMovieApi {
     // MOVIES
     // Get Popular
     fun getMoviesPopular(
+        apiKey: String,
         language: String?,
         page: Int?,
         region: String?,
@@ -414,6 +464,7 @@ interface IConsumeMovieApi {
     // MOVIES
     // Get Top Rated
     fun getMoviesTopRated(
+        apiKey: String,
         language: String?,
         page: Int?,
         region: String?,
@@ -423,6 +474,7 @@ interface IConsumeMovieApi {
     // MOVIES
     // Get Upcoming
     fun getMoviesUpcoming(
+        apiKey: String,
         language: String?,
         page: Int?,
         region: String?,
@@ -432,50 +484,38 @@ interface IConsumeMovieApi {
     // ---------------------------------------------------------------------------------------------
 
     // TRENDING
-    // Get Trending All Day
-    fun getTrendingAllDay(
+    // Get Trending All
+    fun getTrendingAll(
+        media_type: String,
+        time_window: String,
+        apiKey: String,
         callback: FrogoResponseCallback<Trending<TrendingAll>>
     )
 
     // TRENDING
-    // Get Trending All Week
-    fun getTrendingAllWeek(
-        callback: FrogoResponseCallback<Trending<TrendingAll>>
-    )
-
-    // TRENDING
-    // Get Trending Movie Day
-    fun getTrendingMovieDay(
+    // Get Trending Movie
+    fun getTrendingMovie(
+        media_type: String,
+        time_window: String,
+        apiKey: String,
         callback: FrogoResponseCallback<Trending<TrendingMovie>>
     )
 
     // TRENDING
-    // Get Trending Movie Week
-    fun getTrendingMovieWeek(
-        callback: FrogoResponseCallback<Trending<TrendingMovie>>
-    )
-
-    // TRENDING
-    // Get Trending Person Day
-    fun getTrendingPersonDay(
+    // Get Trending Person
+    fun getTrendingPerson(
+        media_type: String,
+        time_window: String,
+        apiKey: String,
         callback: FrogoResponseCallback<Trending<TrendingPerson>>
     )
 
     // TRENDING
-    // Get Trending Person Week
-    fun getTrendingPersonWeek(
-        callback: FrogoResponseCallback<Trending<TrendingPerson>>
-    )
-
-    // TRENDING
-    // Get Trending TV Day
-    fun getTrendingTvDay(
-        callback: FrogoResponseCallback<Trending<TrendingTv>>
-    )
-
-    // TRENDING
-    // Get Trending TV Week
-    fun getTrendingTvWeek(
+    // Get Trending Movie
+    fun getTrendingTv(
+        media_type: String,
+        time_window: String,
+        apiKey: String,
         callback: FrogoResponseCallback<Trending<TrendingTv>>
     )
 
@@ -485,6 +525,7 @@ interface IConsumeMovieApi {
     // Get Details
     fun getReviews(
         review_id: String,
+        apiKey: String,
         callback: FrogoResponseCallback<Reviews>
     )
 
@@ -494,6 +535,7 @@ interface IConsumeMovieApi {
     // Get Details
     fun getNetworkDetail(
         network_id: Int,
+        apiKey: String,
         callback: FrogoResponseCallback<NetworkDetail>
     )
 
@@ -501,6 +543,7 @@ interface IConsumeMovieApi {
     // Get Alternative Names
     fun getNetworkAlternativeName(
         network_id: Int,
+        apiKey: String,
         callback: FrogoResponseCallback<NetworkAlternativeName>
     )
 
@@ -508,6 +551,7 @@ interface IConsumeMovieApi {
     // Get Images
     fun getNetworkImage(
         network_id: Int,
+        apiKey: String,
         callback: FrogoResponseCallback<NetworkImage>
     )
 
@@ -516,6 +560,7 @@ interface IConsumeMovieApi {
     // SEARCH
     // Search Companies
     fun searchCompanies(
+        apiKey: String,
         query: String,
         page: Int?,
         callback: FrogoResponseCallback<SearchCompanies>
@@ -524,6 +569,7 @@ interface IConsumeMovieApi {
     // SEARCH
     // Search Collections
     fun searchCollections(
+        apiKey: String,
         query: String,
         language: String?,
         page: Int?,
@@ -533,6 +579,7 @@ interface IConsumeMovieApi {
     // SEARCH
     // Search Keywords
     fun searchKeywords(
+        apiKey: String,
         query: String,
         page: Int?,
         callback: FrogoResponseCallback<SearchKeywords>
@@ -541,6 +588,7 @@ interface IConsumeMovieApi {
     // SEARCH
     // Search Movies
     fun searchMovies(
+        apiKey: String,
         query: String,
         language: String?,
         page: Int?,
@@ -554,6 +602,7 @@ interface IConsumeMovieApi {
     // SEARCH
     // Multi Search
     fun searchMultiSearch(
+        apiKey: String,
         query: String,
         language: String?,
         page: Int?,
@@ -565,6 +614,7 @@ interface IConsumeMovieApi {
     // SEARCH
     // Search People
     fun searchPeople(
+        apiKey: String,
         query: String,
         language: String?,
         page: Int?,
@@ -576,6 +626,7 @@ interface IConsumeMovieApi {
     // SEARCH
     // Search Tv Shows
     fun searchTvShows(
+        apiKey: String,
         query: String,
         language: String?,
         page: Int?,
@@ -590,6 +641,7 @@ interface IConsumeMovieApi {
     // Get Details
     fun getTvDetails(
         tv_id: Int,
+        apiKey: String,
         language: String?,
         append_to_response: String?,
         callback: FrogoResponseCallback<TvDetails>
@@ -599,6 +651,7 @@ interface IConsumeMovieApi {
     // Get Account States
     fun getTvAccountStates(
         tv_id: Int,
+        apiKey: String,
         language: String?,
         guest_session_id: String?,
         session_id: String?,
@@ -609,6 +662,7 @@ interface IConsumeMovieApi {
     // Get Alternative Titles
     fun getTvAlternativeTitles(
         tv_id: Int,
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<TvAlternativeTitles>
     )
@@ -617,6 +671,7 @@ interface IConsumeMovieApi {
     // Get Changes
     fun getTvChanges(
         tv_id: Int,
+        apiKey: String,
         startDate: String?,
         endDate: String?,
         page: Int?,
@@ -627,6 +682,7 @@ interface IConsumeMovieApi {
     // Get Content Ratings
     fun getTvContentRatings(
         tv_id: Int,
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<TvContentRatings>
     )
@@ -635,6 +691,7 @@ interface IConsumeMovieApi {
     // Get Credits
     fun getTvCredits(
         tv_id: Int,
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<TvCredits>
     )
@@ -643,6 +700,7 @@ interface IConsumeMovieApi {
     // Get Episode Groups
     fun getTvEpisodeGroups(
         tv_id: Int,
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<TvEpisodeGroups>
     )
@@ -651,6 +709,7 @@ interface IConsumeMovieApi {
     // Get External IDs
     fun getTvExternalIds(
         tv_id: Int,
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<TvExternalIds>
     )
@@ -659,6 +718,7 @@ interface IConsumeMovieApi {
     // Get Images
     fun getTvImages(
         tv_id: Int,
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<TvImages>
     )
@@ -667,6 +727,7 @@ interface IConsumeMovieApi {
     // Get Keyword
     fun getTvKeyword(
         tv_id: Int,
+        apiKey: String,
         callback: FrogoResponseCallback<TvKeywords>
     )
 
@@ -674,6 +735,7 @@ interface IConsumeMovieApi {
     // Get Recommendations
     fun getTvRecommendations(
         tv_id: Int,
+        apiKey: String,
         language: String?,
         page: Int?,
         callback: FrogoResponseCallback<TvRecommendations>
@@ -683,6 +745,7 @@ interface IConsumeMovieApi {
     // Get Reviews
     fun getTvReviews(
         tv_id: Int,
+        apiKey: String,
         callback: FrogoResponseCallback<TvReviews>
     )
 
@@ -690,6 +753,7 @@ interface IConsumeMovieApi {
     // Get Screened Theatrically
     fun getTvScreenedTheatrically(
         tv_id: Int,
+        apiKey: String,
         callback: FrogoResponseCallback<TvScreenedTheatrically>
     )
 
@@ -697,6 +761,7 @@ interface IConsumeMovieApi {
     // Get Similar TV Shows
     fun getTvSimilarTvShows(
         tv_id: Int,
+        apiKey: String,
         language: String?,
         page: Int?,
         callback: FrogoResponseCallback<TvSimilarTVShows>
@@ -706,6 +771,7 @@ interface IConsumeMovieApi {
     // Get Translations
     fun getTvTranslations(
         tv_id: Int,
+        apiKey: String,
         callback: FrogoResponseCallback<TvTranslations>
     )
 
@@ -713,6 +779,7 @@ interface IConsumeMovieApi {
     // Get Videos
     fun getTvVideos(
         tv_id: Int,
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<TvVideos>
     )
@@ -720,6 +787,7 @@ interface IConsumeMovieApi {
     // TV
     // Get Latest
     fun getTvLatest(
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<TvLatest>
     )
@@ -727,6 +795,7 @@ interface IConsumeMovieApi {
     // TV
     // Get TV Airing Today
     fun getTvAiringToday(
+        apiKey: String,
         language: String?,
         page: Int?,
         callback: FrogoResponseCallback<TvAiringToday>
@@ -735,6 +804,7 @@ interface IConsumeMovieApi {
     // TV
     // Get TV On The Air
     fun getTvOnTheAir(
+        apiKey: String,
         language: String?,
         page: Int?,
         callback: FrogoResponseCallback<TvOnTheAir>
@@ -743,6 +813,7 @@ interface IConsumeMovieApi {
     // TV
     // Get Popular
     fun getTvPopular(
+        apiKey: String,
         language: String?,
         page: Int?,
         callback: FrogoResponseCallback<TvPopular>
@@ -751,6 +822,7 @@ interface IConsumeMovieApi {
     // TV
     // Get Top Rated
     fun getTvTopRated(
+        apiKey: String,
         language: String?,
         page: Int?,
         callback: FrogoResponseCallback<TvTopRated>
@@ -763,6 +835,7 @@ interface IConsumeMovieApi {
     fun getTvSeasonsDetails(
         tv_id: Int,
         season_number: Int,
+        apiKey: String,
         language: String?,
         append_to_response: String?,
         callback: FrogoResponseCallback<TvSeasonsDetails>
@@ -772,6 +845,7 @@ interface IConsumeMovieApi {
     // Get Changes
     fun getTvSeasonsChanges(
         season_id: Int,
+        apiKey: String,
         startDate: String?,
         endDate: String?,
         page: Int?,
@@ -783,6 +857,7 @@ interface IConsumeMovieApi {
     fun getTvSeasonsAccountStates(
         tv_id: Int,
         season_number: Int,
+        apiKey: String,
         language: String?,
         guest_session_id: String?,
         session_id: String?,
@@ -794,6 +869,7 @@ interface IConsumeMovieApi {
     fun getTvSeasonsCredits(
         tv_id: Int,
         season_number: Int,
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<TvSeasonsCredits>
     )
@@ -803,6 +879,7 @@ interface IConsumeMovieApi {
     fun getTvSeasonsExternalIds(
         tv_id: Int,
         season_number: Int,
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<TvSeasonsExternalIds>
     )
@@ -812,6 +889,7 @@ interface IConsumeMovieApi {
     fun getTvSeasonsImages(
         tv_id: Int,
         season_number: Int,
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<TvSeasonsImages>
     )
@@ -821,6 +899,7 @@ interface IConsumeMovieApi {
     fun getTvSeasonsVideos(
         tv_id: Int,
         season_number: Int,
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<TvSeasonsVideos>
     )
@@ -833,6 +912,7 @@ interface IConsumeMovieApi {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
+        apiKey: String,
         language: String?,
         append_to_response: String?,
         callback: FrogoResponseCallback<TvEpisodeDetails>
@@ -842,6 +922,7 @@ interface IConsumeMovieApi {
     // Get Changes
     fun getTvEpisodeChanges(
         episode_id: Int,
+        apiKey: String,
         startDate: String?,
         endDate: String?,
         page: Int?,
@@ -854,6 +935,7 @@ interface IConsumeMovieApi {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
+        apiKey: String,
         guest_session_id: String?,
         session_id: String?,
         callback: FrogoResponseCallback<TvEpisodeAccountStates>
@@ -865,6 +947,7 @@ interface IConsumeMovieApi {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
+        apiKey: String,
         callback: FrogoResponseCallback<TvEpisodeCredits>
     )
 
@@ -874,6 +957,7 @@ interface IConsumeMovieApi {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
+        apiKey: String,
         callback: FrogoResponseCallback<TvEpisodeExternalIds>
     )
 
@@ -883,6 +967,7 @@ interface IConsumeMovieApi {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
+        apiKey: String,
         callback: FrogoResponseCallback<TvEpisodeImages>
     )
 
@@ -892,6 +977,7 @@ interface IConsumeMovieApi {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
+        apiKey: String,
         callback: FrogoResponseCallback<TvEpisodeTranslation>
     )
 
@@ -901,6 +987,7 @@ interface IConsumeMovieApi {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<TvEpisodeVideos>
     )
@@ -911,6 +998,7 @@ interface IConsumeMovieApi {
     // Get Details
     fun getTvEpisodeGroupsDetails(
         id: String?,
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<TvEpisodeGroupsDetails>
     )
@@ -921,6 +1009,7 @@ interface IConsumeMovieApi {
     // Get Details
     fun getPeopleDetails(
         person_id: Int,
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<PeopleDetails>
     )
@@ -929,6 +1018,7 @@ interface IConsumeMovieApi {
     // Get Changes
     fun getPeopleChanges(
         person_id: Int,
+        apiKey: String,
         endDate: String?,
         page: Int?,
         startDate: String?,
@@ -939,6 +1029,7 @@ interface IConsumeMovieApi {
     // Get Movie Credits
     fun getPeopleMovieCredits(
         person_id: Int,
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<PeopleMovieCredits>
     )
@@ -947,6 +1038,7 @@ interface IConsumeMovieApi {
     // Get TV Credits
     fun getPeopleTvCredits(
         person_id: Int,
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<PeopleTvCredits>
     )
@@ -955,6 +1047,7 @@ interface IConsumeMovieApi {
     // Get Combined Credits
     fun getPeopleCombinedCredits(
         person_id: Int,
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<PeopleCombinedCredits>
     )
@@ -963,6 +1056,7 @@ interface IConsumeMovieApi {
     // Get External IDs
     fun getPeopleExternalIds(
         person_id: Int,
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<PeopleExternalIds>
     )
@@ -971,6 +1065,7 @@ interface IConsumeMovieApi {
     // Get Images
     fun getPeopleImages(
         person_id: Int,
+        apiKey: String,
         callback: FrogoResponseCallback<PeopleImages>
     )
 
@@ -978,6 +1073,7 @@ interface IConsumeMovieApi {
     // Get Tagged Images
     fun getPeopleTaggedImages(
         person_id: Int,
+        apiKey: String,
         language: String?,
         page: Int?,
         callback: FrogoResponseCallback<PeopleTaggedImages>
@@ -987,6 +1083,7 @@ interface IConsumeMovieApi {
     // Get Translations
     fun getPeopleTranslations(
         person_id: Int,
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<PeopleTranslations>
     )
@@ -994,6 +1091,7 @@ interface IConsumeMovieApi {
     // PEOPLE
     // Get Latest
     fun getPeopleLatest(
+        apiKey: String,
         language: String?,
         callback: FrogoResponseCallback<PeopleLatest>
     )
@@ -1001,10 +1099,68 @@ interface IConsumeMovieApi {
     // PEOPLE
     // Get Popular
     fun getPeoplePopular(
+        apiKey: String,
         language: String?,
         page: Int?,
         callback: FrogoResponseCallback<PeoplePopular>
     )
 
+    // ---------------------------------------------------------------------------------------------
+
+    // LIST
+    // Get Details
+    // fun getListDetails()
+
+    // LIST
+    // Check Item Status
+    // fun getListCheckItemStatus()
+
+    // METHOD POST AND DELETE ----------------------------------------------------------------------
+
+    // MOVIES
+    // POST Rate Movie
+    // fun postMoviesRateMovies()
+
+    // MOVIES
+    // DELETE delete Rating
+    // fun deleteMoviesDeleteRating()
+
+    // TV
+    // POST Rate TV Shows
+    // fun postTvRateTvShows()
+
+    // TV
+    // DELETE Rating
+    // fun deleteTvDeleteRating()
+
+    // TV EPISODE
+    // POST Rate TV Episode
+    // fun postTvEpisodeRateTvEpisode()
+
+    // TV EPISODE
+    // DELETE Rating
+    // fun deleteTvEpisodeDeleteRating()
+
+    // LIST
+    // POST Create List
+    // fun postListCreateList()
+
+    // LIST
+    // POST Add Movie
+    // fun postListAddMovie()
+
+    // LIST
+    // POST Remove Movie
+    // fun postListRemoveMovie()
+
+    // LIST
+    // POST Clear List
+    // fun postListClearList()
+
+    // LIST
+    // DELETE List
+    // fun deleteList
+
+    // ---------------------------------------------------------------------------------------------
 
 }
