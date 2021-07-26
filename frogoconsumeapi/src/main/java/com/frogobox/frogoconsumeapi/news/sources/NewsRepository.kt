@@ -59,7 +59,6 @@ object NewsRepository : NewsDataSource {
                 override fun onFailure(code: Int, errorMessage: String) {
                     callback.onFailed(code, errorMessage)
                 }
-
             })
     }
 
@@ -104,7 +103,6 @@ object NewsRepository : NewsDataSource {
                 override fun onFailure(code: Int, errorMessage: String) {
                     callback.onFailed(code, errorMessage)
                 }
-
             })
     }
 
