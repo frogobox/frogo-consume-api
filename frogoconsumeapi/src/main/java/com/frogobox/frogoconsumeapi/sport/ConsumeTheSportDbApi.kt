@@ -1,11 +1,9 @@
 package com.frogobox.frogoconsumeapi.sport
 
 import android.content.Context
-import com.frogobox.frogoconsumeapi.sport.callback.SportResultCallback
-import com.frogobox.frogoconsumeapi.sport.data.response.*
-import com.frogobox.frogoconsumeapi.sport.data.source.SportDataSource
-import com.frogobox.frogoconsumeapi.sport.data.source.SportRemoteDataSource
-import com.frogobox.frogoconsumeapi.sport.data.source.SportRepository
+import com.frogobox.frogoconsumeapi.sport.response.*
+import com.frogobox.frogoconsumeapi.sport.source.SportRemoteDataSource
+import com.frogobox.frogosdk.core.FrogoResponseCallback
 
 /**
  * Created by Faisal Amir
@@ -24,9 +22,9 @@ import com.frogobox.frogoconsumeapi.sport.data.source.SportRepository
  * com.frogobox.frogoconsumeapi.sport
  *
  */
-class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiView {
+class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
 
-    private val sportRepository = SportRepository(SportRemoteDataSource)
+    private val sportRepository = SportRemoteDataSource
 
     override fun usingChuckInterceptor(context: Context) {
         sportRepository.usingChuckInterceptor(context)
@@ -34,18 +32,18 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
 
     override fun searchForTeamByName(
         teamName: String?,
-        sportResultCallback: SportResultCallback<Teams>
+        sportResultCallback: FrogoResponseCallback<Teams>
     ) {
         sportRepository.searchForTeamByName(
             apiKey,
             teamName,
-            object : SportDataSource.GetRemoteCallback<Teams> {
+            object : FrogoResponseCallback<Teams> {
                 override fun onSuccess(data: Teams) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -61,18 +59,18 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
 
     override fun searchForTeamByShortCode(
         shortCode: String?,
-        sportResultCallback: SportResultCallback<Teams>
+        sportResultCallback: FrogoResponseCallback<Teams>
     ) {
         sportRepository.searchForTeamByShortCode(
             apiKey,
             shortCode,
-            object : SportDataSource.GetRemoteCallback<Teams> {
+            object : FrogoResponseCallback<Teams> {
                 override fun onSuccess(data: Teams) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -87,18 +85,18 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
 
     override fun searchForAllPlayer(
         teamName: String?,
-        sportResultCallback: SportResultCallback<Players>
+        sportResultCallback: FrogoResponseCallback<Players>
     ) {
         sportRepository.searchForAllPlayer(
             apiKey,
             teamName,
-            object : SportDataSource.GetRemoteCallback<Players> {
+            object : FrogoResponseCallback<Players> {
                 override fun onSuccess(data: Players) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -113,18 +111,18 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
 
     override fun searchForPlayer(
         playerName: String?,
-        sportResultCallback: SportResultCallback<Players>
+        sportResultCallback: FrogoResponseCallback<Players>
     ) {
         sportRepository.searchForPlayer(
             apiKey,
             playerName,
-            object : SportDataSource.GetRemoteCallback<Players> {
+            object : FrogoResponseCallback<Players> {
                 override fun onSuccess(data: Players) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -140,19 +138,19 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
     override fun searchForPlayer(
         playerName: String?,
         teamName: String?,
-        sportResultCallback: SportResultCallback<Players>
+        sportResultCallback: FrogoResponseCallback<Players>
     ) {
         sportRepository.searchForPlayer(
             apiKey,
             playerName,
             teamName,
-            object : SportDataSource.GetRemoteCallback<Players> {
+            object : FrogoResponseCallback<Players> {
                 override fun onSuccess(data: Players) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -167,18 +165,18 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
 
     override fun searchForEvent(
         eventName: String?,
-        sportResultCallback: SportResultCallback<Events>
+        sportResultCallback: FrogoResponseCallback<Events>
     ) {
         sportRepository.searchForEvent(
             apiKey,
             eventName,
-            object : SportDataSource.GetRemoteCallback<Events> {
+            object : FrogoResponseCallback<Events> {
                 override fun onSuccess(data: Events) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -194,19 +192,19 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
     override fun searchForEvent(
         eventName: String?,
         season: String?,
-        sportResultCallback: SportResultCallback<Events>
+        sportResultCallback: FrogoResponseCallback<Events>
     ) {
         sportRepository.searchForEvent(
             apiKey,
             eventName,
             season,
-            object : SportDataSource.GetRemoteCallback<Events> {
+            object : FrogoResponseCallback<Events> {
                 override fun onSuccess(data: Events) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -221,19 +219,19 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
 
     override fun searchForEventFileName(
         eventFileName: String?,
-        sportResultCallback: SportResultCallback<Events>
+        sportResultCallback: FrogoResponseCallback<Events>
     ) {
 
         sportRepository.searchForEventFileName(
             apiKey,
             eventFileName,
-            object : SportDataSource.GetRemoteCallback<Events> {
+            object : FrogoResponseCallback<Events> {
                 override fun onSuccess(data: Events) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -247,14 +245,14 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
 
     }
 
-    override fun getAllSports(sportResultCallback: SportResultCallback<Sports>) {
-        sportRepository.getAllSports(apiKey, object : SportDataSource.GetRemoteCallback<Sports> {
+    override fun getAllSports(sportResultCallback: FrogoResponseCallback<Sports>) {
+        sportRepository.getAllSports(apiKey, object : FrogoResponseCallback<Sports> {
             override fun onSuccess(data: Sports) {
-                sportResultCallback.getResultData(data)
+                sportResultCallback.onSuccess(data)
             }
 
             override fun onFailed(statusCode: Int, errorMessage: String?) {
-                sportResultCallback.failedResult(statusCode, errorMessage)
+                sportResultCallback.onFailed(statusCode, errorMessage)
             }
 
             override fun onShowProgress() {
@@ -267,14 +265,14 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
         })
     }
 
-    override fun getAllLeagues(sportResultCallback: SportResultCallback<Leagues>) {
-        sportRepository.getAllLeagues(apiKey, object : SportDataSource.GetRemoteCallback<Leagues> {
+    override fun getAllLeagues(sportResultCallback: FrogoResponseCallback<Leagues>) {
+        sportRepository.getAllLeagues(apiKey, object : FrogoResponseCallback<Leagues> {
             override fun onSuccess(data: Leagues) {
-                sportResultCallback.getResultData(data)
+                sportResultCallback.onSuccess(data)
             }
 
             override fun onFailed(statusCode: Int, errorMessage: String?) {
-                sportResultCallback.failedResult(statusCode, errorMessage)
+                sportResultCallback.onFailed(statusCode, errorMessage)
             }
 
             override fun onShowProgress() {
@@ -289,18 +287,18 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
 
     override fun searchAllLeagues(
         countryName: String?,
-        sportResultCallback: SportResultCallback<Countrys>
+        sportResultCallback: FrogoResponseCallback<Countrys>
     ) {
         sportRepository.searchAllLeagues(
             apiKey,
             countryName,
-            object : SportDataSource.GetRemoteCallback<Countrys> {
+            object : FrogoResponseCallback<Countrys> {
                 override fun onSuccess(data: Countrys) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -316,19 +314,19 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
     override fun searchAllLeagues(
         countryName: String?,
         sportName: String?,
-        sportResultCallback: SportResultCallback<Countrys>
+        sportResultCallback: FrogoResponseCallback<Countrys>
     ) {
         sportRepository.searchAllLeagues(
             apiKey,
             countryName,
             sportName,
-            object : SportDataSource.GetRemoteCallback<Countrys> {
+            object : FrogoResponseCallback<Countrys> {
                 override fun onSuccess(data: Countrys) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -343,18 +341,18 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
 
     override fun searchAllSeasons(
         idTeam: String?,
-        sportResultCallback: SportResultCallback<Seasons>
+        sportResultCallback: FrogoResponseCallback<Seasons>
     ) {
         sportRepository.searchAllSeasons(
             apiKey,
             idTeam,
-            object : SportDataSource.GetRemoteCallback<Seasons> {
+            object : FrogoResponseCallback<Seasons> {
                 override fun onSuccess(data: Seasons) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -369,19 +367,19 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
 
     override fun searchAllTeam(
         league: String?,
-        sportResultCallback: SportResultCallback<Teams>
+        sportResultCallback: FrogoResponseCallback<Teams>
     ) {
 
         sportRepository.searchAllTeam(
             apiKey,
             league,
-            object : SportDataSource.GetRemoteCallback<Teams> {
+            object : FrogoResponseCallback<Teams> {
                 override fun onSuccess(data: Teams) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -397,19 +395,19 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
     override fun searchAllTeam(
         sportName: String?,
         countryName: String?,
-        sportResultCallback: SportResultCallback<Teams>
+        sportResultCallback: FrogoResponseCallback<Teams>
     ) {
         sportRepository.searchAllTeam(
             apiKey,
             sportName,
             countryName,
-            object : SportDataSource.GetRemoteCallback<Teams> {
+            object : FrogoResponseCallback<Teams> {
                 override fun onSuccess(data: Teams) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -422,18 +420,18 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
             })
     }
 
-    override fun lookupAllTeam(idLeague: String?, sportResultCallback: SportResultCallback<Teams>) {
+    override fun lookupAllTeam(idLeague: String?, sportResultCallback: FrogoResponseCallback<Teams>) {
 
         sportRepository.lookupAllTeam(
             apiKey,
             idLeague,
-            object : SportDataSource.GetRemoteCallback<Teams> {
+            object : FrogoResponseCallback<Teams> {
                 override fun onSuccess(data: Teams) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -449,18 +447,18 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
 
     override fun lookupAllPlayer(
         idTeam: String?,
-        sportResultCallback: SportResultCallback<Players>
+        sportResultCallback: FrogoResponseCallback<Players>
     ) {
         sportRepository.lookupAllPlayer(
             apiKey,
             idTeam,
-            object : SportDataSource.GetRemoteCallback<Players> {
+            object : FrogoResponseCallback<Players> {
                 override fun onSuccess(data: Players) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -473,17 +471,17 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
             })
     }
 
-    override fun searchLoves(userName: String?, sportResultCallback: SportResultCallback<Users>) {
+    override fun searchLoves(userName: String?, sportResultCallback: FrogoResponseCallback<Users>) {
         sportRepository.searchLoves(
             apiKey,
             userName,
-            object : SportDataSource.GetRemoteCallback<Users> {
+            object : FrogoResponseCallback<Users> {
                 override fun onSuccess(data: Users) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -498,18 +496,18 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
 
     override fun lookupLeagues(
         idLeague: String?,
-        sportResultCallback: SportResultCallback<Leagues>
+        sportResultCallback: FrogoResponseCallback<Leagues>
     ) {
         sportRepository.lookupLeagues(
             apiKey,
             idLeague,
-            object : SportDataSource.GetRemoteCallback<Leagues> {
+            object : FrogoResponseCallback<Leagues> {
                 override fun onSuccess(data: Leagues) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -522,17 +520,17 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
             })
     }
 
-    override fun lookupTeam(idTeam: String?, sportResultCallback: SportResultCallback<Teams>) {
+    override fun lookupTeam(idTeam: String?, sportResultCallback: FrogoResponseCallback<Teams>) {
         sportRepository.lookupTeam(
             apiKey,
             idTeam,
-            object : SportDataSource.GetRemoteCallback<Teams> {
+            object : FrogoResponseCallback<Teams> {
                 override fun onSuccess(data: Teams) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -545,17 +543,17 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
             })
     }
 
-    override fun lookupPlayer(idPlayer: String?, sportResultCallback: SportResultCallback<Players>) {
+    override fun lookupPlayer(idPlayer: String?, sportResultCallback: FrogoResponseCallback<Players>) {
         sportRepository.lookupPlayer(
             apiKey,
             idPlayer,
-            object : SportDataSource.GetRemoteCallback<Players> {
+            object : FrogoResponseCallback<Players> {
                 override fun onSuccess(data: Players) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -568,17 +566,17 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
             })
     }
 
-    override fun lookupEvent(idEvent: String?, sportResultCallback: SportResultCallback<Events>) {
+    override fun lookupEvent(idEvent: String?, sportResultCallback: FrogoResponseCallback<Events>) {
         sportRepository.lookupEvent(
             apiKey,
             idEvent,
-            object : SportDataSource.GetRemoteCallback<Events> {
+            object : FrogoResponseCallback<Events> {
                 override fun onSuccess(data: Events) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -591,17 +589,17 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
             })
     }
 
-    override fun lookupHonour(idPlayer: String?, sportResultCallback: SportResultCallback<Honors>) {
+    override fun lookupHonour(idPlayer: String?, sportResultCallback: FrogoResponseCallback<Honors>) {
         sportRepository.lookupHonour(
             apiKey,
             idPlayer,
-            object : SportDataSource.GetRemoteCallback<Honors> {
+            object : FrogoResponseCallback<Honors> {
                 override fun onSuccess(data: Honors) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -616,18 +614,18 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
 
     override fun lookupFormerTeam(
         idPlayer: String?,
-        sportResultCallback: SportResultCallback<FormerTeams>
+        sportResultCallback: FrogoResponseCallback<FormerTeams>
     ) {
         sportRepository.lookupFormerTeam(
             apiKey,
             idPlayer,
-            object : SportDataSource.GetRemoteCallback<FormerTeams> {
+            object : FrogoResponseCallback<FormerTeams> {
                 override fun onSuccess(data: FormerTeams) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -642,18 +640,18 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
 
     override fun lookupContract(
         idPlayer: String?,
-        sportResultCallback: SportResultCallback<Contracts>
+        sportResultCallback: FrogoResponseCallback<Contracts>
     ) {
         sportRepository.lookupContract(
             apiKey,
             idPlayer,
-            object : SportDataSource.GetRemoteCallback<Contracts> {
+            object : FrogoResponseCallback<Contracts> {
                 override fun onSuccess(data: Contracts) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -669,19 +667,19 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
     override fun lookupTable(
         idLeague: String?,
         season: String?,
-        sportResultCallback: SportResultCallback<Tables>
+        sportResultCallback: FrogoResponseCallback<Tables>
     ) {
         sportRepository.lookupTable(
             apiKey,
             idLeague,
             season,
-            object : SportDataSource.GetRemoteCallback<Tables> {
+            object : FrogoResponseCallback<Tables> {
                 override fun onSuccess(data: Tables) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -694,17 +692,17 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
             })
     }
 
-    override fun eventsNext(idTeam: String?, sportResultCallback: SportResultCallback<Events>) {
+    override fun eventsNext(idTeam: String?, sportResultCallback: FrogoResponseCallback<Events>) {
         sportRepository.eventsNext(
             apiKey,
             idTeam,
-            object : SportDataSource.GetRemoteCallback<Events> {
+            object : FrogoResponseCallback<Events> {
                 override fun onSuccess(data: Events) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -719,18 +717,18 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
 
     override fun eventsNextLeague(
         idLeague: String?,
-        sportResultCallback: SportResultCallback<Events>
+        sportResultCallback: FrogoResponseCallback<Events>
     ) {
         sportRepository.eventsNextLeague(
             apiKey,
             idLeague,
-            object : SportDataSource.GetRemoteCallback<Events> {
+            object : FrogoResponseCallback<Events> {
                 override fun onSuccess(data: Events) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -743,17 +741,17 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
             })
     }
 
-    override fun eventsLast(idTeam: String?, sportResultCallback: SportResultCallback<Results>) {
+    override fun eventsLast(idTeam: String?, sportResultCallback: FrogoResponseCallback<Results>) {
         sportRepository.eventsLast(
             apiKey,
             idTeam,
-            object : SportDataSource.GetRemoteCallback<Results> {
+            object : FrogoResponseCallback<Results> {
                 override fun onSuccess(data: Results) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -768,18 +766,18 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
 
     override fun eventsPastLeague(
         idLeague: String?,
-        sportResultCallback: SportResultCallback<Events>
+        sportResultCallback: FrogoResponseCallback<Events>
     ) {
         sportRepository.eventsPastLeague(
             apiKey,
             idLeague,
-            object : SportDataSource.GetRemoteCallback<Events> {
+            object : FrogoResponseCallback<Events> {
                 override fun onSuccess(data: Events) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -796,19 +794,19 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
         idLeague: String?,
         round: String?,
         season: String?,
-        sportResultCallback: SportResultCallback<Events>
+        sportResultCallback: FrogoResponseCallback<Events>
     ) {
         sportRepository.eventsRound(apiKey,
             idLeague,
             round,
             season,
-            object : SportDataSource.GetRemoteCallback<Events> {
+            object : FrogoResponseCallback<Events> {
                 override fun onSuccess(data: Events) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -824,19 +822,19 @@ class ConsumeTheSportDbApi(private val apiKey: String) : ConsumeTheSportDbApiVie
     override fun eventsSeason(
         idLeague: String?,
         season: String?,
-        sportResultCallback: SportResultCallback<Events>
+        sportResultCallback: FrogoResponseCallback<Events>
     ) {
         sportRepository.eventsSeason(
             apiKey,
             idLeague,
             season,
-            object : SportDataSource.GetRemoteCallback<Events> {
+            object : FrogoResponseCallback<Events> {
                 override fun onSuccess(data: Events) {
-                    sportResultCallback.getResultData(data)
+                    sportResultCallback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.failedResult(statusCode, errorMessage)
+                    sportResultCallback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {

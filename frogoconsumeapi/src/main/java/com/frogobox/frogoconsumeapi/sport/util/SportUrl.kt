@@ -114,6 +114,5 @@ object SportUrl {
 
     // All events in specific league by season (Free tier limited to 200 events)
     const val EVENTS_SEASONS = "api/v1/json/{api_key}/eventsseason.php"
-    
-    
+
 }
