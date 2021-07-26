@@ -3,6 +3,10 @@ package com.frogobox.frogoconsumeapi.movie.data.source
 import android.content.Context
 import com.frogobox.frogoconsumeapi.movie.data.model.*
 import com.frogobox.frogoconsumeapi.movie.data.response.*
+import com.frogobox.frogoconsumeapi.movie.util.MovieUrl
+import com.frogobox.frogosdk.core.FrogoApiCallback
+import com.frogobox.frogosdk.core.FrogoApiClient
+import com.frogobox.frogosdk.core.FrogoResponseCallback
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -25,56 +29,50 @@ import io.reactivex.schedulers.Schedulers
  */
 object MovieRemoteDataSource : MovieDataSource {
 
-    private val movieApiService = MovieApiService
+    private var movieApiService = FrogoApiClient.create<MovieApiService>(MovieUrl.BASE_URL)
 
     override fun usingChuckInterceptor(context: Context) {
-        movieApiService.usingChuckInterceptor(context)
+        movieApiService = FrogoApiClient.create(MovieUrl.BASE_URL, context)
     }
 
     override fun getMovieCertifications(
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<Certifications<CertificationMovie>>
+        callback: FrogoResponseCallback<Certifications<CertificationMovie>>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getMovieCertifications(apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<Certifications<CertificationMovie>>() {
+            .subscribe(object : FrogoApiCallback<Certifications<CertificationMovie>>() {
                 override fun onSuccess(data: Certifications<CertificationMovie>) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
 
     override fun getTvCertifications(
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<Certifications<CertificationTv>>
+        callback: FrogoResponseCallback<Certifications<CertificationTv>>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvCertifications(apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<Certifications<CertificationTv>>() {
+            .subscribe(object : FrogoApiCallback<Certifications<CertificationTv>>() {
                 override fun onSuccess(data: Certifications<CertificationTv>) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -84,24 +82,21 @@ object MovieRemoteDataSource : MovieDataSource {
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: MovieDataSource.GetRemoteCallback<Changes>
+        callback: FrogoResponseCallback<Changes>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getMovieChangeList(apiKey, endDate, startDate, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<Changes>() {
+            .subscribe(object : FrogoApiCallback<Changes>() {
                 override fun onSuccess(data: Changes) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -111,24 +106,21 @@ object MovieRemoteDataSource : MovieDataSource {
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: MovieDataSource.GetRemoteCallback<Changes>
+        callback: FrogoResponseCallback<Changes>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvChangeList(apiKey, endDate, startDate, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<Changes>() {
+            .subscribe(object : FrogoApiCallback<Changes>() {
                 override fun onSuccess(data: Changes) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -138,24 +130,21 @@ object MovieRemoteDataSource : MovieDataSource {
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: MovieDataSource.GetRemoteCallback<Changes>
+        callback: FrogoResponseCallback<Changes>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getPersonChangeList(apiKey, endDate, startDate, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<Changes>() {
+            .subscribe(object : FrogoApiCallback<Changes>() {
                 override fun onSuccess(data: Changes) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -164,24 +153,21 @@ object MovieRemoteDataSource : MovieDataSource {
         collection_id: Int,
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<CollectionsDetail>
+        callback: FrogoResponseCallback<CollectionsDetail>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getCollectionDetails(collection_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<CollectionsDetail>() {
+            .subscribe(object : FrogoApiCallback<CollectionsDetail>() {
                 override fun onSuccess(data: CollectionsDetail) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -190,24 +176,21 @@ object MovieRemoteDataSource : MovieDataSource {
         collection_id: Int,
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<CollectionsImage>
+        callback: FrogoResponseCallback<CollectionsImage>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getCollectionImages(collection_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<CollectionsImage>() {
+            .subscribe(object : FrogoApiCallback<CollectionsImage>() {
                 override fun onSuccess(data: CollectionsImage) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -216,24 +199,21 @@ object MovieRemoteDataSource : MovieDataSource {
         collection_id: Int,
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<CollectionsTranslation>
+        callback: FrogoResponseCallback<CollectionsTranslation>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getCollectionTranslations(collection_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<CollectionsTranslation>() {
+            .subscribe(object : FrogoApiCallback<CollectionsTranslation>() {
                 override fun onSuccess(data: CollectionsTranslation) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -241,24 +221,21 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getCompaniesDetails(
         company_id: Int,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<CompaniesDetail>
+        callback: FrogoResponseCallback<CompaniesDetail>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getCompaniesDetails(company_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<CompaniesDetail>() {
+            .subscribe(object : FrogoApiCallback<CompaniesDetail>() {
                 override fun onSuccess(data: CompaniesDetail) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -266,24 +243,21 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getCompaniesAlternativeName(
         company_id: Int,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<CompaniesAlternateName>
+        callback: FrogoResponseCallback<CompaniesAlternateName>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getCompaniesAlternativeName(company_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<CompaniesAlternateName>() {
+            .subscribe(object : FrogoApiCallback<CompaniesAlternateName>() {
                 override fun onSuccess(data: CompaniesAlternateName) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -291,168 +265,147 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getCompaniesImage(
         company_id: Int,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<CompaniesImage>
+        callback: FrogoResponseCallback<CompaniesImage>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getCompaniesImage(company_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<CompaniesImage>() {
+            .subscribe(object : FrogoApiCallback<CompaniesImage>() {
                 override fun onSuccess(data: CompaniesImage) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
 
     override fun getConfigurationApi(
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<ConfigurationApi>
+        callback: FrogoResponseCallback<ConfigurationApi>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getConfigurationApi(apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<ConfigurationApi>() {
+            .subscribe(object : FrogoApiCallback<ConfigurationApi>() {
                 override fun onSuccess(data: ConfigurationApi) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
 
     override fun getConfigurationCountries(
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<List<ConfigurationCountry>>
+        callback: FrogoResponseCallback<List<ConfigurationCountry>>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getConfigurationCountries(apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<List<ConfigurationCountry>>() {
+            .subscribe(object : FrogoApiCallback<List<ConfigurationCountry>>() {
                 override fun onSuccess(data: List<ConfigurationCountry>) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
 
     override fun getConfigurationJobs(
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<List<ConfigurationJob>>
+        callback: FrogoResponseCallback<List<ConfigurationJob>>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getConfigurationJobs(apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<List<ConfigurationJob>>() {
+            .subscribe(object : FrogoApiCallback<List<ConfigurationJob>>() {
                 override fun onSuccess(data: List<ConfigurationJob>) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
 
     override fun getConfigurationLanguages(
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<List<ConfigurationLanguage>>
+        callback: FrogoResponseCallback<List<ConfigurationLanguage>>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getConfigurationLanguages(apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<List<ConfigurationLanguage>>() {
+            .subscribe(object : FrogoApiCallback<List<ConfigurationLanguage>>() {
                 override fun onSuccess(data: List<ConfigurationLanguage>) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
 
     override fun getConfigurationTranslations(
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<List<String>>
+        callback: FrogoResponseCallback<List<String>>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getConfigurationTranslations(apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<List<String>>() {
+            .subscribe(object : FrogoApiCallback<List<String>>() {
                 override fun onSuccess(data: List<String>) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
 
     override fun getConfigurationTimezones(
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<List<ConfigurationTimezone>>
+        callback: FrogoResponseCallback<List<ConfigurationTimezone>>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getConfigurationTimezones(apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<List<ConfigurationTimezone>>() {
+            .subscribe(object : FrogoApiCallback<List<ConfigurationTimezone>>() {
                 override fun onSuccess(data: List<ConfigurationTimezone>) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -460,24 +413,21 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getCreditsDetails(
         credit_id: String,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<Credits>
+        callback: FrogoResponseCallback<Credits>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getCreditsDetails(credit_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<Credits>() {
+            .subscribe(object : FrogoApiCallback<Credits>() {
                 override fun onSuccess(data: Credits) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -516,9 +466,9 @@ object MovieRemoteDataSource : MovieDataSource {
         with_runtime_gte: Double?,
         with_runtime_lte: Double?,
         with_original_language: String?,
-        callback: MovieDataSource.GetRemoteCallback<Discover<DiscoverMovie>>
+        callback: FrogoResponseCallback<Discover<DiscoverMovie>>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getDiscoverMovie(
                 apiKey,
                 language,
@@ -558,16 +508,13 @@ object MovieRemoteDataSource : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<Discover<DiscoverMovie>>() {
+            .subscribe(object : FrogoApiCallback<Discover<DiscoverMovie>>() {
                 override fun onSuccess(data: Discover<DiscoverMovie>) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -596,9 +543,9 @@ object MovieRemoteDataSource : MovieDataSource {
         screened_theatrically: String?,
         with_companies: String?,
         with_keywords: String?,
-        callback: MovieDataSource.GetRemoteCallback<Discover<DiscoverTv>>
+        callback: FrogoResponseCallback<Discover<DiscoverTv>>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getDiscoverTv(
                 apiKey,
                 language,
@@ -628,16 +575,13 @@ object MovieRemoteDataSource : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<Discover<DiscoverTv>>() {
+            .subscribe(object : FrogoApiCallback<Discover<DiscoverTv>>() {
                 override fun onSuccess(data: Discover<DiscoverTv>) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -647,24 +591,21 @@ object MovieRemoteDataSource : MovieDataSource {
         apiKey: String,
         external_source: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<Find>
+        callback: FrogoResponseCallback<Find>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getFindById(external_id, apiKey, external_source, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<Find>() {
+            .subscribe(object : FrogoApiCallback<Find>() {
                 override fun onSuccess(data: Find) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -672,24 +613,21 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getGenresMovie(
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<Genres>
+        callback: FrogoResponseCallback<Genres>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getGenresMovie(apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<Genres>() {
+            .subscribe(object : FrogoApiCallback<Genres>() {
                 override fun onSuccess(data: Genres) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -697,24 +635,21 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getGenresTv(
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<Genres>
+        callback: FrogoResponseCallback<Genres>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getGenresTv(apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<Genres>() {
+            .subscribe(object : FrogoApiCallback<Genres>() {
                 override fun onSuccess(data: Genres) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -722,24 +657,21 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getKeywordsDetail(
         keyword_id: Int,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<KeywordsDetail>
+        callback: FrogoResponseCallback<KeywordsDetail>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getKeywordsDetail(keyword_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<KeywordsDetail>() {
+            .subscribe(object : FrogoApiCallback<KeywordsDetail>() {
                 override fun onSuccess(data: KeywordsDetail) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -749,24 +681,21 @@ object MovieRemoteDataSource : MovieDataSource {
         apiKey: String,
         language: String?,
         include_adult: Boolean?,
-        callback: MovieDataSource.GetRemoteCallback<KeywordsMovies>
+        callback: FrogoResponseCallback<KeywordsMovies>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getKeywordsMovie(keyword_id, apiKey, language, include_adult)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<KeywordsMovies>() {
+            .subscribe(object : FrogoApiCallback<KeywordsMovies>() {
                 override fun onSuccess(data: KeywordsMovies) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -776,24 +705,21 @@ object MovieRemoteDataSource : MovieDataSource {
         apiKey: String,
         language: String?,
         append_to_response: String?,
-        callback: MovieDataSource.GetRemoteCallback<MovieDetail>
+        callback: FrogoResponseCallback<MovieDetail>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getMoviesDetails(movie_id, apiKey, language, append_to_response)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<MovieDetail>() {
+            .subscribe(object : FrogoApiCallback<MovieDetail>() {
                 override fun onSuccess(data: MovieDetail) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -803,24 +729,21 @@ object MovieRemoteDataSource : MovieDataSource {
         apiKey: String,
         session_id: String,
         guest_session_id: String?,
-        callback: MovieDataSource.GetRemoteCallback<MovieAccountState>
+        callback: FrogoResponseCallback<MovieAccountState>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getMoviesAccountState(movie_id, apiKey, session_id, guest_session_id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<MovieAccountState>() {
+            .subscribe(object : FrogoApiCallback<MovieAccountState>() {
                 override fun onSuccess(data: MovieAccountState) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -829,24 +752,21 @@ object MovieRemoteDataSource : MovieDataSource {
         movie_id: Int,
         apiKey: String,
         country: String?,
-        callback: MovieDataSource.GetRemoteCallback<MovieAlternativeTitle>
+        callback: FrogoResponseCallback<MovieAlternativeTitle>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getMoviesAlternativeTitles(movie_id, apiKey, country)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<MovieAlternativeTitle>() {
+            .subscribe(object : FrogoApiCallback<MovieAlternativeTitle>() {
                 override fun onSuccess(data: MovieAlternativeTitle) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -857,24 +777,21 @@ object MovieRemoteDataSource : MovieDataSource {
         start_date: String?,
         end_date: String?,
         page: Int?,
-        callback: MovieDataSource.GetRemoteCallback<MovieChanges>
+        callback: FrogoResponseCallback<MovieChanges>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getMoviesChanges(movie_id, apiKey, start_date, end_date, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<MovieChanges>() {
+            .subscribe(object : FrogoApiCallback<MovieChanges>() {
                 override fun onSuccess(data: MovieChanges) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -882,24 +799,21 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getMoviesCredits(
         movie_id: Int,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<MovieCredit>
+        callback: FrogoResponseCallback<MovieCredit>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getMoviesCredits(movie_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<MovieCredit>() {
+            .subscribe(object : FrogoApiCallback<MovieCredit>() {
                 override fun onSuccess(data: MovieCredit) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -907,23 +821,20 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getMoviesExternalIds(
         movie_id: Int,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<MovieExternalId>
+        callback: FrogoResponseCallback<MovieExternalId>
     ) {
-        movieApiService.getApiService.getMoviesExternalIds(movie_id, apiKey)
+        movieApiService.getMoviesExternalIds(movie_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<MovieExternalId>() {
+            .subscribe(object : FrogoApiCallback<MovieExternalId>() {
                 override fun onSuccess(data: MovieExternalId) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -933,9 +844,9 @@ object MovieRemoteDataSource : MovieDataSource {
         apiKey: String,
         language: String?,
         include_image_language: String?,
-        callback: MovieDataSource.GetRemoteCallback<MovieImages>
+        callback: FrogoResponseCallback<MovieImages>
     ) {
-        movieApiService.getApiService.getMoviesImages(
+        movieApiService.getMoviesImages(
             movie_id,
             apiKey,
             language,
@@ -945,16 +856,13 @@ object MovieRemoteDataSource : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<MovieImages>() {
+            .subscribe(object : FrogoApiCallback<MovieImages>() {
                 override fun onSuccess(data: MovieImages) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -962,23 +870,20 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getMoviesKeywords(
         movie_id: Int,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<MovieKeywords>
+        callback: FrogoResponseCallback<MovieKeywords>
     ) {
-        movieApiService.getApiService.getMoviesKeywords(movie_id, apiKey)
+        movieApiService.getMoviesKeywords(movie_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<MovieKeywords>() {
+            .subscribe(object : FrogoApiCallback<MovieKeywords>() {
                 override fun onSuccess(data: MovieKeywords) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -986,23 +891,20 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getMoviesReleaseDates(
         movie_id: Int,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<MovieReleaseDates>
+        callback: FrogoResponseCallback<MovieReleaseDates>
     ) {
-        movieApiService.getApiService.getMoviesReleaseDates(movie_id, apiKey)
+        movieApiService.getMoviesReleaseDates(movie_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<MovieReleaseDates>() {
+            .subscribe(object : FrogoApiCallback<MovieReleaseDates>() {
                 override fun onSuccess(data: MovieReleaseDates) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1011,23 +913,20 @@ object MovieRemoteDataSource : MovieDataSource {
         movie_id: Int,
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<MovieVideos>
+        callback: FrogoResponseCallback<MovieVideos>
     ) {
-        movieApiService.getApiService.getMoviesVideos(movie_id, apiKey, language)
+        movieApiService.getMoviesVideos(movie_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<MovieVideos>() {
+            .subscribe(object : FrogoApiCallback<MovieVideos>() {
                 override fun onSuccess(data: MovieVideos) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1035,23 +934,20 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getMoviesTranslations(
         movie_id: Int,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<MovieTranslations>
+        callback: FrogoResponseCallback<MovieTranslations>
     ) {
-        movieApiService.getApiService.getMoviesTranslations(movie_id, apiKey)
+        movieApiService.getMoviesTranslations(movie_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<MovieTranslations>() {
+            .subscribe(object : FrogoApiCallback<MovieTranslations>() {
                 override fun onSuccess(data: MovieTranslations) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1061,23 +957,20 @@ object MovieRemoteDataSource : MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: MovieDataSource.GetRemoteCallback<MovieRecommendations>
+        callback: FrogoResponseCallback<MovieRecommendations>
     ) {
-        movieApiService.getApiService.getMoviesRecommendations(movie_id, apiKey, language, page)
+        movieApiService.getMoviesRecommendations(movie_id, apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<MovieRecommendations>() {
+            .subscribe(object : FrogoApiCallback<MovieRecommendations>() {
                 override fun onSuccess(data: MovieRecommendations) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1087,23 +980,20 @@ object MovieRemoteDataSource : MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: MovieDataSource.GetRemoteCallback<MovieSimilarMovies>
+        callback: FrogoResponseCallback<MovieSimilarMovies>
     ) {
-        movieApiService.getApiService.getMoviesSimilarMovies(movie_id, apiKey, language, page)
+        movieApiService.getMoviesSimilarMovies(movie_id, apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<MovieSimilarMovies>() {
+            .subscribe(object : FrogoApiCallback<MovieSimilarMovies>() {
                 override fun onSuccess(data: MovieSimilarMovies) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1113,23 +1003,20 @@ object MovieRemoteDataSource : MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: MovieDataSource.GetRemoteCallback<MovieReviews>
+        callback: FrogoResponseCallback<MovieReviews>
     ) {
-        movieApiService.getApiService.getMoviesReviews(movie_id, apiKey, language, page)
+        movieApiService.getMoviesReviews(movie_id, apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<MovieReviews>() {
+            .subscribe(object : FrogoApiCallback<MovieReviews>() {
                 override fun onSuccess(data: MovieReviews) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1139,23 +1026,20 @@ object MovieRemoteDataSource : MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: MovieDataSource.GetRemoteCallback<MovieLists>
+        callback: FrogoResponseCallback<MovieLists>
     ) {
-        movieApiService.getApiService.getMoviesLists(movie_id, apiKey, language, page)
+        movieApiService.getMoviesLists(movie_id, apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<MovieLists>() {
+            .subscribe(object : FrogoApiCallback<MovieLists>() {
                 override fun onSuccess(data: MovieLists) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1163,23 +1047,20 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getMoviesLatest(
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<MovieLatest>
+        callback: FrogoResponseCallback<MovieLatest>
     ) {
-        movieApiService.getApiService.getMoviesLatest(apiKey, language)
+        movieApiService.getMoviesLatest(apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<MovieLatest>() {
+            .subscribe(object : FrogoApiCallback<MovieLatest>() {
                 override fun onSuccess(data: MovieLatest) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1189,23 +1070,20 @@ object MovieRemoteDataSource : MovieDataSource {
         language: String?,
         page: Int?,
         region: String?,
-        callback: MovieDataSource.GetRemoteCallback<MovieNowPlayings>
+        callback: FrogoResponseCallback<MovieNowPlayings>
     ) {
-        movieApiService.getApiService.getMoviesNowPlaying(apiKey, language, page, region)
+        movieApiService.getMoviesNowPlaying(apiKey, language, page, region)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<MovieNowPlayings>() {
+            .subscribe(object : FrogoApiCallback<MovieNowPlayings>() {
                 override fun onSuccess(data: MovieNowPlayings) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1215,23 +1093,20 @@ object MovieRemoteDataSource : MovieDataSource {
         language: String?,
         page: Int?,
         region: String?,
-        callback: MovieDataSource.GetRemoteCallback<MoviePopulars>
+        callback: FrogoResponseCallback<MoviePopulars>
     ) {
-        movieApiService.getApiService.getMoviesPopular(apiKey, language, page, region)
+        movieApiService.getMoviesPopular(apiKey, language, page, region)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<MoviePopulars>() {
+            .subscribe(object : FrogoApiCallback<MoviePopulars>() {
                 override fun onSuccess(data: MoviePopulars) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1241,23 +1116,20 @@ object MovieRemoteDataSource : MovieDataSource {
         language: String?,
         page: Int?,
         region: String?,
-        callback: MovieDataSource.GetRemoteCallback<MovieTopRated>
+        callback: FrogoResponseCallback<MovieTopRated>
     ) {
-        movieApiService.getApiService.getMoviesTopRated(apiKey, language, page, region)
+        movieApiService.getMoviesTopRated(apiKey, language, page, region)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<MovieTopRated>() {
+            .subscribe(object : FrogoApiCallback<MovieTopRated>() {
                 override fun onSuccess(data: MovieTopRated) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1267,23 +1139,20 @@ object MovieRemoteDataSource : MovieDataSource {
         language: String?,
         page: Int?,
         region: String?,
-        callback: MovieDataSource.GetRemoteCallback<MovieUpcoming>
+        callback: FrogoResponseCallback<MovieUpcoming>
     ) {
-        movieApiService.getApiService.getMoviesUpcoming(apiKey, language, page, region)
+        movieApiService.getMoviesUpcoming(apiKey, language, page, region)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<MovieUpcoming>() {
+            .subscribe(object : FrogoApiCallback<MovieUpcoming>() {
                 override fun onSuccess(data: MovieUpcoming) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1292,24 +1161,21 @@ object MovieRemoteDataSource : MovieDataSource {
         media_type: String,
         time_window: String,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<Trending<TrendingAll>>
+        callback: FrogoResponseCallback<Trending<TrendingAll>>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTrendingAll(media_type, time_window, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<Trending<TrendingAll>>() {
+            .subscribe(object : FrogoApiCallback<Trending<TrendingAll>>() {
                 override fun onSuccess(data: Trending<TrendingAll>) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1318,24 +1184,21 @@ object MovieRemoteDataSource : MovieDataSource {
         media_type: String,
         time_window: String,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<Trending<TrendingMovie>>
+        callback: FrogoResponseCallback<Trending<TrendingMovie>>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTrendingMovie(media_type, time_window, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<Trending<TrendingMovie>>() {
+            .subscribe(object : FrogoApiCallback<Trending<TrendingMovie>>() {
                 override fun onSuccess(data: Trending<TrendingMovie>) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1344,24 +1207,21 @@ object MovieRemoteDataSource : MovieDataSource {
         media_type: String,
         time_window: String,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<Trending<TrendingPerson>>
+        callback: FrogoResponseCallback<Trending<TrendingPerson>>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTrendingPerson(media_type, time_window, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<Trending<TrendingPerson>>() {
+            .subscribe(object : FrogoApiCallback<Trending<TrendingPerson>>() {
                 override fun onSuccess(data: Trending<TrendingPerson>) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1370,24 +1230,21 @@ object MovieRemoteDataSource : MovieDataSource {
         media_type: String,
         time_window: String,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<Trending<TrendingTv>>
+        callback: FrogoResponseCallback<Trending<TrendingTv>>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTrendingTv(media_type, time_window, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<Trending<TrendingTv>>() {
+            .subscribe(object : FrogoApiCallback<Trending<TrendingTv>>() {
                 override fun onSuccess(data: Trending<TrendingTv>) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1395,24 +1252,21 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getReviews(
         review_id: String,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<Reviews>
+        callback: FrogoResponseCallback<Reviews>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getReviews(review_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<Reviews>() {
+            .subscribe(object : FrogoApiCallback<Reviews>() {
                 override fun onSuccess(data: Reviews) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1420,24 +1274,21 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getNetworkDetail(
         network_id: Int,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<NetworkDetail>
+        callback: FrogoResponseCallback<NetworkDetail>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getNetworkDetail(network_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<NetworkDetail>() {
+            .subscribe(object : FrogoApiCallback<NetworkDetail>() {
                 override fun onSuccess(data: NetworkDetail) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1445,24 +1296,21 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getNetworkAlternativeName(
         network_id: Int,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<NetworkAlternativeName>
+        callback: FrogoResponseCallback<NetworkAlternativeName>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getNetworkAlternativeName(network_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<NetworkAlternativeName>() {
+            .subscribe(object : FrogoApiCallback<NetworkAlternativeName>() {
                 override fun onSuccess(data: NetworkAlternativeName) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1470,24 +1318,21 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getNetworkImage(
         network_id: Int,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<NetworkImage>
+        callback: FrogoResponseCallback<NetworkImage>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getNetworkImage(network_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<NetworkImage>() {
+            .subscribe(object : FrogoApiCallback<NetworkImage>() {
                 override fun onSuccess(data: NetworkImage) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1496,24 +1341,21 @@ object MovieRemoteDataSource : MovieDataSource {
         apiKey: String,
         query: String,
         page: Int?,
-        callback: MovieDataSource.GetRemoteCallback<SearchCompanies>
+        callback: FrogoResponseCallback<SearchCompanies>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .searchCompanies(apiKey, query, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<SearchCompanies>() {
+            .subscribe(object : FrogoApiCallback<SearchCompanies>() {
                 override fun onSuccess(data: SearchCompanies) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1523,24 +1365,21 @@ object MovieRemoteDataSource : MovieDataSource {
         query: String,
         language: String?,
         page: Int?,
-        callback: MovieDataSource.GetRemoteCallback<SearchCollections>
+        callback: FrogoResponseCallback<SearchCollections>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .searchCollections(apiKey, query, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<SearchCollections>() {
+            .subscribe(object : FrogoApiCallback<SearchCollections>() {
                 override fun onSuccess(data: SearchCollections) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1549,24 +1388,21 @@ object MovieRemoteDataSource : MovieDataSource {
         apiKey: String,
         query: String,
         page: Int?,
-        callback: MovieDataSource.GetRemoteCallback<SearchKeywords>
+        callback: FrogoResponseCallback<SearchKeywords>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .searchKeywords(apiKey, query, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<SearchKeywords>() {
+            .subscribe(object : FrogoApiCallback<SearchKeywords>() {
                 override fun onSuccess(data: SearchKeywords) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1580,9 +1416,9 @@ object MovieRemoteDataSource : MovieDataSource {
         region: String?,
         year: Int?,
         primary_release_year: Int?,
-        callback: MovieDataSource.GetRemoteCallback<SearchMovies>
+        callback: FrogoResponseCallback<SearchMovies>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .searchMovies(
                 apiKey,
                 query,
@@ -1597,16 +1433,13 @@ object MovieRemoteDataSource : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<SearchMovies>() {
+            .subscribe(object : FrogoApiCallback<SearchMovies>() {
                 override fun onSuccess(data: SearchMovies) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1618,24 +1451,21 @@ object MovieRemoteDataSource : MovieDataSource {
         page: Int?,
         include_adult: Boolean?,
         region: String?,
-        callback: MovieDataSource.GetRemoteCallback<SearchMulti>
+        callback: FrogoResponseCallback<SearchMulti>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .searchMultiSearch(apiKey, query, language, page, include_adult, region)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<SearchMulti>() {
+            .subscribe(object : FrogoApiCallback<SearchMulti>() {
                 override fun onSuccess(data: SearchMulti) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1647,24 +1477,21 @@ object MovieRemoteDataSource : MovieDataSource {
         page: Int?,
         include_adult: Boolean?,
         region: String?,
-        callback: MovieDataSource.GetRemoteCallback<SearchPeople>
+        callback: FrogoResponseCallback<SearchPeople>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .searchPeople(apiKey, query, language, page, include_adult, region)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<SearchPeople>() {
+            .subscribe(object : FrogoApiCallback<SearchPeople>() {
                 override fun onSuccess(data: SearchPeople) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1676,24 +1503,21 @@ object MovieRemoteDataSource : MovieDataSource {
         page: Int?,
         include_adult: Boolean?,
         first_air_date_year: Int?,
-        callback: MovieDataSource.GetRemoteCallback<SearchMovies>
+        callback: FrogoResponseCallback<SearchMovies>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .searchTvShows(apiKey, query, language, page, include_adult, first_air_date_year)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<SearchMovies>() {
+            .subscribe(object : FrogoApiCallback<SearchMovies>() {
                 override fun onSuccess(data: SearchMovies) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1703,24 +1527,21 @@ object MovieRemoteDataSource : MovieDataSource {
         apiKey: String,
         language: String?,
         append_to_response: String?,
-        callback: MovieDataSource.GetRemoteCallback<TvDetails>
+        callback: FrogoResponseCallback<TvDetails>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvDetails(tv_id, apiKey, language, append_to_response)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvDetails>() {
+            .subscribe(object : FrogoApiCallback<TvDetails>() {
                 override fun onSuccess(data: TvDetails) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1731,24 +1552,21 @@ object MovieRemoteDataSource : MovieDataSource {
         language: String?,
         guest_session_id: String?,
         session_id: String?,
-        callback: MovieDataSource.GetRemoteCallback<TvAccountStates>
+        callback: FrogoResponseCallback<TvAccountStates>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvAccountStates(tv_id, apiKey, language, guest_session_id, session_id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvAccountStates>() {
+            .subscribe(object : FrogoApiCallback<TvAccountStates>() {
                 override fun onSuccess(data: TvAccountStates) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1757,24 +1575,21 @@ object MovieRemoteDataSource : MovieDataSource {
         tv_id: Int,
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<TvAlternativeTitles>
+        callback: FrogoResponseCallback<TvAlternativeTitles>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvAlternativeTitles(tv_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvAlternativeTitles>() {
+            .subscribe(object : FrogoApiCallback<TvAlternativeTitles>() {
                 override fun onSuccess(data: TvAlternativeTitles) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1785,24 +1600,21 @@ object MovieRemoteDataSource : MovieDataSource {
         startDate: String?,
         endDate: String?,
         page: Int?,
-        callback: MovieDataSource.GetRemoteCallback<TvChanges>
+        callback: FrogoResponseCallback<TvChanges>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvChanges(tv_id, apiKey, startDate, endDate, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvChanges>() {
+            .subscribe(object : FrogoApiCallback<TvChanges>() {
                 override fun onSuccess(data: TvChanges) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1811,24 +1623,21 @@ object MovieRemoteDataSource : MovieDataSource {
         tv_id: Int,
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<TvContentRatings>
+        callback: FrogoResponseCallback<TvContentRatings>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvContentRatings(tv_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvContentRatings>() {
+            .subscribe(object : FrogoApiCallback<TvContentRatings>() {
                 override fun onSuccess(data: TvContentRatings) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1837,24 +1646,21 @@ object MovieRemoteDataSource : MovieDataSource {
         tv_id: Int,
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<TvCredits>
+        callback: FrogoResponseCallback<TvCredits>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvCredits(tv_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvCredits>() {
+            .subscribe(object : FrogoApiCallback<TvCredits>() {
                 override fun onSuccess(data: TvCredits) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1863,24 +1669,21 @@ object MovieRemoteDataSource : MovieDataSource {
         tv_id: Int,
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<TvEpisodeGroups>
+        callback: FrogoResponseCallback<TvEpisodeGroups>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvEpisodeGroups(tv_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvEpisodeGroups>() {
+            .subscribe(object : FrogoApiCallback<TvEpisodeGroups>() {
                 override fun onSuccess(data: TvEpisodeGroups) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1889,24 +1692,21 @@ object MovieRemoteDataSource : MovieDataSource {
         tv_id: Int,
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<TvExternalIds>
+        callback: FrogoResponseCallback<TvExternalIds>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvExternalIds(tv_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvExternalIds>() {
+            .subscribe(object : FrogoApiCallback<TvExternalIds>() {
                 override fun onSuccess(data: TvExternalIds) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1915,24 +1715,21 @@ object MovieRemoteDataSource : MovieDataSource {
         tv_id: Int,
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<TvImages>
+        callback: FrogoResponseCallback<TvImages>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvImages(tv_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvImages>() {
+            .subscribe(object : FrogoApiCallback<TvImages>() {
                 override fun onSuccess(data: TvImages) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1940,24 +1737,21 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getTvKeyword(
         tv_id: Int,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<TvKeywords>
+        callback: FrogoResponseCallback<TvKeywords>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvKeyword(tv_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvKeywords>() {
+            .subscribe(object : FrogoApiCallback<TvKeywords>() {
                 override fun onSuccess(data: TvKeywords) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1967,24 +1761,21 @@ object MovieRemoteDataSource : MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: MovieDataSource.GetRemoteCallback<TvRecommendations>
+        callback: FrogoResponseCallback<TvRecommendations>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvRecommendations(tv_id, apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvRecommendations>() {
+            .subscribe(object : FrogoApiCallback<TvRecommendations>() {
                 override fun onSuccess(data: TvRecommendations) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -1992,24 +1783,21 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getTvReviews(
         tv_id: Int,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<TvReviews>
+        callback: FrogoResponseCallback<TvReviews>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvReviews(tv_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvReviews>() {
+            .subscribe(object : FrogoApiCallback<TvReviews>() {
                 override fun onSuccess(data: TvReviews) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2017,24 +1805,21 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getTvScreenedTheatrically(
         tv_id: Int,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<TvScreenedTheatrically>
+        callback: FrogoResponseCallback<TvScreenedTheatrically>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvScreenedTheatrically(tv_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvScreenedTheatrically>() {
+            .subscribe(object : FrogoApiCallback<TvScreenedTheatrically>() {
                 override fun onSuccess(data: TvScreenedTheatrically) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2044,24 +1829,21 @@ object MovieRemoteDataSource : MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: MovieDataSource.GetRemoteCallback<TvSimilarTVShows>
+        callback: FrogoResponseCallback<TvSimilarTVShows>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvSimilarTvShows(tv_id, apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvSimilarTVShows>() {
+            .subscribe(object : FrogoApiCallback<TvSimilarTVShows>() {
                 override fun onSuccess(data: TvSimilarTVShows) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2069,24 +1851,21 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getTvTranslations(
         tv_id: Int,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<TvTranslations>
+        callback: FrogoResponseCallback<TvTranslations>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvTranslations(tv_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvTranslations>() {
+            .subscribe(object : FrogoApiCallback<TvTranslations>() {
                 override fun onSuccess(data: TvTranslations) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2095,24 +1874,21 @@ object MovieRemoteDataSource : MovieDataSource {
         tv_id: Int,
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<TvVideos>
+        callback: FrogoResponseCallback<TvVideos>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvVideos(tv_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvVideos>() {
+            .subscribe(object : FrogoApiCallback<TvVideos>() {
                 override fun onSuccess(data: TvVideos) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2120,24 +1896,21 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getTvLatest(
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<TvLatest>
+        callback: FrogoResponseCallback<TvLatest>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvLatest(apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvLatest>() {
+            .subscribe(object : FrogoApiCallback<TvLatest>() {
                 override fun onSuccess(data: TvLatest) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2146,24 +1919,21 @@ object MovieRemoteDataSource : MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: MovieDataSource.GetRemoteCallback<TvAiringToday>
+        callback: FrogoResponseCallback<TvAiringToday>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvAiringToday(apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvAiringToday>() {
+            .subscribe(object : FrogoApiCallback<TvAiringToday>() {
                 override fun onSuccess(data: TvAiringToday) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2172,24 +1942,21 @@ object MovieRemoteDataSource : MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: MovieDataSource.GetRemoteCallback<TvOnTheAir>
+        callback: FrogoResponseCallback<TvOnTheAir>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvOnTheAir(apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvOnTheAir>() {
+            .subscribe(object : FrogoApiCallback<TvOnTheAir>() {
                 override fun onSuccess(data: TvOnTheAir) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2198,24 +1965,21 @@ object MovieRemoteDataSource : MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: MovieDataSource.GetRemoteCallback<TvPopular>
+        callback: FrogoResponseCallback<TvPopular>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvPopular(apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvPopular>() {
+            .subscribe(object : FrogoApiCallback<TvPopular>() {
                 override fun onSuccess(data: TvPopular) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2224,24 +1988,21 @@ object MovieRemoteDataSource : MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: MovieDataSource.GetRemoteCallback<TvTopRated>
+        callback: FrogoResponseCallback<TvTopRated>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvTopRated(apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvTopRated>() {
+            .subscribe(object : FrogoApiCallback<TvTopRated>() {
                 override fun onSuccess(data: TvTopRated) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2252,24 +2013,21 @@ object MovieRemoteDataSource : MovieDataSource {
         apiKey: String,
         language: String?,
         append_to_response: String?,
-        callback: MovieDataSource.GetRemoteCallback<TvSeasonsDetails>
+        callback: FrogoResponseCallback<TvSeasonsDetails>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvSeasonsDetails(tv_id, season_number, apiKey, language, append_to_response)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvSeasonsDetails>() {
+            .subscribe(object : FrogoApiCallback<TvSeasonsDetails>() {
                 override fun onSuccess(data: TvSeasonsDetails) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2280,24 +2038,21 @@ object MovieRemoteDataSource : MovieDataSource {
         startDate: String?,
         endDate: String?,
         page: Int?,
-        callback: MovieDataSource.GetRemoteCallback<TvSeasonsChanges>
+        callback: FrogoResponseCallback<TvSeasonsChanges>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvSeasonsChanges(season_id, apiKey, startDate, endDate, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvSeasonsChanges>() {
+            .subscribe(object : FrogoApiCallback<TvSeasonsChanges>() {
                 override fun onSuccess(data: TvSeasonsChanges) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2309,9 +2064,9 @@ object MovieRemoteDataSource : MovieDataSource {
         language: String?,
         guest_session_id: String?,
         session_id: String?,
-        callback: MovieDataSource.GetRemoteCallback<TvSeasonsAccountStates>
+        callback: FrogoResponseCallback<TvSeasonsAccountStates>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvSeasonsAccountStates(
                 tv_id,
                 season_number,
@@ -2324,16 +2079,13 @@ object MovieRemoteDataSource : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvSeasonsAccountStates>() {
+            .subscribe(object : FrogoApiCallback<TvSeasonsAccountStates>() {
                 override fun onSuccess(data: TvSeasonsAccountStates) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2343,24 +2095,21 @@ object MovieRemoteDataSource : MovieDataSource {
         season_number: Int,
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<TvSeasonsCredits>
+        callback: FrogoResponseCallback<TvSeasonsCredits>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvSeasonsCredits(tv_id, season_number, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvSeasonsCredits>() {
+            .subscribe(object : FrogoApiCallback<TvSeasonsCredits>() {
                 override fun onSuccess(data: TvSeasonsCredits) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2370,24 +2119,21 @@ object MovieRemoteDataSource : MovieDataSource {
         season_number: Int,
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<TvSeasonsExternalIds>
+        callback: FrogoResponseCallback<TvSeasonsExternalIds>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvSeasonsExternalIds(tv_id, season_number, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvSeasonsExternalIds>() {
+            .subscribe(object : FrogoApiCallback<TvSeasonsExternalIds>() {
                 override fun onSuccess(data: TvSeasonsExternalIds) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2397,24 +2143,21 @@ object MovieRemoteDataSource : MovieDataSource {
         season_number: Int,
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<TvSeasonsImages>
+        callback: FrogoResponseCallback<TvSeasonsImages>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvSeasonsImages(tv_id, season_number, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvSeasonsImages>() {
+            .subscribe(object : FrogoApiCallback<TvSeasonsImages>() {
                 override fun onSuccess(data: TvSeasonsImages) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2424,24 +2167,21 @@ object MovieRemoteDataSource : MovieDataSource {
         season_number: Int,
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<TvSeasonsVideos>
+        callback: FrogoResponseCallback<TvSeasonsVideos>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvSeasonsVideos(tv_id, season_number, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvSeasonsVideos>() {
+            .subscribe(object : FrogoApiCallback<TvSeasonsVideos>() {
                 override fun onSuccess(data: TvSeasonsVideos) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2453,9 +2193,9 @@ object MovieRemoteDataSource : MovieDataSource {
         apiKey: String,
         language: String?,
         append_to_response: String?,
-        callback: MovieDataSource.GetRemoteCallback<TvEpisodeDetails>
+        callback: FrogoResponseCallback<TvEpisodeDetails>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvEpisodeDetails(
                 tv_id,
                 season_number,
@@ -2468,16 +2208,13 @@ object MovieRemoteDataSource : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvEpisodeDetails>() {
+            .subscribe(object : FrogoApiCallback<TvEpisodeDetails>() {
                 override fun onSuccess(data: TvEpisodeDetails) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2488,24 +2225,21 @@ object MovieRemoteDataSource : MovieDataSource {
         startDate: String?,
         endDate: String?,
         page: Int?,
-        callback: MovieDataSource.GetRemoteCallback<TvEpisodeChanges>
+        callback: FrogoResponseCallback<TvEpisodeChanges>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvEpisodeChanges(episode_id, apiKey, startDate, endDate, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvEpisodeChanges>() {
+            .subscribe(object : FrogoApiCallback<TvEpisodeChanges>() {
                 override fun onSuccess(data: TvEpisodeChanges) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2517,9 +2251,9 @@ object MovieRemoteDataSource : MovieDataSource {
         apiKey: String,
         guest_session_id: String?,
         session_id: String?,
-        callback: MovieDataSource.GetRemoteCallback<TvEpisodeAccountStates>
+        callback: FrogoResponseCallback<TvEpisodeAccountStates>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvEpisodeAccountStates(
                 tv_id,
                 season_number,
@@ -2532,16 +2266,13 @@ object MovieRemoteDataSource : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvEpisodeAccountStates>() {
+            .subscribe(object : FrogoApiCallback<TvEpisodeAccountStates>() {
                 override fun onSuccess(data: TvEpisodeAccountStates) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2551,24 +2282,21 @@ object MovieRemoteDataSource : MovieDataSource {
         season_number: Int,
         episode_number: Int,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<TvEpisodeCredits>
+        callback: FrogoResponseCallback<TvEpisodeCredits>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvEpisodeCredits(tv_id, season_number, episode_number, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvEpisodeCredits>() {
+            .subscribe(object : FrogoApiCallback<TvEpisodeCredits>() {
                 override fun onSuccess(data: TvEpisodeCredits) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2578,24 +2306,21 @@ object MovieRemoteDataSource : MovieDataSource {
         season_number: Int,
         episode_number: Int,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<TvEpisodeExternalIds>
+        callback: FrogoResponseCallback<TvEpisodeExternalIds>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvEpisodeExternalIds(tv_id, season_number, episode_number, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvEpisodeExternalIds>() {
+            .subscribe(object : FrogoApiCallback<TvEpisodeExternalIds>() {
                 override fun onSuccess(data: TvEpisodeExternalIds) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2605,24 +2330,21 @@ object MovieRemoteDataSource : MovieDataSource {
         season_number: Int,
         episode_number: Int,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<TvEpisodeImages>
+        callback: FrogoResponseCallback<TvEpisodeImages>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvEpisodeImages(tv_id, season_number, episode_number, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvEpisodeImages>() {
+            .subscribe(object : FrogoApiCallback<TvEpisodeImages>() {
                 override fun onSuccess(data: TvEpisodeImages) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2632,24 +2354,21 @@ object MovieRemoteDataSource : MovieDataSource {
         season_number: Int,
         episode_number: Int,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<TvEpisodeTranslation>
+        callback: FrogoResponseCallback<TvEpisodeTranslation>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvEpisodeTranslations(tv_id, season_number, episode_number, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvEpisodeTranslation>() {
+            .subscribe(object : FrogoApiCallback<TvEpisodeTranslation>() {
                 override fun onSuccess(data: TvEpisodeTranslation) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2660,24 +2379,21 @@ object MovieRemoteDataSource : MovieDataSource {
         episode_number: Int,
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<TvEpisodeVideos>
+        callback: FrogoResponseCallback<TvEpisodeVideos>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvEpisodeVideos(tv_id, season_number, episode_number, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvEpisodeVideos>() {
+            .subscribe(object : FrogoApiCallback<TvEpisodeVideos>() {
                 override fun onSuccess(data: TvEpisodeVideos) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2686,24 +2402,21 @@ object MovieRemoteDataSource : MovieDataSource {
         id: String?,
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<TvEpisodeGroupsDetails>
+        callback: FrogoResponseCallback<TvEpisodeGroupsDetails>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getTvEpisodeGroupsDetails(id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<TvEpisodeGroupsDetails>() {
+            .subscribe(object : FrogoApiCallback<TvEpisodeGroupsDetails>() {
                 override fun onSuccess(data: TvEpisodeGroupsDetails) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2712,24 +2425,21 @@ object MovieRemoteDataSource : MovieDataSource {
         person_id: Int,
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<PeopleDetails>
+        callback: FrogoResponseCallback<PeopleDetails>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getPeopleDetails(person_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<PeopleDetails>() {
+            .subscribe(object : FrogoApiCallback<PeopleDetails>() {
                 override fun onSuccess(data: PeopleDetails) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2740,24 +2450,21 @@ object MovieRemoteDataSource : MovieDataSource {
         endDate: String?,
         page: Int?,
         startDate: String?,
-        callback: MovieDataSource.GetRemoteCallback<PeopleChanges>
+        callback: FrogoResponseCallback<PeopleChanges>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getPeopleChanges(person_id, apiKey, endDate, page, startDate)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<PeopleChanges>() {
+            .subscribe(object : FrogoApiCallback<PeopleChanges>() {
                 override fun onSuccess(data: PeopleChanges) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2766,24 +2473,21 @@ object MovieRemoteDataSource : MovieDataSource {
         person_id: Int,
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<PeopleMovieCredits>
+        callback: FrogoResponseCallback<PeopleMovieCredits>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getPeopleMovieCredits(person_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<PeopleMovieCredits>() {
+            .subscribe(object : FrogoApiCallback<PeopleMovieCredits>() {
                 override fun onSuccess(data: PeopleMovieCredits) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2792,24 +2496,21 @@ object MovieRemoteDataSource : MovieDataSource {
         person_id: Int,
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<PeopleTvCredits>
+        callback: FrogoResponseCallback<PeopleTvCredits>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getPeopleTvCredits(person_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<PeopleTvCredits>() {
+            .subscribe(object : FrogoApiCallback<PeopleTvCredits>() {
                 override fun onSuccess(data: PeopleTvCredits) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2818,24 +2519,21 @@ object MovieRemoteDataSource : MovieDataSource {
         person_id: Int,
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<PeopleCombinedCredits>
+        callback: FrogoResponseCallback<PeopleCombinedCredits>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getPeopleCombinedCredits(person_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<PeopleCombinedCredits>() {
+            .subscribe(object : FrogoApiCallback<PeopleCombinedCredits>() {
                 override fun onSuccess(data: PeopleCombinedCredits) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2844,24 +2542,21 @@ object MovieRemoteDataSource : MovieDataSource {
         person_id: Int,
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<PeopleExternalIds>
+        callback: FrogoResponseCallback<PeopleExternalIds>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getPeopleExternalIds(person_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<PeopleExternalIds>() {
+            .subscribe(object : FrogoApiCallback<PeopleExternalIds>() {
                 override fun onSuccess(data: PeopleExternalIds) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2869,24 +2564,21 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getPeopleImages(
         person_id: Int,
         apiKey: String,
-        callback: MovieDataSource.GetRemoteCallback<PeopleImages>
+        callback: FrogoResponseCallback<PeopleImages>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getPeopleImages(person_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<PeopleImages>() {
+            .subscribe(object : FrogoApiCallback<PeopleImages>() {
                 override fun onSuccess(data: PeopleImages) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2896,24 +2588,21 @@ object MovieRemoteDataSource : MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: MovieDataSource.GetRemoteCallback<PeopleTaggedImages>
+        callback: FrogoResponseCallback<PeopleTaggedImages>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getPeopleTaggedImages(person_id, apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<PeopleTaggedImages>() {
+            .subscribe(object : FrogoApiCallback<PeopleTaggedImages>() {
                 override fun onSuccess(data: PeopleTaggedImages) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2922,24 +2611,21 @@ object MovieRemoteDataSource : MovieDataSource {
         person_id: Int,
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<PeopleTranslations>
+        callback: FrogoResponseCallback<PeopleTranslations>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getPeopleTranslations(person_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<PeopleTranslations>() {
+            .subscribe(object : FrogoApiCallback<PeopleTranslations>() {
                 override fun onSuccess(data: PeopleTranslations) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2947,24 +2633,21 @@ object MovieRemoteDataSource : MovieDataSource {
     override fun getPeopleLatest(
         apiKey: String,
         language: String?,
-        callback: MovieDataSource.GetRemoteCallback<PeopleLatest>
+        callback: FrogoResponseCallback<PeopleLatest>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getPeopleLatest(apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<PeopleLatest>() {
+            .subscribe(object : FrogoApiCallback<PeopleLatest>() {
                 override fun onSuccess(data: PeopleLatest) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }
@@ -2973,24 +2656,21 @@ object MovieRemoteDataSource : MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: MovieDataSource.GetRemoteCallback<PeoplePopular>
+        callback: FrogoResponseCallback<PeoplePopular>
     ) {
-        movieApiService.getApiService
+        movieApiService
             .getPeoplePopular(apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : MovieApiCallback<PeoplePopular>() {
+            .subscribe(object : FrogoApiCallback<PeoplePopular>() {
                 override fun onSuccess(data: PeoplePopular) {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailure(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
                 }
             })
     }

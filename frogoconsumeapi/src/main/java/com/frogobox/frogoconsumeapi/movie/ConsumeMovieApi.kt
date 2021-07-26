@@ -1,13 +1,11 @@
 package com.frogobox.frogoconsumeapi.movie
 
 import android.content.Context
-import com.frogobox.frogoconsumeapi.movie.callback.MovieResultCallback
 import com.frogobox.frogoconsumeapi.movie.data.model.*
 import com.frogobox.frogoconsumeapi.movie.data.response.*
-import com.frogobox.frogoconsumeapi.movie.data.source.MovieDataSource
 import com.frogobox.frogoconsumeapi.movie.data.source.MovieRemoteDataSource
-import com.frogobox.frogoconsumeapi.movie.data.source.MovieRepository
 import com.frogobox.frogoconsumeapi.movie.util.MovieConstant
+import com.frogobox.frogosdk.core.FrogoResponseCallback
 
 /**
  * Created by Faisal Amir
@@ -26,24 +24,24 @@ import com.frogobox.frogoconsumeapi.movie.util.MovieConstant
  * com.frogobox.frogoconsumeapi.movie
  *
  */
-class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
+class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
 
-    private val movieRepository = MovieRepository(MovieRemoteDataSource)
+    private val movieRepository = MovieRemoteDataSource
 
     override fun usingChuckInterceptor(context: Context) {
         movieRepository.usingChuckInterceptor(context)
     }
 
-    override fun getMovieCertifications(callback: MovieResultCallback<Certifications<CertificationMovie>>) {
+    override fun getMovieCertifications(callback: FrogoResponseCallback<Certifications<CertificationMovie>>) {
         movieRepository.getMovieCertifications(
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<Certifications<CertificationMovie>> {
+            object : FrogoResponseCallback<Certifications<CertificationMovie>> {
                 override fun onSuccess(data: Certifications<CertificationMovie>) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -56,16 +54,16 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getTvCertifications(callback: MovieResultCallback<Certifications<CertificationTv>>) {
+    override fun getTvCertifications(callback: FrogoResponseCallback<Certifications<CertificationTv>>) {
         movieRepository.getTvCertifications(
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<Certifications<CertificationTv>> {
+            object : FrogoResponseCallback<Certifications<CertificationTv>> {
                 override fun onSuccess(data: Certifications<CertificationTv>) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -82,20 +80,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: MovieResultCallback<Changes>
+        callback: FrogoResponseCallback<Changes>
     ) {
         movieRepository.getMovieChangeList(
             apiKey,
             endDate,
             startDate,
             page,
-            object : MovieDataSource.GetRemoteCallback<Changes> {
+            object : FrogoResponseCallback<Changes> {
                 override fun onSuccess(data: Changes) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -112,20 +110,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: MovieResultCallback<Changes>
+        callback: FrogoResponseCallback<Changes>
     ) {
         movieRepository.getTvChangeList(
             apiKey,
             endDate,
             startDate,
             page,
-            object : MovieDataSource.GetRemoteCallback<Changes> {
+            object : FrogoResponseCallback<Changes> {
                 override fun onSuccess(data: Changes) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -142,20 +140,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: MovieResultCallback<Changes>
+        callback: FrogoResponseCallback<Changes>
     ) {
         movieRepository.getPersonChangeList(
             apiKey,
             endDate,
             startDate,
             page,
-            object : MovieDataSource.GetRemoteCallback<Changes> {
+            object : FrogoResponseCallback<Changes> {
                 override fun onSuccess(data: Changes) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -171,19 +169,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getCollectionDetails(
         collection_id: Int,
         language: String?,
-        callback: MovieResultCallback<CollectionsDetail>
+        callback: FrogoResponseCallback<CollectionsDetail>
     ) {
         movieRepository.getCollectionDetails(
             collection_id,
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<CollectionsDetail> {
+            object : FrogoResponseCallback<CollectionsDetail> {
                 override fun onSuccess(data: CollectionsDetail) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -199,19 +197,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getCollectionImages(
         collection_id: Int,
         language: String?,
-        callback: MovieResultCallback<CollectionsImage>
+        callback: FrogoResponseCallback<CollectionsImage>
     ) {
         movieRepository.getCollectionImages(
             collection_id,
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<CollectionsImage> {
+            object : FrogoResponseCallback<CollectionsImage> {
                 override fun onSuccess(data: CollectionsImage) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -227,19 +225,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getCollectionTranslations(
         collection_id: Int,
         language: String?,
-        callback: MovieResultCallback<CollectionsTranslation>
+        callback: FrogoResponseCallback<CollectionsTranslation>
     ) {
         movieRepository.getCollectionTranslations(
             collection_id,
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<CollectionsTranslation> {
+            object : FrogoResponseCallback<CollectionsTranslation> {
                 override fun onSuccess(data: CollectionsTranslation) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -254,18 +252,18 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
 
     override fun getCompaniesDetails(
         company_id: Int,
-        callback: MovieResultCallback<CompaniesDetail>
+        callback: FrogoResponseCallback<CompaniesDetail>
     ) {
         movieRepository.getCompaniesDetails(
             company_id,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<CompaniesDetail> {
+            object : FrogoResponseCallback<CompaniesDetail> {
                 override fun onSuccess(data: CompaniesDetail) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -280,18 +278,18 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
 
     override fun getCompaniesAlternativeName(
         company_id: Int,
-        callback: MovieResultCallback<CompaniesAlternateName>
+        callback: FrogoResponseCallback<CompaniesAlternateName>
     ) {
         movieRepository.getCompaniesAlternativeName(
             company_id,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<CompaniesAlternateName> {
+            object : FrogoResponseCallback<CompaniesAlternateName> {
                 override fun onSuccess(data: CompaniesAlternateName) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -304,17 +302,17 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getCompaniesImage(company_id: Int, callback: MovieResultCallback<CompaniesImage>) {
+    override fun getCompaniesImage(company_id: Int, callback: FrogoResponseCallback<CompaniesImage>) {
         movieRepository.getCompaniesImage(
             company_id,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<CompaniesImage> {
+            object : FrogoResponseCallback<CompaniesImage> {
                 override fun onSuccess(data: CompaniesImage) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -327,16 +325,16 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getConfigurationApi(callback: MovieResultCallback<ConfigurationApi>) {
+    override fun getConfigurationApi(callback: FrogoResponseCallback<ConfigurationApi>) {
         movieRepository.getConfigurationApi(
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<ConfigurationApi> {
+            object : FrogoResponseCallback<ConfigurationApi> {
                 override fun onSuccess(data: ConfigurationApi) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -349,16 +347,16 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getConfigurationCountries(callback: MovieResultCallback<List<ConfigurationCountry>>) {
+    override fun getConfigurationCountries(callback: FrogoResponseCallback<List<ConfigurationCountry>>) {
         movieRepository.getConfigurationCountries(
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<List<ConfigurationCountry>> {
+            object : FrogoResponseCallback<List<ConfigurationCountry>> {
                 override fun onSuccess(data: List<ConfigurationCountry>) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -371,16 +369,16 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getConfigurationJobs(callback: MovieResultCallback<List<ConfigurationJob>>) {
+    override fun getConfigurationJobs(callback: FrogoResponseCallback<List<ConfigurationJob>>) {
         movieRepository.getConfigurationJobs(
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<List<ConfigurationJob>> {
+            object : FrogoResponseCallback<List<ConfigurationJob>> {
                 override fun onSuccess(data: List<ConfigurationJob>) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -393,16 +391,16 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getConfigurationLanguages(callback: MovieResultCallback<List<ConfigurationLanguage>>) {
+    override fun getConfigurationLanguages(callback: FrogoResponseCallback<List<ConfigurationLanguage>>) {
         movieRepository.getConfigurationLanguages(
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<List<ConfigurationLanguage>> {
+            object : FrogoResponseCallback<List<ConfigurationLanguage>> {
                 override fun onSuccess(data: List<ConfigurationLanguage>) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -415,16 +413,16 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getConfigurationTranslations(callback: MovieResultCallback<List<String>>) {
+    override fun getConfigurationTranslations(callback: FrogoResponseCallback<List<String>>) {
         movieRepository.getConfigurationTranslations(
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<List<String>> {
+            object : FrogoResponseCallback<List<String>> {
                 override fun onSuccess(data: List<String>) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -437,16 +435,16 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getConfigurationTimezones(callback: MovieResultCallback<List<ConfigurationTimezone>>) {
+    override fun getConfigurationTimezones(callback: FrogoResponseCallback<List<ConfigurationTimezone>>) {
         movieRepository.getConfigurationTimezones(
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<List<ConfigurationTimezone>> {
+            object : FrogoResponseCallback<List<ConfigurationTimezone>> {
                 override fun onSuccess(data: List<ConfigurationTimezone>) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -459,17 +457,17 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getCreditsDetails(credit_id: String, callback: MovieResultCallback<Credits>) {
+    override fun getCreditsDetails(credit_id: String, callback: FrogoResponseCallback<Credits>) {
         movieRepository.getCreditsDetails(
             credit_id,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<Credits> {
+            object : FrogoResponseCallback<Credits> {
                 override fun onSuccess(data: Credits) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -515,7 +513,7 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         with_runtime_gte: Double?,
         with_runtime_lte: Double?,
         with_original_language: String?,
-        callback: MovieResultCallback<Discover<DiscoverMovie>>
+        callback: FrogoResponseCallback<Discover<DiscoverMovie>>
     ) {
         movieRepository.getDiscoverMovie(
             apiKey,
@@ -551,13 +549,13 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             with_runtime_gte,
             with_runtime_lte,
             with_original_language,
-            object : MovieDataSource.GetRemoteCallback<Discover<DiscoverMovie>> {
+            object : FrogoResponseCallback<Discover<DiscoverMovie>> {
                 override fun onSuccess(data: Discover<DiscoverMovie>) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -594,7 +592,7 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         screened_theatrically: String?,
         with_companies: String?,
         with_keywords: String?,
-        callback: MovieResultCallback<Discover<DiscoverTv>>
+        callback: FrogoResponseCallback<Discover<DiscoverTv>>
     ) {
         movieRepository.getDiscoverTv(
             apiKey, language,
@@ -619,13 +617,13 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             screened_theatrically,
             with_companies,
             with_keywords,
-            object : MovieDataSource.GetRemoteCallback<Discover<DiscoverTv>> {
+            object : FrogoResponseCallback<Discover<DiscoverTv>> {
                 override fun onSuccess(data: Discover<DiscoverTv>) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -643,20 +641,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         external_id: String,
         external_source: String,
         language: String?,
-        callback: MovieResultCallback<Find>
+        callback: FrogoResponseCallback<Find>
     ) {
         movieRepository.getFindById(
             external_id,
             apiKey,
             external_source,
             language,
-            object : MovieDataSource.GetRemoteCallback<Find> {
+            object : FrogoResponseCallback<Find> {
                 override fun onSuccess(data: Find) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -669,17 +667,17 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getGenresMovie(language: String?, callback: MovieResultCallback<Genres>) {
+    override fun getGenresMovie(language: String?, callback: FrogoResponseCallback<Genres>) {
         movieRepository.getGenresMovie(
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<Genres> {
+            object : FrogoResponseCallback<Genres> {
                 override fun onSuccess(data: Genres) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -692,17 +690,17 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getGenresTv(language: String?, callback: MovieResultCallback<Genres>) {
+    override fun getGenresTv(language: String?, callback: FrogoResponseCallback<Genres>) {
         movieRepository.getGenresTv(
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<Genres> {
+            object : FrogoResponseCallback<Genres> {
                 override fun onSuccess(data: Genres) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -715,17 +713,17 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getKeywordsDetail(keyword_id: Int, callback: MovieResultCallback<KeywordsDetail>) {
+    override fun getKeywordsDetail(keyword_id: Int, callback: FrogoResponseCallback<KeywordsDetail>) {
         movieRepository.getKeywordsDetail(
             keyword_id,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<KeywordsDetail> {
+            object : FrogoResponseCallback<KeywordsDetail> {
                 override fun onSuccess(data: KeywordsDetail) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -742,20 +740,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         keyword_id: Int,
         language: String?,
         include_adult: Boolean?,
-        callback: MovieResultCallback<KeywordsMovies>
+        callback: FrogoResponseCallback<KeywordsMovies>
     ) {
         movieRepository.getKeywordsMovie(
             keyword_id,
             apiKey,
             language,
             include_adult,
-            object : MovieDataSource.GetRemoteCallback<KeywordsMovies> {
+            object : FrogoResponseCallback<KeywordsMovies> {
                 override fun onSuccess(data: KeywordsMovies) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -772,20 +770,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         movie_id: Int,
         language: String?,
         append_to_response: String?,
-        callback: MovieResultCallback<MovieDetail>
+        callback: FrogoResponseCallback<MovieDetail>
     ) {
         movieRepository.getMoviesDetails(
             movie_id,
             apiKey,
             language,
             append_to_response,
-            object : MovieDataSource.GetRemoteCallback<MovieDetail> {
+            object : FrogoResponseCallback<MovieDetail> {
                 override fun onSuccess(data: MovieDetail) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -802,20 +800,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         movie_id: Int,
         session_id: String,
         guest_session_id: String?,
-        callback: MovieResultCallback<MovieAccountState>
+        callback: FrogoResponseCallback<MovieAccountState>
     ) {
         movieRepository.getMoviesAccountState(
             movie_id,
             apiKey,
             session_id,
             guest_session_id,
-            object : MovieDataSource.GetRemoteCallback<MovieAccountState> {
+            object : FrogoResponseCallback<MovieAccountState> {
                 override fun onSuccess(data: MovieAccountState) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -831,19 +829,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getMoviesAlternativeTitles(
         movie_id: Int,
         country: String?,
-        callback: MovieResultCallback<MovieAlternativeTitle>
+        callback: FrogoResponseCallback<MovieAlternativeTitle>
     ) {
         movieRepository.getMoviesAlternativeTitles(
             movie_id,
             apiKey,
             country,
-            object : MovieDataSource.GetRemoteCallback<MovieAlternativeTitle> {
+            object : FrogoResponseCallback<MovieAlternativeTitle> {
                 override fun onSuccess(data: MovieAlternativeTitle) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -861,7 +859,7 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         start_date: String?,
         end_date: String?,
         page: Int?,
-        callback: MovieResultCallback<MovieChanges>
+        callback: FrogoResponseCallback<MovieChanges>
     ) {
         movieRepository.getMoviesChanges(
             movie_id,
@@ -869,13 +867,13 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             start_date,
             end_date,
             page,
-            object : MovieDataSource.GetRemoteCallback<MovieChanges> {
+            object : FrogoResponseCallback<MovieChanges> {
                 override fun onSuccess(data: MovieChanges) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -888,17 +886,17 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getMoviesCredits(movie_id: Int, callback: MovieResultCallback<MovieCredit>) {
+    override fun getMoviesCredits(movie_id: Int, callback: FrogoResponseCallback<MovieCredit>) {
         movieRepository.getMoviesCredits(
             movie_id,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<MovieCredit> {
+            object : FrogoResponseCallback<MovieCredit> {
                 override fun onSuccess(data: MovieCredit) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -913,18 +911,18 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
 
     override fun getMoviesExternalIds(
         movie_id: Int,
-        callback: MovieResultCallback<MovieExternalId>
+        callback: FrogoResponseCallback<MovieExternalId>
     ) {
         movieRepository.getMoviesExternalIds(
             movie_id,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<MovieExternalId> {
+            object : FrogoResponseCallback<MovieExternalId> {
                 override fun onSuccess(data: MovieExternalId) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -941,20 +939,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         movie_id: Int,
         language: String?,
         include_image_language: String?,
-        callback: MovieResultCallback<MovieImages>
+        callback: FrogoResponseCallback<MovieImages>
     ) {
         movieRepository.getMoviesImages(
             movie_id,
             apiKey,
             language,
             include_image_language,
-            object : MovieDataSource.GetRemoteCallback<MovieImages> {
+            object : FrogoResponseCallback<MovieImages> {
                 override fun onSuccess(data: MovieImages) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -967,17 +965,17 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getMoviesKeywords(movie_id: Int, callback: MovieResultCallback<MovieKeywords>) {
+    override fun getMoviesKeywords(movie_id: Int, callback: FrogoResponseCallback<MovieKeywords>) {
         movieRepository.getMoviesKeywords(
             movie_id,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<MovieKeywords> {
+            object : FrogoResponseCallback<MovieKeywords> {
                 override fun onSuccess(data: MovieKeywords) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -992,18 +990,18 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
 
     override fun getMoviesReleaseDates(
         movie_id: Int,
-        callback: MovieResultCallback<MovieReleaseDates>
+        callback: FrogoResponseCallback<MovieReleaseDates>
     ) {
         movieRepository.getMoviesReleaseDates(
             movie_id,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<MovieReleaseDates> {
+            object : FrogoResponseCallback<MovieReleaseDates> {
                 override fun onSuccess(data: MovieReleaseDates) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1019,19 +1017,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getMoviesVideos(
         movie_id: Int,
         language: String?,
-        callback: MovieResultCallback<MovieVideos>
+        callback: FrogoResponseCallback<MovieVideos>
     ) {
         movieRepository.getMoviesVideos(
             movie_id,
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<MovieVideos> {
+            object : FrogoResponseCallback<MovieVideos> {
                 override fun onSuccess(data: MovieVideos) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1046,18 +1044,18 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
 
     override fun getMoviesTranslations(
         movie_id: Int,
-        callback: MovieResultCallback<MovieTranslations>
+        callback: FrogoResponseCallback<MovieTranslations>
     ) {
         movieRepository.getMoviesTranslations(
             movie_id,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<MovieTranslations> {
+            object : FrogoResponseCallback<MovieTranslations> {
                 override fun onSuccess(data: MovieTranslations) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1074,20 +1072,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         movie_id: Int,
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<MovieRecommendations>
+        callback: FrogoResponseCallback<MovieRecommendations>
     ) {
         movieRepository.getMoviesRecommendations(
             movie_id,
             apiKey,
             language,
             page,
-            object : MovieDataSource.GetRemoteCallback<MovieRecommendations> {
+            object : FrogoResponseCallback<MovieRecommendations> {
                 override fun onSuccess(data: MovieRecommendations) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1104,20 +1102,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         movie_id: Int,
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<MovieSimilarMovies>
+        callback: FrogoResponseCallback<MovieSimilarMovies>
     ) {
         movieRepository.getMoviesSimilarMovies(
             movie_id,
             apiKey,
             language,
             page,
-            object : MovieDataSource.GetRemoteCallback<MovieSimilarMovies> {
+            object : FrogoResponseCallback<MovieSimilarMovies> {
                 override fun onSuccess(data: MovieSimilarMovies) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1134,20 +1132,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         movie_id: Int,
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<MovieReviews>
+        callback: FrogoResponseCallback<MovieReviews>
     ) {
         movieRepository.getMoviesReviews(
             movie_id,
             apiKey,
             language,
             page,
-            object : MovieDataSource.GetRemoteCallback<MovieReviews> {
+            object : FrogoResponseCallback<MovieReviews> {
                 override fun onSuccess(data: MovieReviews) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1164,20 +1162,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         movie_id: Int,
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<MovieLists>
+        callback: FrogoResponseCallback<MovieLists>
     ) {
         movieRepository.getMoviesLists(
             movie_id,
             apiKey,
             language,
             page,
-            object : MovieDataSource.GetRemoteCallback<MovieLists> {
+            object : FrogoResponseCallback<MovieLists> {
                 override fun onSuccess(data: MovieLists) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1190,17 +1188,17 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getMoviesLatest(language: String?, callback: MovieResultCallback<MovieLatest>) {
+    override fun getMoviesLatest(language: String?, callback: FrogoResponseCallback<MovieLatest>) {
         movieRepository.getMoviesLatest(
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<MovieLatest> {
+            object : FrogoResponseCallback<MovieLatest> {
                 override fun onSuccess(data: MovieLatest) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1217,20 +1215,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         language: String?,
         page: Int?,
         region: String?,
-        callback: MovieResultCallback<MovieNowPlayings>
+        callback: FrogoResponseCallback<MovieNowPlayings>
     ) {
         movieRepository.getMoviesNowPlaying(
             apiKey,
             language,
             page,
             region,
-            object : MovieDataSource.GetRemoteCallback<MovieNowPlayings> {
+            object : FrogoResponseCallback<MovieNowPlayings> {
                 override fun onSuccess(data: MovieNowPlayings) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1247,20 +1245,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         language: String?,
         page: Int?,
         region: String?,
-        callback: MovieResultCallback<MoviePopulars>
+        callback: FrogoResponseCallback<MoviePopulars>
     ) {
         movieRepository.getMoviesPopular(
             apiKey,
             language,
             page,
             region,
-            object : MovieDataSource.GetRemoteCallback<MoviePopulars> {
+            object : FrogoResponseCallback<MoviePopulars> {
                 override fun onSuccess(data: MoviePopulars) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1277,20 +1275,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         language: String?,
         page: Int?,
         region: String?,
-        callback: MovieResultCallback<MovieTopRated>
+        callback: FrogoResponseCallback<MovieTopRated>
     ) {
         movieRepository.getMoviesTopRated(
             apiKey,
             language,
             page,
             region,
-            object : MovieDataSource.GetRemoteCallback<MovieTopRated> {
+            object : FrogoResponseCallback<MovieTopRated> {
                 override fun onSuccess(data: MovieTopRated) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1307,20 +1305,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         language: String?,
         page: Int?,
         region: String?,
-        callback: MovieResultCallback<MovieUpcoming>
+        callback: FrogoResponseCallback<MovieUpcoming>
     ) {
         movieRepository.getMoviesUpcoming(
             apiKey,
             language,
             page,
             region,
-            object : MovieDataSource.GetRemoteCallback<MovieUpcoming> {
+            object : FrogoResponseCallback<MovieUpcoming> {
                 override fun onSuccess(data: MovieUpcoming) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1333,18 +1331,18 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getTrendingAllDay(callback: MovieResultCallback<Trending<TrendingAll>>) {
+    override fun getTrendingAllDay(callback: FrogoResponseCallback<Trending<TrendingAll>>) {
         movieRepository.getTrendingAll(
             MovieConstant.VALUE_MEDIA_TYPE_ALL,
             MovieConstant.VALUE_TIME_WINDOW_DAY,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<Trending<TrendingAll>> {
+            object : FrogoResponseCallback<Trending<TrendingAll>> {
                 override fun onSuccess(data: Trending<TrendingAll>) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1357,18 +1355,18 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getTrendingAllWeek(callback: MovieResultCallback<Trending<TrendingAll>>) {
+    override fun getTrendingAllWeek(callback: FrogoResponseCallback<Trending<TrendingAll>>) {
         movieRepository.getTrendingAll(
             MovieConstant.VALUE_MEDIA_TYPE_ALL,
             MovieConstant.VALUE_TIME_WINDOW_WEEK,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<Trending<TrendingAll>> {
+            object : FrogoResponseCallback<Trending<TrendingAll>> {
                 override fun onSuccess(data: Trending<TrendingAll>) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1381,18 +1379,18 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getTrendingMovieDay(callback: MovieResultCallback<Trending<TrendingMovie>>) {
+    override fun getTrendingMovieDay(callback: FrogoResponseCallback<Trending<TrendingMovie>>) {
         movieRepository.getTrendingMovie(
             MovieConstant.VALUE_MEDIA_TYPE_MOVIE,
             MovieConstant.VALUE_TIME_WINDOW_DAY,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<Trending<TrendingMovie>> {
+            object : FrogoResponseCallback<Trending<TrendingMovie>> {
                 override fun onSuccess(data: Trending<TrendingMovie>) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1405,18 +1403,18 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getTrendingMovieWeek(callback: MovieResultCallback<Trending<TrendingMovie>>) {
+    override fun getTrendingMovieWeek(callback: FrogoResponseCallback<Trending<TrendingMovie>>) {
         movieRepository.getTrendingMovie(
             MovieConstant.VALUE_MEDIA_TYPE_MOVIE,
             MovieConstant.VALUE_TIME_WINDOW_WEEK,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<Trending<TrendingMovie>> {
+            object : FrogoResponseCallback<Trending<TrendingMovie>> {
                 override fun onSuccess(data: Trending<TrendingMovie>) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1429,18 +1427,18 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getTrendingPersonDay(callback: MovieResultCallback<Trending<TrendingPerson>>) {
+    override fun getTrendingPersonDay(callback: FrogoResponseCallback<Trending<TrendingPerson>>) {
         movieRepository.getTrendingPerson(
             MovieConstant.VALUE_MEDIA_TYPE_PERSON,
             MovieConstant.VALUE_TIME_WINDOW_DAY,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<Trending<TrendingPerson>> {
+            object : FrogoResponseCallback<Trending<TrendingPerson>> {
                 override fun onSuccess(data: Trending<TrendingPerson>) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1453,18 +1451,18 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getTrendingPersonWeek(callback: MovieResultCallback<Trending<TrendingPerson>>) {
+    override fun getTrendingPersonWeek(callback: FrogoResponseCallback<Trending<TrendingPerson>>) {
         movieRepository.getTrendingPerson(
             MovieConstant.VALUE_MEDIA_TYPE_PERSON,
             MovieConstant.VALUE_TIME_WINDOW_WEEK,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<Trending<TrendingPerson>> {
+            object : FrogoResponseCallback<Trending<TrendingPerson>> {
                 override fun onSuccess(data: Trending<TrendingPerson>) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1477,18 +1475,18 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getTrendingTvDay(callback: MovieResultCallback<Trending<TrendingTv>>) {
+    override fun getTrendingTvDay(callback: FrogoResponseCallback<Trending<TrendingTv>>) {
         movieRepository.getTrendingTv(
             MovieConstant.VALUE_MEDIA_TYPE_TV,
             MovieConstant.VALUE_TIME_WINDOW_DAY,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<Trending<TrendingTv>> {
+            object : FrogoResponseCallback<Trending<TrendingTv>> {
                 override fun onSuccess(data: Trending<TrendingTv>) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1501,18 +1499,18 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getTrendingTvWeek(callback: MovieResultCallback<Trending<TrendingTv>>) {
+    override fun getTrendingTvWeek(callback: FrogoResponseCallback<Trending<TrendingTv>>) {
         movieRepository.getTrendingTv(
             MovieConstant.VALUE_MEDIA_TYPE_TV,
             MovieConstant.VALUE_TIME_WINDOW_WEEK,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<Trending<TrendingTv>> {
+            object : FrogoResponseCallback<Trending<TrendingTv>> {
                 override fun onSuccess(data: Trending<TrendingTv>) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1525,17 +1523,17 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getReviews(review_id: String, callback: MovieResultCallback<Reviews>) {
+    override fun getReviews(review_id: String, callback: FrogoResponseCallback<Reviews>) {
         movieRepository.getReviews(
             review_id,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<Reviews> {
+            object : FrogoResponseCallback<Reviews> {
                 override fun onSuccess(data: Reviews) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1548,17 +1546,17 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getNetworkDetail(network_id: Int, callback: MovieResultCallback<NetworkDetail>) {
+    override fun getNetworkDetail(network_id: Int, callback: FrogoResponseCallback<NetworkDetail>) {
         movieRepository.getNetworkDetail(
             network_id,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<NetworkDetail> {
+            object : FrogoResponseCallback<NetworkDetail> {
                 override fun onSuccess(data: NetworkDetail) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1573,18 +1571,18 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
 
     override fun getNetworkAlternativeName(
         network_id: Int,
-        callback: MovieResultCallback<NetworkAlternativeName>
+        callback: FrogoResponseCallback<NetworkAlternativeName>
     ) {
         movieRepository.getNetworkAlternativeName(
             network_id,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<NetworkAlternativeName> {
+            object : FrogoResponseCallback<NetworkAlternativeName> {
                 override fun onSuccess(data: NetworkAlternativeName) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1597,17 +1595,17 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getNetworkImage(network_id: Int, callback: MovieResultCallback<NetworkImage>) {
+    override fun getNetworkImage(network_id: Int, callback: FrogoResponseCallback<NetworkImage>) {
         movieRepository.getNetworkImage(
             network_id,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<NetworkImage> {
+            object : FrogoResponseCallback<NetworkImage> {
                 override fun onSuccess(data: NetworkImage) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1623,19 +1621,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun searchCompanies(
         query: String,
         page: Int?,
-        callback: MovieResultCallback<SearchCompanies>
+        callback: FrogoResponseCallback<SearchCompanies>
     ) {
         movieRepository.searchCompanies(
             apiKey,
             query,
             page,
-            object : MovieDataSource.GetRemoteCallback<SearchCompanies> {
+            object : FrogoResponseCallback<SearchCompanies> {
                 override fun onSuccess(data: SearchCompanies) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1652,20 +1650,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         query: String,
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<SearchCollections>
+        callback: FrogoResponseCallback<SearchCollections>
     ) {
         movieRepository.searchCollections(
             apiKey,
             query,
             language,
             page,
-            object : MovieDataSource.GetRemoteCallback<SearchCollections> {
+            object : FrogoResponseCallback<SearchCollections> {
                 override fun onSuccess(data: SearchCollections) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1681,19 +1679,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun searchKeywords(
         query: String,
         page: Int?,
-        callback: MovieResultCallback<SearchKeywords>
+        callback: FrogoResponseCallback<SearchKeywords>
     ) {
         movieRepository.searchKeywords(
             apiKey,
             query,
             page,
-            object : MovieDataSource.GetRemoteCallback<SearchKeywords> {
+            object : FrogoResponseCallback<SearchKeywords> {
                 override fun onSuccess(data: SearchKeywords) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1714,7 +1712,7 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         region: String?,
         year: Int?,
         primary_release_year: Int?,
-        callback: MovieResultCallback<SearchMovies>
+        callback: FrogoResponseCallback<SearchMovies>
     ) {
         movieRepository.searchMovies(
             apiKey,
@@ -1725,13 +1723,13 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             region,
             year,
             primary_release_year,
-            object : MovieDataSource.GetRemoteCallback<SearchMovies> {
+            object : FrogoResponseCallback<SearchMovies> {
                 override fun onSuccess(data: SearchMovies) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1750,7 +1748,7 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         page: Int?,
         include_adult: Boolean?,
         region: String?,
-        callback: MovieResultCallback<SearchMulti>
+        callback: FrogoResponseCallback<SearchMulti>
     ) {
         movieRepository.searchMultiSearch(
             apiKey,
@@ -1759,13 +1757,13 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             page,
             include_adult,
             region,
-            object : MovieDataSource.GetRemoteCallback<SearchMulti> {
+            object : FrogoResponseCallback<SearchMulti> {
                 override fun onSuccess(data: SearchMulti) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1784,7 +1782,7 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         page: Int?,
         include_adult: Boolean?,
         region: String?,
-        callback: MovieResultCallback<SearchPeople>
+        callback: FrogoResponseCallback<SearchPeople>
     ) {
         movieRepository.searchPeople(
             apiKey,
@@ -1793,13 +1791,13 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             page,
             include_adult,
             region,
-            object : MovieDataSource.GetRemoteCallback<SearchPeople> {
+            object : FrogoResponseCallback<SearchPeople> {
                 override fun onSuccess(data: SearchPeople) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1818,7 +1816,7 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         page: Int?,
         include_adult: Boolean?,
         first_air_date_year: Int?,
-        callback: MovieResultCallback<SearchMovies>
+        callback: FrogoResponseCallback<SearchMovies>
     ) {
         movieRepository.searchTvShows(
             apiKey,
@@ -1827,13 +1825,13 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             page,
             include_adult,
             first_air_date_year,
-            object : MovieDataSource.GetRemoteCallback<SearchMovies> {
+            object : FrogoResponseCallback<SearchMovies> {
                 override fun onSuccess(data: SearchMovies) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1850,20 +1848,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         tv_id: Int,
         language: String?,
         append_to_response: String?,
-        callback: MovieResultCallback<TvDetails>
+        callback: FrogoResponseCallback<TvDetails>
     ) {
         movieRepository.getTvDetails(
             tv_id,
             apiKey,
             language,
             append_to_response,
-            object : MovieDataSource.GetRemoteCallback<TvDetails> {
+            object : FrogoResponseCallback<TvDetails> {
                 override fun onSuccess(data: TvDetails) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1881,7 +1879,7 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         language: String?,
         guest_session_id: String?,
         session_id: String?,
-        callback: MovieResultCallback<TvAccountStates>
+        callback: FrogoResponseCallback<TvAccountStates>
     ) {
         movieRepository.getTvAccountStates(
             tv_id,
@@ -1889,13 +1887,13 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             language,
             guest_session_id,
             session_id,
-            object : MovieDataSource.GetRemoteCallback<TvAccountStates> {
+            object : FrogoResponseCallback<TvAccountStates> {
                 override fun onSuccess(data: TvAccountStates) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1911,19 +1909,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getTvAlternativeTitles(
         tv_id: Int,
         language: String?,
-        callback: MovieResultCallback<TvAlternativeTitles>
+        callback: FrogoResponseCallback<TvAlternativeTitles>
     ) {
         movieRepository.getTvAlternativeTitles(
             tv_id,
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<TvAlternativeTitles> {
+            object : FrogoResponseCallback<TvAlternativeTitles> {
                 override fun onSuccess(data: TvAlternativeTitles) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1941,7 +1939,7 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         startDate: String?,
         endDate: String?,
         page: Int?,
-        callback: MovieResultCallback<TvChanges>
+        callback: FrogoResponseCallback<TvChanges>
     ) {
         movieRepository.getTvChanges(
             tv_id,
@@ -1949,13 +1947,13 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             startDate,
             endDate,
             page,
-            object : MovieDataSource.GetRemoteCallback<TvChanges> {
+            object : FrogoResponseCallback<TvChanges> {
                 override fun onSuccess(data: TvChanges) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1971,19 +1969,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getTvContentRatings(
         tv_id: Int,
         language: String?,
-        callback: MovieResultCallback<TvContentRatings>
+        callback: FrogoResponseCallback<TvContentRatings>
     ) {
         movieRepository.getTvContentRatings(
             tv_id,
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<TvContentRatings> {
+            object : FrogoResponseCallback<TvContentRatings> {
                 override fun onSuccess(data: TvContentRatings) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -1999,19 +1997,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getTvCredits(
         tv_id: Int,
         language: String?,
-        callback: MovieResultCallback<TvCredits>
+        callback: FrogoResponseCallback<TvCredits>
     ) {
         movieRepository.getTvCredits(
             tv_id,
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<TvCredits> {
+            object : FrogoResponseCallback<TvCredits> {
                 override fun onSuccess(data: TvCredits) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2027,19 +2025,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getTvEpisodeGroups(
         tv_id: Int,
         language: String?,
-        callback: MovieResultCallback<TvEpisodeGroups>
+        callback: FrogoResponseCallback<TvEpisodeGroups>
     ) {
         movieRepository.getTvEpisodeGroups(
             tv_id,
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<TvEpisodeGroups> {
+            object : FrogoResponseCallback<TvEpisodeGroups> {
                 override fun onSuccess(data: TvEpisodeGroups) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2055,19 +2053,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getTvExternalIds(
         tv_id: Int,
         language: String?,
-        callback: MovieResultCallback<TvExternalIds>
+        callback: FrogoResponseCallback<TvExternalIds>
     ) {
         movieRepository.getTvExternalIds(
             tv_id,
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<TvExternalIds> {
+            object : FrogoResponseCallback<TvExternalIds> {
                 override fun onSuccess(data: TvExternalIds) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2083,19 +2081,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getTvImages(
         tv_id: Int,
         language: String?,
-        callback: MovieResultCallback<TvImages>
+        callback: FrogoResponseCallback<TvImages>
     ) {
         movieRepository.getTvImages(
             tv_id,
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<TvImages> {
+            object : FrogoResponseCallback<TvImages> {
                 override fun onSuccess(data: TvImages) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2108,17 +2106,17 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getTvKeyword(tv_id: Int, callback: MovieResultCallback<TvKeywords>) {
+    override fun getTvKeyword(tv_id: Int, callback: FrogoResponseCallback<TvKeywords>) {
         movieRepository.getTvKeyword(
             tv_id,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<TvKeywords> {
+            object : FrogoResponseCallback<TvKeywords> {
                 override fun onSuccess(data: TvKeywords) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2135,20 +2133,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         tv_id: Int,
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<TvRecommendations>
+        callback: FrogoResponseCallback<TvRecommendations>
     ) {
         movieRepository.getTvRecommendations(
             tv_id,
             apiKey,
             language,
             page,
-            object : MovieDataSource.GetRemoteCallback<TvRecommendations> {
+            object : FrogoResponseCallback<TvRecommendations> {
                 override fun onSuccess(data: TvRecommendations) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2161,17 +2159,17 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getTvReviews(tv_id: Int, callback: MovieResultCallback<TvReviews>) {
+    override fun getTvReviews(tv_id: Int, callback: FrogoResponseCallback<TvReviews>) {
         movieRepository.getTvReviews(
             tv_id,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<TvReviews> {
+            object : FrogoResponseCallback<TvReviews> {
                 override fun onSuccess(data: TvReviews) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2186,18 +2184,18 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
 
     override fun getTvScreenedTheatrically(
         tv_id: Int,
-        callback: MovieResultCallback<TvScreenedTheatrically>
+        callback: FrogoResponseCallback<TvScreenedTheatrically>
     ) {
         movieRepository.getTvScreenedTheatrically(
             tv_id,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<TvScreenedTheatrically> {
+            object : FrogoResponseCallback<TvScreenedTheatrically> {
                 override fun onSuccess(data: TvScreenedTheatrically) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2214,20 +2212,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         tv_id: Int,
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<TvSimilarTVShows>
+        callback: FrogoResponseCallback<TvSimilarTVShows>
     ) {
         movieRepository.getTvSimilarTvShows(
             tv_id,
             apiKey,
             language,
             page,
-            object : MovieDataSource.GetRemoteCallback<TvSimilarTVShows> {
+            object : FrogoResponseCallback<TvSimilarTVShows> {
                 override fun onSuccess(data: TvSimilarTVShows) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2240,17 +2238,17 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getTvTranslations(tv_id: Int, callback: MovieResultCallback<TvTranslations>) {
+    override fun getTvTranslations(tv_id: Int, callback: FrogoResponseCallback<TvTranslations>) {
         movieRepository.getTvTranslations(
             tv_id,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<TvTranslations> {
+            object : FrogoResponseCallback<TvTranslations> {
                 override fun onSuccess(data: TvTranslations) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2266,19 +2264,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getTvVideos(
         tv_id: Int,
         language: String?,
-        callback: MovieResultCallback<TvVideos>
+        callback: FrogoResponseCallback<TvVideos>
     ) {
         movieRepository.getTvVideos(
             tv_id,
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<TvVideos> {
+            object : FrogoResponseCallback<TvVideos> {
                 override fun onSuccess(data: TvVideos) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2291,17 +2289,17 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getTvLatest(language: String?, callback: MovieResultCallback<TvLatest>) {
+    override fun getTvLatest(language: String?, callback: FrogoResponseCallback<TvLatest>) {
         movieRepository.getTvLatest(
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<TvLatest> {
+            object : FrogoResponseCallback<TvLatest> {
                 override fun onSuccess(data: TvLatest) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2317,19 +2315,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getTvAiringToday(
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<TvAiringToday>
+        callback: FrogoResponseCallback<TvAiringToday>
     ) {
         movieRepository.getTvAiringToday(
             apiKey,
             language,
             page,
-            object : MovieDataSource.GetRemoteCallback<TvAiringToday> {
+            object : FrogoResponseCallback<TvAiringToday> {
                 override fun onSuccess(data: TvAiringToday) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2345,19 +2343,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getTvOnTheAir(
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<TvOnTheAir>
+        callback: FrogoResponseCallback<TvOnTheAir>
     ) {
         movieRepository.getTvOnTheAir(
             apiKey,
             language,
             page,
-            object : MovieDataSource.GetRemoteCallback<TvOnTheAir> {
+            object : FrogoResponseCallback<TvOnTheAir> {
                 override fun onSuccess(data: TvOnTheAir) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2373,19 +2371,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getTvPopular(
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<TvPopular>
+        callback: FrogoResponseCallback<TvPopular>
     ) {
         movieRepository.getTvPopular(
             apiKey,
             language,
             page,
-            object : MovieDataSource.GetRemoteCallback<TvPopular> {
+            object : FrogoResponseCallback<TvPopular> {
                 override fun onSuccess(data: TvPopular) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2401,19 +2399,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getTvTopRated(
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<TvTopRated>
+        callback: FrogoResponseCallback<TvTopRated>
     ) {
         movieRepository.getTvTopRated(
             apiKey,
             language,
             page,
-            object : MovieDataSource.GetRemoteCallback<TvTopRated> {
+            object : FrogoResponseCallback<TvTopRated> {
                 override fun onSuccess(data: TvTopRated) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2431,7 +2429,7 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         season_number: Int,
         language: String?,
         append_to_response: String?,
-        callback: MovieResultCallback<TvSeasonsDetails>
+        callback: FrogoResponseCallback<TvSeasonsDetails>
     ) {
         movieRepository.getTvSeasonsDetails(
             tv_id,
@@ -2439,13 +2437,13 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             apiKey,
             language,
             append_to_response,
-            object : MovieDataSource.GetRemoteCallback<TvSeasonsDetails> {
+            object : FrogoResponseCallback<TvSeasonsDetails> {
                 override fun onSuccess(data: TvSeasonsDetails) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2463,7 +2461,7 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         startDate: String?,
         endDate: String?,
         page: Int?,
-        callback: MovieResultCallback<TvSeasonsChanges>
+        callback: FrogoResponseCallback<TvSeasonsChanges>
     ) {
         movieRepository.getTvSeasonsChanges(
             season_id,
@@ -2471,13 +2469,13 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             startDate,
             endDate,
             page,
-            object : MovieDataSource.GetRemoteCallback<TvSeasonsChanges> {
+            object : FrogoResponseCallback<TvSeasonsChanges> {
                 override fun onSuccess(data: TvSeasonsChanges) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2496,7 +2494,7 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         language: String?,
         guest_session_id: String?,
         session_id: String?,
-        callback: MovieResultCallback<TvSeasonsAccountStates>
+        callback: FrogoResponseCallback<TvSeasonsAccountStates>
     ) {
         movieRepository.getTvSeasonsAccountStates(
             tv_id,
@@ -2505,13 +2503,13 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             language,
             guest_session_id,
             session_id,
-            object : MovieDataSource.GetRemoteCallback<TvSeasonsAccountStates> {
+            object : FrogoResponseCallback<TvSeasonsAccountStates> {
                 override fun onSuccess(data: TvSeasonsAccountStates) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2528,20 +2526,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         tv_id: Int,
         season_number: Int,
         language: String?,
-        callback: MovieResultCallback<TvSeasonsCredits>
+        callback: FrogoResponseCallback<TvSeasonsCredits>
     ) {
         movieRepository.getTvSeasonsCredits(
             tv_id,
             season_number,
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<TvSeasonsCredits> {
+            object : FrogoResponseCallback<TvSeasonsCredits> {
                 override fun onSuccess(data: TvSeasonsCredits) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2558,20 +2556,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         tv_id: Int,
         season_number: Int,
         language: String?,
-        callback: MovieResultCallback<TvSeasonsExternalIds>
+        callback: FrogoResponseCallback<TvSeasonsExternalIds>
     ) {
         movieRepository.getTvSeasonsExternalIds(
             tv_id,
             season_number,
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<TvSeasonsExternalIds> {
+            object : FrogoResponseCallback<TvSeasonsExternalIds> {
                 override fun onSuccess(data: TvSeasonsExternalIds) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2588,20 +2586,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         tv_id: Int,
         season_number: Int,
         language: String?,
-        callback: MovieResultCallback<TvSeasonsImages>
+        callback: FrogoResponseCallback<TvSeasonsImages>
     ) {
         movieRepository.getTvSeasonsImages(
             tv_id,
             season_number,
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<TvSeasonsImages> {
+            object : FrogoResponseCallback<TvSeasonsImages> {
                 override fun onSuccess(data: TvSeasonsImages) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2618,20 +2616,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         tv_id: Int,
         season_number: Int,
         language: String?,
-        callback: MovieResultCallback<TvSeasonsVideos>
+        callback: FrogoResponseCallback<TvSeasonsVideos>
     ) {
         movieRepository.getTvSeasonsVideos(
             tv_id,
             season_number,
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<TvSeasonsVideos> {
+            object : FrogoResponseCallback<TvSeasonsVideos> {
                 override fun onSuccess(data: TvSeasonsVideos) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2650,7 +2648,7 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         episode_number: Int,
         language: String?,
         append_to_response: String?,
-        callback: MovieResultCallback<TvEpisodeDetails>
+        callback: FrogoResponseCallback<TvEpisodeDetails>
     ) {
         movieRepository.getTvEpisodeDetails(
             tv_id,
@@ -2659,13 +2657,13 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             apiKey,
             language,
             append_to_response,
-            object : MovieDataSource.GetRemoteCallback<TvEpisodeDetails> {
+            object : FrogoResponseCallback<TvEpisodeDetails> {
                 override fun onSuccess(data: TvEpisodeDetails) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2683,7 +2681,7 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         startDate: String?,
         endDate: String?,
         page: Int?,
-        callback: MovieResultCallback<TvEpisodeChanges>
+        callback: FrogoResponseCallback<TvEpisodeChanges>
     ) {
         movieRepository.getTvEpisodeChanges(
             episode_id,
@@ -2691,13 +2689,13 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             startDate,
             endDate,
             page,
-            object : MovieDataSource.GetRemoteCallback<TvEpisodeChanges> {
+            object : FrogoResponseCallback<TvEpisodeChanges> {
                 override fun onSuccess(data: TvEpisodeChanges) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2716,7 +2714,7 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         episode_number: Int,
         guest_session_id: String?,
         session_id: String?,
-        callback: MovieResultCallback<TvEpisodeAccountStates>
+        callback: FrogoResponseCallback<TvEpisodeAccountStates>
     ) {
         movieRepository.getTvEpisodeAccountStates(
             tv_id,
@@ -2725,13 +2723,13 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             apiKey,
             guest_session_id,
             session_id,
-            object : MovieDataSource.GetRemoteCallback<TvEpisodeAccountStates> {
+            object : FrogoResponseCallback<TvEpisodeAccountStates> {
                 override fun onSuccess(data: TvEpisodeAccountStates) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2748,20 +2746,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        callback: MovieResultCallback<TvEpisodeCredits>
+        callback: FrogoResponseCallback<TvEpisodeCredits>
     ) {
         movieRepository.getTvEpisodeCredits(
             tv_id,
             season_number,
             episode_number,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<TvEpisodeCredits> {
+            object : FrogoResponseCallback<TvEpisodeCredits> {
                 override fun onSuccess(data: TvEpisodeCredits) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2778,20 +2776,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        callback: MovieResultCallback<TvEpisodeExternalIds>
+        callback: FrogoResponseCallback<TvEpisodeExternalIds>
     ) {
         movieRepository.getTvEpisodeExternalIds(
             tv_id,
             season_number,
             episode_number,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<TvEpisodeExternalIds> {
+            object : FrogoResponseCallback<TvEpisodeExternalIds> {
                 override fun onSuccess(data: TvEpisodeExternalIds) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2808,20 +2806,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        callback: MovieResultCallback<TvEpisodeImages>
+        callback: FrogoResponseCallback<TvEpisodeImages>
     ) {
         movieRepository.getTvEpisodeImages(
             tv_id,
             season_number,
             episode_number,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<TvEpisodeImages> {
+            object : FrogoResponseCallback<TvEpisodeImages> {
                 override fun onSuccess(data: TvEpisodeImages) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2838,20 +2836,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        callback: MovieResultCallback<TvEpisodeTranslation>
+        callback: FrogoResponseCallback<TvEpisodeTranslation>
     ) {
         movieRepository.getTvEpisodeTranslations(
             tv_id,
             season_number,
             episode_number,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<TvEpisodeTranslation> {
+            object : FrogoResponseCallback<TvEpisodeTranslation> {
                 override fun onSuccess(data: TvEpisodeTranslation) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2869,7 +2867,7 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         season_number: Int,
         episode_number: Int,
         language: String?,
-        callback: MovieResultCallback<TvEpisodeVideos>
+        callback: FrogoResponseCallback<TvEpisodeVideos>
     ) {
         movieRepository.getTvEpisodeVideos(
             tv_id,
@@ -2877,13 +2875,13 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             episode_number,
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<TvEpisodeVideos> {
+            object : FrogoResponseCallback<TvEpisodeVideos> {
                 override fun onSuccess(data: TvEpisodeVideos) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2899,19 +2897,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getTvEpisodeGroupsDetails(
         id: String?,
         language: String?,
-        callback: MovieResultCallback<TvEpisodeGroupsDetails>
+        callback: FrogoResponseCallback<TvEpisodeGroupsDetails>
     ) {
         movieRepository.getTvEpisodeGroupsDetails(
             id,
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<TvEpisodeGroupsDetails> {
+            object : FrogoResponseCallback<TvEpisodeGroupsDetails> {
                 override fun onSuccess(data: TvEpisodeGroupsDetails) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2927,19 +2925,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getPeopleDetails(
         person_id: Int,
         language: String?,
-        callback: MovieResultCallback<PeopleDetails>
+        callback: FrogoResponseCallback<PeopleDetails>
     ) {
         movieRepository.getPeopleDetails(
             person_id,
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<PeopleDetails> {
+            object : FrogoResponseCallback<PeopleDetails> {
                 override fun onSuccess(data: PeopleDetails) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2957,7 +2955,7 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         endDate: String?,
         page: Int?,
         startDate: String?,
-        callback: MovieResultCallback<PeopleChanges>
+        callback: FrogoResponseCallback<PeopleChanges>
     ) {
         movieRepository.getPeopleChanges(
             person_id,
@@ -2965,13 +2963,13 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             endDate,
             page,
             startDate,
-            object : MovieDataSource.GetRemoteCallback<PeopleChanges> {
+            object : FrogoResponseCallback<PeopleChanges> {
                 override fun onSuccess(data: PeopleChanges) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -2987,19 +2985,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getPeopleMovieCredits(
         person_id: Int,
         language: String?,
-        callback: MovieResultCallback<PeopleMovieCredits>
+        callback: FrogoResponseCallback<PeopleMovieCredits>
     ) {
         movieRepository.getPeopleMovieCredits(
             person_id,
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<PeopleMovieCredits> {
+            object : FrogoResponseCallback<PeopleMovieCredits> {
                 override fun onSuccess(data: PeopleMovieCredits) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -3015,19 +3013,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getPeopleTvCredits(
         person_id: Int,
         language: String?,
-        callback: MovieResultCallback<PeopleTvCredits>
+        callback: FrogoResponseCallback<PeopleTvCredits>
     ) {
         movieRepository.getPeopleTvCredits(
             person_id,
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<PeopleTvCredits> {
+            object : FrogoResponseCallback<PeopleTvCredits> {
                 override fun onSuccess(data: PeopleTvCredits) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -3043,19 +3041,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getPeopleCombinedCredits(
         person_id: Int,
         language: String?,
-        callback: MovieResultCallback<PeopleCombinedCredits>
+        callback: FrogoResponseCallback<PeopleCombinedCredits>
     ) {
         movieRepository.getPeopleCombinedCredits(
             person_id,
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<PeopleCombinedCredits> {
+            object : FrogoResponseCallback<PeopleCombinedCredits> {
                 override fun onSuccess(data: PeopleCombinedCredits) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -3071,19 +3069,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getPeopleExternalIds(
         person_id: Int,
         language: String?,
-        callback: MovieResultCallback<PeopleExternalIds>
+        callback: FrogoResponseCallback<PeopleExternalIds>
     ) {
         movieRepository.getPeopleExternalIds(
             person_id,
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<PeopleExternalIds> {
+            object : FrogoResponseCallback<PeopleExternalIds> {
                 override fun onSuccess(data: PeopleExternalIds) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -3096,17 +3094,17 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getPeopleImages(person_id: Int, callback: MovieResultCallback<PeopleImages>) {
+    override fun getPeopleImages(person_id: Int, callback: FrogoResponseCallback<PeopleImages>) {
         movieRepository.getPeopleImages(
             person_id,
             apiKey,
-            object : MovieDataSource.GetRemoteCallback<PeopleImages> {
+            object : FrogoResponseCallback<PeopleImages> {
                 override fun onSuccess(data: PeopleImages) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -3123,20 +3121,20 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
         person_id: Int,
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<PeopleTaggedImages>
+        callback: FrogoResponseCallback<PeopleTaggedImages>
     ) {
         movieRepository.getPeopleTaggedImages(
             person_id,
             apiKey,
             language,
             page,
-            object : MovieDataSource.GetRemoteCallback<PeopleTaggedImages> {
+            object : FrogoResponseCallback<PeopleTaggedImages> {
                 override fun onSuccess(data: PeopleTaggedImages) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -3152,19 +3150,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getPeopleTranslations(
         person_id: Int,
         language: String?,
-        callback: MovieResultCallback<PeopleTranslations>
+        callback: FrogoResponseCallback<PeopleTranslations>
     ) {
         movieRepository.getPeopleTranslations(
             person_id,
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<PeopleTranslations> {
+            object : FrogoResponseCallback<PeopleTranslations> {
                 override fun onSuccess(data: PeopleTranslations) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -3177,17 +3175,17 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
             })
     }
 
-    override fun getPeopleLatest(language: String?, callback: MovieResultCallback<PeopleLatest>) {
+    override fun getPeopleLatest(language: String?, callback: FrogoResponseCallback<PeopleLatest>) {
         movieRepository.getPeopleLatest(
             apiKey,
             language,
-            object : MovieDataSource.GetRemoteCallback<PeopleLatest> {
+            object : FrogoResponseCallback<PeopleLatest> {
                 override fun onSuccess(data: PeopleLatest) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {
@@ -3203,19 +3201,19 @@ class ConsumeMovieApi(private val apiKey: String) : ConsumeMovieApiView {
     override fun getPeoplePopular(
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<PeoplePopular>
+        callback: FrogoResponseCallback<PeoplePopular>
     ) {
         movieRepository.getPeoplePopular(
             apiKey,
             language,
             page,
-            object : MovieDataSource.GetRemoteCallback<PeoplePopular> {
+            object : FrogoResponseCallback<PeoplePopular> {
                 override fun onSuccess(data: PeoplePopular) {
-                    callback.getResultData(data)
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
+                    callback.onFailed(statusCode, errorMessage)
                 }
 
                 override fun onShowProgress() {

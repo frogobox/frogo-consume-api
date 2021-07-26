@@ -1,9 +1,9 @@
 package com.frogobox.frogoconsumeapi.movie
 
 import android.content.Context
-import com.frogobox.frogoconsumeapi.movie.callback.MovieResultCallback
 import com.frogobox.frogoconsumeapi.movie.data.model.*
 import com.frogobox.frogoconsumeapi.movie.data.response.*
+import com.frogobox.frogosdk.core.FrogoResponseCallback
 
 /**
  * Created by Faisal Amir
@@ -22,7 +22,7 @@ import com.frogobox.frogoconsumeapi.movie.data.response.*
  * com.frogobox.frogoconsumeapi.movie
  *
  */
-interface ConsumeMovieApiView {
+interface IConsumeMovieApi {
 
     // Switch For Using Chuck Interceptor
     fun usingChuckInterceptor(context: Context)
@@ -31,11 +31,11 @@ interface ConsumeMovieApiView {
 
     // CERTIFICATIONS
     // Get Movie Certifications
-    fun getMovieCertifications(callback: MovieResultCallback<Certifications<CertificationMovie>>)
+    fun getMovieCertifications(callback: FrogoResponseCallback<Certifications<CertificationMovie>>)
 
     // CERTIFICATIONS
     // Get TV Certifications
-    fun getTvCertifications(callback: MovieResultCallback<Certifications<CertificationTv>>)
+    fun getTvCertifications(callback: FrogoResponseCallback<Certifications<CertificationTv>>)
 
     // ---------------------------------------------------------------------------------------------
 
@@ -45,7 +45,7 @@ interface ConsumeMovieApiView {
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: MovieResultCallback<Changes>
+        callback: FrogoResponseCallback<Changes>
     )
 
     // CHANGES
@@ -54,7 +54,7 @@ interface ConsumeMovieApiView {
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: MovieResultCallback<Changes>
+        callback: FrogoResponseCallback<Changes>
     )
 
     // CHANGES
@@ -63,7 +63,7 @@ interface ConsumeMovieApiView {
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: MovieResultCallback<Changes>
+        callback: FrogoResponseCallback<Changes>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -73,7 +73,7 @@ interface ConsumeMovieApiView {
     fun getCollectionDetails(
         collection_id: Int,
         language: String?,
-        callback: MovieResultCallback<CollectionsDetail>
+        callback: FrogoResponseCallback<CollectionsDetail>
     )
 
     // COLLECTION
@@ -81,7 +81,7 @@ interface ConsumeMovieApiView {
     fun getCollectionImages(
         collection_id: Int,
         language: String?,
-        callback: MovieResultCallback<CollectionsImage>
+        callback: FrogoResponseCallback<CollectionsImage>
     )
 
     // COLLECTION
@@ -89,7 +89,7 @@ interface ConsumeMovieApiView {
     fun getCollectionTranslations(
         collection_id: Int,
         language: String?,
-        callback: MovieResultCallback<CollectionsTranslation>
+        callback: FrogoResponseCallback<CollectionsTranslation>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -98,54 +98,54 @@ interface ConsumeMovieApiView {
     // Get Details
     fun getCompaniesDetails(
         company_id: Int,
-        callback: MovieResultCallback<CompaniesDetail>
+        callback: FrogoResponseCallback<CompaniesDetail>
     )
 
     // COMPANIES
     // Get Alternative Names
     fun getCompaniesAlternativeName(
         company_id: Int,
-        callback: MovieResultCallback<CompaniesAlternateName>
+        callback: FrogoResponseCallback<CompaniesAlternateName>
     )
 
     // COMPANIES
     // Get Images
     fun getCompaniesImage(
         company_id: Int,
-        callback: MovieResultCallback<CompaniesImage>
+        callback: FrogoResponseCallback<CompaniesImage>
     )
 
     // ---------------------------------------------------------------------------------------------
 
     // CONFIGURATION
     // Get API Configuration
-    fun getConfigurationApi(callback: MovieResultCallback<ConfigurationApi>)
+    fun getConfigurationApi(callback: FrogoResponseCallback<ConfigurationApi>)
 
     // CONFIGURATION
     // Get Countries
-    fun getConfigurationCountries(callback: MovieResultCallback<List<ConfigurationCountry>>)
+    fun getConfigurationCountries(callback: FrogoResponseCallback<List<ConfigurationCountry>>)
 
     // CONFIGURATION
     // Get Jobs
-    fun getConfigurationJobs(callback: MovieResultCallback<List<ConfigurationJob>>)
+    fun getConfigurationJobs(callback: FrogoResponseCallback<List<ConfigurationJob>>)
 
     // CONFIGURATION
     // Get Languages
-    fun getConfigurationLanguages(callback: MovieResultCallback<List<ConfigurationLanguage>>)
+    fun getConfigurationLanguages(callback: FrogoResponseCallback<List<ConfigurationLanguage>>)
 
     // CONFIGURATION
     // Get Primary Translations
-    fun getConfigurationTranslations(callback: MovieResultCallback<List<String>>)
+    fun getConfigurationTranslations(callback: FrogoResponseCallback<List<String>>)
 
     // CONFIGURATION
     // Get Timezones
-    fun getConfigurationTimezones(callback: MovieResultCallback<List<ConfigurationTimezone>>)
+    fun getConfigurationTimezones(callback: FrogoResponseCallback<List<ConfigurationTimezone>>)
 
     // ---------------------------------------------------------------------------------------------
 
     // CREDITS
     // Get Details
-    fun getCreditsDetails(credit_id: String, callback: MovieResultCallback<Credits>)
+    fun getCreditsDetails(credit_id: String, callback: FrogoResponseCallback<Credits>)
 
     // ---------------------------------------------------------------------------------------------
 
@@ -184,7 +184,7 @@ interface ConsumeMovieApiView {
         with_runtime_gte: Double?,
         with_runtime_lte: Double?,
         with_original_language: String?,
-        callback: MovieResultCallback<Discover<DiscoverMovie>>
+        callback: FrogoResponseCallback<Discover<DiscoverMovie>>
     )
 
     // DISCOVER
@@ -212,7 +212,7 @@ interface ConsumeMovieApiView {
         screened_theatrically: String?,
         with_companies: String?,
         with_keywords: String?,
-        callback: MovieResultCallback<Discover<DiscoverTv>>
+        callback: FrogoResponseCallback<Discover<DiscoverTv>>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -223,7 +223,7 @@ interface ConsumeMovieApiView {
         external_id: String,
         external_source: String,
         language: String?,
-        callback: MovieResultCallback<Find>
+        callback: FrogoResponseCallback<Find>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -232,14 +232,14 @@ interface ConsumeMovieApiView {
     // Get Movie List
     fun getGenresMovie(
         language: String?,
-        callback: MovieResultCallback<Genres>
+        callback: FrogoResponseCallback<Genres>
     )
 
     // GENRES
     // Get TV List
     fun getGenresTv(
         language: String?,
-        callback: MovieResultCallback<Genres>
+        callback: FrogoResponseCallback<Genres>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -248,7 +248,7 @@ interface ConsumeMovieApiView {
     // Get Details
     fun getKeywordsDetail(
         keyword_id: Int,
-        callback: MovieResultCallback<KeywordsDetail>
+        callback: FrogoResponseCallback<KeywordsDetail>
     )
 
     // KEYWORDS
@@ -257,7 +257,7 @@ interface ConsumeMovieApiView {
         keyword_id: Int,
         language: String?,
         include_adult: Boolean?,
-        callback: MovieResultCallback<KeywordsMovies>
+        callback: FrogoResponseCallback<KeywordsMovies>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -268,7 +268,7 @@ interface ConsumeMovieApiView {
         movie_id: Int,
         language: String?,
         append_to_response: String?,
-        callback: MovieResultCallback<MovieDetail>
+        callback: FrogoResponseCallback<MovieDetail>
     )
 
     // MOVIES
@@ -277,7 +277,7 @@ interface ConsumeMovieApiView {
         movie_id: Int,
         session_id: String,
         guest_session_id: String?,
-        callback: MovieResultCallback<MovieAccountState>
+        callback: FrogoResponseCallback<MovieAccountState>
     )
 
     // MOVIES
@@ -285,7 +285,7 @@ interface ConsumeMovieApiView {
     fun getMoviesAlternativeTitles(
         movie_id: Int,
         country: String?,
-        callback: MovieResultCallback<MovieAlternativeTitle>
+        callback: FrogoResponseCallback<MovieAlternativeTitle>
     )
 
     // MOVIES
@@ -295,21 +295,21 @@ interface ConsumeMovieApiView {
         start_date: String?,
         end_date: String?,
         page: Int?,
-        callback: MovieResultCallback<MovieChanges>
+        callback: FrogoResponseCallback<MovieChanges>
     )
 
     // MOVIES
     // Get Credits
     fun getMoviesCredits(
         movie_id: Int,
-        callback: MovieResultCallback<MovieCredit>
+        callback: FrogoResponseCallback<MovieCredit>
     )
 
     // MOVIES
     // Get External Ids
     fun getMoviesExternalIds(
         movie_id: Int,
-        callback: MovieResultCallback<MovieExternalId>
+        callback: FrogoResponseCallback<MovieExternalId>
     )
 
     // MOVIES
@@ -318,21 +318,21 @@ interface ConsumeMovieApiView {
         movie_id: Int,
         language: String?,
         include_image_language: String?,
-        callback: MovieResultCallback<MovieImages>
+        callback: FrogoResponseCallback<MovieImages>
     )
 
     // MOVIES
     // Get Keywords
     fun getMoviesKeywords(
         movie_id: Int,
-        callback: MovieResultCallback<MovieKeywords>
+        callback: FrogoResponseCallback<MovieKeywords>
     )
 
     // MOVIES
     // Get Release Dates
     fun getMoviesReleaseDates(
         movie_id: Int,
-        callback: MovieResultCallback<MovieReleaseDates>
+        callback: FrogoResponseCallback<MovieReleaseDates>
     )
 
     // MOVIES
@@ -340,14 +340,14 @@ interface ConsumeMovieApiView {
     fun getMoviesVideos(
         movie_id: Int,
         language: String?,
-        callback: MovieResultCallback<MovieVideos>
+        callback: FrogoResponseCallback<MovieVideos>
     )
 
     // MOVIES
     // Get Translations
     fun getMoviesTranslations(
         movie_id: Int,
-        callback: MovieResultCallback<MovieTranslations>
+        callback: FrogoResponseCallback<MovieTranslations>
     )
 
     // MOVIES
@@ -356,7 +356,7 @@ interface ConsumeMovieApiView {
         movie_id: Int,
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<MovieRecommendations>
+        callback: FrogoResponseCallback<MovieRecommendations>
     )
 
     // MOVIES
@@ -365,7 +365,7 @@ interface ConsumeMovieApiView {
         movie_id: Int,
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<MovieSimilarMovies>
+        callback: FrogoResponseCallback<MovieSimilarMovies>
     )
 
     // MOVIES
@@ -374,7 +374,7 @@ interface ConsumeMovieApiView {
         movie_id: Int,
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<MovieReviews>
+        callback: FrogoResponseCallback<MovieReviews>
     )
 
     // MOVIES
@@ -383,14 +383,14 @@ interface ConsumeMovieApiView {
         movie_id: Int,
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<MovieLists>
+        callback: FrogoResponseCallback<MovieLists>
     )
 
     // MOVIES
     // Get Latest
     fun getMoviesLatest(
         language: String?,
-        callback: MovieResultCallback<MovieLatest>
+        callback: FrogoResponseCallback<MovieLatest>
     )
 
     // MOVIES
@@ -399,7 +399,7 @@ interface ConsumeMovieApiView {
         language: String?,
         page: Int?,
         region: String?,
-        callback: MovieResultCallback<MovieNowPlayings>
+        callback: FrogoResponseCallback<MovieNowPlayings>
     )
 
     // MOVIES
@@ -408,7 +408,7 @@ interface ConsumeMovieApiView {
         language: String?,
         page: Int?,
         region: String?,
-        callback: MovieResultCallback<MoviePopulars>
+        callback: FrogoResponseCallback<MoviePopulars>
     )
 
     // MOVIES
@@ -417,7 +417,7 @@ interface ConsumeMovieApiView {
         language: String?,
         page: Int?,
         region: String?,
-        callback: MovieResultCallback<MovieTopRated>
+        callback: FrogoResponseCallback<MovieTopRated>
     )
 
     // MOVIES
@@ -426,7 +426,7 @@ interface ConsumeMovieApiView {
         language: String?,
         page: Int?,
         region: String?,
-        callback: MovieResultCallback<MovieUpcoming>
+        callback: FrogoResponseCallback<MovieUpcoming>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -434,49 +434,49 @@ interface ConsumeMovieApiView {
     // TRENDING
     // Get Trending All Day
     fun getTrendingAllDay(
-        callback: MovieResultCallback<Trending<TrendingAll>>
+        callback: FrogoResponseCallback<Trending<TrendingAll>>
     )
 
     // TRENDING
     // Get Trending All Week
     fun getTrendingAllWeek(
-        callback: MovieResultCallback<Trending<TrendingAll>>
+        callback: FrogoResponseCallback<Trending<TrendingAll>>
     )
 
     // TRENDING
     // Get Trending Movie Day
     fun getTrendingMovieDay(
-        callback: MovieResultCallback<Trending<TrendingMovie>>
+        callback: FrogoResponseCallback<Trending<TrendingMovie>>
     )
 
     // TRENDING
     // Get Trending Movie Week
     fun getTrendingMovieWeek(
-        callback: MovieResultCallback<Trending<TrendingMovie>>
+        callback: FrogoResponseCallback<Trending<TrendingMovie>>
     )
 
     // TRENDING
     // Get Trending Person Day
     fun getTrendingPersonDay(
-        callback: MovieResultCallback<Trending<TrendingPerson>>
+        callback: FrogoResponseCallback<Trending<TrendingPerson>>
     )
 
     // TRENDING
     // Get Trending Person Week
     fun getTrendingPersonWeek(
-        callback: MovieResultCallback<Trending<TrendingPerson>>
+        callback: FrogoResponseCallback<Trending<TrendingPerson>>
     )
 
     // TRENDING
     // Get Trending TV Day
     fun getTrendingTvDay(
-        callback: MovieResultCallback<Trending<TrendingTv>>
+        callback: FrogoResponseCallback<Trending<TrendingTv>>
     )
 
     // TRENDING
     // Get Trending TV Week
     fun getTrendingTvWeek(
-        callback: MovieResultCallback<Trending<TrendingTv>>
+        callback: FrogoResponseCallback<Trending<TrendingTv>>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -485,7 +485,7 @@ interface ConsumeMovieApiView {
     // Get Details
     fun getReviews(
         review_id: String,
-        callback: MovieResultCallback<Reviews>
+        callback: FrogoResponseCallback<Reviews>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -494,21 +494,21 @@ interface ConsumeMovieApiView {
     // Get Details
     fun getNetworkDetail(
         network_id: Int,
-        callback: MovieResultCallback<NetworkDetail>
+        callback: FrogoResponseCallback<NetworkDetail>
     )
 
     // NETWORKS
     // Get Alternative Names
     fun getNetworkAlternativeName(
         network_id: Int,
-        callback: MovieResultCallback<NetworkAlternativeName>
+        callback: FrogoResponseCallback<NetworkAlternativeName>
     )
 
     // NETWORKS
     // Get Images
     fun getNetworkImage(
         network_id: Int,
-        callback: MovieResultCallback<NetworkImage>
+        callback: FrogoResponseCallback<NetworkImage>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -518,7 +518,7 @@ interface ConsumeMovieApiView {
     fun searchCompanies(
         query: String,
         page: Int?,
-        callback: MovieResultCallback<SearchCompanies>
+        callback: FrogoResponseCallback<SearchCompanies>
     )
 
     // SEARCH
@@ -527,7 +527,7 @@ interface ConsumeMovieApiView {
         query: String,
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<SearchCollections>
+        callback: FrogoResponseCallback<SearchCollections>
     )
 
     // SEARCH
@@ -535,7 +535,7 @@ interface ConsumeMovieApiView {
     fun searchKeywords(
         query: String,
         page: Int?,
-        callback: MovieResultCallback<SearchKeywords>
+        callback: FrogoResponseCallback<SearchKeywords>
     )
 
     // SEARCH
@@ -548,7 +548,7 @@ interface ConsumeMovieApiView {
         region: String?,
         year: Int?,
         primary_release_year: Int?,
-        callback: MovieResultCallback<SearchMovies>
+        callback: FrogoResponseCallback<SearchMovies>
     )
 
     // SEARCH
@@ -559,7 +559,7 @@ interface ConsumeMovieApiView {
         page: Int?,
         include_adult: Boolean?,
         region: String?,
-        callback: MovieResultCallback<SearchMulti>
+        callback: FrogoResponseCallback<SearchMulti>
     )
 
     // SEARCH
@@ -570,7 +570,7 @@ interface ConsumeMovieApiView {
         page: Int?,
         include_adult: Boolean?,
         region: String?,
-        callback: MovieResultCallback<SearchPeople>
+        callback: FrogoResponseCallback<SearchPeople>
     )
 
     // SEARCH
@@ -581,7 +581,7 @@ interface ConsumeMovieApiView {
         page: Int?,
         include_adult: Boolean?,
         first_air_date_year: Int?,
-        callback: MovieResultCallback<SearchMovies>
+        callback: FrogoResponseCallback<SearchMovies>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -592,7 +592,7 @@ interface ConsumeMovieApiView {
         tv_id: Int,
         language: String?,
         append_to_response: String?,
-        callback: MovieResultCallback<TvDetails>
+        callback: FrogoResponseCallback<TvDetails>
     )
 
     // TV
@@ -602,7 +602,7 @@ interface ConsumeMovieApiView {
         language: String?,
         guest_session_id: String?,
         session_id: String?,
-        callback: MovieResultCallback<TvAccountStates>
+        callback: FrogoResponseCallback<TvAccountStates>
     )
 
     // TV
@@ -610,7 +610,7 @@ interface ConsumeMovieApiView {
     fun getTvAlternativeTitles(
         tv_id: Int,
         language: String?,
-        callback: MovieResultCallback<TvAlternativeTitles>
+        callback: FrogoResponseCallback<TvAlternativeTitles>
     )
 
     // TV
@@ -620,7 +620,7 @@ interface ConsumeMovieApiView {
         startDate: String?,
         endDate: String?,
         page: Int?,
-        callback: MovieResultCallback<TvChanges>
+        callback: FrogoResponseCallback<TvChanges>
     )
 
     // TV
@@ -628,7 +628,7 @@ interface ConsumeMovieApiView {
     fun getTvContentRatings(
         tv_id: Int,
         language: String?,
-        callback: MovieResultCallback<TvContentRatings>
+        callback: FrogoResponseCallback<TvContentRatings>
     )
 
     // TV
@@ -636,7 +636,7 @@ interface ConsumeMovieApiView {
     fun getTvCredits(
         tv_id: Int,
         language: String?,
-        callback: MovieResultCallback<TvCredits>
+        callback: FrogoResponseCallback<TvCredits>
     )
 
     // TV
@@ -644,7 +644,7 @@ interface ConsumeMovieApiView {
     fun getTvEpisodeGroups(
         tv_id: Int,
         language: String?,
-        callback: MovieResultCallback<TvEpisodeGroups>
+        callback: FrogoResponseCallback<TvEpisodeGroups>
     )
 
     // TV
@@ -652,7 +652,7 @@ interface ConsumeMovieApiView {
     fun getTvExternalIds(
         tv_id: Int,
         language: String?,
-        callback: MovieResultCallback<TvExternalIds>
+        callback: FrogoResponseCallback<TvExternalIds>
     )
 
     // TV
@@ -660,14 +660,14 @@ interface ConsumeMovieApiView {
     fun getTvImages(
         tv_id: Int,
         language: String?,
-        callback: MovieResultCallback<TvImages>
+        callback: FrogoResponseCallback<TvImages>
     )
 
     // TV
     // Get Keyword
     fun getTvKeyword(
         tv_id: Int,
-        callback: MovieResultCallback<TvKeywords>
+        callback: FrogoResponseCallback<TvKeywords>
     )
 
     // TV
@@ -676,21 +676,21 @@ interface ConsumeMovieApiView {
         tv_id: Int,
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<TvRecommendations>
+        callback: FrogoResponseCallback<TvRecommendations>
     )
 
     // TV
     // Get Reviews
     fun getTvReviews(
         tv_id: Int,
-        callback: MovieResultCallback<TvReviews>
+        callback: FrogoResponseCallback<TvReviews>
     )
 
     // TV
     // Get Screened Theatrically
     fun getTvScreenedTheatrically(
         tv_id: Int,
-        callback: MovieResultCallback<TvScreenedTheatrically>
+        callback: FrogoResponseCallback<TvScreenedTheatrically>
     )
 
     // TV
@@ -699,14 +699,14 @@ interface ConsumeMovieApiView {
         tv_id: Int,
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<TvSimilarTVShows>
+        callback: FrogoResponseCallback<TvSimilarTVShows>
     )
 
     // TV
     // Get Translations
     fun getTvTranslations(
         tv_id: Int,
-        callback: MovieResultCallback<TvTranslations>
+        callback: FrogoResponseCallback<TvTranslations>
     )
 
     // TV
@@ -714,14 +714,14 @@ interface ConsumeMovieApiView {
     fun getTvVideos(
         tv_id: Int,
         language: String?,
-        callback: MovieResultCallback<TvVideos>
+        callback: FrogoResponseCallback<TvVideos>
     )
 
     // TV
     // Get Latest
     fun getTvLatest(
         language: String?,
-        callback: MovieResultCallback<TvLatest>
+        callback: FrogoResponseCallback<TvLatest>
     )
 
     // TV
@@ -729,7 +729,7 @@ interface ConsumeMovieApiView {
     fun getTvAiringToday(
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<TvAiringToday>
+        callback: FrogoResponseCallback<TvAiringToday>
     )
 
     // TV
@@ -737,7 +737,7 @@ interface ConsumeMovieApiView {
     fun getTvOnTheAir(
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<TvOnTheAir>
+        callback: FrogoResponseCallback<TvOnTheAir>
     )
 
     // TV
@@ -745,7 +745,7 @@ interface ConsumeMovieApiView {
     fun getTvPopular(
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<TvPopular>
+        callback: FrogoResponseCallback<TvPopular>
     )
 
     // TV
@@ -753,7 +753,7 @@ interface ConsumeMovieApiView {
     fun getTvTopRated(
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<TvTopRated>
+        callback: FrogoResponseCallback<TvTopRated>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -765,7 +765,7 @@ interface ConsumeMovieApiView {
         season_number: Int,
         language: String?,
         append_to_response: String?,
-        callback: MovieResultCallback<TvSeasonsDetails>
+        callback: FrogoResponseCallback<TvSeasonsDetails>
     )
 
     // TV SEASONS
@@ -775,7 +775,7 @@ interface ConsumeMovieApiView {
         startDate: String?,
         endDate: String?,
         page: Int?,
-        callback: MovieResultCallback<TvSeasonsChanges>
+        callback: FrogoResponseCallback<TvSeasonsChanges>
     )
 
     // TV SEASONS
@@ -786,7 +786,7 @@ interface ConsumeMovieApiView {
         language: String?,
         guest_session_id: String?,
         session_id: String?,
-        callback: MovieResultCallback<TvSeasonsAccountStates>
+        callback: FrogoResponseCallback<TvSeasonsAccountStates>
     )
 
     // TV SEASONS
@@ -795,7 +795,7 @@ interface ConsumeMovieApiView {
         tv_id: Int,
         season_number: Int,
         language: String?,
-        callback: MovieResultCallback<TvSeasonsCredits>
+        callback: FrogoResponseCallback<TvSeasonsCredits>
     )
 
     // TV SEASONS
@@ -804,7 +804,7 @@ interface ConsumeMovieApiView {
         tv_id: Int,
         season_number: Int,
         language: String?,
-        callback: MovieResultCallback<TvSeasonsExternalIds>
+        callback: FrogoResponseCallback<TvSeasonsExternalIds>
     )
 
     // TV SEASONS
@@ -813,7 +813,7 @@ interface ConsumeMovieApiView {
         tv_id: Int,
         season_number: Int,
         language: String?,
-        callback: MovieResultCallback<TvSeasonsImages>
+        callback: FrogoResponseCallback<TvSeasonsImages>
     )
 
     // TV SEASONS
@@ -822,7 +822,7 @@ interface ConsumeMovieApiView {
         tv_id: Int,
         season_number: Int,
         language: String?,
-        callback: MovieResultCallback<TvSeasonsVideos>
+        callback: FrogoResponseCallback<TvSeasonsVideos>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -835,7 +835,7 @@ interface ConsumeMovieApiView {
         episode_number: Int,
         language: String?,
         append_to_response: String?,
-        callback: MovieResultCallback<TvEpisodeDetails>
+        callback: FrogoResponseCallback<TvEpisodeDetails>
     )
 
     // TV EPISODE
@@ -845,7 +845,7 @@ interface ConsumeMovieApiView {
         startDate: String?,
         endDate: String?,
         page: Int?,
-        callback: MovieResultCallback<TvEpisodeChanges>
+        callback: FrogoResponseCallback<TvEpisodeChanges>
     )
 
     // TV EPISODE
@@ -856,7 +856,7 @@ interface ConsumeMovieApiView {
         episode_number: Int,
         guest_session_id: String?,
         session_id: String?,
-        callback: MovieResultCallback<TvEpisodeAccountStates>
+        callback: FrogoResponseCallback<TvEpisodeAccountStates>
     )
 
     // TV EPISODE
@@ -865,7 +865,7 @@ interface ConsumeMovieApiView {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        callback: MovieResultCallback<TvEpisodeCredits>
+        callback: FrogoResponseCallback<TvEpisodeCredits>
     )
 
     // TV EPISODE
@@ -874,7 +874,7 @@ interface ConsumeMovieApiView {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        callback: MovieResultCallback<TvEpisodeExternalIds>
+        callback: FrogoResponseCallback<TvEpisodeExternalIds>
     )
 
     // TV EPISODE
@@ -883,7 +883,7 @@ interface ConsumeMovieApiView {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        callback: MovieResultCallback<TvEpisodeImages>
+        callback: FrogoResponseCallback<TvEpisodeImages>
     )
 
     // TV EPISODE
@@ -892,7 +892,7 @@ interface ConsumeMovieApiView {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        callback: MovieResultCallback<TvEpisodeTranslation>
+        callback: FrogoResponseCallback<TvEpisodeTranslation>
     )
 
     // TV EPISODE
@@ -902,7 +902,7 @@ interface ConsumeMovieApiView {
         season_number: Int,
         episode_number: Int,
         language: String?,
-        callback: MovieResultCallback<TvEpisodeVideos>
+        callback: FrogoResponseCallback<TvEpisodeVideos>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -912,7 +912,7 @@ interface ConsumeMovieApiView {
     fun getTvEpisodeGroupsDetails(
         id: String?,
         language: String?,
-        callback: MovieResultCallback<TvEpisodeGroupsDetails>
+        callback: FrogoResponseCallback<TvEpisodeGroupsDetails>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -922,7 +922,7 @@ interface ConsumeMovieApiView {
     fun getPeopleDetails(
         person_id: Int,
         language: String?,
-        callback: MovieResultCallback<PeopleDetails>
+        callback: FrogoResponseCallback<PeopleDetails>
     )
 
     // PEOPLE
@@ -932,7 +932,7 @@ interface ConsumeMovieApiView {
         endDate: String?,
         page: Int?,
         startDate: String?,
-        callback: MovieResultCallback<PeopleChanges>
+        callback: FrogoResponseCallback<PeopleChanges>
     )
 
     // PEOPLE
@@ -940,7 +940,7 @@ interface ConsumeMovieApiView {
     fun getPeopleMovieCredits(
         person_id: Int,
         language: String?,
-        callback: MovieResultCallback<PeopleMovieCredits>
+        callback: FrogoResponseCallback<PeopleMovieCredits>
     )
 
     // PEOPLE
@@ -948,7 +948,7 @@ interface ConsumeMovieApiView {
     fun getPeopleTvCredits(
         person_id: Int,
         language: String?,
-        callback: MovieResultCallback<PeopleTvCredits>
+        callback: FrogoResponseCallback<PeopleTvCredits>
     )
 
     // PEOPLE
@@ -956,7 +956,7 @@ interface ConsumeMovieApiView {
     fun getPeopleCombinedCredits(
         person_id: Int,
         language: String?,
-        callback: MovieResultCallback<PeopleCombinedCredits>
+        callback: FrogoResponseCallback<PeopleCombinedCredits>
     )
 
     // PEOPLE
@@ -964,14 +964,14 @@ interface ConsumeMovieApiView {
     fun getPeopleExternalIds(
         person_id: Int,
         language: String?,
-        callback: MovieResultCallback<PeopleExternalIds>
+        callback: FrogoResponseCallback<PeopleExternalIds>
     )
 
     // PEOPLE
     // Get Images
     fun getPeopleImages(
         person_id: Int,
-        callback: MovieResultCallback<PeopleImages>
+        callback: FrogoResponseCallback<PeopleImages>
     )
 
     // PEOPLE
@@ -980,7 +980,7 @@ interface ConsumeMovieApiView {
         person_id: Int,
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<PeopleTaggedImages>
+        callback: FrogoResponseCallback<PeopleTaggedImages>
     )
 
     // PEOPLE
@@ -988,14 +988,14 @@ interface ConsumeMovieApiView {
     fun getPeopleTranslations(
         person_id: Int,
         language: String?,
-        callback: MovieResultCallback<PeopleTranslations>
+        callback: FrogoResponseCallback<PeopleTranslations>
     )
 
     // PEOPLE
     // Get Latest
     fun getPeopleLatest(
         language: String?,
-        callback: MovieResultCallback<PeopleLatest>
+        callback: FrogoResponseCallback<PeopleLatest>
     )
 
     // PEOPLE
@@ -1003,7 +1003,7 @@ interface ConsumeMovieApiView {
     fun getPeoplePopular(
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<PeoplePopular>
+        callback: FrogoResponseCallback<PeoplePopular>
     )
 
 

@@ -1,9 +1,9 @@
 package com.frogobox.frogoconsumeapi.movie.data.source
 
 import android.content.Context
-import com.frogobox.frogoconsumeapi.movie.base.BaseMovieDataSource
 import com.frogobox.frogoconsumeapi.movie.data.model.*
 import com.frogobox.frogoconsumeapi.movie.data.response.*
+import com.frogobox.frogosdk.core.FrogoResponseCallback
 
 /**
  * Created by Faisal Amir
@@ -33,14 +33,14 @@ interface MovieDataSource {
     // Get Movie Certifications
     fun getMovieCertifications(
         apiKey: String,
-        callback: GetRemoteCallback<Certifications<CertificationMovie>>
+        callback: FrogoResponseCallback<Certifications<CertificationMovie>>
     )
 
     // CERTIFICATIONS
     // Get TV Certifications
     fun getTvCertifications(
         apiKey: String,
-        callback: GetRemoteCallback<Certifications<CertificationTv>>
+        callback: FrogoResponseCallback<Certifications<CertificationTv>>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -52,7 +52,7 @@ interface MovieDataSource {
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: GetRemoteCallback<Changes>
+        callback: FrogoResponseCallback<Changes>
     )
 
     // CHANGES
@@ -62,7 +62,7 @@ interface MovieDataSource {
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: GetRemoteCallback<Changes>
+        callback: FrogoResponseCallback<Changes>
     )
 
     // CHANGES
@@ -72,7 +72,7 @@ interface MovieDataSource {
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: GetRemoteCallback<Changes>
+        callback: FrogoResponseCallback<Changes>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -83,7 +83,7 @@ interface MovieDataSource {
         collection_id: Int,
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<CollectionsDetail>
+        callback: FrogoResponseCallback<CollectionsDetail>
     )
 
     // COLLECTION
@@ -92,7 +92,7 @@ interface MovieDataSource {
         collection_id: Int,
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<CollectionsImage>
+        callback: FrogoResponseCallback<CollectionsImage>
     )
 
     // COLLECTION
@@ -101,7 +101,7 @@ interface MovieDataSource {
         collection_id: Int,
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<CollectionsTranslation>
+        callback: FrogoResponseCallback<CollectionsTranslation>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -111,7 +111,7 @@ interface MovieDataSource {
     fun getCompaniesDetails(
         company_id: Int,
         apiKey: String,
-        callback: GetRemoteCallback<CompaniesDetail>
+        callback: FrogoResponseCallback<CompaniesDetail>
     )
 
     // COMPANIES
@@ -119,7 +119,7 @@ interface MovieDataSource {
     fun getCompaniesAlternativeName(
         company_id: Int,
         apiKey: String,
-        callback: GetRemoteCallback<CompaniesAlternateName>
+        callback: FrogoResponseCallback<CompaniesAlternateName>
     )
 
     // COMPANIES
@@ -127,49 +127,49 @@ interface MovieDataSource {
     fun getCompaniesImage(
         company_id: Int,
         apiKey: String,
-        callback: GetRemoteCallback<CompaniesImage>
+        callback: FrogoResponseCallback<CompaniesImage>
     )
 
     // ---------------------------------------------------------------------------------------------
 
     // CONFIGURATION
     // Get API Configuration
-    fun getConfigurationApi(apiKey: String, callback: GetRemoteCallback<ConfigurationApi>)
+    fun getConfigurationApi(apiKey: String, callback: FrogoResponseCallback<ConfigurationApi>)
 
     // CONFIGURATION
     // Get Countries
     fun getConfigurationCountries(
         apiKey: String,
-        callback: GetRemoteCallback<List<ConfigurationCountry>>
+        callback: FrogoResponseCallback<List<ConfigurationCountry>>
     )
 
     // CONFIGURATION
     // Get Jobs
-    fun getConfigurationJobs(apiKey: String, callback: GetRemoteCallback<List<ConfigurationJob>>)
+    fun getConfigurationJobs(apiKey: String, callback: FrogoResponseCallback<List<ConfigurationJob>>)
 
     // CONFIGURATION
     // Get Languages
     fun getConfigurationLanguages(
         apiKey: String,
-        callback: GetRemoteCallback<List<ConfigurationLanguage>>
+        callback: FrogoResponseCallback<List<ConfigurationLanguage>>
     )
 
     // CONFIGURATION
     // Get Primary Translations
-    fun getConfigurationTranslations(apiKey: String, callback: GetRemoteCallback<List<String>>)
+    fun getConfigurationTranslations(apiKey: String, callback: FrogoResponseCallback<List<String>>)
 
     // CONFIGURATION
     // Get Timezones
     fun getConfigurationTimezones(
         apiKey: String,
-        callback: GetRemoteCallback<List<ConfigurationTimezone>>
+        callback: FrogoResponseCallback<List<ConfigurationTimezone>>
     )
 
     // ---------------------------------------------------------------------------------------------
 
     // CREDITS
     // Get Details
-    fun getCreditsDetails(credit_id: String, apiKey: String, callback: GetRemoteCallback<Credits>)
+    fun getCreditsDetails(credit_id: String, apiKey: String, callback: FrogoResponseCallback<Credits>)
 
     // DISCOVER
     // Movie Discover
@@ -207,7 +207,7 @@ interface MovieDataSource {
         with_runtime_gte: Double?,
         with_runtime_lte: Double?,
         with_original_language: String?,
-        callback: GetRemoteCallback<Discover<DiscoverMovie>>
+        callback: FrogoResponseCallback<Discover<DiscoverMovie>>
 
     )
 
@@ -239,7 +239,7 @@ interface MovieDataSource {
         screened_theatrically: String?,
         with_companies: String?,
         with_keywords: String?,
-        callback: GetRemoteCallback<Discover<DiscoverTv>>
+        callback: FrogoResponseCallback<Discover<DiscoverTv>>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -251,7 +251,7 @@ interface MovieDataSource {
         apiKey: String,
         external_source: String,
         language: String?,
-        callback: GetRemoteCallback<Find>
+        callback: FrogoResponseCallback<Find>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -261,7 +261,7 @@ interface MovieDataSource {
     fun getGenresMovie(
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<Genres>
+        callback: FrogoResponseCallback<Genres>
     )
 
     // GENRES
@@ -269,7 +269,7 @@ interface MovieDataSource {
     fun getGenresTv(
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<Genres>
+        callback: FrogoResponseCallback<Genres>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -279,7 +279,7 @@ interface MovieDataSource {
     fun getKeywordsDetail(
         keyword_id: Int,
         apiKey: String,
-        callback: GetRemoteCallback<KeywordsDetail>
+        callback: FrogoResponseCallback<KeywordsDetail>
     )
 
     // KEYWORDS
@@ -289,7 +289,7 @@ interface MovieDataSource {
         apiKey: String,
         language: String?,
         include_adult: Boolean?,
-        callback: GetRemoteCallback<KeywordsMovies>
+        callback: FrogoResponseCallback<KeywordsMovies>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -301,7 +301,7 @@ interface MovieDataSource {
         apiKey: String,
         language: String?,
         append_to_response: String?,
-        callback: GetRemoteCallback<MovieDetail>
+        callback: FrogoResponseCallback<MovieDetail>
     )
 
     // MOVIES
@@ -311,7 +311,7 @@ interface MovieDataSource {
         apiKey: String,
         session_id: String,
         guest_session_id: String?,
-        callback: GetRemoteCallback<MovieAccountState>
+        callback: FrogoResponseCallback<MovieAccountState>
     )
 
     // MOVIES
@@ -320,7 +320,7 @@ interface MovieDataSource {
         movie_id: Int,
         apiKey: String,
         country: String?,
-        callback: GetRemoteCallback<MovieAlternativeTitle>
+        callback: FrogoResponseCallback<MovieAlternativeTitle>
     )
 
     // MOVIES
@@ -331,7 +331,7 @@ interface MovieDataSource {
         start_date: String?,
         end_date: String?,
         page: Int?,
-        callback: GetRemoteCallback<MovieChanges>
+        callback: FrogoResponseCallback<MovieChanges>
     )
 
     // MOVIES
@@ -339,7 +339,7 @@ interface MovieDataSource {
     fun getMoviesCredits(
         movie_id: Int,
         apiKey: String,
-        callback: GetRemoteCallback<MovieCredit>
+        callback: FrogoResponseCallback<MovieCredit>
     )
 
     // MOVIES
@@ -347,7 +347,7 @@ interface MovieDataSource {
     fun getMoviesExternalIds(
         movie_id: Int,
         apiKey: String,
-        callback: GetRemoteCallback<MovieExternalId>
+        callback: FrogoResponseCallback<MovieExternalId>
     )
 
     // MOVIES
@@ -357,7 +357,7 @@ interface MovieDataSource {
         apiKey: String,
         language: String?,
         include_image_language: String?,
-        callback: GetRemoteCallback<MovieImages>
+        callback: FrogoResponseCallback<MovieImages>
     )
 
     // MOVIES
@@ -365,7 +365,7 @@ interface MovieDataSource {
     fun getMoviesKeywords(
         movie_id: Int,
         apiKey: String,
-        callback: GetRemoteCallback<MovieKeywords>
+        callback: FrogoResponseCallback<MovieKeywords>
     )
 
     // MOVIES
@@ -373,7 +373,7 @@ interface MovieDataSource {
     fun getMoviesReleaseDates(
         movie_id: Int,
         apiKey: String,
-        callback: GetRemoteCallback<MovieReleaseDates>
+        callback: FrogoResponseCallback<MovieReleaseDates>
     )
 
     // MOVIES
@@ -382,7 +382,7 @@ interface MovieDataSource {
         movie_id: Int,
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<MovieVideos>
+        callback: FrogoResponseCallback<MovieVideos>
     )
 
     // MOVIES
@@ -390,7 +390,7 @@ interface MovieDataSource {
     fun getMoviesTranslations(
         movie_id: Int,
         apiKey: String,
-        callback: GetRemoteCallback<MovieTranslations>
+        callback: FrogoResponseCallback<MovieTranslations>
     )
 
     // MOVIES
@@ -400,7 +400,7 @@ interface MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: GetRemoteCallback<MovieRecommendations>
+        callback: FrogoResponseCallback<MovieRecommendations>
     )
 
     // MOVIES
@@ -410,7 +410,7 @@ interface MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: GetRemoteCallback<MovieSimilarMovies>
+        callback: FrogoResponseCallback<MovieSimilarMovies>
     )
 
     // MOVIES
@@ -420,7 +420,7 @@ interface MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: GetRemoteCallback<MovieReviews>
+        callback: FrogoResponseCallback<MovieReviews>
     )
 
     // MOVIES
@@ -430,7 +430,7 @@ interface MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: GetRemoteCallback<MovieLists>
+        callback: FrogoResponseCallback<MovieLists>
     )
 
     // MOVIES
@@ -438,7 +438,7 @@ interface MovieDataSource {
     fun getMoviesLatest(
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<MovieLatest>
+        callback: FrogoResponseCallback<MovieLatest>
     )
 
     // MOVIES
@@ -448,7 +448,7 @@ interface MovieDataSource {
         language: String?,
         page: Int?,
         region: String?,
-        callback: GetRemoteCallback<MovieNowPlayings>
+        callback: FrogoResponseCallback<MovieNowPlayings>
     )
 
     // MOVIES
@@ -458,7 +458,7 @@ interface MovieDataSource {
         language: String?,
         page: Int?,
         region: String?,
-        callback: GetRemoteCallback<MoviePopulars>
+        callback: FrogoResponseCallback<MoviePopulars>
     )
 
     // MOVIES
@@ -468,7 +468,7 @@ interface MovieDataSource {
         language: String?,
         page: Int?,
         region: String?,
-        callback: GetRemoteCallback<MovieTopRated>
+        callback: FrogoResponseCallback<MovieTopRated>
     )
 
     // MOVIES
@@ -478,7 +478,7 @@ interface MovieDataSource {
         language: String?,
         page: Int?,
         region: String?,
-        callback: GetRemoteCallback<MovieUpcoming>
+        callback: FrogoResponseCallback<MovieUpcoming>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -489,7 +489,7 @@ interface MovieDataSource {
         media_type: String,
         time_window: String,
         apiKey: String,
-        callback: GetRemoteCallback<Trending<TrendingAll>>
+        callback: FrogoResponseCallback<Trending<TrendingAll>>
     )
 
     // TRENDING
@@ -498,7 +498,7 @@ interface MovieDataSource {
         media_type: String,
         time_window: String,
         apiKey: String,
-        callback: GetRemoteCallback<Trending<TrendingMovie>>
+        callback: FrogoResponseCallback<Trending<TrendingMovie>>
     )
 
     // TRENDING
@@ -507,7 +507,7 @@ interface MovieDataSource {
         media_type: String,
         time_window: String,
         apiKey: String,
-        callback: GetRemoteCallback<Trending<TrendingPerson>>
+        callback: FrogoResponseCallback<Trending<TrendingPerson>>
     )
 
     // TRENDING
@@ -516,7 +516,7 @@ interface MovieDataSource {
         media_type: String,
         time_window: String,
         apiKey: String,
-        callback: GetRemoteCallback<Trending<TrendingTv>>
+        callback: FrogoResponseCallback<Trending<TrendingTv>>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -526,7 +526,7 @@ interface MovieDataSource {
     fun getReviews(
         review_id: String,
         apiKey: String,
-        callback: GetRemoteCallback<Reviews>
+        callback: FrogoResponseCallback<Reviews>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -536,7 +536,7 @@ interface MovieDataSource {
     fun getNetworkDetail(
         network_id: Int,
         apiKey: String,
-        callback: GetRemoteCallback<NetworkDetail>
+        callback: FrogoResponseCallback<NetworkDetail>
     )
 
     // NETWORKS
@@ -544,7 +544,7 @@ interface MovieDataSource {
     fun getNetworkAlternativeName(
         network_id: Int,
         apiKey: String,
-        callback: GetRemoteCallback<NetworkAlternativeName>
+        callback: FrogoResponseCallback<NetworkAlternativeName>
     )
 
     // NETWORKS
@@ -552,7 +552,7 @@ interface MovieDataSource {
     fun getNetworkImage(
         network_id: Int,
         apiKey: String,
-        callback: GetRemoteCallback<NetworkImage>
+        callback: FrogoResponseCallback<NetworkImage>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -563,7 +563,7 @@ interface MovieDataSource {
         apiKey: String,
         query: String,
         page: Int?,
-        callback: GetRemoteCallback<SearchCompanies>
+        callback: FrogoResponseCallback<SearchCompanies>
     )
 
     // SEARCH
@@ -573,7 +573,7 @@ interface MovieDataSource {
         query: String,
         language: String?,
         page: Int?,
-        callback: GetRemoteCallback<SearchCollections>
+        callback: FrogoResponseCallback<SearchCollections>
     )
 
     // SEARCH
@@ -582,7 +582,7 @@ interface MovieDataSource {
         apiKey: String,
         query: String,
         page: Int?,
-        callback: GetRemoteCallback<SearchKeywords>
+        callback: FrogoResponseCallback<SearchKeywords>
     )
 
     // SEARCH
@@ -596,7 +596,7 @@ interface MovieDataSource {
         region: String?,
         year: Int?,
         primary_release_year: Int?,
-        callback: GetRemoteCallback<SearchMovies>
+        callback: FrogoResponseCallback<SearchMovies>
     )
 
     // SEARCH
@@ -608,7 +608,7 @@ interface MovieDataSource {
         page: Int?,
         include_adult: Boolean?,
         region: String?,
-        callback: GetRemoteCallback<SearchMulti>
+        callback: FrogoResponseCallback<SearchMulti>
     )
 
     // SEARCH
@@ -620,7 +620,7 @@ interface MovieDataSource {
         page: Int?,
         include_adult: Boolean?,
         region: String?,
-        callback: GetRemoteCallback<SearchPeople>
+        callback: FrogoResponseCallback<SearchPeople>
     )
 
     // SEARCH
@@ -632,7 +632,7 @@ interface MovieDataSource {
         page: Int?,
         include_adult: Boolean?,
         first_air_date_year: Int?,
-        callback: GetRemoteCallback<SearchMovies>
+        callback: FrogoResponseCallback<SearchMovies>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -644,7 +644,7 @@ interface MovieDataSource {
         apiKey: String,
         language: String?,
         append_to_response: String?,
-        callback: GetRemoteCallback<TvDetails>
+        callback: FrogoResponseCallback<TvDetails>
     )
 
     // TV
@@ -655,7 +655,7 @@ interface MovieDataSource {
         language: String?,
         guest_session_id: String?,
         session_id: String?,
-        callback: GetRemoteCallback<TvAccountStates>
+        callback: FrogoResponseCallback<TvAccountStates>
     )
 
     // TV
@@ -664,7 +664,7 @@ interface MovieDataSource {
         tv_id: Int,
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<TvAlternativeTitles>
+        callback: FrogoResponseCallback<TvAlternativeTitles>
     )
 
     // TV
@@ -675,7 +675,7 @@ interface MovieDataSource {
         startDate: String?,
         endDate: String?,
         page: Int?,
-        callback: GetRemoteCallback<TvChanges>
+        callback: FrogoResponseCallback<TvChanges>
     )
 
     // TV
@@ -684,7 +684,7 @@ interface MovieDataSource {
         tv_id: Int,
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<TvContentRatings>
+        callback: FrogoResponseCallback<TvContentRatings>
     )
 
     // TV
@@ -693,7 +693,7 @@ interface MovieDataSource {
         tv_id: Int,
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<TvCredits>
+        callback: FrogoResponseCallback<TvCredits>
     )
 
     // TV
@@ -702,7 +702,7 @@ interface MovieDataSource {
         tv_id: Int,
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<TvEpisodeGroups>
+        callback: FrogoResponseCallback<TvEpisodeGroups>
     )
 
     // TV
@@ -711,7 +711,7 @@ interface MovieDataSource {
         tv_id: Int,
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<TvExternalIds>
+        callback: FrogoResponseCallback<TvExternalIds>
     )
 
     // TV
@@ -720,7 +720,7 @@ interface MovieDataSource {
         tv_id: Int,
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<TvImages>
+        callback: FrogoResponseCallback<TvImages>
     )
 
     // TV
@@ -728,7 +728,7 @@ interface MovieDataSource {
     fun getTvKeyword(
         tv_id: Int,
         apiKey: String,
-        callback: GetRemoteCallback<TvKeywords>
+        callback: FrogoResponseCallback<TvKeywords>
     )
 
     // TV
@@ -738,7 +738,7 @@ interface MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: GetRemoteCallback<TvRecommendations>
+        callback: FrogoResponseCallback<TvRecommendations>
     )
 
     // TV
@@ -746,7 +746,7 @@ interface MovieDataSource {
     fun getTvReviews(
         tv_id: Int,
         apiKey: String,
-        callback: GetRemoteCallback<TvReviews>
+        callback: FrogoResponseCallback<TvReviews>
     )
 
     // TV
@@ -754,7 +754,7 @@ interface MovieDataSource {
     fun getTvScreenedTheatrically(
         tv_id: Int,
         apiKey: String,
-        callback: GetRemoteCallback<TvScreenedTheatrically>
+        callback: FrogoResponseCallback<TvScreenedTheatrically>
     )
 
     // TV
@@ -764,7 +764,7 @@ interface MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: GetRemoteCallback<TvSimilarTVShows>
+        callback: FrogoResponseCallback<TvSimilarTVShows>
     )
 
     // TV
@@ -772,7 +772,7 @@ interface MovieDataSource {
     fun getTvTranslations(
         tv_id: Int,
         apiKey: String,
-        callback: GetRemoteCallback<TvTranslations>
+        callback: FrogoResponseCallback<TvTranslations>
     )
 
     // TV
@@ -781,7 +781,7 @@ interface MovieDataSource {
         tv_id: Int,
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<TvVideos>
+        callback: FrogoResponseCallback<TvVideos>
     )
 
     // TV
@@ -789,7 +789,7 @@ interface MovieDataSource {
     fun getTvLatest(
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<TvLatest>
+        callback: FrogoResponseCallback<TvLatest>
     )
 
     // TV
@@ -798,7 +798,7 @@ interface MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: GetRemoteCallback<TvAiringToday>
+        callback: FrogoResponseCallback<TvAiringToday>
     )
 
     // TV
@@ -807,7 +807,7 @@ interface MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: GetRemoteCallback<TvOnTheAir>
+        callback: FrogoResponseCallback<TvOnTheAir>
     )
 
     // TV
@@ -816,7 +816,7 @@ interface MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: GetRemoteCallback<TvPopular>
+        callback: FrogoResponseCallback<TvPopular>
     )
 
     // TV
@@ -825,7 +825,7 @@ interface MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: GetRemoteCallback<TvTopRated>
+        callback: FrogoResponseCallback<TvTopRated>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -838,7 +838,7 @@ interface MovieDataSource {
         apiKey: String,
         language: String?,
         append_to_response: String?,
-        callback: GetRemoteCallback<TvSeasonsDetails>
+        callback: FrogoResponseCallback<TvSeasonsDetails>
     )
 
     // TV SEASONS
@@ -849,7 +849,7 @@ interface MovieDataSource {
         startDate: String?,
         endDate: String?,
         page: Int?,
-        callback: GetRemoteCallback<TvSeasonsChanges>
+        callback: FrogoResponseCallback<TvSeasonsChanges>
     )
 
     // TV SEASONS
@@ -861,7 +861,7 @@ interface MovieDataSource {
         language: String?,
         guest_session_id: String?,
         session_id: String?,
-        callback: GetRemoteCallback<TvSeasonsAccountStates>
+        callback: FrogoResponseCallback<TvSeasonsAccountStates>
     )
 
     // TV SEASONS
@@ -871,7 +871,7 @@ interface MovieDataSource {
         season_number: Int,
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<TvSeasonsCredits>
+        callback: FrogoResponseCallback<TvSeasonsCredits>
     )
 
     // TV SEASONS
@@ -881,7 +881,7 @@ interface MovieDataSource {
         season_number: Int,
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<TvSeasonsExternalIds>
+        callback: FrogoResponseCallback<TvSeasonsExternalIds>
     )
 
     // TV SEASONS
@@ -891,7 +891,7 @@ interface MovieDataSource {
         season_number: Int,
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<TvSeasonsImages>
+        callback: FrogoResponseCallback<TvSeasonsImages>
     )
 
     // TV SEASONS
@@ -901,7 +901,7 @@ interface MovieDataSource {
         season_number: Int,
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<TvSeasonsVideos>
+        callback: FrogoResponseCallback<TvSeasonsVideos>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -915,7 +915,7 @@ interface MovieDataSource {
         apiKey: String,
         language: String?,
         append_to_response: String?,
-        callback: GetRemoteCallback<TvEpisodeDetails>
+        callback: FrogoResponseCallback<TvEpisodeDetails>
     )
 
     // TV EPISODE
@@ -926,7 +926,7 @@ interface MovieDataSource {
         startDate: String?,
         endDate: String?,
         page: Int?,
-        callback: GetRemoteCallback<TvEpisodeChanges>
+        callback: FrogoResponseCallback<TvEpisodeChanges>
     )
 
     // TV EPISODE
@@ -938,7 +938,7 @@ interface MovieDataSource {
         apiKey: String,
         guest_session_id: String?,
         session_id: String?,
-        callback: GetRemoteCallback<TvEpisodeAccountStates>
+        callback: FrogoResponseCallback<TvEpisodeAccountStates>
     )
 
     // TV EPISODE
@@ -948,7 +948,7 @@ interface MovieDataSource {
         season_number: Int,
         episode_number: Int,
         apiKey: String,
-        callback: GetRemoteCallback<TvEpisodeCredits>
+        callback: FrogoResponseCallback<TvEpisodeCredits>
     )
 
     // TV EPISODE
@@ -958,7 +958,7 @@ interface MovieDataSource {
         season_number: Int,
         episode_number: Int,
         apiKey: String,
-        callback: GetRemoteCallback<TvEpisodeExternalIds>
+        callback: FrogoResponseCallback<TvEpisodeExternalIds>
     )
 
     // TV EPISODE
@@ -968,7 +968,7 @@ interface MovieDataSource {
         season_number: Int,
         episode_number: Int,
         apiKey: String,
-        callback: GetRemoteCallback<TvEpisodeImages>
+        callback: FrogoResponseCallback<TvEpisodeImages>
     )
 
     // TV EPISODE
@@ -978,7 +978,7 @@ interface MovieDataSource {
         season_number: Int,
         episode_number: Int,
         apiKey: String,
-        callback: GetRemoteCallback<TvEpisodeTranslation>
+        callback: FrogoResponseCallback<TvEpisodeTranslation>
     )
 
     // TV EPISODE
@@ -989,7 +989,7 @@ interface MovieDataSource {
         episode_number: Int,
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<TvEpisodeVideos>
+        callback: FrogoResponseCallback<TvEpisodeVideos>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -1000,7 +1000,7 @@ interface MovieDataSource {
         id: String?,
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<TvEpisodeGroupsDetails>
+        callback: FrogoResponseCallback<TvEpisodeGroupsDetails>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -1011,7 +1011,7 @@ interface MovieDataSource {
         person_id: Int,
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<PeopleDetails>
+        callback: FrogoResponseCallback<PeopleDetails>
     )
 
     // PEOPLE
@@ -1022,7 +1022,7 @@ interface MovieDataSource {
         endDate: String?,
         page: Int?,
         startDate: String?,
-        callback: GetRemoteCallback<PeopleChanges>
+        callback: FrogoResponseCallback<PeopleChanges>
     )
 
     // PEOPLE
@@ -1031,7 +1031,7 @@ interface MovieDataSource {
         person_id: Int,
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<PeopleMovieCredits>
+        callback: FrogoResponseCallback<PeopleMovieCredits>
     )
 
     // PEOPLE
@@ -1040,7 +1040,7 @@ interface MovieDataSource {
         person_id: Int,
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<PeopleTvCredits>
+        callback: FrogoResponseCallback<PeopleTvCredits>
     )
 
     // PEOPLE
@@ -1049,7 +1049,7 @@ interface MovieDataSource {
         person_id: Int,
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<PeopleCombinedCredits>
+        callback: FrogoResponseCallback<PeopleCombinedCredits>
     )
 
     // PEOPLE
@@ -1058,7 +1058,7 @@ interface MovieDataSource {
         person_id: Int,
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<PeopleExternalIds>
+        callback: FrogoResponseCallback<PeopleExternalIds>
     )
 
     // PEOPLE
@@ -1066,7 +1066,7 @@ interface MovieDataSource {
     fun getPeopleImages(
         person_id: Int,
         apiKey: String,
-        callback: GetRemoteCallback<PeopleImages>
+        callback: FrogoResponseCallback<PeopleImages>
     )
 
     // PEOPLE
@@ -1076,7 +1076,7 @@ interface MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: GetRemoteCallback<PeopleTaggedImages>
+        callback: FrogoResponseCallback<PeopleTaggedImages>
     )
 
     // PEOPLE
@@ -1085,7 +1085,7 @@ interface MovieDataSource {
         person_id: Int,
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<PeopleTranslations>
+        callback: FrogoResponseCallback<PeopleTranslations>
     )
 
     // PEOPLE
@@ -1093,7 +1093,7 @@ interface MovieDataSource {
     fun getPeopleLatest(
         apiKey: String,
         language: String?,
-        callback: GetRemoteCallback<PeopleLatest>
+        callback: FrogoResponseCallback<PeopleLatest>
     )
 
     // PEOPLE
@@ -1102,7 +1102,7 @@ interface MovieDataSource {
         apiKey: String,
         language: String?,
         page: Int?,
-        callback: GetRemoteCallback<PeoplePopular>
+        callback: FrogoResponseCallback<PeoplePopular>
     )
 
     // ---------------------------------------------------------------------------------------------
@@ -1162,8 +1162,5 @@ interface MovieDataSource {
     // fun deleteList
 
     // ---------------------------------------------------------------------------------------------
-
-    // Response Callback
-    interface GetRemoteCallback<T> : BaseMovieDataSource.ResponseCallback<T>
 
 }
