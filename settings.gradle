@@ -1,2 +1,3 @@
 rootProject.name = "Consumable"
 include ':app'
+include ':frogoconsumeapi'
