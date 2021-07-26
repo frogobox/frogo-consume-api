@@ -22,7 +22,7 @@ object NewsConstant {
     object Url {
 
         const val BASE_URL = "https://newsapi.org/"
-        const val NEWS_API_KEY = "84d090d0537548ee8ac77620217b1b52"
+        const val API_KEY = "84d090d0537548ee8ac77620217b1b52"
 
         const val BASE_PATH = "v2/"
 

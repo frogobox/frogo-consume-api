@@ -2,8 +2,8 @@ package com.frogobox.frogoconsumeapi.news.sources
 
 import android.content.Context
 import com.frogobox.frogolog.FLog
-import com.frogobox.frogoconsumeapi.news.model.ArticleResponse
-import com.frogobox.frogoconsumeapi.news.model.SourceResponse
+import com.frogobox.frogoconsumeapi.news.response.ArticleResponse
+import com.frogobox.frogoconsumeapi.news.response.SourceResponse
 import com.frogobox.frogosdk.core.FrogoApiCallback
 import com.frogobox.frogosdk.core.FrogoApiClient
 import com.frogobox.frogosdk.core.FrogoResponseCallback
@@ -52,8 +52,8 @@ object NewsRepository : NewsDataSource {
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : FrogoApiCallback<ArticleResponse>() {
-                override fun onSuccess(model: ArticleResponse) {
-                    callback.onSuccess(model)
+                override fun onSuccess(data: ArticleResponse) {
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailure(code: Int, errorMessage: String) {
@@ -96,8 +96,8 @@ object NewsRepository : NewsDataSource {
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : FrogoApiCallback<ArticleResponse>() {
-                override fun onSuccess(model: ArticleResponse) {
-                    callback.onSuccess(model)
+                override fun onSuccess(data: ArticleResponse) {
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailure(code: Int, errorMessage: String) {
@@ -119,8 +119,8 @@ object NewsRepository : NewsDataSource {
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : FrogoApiCallback<SourceResponse>() {
-                override fun onSuccess(model: SourceResponse) {
-                    callback.onSuccess(model)
+                override fun onSuccess(data: SourceResponse) {
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailure(code: Int, errorMessage: String) {

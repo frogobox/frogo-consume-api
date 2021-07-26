@@ -2,6 +2,8 @@ package com.frogobox.frogoconsumeapi.meal.source
 
 import android.content.Context
 import com.frogobox.frogoconsumeapi.meal.model.*
+import com.frogobox.frogoconsumeapi.meal.response.CategoryResponse
+import com.frogobox.frogoconsumeapi.meal.response.MealResponse
 import com.frogobox.frogosdk.core.FrogoResponseCallback
 
 /**

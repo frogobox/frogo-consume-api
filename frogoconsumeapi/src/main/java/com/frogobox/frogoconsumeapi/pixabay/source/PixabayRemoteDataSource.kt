@@ -1,9 +1,12 @@
-package com.frogobox.frogoconsumeapi.pixabay.data.source
+package com.frogobox.frogoconsumeapi.pixabay.source
 
 import android.content.Context
-import com.frogobox.frogoconsumeapi.pixabay.data.model.PixabayImage
-import com.frogobox.frogoconsumeapi.pixabay.data.model.PixabayVideo
-import com.frogobox.frogoconsumeapi.pixabay.data.response.Response
+import com.frogobox.frogoconsumeapi.pixabay.model.PixabayImage
+import com.frogobox.frogoconsumeapi.pixabay.model.PixabayVideo
+import com.frogobox.frogoconsumeapi.pixabay.response.Response
+import com.frogobox.frogosdk.core.FrogoApiCallback
+import com.frogobox.frogosdk.core.FrogoApiClient
+import com.frogobox.frogosdk.core.FrogoResponseCallback
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -26,10 +29,10 @@ import io.reactivex.schedulers.Schedulers
  */
 object PixabayRemoteDataSource : PixabayDataSource {
 
-    private val pixabayApiService = PixabayApiService
+    private var pixabayApiService = FrogoApiClient.create<PixabayApiService>(PixabayConstant.Url.BASE_URL)
 
     override fun usingChuckInterceptor(context: Context) {
-        pixabayApiService.usingChuckInterceptor(context)
+        pixabayApiService = FrogoApiClient.create(PixabayConstant.Url.BASE_URL, context)
     }
 
     override fun searchImage(
@@ -48,10 +51,9 @@ object PixabayRemoteDataSource : PixabayDataSource {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: PixabayDataSource.GetRemoteCallback<Response<PixabayImage>>
+        callback: FrogoResponseCallback<Response<PixabayImage>>
     ) {
-        pixabayApiService.getApiService
-            .searchImage(
+        pixabayApiService.searchImage(
                 apiKey,
                 q,
                 lang,
@@ -72,16 +74,14 @@ object PixabayRemoteDataSource : PixabayDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : PixabayApiCallback<Response<PixabayImage>>() {
-                override fun onSuccess(model: Response<PixabayImage>) {
-                    callback.onSuccess(model)
+            .subscribe(object : FrogoApiCallback<Response<PixabayImage>>() {
+                override fun onSuccess(data: Response<PixabayImage>) {
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailure(code: Int, errorMessage: String) {
                     callback.onFailed(code, errorMessage)
                 }
-
-                override fun onFinish() {}
             })
     }
 
@@ -99,10 +99,9 @@ object PixabayRemoteDataSource : PixabayDataSource {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: PixabayDataSource.GetRemoteCallback<Response<PixabayVideo>>
+        callback: FrogoResponseCallback<Response<PixabayVideo>>
     ) {
-        pixabayApiService.getApiService
-            .searchVideo(
+        pixabayApiService.searchVideo(
                 apiKey,
                 q,
                 lang,
@@ -121,16 +120,14 @@ object PixabayRemoteDataSource : PixabayDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : PixabayApiCallback<Response<PixabayVideo>>() {
-                override fun onSuccess(model: Response<PixabayVideo>) {
-                    callback.onSuccess(model)
+            .subscribe(object : FrogoApiCallback<Response<PixabayVideo>>() {
+                override fun onSuccess(data: Response<PixabayVideo>) {
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailure(code: Int, errorMessage: String) {
                     callback.onFailed(code, errorMessage)
                 }
-
-                override fun onFinish() {}
             })
     }
 }

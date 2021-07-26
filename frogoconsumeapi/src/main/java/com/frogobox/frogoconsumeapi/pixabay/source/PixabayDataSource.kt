@@ -1,10 +1,10 @@
-package com.frogobox.frogoconsumeapi.pixabay.data.source
+package com.frogobox.frogoconsumeapi.pixabay.source
 
 import android.content.Context
-import com.frogobox.frogoconsumeapi.pixabay.base.BasePixabayDataSource
-import com.frogobox.frogoconsumeapi.pixabay.data.model.PixabayImage
-import com.frogobox.frogoconsumeapi.pixabay.data.model.PixabayVideo
-import com.frogobox.frogoconsumeapi.pixabay.data.response.Response
+import com.frogobox.frogoconsumeapi.pixabay.model.PixabayImage
+import com.frogobox.frogoconsumeapi.pixabay.model.PixabayVideo
+import com.frogobox.frogoconsumeapi.pixabay.response.Response
+import com.frogobox.frogosdk.core.FrogoResponseCallback
 
 /**
  * Created by Faisal Amir
@@ -46,7 +46,7 @@ interface PixabayDataSource {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: GetRemoteCallback<Response<PixabayImage>>
+        callback: FrogoResponseCallback<Response<PixabayImage>>
     )
 
     // Search for Video
@@ -64,10 +64,7 @@ interface PixabayDataSource {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: GetRemoteCallback<Response<PixabayVideo>>
+        callback: FrogoResponseCallback<Response<PixabayVideo>>
     )
-
-    // Response Callback
-    interface GetRemoteCallback<T> : BasePixabayDataSource.ResponseCallback<T>
 
 }

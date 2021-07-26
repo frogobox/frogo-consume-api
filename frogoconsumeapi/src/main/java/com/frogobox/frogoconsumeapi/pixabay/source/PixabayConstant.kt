@@ -1,4 +1,4 @@
-package com.frogobox.frogoconsumeapi.pixabay.util
+package com.frogobox.frogoconsumeapi.pixabay.source
 
 /**
  * Created by Faisal Amir
@@ -19,7 +19,14 @@ package com.frogobox.frogoconsumeapi.pixabay.util
  */
 object PixabayConstant {
 
-    const val SAMPLE_API_KEY = "14783772-79ef44657a1c0939186d84986"
+    object Url {
+        const val BASE_URL = "https://pixabay.com/"
+        const val PATH_IMAGE = "api/"
+        const val PATH_VIDEO = "api/videos/"
+        const val API_KEY = "14783772-79ef44657a1c0939186d84986"
+    }
+
+
 
     // * Required
     const val QUERY_API_KEY = "key"

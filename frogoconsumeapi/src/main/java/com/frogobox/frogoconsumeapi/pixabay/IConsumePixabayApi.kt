@@ -1,10 +1,10 @@
 package com.frogobox.frogoconsumeapi.pixabay
 
 import android.content.Context
-import com.frogobox.frogoconsumeapi.pixabay.callback.PixabayResultCallback
-import com.frogobox.frogoconsumeapi.pixabay.data.model.PixabayImage
-import com.frogobox.frogoconsumeapi.pixabay.data.model.PixabayVideo
-import com.frogobox.frogoconsumeapi.pixabay.data.response.Response
+import com.frogobox.frogoconsumeapi.pixabay.model.PixabayImage
+import com.frogobox.frogoconsumeapi.pixabay.model.PixabayVideo
+import com.frogobox.frogoconsumeapi.pixabay.response.Response
+import com.frogobox.frogosdk.core.FrogoResponseCallback
 
 /**
  * Created by Faisal Amir
@@ -24,7 +24,7 @@ import com.frogobox.frogoconsumeapi.pixabay.data.response.Response
  *
  */
 
-interface ConsumePixabayApiView {
+interface IConsumePixabayApi {
 
     // Switch For Using Chuck Interceptor
     fun usingChuckInterceptor(context: Context)
@@ -45,7 +45,7 @@ interface ConsumePixabayApiView {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: PixabayResultCallback<Response<PixabayImage>>
+        callback: FrogoResponseCallback<Response<PixabayImage>>
     )
 
     // Search for Video
@@ -62,7 +62,7 @@ interface ConsumePixabayApiView {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: PixabayResultCallback<Response<PixabayVideo>>
+        callback: FrogoResponseCallback<Response<PixabayVideo>>
     )
 
 }

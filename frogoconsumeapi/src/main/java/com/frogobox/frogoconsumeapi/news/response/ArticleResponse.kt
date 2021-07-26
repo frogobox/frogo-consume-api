@@ -1,4 +1,4 @@
-package com.frogobox.frogoconsumeapi.news.model
+package com.frogobox.frogoconsumeapi.news.response
 
 import com.frogobox.frogoconsumeapi.news.model.Article
 import com.google.gson.annotations.SerializedName

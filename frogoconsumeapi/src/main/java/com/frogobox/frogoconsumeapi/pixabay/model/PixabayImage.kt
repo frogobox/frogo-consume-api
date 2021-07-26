@@ -1,4 +1,4 @@
-package com.frogobox.frogoconsumeapi.pixabay.data.model
+package com.frogobox.frogoconsumeapi.pixabay.model
 
 import com.google.gson.annotations.SerializedName
 

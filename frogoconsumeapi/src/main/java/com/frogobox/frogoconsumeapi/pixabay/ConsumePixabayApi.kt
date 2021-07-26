@@ -1,13 +1,11 @@
 package com.frogobox.frogoconsumeapi.pixabay
 
 import android.content.Context
-import com.frogobox.frogoconsumeapi.pixabay.callback.PixabayResultCallback
-import com.frogobox.frogoconsumeapi.pixabay.data.model.PixabayImage
-import com.frogobox.frogoconsumeapi.pixabay.data.model.PixabayVideo
-import com.frogobox.frogoconsumeapi.pixabay.data.response.Response
-import com.frogobox.frogoconsumeapi.pixabay.data.source.PixabayDataSource
-import com.frogobox.frogoconsumeapi.pixabay.data.source.PixabayRemoteDataSource
-import com.frogobox.frogoconsumeapi.pixabay.data.source.PixabayRepository
+import com.frogobox.frogoconsumeapi.pixabay.model.PixabayImage
+import com.frogobox.frogoconsumeapi.pixabay.model.PixabayVideo
+import com.frogobox.frogoconsumeapi.pixabay.response.Response
+import com.frogobox.frogoconsumeapi.pixabay.source.PixabayRemoteDataSource
+import com.frogobox.frogosdk.core.FrogoResponseCallback
 
 /**
  * Created by Faisal Amir
@@ -26,9 +24,9 @@ import com.frogobox.frogoconsumeapi.pixabay.data.source.PixabayRepository
  * com.frogobox.frogoconsumeapi.pixabay
  *
  */
-class ConsumePixabayApi(private val apiKey: String) : ConsumePixabayApiView {
+class ConsumePixabayApi(private val apiKey: String) : IConsumePixabayApi {
 
-    private val pixabayRepository = PixabayRepository(PixabayRemoteDataSource)
+    private val pixabayRepository = PixabayRemoteDataSource
 
     override fun usingChuckInterceptor(context: Context) {
         pixabayRepository.usingChuckInterceptor(context)
@@ -49,7 +47,7 @@ class ConsumePixabayApi(private val apiKey: String) : ConsumePixabayApiView {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: PixabayResultCallback<Response<PixabayImage>>
+        callback: FrogoResponseCallback<Response<PixabayImage>>
     ) {
         pixabayRepository.searchImage(
             apiKey,
@@ -67,23 +65,7 @@ class ConsumePixabayApi(private val apiKey: String) : ConsumePixabayApiView {
             order,
             page,
             perPage,
-            object : PixabayDataSource.GetRemoteCallback<Response<PixabayImage>> {
-                override fun onSuccess(data: Response<PixabayImage>) {
-                    callback.getResultData(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback)
     }
 
     override fun searchVideo(
@@ -99,7 +81,7 @@ class ConsumePixabayApi(private val apiKey: String) : ConsumePixabayApiView {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: PixabayResultCallback<Response<PixabayVideo>>
+        callback: FrogoResponseCallback<Response<PixabayVideo>>
     ) {
         pixabayRepository.searchVideo(
             apiKey,
@@ -115,22 +97,6 @@ class ConsumePixabayApi(private val apiKey: String) : ConsumePixabayApiView {
             order,
             page,
             perPage,
-            object : PixabayDataSource.GetRemoteCallback<Response<PixabayVideo>> {
-                override fun onSuccess(data: Response<PixabayVideo>) {
-                    callback.getResultData(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.failedResult(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback)
     }
 }

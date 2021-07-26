@@ -1,4 +1,4 @@
-package com.frogobox.frogoconsumeapi.meal.model
+package com.frogobox.frogoconsumeapi.meal.response
 
 import com.google.gson.annotations.SerializedName
 

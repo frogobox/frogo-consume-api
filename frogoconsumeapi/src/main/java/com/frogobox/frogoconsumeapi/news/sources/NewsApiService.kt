@@ -1,7 +1,7 @@
 package com.frogobox.frogoconsumeapi.news.sources
 
-import com.frogobox.frogoconsumeapi.news.model.ArticleResponse
-import com.frogobox.frogoconsumeapi.news.model.SourceResponse
+import com.frogobox.frogoconsumeapi.news.response.ArticleResponse
+import com.frogobox.frogoconsumeapi.news.response.SourceResponse
 import com.frogobox.frogoconsumeapi.news.sources.NewsConstant.Url.URL_EVERYTHING
 import com.frogobox.frogoconsumeapi.news.sources.NewsConstant.Url.URL_SOURCES
 import com.frogobox.frogoconsumeapi.news.sources.NewsConstant.Url.URL_TOP_HEADLINE

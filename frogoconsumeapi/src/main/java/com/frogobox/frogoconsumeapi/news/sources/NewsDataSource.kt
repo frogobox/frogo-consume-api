@@ -1,8 +1,8 @@
 package com.frogobox.frogoconsumeapi.news.sources
 
 import android.content.Context
-import com.frogobox.frogoconsumeapi.news.model.ArticleResponse
-import com.frogobox.frogoconsumeapi.news.model.SourceResponse
+import com.frogobox.frogoconsumeapi.news.response.ArticleResponse
+import com.frogobox.frogoconsumeapi.news.response.SourceResponse
 import com.frogobox.frogosdk.core.FrogoResponseCallback
 
 /**

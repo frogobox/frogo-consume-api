@@ -1,12 +1,14 @@
-package com.frogobox.frogoconsumeapi.meal.model
+package com.frogobox.frogoconsumeapi.news.response
 
+import com.frogobox.frogoconsumeapi.news.model.Article
+import com.frogobox.frogoconsumeapi.news.model.Source
 import com.google.gson.annotations.SerializedName
 
 /**
  * Created by Faisal Amir
  * FrogoBox Inc License
  * =========================================
- * TheMealsAPI
+ * NewsApi
  * Copyright (C) 15/03/2020.
  * All rights reserved
  * -----------------------------------------
@@ -16,12 +18,15 @@ import com.google.gson.annotations.SerializedName
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- * com.frogobox.frogoconsumeapi.meal.data.response
+ * com.frogobox.frogoconsumeapi.news.data.response
  *
  */
-data class CategoryResponse(
+data class SourceResponse(
 
-    @SerializedName("categories")
-    var categories: List<Category>? = null
+    @SerializedName("status")
+    var status: String? = null,
+
+    @SerializedName("sources")
+    var sources: List<Source>? = null
 
 )

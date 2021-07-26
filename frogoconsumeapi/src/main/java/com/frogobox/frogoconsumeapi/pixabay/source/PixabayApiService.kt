@@ -1,11 +1,9 @@
-package com.frogobox.frogoconsumeapi.pixabay.data.source
+package com.frogobox.frogoconsumeapi.pixabay.source
 
 import android.content.Context
-import com.frogobox.frogoconsumeapi.pixabay.data.model.PixabayImage
-import com.frogobox.frogoconsumeapi.pixabay.data.model.PixabayVideo
-import com.frogobox.frogoconsumeapi.pixabay.data.response.Response
-import com.frogobox.frogoconsumeapi.pixabay.util.PixabayConstant
-import com.frogobox.frogoconsumeapi.pixabay.util.PixabayUrl
+import com.frogobox.frogoconsumeapi.pixabay.model.PixabayImage
+import com.frogobox.frogoconsumeapi.pixabay.model.PixabayVideo
+import com.frogobox.frogoconsumeapi.pixabay.response.Response
 import com.readystatesoftware.chuck.ChuckInterceptor
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
@@ -37,7 +35,7 @@ import java.util.concurrent.TimeUnit
 interface PixabayApiService {
 
     // Search for Image
-    @GET(PixabayUrl.PATH_IMAGE)
+    @GET(PixabayConstant.Url.PATH_IMAGE)
     fun searchImage(
         @Query(PixabayConstant.QUERY_API_KEY) apiKey: String,
         @Query(PixabayConstant.QUERY_Q) q: String,
@@ -57,7 +55,7 @@ interface PixabayApiService {
     ): Observable<Response<PixabayImage>>
 
     // Search for Video
-    @GET(PixabayUrl.PATH_VIDEO)
+    @GET(PixabayConstant.Url.PATH_VIDEO)
     fun searchVideo(
         @Query(PixabayConstant.QUERY_API_KEY) apiKey: String,
         @Query(PixabayConstant.QUERY_Q) q: String,
@@ -73,44 +71,5 @@ interface PixabayApiService {
         @Query(PixabayConstant.QUERY_PAGE) page: Int?,
         @Query(PixabayConstant.QUERY_PER_PAGE) perPage: Int?
     ): Observable<Response<PixabayVideo>>
-
-    companion object Factory {
-
-        private var isUsingChuckInterceptor = false
-        private lateinit var context: Context
-
-        fun usingChuckInterceptor(context: Context) {
-            isUsingChuckInterceptor = true
-            this.context = context
-        }
-
-        val getApiService: PixabayApiService by lazy {
-            val mLoggingInterceptor = HttpLoggingInterceptor()
-            mLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-
-            val mClient = if (isUsingChuckInterceptor) {
-                OkHttpClient.Builder()
-                    .addInterceptor(mLoggingInterceptor)
-                    .addInterceptor(ChuckInterceptor(context))
-                    .readTimeout(30, TimeUnit.SECONDS)
-                    .connectTimeout(30, TimeUnit.SECONDS)
-                    .build()
-            } else {
-                OkHttpClient.Builder()
-                    .readTimeout(30, TimeUnit.SECONDS)
-                    .connectTimeout(30, TimeUnit.SECONDS)
-                    .build()
-            }
-
-            val mRetrofit = Retrofit.Builder()
-                .baseUrl(PixabayUrl.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(mClient)
-                .build()
-
-            mRetrofit.create(PixabayApiService::class.java)
-        }
-    }
 
 }

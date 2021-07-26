@@ -1,4 +1,4 @@
-package com.frogobox.frogoconsumeapi.pixabay.data.response
+package com.frogobox.frogoconsumeapi.pixabay.model
 
 import com.google.gson.annotations.SerializedName
 
@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName
  * FrogoBox Inc License
  * =========================================
  * PixabayAPI
- * Copyright (C) 15/03/2020.
+ * Copyright (C) 14/03/2020.
  * All rights reserved
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
@@ -16,16 +16,20 @@ import com.google.gson.annotations.SerializedName
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- * com.frogobox.frogoconsumeapi.pixabay.data.response
+ * com.frogobox.frogoconsumeapi.pixabay.data.model
  *
  */
-data class Response<T>(
-    @SerializedName("total")
-    var total: Int? = null,
+data class PixabayVideoType(
 
-    @SerializedName("totalHits")
-    var totalHits: Int? = null,
+    @SerializedName("large")
+    var large: PixabayVideoType? = null,
 
-    @SerializedName("hits")
-    var hits: List<T>? = null
+    @SerializedName("medium")
+    var medium: PixabayVideoType? = null,
+
+    @SerializedName("small")
+    var small: PixabayVideoType? = null,
+
+    @SerializedName("tiny")
+    var tiny: PixabayVideoType? = null
 )

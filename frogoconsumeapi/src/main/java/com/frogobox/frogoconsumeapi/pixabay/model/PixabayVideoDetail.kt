@@ -1,4 +1,6 @@
-package com.frogobox.frogoconsumeapi.pixabay.callback
+package com.frogobox.frogoconsumeapi.pixabay.model
+
+import com.google.gson.annotations.SerializedName
 
 /**
  * Created by Faisal Amir
@@ -14,21 +16,21 @@ package com.frogobox.frogoconsumeapi.pixabay.callback
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- * com.frogobox.frogoconsumeapi.pixabay.callback
+ * com.frogobox.frogoconsumeapi.pixabay.data.model
  *
  */
-interface PixabayResultCallback<T> {
+data class PixabayVideoDetail(
 
-    // Getting Data From API
-    fun getResultData(data: T)
+    @SerializedName("url")
+    var url: String? = null,
 
-    // Failed Meesage
-    fun failedResult(statusCode: Int, errorMessage: String?)
+    @SerializedName("width")
+    var width: Int? = null,
 
-    // Show your progress view
-    fun onShowProgress()
+    @SerializedName("height")
+    var height: Int? = null,
 
-    // Hide your progress view
-    fun onHideProgress()
+    @SerializedName("size")
+    var size: Int? = null
 
-}
+)

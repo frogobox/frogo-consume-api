@@ -1,7 +1,8 @@
 package com.frogobox.frogoconsumeapi.meal.source
 
-import com.frogobox.frogoconsumeapi.meal.model.MealResponse
+import com.frogobox.frogoconsumeapi.meal.response.MealResponse
 import com.frogobox.frogoconsumeapi.meal.model.*
+import com.frogobox.frogoconsumeapi.meal.response.CategoryResponse
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path

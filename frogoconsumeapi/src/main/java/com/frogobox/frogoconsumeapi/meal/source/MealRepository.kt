@@ -1,8 +1,9 @@
 package com.frogobox.frogoconsumeapi.meal.source
 
 import android.content.Context
-import com.frogobox.frogoconsumeapi.meal.model.MealResponse
+import com.frogobox.frogoconsumeapi.meal.response.MealResponse
 import com.frogobox.frogoconsumeapi.meal.model.*
+import com.frogobox.frogoconsumeapi.meal.response.CategoryResponse
 import com.frogobox.frogosdk.core.FrogoApiCallback
 import com.frogobox.frogosdk.core.FrogoApiClient
 import com.frogobox.frogosdk.core.FrogoResponseCallback
@@ -46,8 +47,8 @@ object MealRepository : MealDataSource {
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : FrogoApiCallback<MealResponse<Meal>>() {
-                override fun onSuccess(model: MealResponse<Meal>) {
-                    callback.onSuccess(model)
+                override fun onSuccess(data: MealResponse<Meal>) {
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailure(code: Int, errorMessage: String) {
@@ -69,8 +70,8 @@ object MealRepository : MealDataSource {
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : FrogoApiCallback<MealResponse<Meal>>() {
-                override fun onSuccess(model: MealResponse<Meal>) {
-                    callback.onSuccess(model)
+                override fun onSuccess(data: MealResponse<Meal>) {
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailure(code: Int, errorMessage: String) {
@@ -93,8 +94,8 @@ object MealRepository : MealDataSource {
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : FrogoApiCallback<MealResponse<Meal>>() {
-                override fun onSuccess(model: MealResponse<Meal>) {
-                    callback.onSuccess(model)
+                override fun onSuccess(data: MealResponse<Meal>) {
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailure(code: Int, errorMessage: String) {
@@ -114,8 +115,8 @@ object MealRepository : MealDataSource {
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : FrogoApiCallback<MealResponse<Meal>>() {
-                override fun onSuccess(model: MealResponse<Meal>) {
-                    callback.onSuccess(model)
+                override fun onSuccess(data: MealResponse<Meal>) {
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailure(code: Int, errorMessage: String) {
@@ -135,8 +136,8 @@ object MealRepository : MealDataSource {
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : FrogoApiCallback<CategoryResponse>() {
-                override fun onSuccess(model: CategoryResponse) {
-                    callback.onSuccess(model)
+                override fun onSuccess(data: CategoryResponse) {
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailure(code: Int, errorMessage: String) {
@@ -156,8 +157,8 @@ object MealRepository : MealDataSource {
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : FrogoApiCallback<MealResponse<Category>>() {
-                override fun onSuccess(model: MealResponse<Category>) {
-                    callback.onSuccess(model)
+                override fun onSuccess(data: MealResponse<Category>) {
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailure(code: Int, errorMessage: String) {
@@ -177,8 +178,8 @@ object MealRepository : MealDataSource {
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : FrogoApiCallback<MealResponse<Area>>() {
-                override fun onSuccess(model: MealResponse<Area>) {
-                    callback.onSuccess(model)
+                override fun onSuccess(data: MealResponse<Area>) {
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailure(code: Int, errorMessage: String) {
@@ -200,8 +201,8 @@ object MealRepository : MealDataSource {
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : FrogoApiCallback<MealResponse<Ingredient>>() {
-                override fun onSuccess(model: MealResponse<Ingredient>) {
-                    callback.onSuccess(model)
+                override fun onSuccess(data: MealResponse<Ingredient>) {
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailure(code: Int, errorMessage: String) {
@@ -222,8 +223,8 @@ object MealRepository : MealDataSource {
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : FrogoApiCallback<MealResponse<MealFilter>>() {
-                override fun onSuccess(model: MealResponse<MealFilter>) {
-                    callback.onSuccess(model)
+                override fun onSuccess(data: MealResponse<MealFilter>) {
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailure(code: Int, errorMessage: String) {
@@ -244,8 +245,8 @@ object MealRepository : MealDataSource {
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : FrogoApiCallback<MealResponse<MealFilter>>() {
-                override fun onSuccess(model: MealResponse<MealFilter>) {
-                    callback.onSuccess(model)
+                override fun onSuccess(data: MealResponse<MealFilter>) {
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailure(code: Int, errorMessage: String) {
@@ -266,8 +267,8 @@ object MealRepository : MealDataSource {
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : FrogoApiCallback<MealResponse<MealFilter>>() {
-                override fun onSuccess(model: MealResponse<MealFilter>) {
-                    callback.onSuccess(model)
+                override fun onSuccess(data: MealResponse<MealFilter>) {
+                    callback.onSuccess(data)
                 }
 
                 override fun onFailure(code: Int, errorMessage: String) {

@@ -1,11 +1,14 @@
-package com.frogobox.frogoconsumeapi.pixabay.util
+package com.frogobox.frogoconsumeapi.meal.response
+
+import com.frogobox.frogoconsumeapi.meal.model.Category
+import com.google.gson.annotations.SerializedName
 
 /**
  * Created by Faisal Amir
  * FrogoBox Inc License
  * =========================================
- * PixabayAPI
- * Copyright (C) 14/03/2020.
+ * TheMealsAPI
+ * Copyright (C) 15/03/2020.
  * All rights reserved
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
@@ -14,17 +17,12 @@ package com.frogobox.frogoconsumeapi.pixabay.util
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- * com.frogobox.frogoconsumeapi.pixabay.util
+ * com.frogobox.frogoconsumeapi.meal.data.response
  *
  */
-class PixabayUrl {
+data class CategoryResponse(
 
-    companion object {
+    @SerializedName("categories")
+    var categories: List<Category>? = null
 
-        const val BASE_URL = "https://pixabay.com/"
-        const val PATH_IMAGE = "api/"
-        const val PATH_VIDEO = "api/videos/"
-
-    }
-
-}
+)
