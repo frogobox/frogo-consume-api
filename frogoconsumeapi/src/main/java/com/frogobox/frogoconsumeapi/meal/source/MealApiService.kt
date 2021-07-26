@@ -27,61 +27,61 @@ import retrofit2.http.Query
 interface MealApiService {
 
     // Search meal by name
-    @GET(MealConstant.Url.MEALDB_URL_SEARCH_MEAL)
+    @GET(MealConstant.Url.URL_SEARCH_MEAL)
     fun searchMeal(
         @Path(MealConstant.PATH_API_KEY) apiKey: String,
         @Query(MealConstant.QUERY_NAME) nameMeal: String
     ): Observable<MealResponse<Meal>>
 
     // List all meals by first letter
-    @GET(MealConstant.Url.MEALDB_URL_SEARCH_MEAL)
+    @GET(MealConstant.Url.URL_SEARCH_MEAL)
     fun listAllMeal(
         @Path(MealConstant.PATH_API_KEY) apiKey: String,
         @Query(MealConstant.QUERY_FIRST_LETTER) firstLetter: String
     ): Observable<MealResponse<Meal>>
 
     // Lookup full meal details by id
-    @GET(MealConstant.Url.MEALDB_URL_LOOKUP_MEAL)
+    @GET(MealConstant.Url.URL_LOOKUP_MEAL)
     fun lookupFullMeal(
         @Path(MealConstant.PATH_API_KEY) apiKey: String,
         @Query(MealConstant.QUERY_ID) idMeal: String
     ): Observable<MealResponse<Meal>>
 
     // Lookup a single random meal
-    @GET(MealConstant.Url.MEALDB_URL_RANDOM_MEAL)
+    @GET(MealConstant.Url.URL_RANDOM_MEAL)
     fun lookupRandomMeal(
         @Path(MealConstant.PATH_API_KEY) apiKey: String
     ): Observable<MealResponse<Meal>>
 
     // List all meal categories
-    @GET(MealConstant.Url.MEALDB_URL_CATEGORIES)
+    @GET(MealConstant.Url.URL_CATEGORIES)
     fun listMealCategories(
         @Path(MealConstant.PATH_API_KEY) apiKey: String
     ): Observable<CategoryResponse>
 
     // List all Categories
-    @GET(MealConstant.Url.MEALDB_URL_LIST)
+    @GET(MealConstant.Url.URL_LIST)
     fun listAllCateories(
         @Path(MealConstant.PATH_API_KEY) apiKey: String,
         @Query(MealConstant.QUERY_CATEGORY) query: String
     ): Observable<MealResponse<Category>>
 
     // List all Area
-    @GET(MealConstant.Url.MEALDB_URL_LIST)
+    @GET(MealConstant.Url.URL_LIST)
     fun listAllArea(
         @Path(MealConstant.PATH_API_KEY) apiKey: String,
         @Query(MealConstant.QUERY_AREA) query: String
     ): Observable<MealResponse<Area>>
 
     // List all Ingredients
-    @GET(MealConstant.Url.MEALDB_URL_LIST)
+    @GET(MealConstant.Url.URL_LIST)
     fun listAllIngredients(
         @Path(MealConstant.PATH_API_KEY) apiKey: String,
         @Query(MealConstant.QUERY_INGREDIENT) query: String
     ): Observable<MealResponse<Ingredient>>
 
     // Filter by main ingredient
-    @GET(MealConstant.Url.MEALDB_URL_FILTER)
+    @GET(MealConstant.Url.URL_FILTER)
     fun filterByIngredient(
         @Path(MealConstant.PATH_API_KEY) apiKey: String,
         @Query(MealConstant.QUERY_INGREDIENT) ingredient: String

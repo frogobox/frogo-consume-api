@@ -21,16 +21,16 @@ package com.frogobox.frogoconsumeapi.meal.source
 object MealConstant {
 
     object Url {
-        const val MEALDB_BASE_URL = "https://www.themealdb.com/"
-        const val MEALDB_BASE_PATH = "api/json/v1/"
-        const val MEALDB_PATH_API = "{api_key}/"
+        const val BASE_URL = "https://www.themealdb.com/"
+        const val BASE_PATH = "api/json/v1/"
+        const val PATH_API = "{api_key}/"
 
-        const val MEALDB_URL_SEARCH_MEAL = "$MEALDB_BASE_PATH$MEALDB_PATH_API" + "search.php"
-        const val MEALDB_URL_LOOKUP_MEAL = "$MEALDB_BASE_PATH$MEALDB_PATH_API" + "lookup.php"
-        const val MEALDB_URL_RANDOM_MEAL = "$MEALDB_BASE_PATH$MEALDB_PATH_API" + "random.php"
-        const val MEALDB_URL_CATEGORIES = "$MEALDB_BASE_PATH$MEALDB_PATH_API" + "categories.php"
-        const val MEALDB_URL_LIST = "$MEALDB_BASE_PATH$MEALDB_PATH_API" + "list.php"
-        const val MEALDB_URL_FILTER = "$MEALDB_BASE_PATH$MEALDB_PATH_API" + "filter.php"
+        const val URL_SEARCH_MEAL = "$BASE_PATH$PATH_API" + "search.php"
+        const val URL_LOOKUP_MEAL = "$BASE_PATH$PATH_API" + "lookup.php"
+        const val URL_RANDOM_MEAL = "$BASE_PATH$PATH_API" + "random.php"
+        const val URL_CATEGORIES = "$BASE_PATH$PATH_API" + "categories.php"
+        const val URL_LIST = "$BASE_PATH$PATH_API" + "list.php"
+        const val URL_FILTER = "$BASE_PATH$PATH_API" + "filter.php"
     }
 
     const val QUERY_NAME = "s"

@@ -2,7 +2,7 @@ package com.frogobox.frogoconsumeapi.meal
 
 import android.content.Context
 import com.frogobox.frogoconsumeapi.meal.model.MealResponse
-import com.frogobox.frogoconsumeapi.meal.source.MealRemoteDataSource
+import com.frogobox.frogoconsumeapi.meal.source.MealRepository
 import com.frogobox.frogoconsumeapi.meal.model.*
 import com.frogobox.frogosdk.core.FrogoResponseCallback
 
@@ -25,7 +25,7 @@ import com.frogobox.frogosdk.core.FrogoResponseCallback
  */
 class ConsumeTheMealDbApi(private val apiKey: String) : IConsumeTheMealDbApi {
 
-    private val repository = MealRemoteDataSource
+    private val repository = MealRepository
 
     override fun usingChuckInterceptor(context: Context) {
         repository.usingChuckInterceptor(context)
