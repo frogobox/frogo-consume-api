@@ -7,7 +7,7 @@ plugins {
 android {
 
     // Declaration library name
-    def nameLibrary = "Frogo SDK"
+    def nameLibrary = "Frogo Consume Api"
 
     // Declaration version name
     def versionCodeLibrary = (versionMajor * 100) + (versionMinor * 10) + (versionPatch)

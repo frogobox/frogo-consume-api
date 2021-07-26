@@ -1,17 +1,18 @@
-## Frogo Consume Api (work-in-progress 👷🔧️👷‍♀️⛏)
+## Frogo Consume Api
+
+[![](https://jitpack.io/v/frogobox/frogo-consume-api.svg?style=flat-square)](https://jitpack.io/#frogobox/frogo-consume-api)
 
 ## About This Project
 SDK for anything your problem to make easier developing android apps
-frogo-sdk is under huge large development
 
 ## Version Release
 This Is Latest Release
 
-    $version_release = development
+    $version_release = 1.0.0
 
 What's New??
 
-    * Development *
+    * Release *
 
 ## Download this project
 
@@ -29,9 +30,11 @@ What's New??
 ### Step 2. Add the dependency (build.gradle : Module)
     
     dependencies {
-            // library frogo-sdk
-            implementation "Coming Soon"
+            // library frogo-consume-api
+            implementation 'com.github.frogobox:frogo-consume-api:1.0.0'
     }
+
+## Step 3. Use Like Consumable Code Amirisback
 
 ## Colaborator
 Very open to anyone, I'll write your name under this, please contribute by sending an email to me
@@ -50,3 +53,5 @@ Waiting for your contribute
 ## Attention !!!
 - Please enjoy and don't forget fork and give a star
 - Don't Forget Follow My Github Account
+
+![ScreenShoot Apps](docs/image/mad_score.png?raw=true)
