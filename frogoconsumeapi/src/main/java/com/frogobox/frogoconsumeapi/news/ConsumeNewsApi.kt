@@ -4,7 +4,7 @@ import android.content.Context
 import com.frogobox.frogoconsumeapi.news.model.ArticleResponse
 import com.frogobox.frogoconsumeapi.news.model.SourceResponse
 import com.frogobox.frogoconsumeapi.news.sources.NewsRepository
-import com.frogobox.sdk.core.FrogoResponseCallback
+import com.frogobox.frogosdk.core.FrogoResponseCallback
 
 /**
  * Created by Faisal Amir

@@ -1,13 +1,12 @@
 package com.frogobox.frogoconsumeapi.meal.source
 
 import android.content.Context
-import com.frogobox.frogoconsumeapi.meal.data.model.*
 import com.frogobox.frogoconsumeapi.meal.model.MealResponse
 import com.frogobox.frogoconsumeapi.meal.source.MealConstant.Url.MEALDB_BASE_URL
 import com.frogobox.frogoconsumeapi.meal.model.*
-import com.frogobox.sdk.core.FrogoApiCallback
-import com.frogobox.sdk.core.FrogoApiClient
-import com.frogobox.sdk.core.FrogoResponseCallback
+import com.frogobox.frogosdk.core.FrogoApiCallback
+import com.frogobox.frogosdk.core.FrogoApiClient
+import com.frogobox.frogosdk.core.FrogoResponseCallback
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 

@@ -5,9 +5,9 @@ import com.frogobox.frogolog.FLog
 import com.frogobox.frogoconsumeapi.news.model.ArticleResponse
 import com.frogobox.frogoconsumeapi.news.model.SourceResponse
 import com.frogobox.frogoconsumeapi.news.sources.NewsConstant.Url.BASE_URL
-import com.frogobox.sdk.core.FrogoApiCallback
-import com.frogobox.sdk.core.FrogoApiClient
-import com.frogobox.sdk.core.FrogoResponseCallback
+import com.frogobox.frogosdk.core.FrogoApiCallback
+import com.frogobox.frogosdk.core.FrogoApiClient
+import com.frogobox.frogosdk.core.FrogoResponseCallback
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 

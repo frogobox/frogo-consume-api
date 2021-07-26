@@ -1,6 +1,5 @@
 package com.frogobox.frogoconsumeapi.meal.model
 
-import com.frogobox.frogoconsumeapi.meal.model.Category
 import com.google.gson.annotations.SerializedName
 
 /**

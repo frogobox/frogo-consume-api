@@ -1,6 +1,5 @@
 package com.frogobox.frogoconsumeapi.meal.source
 
-import com.frogobox.frogoconsumeapi.meal.data.model.*
 import com.frogobox.frogoconsumeapi.meal.model.MealResponse
 import com.frogobox.frogoconsumeapi.meal.model.*
 import io.reactivex.Observable
