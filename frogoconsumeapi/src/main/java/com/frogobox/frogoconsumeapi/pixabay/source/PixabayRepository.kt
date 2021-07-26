@@ -4,6 +4,8 @@ import android.content.Context
 import com.frogobox.frogoconsumeapi.pixabay.model.PixabayImage
 import com.frogobox.frogoconsumeapi.pixabay.model.PixabayVideo
 import com.frogobox.frogoconsumeapi.pixabay.response.Response
+import com.frogobox.frogoconsumeapi.pixabay.util.PixabayConstant
+import com.frogobox.frogoconsumeapi.pixabay.util.PixabayUrl
 import com.frogobox.frogosdk.core.FrogoApiCallback
 import com.frogobox.frogosdk.core.FrogoApiClient
 import com.frogobox.frogosdk.core.FrogoResponseCallback
@@ -27,12 +29,12 @@ import io.reactivex.schedulers.Schedulers
  * com.frogobox.frogoconsumeapi.pixabay.data.source
  *
  */
-object PixabayRemoteDataSource : PixabayDataSource {
+object PixabayRepository : PixabayDataSource {
 
-    private var pixabayApiService = FrogoApiClient.create<PixabayApiService>(PixabayConstant.Url.BASE_URL)
+    private var pixabayApiService = FrogoApiClient.create<PixabayApiService>(PixabayUrl.BASE_URL)
 
     override fun usingChuckInterceptor(context: Context) {
-        pixabayApiService = FrogoApiClient.create(PixabayConstant.Url.BASE_URL, context)
+        pixabayApiService = FrogoApiClient.create(PixabayUrl.BASE_URL, context)
     }
 
     override fun searchImage(

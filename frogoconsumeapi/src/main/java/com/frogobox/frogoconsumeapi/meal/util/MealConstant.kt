@@ -1,4 +1,4 @@
-package com.frogobox.frogoconsumeapi.meal.source
+package com.frogobox.frogoconsumeapi.meal.util
 
 /**
  * Created by Faisal Amir
@@ -19,20 +19,6 @@ package com.frogobox.frogoconsumeapi.meal.source
  */
 
 object MealConstant {
-
-    object Url {
-        const val BASE_URL = "https://www.themealdb.com/"
-        const val BASE_PATH = "api/json/v1/"
-        const val PATH_API = "{api_key}/"
-        const val API_KEY = "1"
-
-        const val URL_SEARCH_MEAL = "$BASE_PATH$PATH_API" + "search.php"
-        const val URL_LOOKUP_MEAL = "$BASE_PATH$PATH_API" + "lookup.php"
-        const val URL_RANDOM_MEAL = "$BASE_PATH$PATH_API" + "random.php"
-        const val URL_CATEGORIES = "$BASE_PATH$PATH_API" + "categories.php"
-        const val URL_LIST = "$BASE_PATH$PATH_API" + "list.php"
-        const val URL_FILTER = "$BASE_PATH$PATH_API" + "filter.php"
-    }
 
     const val QUERY_NAME = "s"
     const val QUERY_FIRST_LETTER = "f"

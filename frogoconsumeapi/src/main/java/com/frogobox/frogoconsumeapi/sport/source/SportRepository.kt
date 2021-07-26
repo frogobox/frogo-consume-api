@@ -27,7 +27,7 @@ import io.reactivex.schedulers.Schedulers
  * com.frogobox.frogoconsumeapi.sport.source
  *
  */
-object SportRemoteDataSource :
+object SportRepository :
     SportDataSource {
 
     private var sportApiService = FrogoApiClient.create<SportApiService>(SportUrl.BASE_URL)

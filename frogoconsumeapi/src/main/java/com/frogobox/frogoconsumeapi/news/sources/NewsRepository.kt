@@ -4,6 +4,8 @@ import android.content.Context
 import com.frogobox.frogolog.FLog
 import com.frogobox.frogoconsumeapi.news.response.ArticleResponse
 import com.frogobox.frogoconsumeapi.news.response.SourceResponse
+import com.frogobox.frogoconsumeapi.news.util.NewsConstant
+import com.frogobox.frogoconsumeapi.news.util.NewsUrl
 import com.frogobox.frogosdk.core.FrogoApiCallback
 import com.frogobox.frogosdk.core.FrogoApiClient
 import com.frogobox.frogosdk.core.FrogoResponseCallback
@@ -29,10 +31,10 @@ import io.reactivex.schedulers.Schedulers
  */
 object NewsRepository : NewsDataSource {
 
-    private var newsApiService = FrogoApiClient.create<NewsApiService>(NewsConstant.Url.BASE_URL)
+    private var newsApiService = FrogoApiClient.create<NewsApiService>(NewsUrl.BASE_URL)
 
     override fun usingChuckInterceptor(context: Context) {
-        newsApiService = FrogoApiClient.create(NewsConstant.Url.BASE_URL, context)
+        newsApiService = FrogoApiClient.create(NewsUrl.BASE_URL, context)
         FLog.d("Using Chuck Interceptor")
     }
 

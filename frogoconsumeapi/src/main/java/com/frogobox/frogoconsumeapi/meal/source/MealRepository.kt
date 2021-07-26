@@ -4,6 +4,8 @@ import android.content.Context
 import com.frogobox.frogoconsumeapi.meal.response.MealResponse
 import com.frogobox.frogoconsumeapi.meal.model.*
 import com.frogobox.frogoconsumeapi.meal.response.CategoryResponse
+import com.frogobox.frogoconsumeapi.meal.util.MealConstant
+import com.frogobox.frogoconsumeapi.meal.util.MealUrl
 import com.frogobox.frogosdk.core.FrogoApiCallback
 import com.frogobox.frogosdk.core.FrogoApiClient
 import com.frogobox.frogosdk.core.FrogoResponseCallback
@@ -29,10 +31,10 @@ import io.reactivex.schedulers.Schedulers
  */
 object MealRepository : MealDataSource {
 
-    private var mealApiService = FrogoApiClient.create<MealApiService>(MealConstant.Url.BASE_URL)
+    private var mealApiService = FrogoApiClient.create<MealApiService>(MealUrl.BASE_URL)
 
     override fun usingChuckInterceptor(context: Context) {
-        mealApiService = FrogoApiClient.create(MealConstant.Url.BASE_URL, context)
+        mealApiService = FrogoApiClient.create(MealUrl.BASE_URL, context)
     }
 
     override fun searchMeal(

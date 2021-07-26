@@ -2,7 +2,7 @@ package com.frogobox.frogoconsumeapi.sport
 
 import android.content.Context
 import com.frogobox.frogoconsumeapi.sport.response.*
-import com.frogobox.frogoconsumeapi.sport.source.SportRemoteDataSource
+import com.frogobox.frogoconsumeapi.sport.source.SportRepository
 import com.frogobox.frogosdk.core.FrogoResponseCallback
 
 /**
@@ -24,7 +24,7 @@ import com.frogobox.frogosdk.core.FrogoResponseCallback
  */
 class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
 
-    private val sportRepository = SportRemoteDataSource
+    private val sportRepository = SportRepository
 
     override fun usingChuckInterceptor(context: Context) {
         sportRepository.usingChuckInterceptor(context)

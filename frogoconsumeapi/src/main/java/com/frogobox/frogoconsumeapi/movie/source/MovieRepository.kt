@@ -27,7 +27,7 @@ import io.reactivex.schedulers.Schedulers
  * com.frogobox.frogoconsumeapi.movie.data.source
  *
  */
-object MovieRemoteDataSource : MovieDataSource {
+object MovieRepository : MovieDataSource {
 
     private var movieApiService = FrogoApiClient.create<MovieApiService>(MovieUrl.BASE_URL)
 

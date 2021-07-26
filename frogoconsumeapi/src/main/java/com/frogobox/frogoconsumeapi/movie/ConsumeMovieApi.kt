@@ -3,7 +3,7 @@ package com.frogobox.frogoconsumeapi.movie
 import android.content.Context
 import com.frogobox.frogoconsumeapi.movie.model.*
 import com.frogobox.frogoconsumeapi.movie.response.*
-import com.frogobox.frogoconsumeapi.movie.source.MovieRemoteDataSource
+import com.frogobox.frogoconsumeapi.movie.source.MovieRepository
 import com.frogobox.frogoconsumeapi.movie.util.MovieConstant
 import com.frogobox.frogosdk.core.FrogoResponseCallback
 
@@ -26,7 +26,7 @@ import com.frogobox.frogosdk.core.FrogoResponseCallback
  */
 class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
 
-    private val movieRepository = MovieRemoteDataSource
+    private val movieRepository = MovieRepository
 
     override fun usingChuckInterceptor(context: Context) {
         movieRepository.usingChuckInterceptor(context)

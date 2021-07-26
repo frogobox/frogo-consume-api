@@ -2,9 +2,10 @@ package com.frogobox.frogoconsumeapi.news.sources
 
 import com.frogobox.frogoconsumeapi.news.response.ArticleResponse
 import com.frogobox.frogoconsumeapi.news.response.SourceResponse
-import com.frogobox.frogoconsumeapi.news.sources.NewsConstant.Url.URL_EVERYTHING
-import com.frogobox.frogoconsumeapi.news.sources.NewsConstant.Url.URL_SOURCES
-import com.frogobox.frogoconsumeapi.news.sources.NewsConstant.Url.URL_TOP_HEADLINE
+import com.frogobox.frogoconsumeapi.news.util.NewsConstant
+import com.frogobox.frogoconsumeapi.news.util.NewsUrl.URL_EVERYTHING
+import com.frogobox.frogoconsumeapi.news.util.NewsUrl.URL_SOURCES
+import com.frogobox.frogoconsumeapi.news.util.NewsUrl.URL_TOP_HEADLINE
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query

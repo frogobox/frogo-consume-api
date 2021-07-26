@@ -4,7 +4,7 @@ import android.content.Context
 import com.frogobox.frogoconsumeapi.pixabay.model.PixabayImage
 import com.frogobox.frogoconsumeapi.pixabay.model.PixabayVideo
 import com.frogobox.frogoconsumeapi.pixabay.response.Response
-import com.frogobox.frogoconsumeapi.pixabay.source.PixabayRemoteDataSource
+import com.frogobox.frogoconsumeapi.pixabay.source.PixabayRepository
 import com.frogobox.frogosdk.core.FrogoResponseCallback
 
 /**
@@ -26,7 +26,7 @@ import com.frogobox.frogosdk.core.FrogoResponseCallback
  */
 class ConsumePixabayApi(private val apiKey: String) : IConsumePixabayApi {
 
-    private val pixabayRepository = PixabayRemoteDataSource
+    private val pixabayRepository = PixabayRepository
 
     override fun usingChuckInterceptor(context: Context) {
         pixabayRepository.usingChuckInterceptor(context)
