@@ -26,6 +26,6 @@ data class CollectionsTranslation(
     var id: Int? = null,
 
     @SerializedName("translations")
-    var translations: List<com.frogobox.frogoconsumeapi.movie.model.CollectionTranslation>? = null
+    var translations: List<CollectionTranslation>? = null
 
 )

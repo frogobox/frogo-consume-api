@@ -34,7 +34,7 @@ data class Credits(
     var job: String? = null,
 
     @SerializedName("media")
-    var media: com.frogobox.frogoconsumeapi.movie.model.CreditMedia? = null,
+    var media: CreditMedia? = null,
 
     @SerializedName("media_type")
     var media_type: String? = null,
@@ -43,6 +43,6 @@ data class Credits(
     var id: String? = null,
 
     @SerializedName("person")
-    var person: com.frogobox.frogoconsumeapi.movie.model.CreditPerson? = null
+    var person: CreditPerson? = null
 
 )

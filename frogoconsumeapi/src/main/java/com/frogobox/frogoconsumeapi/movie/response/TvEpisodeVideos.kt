@@ -4,5 +4,5 @@ import com.frogobox.frogoconsumeapi.movie.model.TvEpisodeVideoResult
 
 data class TvEpisodeVideos(
     val id: Int?,
-    val results: List<com.frogobox.frogoconsumeapi.movie.model.TvEpisodeVideoResult>?
+    val results: List<TvEpisodeVideoResult>?
 )

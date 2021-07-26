@@ -5,8 +5,8 @@ import com.frogobox.frogoconsumeapi.movie.model.TvEpisodeCreditCrew
 import com.frogobox.frogoconsumeapi.movie.model.TvEpisodeCreditGuestStar
 
 data class TvEpisodeCredits(
-    val cast: List<com.frogobox.frogoconsumeapi.movie.model.TvEpisodeAccountStateCast>?,
-    val crew: List<com.frogobox.frogoconsumeapi.movie.model.TvEpisodeCreditCrew>?,
-    val guest_stars: List<com.frogobox.frogoconsumeapi.movie.model.TvEpisodeCreditGuestStar>?,
+    val cast: List<TvEpisodeAccountStateCast>?,
+    val crew: List<TvEpisodeCreditCrew>?,
+    val guest_stars: List<TvEpisodeCreditGuestStar>?,
     val id: Int?
 )

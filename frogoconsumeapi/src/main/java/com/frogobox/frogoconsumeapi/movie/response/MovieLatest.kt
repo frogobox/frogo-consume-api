@@ -7,7 +7,7 @@ data class MovieLatest(
     val backdrop_path: String? = null,
     val belongs_to_collection: String? = null,
     val budget: Int? = null,
-    val genres: List<com.frogobox.frogoconsumeapi.movie.model.MovieLatestGenre>? = null,
+    val genres: List<MovieLatestGenre>? = null,
     val homepage: String? = null,
     val id: Int? = null,
     val imdb_id: String? = null,

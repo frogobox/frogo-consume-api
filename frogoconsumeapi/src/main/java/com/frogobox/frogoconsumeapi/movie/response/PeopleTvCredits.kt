@@ -4,7 +4,7 @@ import com.frogobox.frogoconsumeapi.movie.model.PeopleTvCreditCast
 import com.frogobox.frogoconsumeapi.movie.model.PeopleTvCreditCrew
 
 data class PeopleTvCredits(
-    val cast: List<com.frogobox.frogoconsumeapi.movie.model.PeopleTvCreditCast>?,
-    val crew: List<com.frogobox.frogoconsumeapi.movie.model.PeopleTvCreditCrew>?,
+    val cast: List<PeopleTvCreditCast>?,
+    val crew: List<PeopleTvCreditCrew>?,
     val id: Int?
 )

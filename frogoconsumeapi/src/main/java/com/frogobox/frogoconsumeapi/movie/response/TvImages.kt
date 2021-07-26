@@ -4,7 +4,7 @@ import com.frogobox.frogoconsumeapi.movie.model.TvImagesBackdrop
 import com.frogobox.frogoconsumeapi.movie.model.TvImagesPoster
 
 data class TvImages(
-    val backdrops: List<com.frogobox.frogoconsumeapi.movie.model.TvImagesBackdrop>?,
+    val backdrops: List<TvImagesBackdrop>?,
     val id: Int?,
-    val posters: List<com.frogobox.frogoconsumeapi.movie.model.TvImagesPoster>?
+    val posters: List<TvImagesPoster>?
 )

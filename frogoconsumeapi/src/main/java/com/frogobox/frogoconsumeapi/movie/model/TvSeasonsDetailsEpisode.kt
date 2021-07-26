@@ -2,9 +2,9 @@ package com.frogobox.frogoconsumeapi.movie.model
 
 data class TvSeasonsDetailsEpisode(
     val air_date: String?,
-    val crew: List<com.frogobox.frogoconsumeapi.movie.model.TvSeasonsDetailsCrew>?,
+    val crew: List<TvSeasonsDetailsCrew>?,
     val episode_number: Int?,
-    val guest_stars: List<com.frogobox.frogoconsumeapi.movie.model.TvSeasonsDetailsGuestStar>?,
+    val guest_stars: List<TvSeasonsDetailsGuestStar>?,
     val id: Int?,
     val name: String?,
     val overview: String?,

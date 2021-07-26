@@ -8,7 +8,7 @@ data class SearchMultiResult(
     val first_air_date: String?,
     val genre_ids: List<Int>?,
     val id: Int?,
-    val known_for: List<com.frogobox.frogoconsumeapi.movie.model.SearchMultiKnownFor>?,
+    val known_for: List<SearchMultiKnownFor>?,
     val media_type: String?,
     val name: String?,
     val origin_country: List<String>?,

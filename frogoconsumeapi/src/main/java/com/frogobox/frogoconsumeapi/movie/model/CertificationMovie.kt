@@ -16,78 +16,78 @@ import com.google.gson.annotations.SerializedName
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- * com.frogobox.frogoconsumeapi.movie.data.model
+ * com.frogobox.frogoconsumeapi.movie.model
  *
  */
 data class CertificationMovie(
 
     @SerializedName("US")
-    var US: List<com.frogobox.frogoconsumeapi.movie.model.Certification>? = null,
+    var US: List<Certification>? = null,
 
     @SerializedName("CA")
-    var CA: List<com.frogobox.frogoconsumeapi.movie.model.Certification>? = null,
+    var CA: List<Certification>? = null,
 
     @SerializedName("AU")
-    var AU: List<com.frogobox.frogoconsumeapi.movie.model.Certification>? = null,
+    var AU: List<Certification>? = null,
 
     @SerializedName("DE")
-    var DE: List<com.frogobox.frogoconsumeapi.movie.model.Certification>? = null,
+    var DE: List<Certification>? = null,
 
     @SerializedName("FR")
-    var FR: List<com.frogobox.frogoconsumeapi.movie.model.Certification>? = null,
+    var FR: List<Certification>? = null,
 
     @SerializedName("NZ")
-    var NZ: List<com.frogobox.frogoconsumeapi.movie.model.Certification>? = null,
+    var NZ: List<Certification>? = null,
 
     @SerializedName("IN")
-    var IN: List<com.frogobox.frogoconsumeapi.movie.model.Certification>? = null,
+    var IN: List<Certification>? = null,
 
     @SerializedName("GB")
-    var GB: List<com.frogobox.frogoconsumeapi.movie.model.Certification>? = null,
+    var GB: List<Certification>? = null,
 
     @SerializedName("NL")
-    var NL: List<com.frogobox.frogoconsumeapi.movie.model.Certification>? = null,
+    var NL: List<Certification>? = null,
 
     @SerializedName("BR")
-    var BR: List<com.frogobox.frogoconsumeapi.movie.model.Certification>? = null,
+    var BR: List<Certification>? = null,
 
     @SerializedName("FI")
-    var FI: List<com.frogobox.frogoconsumeapi.movie.model.Certification>? = null,
+    var FI: List<Certification>? = null,
 
     @SerializedName("BG")
-    var BG: List<com.frogobox.frogoconsumeapi.movie.model.Certification>? = null,
+    var BG: List<Certification>? = null,
 
     @SerializedName("ES")
-    var ES: List<com.frogobox.frogoconsumeapi.movie.model.Certification>? = null,
+    var ES: List<Certification>? = null,
 
     @SerializedName("PT")
-    var PT: List<com.frogobox.frogoconsumeapi.movie.model.Certification>? = null,
+    var PT: List<Certification>? = null,
 
     @SerializedName("MY")
-    var MY: List<com.frogobox.frogoconsumeapi.movie.model.Certification>? = null,
+    var MY: List<Certification>? = null,
 
     @SerializedName("CA-QC")
-    var CAQC: List<com.frogobox.frogoconsumeapi.movie.model.Certification>? = null,
+    var CAQC: List<Certification>? = null,
 
     @SerializedName("DK")
-    var DK: List<com.frogobox.frogoconsumeapi.movie.model.Certification>? = null,
+    var DK: List<Certification>? = null,
 
     @SerializedName("NO")
-    var NO: List<com.frogobox.frogoconsumeapi.movie.model.Certification>? = null,
+    var NO: List<Certification>? = null,
 
     @SerializedName("HU")
-    var HU: List<com.frogobox.frogoconsumeapi.movie.model.Certification>? = null,
+    var HU: List<Certification>? = null,
 
     @SerializedName("LT")
-    var LT: List<com.frogobox.frogoconsumeapi.movie.model.Certification>? = null,
+    var LT: List<Certification>? = null,
 
     @SerializedName("RU")
-    var RU: List<com.frogobox.frogoconsumeapi.movie.model.Certification>? = null,
+    var RU: List<Certification>? = null,
 
     @SerializedName("PH")
-    var PH: List<com.frogobox.frogoconsumeapi.movie.model.Certification>? = null,
+    var PH: List<Certification>? = null,
 
     @SerializedName("IT")
-    var IT: List<com.frogobox.frogoconsumeapi.movie.model.Certification>? = null
+    var IT: List<Certification>? = null
 
 )

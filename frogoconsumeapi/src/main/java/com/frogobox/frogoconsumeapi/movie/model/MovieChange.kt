@@ -16,7 +16,7 @@ import com.google.gson.annotations.SerializedName
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- * com.frogobox.frogoconsumeapi.movie.data.model
+ * com.frogobox.frogoconsumeapi.movie.model
  *
  */
 data class MovieChange(
@@ -25,6 +25,6 @@ data class MovieChange(
     var key: String? = null,
 
     @SerializedName("items")
-    var items: List<com.frogobox.frogoconsumeapi.movie.model.MovieChangeItem>? = null
+    var items: List<MovieChangeItem>? = null
 
 )

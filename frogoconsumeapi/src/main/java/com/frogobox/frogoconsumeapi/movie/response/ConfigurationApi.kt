@@ -23,7 +23,7 @@ import com.google.gson.annotations.SerializedName
 data class ConfigurationApi(
 
     @SerializedName("images")
-    var images: com.frogobox.frogoconsumeapi.movie.model.ConfigurationApiImage? = null,
+    var images: ConfigurationApiImage? = null,
 
     @SerializedName("change_keys")
     var change_keys: List<String>? = null

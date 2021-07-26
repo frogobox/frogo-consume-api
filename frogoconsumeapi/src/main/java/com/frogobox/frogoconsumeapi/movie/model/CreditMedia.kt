@@ -51,6 +51,6 @@ data class CreditMedia(
     var episodes: List<Objects>? = null,
 
     @SerializedName("seasons")
-    var seasons: List<com.frogobox.frogoconsumeapi.movie.model.CreditMediaSeason>? = null
+    var seasons: List<CreditMediaSeason>? = null
 
 )

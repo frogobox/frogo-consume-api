@@ -4,7 +4,7 @@ import com.frogobox.frogoconsumeapi.movie.model.TvPopularResult
 
 data class TvPopular(
     val page: Int?,
-    val results: List<com.frogobox.frogoconsumeapi.movie.model.TvPopularResult>?,
+    val results: List<TvPopularResult>?,
     val total_pages: Int?,
     val total_results: Int?
 )

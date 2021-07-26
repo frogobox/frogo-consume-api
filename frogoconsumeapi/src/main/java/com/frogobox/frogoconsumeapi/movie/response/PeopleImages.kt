@@ -4,5 +4,5 @@ import com.frogobox.frogoconsumeapi.movie.model.PeopleImageProfile
 
 data class PeopleImages(
     val id: Int?,
-    val profiles: List<com.frogobox.frogoconsumeapi.movie.model.PeopleImageProfile>?
+    val profiles: List<PeopleImageProfile>?
 )

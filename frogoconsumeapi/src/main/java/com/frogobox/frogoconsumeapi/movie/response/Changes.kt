@@ -23,6 +23,6 @@ import com.google.gson.annotations.SerializedName
 data class Changes(
 
     @SerializedName("results")
-    var results: List<com.frogobox.frogoconsumeapi.movie.model.Change>? = null
+    var results: List<Change>? = null
 
 )

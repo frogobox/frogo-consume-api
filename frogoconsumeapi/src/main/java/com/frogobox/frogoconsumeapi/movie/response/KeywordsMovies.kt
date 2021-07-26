@@ -35,6 +35,6 @@ data class KeywordsMovies(
     var total_results: Int? = null,
 
     @SerializedName("results")
-    var results: List<com.frogobox.frogoconsumeapi.movie.model.KeywordMovie>? = null
+    var results: List<KeywordMovie>? = null
 
 )

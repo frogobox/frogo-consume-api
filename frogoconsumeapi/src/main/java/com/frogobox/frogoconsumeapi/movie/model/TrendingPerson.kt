@@ -16,7 +16,7 @@ import com.google.gson.annotations.SerializedName
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- * com.frogobox.frogoconsumeapi.movie.data.model
+ * com.frogobox.frogoconsumeapi.movie.model
  *
  */
 data class TrendingPerson(
@@ -34,7 +34,7 @@ data class TrendingPerson(
     var id: Int? = null,
 
     @SerializedName("known_for")
-    var known_for: List<com.frogobox.frogoconsumeapi.movie.model.TrendingMovie>? = null,
+    var known_for: List<TrendingMovie>? = null,
 
     @SerializedName("known_for_department")
     var known_for_department: String? = null,

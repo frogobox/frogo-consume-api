@@ -27,9 +27,9 @@ data class MovieCredit(
     var id: Int? = null,
 
     @SerializedName("cast")
-    var cast: List<com.frogobox.frogoconsumeapi.movie.model.MovieCast>? = null,
+    var cast: List<MovieCast>? = null,
 
     @SerializedName("crew")
-    var crew: List<com.frogobox.frogoconsumeapi.movie.model.MovieCrew>? = null
+    var crew: List<MovieCrew>? = null
 
 )

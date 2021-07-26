@@ -1,7 +1,7 @@
 package com.frogobox.frogoconsumeapi.movie.model
 
 data class PeopleTranslation(
-    val `data`: com.frogobox.frogoconsumeapi.movie.model.PeopleTranslationData?,
+    val `data`: PeopleTranslationData?,
     val english_name: String?,
     val iso_3166_1: String?,
     val iso_639_1: String?,

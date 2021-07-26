@@ -8,6 +8,6 @@ data class TvEpisodeGroupsResult(
     val group_count: Int?,
     val id: String?,
     val name: String?,
-    val network: com.frogobox.frogoconsumeapi.movie.model.TvEpisodeGroupsNetwork?,
+    val network: TvEpisodeGroupsNetwork?,
     val type: Int?
 )

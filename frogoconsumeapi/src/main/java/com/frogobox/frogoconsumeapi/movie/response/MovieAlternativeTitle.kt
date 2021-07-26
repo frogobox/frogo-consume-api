@@ -26,6 +26,6 @@ data class MovieAlternativeTitle(
     var id: Int? = null,
 
     @SerializedName("titles")
-    var titles: List<com.frogobox.frogoconsumeapi.movie.model.MovieTitle>? = null
+    var titles: List<MovieTitle>? = null
 
 )

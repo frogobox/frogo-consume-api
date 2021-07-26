@@ -20,7 +20,7 @@ data class CreditPerson(
     var name: String? = null,
 
     @SerializedName("known_for")
-    var known_for: List<com.frogobox.frogoconsumeapi.movie.model.CreditPersonKnownFor>? = null,
+    var known_for: List<CreditPersonKnownFor>? = null,
 
     @SerializedName("gender")
     var gender: Int? = null,

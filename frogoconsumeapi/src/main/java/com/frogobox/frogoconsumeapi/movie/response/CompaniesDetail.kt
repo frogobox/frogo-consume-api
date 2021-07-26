@@ -44,6 +44,6 @@ data class CompaniesDetail(
     var origin_country: String? = null,
 
     @SerializedName("parent_company")
-    var parent_company: com.frogobox.frogoconsumeapi.movie.model.CompanyParent? = null
+    var parent_company: CompanyParent? = null
 
 )

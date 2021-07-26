@@ -38,6 +38,6 @@ data class CollectionsDetail(
     var backdrop_path: String? = null,
 
     @SerializedName("parts")
-    var parts: List<com.frogobox.frogoconsumeapi.movie.model.CollectionPart>? = null
+    var parts: List<CollectionPart>? = null
 
 )

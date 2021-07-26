@@ -26,6 +26,6 @@ data class CompaniesAlternateName(
     var id: Int? = null,
 
     @SerializedName("results")
-    var results: List<com.frogobox.frogoconsumeapi.movie.model.CompanyAlternateName>? = null
+    var results: List<CompanyAlternateName>? = null
 
 )

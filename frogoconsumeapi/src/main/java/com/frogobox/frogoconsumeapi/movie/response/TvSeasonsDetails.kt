@@ -5,7 +5,7 @@ import com.frogobox.frogoconsumeapi.movie.model.TvSeasonsDetailsEpisode
 data class TvSeasonsDetails(
     val _id: String?,
     val air_date: String?,
-    val episodes: List<com.frogobox.frogoconsumeapi.movie.model.TvSeasonsDetailsEpisode>?,
+    val episodes: List<TvSeasonsDetailsEpisode>?,
     val id: Int?,
     val name: String?,
     val overview: String?,

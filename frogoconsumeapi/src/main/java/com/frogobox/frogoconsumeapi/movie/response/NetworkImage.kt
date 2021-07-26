@@ -27,5 +27,5 @@ data class NetworkImage(
     var id: Int? = null,
 
     @SerializedName("results")
-    var results: List<com.frogobox.frogoconsumeapi.movie.model.NetworkLogo>? = null
+    var results: List<NetworkLogo>? = null
 )

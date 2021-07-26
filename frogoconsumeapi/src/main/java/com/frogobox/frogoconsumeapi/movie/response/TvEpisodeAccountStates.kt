@@ -4,5 +4,5 @@ import com.frogobox.frogoconsumeapi.movie.model.TvEpisodeAccountStateRated
 
 data class TvEpisodeAccountStates(
     val id: Int?,
-    val rated: com.frogobox.frogoconsumeapi.movie.model.TvEpisodeAccountStateRated?
+    val rated: TvEpisodeAccountStateRated?
 )

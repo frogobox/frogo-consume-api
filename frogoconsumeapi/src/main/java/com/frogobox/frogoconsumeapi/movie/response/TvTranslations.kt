@@ -4,5 +4,5 @@ import com.frogobox.frogoconsumeapi.movie.model.TvTranslation
 
 data class TvTranslations(
     val id: Int?,
-    val translations: List<com.frogobox.frogoconsumeapi.movie.model.TvTranslation>?
+    val translations: List<TvTranslation>?
 )

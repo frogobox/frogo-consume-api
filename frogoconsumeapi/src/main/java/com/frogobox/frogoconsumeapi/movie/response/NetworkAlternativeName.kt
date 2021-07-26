@@ -26,6 +26,6 @@ data class NetworkAlternativeName(
     var id: Int? = null,
 
     @SerializedName("results")
-    var results: List<com.frogobox.frogoconsumeapi.movie.model.NetworkName>? = null
+    var results: List<NetworkName>? = null
 
 )

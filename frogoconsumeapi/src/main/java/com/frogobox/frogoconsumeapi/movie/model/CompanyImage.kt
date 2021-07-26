@@ -16,7 +16,7 @@ import com.google.gson.annotations.SerializedName
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- * com.frogobox.frogoconsumeapi.movie.data.model
+ * com.frogobox.frogoconsumeapi.movie.model
  *
  */
 data class CompanyImage(

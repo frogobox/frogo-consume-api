@@ -4,5 +4,5 @@ import com.frogobox.frogoconsumeapi.movie.model.TvEpisodeImageStill
 
 data class TvEpisodeImages(
     val id: Int?,
-    val stills: List<com.frogobox.frogoconsumeapi.movie.model.TvEpisodeImageStill>?
+    val stills: List<TvEpisodeImageStill>?
 )

@@ -35,7 +35,7 @@ data class MovieDetail(
     var budget: Int? = null,
 
     @SerializedName("genres")
-    var genres: List<com.frogobox.frogoconsumeapi.movie.model.Genre>? = null,
+    var genres: List<Genre>? = null,
 
     @SerializedName("homepage")
     var homepage: String? = null,
@@ -62,10 +62,10 @@ data class MovieDetail(
     var poster_path: String? = null,
 
     @SerializedName("production_companies")
-    var production_companies: List<com.frogobox.frogoconsumeapi.movie.model.ProductionCompany>? = null,
+    var production_companies: List<ProductionCompany>? = null,
 
     @SerializedName("production_countries")
-    var production_countries: List<com.frogobox.frogoconsumeapi.movie.model.ProductionCountry>? = null,
+    var production_countries: List<ProductionCountry>? = null,
 
     @SerializedName("release_date")
     var release_date: String? = null,
@@ -77,7 +77,7 @@ data class MovieDetail(
     var runtime: Int? = null,
 
     @SerializedName("spoken_languages")
-    var spoken_languages: List<com.frogobox.frogoconsumeapi.movie.model.SpokenLanguage>? = null,
+    var spoken_languages: List<SpokenLanguage>? = null,
 
     @SerializedName("status")
     var status: String? = null,

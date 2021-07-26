@@ -5,9 +5,9 @@ import com.frogobox.frogoconsumeapi.movie.model.TvEpisodeDetailsGuestStar
 
 data class TvEpisodeDetails(
     val air_date: String?,
-    val crew: List<com.frogobox.frogoconsumeapi.movie.model.TvEpisodeDetailsCrew>?,
+    val crew: List<TvEpisodeDetailsCrew>?,
     val episode_number: Int?,
-    val guest_stars: List<com.frogobox.frogoconsumeapi.movie.model.TvEpisodeDetailsGuestStar>?,
+    val guest_stars: List<TvEpisodeDetailsGuestStar>?,
     val id: Int?,
     val name: String?,
     val overview: String?,

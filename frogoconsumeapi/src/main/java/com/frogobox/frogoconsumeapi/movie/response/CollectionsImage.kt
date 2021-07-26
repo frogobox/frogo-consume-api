@@ -26,9 +26,9 @@ data class CollectionsImage(
     var id: Int? = null,
 
     @SerializedName("backdrops")
-    var backdrops: List<com.frogobox.frogoconsumeapi.movie.model.CollectionImage>? = null,
+    var backdrops: List<CollectionImage>? = null,
 
     @SerializedName("posters")
-    var posters: List<com.frogobox.frogoconsumeapi.movie.model.CollectionImage>? = null
+    var posters: List<CollectionImage>? = null
 
 )

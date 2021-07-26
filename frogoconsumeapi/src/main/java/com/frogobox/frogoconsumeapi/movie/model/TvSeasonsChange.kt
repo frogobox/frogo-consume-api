@@ -1,6 +1,6 @@
 package com.frogobox.frogoconsumeapi.movie.model
 
 data class TvSeasonsChange(
-    val items: List<com.frogobox.frogoconsumeapi.movie.model.TvSeasonsChangeItem>?,
+    val items: List<TvSeasonsChangeItem>?,
     val key: String?
 )

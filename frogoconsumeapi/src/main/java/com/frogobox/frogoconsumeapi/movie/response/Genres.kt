@@ -23,6 +23,6 @@ import com.google.gson.annotations.SerializedName
 data class Genres(
 
     @SerializedName("genres")
-    var genres: List<com.frogobox.frogoconsumeapi.movie.model.Genre>?
+    var genres: List<Genre>?
 
 )
