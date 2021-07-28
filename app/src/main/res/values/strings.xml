@@ -1,1 +1,10 @@
-<resources></resources>
+<resources>
+    <string name="title_tv">TV Show</string>
+    <string name="title_movie">Movie</string>
+    <string name="title_person">Person</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_day">Day</string>
+    <string name="title_week">week</string>
+</resources>

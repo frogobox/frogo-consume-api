@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.frogobox.consumable.databinding.ActivityMainBinding
 import com.frogobox.consumable.databinding.ItemMainBinding
 import com.frogobox.consumable.mvvm.meal.MealActivity
-import com.frogobox.consumable.mvvm.movie.MovieActivity
+import com.frogobox.consumable.mvvm.movies.MoviesActivity
 import com.frogobox.consumable.mvvm.news.NewsActivity
 import com.frogobox.consumable.mvvm.pixabay.PixabayActivity
 import com.frogobox.consumable.mvvm.sport.SportActivity
@@ -69,7 +69,7 @@ class MainActivity : FrogoBaseActivity<ActivityMainBinding>() {
                 baseStartActivity<NewsActivity, MainModel>(Constant.EXTRA_MAIN, data)
             }
             1 -> {
-                baseStartActivity<MovieActivity, MainModel>(Constant.EXTRA_MAIN, data)
+                baseStartActivity<MoviesActivity, MainModel>(Constant.EXTRA_MAIN, data)
             }
             2 -> {
                 baseStartActivity<SportActivity, MainModel>(Constant.EXTRA_MAIN, data)

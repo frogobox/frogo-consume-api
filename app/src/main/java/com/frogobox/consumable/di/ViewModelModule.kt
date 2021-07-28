@@ -1,6 +1,9 @@
 package com.frogobox.consumable.di
 
 import com.frogobox.consumable.mvvm.meal.MealViewModel
+import com.frogobox.consumable.mvvm.movies.movie.MovieViewModel
+import com.frogobox.consumable.mvvm.movies.person.PersonViewModel
+import com.frogobox.consumable.mvvm.movies.tv.TvViewModel
 import com.frogobox.consumable.mvvm.news.NewsViewModel
 import com.frogobox.consumable.mvvm.pixabay.PixabayViewModel
 import com.frogobox.consumable.mvvm.sport.SportViewModel
@@ -37,6 +40,18 @@ val viewModelModule = module {
 
     viewModel {
         SportViewModel(androidApplication())
+    }
+
+    viewModel {
+        MovieViewModel(androidApplication())
+    }
+
+    viewModel {
+        TvViewModel(androidApplication())
+    }
+
+    viewModel {
+        PersonViewModel(androidApplication())
     }
 
 }

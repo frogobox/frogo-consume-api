@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Consumable">
         <activity android:name=".mvvm.pixabay.PixabayActivity"></activity>
         <activity android:name=".mvvm.sport.SportActivity" />
-        <activity android:name=".mvvm.movie.MovieActivity" />
+        <activity android:name=".mvvm.movies.MoviesActivity" />
         <activity android:name=".mvvm.meal.MealActivity" />
         <activity android:name=".mvvm.news.NewsActivity" />
         <activity android:name=".mvvm.main.MainActivity">
