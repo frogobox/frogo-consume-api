@@ -39,6 +39,7 @@ class NewsActivity : FrogoBaseActivity<ActivityNewsBinding>() {
     }
 
     override fun setupUI(savedInstanceState: Bundle?) {
+        setupDetailActivity("News Api")
     }
 
     private fun setupRV(data: List<Article>) {

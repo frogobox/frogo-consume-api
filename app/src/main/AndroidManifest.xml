@@ -13,22 +13,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Consumable">
-        <activity android:name=".mvvm.news.NewsActivity">
-
+        <activity android:name=".mvvm.pixabay.PixabayActivity"></activity>
+        <activity android:name=".mvvm.sport.SportActivity" />
+        <activity android:name=".mvvm.movie.MovieActivity" />
+        <activity android:name=".mvvm.meal.MealActivity" />
+        <activity android:name=".mvvm.news.NewsActivity" />
+        <activity android:name=".mvvm.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-        </activity>
-        <activity android:name=".mvvm.main.MainActivity">
         </activity>
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/admob_publisher_id" />
-
     </application>
 
 </manifest>

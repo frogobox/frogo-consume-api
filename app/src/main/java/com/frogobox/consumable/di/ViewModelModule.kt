@@ -1,5 +1,6 @@
 package com.frogobox.consumable.di
 
+import com.frogobox.consumable.mvvm.meal.MealViewModel
 import com.frogobox.consumable.mvvm.news.NewsViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -22,6 +23,10 @@ val viewModelModule = module {
 
     viewModel {
         NewsViewModel(androidApplication())
+    }
+
+    viewModel {
+        MealViewModel(androidApplication())
     }
 
 }
