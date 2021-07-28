@@ -14,10 +14,7 @@ import com.frogobox.consumable.mvvm.sport.SportActivity
 import com.frogobox.consumable.util.Constant
 import com.frogobox.consumable.util.Helper
 import com.frogobox.frogosdk.core.FrogoBaseActivity
-import com.frogobox.frogosdk.core.FrogoFunc
 import com.frogobox.recycler.core.IFrogoBindingAdapter
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 
 class MainActivity : FrogoBaseActivity<ActivityMainBinding>() {
 
