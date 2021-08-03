@@ -36,6 +36,94 @@ What's New??
 
 ## Step 3. Use Like Consumable Code Amirisback
 
+
+<details><summary>News Api</summary>
+    
+## Step 3. Declaration ConsumeNewsApi
+
+	val consumeNewsApi = ConsumeNewsApi(NewsUrl.NEWS_API_KEY) // Your API_KEY
+    consumeNewsApi.usingChuckInterceptor(this) // Using Chuck Interceptor
+    consumeNewsApi.getTopHeadline( // Adding Base Parameter on main function
+        null, 
+        null,
+        CATEGORY_HEALTH,
+        COUNTRY_ID,
+        null,
+        null,
+        object : NewsResultCallback<ArticleResponse> {
+            override fun getResultData(data: ArticleResponse) {
+                // Your Ui or data
+            }
+
+            override fun failedResult(statusCode: Int, errorMessage: String?) {
+                // Your failed to do
+            }
+
+            override fun onShowProgress() {
+                // Your Progress Show
+            }
+
+            override fun onHideProgress() {
+                // Your Progress Hide
+            }
+
+        })
+	
+
+## Contant Value Category
+
+    object NewsConstant {
+    
+        const val CATEGORY_BUSINESS = "business"
+        const val CATEGORY_ENTERTAIMENT = "entertainment"
+        const val CATEGORY_GENERAL = "general"
+        const val CATEGORY_HEALTH = "health"
+        const val CATEGORY_SCIENCE = "science"
+        const val CATEGORY_SPORTS = "sports"
+        const val CATEGORY_TECHNOLOGY = "technology"
+    
+    }
+
+## Function Main From This Project
+    // Switch For Using Chuck Interceptor
+    fun usingChuckInterceptor(context: Context)
+
+    // Get Top Headline
+    fun getTopHeadline(
+        q: String?,
+        sources: String?,
+        category: String?,
+        country: String?,
+        pageSize: Int?,
+        page: Int?,
+        callback: NewsResultCallback<ArticleResponse>
+    )
+
+    // Get Everythings
+    fun getEverythings(
+        q: String?,
+        from: String?,
+        to: String?,
+        qInTitle: String?,
+        sources: String?,
+        domains: String?,
+        excludeDomains: String?,
+        language: String?,
+        sortBy: String?,
+        pageSize: Int?,
+        page: Int?,
+        callback: NewsResultCallback<ArticleResponse>
+    )
+
+    // Get Sources
+    fun getSources(
+        language: String,
+        country: String,
+        category: String,
+        callback: NewsResultCallback<SourceResponse>
+    )
+</details>
+
 ## Colaborator
 Very open to anyone, I'll write your name under this, please contribute by sending an email to me
 
