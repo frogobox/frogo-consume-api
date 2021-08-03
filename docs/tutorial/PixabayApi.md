@@ -8,7 +8,7 @@ https://pixabay.com/api/docs/
 ## Screen Shoot Apps
 | Pixabay API        |   Chuck Data 1               |   Chuck Data 2        |
 |:------------------:|:----------------------------:|:---------------------:|
-| <span align="center"><img width="200px" height="360px" src="docs/image/ss_main.png"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/ss_chuck_1.png"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/ss_chuck_2.png"></span> |
+| <img width="200px" height="360px" src="docs/image/ss_main.png"> | <img width="200px" height="360px" src="docs/image/ss_chuck_1.png">| <img width="200px" height="360px" src="docs/image/ss_chuck_2.png"> |
 
 ## Version Release
 This Is Latest Release
@@ -42,7 +42,7 @@ Add it in your root build.gradle at the end of repositories:
 	
 <h3>Step 3. Declaration ConsumePixabayApi</h3>
 
-    val consumePixabayApi = ConsumePixabayApi(PixabayConstant.SAMPLE_API_KEY) // Your API Key
+    val consumePixabayApi = ConsumePixabayApi(PixabayUrl.SAMPLE_API_KEY) // Your API Key
     consumePixabayApi.usingChuckInterceptor(this) // Using Chuck Interceptor
 
     val query = "Nature"

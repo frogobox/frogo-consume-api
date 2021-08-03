@@ -2,10 +2,15 @@
 [![JitPack](https://jitpack.io/v/amirisback/consumable-code-movie-tmdb-api.svg?style=flat-square)](https://jitpack.io/#amirisback/consumable-code-movie-tmdb-api) <br>
 Eliminates the method of retrieving json data using retrofit repeatedly. so this project has a set of functions to retrieve data without the need for fetching data using the retrofit of the API
 
+## Documentation The Movie DB API
+https://developers.themoviedb.org/3/getting-started/introduction
+
+
 ## Screen Shoot Apps
-|TV                 |   Movie                       |   Person            |         Chuck Data  |
+|TV                  |   Movie                      |     Person            |       Chuck Data  |
 |:------------------:|:----------------------------:|:---------------------:|:-----------------:|
-| <span align="center"><img width="200px" height="360px" src="docs/image/ss_tv.png"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/ss_movie.png"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/ss_person.png"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/ss_api.png"></span> |
+| <img width="200px" height="360px" src="docs/image/movie/ss_tv.png"> | <img width="200px" height="360px" src="docs/image/movie/ss_movie.png"> | <img width="200px" height="360px" src="docs/image/movie/ss_person.png"> | <img width="200px" height="360px" src="docs/image/movie/ss_api.png"> |
+
 
 ## Version Release
 This Is Latest Release
@@ -64,39 +69,37 @@ Add it in your root build.gradle at the end of repositories:
         })
 	
 
-## Documentation The Movie DB API
-https://developers.themoviedb.org/3/getting-started/introduction
 
 ## Function Main From This Project
-- Chuck Interceptor [Here](https://github.com/amirisback/consumable-code-movie-tmdb-api/blob/master/docs/tutorial/ChuckInterceptor.md)
-- Certifications [Here](https://github.com/amirisback/consumable-code-movie-tmdb-api/blob/master/docs/tutorial/Certifications.md)
-- Changes [Here](https://github.com/amirisback/consumable-code-movie-tmdb-api/blob/master/docs/tutorial/Changes.md)
-- Collection [Here](https://github.com/amirisback/consumable-code-movie-tmdb-api/blob/master/docs/tutorial/Collection.md)
-- Companies [Here](https://github.com/amirisback/consumable-code-movie-tmdb-api/blob/master/docs/tutorial/Companies.md)
-- Configuration [Here](https://github.com/amirisback/consumable-code-movie-tmdb-api/blob/master/docs/tutorial/Configuration.md)
-- Credits [Here](https://github.com/amirisback/consumable-code-movie-tmdb-api/blob/master/docs/tutorial/Credits.md)
-- Discover [Here](https://github.com/amirisback/consumable-code-movie-tmdb-api/blob/master/docs/tutorial/Discover.md)
-- Find [Here](https://github.com/amirisback/consumable-code-movie-tmdb-api/blob/master/docs/tutorial/Find.md)
-- Genres [Here](https://github.com/amirisback/consumable-code-movie-tmdb-api/blob/master/docs/tutorial/Genres.md)
-- Keyords [Here](https://github.com/amirisback/consumable-code-movie-tmdb-api/blob/master/docs/tutorial/Keywords.md)
-- Reviews [Here](https://github.com/amirisback/consumable-code-movie-tmdb-api/blob/master/docs/tutorial/Reviews.md)
-- Trending [Here](https://github.com/amirisback/consumable-code-movie-tmdb-api/blob/master/docs/tutorial/Trending.md)
-- Networks [Here](https://github.com/amirisback/consumable-code-movie-tmdb-api/blob/master/docs/tutorial/Networks.md)
-- Movies [Here](https://github.com/amirisback/consumable-code-movie-tmdb-api/blob/master/docs/tutorial/Movies.md)
-- Search [Here](https://github.com/amirisback/consumable-code-movie-tmdb-api/blob/master/docs/tutorial/Search.md)
-- TV [Here](https://github.com/amirisback/consumable-code-movie-tmdb-api/blob/master/docs/tutorial/TV.md)
-- TV Seasons [Here](https://github.com/amirisback/consumable-code-movie-tmdb-api/blob/master/docs/tutorial/TVSeasons.md)
-- TV Episodes [Here](https://github.com/amirisback/consumable-code-movie-tmdb-api/blob/master/docs/tutorial/TVEpisodes.md)
-- TV Episodes Groups [Here](https://github.com/amirisback/consumable-code-movie-tmdb-api/blob/master/docs/tutorial/TVEpisodesGroups.md)
-- People [Here](https://github.com/amirisback/consumable-code-movie-tmdb-api/blob/master/docs/tutorial/People.md)
-- * ON DEVELOPMENT [Here](https://github.com/amirisback/consumable-code-movie-tmdb-api/blob/master/docs/tutorial/Development.md)
+- Chuck Interceptor [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/ChuckInterceptor.md)
+- Certifications [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Certifications.md)
+- Changes [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Changes.md)
+- Collection [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Collection.md)
+- Companies [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Companies.md)
+- Configuration [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Configuration.md)
+- Credits [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Credits.md)
+- Discover [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Discover.md)
+- Find [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Find.md)
+- Genres [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Genres.md)
+- Keyords [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Keywords.md)
+- Reviews [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Reviews.md)
+- Trending [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Trending.md)
+- Networks [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Networks.md)
+- Movies [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Movies.md)
+- Search [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Search.md)
+- TV [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/TV.md)
+- TV Seasons [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/TVSeasons.md)
+- TV Episodes [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/TVEpisodes.md)
+- TV Episodes Groups [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/TVEpisodesGroups.md)
+- People [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/People.md)
+- * ON DEVELOPMENT [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Development.md)
 
 ## Award
 ### Github Actions Hackathon (March 5-31, 2020) [See list winner](https://github.com/amirisback/consumable-code-movie-tmdb-api/blob/master/docs/github_action_hackathon_winners.xlsx)
 :star: This four-week hackathon challenges the community to create original GitHub Actions. Actions connect all of the tools in your workflow: You can solve problems, build containers, deploy to any cloud, and more.    
-![ScreenShoot Apps](docs/image/ss_github_hackathon1.png?raw=true)
-![ScreenShoot Apps](docs/image/ss_github_hackathon3.png?raw=true)
-![ScreenShoot Apps](docs/image/ss_github_hackathon2.png?raw=true)
+![ScreenShoot Apps](docs/image/movie/ss_github_hackathon1.png?raw=true)
+![ScreenShoot Apps](docs/image/movie/ss_github_hackathon3.png?raw=true)
+![ScreenShoot Apps](docs/image/movie/ss_github_hackathon2.png?raw=true)
 
 ## Colaborator
 Very open to anyone, I'll write your name under this, please contribute by sending an email to me

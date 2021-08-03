@@ -38,18 +38,19 @@ What's New??
 
 
 <details><summary>News Api</summary>
-#### About
+
+### About
 Eliminates the method of retrieving json data using retrofit repeatedly. so this project has a set of functions to retrieve data without the need for fetching data using the retrofit of the API
 
-#### Documentation The News API
+### Documentation The News API
 https://newsapi.org/
 
-#### Screenshoot Apps
+### Screenshoot Apps
 | News API           |   Chuck Data 1               |   Chuck Data 2        |
 |:------------------:|:----------------------------:|:---------------------:|
 |<img width="200px" height="360px" src="docs/image/news/ss_main.png"> | <img width="200px" height="360px" src="docs/image/news/ss_chuck_1.png"> | <img width="200px" height="360px" src="docs/image/news/ss_chuck_2.png"> |
 
-#### Declaration ConsumeNewsApi
+### Declaration ConsumeNewsApi
 
 	val consumeNewsApi = ConsumeNewsApi(NewsUrl.NEWS_API_KEY) // Your API_KEY
     consumeNewsApi.usingChuckInterceptor(this) // Using Chuck Interceptor
@@ -80,7 +81,7 @@ https://newsapi.org/
         })
 	
 
-#### Contant Value Category
+### Contant Value Category
 
     object NewsConstant {
     
@@ -94,7 +95,7 @@ https://newsapi.org/
     
     }
 
-#### Function Main From This Project
+### Function Main From This Project
     // Switch For Using Chuck Interceptor
     fun usingChuckInterceptor(context: Context)
 
@@ -135,29 +136,196 @@ https://newsapi.org/
 </details>
 
 <details><summary>Meal Api</summary>
+
+### About    
+Eliminates the method of retrieving json data using retrofit repeatedly. so this project has a set of functions to retrieve data without the need for fetching data using the retrofit of the API <br>
+
+### Documentation The News API
+https://www.themealdb.com/api.php
+
+### Screen Shoot Apps
+| The Meals API      |   Chuck Data 1               |   Chuck Data 2        |
+|:------------------:|:----------------------------:|:---------------------:|
+| <img width="200px" height="360px" src="docs/image/meals/ss_main.png"> | <img width="200px" height="360px" src="docs/image/meals/ss_chuck_1.png"> | <img width="200px" height="360px" src="docs/image/meals/ss_chuck_2.png"> |
+    
+
+### Declaration ConsumeTheMealDbApi</h3>
+
+	val consumeMealApi = ConsumeTheMealDbApi("1") Your API_KEY
+    consumeMealApi.usingChuckInterceptor(this) // Using Chuck Interceptor
+    consumeMealApi.listAllCateories(object : FrogoResponseCallback<MealResponse<Category>> {
+        override fun onSuccess(data: MealResponse<Category>) {
+
+            // * PLACE YOUR CODE HERE FOR UI / ARRAYLIST *
+
+        }
+
+        override fun onFailed(statusCode: Int, errorMessage: String?) {
+            // Failed Status
+        }
+
+        override fun onShowProgress() {
+            // Show Your Progress View
+        }
+
+        override fun onHideProgress() {
+            // Hide Your Progress View
+        }
+        
+    })
+	
+
+### Function Main From This Project
+
+    // Switch For Using Chuck Interceptor
+    fun usingChuckInterceptor(context: Context)
+
+    // Search meal by name
+    fun searchMeal(mealName: String, callback: FrogoResponseCallback<MealResponse<Meal>>)
+
+    // List all meals by first letter
+    fun listAllMeal(firstLetter: String, callback: FrogoResponseCallback<MealResponse<Meal>>)
+
+    // Lookup full meal details by id
+    fun lookupFullMeal(idMeal: String, callback: FrogoResponseCallback<MealResponse<Meal>>)
+
+    // Lookup a single random meal
+    fun lookupRandomMeal(callback: FrogoResponseCallback<MealResponse<Meal>>)
+
+    // List all meal categories
+    fun listMealCategories(callback: FrogoResponseCallback<CategoryResponse>)
+
+    // List all Categories
+    fun listAllCateories(callback: FrogoResponseCallback<MealResponse<Category>>)
+
+    // List all Area
+    fun listAllArea(callback: FrogoResponseCallback<MealResponse<Area>>)
+
+    // List all Ingredients
+    fun listAllIngredients(callback: FrogoResponseCallback<MealResponse<Ingredient>>)
+
+    // Filter by main ingredient
+    fun filterByIngredient(ingredient: String, callback: FrogoResponseCallback<MealResponse<MealFilter>>)
+
+    // Filter by Category
+    fun filterByCategory(category: String, callback: FrogoResponseCallback<MealResponse<MealFilter>>)
+
+    // Filter by Area
+    fun filterByArea(area: String, callback: FrogoResponseCallback<MealResponse<MealFilter>>)
     
 </details>
 
 <details><summary>Pixabay Api</summary>
+
+### About
+Eliminates the method of retrieving json data using retrofit repeatedly. so this project has a set of functions to retrieve data without the need for fetching data using the retrofit of the API
+
+### Documentation Pixabay Api
+https://pixabay.com/api/docs/
+
+### Screen Shoot Apps
+| Pixabay API        |   Chuck Data 1               |   Chuck Data 2        |
+|:------------------:|:----------------------------:|:---------------------:|
+| <img width="200px" height="360px" src="docs/image/pixabay/ss_main.png"> | <img width="200px" height="360px" src="docs/image/pixabay/ss_chuck_1.png">| <img width="200px" height="360px" src="docs/image/pixabay/ss_chuck_2.png"> |
+
+### Declaration ConsumePixabayApi
+
+    val consumePixabayApi = ConsumePixabayApi(PixabayConstant.API_KEY) // Your API Key
+    consumePixabayApi.usingChuckInterceptor(this) // Using Chuck Interceptor
+
+    val query = "Nature"
+
+    consumePixabayApi.searchImage(
+        query,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        object : FrogoResponseCallback<Response<PixabayImage>> {
+            override fun onSuccess(data: Response<PixabayImage>) {
+                // Place your UI / Data
+            }
+
+            override fun onFailed(statusCode: Int, errorMessage: String?) {
+                // failed to do
+            }
+
+            override fun onShowProgress() {
+                // showing your progress view
+            }
+
+            override fun onHideProgress() {
+                // hide your progress view
+            }
+        })
+
+### Function Main From This Project
+    // Switch For Using Chuck Interceptor
+    fun usingChuckInterceptor(context: Context)
+
+    // Search for Image
+    fun searchImage(
+        q: String,
+        lang: String?,
+        id: String?,
+        imageType: String?,
+        orientation: String?,
+        category: String?,
+        minWidth: Int?,
+        minHeight: Int?,
+        colors: String?,
+        editorsChoice: Boolean?,
+        safeSearch: Boolean?,
+        order: String?,
+        page: Int?,
+        perPage: Int?,
+        callback: FrogoResponseCallback<Response<PixabayImage>>
+    )
+
+    // Search for Video
+    fun searchVideo(
+        q: String,
+        lang: String?,
+        id: String?,
+        videoType: String?,
+        category: String?,
+        minWidth: Int?,
+        minHeight: Int?,
+        editorsChoice: Boolean?,
+        safeSearch: Boolean?,
+        order: String?,
+        page: Int?,
+        perPage: Int?,
+        callback: FrogoResponseCallback<Response<PixabayVideo>>
+    )
     
 </details>
 
 <details><summary>Sport Api</summary>
 
-#### About
+### About
 Eliminates the method of retrieving json data using retrofit repeatedly. so this project has a set of functions to retrieve data without the need for fetching data using the retrofit of the API
 
-#### Documentation THE SPORT DB API
+### Documentation THE SPORT DB API
 https://www.thesportsdb.com/api.php
 
-#### Screenshoot Apps
+### Screenshoot Apps
 
 | The Sport DB API   |   Chuck Data 1               |   Chuck Data 2        |
 |:------------------:|:----------------------------:|:---------------------:|
 |<img width="200px" height="360px" src="docs/image/sport/ss_main.png"> | <img width="200px" height="360px" src="docs/image/sport/ss_chuck_1.png"> | <img width="200px" height="360px" src="docs/image/sport/ss_chuck_2.png"> |
 
     
-#### Declaration ConsumeTheSportDbApi
+### Declaration ConsumeTheSportDbApi
 
 	val consumeTheSportDbApi = ConsumeTheSportDbApi("1") // "1" is API KEY
 	
@@ -187,7 +355,7 @@ https://www.thesportsdb.com/api.php
 
 
 
-#### Function Main From This Project
+### Function Main From This Project
 
     // Switch For Using Chuck Interceptor
     fun usingChuckInterceptor(context: Context)
@@ -293,6 +461,76 @@ https://www.thesportsdb.com/api.php
 
 <details><summary>Movie Api</summary>
     
+### About
+Eliminates the method of retrieving json data using retrofit repeatedly. so this project has a set of functions to retrieve data without the need for fetching data using the retrofit of the API
+
+### Documentation The Movie DB API
+https://developers.themoviedb.org/3/getting-started/introduction
+
+
+### Screen Shoot Apps
+|TV                  |   Movie                      |     Person            |       Chuck Data  |
+|:------------------:|:----------------------------:|:---------------------:|:-----------------:|
+| <img width="200px" height="360px" src="docs/image/movie/ss_tv.png"> | <img width="200px" height="360px" src="docs/image/movie/ss_movie.png"> | <img width="200px" height="360px" src="docs/image/movie/ss_person.png"> | <img width="200px" height="360px" src="docs/image/movie/ss_api.png"> |
+
+### Step 3. Declaration ConsumeMovieApi
+
+    val consumeMovieApi = ConsumeMovieApi(MovieUrl.API_KEY) // your api_key
+    consumeMovieApi.usingChuckInterceptor(this) // This is Code Chuck Interceptor
+    consumeMovieApi.getMovieChangeList(
+        null,
+        null,
+        null,
+        object : FrogoResponseCallback<Changes> {
+            override fun onSuccess(data: Changes) {
+                // * PLACE YOUR CODE HERE FOR UI / ARRAYLIST *
+            }
+
+            override fun onFailed(statusCode: Int, errorMessage: String?) {
+                // failed result
+            }
+
+            override fun onShowProgress() {
+                // showing your progress view
+            }
+
+            override fun onHideProgress() {
+                // hiding your progress view
+            }
+        })
+	
+
+
+### Function Main From This Project
+- Chuck Interceptor [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/ChuckInterceptor.md)
+- Certifications [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Certifications.md)
+- Changes [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Changes.md)
+- Collection [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Collection.md)
+- Companies [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Companies.md)
+- Configuration [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Configuration.md)
+- Credits [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Credits.md)
+- Discover [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Discover.md)
+- Find [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Find.md)
+- Genres [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Genres.md)
+- Keyords [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Keywords.md)
+- Reviews [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Reviews.md)
+- Trending [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Trending.md)
+- Networks [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Networks.md)
+- Movies [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Movies.md)
+- Search [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Search.md)
+- TV [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/TV.md)
+- TV Seasons [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/TVSeasons.md)
+- TV Episodes [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/TVEpisodes.md)
+- TV Episodes Groups [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/TVEpisodesGroups.md)
+- People [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/People.md)
+- * ON DEVELOPMENT [Here](https://github.com/frogobox/frogo-consume-api/tree/master/docs/tutorial/movie/Development.md)
+
+### Github Actions Hackathon (March 5-31, 2020) [See list winner](https://github.com/frogobox/frogo-consume-api/blob/master/docs/github_action_hackathon_winners.xlsx)
+:star: This four-week hackathon challenges the community to create original GitHub Actions. Actions connect all of the tools in your workflow: You can solve problems, build containers, deploy to any cloud, and more.    
+![ScreenShoot Apps](docs/image/movie/ss_github_hackathon1.png?raw=true)
+![ScreenShoot Apps](docs/image/movie/ss_github_hackathon3.png?raw=true)
+![ScreenShoot Apps](docs/image/movie/ss_github_hackathon2.png?raw=true)
+
 </details>
 
 ## Colaborator

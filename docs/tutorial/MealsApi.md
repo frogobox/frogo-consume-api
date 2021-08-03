@@ -6,9 +6,9 @@ Eliminates the method of retrieving json data using retrofit repeatedly. so this
 https://www.themealdb.com/api.php
 
 ## Screen Shoot Apps
-| The Meals API |   Chuck Data 1              |   Chuck Data 2  |
+| The Meals API      |   Chuck Data 1               |   Chuck Data 2        |
 |:------------------:|:----------------------------:|:---------------------:|
-| <span align="center"><img width="200px" height="360px" src="docs/image/ss_main.png"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/ss_chuck_1.png"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/ss_chuck_2.png"></span> |
+| <img width="200px" height="360px" src="docs/image/ss_main.png"> | <img width="200px" height="360px" src="docs/image/ss_chuck_1.png"> | <img width="200px" height="360px" src="docs/image/ss_chuck_2.png"> |
 
 ## Version Release
 This Is Latest Release
