@@ -5,7 +5,7 @@
     fun getPeopleDetails(
         person_id: Int,
         language: String?,
-        callback: MovieResultCallback<PeopleDetails>
+        callback: FrogoResponseCallback<PeopleDetails>
     )
 
     // PEOPLE
@@ -15,7 +15,7 @@
         endDate: String?,
         page: Int?,
         startDate: String?,
-        callback: MovieResultCallback<PeopleChanges>
+        callback: FrogoResponseCallback<PeopleChanges>
     )
 
     // PEOPLE
@@ -23,7 +23,7 @@
     fun getPeopleMovieCredits(
         person_id: Int,
         language: String?,
-        callback: MovieResultCallback<PeopleMovieCredits>
+        callback: FrogoResponseCallback<PeopleMovieCredits>
     )
 
     // PEOPLE
@@ -31,7 +31,7 @@
     fun getPeopleTvCredits(
         person_id: Int,
         language: String?,
-        callback: MovieResultCallback<PeopleTvCredits>
+        callback: FrogoResponseCallback<PeopleTvCredits>
     )
 
     // PEOPLE
@@ -39,7 +39,7 @@
     fun getPeopleCombinedCredits(
         person_id: Int,
         language: String?,
-        callback: MovieResultCallback<PeopleCombinedCredits>
+        callback: FrogoResponseCallback<PeopleCombinedCredits>
     )
 
     // PEOPLE
@@ -47,14 +47,14 @@
     fun getPeopleExternalIds(
         person_id: Int,
         language: String?,
-        callback: MovieResultCallback<PeopleExternalIds>
+        callback: FrogoResponseCallback<PeopleExternalIds>
     )
 
     // PEOPLE
     // Get Images
     fun getPeopleImages(
         person_id: Int,
-        callback: MovieResultCallback<PeopleImages>
+        callback: FrogoResponseCallback<PeopleImages>
     )
 
     // PEOPLE
@@ -63,7 +63,7 @@
         person_id: Int,
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<PeopleTaggedImages>
+        callback: FrogoResponseCallback<PeopleTaggedImages>
     )
 
     // PEOPLE
@@ -71,14 +71,14 @@
     fun getPeopleTranslations(
         person_id: Int,
         language: String?,
-        callback: MovieResultCallback<PeopleTranslations>
+        callback: FrogoResponseCallback<PeopleTranslations>
     )
 
     // PEOPLE
     // Get Latest
     fun getPeopleLatest(
         language: String?,
-        callback: MovieResultCallback<PeopleLatest>
+        callback: FrogoResponseCallback<PeopleLatest>
     )
 
     // PEOPLE
@@ -86,5 +86,5 @@
     fun getPeoplePopular(
         language: String?,
         page: Int?,
-        callback: MovieResultCallback<PeoplePopular>
+        callback: FrogoResponseCallback<PeoplePopular>
     )

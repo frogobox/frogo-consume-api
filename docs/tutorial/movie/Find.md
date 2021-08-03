@@ -6,5 +6,5 @@
         external_id: String,
         external_source: String,
         language: String?,
-        callback: MovieResultCallback<Find>
+        callback: FrogoResponseCallback<Find>
     )

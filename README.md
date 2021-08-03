@@ -34,7 +34,7 @@ What's New??
             implementation 'com.github.frogobox:frogo-consume-api:1.0.1'
     }
 
-### Step 3. Use Like Consumable Code Amirisback
+### Step 3. Click Detail Below
 
 
 <details><summary>News Api</summary>

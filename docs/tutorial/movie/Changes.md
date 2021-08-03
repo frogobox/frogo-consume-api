@@ -6,7 +6,7 @@
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: MovieResultCallback<Changes>
+        callback: FrogoResponseCallback<Changes>
     )
 
     // CHANGES
@@ -15,7 +15,7 @@
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: MovieResultCallback<Changes>
+        callback: FrogoResponseCallback<Changes>
     )
 
     // CHANGES
@@ -24,5 +24,5 @@
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: MovieResultCallback<Changes>
+        callback: FrogoResponseCallback<Changes>
     )

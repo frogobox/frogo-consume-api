@@ -6,7 +6,7 @@
     fun getCollectionDetails(
         collection_id: Int,
         language: String?,
-        callback: MovieResultCallback<CollectionsDetail>
+        callback: FrogoResponseCallback<CollectionsDetail>
     )
 
     // COLLECTION
@@ -14,7 +14,7 @@
     fun getCollectionImages(
         collection_id: Int,
         language: String?,
-        callback: MovieResultCallback<CollectionsImage>
+        callback: FrogoResponseCallback<CollectionsImage>
     )
 
     // COLLECTION
@@ -22,5 +22,5 @@
     fun getCollectionTranslations(
         collection_id: Int,
         language: String?,
-        callback: MovieResultCallback<CollectionsTranslation>
+        callback: FrogoResponseCallback<CollectionsTranslation>
     )

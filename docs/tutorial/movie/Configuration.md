@@ -2,24 +2,24 @@
 
     // CONFIGURATION
     // Get API Configuration
-    fun getConfigurationApi(callback: MovieResultCallback<ConfigurationApi>)
+    fun getConfigurationApi(callback: FrogoResponseCallback<ConfigurationApi>)
 
     // CONFIGURATION
     // Get Countries
-    fun getConfigurationCountries(callback: MovieResultCallback<List<ConfigurationCountry>>)
+    fun getConfigurationCountries(callback: FrogoResponseCallback<List<ConfigurationCountry>>)
 
     // CONFIGURATION
     // Get Jobs
-    fun getConfigurationJobs(callback: MovieResultCallback<List<ConfigurationJob>>)
+    fun getConfigurationJobs(callback: FrogoResponseCallback<List<ConfigurationJob>>)
 
     // CONFIGURATION
     // Get Languages
-    fun getConfigurationLanguages(callback: MovieResultCallback<List<ConfigurationLanguage>>)
+    fun getConfigurationLanguages(callback: FrogoResponseCallback<List<ConfigurationLanguage>>)
 
     // CONFIGURATION
     // Get Primary Translations
-    fun getConfigurationTranslations(callback: MovieResultCallback<List<String>>)
+    fun getConfigurationTranslations(callback: FrogoResponseCallback<List<String>>)
 
     // CONFIGURATION
     // Get Timezones
-    fun getConfigurationTimezones(callback: MovieResultCallback<List<ConfigurationTimezone>>)
+    fun getConfigurationTimezones(callback: FrogoResponseCallback<List<ConfigurationTimezone>>)

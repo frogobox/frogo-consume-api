@@ -4,7 +4,7 @@
     // Get Details
     fun getKeywordsDetail(
         keyword_id: Int,
-        callback: MovieResultCallback<KeywordsDetail>
+        callback: FrogoResponseCallback<KeywordsDetail>
     )
 
     // KEYWORDS
@@ -13,5 +13,5 @@
         keyword_id: Int,
         language: String?,
         include_adult: String?,
-        callback: MovieResultCallback<KeywordsMovies>
+        callback: FrogoResponseCallback<KeywordsMovies>
     )

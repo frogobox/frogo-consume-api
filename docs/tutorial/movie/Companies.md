@@ -4,19 +4,19 @@
     // Get Details
     fun getCompaniesDetails(
         company_id: Int,
-        callback: MovieResultCallback<CompaniesDetail>
+        callback: FrogoResponseCallback<CompaniesDetail>
     )
 
     // COMPANIES
     // Get Alternative Names
     fun getCompaniesAlternativeName(
         company_id: Int,
-        callback: MovieResultCallback<CompaniesAlternateName>
+        callback: FrogoResponseCallback<CompaniesAlternateName>
     )
 
     // COMPANIES
     // Get Images
     fun getCompaniesImage(
         company_id: Int,
-        callback: MovieResultCallback<CompaniesImage>
+        callback: FrogoResponseCallback<CompaniesImage>
     )

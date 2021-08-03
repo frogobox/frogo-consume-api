@@ -4,20 +4,20 @@
     // Get Details
     fun getNetworkDetail(
         network_id: Int,
-        callback: MovieResultCallback<NetworkDetail>
+        callback: FrogoResponseCallback<NetworkDetail>
     )
 
     // NETWORKS
     // Get Alternative Names
     fun getNetworkAlternativeName(
         network_id: Int,
-        callback: MovieResultCallback<NetworkAlternativeName>
+        callback: FrogoResponseCallback<NetworkAlternativeName>
     )
 
     // NETWORKS
     // Get Images
     fun getNetworkImage(
         network_id: Int,
-        callback: MovieResultCallback<NetworkImage>
+        callback: FrogoResponseCallback<NetworkImage>
     )
 
