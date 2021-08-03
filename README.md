@@ -10,9 +10,9 @@ SDK for anything your problem to make easier developing android apps
 |:------------------:|:----------------------------:|:---------------------:|
 | <img width="200px" height="360px" src="docs/image/meals/ss_main.png"> | <img width="200px" height="360px" src="docs/image/meals/ss_chuck_1.png"> | <img width="200px" height="360px" src="docs/image/meals/ss_chuck_2.png"> |
 
-|TV                  |   Movie                      |     Person            |       Chuck Data  |
-|:------------------:|:----------------------------:|:---------------------:|:-----------------:|
-| <img width="200px" height="360px" src="docs/image/movie/ss_tv.png"> | <img width="200px" height="360px" src="docs/image/movie/ss_movie.png"> | <img width="200px" height="360px" src="docs/image/movie/ss_person.png"> | <img width="200px" height="360px" src="docs/image/movie/ss_api.png"> |
+|TV                  |   Movie                      |     Person            |
+|:------------------:|:----------------------------:|:---------------------:|
+| <img width="200px" height="360px" src="docs/image/movie/ss_tv.png"> | <img width="200px" height="360px" src="docs/image/movie/ss_movie.png"> | <img width="200px" height="360px" src="docs/image/movie/ss_person.png"> |
 
 | The Meals API      |   Chuck Data 1               |   Chuck Data 2        |
 |:------------------:|:----------------------------:|:---------------------:|
