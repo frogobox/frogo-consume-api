@@ -2,11 +2,14 @@
 [![](https://jitpack.io/v/amirisback/consumable-code-the-sport-db-api.svg?style=flat-square)](https://jitpack.io/#amirisback/consumable-code-the-sport-db-api) <br>
 Eliminates the method of retrieving json data using retrofit repeatedly. so this project has a set of functions to retrieve data without the need for fetching data using the retrofit of the API
 
+## Documentation THE SPORT DB API
+https://www.thesportsdb.com/api.php
+
 ## Screenshoot Apps
 
-| The Sport DB API |   Chuck Data 1              |   Chuck Data 2  |
+| The Sport DB API   |   Chuck Data 1               |   Chuck Data 2        |
 |:------------------:|:----------------------------:|:---------------------:|
-|<span align="center"><img width="200px" height="360px" src="docs/image/ss_main.png"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/ss_chuck_1.png"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/ss_chuck_2.png"></span>
+|<img width="200px" height="360px" src="docs/image/ss_main.png"> | <img width="200px" height="360px" src="docs/image/ss_chuck_1.png"> | <img width="200px" height="360px" src="docs/image/ss_chuck_2.png"> |
 
 ## Version Release
 This Is Latest Release
@@ -66,8 +69,7 @@ Add it in your root build.gradle at the end of repositories:
             }
         })
 
-## Documentation THE SPORT DB API
-https://www.thesportsdb.com/api.php
+
 
 ## Function Main From This Project
 

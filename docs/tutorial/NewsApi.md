@@ -6,9 +6,9 @@ Eliminates the method of retrieving json data using retrofit repeatedly. so this
 https://newsapi.org/
 
 ## Screenshoot Apps
-| News API |   Chuck Data 1              |   Chuck Data 2  |
+| News API           |   Chuck Data 1               |   Chuck Data 2        |
 |:------------------:|:----------------------------:|:---------------------:|
-|<span align="center"><img width="200px" height="360px" src="docs/image/ss_main.png"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/ss_chuck_1.png"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/ss_chuck_2.png"></span> |
+|<img width="200px" height="360px" src="docs/image/news/ss_main.png"> | <img width="200px" height="360px" src="docs/image/news/ss_chuck_1.png"> | <img width="200px" height="360px" src="docs/image/news/ss_chuck_2.png"> |
 
 ## Version Release
 This Is Latest Release
