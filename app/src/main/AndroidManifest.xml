@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.frogobox.consumable">
+    package="com.frogobox.appapi">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -13,12 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Consumable">
-        <activity android:name=".mvvm.pixabay.PixabayActivity"></activity>
+        <activity android:name=".mvvm.pixabay.PixabayActivity" />
         <activity android:name=".mvvm.sport.SportActivity" />
         <activity android:name=".mvvm.movies.MoviesActivity" />
         <activity android:name=".mvvm.meal.MealActivity" />
         <activity android:name=".mvvm.news.NewsActivity" />
-        <activity android:name=".mvvm.main.MainActivity">
+        <activity android:name=".mvvm.main.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
