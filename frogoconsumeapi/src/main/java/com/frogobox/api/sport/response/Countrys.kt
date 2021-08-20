@@ -1,6 +1,6 @@
-package com.frogobox.frogoconsumeapi.sport.response
+package com.frogobox.api.sport.response
 
-import com.frogobox.frogoconsumeapi.sport.model.Season
+import com.frogobox.api.sport.model.Country
 
 /**
  * Created by Faisal Amir
@@ -19,5 +19,4 @@ import com.frogobox.frogoconsumeapi.sport.model.Season
  * com.frogobox.frogoconsumeapi.sport.model.response
  *
  */
-
-data class Seasons(var seasons: List<com.frogobox.frogoconsumeapi.sport.model.Season>? = null)
+data class Countrys(var countrys: List<Country>? = null)
