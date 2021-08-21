@@ -83,7 +83,7 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
 
     implementation 'com.github.amirisback:frogo-log:2.0.4'
-    implementation 'com.github.frogobox:frogo-android-sdk:2.0.0'
+    implementation 'com.github.frogobox:frogo-android-sdk:2.0.1'
 
     implementation "com.facebook.stetho:stetho:1.5.1"
     implementation "com.readystatesoftware.chuck:library:1.1.0"

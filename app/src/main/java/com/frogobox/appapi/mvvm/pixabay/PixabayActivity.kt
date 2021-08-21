@@ -7,11 +7,11 @@ import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ActivityPixabayBinding
 import com.frogobox.api.pixabay.model.PixabayImage
 import com.frogobox.uikit.databinding.FrogoRvGridType1Binding
-import com.frogobox.sdk.core.FrogoBaseActivity
+import com.frogobox.sdk.core.FrogoActivity
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class PixabayActivity : FrogoBaseActivity<ActivityPixabayBinding>() {
+class PixabayActivity : FrogoActivity<ActivityPixabayBinding>() {
 
     private val pixabayViewModel: PixabayViewModel by viewModel()
 

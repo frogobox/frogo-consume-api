@@ -6,9 +6,9 @@ import com.frogobox.appapi.databinding.ActivityMovieBinding
 import com.frogobox.appapi.mvvm.movies.core.MovieFragment
 import com.frogobox.appapi.mvvm.movies.core.PersonFragment
 import com.frogobox.appapi.mvvm.movies.core.TvFragment
-import com.frogobox.sdk.core.FrogoBaseActivity
+import com.frogobox.sdk.core.FrogoActivity
 
-class MoviesActivity : FrogoBaseActivity<ActivityMovieBinding>() {
+class MoviesActivity : FrogoActivity<ActivityMovieBinding>() {
 
     override fun setupViewBinding(): ActivityMovieBinding {
         return ActivityMovieBinding.inflate(layoutInflater)

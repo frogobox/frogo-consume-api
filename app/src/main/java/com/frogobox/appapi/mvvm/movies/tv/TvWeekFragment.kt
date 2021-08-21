@@ -9,7 +9,7 @@ import com.frogobox.appapi.databinding.ContentItemBinding
 import com.frogobox.appapi.databinding.FragmentTrendingChildBinding
 import com.frogobox.api.movie.model.TrendingTv
 import com.frogobox.api.movie.util.MovieUrl
-import com.frogobox.sdk.core.FrogoBaseFragment
+import com.frogobox.sdk.core.FrogoFragment
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -17,7 +17,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 /**
  * A simple [Fragment] subclass.
  */
-class TvWeekFragment : FrogoBaseFragment<FragmentTrendingChildBinding>() {
+class TvWeekFragment : FrogoFragment<FragmentTrendingChildBinding>() {
 
     private val tvViewModel : TvViewModel by viewModel()
 

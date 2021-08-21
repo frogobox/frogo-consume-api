@@ -13,12 +13,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Consumable">
+
         <activity android:name=".mvvm.pixabay.PixabayActivity" />
         <activity android:name=".mvvm.sport.SportActivity" />
         <activity android:name=".mvvm.movies.MoviesActivity" />
         <activity android:name=".mvvm.meal.MealActivity" />
         <activity android:name=".mvvm.news.NewsActivity" />
-        <activity android:name=".mvvm.main.MainActivity"
+
+        <activity
+            android:name=".mvvm.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,9 +30,6 @@
             </intent-filter>
         </activity>
 
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="@string/admob_publisher_id" />
     </application>
 
 </manifest>

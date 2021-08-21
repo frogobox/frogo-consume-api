@@ -7,11 +7,11 @@ import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ActivityNewsBinding
 import com.frogobox.api.news.model.Article
 import com.frogobox.uikit.databinding.FrogoRvListType6Binding
-import com.frogobox.sdk.core.FrogoBaseActivity
+import com.frogobox.sdk.core.FrogoActivity
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class NewsActivity : FrogoBaseActivity<ActivityNewsBinding>() {
+class NewsActivity : FrogoActivity<ActivityNewsBinding>() {
 
     private val newsViewModel: NewsViewModel by viewModel()
 

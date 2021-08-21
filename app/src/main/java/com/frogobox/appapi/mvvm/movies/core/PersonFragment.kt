@@ -9,12 +9,12 @@ import com.frogobox.appapi.databinding.FragmentTrendingBinding
 import com.frogobox.appapi.mvvm.movies.person.PersonDayFragment
 import com.frogobox.appapi.mvvm.movies.person.PersonWeekFragment
 import com.frogobox.appapi.util.PagerAdapter
-import com.frogobox.sdk.core.FrogoBaseFragment
+import com.frogobox.sdk.core.FrogoFragment
 
 /**
  * A simple [Fragment] subclass.
  */
-class PersonFragment : FrogoBaseFragment<FragmentTrendingBinding>() {
+class PersonFragment : FrogoFragment<FragmentTrendingBinding>() {
 
     override fun setupViewBinding(
         inflater: LayoutInflater,

@@ -13,10 +13,10 @@ import com.frogobox.appapi.mvvm.pixabay.PixabayActivity
 import com.frogobox.appapi.mvvm.sport.SportActivity
 import com.frogobox.appapi.util.Constant
 import com.frogobox.appapi.util.Helper
-import com.frogobox.sdk.core.FrogoBaseActivity
+import com.frogobox.sdk.core.FrogoActivity
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 
-class MainActivity : FrogoBaseActivity<ActivityMainBinding>() {
+class MainActivity : FrogoActivity<ActivityMainBinding>() {
 
     override fun setupViewBinding(): ActivityMainBinding {
         return ActivityMainBinding.inflate(layoutInflater)

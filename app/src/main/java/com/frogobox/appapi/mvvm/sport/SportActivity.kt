@@ -7,11 +7,11 @@ import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ActivitySportBinding
 import com.frogobox.api.sport.model.Team
 import com.frogobox.uikit.databinding.FrogoRvGridType3Binding
-import com.frogobox.sdk.core.FrogoBaseActivity
+import com.frogobox.sdk.core.FrogoActivity
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SportActivity : FrogoBaseActivity<ActivitySportBinding>() {
+class SportActivity : FrogoActivity<ActivitySportBinding>() {
 
     private val sportViewModel: SportViewModel by viewModel()
 

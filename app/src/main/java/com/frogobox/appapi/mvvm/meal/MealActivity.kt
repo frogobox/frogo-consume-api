@@ -7,11 +7,11 @@ import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ActivityMealBinding
 import com.frogobox.api.meal.model.Meal
 import com.frogobox.uikit.databinding.FrogoRvGridType2Binding
-import com.frogobox.sdk.core.FrogoBaseActivity
+import com.frogobox.sdk.core.FrogoActivity
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MealActivity : FrogoBaseActivity<ActivityMealBinding>() {
+class MealActivity : FrogoActivity<ActivityMealBinding>() {
 
     private val mealViewModel: MealViewModel by viewModel()
 
