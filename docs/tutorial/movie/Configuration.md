@@ -2,24 +2,24 @@
 
     // CONFIGURATION
     // Get API Configuration
-    fun getConfigurationApi(callback: FrogoResponseCallback<ConfigurationApi>)
+    fun getConfigurationApi(callback: ConsumeApiResponse<ConfigurationApi>)
 
     // CONFIGURATION
     // Get Countries
-    fun getConfigurationCountries(callback: FrogoResponseCallback<List<ConfigurationCountry>>)
+    fun getConfigurationCountries(callback: ConsumeApiResponse<List<ConfigurationCountry>>)
 
     // CONFIGURATION
     // Get Jobs
-    fun getConfigurationJobs(callback: FrogoResponseCallback<List<ConfigurationJob>>)
+    fun getConfigurationJobs(callback: ConsumeApiResponse<List<ConfigurationJob>>)
 
     // CONFIGURATION
     // Get Languages
-    fun getConfigurationLanguages(callback: FrogoResponseCallback<List<ConfigurationLanguage>>)
+    fun getConfigurationLanguages(callback: ConsumeApiResponse<List<ConfigurationLanguage>>)
 
     // CONFIGURATION
     // Get Primary Translations
-    fun getConfigurationTranslations(callback: FrogoResponseCallback<List<String>>)
+    fun getConfigurationTranslations(callback: ConsumeApiResponse<List<String>>)
 
     // CONFIGURATION
     // Get Timezones
-    fun getConfigurationTimezones(callback: FrogoResponseCallback<List<ConfigurationTimezone>>)
+    fun getConfigurationTimezones(callback: ConsumeApiResponse<List<ConfigurationTimezone>>)

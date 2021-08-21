@@ -6,7 +6,7 @@ import com.frogobox.api.meal.model.Meal
 import com.frogobox.api.meal.response.MealResponse
 import com.frogobox.api.meal.util.MealUrl
 import com.frogobox.sdk.core.FrogoLiveEvent
-import com.frogobox.sdk.core.FrogoResponseCallback
+import com.frogobox.api.core.ConsumeApiResponse
 import com.frogobox.sdk.core.FrogoViewModel
 
 /*
@@ -30,7 +30,7 @@ class MealViewModel(private val context: Application) : FrogoViewModel(context) 
         consumeTheMealDbApi.usingChuckInterceptor(context)
         consumeTheMealDbApi.listAllMeal(
             firstLetter,
-            object : FrogoResponseCallback<MealResponse<Meal>> {
+            object : ConsumeApiResponse<MealResponse<Meal>> {
                 override fun onSuccess(data: MealResponse<Meal>) {
                     // on Success Request
                     data.meals?.let { listData.postValue(it) }

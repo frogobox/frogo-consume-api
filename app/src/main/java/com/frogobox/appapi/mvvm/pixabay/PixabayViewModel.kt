@@ -6,7 +6,7 @@ import com.frogobox.api.pixabay.model.PixabayImage
 import com.frogobox.api.pixabay.response.Response
 import com.frogobox.api.pixabay.util.PixabayUrl
 import com.frogobox.sdk.core.FrogoLiveEvent
-import com.frogobox.sdk.core.FrogoResponseCallback
+import com.frogobox.api.core.ConsumeApiResponse
 import com.frogobox.sdk.core.FrogoViewModel
 
 /*
@@ -43,7 +43,7 @@ class PixabayViewModel(private val context: Application) : FrogoViewModel(contex
             null,
             null,
             null,
-            object : FrogoResponseCallback<Response<PixabayImage>> {
+            object : ConsumeApiResponse<Response<PixabayImage>> {
                 override fun onSuccess(data: Response<PixabayImage>) {
                     // Place your UI / Data
                     data.hits?.let { listData.postValue(it) }

@@ -4,12 +4,12 @@
     // Get Movie List
     fun getGenresMovie(
         language: String?,
-        callback: FrogoResponseCallback<Genres>
+        callback: ConsumeApiResponse<Genres>
     )
 
     // GENRES
     // Get TV List
     fun getGenresTv(
         language: String?,
-        callback: FrogoResponseCallback<Genres>
+        callback: ConsumeApiResponse<Genres>
     )

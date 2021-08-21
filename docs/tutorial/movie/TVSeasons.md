@@ -7,7 +7,7 @@
         season_number: Int,
         language: String?,
         append_to_response: String?,
-        callback: FrogoResponseCallback<TvSeasonsDetails>
+        callback: ConsumeApiResponse<TvSeasonsDetails>
     )
 
     // TV SEASONS
@@ -17,7 +17,7 @@
         startDate: String?,
         endDate: String?,
         page: Int?,
-        callback: FrogoResponseCallback<TvSeasonsChanges>
+        callback: ConsumeApiResponse<TvSeasonsChanges>
     )
 
     // TV SEASONS
@@ -28,7 +28,7 @@
         language: String?,
         guest_session_id: String?,
         session_id: String?,
-        callback: FrogoResponseCallback<TvSeasonsAccountStates>
+        callback: ConsumeApiResponse<TvSeasonsAccountStates>
     )
 
     // TV SEASONS
@@ -37,7 +37,7 @@
         tv_id: Int,
         season_number: Int,
         language: String?,
-        callback: FrogoResponseCallback<TvSeasonsCredits>
+        callback: ConsumeApiResponse<TvSeasonsCredits>
     )
 
     // TV SEASONS
@@ -46,7 +46,7 @@
         tv_id: Int,
         season_number: Int,
         language: String?,
-        callback: FrogoResponseCallback<TvSeasonsExternalIds>
+        callback: ConsumeApiResponse<TvSeasonsExternalIds>
     )
 
     // TV SEASONS
@@ -55,7 +55,7 @@
         tv_id: Int,
         season_number: Int,
         language: String?,
-        callback: FrogoResponseCallback<TvSeasonsImages>
+        callback: ConsumeApiResponse<TvSeasonsImages>
     )
 
     // TV SEASONS
@@ -64,5 +64,5 @@
         tv_id: Int,
         season_number: Int,
         language: String?,
-        callback: FrogoResponseCallback<TvSeasonsVideos>
+        callback: ConsumeApiResponse<TvSeasonsVideos>
     )

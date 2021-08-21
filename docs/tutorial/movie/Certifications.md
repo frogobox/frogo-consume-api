@@ -2,8 +2,8 @@
 
     // CERTIFICATIONS
     // Get Movie Certifications
-    fun getMovieCertifications(callback: FrogoResponseCallback<Certifications<CertificationMovie>>)
+    fun getMovieCertifications(callback: ConsumeApiResponse<Certifications<CertificationMovie>>)
 
     // CERTIFICATIONS
     // Get TV Certifications
-    fun getTvCertifications(callback: FrogoResponseCallback<Certifications<CertificationTv>>)
+    fun getTvCertifications(callback: ConsumeApiResponse<Certifications<CertificationTv>>)

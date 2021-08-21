@@ -7,7 +7,7 @@ import com.frogobox.api.news.response.SourceResponse
 import com.frogobox.api.news.util.NewsUrl
 import com.frogobox.sdk.core.FrogoApiCallback
 import com.frogobox.sdk.core.FrogoApiClient
-import com.frogobox.sdk.core.FrogoResponseCallback
+import com.frogobox.api.core.ConsumeApiResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -45,7 +45,7 @@ object NewsRepository : NewsDataSource {
         country: String?,
         pageSize: Int?,
         page: Int?,
-        callback: FrogoResponseCallback<ArticleResponse>
+        callback: ConsumeApiResponse<ArticleResponse>
     ) {
         newsApiService.getTopHeadline(apiKey, q, sources, category, country, pageSize, page)
             .subscribeOn(Schedulers.io())
@@ -76,7 +76,7 @@ object NewsRepository : NewsDataSource {
         sortBy: String?,
         pageSize: Int?,
         page: Int?,
-        callback: FrogoResponseCallback<ArticleResponse>
+        callback: ConsumeApiResponse<ArticleResponse>
     ) {
         newsApiService.getEverythings(
             apiKey,
@@ -112,7 +112,7 @@ object NewsRepository : NewsDataSource {
         language: String,
         country: String,
         category: String,
-        callback: FrogoResponseCallback<SourceResponse>
+        callback: ConsumeApiResponse<SourceResponse>
     ) {
         newsApiService.getSources(apiKey, language, country, category)
             .subscribeOn(Schedulers.io())

@@ -3,7 +3,7 @@ package com.frogobox.api.sport
 import android.content.Context
 import com.frogobox.api.sport.response.*
 import com.frogobox.api.sport.source.SportRepository
-import com.frogobox.sdk.core.FrogoResponseCallback
+import com.frogobox.api.core.ConsumeApiResponse
 
 /**
  * Created by Faisal Amir
@@ -32,12 +32,12 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
 
     override fun searchForTeamByName(
         teamName: String?,
-        sportResultCallback: FrogoResponseCallback<Teams>
+        sportResultCallback: ConsumeApiResponse<Teams>
     ) {
         sportRepository.searchForTeamByName(
             apiKey,
             teamName,
-            object : FrogoResponseCallback<Teams> {
+            object : ConsumeApiResponse<Teams> {
                 override fun onSuccess(data: Teams) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -59,12 +59,12 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
 
     override fun searchForTeamByShortCode(
         shortCode: String?,
-        sportResultCallback: FrogoResponseCallback<Teams>
+        sportResultCallback: ConsumeApiResponse<Teams>
     ) {
         sportRepository.searchForTeamByShortCode(
             apiKey,
             shortCode,
-            object : FrogoResponseCallback<Teams> {
+            object : ConsumeApiResponse<Teams> {
                 override fun onSuccess(data: Teams) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -85,12 +85,12 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
 
     override fun searchForAllPlayer(
         teamName: String?,
-        sportResultCallback: FrogoResponseCallback<Players>
+        sportResultCallback: ConsumeApiResponse<Players>
     ) {
         sportRepository.searchForAllPlayer(
             apiKey,
             teamName,
-            object : FrogoResponseCallback<Players> {
+            object : ConsumeApiResponse<Players> {
                 override fun onSuccess(data: Players) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -111,12 +111,12 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
 
     override fun searchForPlayer(
         playerName: String?,
-        sportResultCallback: FrogoResponseCallback<Players>
+        sportResultCallback: ConsumeApiResponse<Players>
     ) {
         sportRepository.searchForPlayer(
             apiKey,
             playerName,
-            object : FrogoResponseCallback<Players> {
+            object : ConsumeApiResponse<Players> {
                 override fun onSuccess(data: Players) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -138,13 +138,13 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
     override fun searchForPlayer(
         playerName: String?,
         teamName: String?,
-        sportResultCallback: FrogoResponseCallback<Players>
+        sportResultCallback: ConsumeApiResponse<Players>
     ) {
         sportRepository.searchForPlayer(
             apiKey,
             playerName,
             teamName,
-            object : FrogoResponseCallback<Players> {
+            object : ConsumeApiResponse<Players> {
                 override fun onSuccess(data: Players) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -165,12 +165,12 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
 
     override fun searchForEvent(
         eventName: String?,
-        sportResultCallback: FrogoResponseCallback<Events>
+        sportResultCallback: ConsumeApiResponse<Events>
     ) {
         sportRepository.searchForEvent(
             apiKey,
             eventName,
-            object : FrogoResponseCallback<Events> {
+            object : ConsumeApiResponse<Events> {
                 override fun onSuccess(data: Events) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -192,13 +192,13 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
     override fun searchForEvent(
         eventName: String?,
         season: String?,
-        sportResultCallback: FrogoResponseCallback<Events>
+        sportResultCallback: ConsumeApiResponse<Events>
     ) {
         sportRepository.searchForEvent(
             apiKey,
             eventName,
             season,
-            object : FrogoResponseCallback<Events> {
+            object : ConsumeApiResponse<Events> {
                 override fun onSuccess(data: Events) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -219,13 +219,13 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
 
     override fun searchForEventFileName(
         eventFileName: String?,
-        sportResultCallback: FrogoResponseCallback<Events>
+        sportResultCallback: ConsumeApiResponse<Events>
     ) {
 
         sportRepository.searchForEventFileName(
             apiKey,
             eventFileName,
-            object : FrogoResponseCallback<Events> {
+            object : ConsumeApiResponse<Events> {
                 override fun onSuccess(data: Events) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -245,8 +245,8 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
 
     }
 
-    override fun getAllSports(sportResultCallback: FrogoResponseCallback<Sports>) {
-        sportRepository.getAllSports(apiKey, object : FrogoResponseCallback<Sports> {
+    override fun getAllSports(sportResultCallback: ConsumeApiResponse<Sports>) {
+        sportRepository.getAllSports(apiKey, object : ConsumeApiResponse<Sports> {
             override fun onSuccess(data: Sports) {
                 sportResultCallback.onSuccess(data)
             }
@@ -265,8 +265,8 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
         })
     }
 
-    override fun getAllLeagues(sportResultCallback: FrogoResponseCallback<Leagues>) {
-        sportRepository.getAllLeagues(apiKey, object : FrogoResponseCallback<Leagues> {
+    override fun getAllLeagues(sportResultCallback: ConsumeApiResponse<Leagues>) {
+        sportRepository.getAllLeagues(apiKey, object : ConsumeApiResponse<Leagues> {
             override fun onSuccess(data: Leagues) {
                 sportResultCallback.onSuccess(data)
             }
@@ -287,12 +287,12 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
 
     override fun searchAllLeagues(
         countryName: String?,
-        sportResultCallback: FrogoResponseCallback<Countrys>
+        sportResultCallback: ConsumeApiResponse<Countrys>
     ) {
         sportRepository.searchAllLeagues(
             apiKey,
             countryName,
-            object : FrogoResponseCallback<Countrys> {
+            object : ConsumeApiResponse<Countrys> {
                 override fun onSuccess(data: Countrys) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -314,13 +314,13 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
     override fun searchAllLeagues(
         countryName: String?,
         sportName: String?,
-        sportResultCallback: FrogoResponseCallback<Countrys>
+        sportResultCallback: ConsumeApiResponse<Countrys>
     ) {
         sportRepository.searchAllLeagues(
             apiKey,
             countryName,
             sportName,
-            object : FrogoResponseCallback<Countrys> {
+            object : ConsumeApiResponse<Countrys> {
                 override fun onSuccess(data: Countrys) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -341,12 +341,12 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
 
     override fun searchAllSeasons(
         idTeam: String?,
-        sportResultCallback: FrogoResponseCallback<Seasons>
+        sportResultCallback: ConsumeApiResponse<Seasons>
     ) {
         sportRepository.searchAllSeasons(
             apiKey,
             idTeam,
-            object : FrogoResponseCallback<Seasons> {
+            object : ConsumeApiResponse<Seasons> {
                 override fun onSuccess(data: Seasons) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -367,13 +367,13 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
 
     override fun searchAllTeam(
         league: String?,
-        sportResultCallback: FrogoResponseCallback<Teams>
+        sportResultCallback: ConsumeApiResponse<Teams>
     ) {
 
         sportRepository.searchAllTeam(
             apiKey,
             league,
-            object : FrogoResponseCallback<Teams> {
+            object : ConsumeApiResponse<Teams> {
                 override fun onSuccess(data: Teams) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -395,13 +395,13 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
     override fun searchAllTeam(
         sportName: String?,
         countryName: String?,
-        sportResultCallback: FrogoResponseCallback<Teams>
+        sportResultCallback: ConsumeApiResponse<Teams>
     ) {
         sportRepository.searchAllTeam(
             apiKey,
             sportName,
             countryName,
-            object : FrogoResponseCallback<Teams> {
+            object : ConsumeApiResponse<Teams> {
                 override fun onSuccess(data: Teams) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -420,12 +420,12 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
             })
     }
 
-    override fun lookupAllTeam(idLeague: String?, sportResultCallback: FrogoResponseCallback<Teams>) {
+    override fun lookupAllTeam(idLeague: String?, sportResultCallback: ConsumeApiResponse<Teams>) {
 
         sportRepository.lookupAllTeam(
             apiKey,
             idLeague,
-            object : FrogoResponseCallback<Teams> {
+            object : ConsumeApiResponse<Teams> {
                 override fun onSuccess(data: Teams) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -447,12 +447,12 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
 
     override fun lookupAllPlayer(
         idTeam: String?,
-        sportResultCallback: FrogoResponseCallback<Players>
+        sportResultCallback: ConsumeApiResponse<Players>
     ) {
         sportRepository.lookupAllPlayer(
             apiKey,
             idTeam,
-            object : FrogoResponseCallback<Players> {
+            object : ConsumeApiResponse<Players> {
                 override fun onSuccess(data: Players) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -471,11 +471,11 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
             })
     }
 
-    override fun searchLoves(userName: String?, sportResultCallback: FrogoResponseCallback<Users>) {
+    override fun searchLoves(userName: String?, sportResultCallback: ConsumeApiResponse<Users>) {
         sportRepository.searchLoves(
             apiKey,
             userName,
-            object : FrogoResponseCallback<Users> {
+            object : ConsumeApiResponse<Users> {
                 override fun onSuccess(data: Users) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -496,12 +496,12 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
 
     override fun lookupLeagues(
         idLeague: String?,
-        sportResultCallback: FrogoResponseCallback<Leagues>
+        sportResultCallback: ConsumeApiResponse<Leagues>
     ) {
         sportRepository.lookupLeagues(
             apiKey,
             idLeague,
-            object : FrogoResponseCallback<Leagues> {
+            object : ConsumeApiResponse<Leagues> {
                 override fun onSuccess(data: Leagues) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -520,11 +520,11 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
             })
     }
 
-    override fun lookupTeam(idTeam: String?, sportResultCallback: FrogoResponseCallback<Teams>) {
+    override fun lookupTeam(idTeam: String?, sportResultCallback: ConsumeApiResponse<Teams>) {
         sportRepository.lookupTeam(
             apiKey,
             idTeam,
-            object : FrogoResponseCallback<Teams> {
+            object : ConsumeApiResponse<Teams> {
                 override fun onSuccess(data: Teams) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -543,11 +543,11 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
             })
     }
 
-    override fun lookupPlayer(idPlayer: String?, sportResultCallback: FrogoResponseCallback<Players>) {
+    override fun lookupPlayer(idPlayer: String?, sportResultCallback: ConsumeApiResponse<Players>) {
         sportRepository.lookupPlayer(
             apiKey,
             idPlayer,
-            object : FrogoResponseCallback<Players> {
+            object : ConsumeApiResponse<Players> {
                 override fun onSuccess(data: Players) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -566,11 +566,11 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
             })
     }
 
-    override fun lookupEvent(idEvent: String?, sportResultCallback: FrogoResponseCallback<Events>) {
+    override fun lookupEvent(idEvent: String?, sportResultCallback: ConsumeApiResponse<Events>) {
         sportRepository.lookupEvent(
             apiKey,
             idEvent,
-            object : FrogoResponseCallback<Events> {
+            object : ConsumeApiResponse<Events> {
                 override fun onSuccess(data: Events) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -589,11 +589,11 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
             })
     }
 
-    override fun lookupHonour(idPlayer: String?, sportResultCallback: FrogoResponseCallback<Honors>) {
+    override fun lookupHonour(idPlayer: String?, sportResultCallback: ConsumeApiResponse<Honors>) {
         sportRepository.lookupHonour(
             apiKey,
             idPlayer,
-            object : FrogoResponseCallback<Honors> {
+            object : ConsumeApiResponse<Honors> {
                 override fun onSuccess(data: Honors) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -614,12 +614,12 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
 
     override fun lookupFormerTeam(
         idPlayer: String?,
-        sportResultCallback: FrogoResponseCallback<FormerTeams>
+        sportResultCallback: ConsumeApiResponse<FormerTeams>
     ) {
         sportRepository.lookupFormerTeam(
             apiKey,
             idPlayer,
-            object : FrogoResponseCallback<FormerTeams> {
+            object : ConsumeApiResponse<FormerTeams> {
                 override fun onSuccess(data: FormerTeams) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -640,12 +640,12 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
 
     override fun lookupContract(
         idPlayer: String?,
-        sportResultCallback: FrogoResponseCallback<Contracts>
+        sportResultCallback: ConsumeApiResponse<Contracts>
     ) {
         sportRepository.lookupContract(
             apiKey,
             idPlayer,
-            object : FrogoResponseCallback<Contracts> {
+            object : ConsumeApiResponse<Contracts> {
                 override fun onSuccess(data: Contracts) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -667,13 +667,13 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
     override fun lookupTable(
         idLeague: String?,
         season: String?,
-        sportResultCallback: FrogoResponseCallback<Tables>
+        sportResultCallback: ConsumeApiResponse<Tables>
     ) {
         sportRepository.lookupTable(
             apiKey,
             idLeague,
             season,
-            object : FrogoResponseCallback<Tables> {
+            object : ConsumeApiResponse<Tables> {
                 override fun onSuccess(data: Tables) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -692,11 +692,11 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
             })
     }
 
-    override fun eventsNext(idTeam: String?, sportResultCallback: FrogoResponseCallback<Events>) {
+    override fun eventsNext(idTeam: String?, sportResultCallback: ConsumeApiResponse<Events>) {
         sportRepository.eventsNext(
             apiKey,
             idTeam,
-            object : FrogoResponseCallback<Events> {
+            object : ConsumeApiResponse<Events> {
                 override fun onSuccess(data: Events) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -717,12 +717,12 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
 
     override fun eventsNextLeague(
         idLeague: String?,
-        sportResultCallback: FrogoResponseCallback<Events>
+        sportResultCallback: ConsumeApiResponse<Events>
     ) {
         sportRepository.eventsNextLeague(
             apiKey,
             idLeague,
-            object : FrogoResponseCallback<Events> {
+            object : ConsumeApiResponse<Events> {
                 override fun onSuccess(data: Events) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -741,11 +741,11 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
             })
     }
 
-    override fun eventsLast(idTeam: String?, sportResultCallback: FrogoResponseCallback<Results>) {
+    override fun eventsLast(idTeam: String?, sportResultCallback: ConsumeApiResponse<Results>) {
         sportRepository.eventsLast(
             apiKey,
             idTeam,
-            object : FrogoResponseCallback<Results> {
+            object : ConsumeApiResponse<Results> {
                 override fun onSuccess(data: Results) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -766,12 +766,12 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
 
     override fun eventsPastLeague(
         idLeague: String?,
-        sportResultCallback: FrogoResponseCallback<Events>
+        sportResultCallback: ConsumeApiResponse<Events>
     ) {
         sportRepository.eventsPastLeague(
             apiKey,
             idLeague,
-            object : FrogoResponseCallback<Events> {
+            object : ConsumeApiResponse<Events> {
                 override fun onSuccess(data: Events) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -794,13 +794,13 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
         idLeague: String?,
         round: String?,
         season: String?,
-        sportResultCallback: FrogoResponseCallback<Events>
+        sportResultCallback: ConsumeApiResponse<Events>
     ) {
         sportRepository.eventsRound(apiKey,
             idLeague,
             round,
             season,
-            object : FrogoResponseCallback<Events> {
+            object : ConsumeApiResponse<Events> {
                 override fun onSuccess(data: Events) {
                     sportResultCallback.onSuccess(data)
                 }
@@ -822,13 +822,13 @@ class ConsumeTheSportDbApi(private val apiKey: String) : IConsumeTheSportDbApi {
     override fun eventsSeason(
         idLeague: String?,
         season: String?,
-        sportResultCallback: FrogoResponseCallback<Events>
+        sportResultCallback: ConsumeApiResponse<Events>
     ) {
         sportRepository.eventsSeason(
             apiKey,
             idLeague,
             season,
-            object : FrogoResponseCallback<Events> {
+            object : ConsumeApiResponse<Events> {
                 override fun onSuccess(data: Events) {
                     sportResultCallback.onSuccess(data)
                 }

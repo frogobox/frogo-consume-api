@@ -4,7 +4,7 @@ import android.content.Context
 import com.frogobox.api.news.response.ArticleResponse
 import com.frogobox.api.news.response.SourceResponse
 import com.frogobox.api.news.sources.NewsRepository
-import com.frogobox.sdk.core.FrogoResponseCallback
+import com.frogobox.api.core.ConsumeApiResponse
 
 /**
  * Created by Faisal Amir
@@ -38,7 +38,7 @@ class ConsumeNewsApi(private val apiKey: String) : IConsumeNewsApi {
         country: String?,
         pageSize: Int?,
         page: Int?,
-        callback: FrogoResponseCallback<ArticleResponse>
+        callback: ConsumeApiResponse<ArticleResponse>
     ) {
         newsRepository.getTopHeadline(
             apiKey,
@@ -64,7 +64,7 @@ class ConsumeNewsApi(private val apiKey: String) : IConsumeNewsApi {
         sortBy: String?,
         pageSize: Int?,
         page: Int?,
-        callback: FrogoResponseCallback<ArticleResponse>
+        callback: ConsumeApiResponse<ArticleResponse>
     ) {
         newsRepository.getEverythings(
             apiKey,
@@ -87,7 +87,7 @@ class ConsumeNewsApi(private val apiKey: String) : IConsumeNewsApi {
         language: String,
         country: String,
         category: String,
-        callback: FrogoResponseCallback<SourceResponse>
+        callback: ConsumeApiResponse<SourceResponse>
     ) {
         newsRepository.getSources(
             apiKey,

@@ -8,7 +8,7 @@ import com.frogobox.api.news.util.NewsConstant.CATEGORY_HEALTH
 import com.frogobox.api.news.util.NewsConstant.COUNTRY_ID
 import com.frogobox.api.news.util.NewsUrl
 import com.frogobox.sdk.core.FrogoLiveEvent
-import com.frogobox.sdk.core.FrogoResponseCallback
+import com.frogobox.api.core.ConsumeApiResponse
 import com.frogobox.sdk.core.FrogoViewModel
 
 /*
@@ -37,7 +37,7 @@ class NewsViewModel(private val context: Application) : FrogoViewModel(context) 
             COUNTRY_ID,
             null,
             null,
-            object : FrogoResponseCallback<ArticleResponse> {
+            object : ConsumeApiResponse<ArticleResponse> {
 
                 override fun onSuccess(data: ArticleResponse) {
                     // Your Ui or data

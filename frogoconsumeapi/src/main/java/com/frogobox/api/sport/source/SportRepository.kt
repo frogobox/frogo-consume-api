@@ -5,7 +5,7 @@ import com.frogobox.api.sport.response.*
 import com.frogobox.api.sport.util.SportUrl
 import com.frogobox.sdk.core.FrogoApiCallback
 import com.frogobox.sdk.core.FrogoApiClient
-import com.frogobox.sdk.core.FrogoResponseCallback
+import com.frogobox.api.core.ConsumeApiResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -39,7 +39,7 @@ object SportRepository :
     override fun searchForTeamByName(
         apiKey: String,
         teamName: String?,
-        callback: FrogoResponseCallback<Teams>
+        callback: ConsumeApiResponse<Teams>
     ) {
         sportApiService
             .searchForTeamByName(apiKey, teamName)
@@ -61,7 +61,7 @@ object SportRepository :
     override fun searchForTeamByShortCode(
         apiKey: String,
         shortCode: String?,
-        callback: FrogoResponseCallback<Teams>
+        callback: ConsumeApiResponse<Teams>
     ) {
         sportApiService
             .searchForTeamByShortCode(apiKey, shortCode)
@@ -83,7 +83,7 @@ object SportRepository :
     override fun searchForAllPlayer(
         apiKey: String,
         teamName: String?,
-        callback: FrogoResponseCallback<Players>
+        callback: ConsumeApiResponse<Players>
     ) {
         sportApiService
             .searchForAllPlayer(apiKey, teamName)
@@ -105,7 +105,7 @@ object SportRepository :
     override fun searchForPlayer(
         apiKey: String,
         playerName: String?,
-        callback: FrogoResponseCallback<Players>
+        callback: ConsumeApiResponse<Players>
     ) {
         sportApiService
             .searchForPlayer(apiKey, playerName)
@@ -128,7 +128,7 @@ object SportRepository :
         apiKey: String,
         playerName: String?,
         teamName: String?,
-        callback: FrogoResponseCallback<Players>
+        callback: ConsumeApiResponse<Players>
     ) {
         sportApiService
             .searchForPlayer(apiKey, playerName, teamName)
@@ -150,7 +150,7 @@ object SportRepository :
     override fun searchForEvent(
         apiKey: String,
         eventName: String?,
-        callback: FrogoResponseCallback<Events>
+        callback: ConsumeApiResponse<Events>
     ) {
         sportApiService
             .searchForEvent(apiKey, eventName)
@@ -173,7 +173,7 @@ object SportRepository :
         apiKey: String,
         eventName: String?,
         season: String?,
-        callback: FrogoResponseCallback<Events>
+        callback: ConsumeApiResponse<Events>
     ) {
         sportApiService
             .searchForEvent(apiKey, eventName, season)
@@ -195,7 +195,7 @@ object SportRepository :
     override fun searchForEventFileName(
         apiKey: String,
         eventFileName: String?,
-        callback: FrogoResponseCallback<Events>
+        callback: ConsumeApiResponse<Events>
     ) {
         sportApiService
             .searchForEventFileName(apiKey, eventFileName)
@@ -214,7 +214,7 @@ object SportRepository :
             })
     }
 
-    override fun getAllSports(apiKey: String, callback: FrogoResponseCallback<Sports>) {
+    override fun getAllSports(apiKey: String, callback: ConsumeApiResponse<Sports>) {
         sportApiService.getAllSports(apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -233,7 +233,7 @@ object SportRepository :
 
     override fun getAllLeagues(
         apiKey: String,
-        callback: FrogoResponseCallback<Leagues>
+        callback: ConsumeApiResponse<Leagues>
     ) {
         sportApiService.getAllLeagues(apiKey)
             .subscribeOn(Schedulers.io())
@@ -254,7 +254,7 @@ object SportRepository :
     override fun searchAllLeagues(
         apiKey: String,
         countryName: String?,
-        callback: FrogoResponseCallback<Countrys>
+        callback: ConsumeApiResponse<Countrys>
     ) {
         sportApiService.searchAllLeagues(apiKey, countryName)
             .subscribeOn(Schedulers.io())
@@ -276,7 +276,7 @@ object SportRepository :
         apiKey: String,
         countryName: String?,
         sportName: String?,
-        callback: FrogoResponseCallback<Countrys>
+        callback: ConsumeApiResponse<Countrys>
     ) {
         sportApiService.searchAllLeagues(apiKey, countryName, sportName)
             .subscribeOn(Schedulers.io())
@@ -297,7 +297,7 @@ object SportRepository :
     override fun searchAllSeasons(
         apiKey: String,
         idTeam: String?,
-        callback: FrogoResponseCallback<Seasons>
+        callback: ConsumeApiResponse<Seasons>
     ) {
         sportApiService.searchAllSeasons(apiKey, idTeam)
             .subscribeOn(Schedulers.io())
@@ -318,7 +318,7 @@ object SportRepository :
     override fun searchAllTeam(
         apiKey: String,
         league: String?,
-        callback: FrogoResponseCallback<Teams>
+        callback: ConsumeApiResponse<Teams>
     ) {
         sportApiService
             .searchAllTeam(apiKey, league)
@@ -341,7 +341,7 @@ object SportRepository :
         apiKey: String,
         sportName: String?,
         countryName: String?,
-        callback: FrogoResponseCallback<Teams>
+        callback: ConsumeApiResponse<Teams>
     ) {
         sportApiService
             .searchAllTeam(apiKey, sportName, countryName)
@@ -363,7 +363,7 @@ object SportRepository :
     override fun lookupAllTeam(
         apiKey: String,
         idLeague: String?,
-        callback: FrogoResponseCallback<Teams>
+        callback: ConsumeApiResponse<Teams>
     ) {
         sportApiService
             .lookupAllTeam(apiKey, idLeague)
@@ -385,7 +385,7 @@ object SportRepository :
     override fun lookupAllPlayer(
         apiKey: String,
         idTeam: String?,
-        callback: FrogoResponseCallback<Players>
+        callback: ConsumeApiResponse<Players>
     ) {
         sportApiService
             .lookupAllPlayer(apiKey, idTeam)
@@ -407,7 +407,7 @@ object SportRepository :
     override fun searchLoves(
         apiKey: String,
         userName: String?,
-        callback: FrogoResponseCallback<Users>
+        callback: ConsumeApiResponse<Users>
     ) {
         sportApiService
             .searchLoves(apiKey, userName)
@@ -429,7 +429,7 @@ object SportRepository :
     override fun lookupLeagues(
         apiKey: String,
         idLeague: String?,
-        callback: FrogoResponseCallback<Leagues>
+        callback: ConsumeApiResponse<Leagues>
     ) {
         sportApiService
             .lookupLeagues(apiKey, idLeague)
@@ -451,7 +451,7 @@ object SportRepository :
     override fun lookupTeam(
         apiKey: String,
         idTeam: String?,
-        callback: FrogoResponseCallback<Teams>
+        callback: ConsumeApiResponse<Teams>
     ) {
         sportApiService
             .lookupTeam(apiKey, idTeam)
@@ -473,7 +473,7 @@ object SportRepository :
     override fun lookupPlayer(
         apiKey: String,
         idPlayer: String?,
-        callback: FrogoResponseCallback<Players>
+        callback: ConsumeApiResponse<Players>
     ) {
         sportApiService
             .lookupPlayer(apiKey, idPlayer)
@@ -495,7 +495,7 @@ object SportRepository :
     override fun lookupEvent(
         apiKey: String,
         idEvent: String?,
-        callback: FrogoResponseCallback<Events>
+        callback: ConsumeApiResponse<Events>
     ) {
         sportApiService
             .lookupEvent(apiKey, idEvent)
@@ -517,7 +517,7 @@ object SportRepository :
     override fun lookupHonour(
         apiKey: String,
         idPlayer: String?,
-        callback: FrogoResponseCallback<Honors>
+        callback: ConsumeApiResponse<Honors>
     ) {
         sportApiService
             .lookupHonour(apiKey, idPlayer)
@@ -539,7 +539,7 @@ object SportRepository :
     override fun lookupFormerTeam(
         apiKey: String,
         idPlayer: String?,
-        callback: FrogoResponseCallback<FormerTeams>
+        callback: ConsumeApiResponse<FormerTeams>
     ) {
         sportApiService
             .lookupFormerTeam(apiKey, idPlayer)
@@ -561,7 +561,7 @@ object SportRepository :
     override fun lookupContract(
         apiKey: String,
         idPlayer: String?,
-        callback: FrogoResponseCallback<Contracts>
+        callback: ConsumeApiResponse<Contracts>
     ) {
         sportApiService
             .lookupContract(apiKey, idPlayer)
@@ -584,7 +584,7 @@ object SportRepository :
         apiKey: String,
         idLeague: String?,
         season: String?,
-        callback: FrogoResponseCallback<Tables>
+        callback: ConsumeApiResponse<Tables>
     ) {
         sportApiService
             .lookupTable(apiKey, idLeague, season)
@@ -606,7 +606,7 @@ object SportRepository :
     override fun eventsNext(
         apiKey: String,
         idTeam: String?,
-        callback: FrogoResponseCallback<Events>
+        callback: ConsumeApiResponse<Events>
     ) {
         sportApiService
             .eventsNext(apiKey, idTeam)
@@ -628,7 +628,7 @@ object SportRepository :
     override fun eventsNextLeague(
         apiKey: String,
         idLeague: String?,
-        callback: FrogoResponseCallback<Events>
+        callback: ConsumeApiResponse<Events>
     ) {
         sportApiService
             .eventsNextLeague(apiKey, idLeague)
@@ -650,7 +650,7 @@ object SportRepository :
     override fun eventsLast(
         apiKey: String,
         idTeam: String?,
-        callback: FrogoResponseCallback<Results>
+        callback: ConsumeApiResponse<Results>
     ) {
         sportApiService
             .eventsLast(apiKey, idTeam)
@@ -672,7 +672,7 @@ object SportRepository :
     override fun eventsPastLeague(
         apiKey: String,
         idLeague: String?,
-        callback: FrogoResponseCallback<Events>
+        callback: ConsumeApiResponse<Events>
     ) {
         sportApiService
             .eventsPastLeague(apiKey, idLeague)
@@ -696,7 +696,7 @@ object SportRepository :
         idLeague: String?,
         round: String?,
         season: String?,
-        callback: FrogoResponseCallback<Events>
+        callback: ConsumeApiResponse<Events>
     ) {
         sportApiService
             .eventsRound(apiKey, idLeague, round, season)
@@ -719,7 +719,7 @@ object SportRepository :
         apiKey: String,
         idLeague: String?,
         season: String?,
-        callback: FrogoResponseCallback<Events>
+        callback: ConsumeApiResponse<Events>
     ) {
         sportApiService
             .eventsSeason(apiKey, idLeague, season)

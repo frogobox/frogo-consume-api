@@ -5,7 +5,7 @@ import com.frogobox.api.movie.model.*
 import com.frogobox.api.movie.response.*
 import com.frogobox.api.movie.source.MovieRepository
 import com.frogobox.api.movie.util.MovieConstant
-import com.frogobox.sdk.core.FrogoResponseCallback
+import com.frogobox.api.core.ConsumeApiResponse
 
 /**
  * Created by Faisal Amir
@@ -32,10 +32,10 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         movieRepository.usingChuckInterceptor(context)
     }
 
-    override fun getMovieCertifications(callback: FrogoResponseCallback<Certifications<CertificationMovie>>) {
+    override fun getMovieCertifications(callback: ConsumeApiResponse<Certifications<CertificationMovie>>) {
         movieRepository.getMovieCertifications(
             apiKey,
-            object : FrogoResponseCallback<Certifications<CertificationMovie>> {
+            object : ConsumeApiResponse<Certifications<CertificationMovie>> {
                 override fun onSuccess(data: Certifications<CertificationMovie>) {
                     callback.onSuccess(data)
                 }
@@ -54,10 +54,10 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getTvCertifications(callback: FrogoResponseCallback<Certifications<CertificationTv>>) {
+    override fun getTvCertifications(callback: ConsumeApiResponse<Certifications<CertificationTv>>) {
         movieRepository.getTvCertifications(
             apiKey,
-            object : FrogoResponseCallback<Certifications<CertificationTv>> {
+            object : ConsumeApiResponse<Certifications<CertificationTv>> {
                 override fun onSuccess(data: Certifications<CertificationTv>) {
                     callback.onSuccess(data)
                 }
@@ -80,14 +80,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: FrogoResponseCallback<Changes>
+        callback: ConsumeApiResponse<Changes>
     ) {
         movieRepository.getMovieChangeList(
             apiKey,
             endDate,
             startDate,
             page,
-            object : FrogoResponseCallback<Changes> {
+            object : ConsumeApiResponse<Changes> {
                 override fun onSuccess(data: Changes) {
                     callback.onSuccess(data)
                 }
@@ -110,14 +110,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: FrogoResponseCallback<Changes>
+        callback: ConsumeApiResponse<Changes>
     ) {
         movieRepository.getTvChangeList(
             apiKey,
             endDate,
             startDate,
             page,
-            object : FrogoResponseCallback<Changes> {
+            object : ConsumeApiResponse<Changes> {
                 override fun onSuccess(data: Changes) {
                     callback.onSuccess(data)
                 }
@@ -140,14 +140,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: FrogoResponseCallback<Changes>
+        callback: ConsumeApiResponse<Changes>
     ) {
         movieRepository.getPersonChangeList(
             apiKey,
             endDate,
             startDate,
             page,
-            object : FrogoResponseCallback<Changes> {
+            object : ConsumeApiResponse<Changes> {
                 override fun onSuccess(data: Changes) {
                     callback.onSuccess(data)
                 }
@@ -169,13 +169,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getCollectionDetails(
         collection_id: Int,
         language: String?,
-        callback: FrogoResponseCallback<CollectionsDetail>
+        callback: ConsumeApiResponse<CollectionsDetail>
     ) {
         movieRepository.getCollectionDetails(
             collection_id,
             apiKey,
             language,
-            object : FrogoResponseCallback<CollectionsDetail> {
+            object : ConsumeApiResponse<CollectionsDetail> {
                 override fun onSuccess(data: CollectionsDetail) {
                     callback.onSuccess(data)
                 }
@@ -197,13 +197,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getCollectionImages(
         collection_id: Int,
         language: String?,
-        callback: FrogoResponseCallback<CollectionsImage>
+        callback: ConsumeApiResponse<CollectionsImage>
     ) {
         movieRepository.getCollectionImages(
             collection_id,
             apiKey,
             language,
-            object : FrogoResponseCallback<CollectionsImage> {
+            object : ConsumeApiResponse<CollectionsImage> {
                 override fun onSuccess(data: CollectionsImage) {
                     callback.onSuccess(data)
                 }
@@ -225,13 +225,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getCollectionTranslations(
         collection_id: Int,
         language: String?,
-        callback: FrogoResponseCallback<CollectionsTranslation>
+        callback: ConsumeApiResponse<CollectionsTranslation>
     ) {
         movieRepository.getCollectionTranslations(
             collection_id,
             apiKey,
             language,
-            object : FrogoResponseCallback<CollectionsTranslation> {
+            object : ConsumeApiResponse<CollectionsTranslation> {
                 override fun onSuccess(data: CollectionsTranslation) {
                     callback.onSuccess(data)
                 }
@@ -252,12 +252,12 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
 
     override fun getCompaniesDetails(
         company_id: Int,
-        callback: FrogoResponseCallback<CompaniesDetail>
+        callback: ConsumeApiResponse<CompaniesDetail>
     ) {
         movieRepository.getCompaniesDetails(
             company_id,
             apiKey,
-            object : FrogoResponseCallback<CompaniesDetail> {
+            object : ConsumeApiResponse<CompaniesDetail> {
                 override fun onSuccess(data: CompaniesDetail) {
                     callback.onSuccess(data)
                 }
@@ -278,12 +278,12 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
 
     override fun getCompaniesAlternativeName(
         company_id: Int,
-        callback: FrogoResponseCallback<CompaniesAlternateName>
+        callback: ConsumeApiResponse<CompaniesAlternateName>
     ) {
         movieRepository.getCompaniesAlternativeName(
             company_id,
             apiKey,
-            object : FrogoResponseCallback<CompaniesAlternateName> {
+            object : ConsumeApiResponse<CompaniesAlternateName> {
                 override fun onSuccess(data: CompaniesAlternateName) {
                     callback.onSuccess(data)
                 }
@@ -302,11 +302,11 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getCompaniesImage(company_id: Int, callback: FrogoResponseCallback<CompaniesImage>) {
+    override fun getCompaniesImage(company_id: Int, callback: ConsumeApiResponse<CompaniesImage>) {
         movieRepository.getCompaniesImage(
             company_id,
             apiKey,
-            object : FrogoResponseCallback<CompaniesImage> {
+            object : ConsumeApiResponse<CompaniesImage> {
                 override fun onSuccess(data: CompaniesImage) {
                     callback.onSuccess(data)
                 }
@@ -325,10 +325,10 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getConfigurationApi(callback: FrogoResponseCallback<ConfigurationApi>) {
+    override fun getConfigurationApi(callback: ConsumeApiResponse<ConfigurationApi>) {
         movieRepository.getConfigurationApi(
             apiKey,
-            object : FrogoResponseCallback<ConfigurationApi> {
+            object : ConsumeApiResponse<ConfigurationApi> {
                 override fun onSuccess(data: ConfigurationApi) {
                     callback.onSuccess(data)
                 }
@@ -347,10 +347,10 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getConfigurationCountries(callback: FrogoResponseCallback<List<ConfigurationCountry>>) {
+    override fun getConfigurationCountries(callback: ConsumeApiResponse<List<ConfigurationCountry>>) {
         movieRepository.getConfigurationCountries(
             apiKey,
-            object : FrogoResponseCallback<List<ConfigurationCountry>> {
+            object : ConsumeApiResponse<List<ConfigurationCountry>> {
                 override fun onSuccess(data: List<ConfigurationCountry>) {
                     callback.onSuccess(data)
                 }
@@ -369,10 +369,10 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getConfigurationJobs(callback: FrogoResponseCallback<List<ConfigurationJob>>) {
+    override fun getConfigurationJobs(callback: ConsumeApiResponse<List<ConfigurationJob>>) {
         movieRepository.getConfigurationJobs(
             apiKey,
-            object : FrogoResponseCallback<List<ConfigurationJob>> {
+            object : ConsumeApiResponse<List<ConfigurationJob>> {
                 override fun onSuccess(data: List<ConfigurationJob>) {
                     callback.onSuccess(data)
                 }
@@ -391,10 +391,10 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getConfigurationLanguages(callback: FrogoResponseCallback<List<ConfigurationLanguage>>) {
+    override fun getConfigurationLanguages(callback: ConsumeApiResponse<List<ConfigurationLanguage>>) {
         movieRepository.getConfigurationLanguages(
             apiKey,
-            object : FrogoResponseCallback<List<ConfigurationLanguage>> {
+            object : ConsumeApiResponse<List<ConfigurationLanguage>> {
                 override fun onSuccess(data: List<ConfigurationLanguage>) {
                     callback.onSuccess(data)
                 }
@@ -413,10 +413,10 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getConfigurationTranslations(callback: FrogoResponseCallback<List<String>>) {
+    override fun getConfigurationTranslations(callback: ConsumeApiResponse<List<String>>) {
         movieRepository.getConfigurationTranslations(
             apiKey,
-            object : FrogoResponseCallback<List<String>> {
+            object : ConsumeApiResponse<List<String>> {
                 override fun onSuccess(data: List<String>) {
                     callback.onSuccess(data)
                 }
@@ -435,10 +435,10 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getConfigurationTimezones(callback: FrogoResponseCallback<List<ConfigurationTimezone>>) {
+    override fun getConfigurationTimezones(callback: ConsumeApiResponse<List<ConfigurationTimezone>>) {
         movieRepository.getConfigurationTimezones(
             apiKey,
-            object : FrogoResponseCallback<List<ConfigurationTimezone>> {
+            object : ConsumeApiResponse<List<ConfigurationTimezone>> {
                 override fun onSuccess(data: List<ConfigurationTimezone>) {
                     callback.onSuccess(data)
                 }
@@ -457,11 +457,11 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getCreditsDetails(credit_id: String, callback: FrogoResponseCallback<Credits>) {
+    override fun getCreditsDetails(credit_id: String, callback: ConsumeApiResponse<Credits>) {
         movieRepository.getCreditsDetails(
             credit_id,
             apiKey,
-            object : FrogoResponseCallback<Credits> {
+            object : ConsumeApiResponse<Credits> {
                 override fun onSuccess(data: Credits) {
                     callback.onSuccess(data)
                 }
@@ -513,7 +513,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         with_runtime_gte: Double?,
         with_runtime_lte: Double?,
         with_original_language: String?,
-        callback: FrogoResponseCallback<Discover<DiscoverMovie>>
+        callback: ConsumeApiResponse<Discover<DiscoverMovie>>
     ) {
         movieRepository.getDiscoverMovie(
             apiKey,
@@ -549,7 +549,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             with_runtime_gte,
             with_runtime_lte,
             with_original_language,
-            object : FrogoResponseCallback<Discover<DiscoverMovie>> {
+            object : ConsumeApiResponse<Discover<DiscoverMovie>> {
                 override fun onSuccess(data: Discover<DiscoverMovie>) {
                     callback.onSuccess(data)
                 }
@@ -592,7 +592,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         screened_theatrically: String?,
         with_companies: String?,
         with_keywords: String?,
-        callback: FrogoResponseCallback<Discover<DiscoverTv>>
+        callback: ConsumeApiResponse<Discover<DiscoverTv>>
     ) {
         movieRepository.getDiscoverTv(
             apiKey, language,
@@ -617,7 +617,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             screened_theatrically,
             with_companies,
             with_keywords,
-            object : FrogoResponseCallback<Discover<DiscoverTv>> {
+            object : ConsumeApiResponse<Discover<DiscoverTv>> {
                 override fun onSuccess(data: Discover<DiscoverTv>) {
                     callback.onSuccess(data)
                 }
@@ -641,14 +641,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         external_id: String,
         external_source: String,
         language: String?,
-        callback: FrogoResponseCallback<Find>
+        callback: ConsumeApiResponse<Find>
     ) {
         movieRepository.getFindById(
             external_id,
             apiKey,
             external_source,
             language,
-            object : FrogoResponseCallback<Find> {
+            object : ConsumeApiResponse<Find> {
                 override fun onSuccess(data: Find) {
                     callback.onSuccess(data)
                 }
@@ -667,11 +667,11 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getGenresMovie(language: String?, callback: FrogoResponseCallback<Genres>) {
+    override fun getGenresMovie(language: String?, callback: ConsumeApiResponse<Genres>) {
         movieRepository.getGenresMovie(
             apiKey,
             language,
-            object : FrogoResponseCallback<Genres> {
+            object : ConsumeApiResponse<Genres> {
                 override fun onSuccess(data: Genres) {
                     callback.onSuccess(data)
                 }
@@ -690,11 +690,11 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getGenresTv(language: String?, callback: FrogoResponseCallback<Genres>) {
+    override fun getGenresTv(language: String?, callback: ConsumeApiResponse<Genres>) {
         movieRepository.getGenresTv(
             apiKey,
             language,
-            object : FrogoResponseCallback<Genres> {
+            object : ConsumeApiResponse<Genres> {
                 override fun onSuccess(data: Genres) {
                     callback.onSuccess(data)
                 }
@@ -713,11 +713,11 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getKeywordsDetail(keyword_id: Int, callback: FrogoResponseCallback<KeywordsDetail>) {
+    override fun getKeywordsDetail(keyword_id: Int, callback: ConsumeApiResponse<KeywordsDetail>) {
         movieRepository.getKeywordsDetail(
             keyword_id,
             apiKey,
-            object : FrogoResponseCallback<KeywordsDetail> {
+            object : ConsumeApiResponse<KeywordsDetail> {
                 override fun onSuccess(data: KeywordsDetail) {
                     callback.onSuccess(data)
                 }
@@ -740,14 +740,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         keyword_id: Int,
         language: String?,
         include_adult: Boolean?,
-        callback: FrogoResponseCallback<KeywordsMovies>
+        callback: ConsumeApiResponse<KeywordsMovies>
     ) {
         movieRepository.getKeywordsMovie(
             keyword_id,
             apiKey,
             language,
             include_adult,
-            object : FrogoResponseCallback<KeywordsMovies> {
+            object : ConsumeApiResponse<KeywordsMovies> {
                 override fun onSuccess(data: KeywordsMovies) {
                     callback.onSuccess(data)
                 }
@@ -770,14 +770,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         movie_id: Int,
         language: String?,
         append_to_response: String?,
-        callback: FrogoResponseCallback<MovieDetail>
+        callback: ConsumeApiResponse<MovieDetail>
     ) {
         movieRepository.getMoviesDetails(
             movie_id,
             apiKey,
             language,
             append_to_response,
-            object : FrogoResponseCallback<MovieDetail> {
+            object : ConsumeApiResponse<MovieDetail> {
                 override fun onSuccess(data: MovieDetail) {
                     callback.onSuccess(data)
                 }
@@ -800,14 +800,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         movie_id: Int,
         session_id: String,
         guest_session_id: String?,
-        callback: FrogoResponseCallback<MovieAccountState>
+        callback: ConsumeApiResponse<MovieAccountState>
     ) {
         movieRepository.getMoviesAccountState(
             movie_id,
             apiKey,
             session_id,
             guest_session_id,
-            object : FrogoResponseCallback<MovieAccountState> {
+            object : ConsumeApiResponse<MovieAccountState> {
                 override fun onSuccess(data: MovieAccountState) {
                     callback.onSuccess(data)
                 }
@@ -829,13 +829,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getMoviesAlternativeTitles(
         movie_id: Int,
         country: String?,
-        callback: FrogoResponseCallback<MovieAlternativeTitle>
+        callback: ConsumeApiResponse<MovieAlternativeTitle>
     ) {
         movieRepository.getMoviesAlternativeTitles(
             movie_id,
             apiKey,
             country,
-            object : FrogoResponseCallback<MovieAlternativeTitle> {
+            object : ConsumeApiResponse<MovieAlternativeTitle> {
                 override fun onSuccess(data: MovieAlternativeTitle) {
                     callback.onSuccess(data)
                 }
@@ -859,7 +859,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         start_date: String?,
         end_date: String?,
         page: Int?,
-        callback: FrogoResponseCallback<MovieChanges>
+        callback: ConsumeApiResponse<MovieChanges>
     ) {
         movieRepository.getMoviesChanges(
             movie_id,
@@ -867,7 +867,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             start_date,
             end_date,
             page,
-            object : FrogoResponseCallback<MovieChanges> {
+            object : ConsumeApiResponse<MovieChanges> {
                 override fun onSuccess(data: MovieChanges) {
                     callback.onSuccess(data)
                 }
@@ -886,11 +886,11 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getMoviesCredits(movie_id: Int, callback: FrogoResponseCallback<MovieCredit>) {
+    override fun getMoviesCredits(movie_id: Int, callback: ConsumeApiResponse<MovieCredit>) {
         movieRepository.getMoviesCredits(
             movie_id,
             apiKey,
-            object : FrogoResponseCallback<MovieCredit> {
+            object : ConsumeApiResponse<MovieCredit> {
                 override fun onSuccess(data: MovieCredit) {
                     callback.onSuccess(data)
                 }
@@ -911,12 +911,12 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
 
     override fun getMoviesExternalIds(
         movie_id: Int,
-        callback: FrogoResponseCallback<MovieExternalId>
+        callback: ConsumeApiResponse<MovieExternalId>
     ) {
         movieRepository.getMoviesExternalIds(
             movie_id,
             apiKey,
-            object : FrogoResponseCallback<MovieExternalId> {
+            object : ConsumeApiResponse<MovieExternalId> {
                 override fun onSuccess(data: MovieExternalId) {
                     callback.onSuccess(data)
                 }
@@ -939,14 +939,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         movie_id: Int,
         language: String?,
         include_image_language: String?,
-        callback: FrogoResponseCallback<MovieImages>
+        callback: ConsumeApiResponse<MovieImages>
     ) {
         movieRepository.getMoviesImages(
             movie_id,
             apiKey,
             language,
             include_image_language,
-            object : FrogoResponseCallback<MovieImages> {
+            object : ConsumeApiResponse<MovieImages> {
                 override fun onSuccess(data: MovieImages) {
                     callback.onSuccess(data)
                 }
@@ -965,11 +965,11 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getMoviesKeywords(movie_id: Int, callback: FrogoResponseCallback<MovieKeywords>) {
+    override fun getMoviesKeywords(movie_id: Int, callback: ConsumeApiResponse<MovieKeywords>) {
         movieRepository.getMoviesKeywords(
             movie_id,
             apiKey,
-            object : FrogoResponseCallback<MovieKeywords> {
+            object : ConsumeApiResponse<MovieKeywords> {
                 override fun onSuccess(data: MovieKeywords) {
                     callback.onSuccess(data)
                 }
@@ -990,12 +990,12 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
 
     override fun getMoviesReleaseDates(
         movie_id: Int,
-        callback: FrogoResponseCallback<MovieReleaseDates>
+        callback: ConsumeApiResponse<MovieReleaseDates>
     ) {
         movieRepository.getMoviesReleaseDates(
             movie_id,
             apiKey,
-            object : FrogoResponseCallback<MovieReleaseDates> {
+            object : ConsumeApiResponse<MovieReleaseDates> {
                 override fun onSuccess(data: MovieReleaseDates) {
                     callback.onSuccess(data)
                 }
@@ -1017,13 +1017,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getMoviesVideos(
         movie_id: Int,
         language: String?,
-        callback: FrogoResponseCallback<MovieVideos>
+        callback: ConsumeApiResponse<MovieVideos>
     ) {
         movieRepository.getMoviesVideos(
             movie_id,
             apiKey,
             language,
-            object : FrogoResponseCallback<MovieVideos> {
+            object : ConsumeApiResponse<MovieVideos> {
                 override fun onSuccess(data: MovieVideos) {
                     callback.onSuccess(data)
                 }
@@ -1044,12 +1044,12 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
 
     override fun getMoviesTranslations(
         movie_id: Int,
-        callback: FrogoResponseCallback<MovieTranslations>
+        callback: ConsumeApiResponse<MovieTranslations>
     ) {
         movieRepository.getMoviesTranslations(
             movie_id,
             apiKey,
-            object : FrogoResponseCallback<MovieTranslations> {
+            object : ConsumeApiResponse<MovieTranslations> {
                 override fun onSuccess(data: MovieTranslations) {
                     callback.onSuccess(data)
                 }
@@ -1072,14 +1072,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         movie_id: Int,
         language: String?,
         page: Int?,
-        callback: FrogoResponseCallback<MovieRecommendations>
+        callback: ConsumeApiResponse<MovieRecommendations>
     ) {
         movieRepository.getMoviesRecommendations(
             movie_id,
             apiKey,
             language,
             page,
-            object : FrogoResponseCallback<MovieRecommendations> {
+            object : ConsumeApiResponse<MovieRecommendations> {
                 override fun onSuccess(data: MovieRecommendations) {
                     callback.onSuccess(data)
                 }
@@ -1102,14 +1102,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         movie_id: Int,
         language: String?,
         page: Int?,
-        callback: FrogoResponseCallback<MovieSimilarMovies>
+        callback: ConsumeApiResponse<MovieSimilarMovies>
     ) {
         movieRepository.getMoviesSimilarMovies(
             movie_id,
             apiKey,
             language,
             page,
-            object : FrogoResponseCallback<MovieSimilarMovies> {
+            object : ConsumeApiResponse<MovieSimilarMovies> {
                 override fun onSuccess(data: MovieSimilarMovies) {
                     callback.onSuccess(data)
                 }
@@ -1132,14 +1132,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         movie_id: Int,
         language: String?,
         page: Int?,
-        callback: FrogoResponseCallback<MovieReviews>
+        callback: ConsumeApiResponse<MovieReviews>
     ) {
         movieRepository.getMoviesReviews(
             movie_id,
             apiKey,
             language,
             page,
-            object : FrogoResponseCallback<MovieReviews> {
+            object : ConsumeApiResponse<MovieReviews> {
                 override fun onSuccess(data: MovieReviews) {
                     callback.onSuccess(data)
                 }
@@ -1162,14 +1162,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         movie_id: Int,
         language: String?,
         page: Int?,
-        callback: FrogoResponseCallback<MovieLists>
+        callback: ConsumeApiResponse<MovieLists>
     ) {
         movieRepository.getMoviesLists(
             movie_id,
             apiKey,
             language,
             page,
-            object : FrogoResponseCallback<MovieLists> {
+            object : ConsumeApiResponse<MovieLists> {
                 override fun onSuccess(data: MovieLists) {
                     callback.onSuccess(data)
                 }
@@ -1188,11 +1188,11 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getMoviesLatest(language: String?, callback: FrogoResponseCallback<MovieLatest>) {
+    override fun getMoviesLatest(language: String?, callback: ConsumeApiResponse<MovieLatest>) {
         movieRepository.getMoviesLatest(
             apiKey,
             language,
-            object : FrogoResponseCallback<MovieLatest> {
+            object : ConsumeApiResponse<MovieLatest> {
                 override fun onSuccess(data: MovieLatest) {
                     callback.onSuccess(data)
                 }
@@ -1215,14 +1215,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         language: String?,
         page: Int?,
         region: String?,
-        callback: FrogoResponseCallback<MovieNowPlayings>
+        callback: ConsumeApiResponse<MovieNowPlayings>
     ) {
         movieRepository.getMoviesNowPlaying(
             apiKey,
             language,
             page,
             region,
-            object : FrogoResponseCallback<MovieNowPlayings> {
+            object : ConsumeApiResponse<MovieNowPlayings> {
                 override fun onSuccess(data: MovieNowPlayings) {
                     callback.onSuccess(data)
                 }
@@ -1245,14 +1245,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         language: String?,
         page: Int?,
         region: String?,
-        callback: FrogoResponseCallback<MoviePopulars>
+        callback: ConsumeApiResponse<MoviePopulars>
     ) {
         movieRepository.getMoviesPopular(
             apiKey,
             language,
             page,
             region,
-            object : FrogoResponseCallback<MoviePopulars> {
+            object : ConsumeApiResponse<MoviePopulars> {
                 override fun onSuccess(data: MoviePopulars) {
                     callback.onSuccess(data)
                 }
@@ -1275,14 +1275,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         language: String?,
         page: Int?,
         region: String?,
-        callback: FrogoResponseCallback<MovieTopRated>
+        callback: ConsumeApiResponse<MovieTopRated>
     ) {
         movieRepository.getMoviesTopRated(
             apiKey,
             language,
             page,
             region,
-            object : FrogoResponseCallback<MovieTopRated> {
+            object : ConsumeApiResponse<MovieTopRated> {
                 override fun onSuccess(data: MovieTopRated) {
                     callback.onSuccess(data)
                 }
@@ -1305,14 +1305,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         language: String?,
         page: Int?,
         region: String?,
-        callback: FrogoResponseCallback<MovieUpcoming>
+        callback: ConsumeApiResponse<MovieUpcoming>
     ) {
         movieRepository.getMoviesUpcoming(
             apiKey,
             language,
             page,
             region,
-            object : FrogoResponseCallback<MovieUpcoming> {
+            object : ConsumeApiResponse<MovieUpcoming> {
                 override fun onSuccess(data: MovieUpcoming) {
                     callback.onSuccess(data)
                 }
@@ -1331,12 +1331,12 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getTrendingAllDay(callback: FrogoResponseCallback<Trending<TrendingAll>>) {
+    override fun getTrendingAllDay(callback: ConsumeApiResponse<Trending<TrendingAll>>) {
         movieRepository.getTrendingAll(
             MovieConstant.VALUE_MEDIA_TYPE_ALL,
             MovieConstant.VALUE_TIME_WINDOW_DAY,
             apiKey,
-            object : FrogoResponseCallback<Trending<TrendingAll>> {
+            object : ConsumeApiResponse<Trending<TrendingAll>> {
                 override fun onSuccess(data: Trending<TrendingAll>) {
                     callback.onSuccess(data)
                 }
@@ -1355,12 +1355,12 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getTrendingAllWeek(callback: FrogoResponseCallback<Trending<TrendingAll>>) {
+    override fun getTrendingAllWeek(callback: ConsumeApiResponse<Trending<TrendingAll>>) {
         movieRepository.getTrendingAll(
             MovieConstant.VALUE_MEDIA_TYPE_ALL,
             MovieConstant.VALUE_TIME_WINDOW_WEEK,
             apiKey,
-            object : FrogoResponseCallback<Trending<TrendingAll>> {
+            object : ConsumeApiResponse<Trending<TrendingAll>> {
                 override fun onSuccess(data: Trending<TrendingAll>) {
                     callback.onSuccess(data)
                 }
@@ -1379,12 +1379,12 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getTrendingMovieDay(callback: FrogoResponseCallback<Trending<TrendingMovie>>) {
+    override fun getTrendingMovieDay(callback: ConsumeApiResponse<Trending<TrendingMovie>>) {
         movieRepository.getTrendingMovie(
             MovieConstant.VALUE_MEDIA_TYPE_MOVIE,
             MovieConstant.VALUE_TIME_WINDOW_DAY,
             apiKey,
-            object : FrogoResponseCallback<Trending<TrendingMovie>> {
+            object : ConsumeApiResponse<Trending<TrendingMovie>> {
                 override fun onSuccess(data: Trending<TrendingMovie>) {
                     callback.onSuccess(data)
                 }
@@ -1403,12 +1403,12 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getTrendingMovieWeek(callback: FrogoResponseCallback<Trending<TrendingMovie>>) {
+    override fun getTrendingMovieWeek(callback: ConsumeApiResponse<Trending<TrendingMovie>>) {
         movieRepository.getTrendingMovie(
             MovieConstant.VALUE_MEDIA_TYPE_MOVIE,
             MovieConstant.VALUE_TIME_WINDOW_WEEK,
             apiKey,
-            object : FrogoResponseCallback<Trending<TrendingMovie>> {
+            object : ConsumeApiResponse<Trending<TrendingMovie>> {
                 override fun onSuccess(data: Trending<TrendingMovie>) {
                     callback.onSuccess(data)
                 }
@@ -1427,12 +1427,12 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getTrendingPersonDay(callback: FrogoResponseCallback<Trending<TrendingPerson>>) {
+    override fun getTrendingPersonDay(callback: ConsumeApiResponse<Trending<TrendingPerson>>) {
         movieRepository.getTrendingPerson(
             MovieConstant.VALUE_MEDIA_TYPE_PERSON,
             MovieConstant.VALUE_TIME_WINDOW_DAY,
             apiKey,
-            object : FrogoResponseCallback<Trending<TrendingPerson>> {
+            object : ConsumeApiResponse<Trending<TrendingPerson>> {
                 override fun onSuccess(data: Trending<TrendingPerson>) {
                     callback.onSuccess(data)
                 }
@@ -1451,12 +1451,12 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getTrendingPersonWeek(callback: FrogoResponseCallback<Trending<TrendingPerson>>) {
+    override fun getTrendingPersonWeek(callback: ConsumeApiResponse<Trending<TrendingPerson>>) {
         movieRepository.getTrendingPerson(
             MovieConstant.VALUE_MEDIA_TYPE_PERSON,
             MovieConstant.VALUE_TIME_WINDOW_WEEK,
             apiKey,
-            object : FrogoResponseCallback<Trending<TrendingPerson>> {
+            object : ConsumeApiResponse<Trending<TrendingPerson>> {
                 override fun onSuccess(data: Trending<TrendingPerson>) {
                     callback.onSuccess(data)
                 }
@@ -1475,12 +1475,12 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getTrendingTvDay(callback: FrogoResponseCallback<Trending<TrendingTv>>) {
+    override fun getTrendingTvDay(callback: ConsumeApiResponse<Trending<TrendingTv>>) {
         movieRepository.getTrendingTv(
             MovieConstant.VALUE_MEDIA_TYPE_TV,
             MovieConstant.VALUE_TIME_WINDOW_DAY,
             apiKey,
-            object : FrogoResponseCallback<Trending<TrendingTv>> {
+            object : ConsumeApiResponse<Trending<TrendingTv>> {
                 override fun onSuccess(data: Trending<TrendingTv>) {
                     callback.onSuccess(data)
                 }
@@ -1499,12 +1499,12 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getTrendingTvWeek(callback: FrogoResponseCallback<Trending<TrendingTv>>) {
+    override fun getTrendingTvWeek(callback: ConsumeApiResponse<Trending<TrendingTv>>) {
         movieRepository.getTrendingTv(
             MovieConstant.VALUE_MEDIA_TYPE_TV,
             MovieConstant.VALUE_TIME_WINDOW_WEEK,
             apiKey,
-            object : FrogoResponseCallback<Trending<TrendingTv>> {
+            object : ConsumeApiResponse<Trending<TrendingTv>> {
                 override fun onSuccess(data: Trending<TrendingTv>) {
                     callback.onSuccess(data)
                 }
@@ -1523,11 +1523,11 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getReviews(review_id: String, callback: FrogoResponseCallback<Reviews>) {
+    override fun getReviews(review_id: String, callback: ConsumeApiResponse<Reviews>) {
         movieRepository.getReviews(
             review_id,
             apiKey,
-            object : FrogoResponseCallback<Reviews> {
+            object : ConsumeApiResponse<Reviews> {
                 override fun onSuccess(data: Reviews) {
                     callback.onSuccess(data)
                 }
@@ -1546,11 +1546,11 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getNetworkDetail(network_id: Int, callback: FrogoResponseCallback<NetworkDetail>) {
+    override fun getNetworkDetail(network_id: Int, callback: ConsumeApiResponse<NetworkDetail>) {
         movieRepository.getNetworkDetail(
             network_id,
             apiKey,
-            object : FrogoResponseCallback<NetworkDetail> {
+            object : ConsumeApiResponse<NetworkDetail> {
                 override fun onSuccess(data: NetworkDetail) {
                     callback.onSuccess(data)
                 }
@@ -1571,12 +1571,12 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
 
     override fun getNetworkAlternativeName(
         network_id: Int,
-        callback: FrogoResponseCallback<NetworkAlternativeName>
+        callback: ConsumeApiResponse<NetworkAlternativeName>
     ) {
         movieRepository.getNetworkAlternativeName(
             network_id,
             apiKey,
-            object : FrogoResponseCallback<NetworkAlternativeName> {
+            object : ConsumeApiResponse<NetworkAlternativeName> {
                 override fun onSuccess(data: NetworkAlternativeName) {
                     callback.onSuccess(data)
                 }
@@ -1595,11 +1595,11 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getNetworkImage(network_id: Int, callback: FrogoResponseCallback<NetworkImage>) {
+    override fun getNetworkImage(network_id: Int, callback: ConsumeApiResponse<NetworkImage>) {
         movieRepository.getNetworkImage(
             network_id,
             apiKey,
-            object : FrogoResponseCallback<NetworkImage> {
+            object : ConsumeApiResponse<NetworkImage> {
                 override fun onSuccess(data: NetworkImage) {
                     callback.onSuccess(data)
                 }
@@ -1621,13 +1621,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun searchCompanies(
         query: String,
         page: Int?,
-        callback: FrogoResponseCallback<SearchCompanies>
+        callback: ConsumeApiResponse<SearchCompanies>
     ) {
         movieRepository.searchCompanies(
             apiKey,
             query,
             page,
-            object : FrogoResponseCallback<SearchCompanies> {
+            object : ConsumeApiResponse<SearchCompanies> {
                 override fun onSuccess(data: SearchCompanies) {
                     callback.onSuccess(data)
                 }
@@ -1650,14 +1650,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         query: String,
         language: String?,
         page: Int?,
-        callback: FrogoResponseCallback<SearchCollections>
+        callback: ConsumeApiResponse<SearchCollections>
     ) {
         movieRepository.searchCollections(
             apiKey,
             query,
             language,
             page,
-            object : FrogoResponseCallback<SearchCollections> {
+            object : ConsumeApiResponse<SearchCollections> {
                 override fun onSuccess(data: SearchCollections) {
                     callback.onSuccess(data)
                 }
@@ -1679,13 +1679,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun searchKeywords(
         query: String,
         page: Int?,
-        callback: FrogoResponseCallback<SearchKeywords>
+        callback: ConsumeApiResponse<SearchKeywords>
     ) {
         movieRepository.searchKeywords(
             apiKey,
             query,
             page,
-            object : FrogoResponseCallback<SearchKeywords> {
+            object : ConsumeApiResponse<SearchKeywords> {
                 override fun onSuccess(data: SearchKeywords) {
                     callback.onSuccess(data)
                 }
@@ -1712,7 +1712,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         region: String?,
         year: Int?,
         primary_release_year: Int?,
-        callback: FrogoResponseCallback<SearchMovies>
+        callback: ConsumeApiResponse<SearchMovies>
     ) {
         movieRepository.searchMovies(
             apiKey,
@@ -1723,7 +1723,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             region,
             year,
             primary_release_year,
-            object : FrogoResponseCallback<SearchMovies> {
+            object : ConsumeApiResponse<SearchMovies> {
                 override fun onSuccess(data: SearchMovies) {
                     callback.onSuccess(data)
                 }
@@ -1748,7 +1748,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         page: Int?,
         include_adult: Boolean?,
         region: String?,
-        callback: FrogoResponseCallback<SearchMulti>
+        callback: ConsumeApiResponse<SearchMulti>
     ) {
         movieRepository.searchMultiSearch(
             apiKey,
@@ -1757,7 +1757,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             page,
             include_adult,
             region,
-            object : FrogoResponseCallback<SearchMulti> {
+            object : ConsumeApiResponse<SearchMulti> {
                 override fun onSuccess(data: SearchMulti) {
                     callback.onSuccess(data)
                 }
@@ -1782,7 +1782,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         page: Int?,
         include_adult: Boolean?,
         region: String?,
-        callback: FrogoResponseCallback<SearchPeople>
+        callback: ConsumeApiResponse<SearchPeople>
     ) {
         movieRepository.searchPeople(
             apiKey,
@@ -1791,7 +1791,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             page,
             include_adult,
             region,
-            object : FrogoResponseCallback<SearchPeople> {
+            object : ConsumeApiResponse<SearchPeople> {
                 override fun onSuccess(data: SearchPeople) {
                     callback.onSuccess(data)
                 }
@@ -1816,7 +1816,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         page: Int?,
         include_adult: Boolean?,
         first_air_date_year: Int?,
-        callback: FrogoResponseCallback<SearchMovies>
+        callback: ConsumeApiResponse<SearchMovies>
     ) {
         movieRepository.searchTvShows(
             apiKey,
@@ -1825,7 +1825,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             page,
             include_adult,
             first_air_date_year,
-            object : FrogoResponseCallback<SearchMovies> {
+            object : ConsumeApiResponse<SearchMovies> {
                 override fun onSuccess(data: SearchMovies) {
                     callback.onSuccess(data)
                 }
@@ -1848,14 +1848,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         tv_id: Int,
         language: String?,
         append_to_response: String?,
-        callback: FrogoResponseCallback<TvDetails>
+        callback: ConsumeApiResponse<TvDetails>
     ) {
         movieRepository.getTvDetails(
             tv_id,
             apiKey,
             language,
             append_to_response,
-            object : FrogoResponseCallback<TvDetails> {
+            object : ConsumeApiResponse<TvDetails> {
                 override fun onSuccess(data: TvDetails) {
                     callback.onSuccess(data)
                 }
@@ -1879,7 +1879,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         language: String?,
         guest_session_id: String?,
         session_id: String?,
-        callback: FrogoResponseCallback<TvAccountStates>
+        callback: ConsumeApiResponse<TvAccountStates>
     ) {
         movieRepository.getTvAccountStates(
             tv_id,
@@ -1887,7 +1887,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             language,
             guest_session_id,
             session_id,
-            object : FrogoResponseCallback<TvAccountStates> {
+            object : ConsumeApiResponse<TvAccountStates> {
                 override fun onSuccess(data: TvAccountStates) {
                     callback.onSuccess(data)
                 }
@@ -1909,13 +1909,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getTvAlternativeTitles(
         tv_id: Int,
         language: String?,
-        callback: FrogoResponseCallback<TvAlternativeTitles>
+        callback: ConsumeApiResponse<TvAlternativeTitles>
     ) {
         movieRepository.getTvAlternativeTitles(
             tv_id,
             apiKey,
             language,
-            object : FrogoResponseCallback<TvAlternativeTitles> {
+            object : ConsumeApiResponse<TvAlternativeTitles> {
                 override fun onSuccess(data: TvAlternativeTitles) {
                     callback.onSuccess(data)
                 }
@@ -1939,7 +1939,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         startDate: String?,
         endDate: String?,
         page: Int?,
-        callback: FrogoResponseCallback<TvChanges>
+        callback: ConsumeApiResponse<TvChanges>
     ) {
         movieRepository.getTvChanges(
             tv_id,
@@ -1947,7 +1947,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             startDate,
             endDate,
             page,
-            object : FrogoResponseCallback<TvChanges> {
+            object : ConsumeApiResponse<TvChanges> {
                 override fun onSuccess(data: TvChanges) {
                     callback.onSuccess(data)
                 }
@@ -1969,13 +1969,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getTvContentRatings(
         tv_id: Int,
         language: String?,
-        callback: FrogoResponseCallback<TvContentRatings>
+        callback: ConsumeApiResponse<TvContentRatings>
     ) {
         movieRepository.getTvContentRatings(
             tv_id,
             apiKey,
             language,
-            object : FrogoResponseCallback<TvContentRatings> {
+            object : ConsumeApiResponse<TvContentRatings> {
                 override fun onSuccess(data: TvContentRatings) {
                     callback.onSuccess(data)
                 }
@@ -1997,13 +1997,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getTvCredits(
         tv_id: Int,
         language: String?,
-        callback: FrogoResponseCallback<TvCredits>
+        callback: ConsumeApiResponse<TvCredits>
     ) {
         movieRepository.getTvCredits(
             tv_id,
             apiKey,
             language,
-            object : FrogoResponseCallback<TvCredits> {
+            object : ConsumeApiResponse<TvCredits> {
                 override fun onSuccess(data: TvCredits) {
                     callback.onSuccess(data)
                 }
@@ -2025,13 +2025,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getTvEpisodeGroups(
         tv_id: Int,
         language: String?,
-        callback: FrogoResponseCallback<TvEpisodeGroups>
+        callback: ConsumeApiResponse<TvEpisodeGroups>
     ) {
         movieRepository.getTvEpisodeGroups(
             tv_id,
             apiKey,
             language,
-            object : FrogoResponseCallback<TvEpisodeGroups> {
+            object : ConsumeApiResponse<TvEpisodeGroups> {
                 override fun onSuccess(data: TvEpisodeGroups) {
                     callback.onSuccess(data)
                 }
@@ -2053,13 +2053,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getTvExternalIds(
         tv_id: Int,
         language: String?,
-        callback: FrogoResponseCallback<TvExternalIds>
+        callback: ConsumeApiResponse<TvExternalIds>
     ) {
         movieRepository.getTvExternalIds(
             tv_id,
             apiKey,
             language,
-            object : FrogoResponseCallback<TvExternalIds> {
+            object : ConsumeApiResponse<TvExternalIds> {
                 override fun onSuccess(data: TvExternalIds) {
                     callback.onSuccess(data)
                 }
@@ -2081,13 +2081,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getTvImages(
         tv_id: Int,
         language: String?,
-        callback: FrogoResponseCallback<TvImages>
+        callback: ConsumeApiResponse<TvImages>
     ) {
         movieRepository.getTvImages(
             tv_id,
             apiKey,
             language,
-            object : FrogoResponseCallback<TvImages> {
+            object : ConsumeApiResponse<TvImages> {
                 override fun onSuccess(data: TvImages) {
                     callback.onSuccess(data)
                 }
@@ -2106,11 +2106,11 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getTvKeyword(tv_id: Int, callback: FrogoResponseCallback<TvKeywords>) {
+    override fun getTvKeyword(tv_id: Int, callback: ConsumeApiResponse<TvKeywords>) {
         movieRepository.getTvKeyword(
             tv_id,
             apiKey,
-            object : FrogoResponseCallback<TvKeywords> {
+            object : ConsumeApiResponse<TvKeywords> {
                 override fun onSuccess(data: TvKeywords) {
                     callback.onSuccess(data)
                 }
@@ -2133,14 +2133,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         tv_id: Int,
         language: String?,
         page: Int?,
-        callback: FrogoResponseCallback<TvRecommendations>
+        callback: ConsumeApiResponse<TvRecommendations>
     ) {
         movieRepository.getTvRecommendations(
             tv_id,
             apiKey,
             language,
             page,
-            object : FrogoResponseCallback<TvRecommendations> {
+            object : ConsumeApiResponse<TvRecommendations> {
                 override fun onSuccess(data: TvRecommendations) {
                     callback.onSuccess(data)
                 }
@@ -2159,11 +2159,11 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getTvReviews(tv_id: Int, callback: FrogoResponseCallback<TvReviews>) {
+    override fun getTvReviews(tv_id: Int, callback: ConsumeApiResponse<TvReviews>) {
         movieRepository.getTvReviews(
             tv_id,
             apiKey,
-            object : FrogoResponseCallback<TvReviews> {
+            object : ConsumeApiResponse<TvReviews> {
                 override fun onSuccess(data: TvReviews) {
                     callback.onSuccess(data)
                 }
@@ -2184,12 +2184,12 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
 
     override fun getTvScreenedTheatrically(
         tv_id: Int,
-        callback: FrogoResponseCallback<TvScreenedTheatrically>
+        callback: ConsumeApiResponse<TvScreenedTheatrically>
     ) {
         movieRepository.getTvScreenedTheatrically(
             tv_id,
             apiKey,
-            object : FrogoResponseCallback<TvScreenedTheatrically> {
+            object : ConsumeApiResponse<TvScreenedTheatrically> {
                 override fun onSuccess(data: TvScreenedTheatrically) {
                     callback.onSuccess(data)
                 }
@@ -2212,14 +2212,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         tv_id: Int,
         language: String?,
         page: Int?,
-        callback: FrogoResponseCallback<TvSimilarTVShows>
+        callback: ConsumeApiResponse<TvSimilarTVShows>
     ) {
         movieRepository.getTvSimilarTvShows(
             tv_id,
             apiKey,
             language,
             page,
-            object : FrogoResponseCallback<TvSimilarTVShows> {
+            object : ConsumeApiResponse<TvSimilarTVShows> {
                 override fun onSuccess(data: TvSimilarTVShows) {
                     callback.onSuccess(data)
                 }
@@ -2238,11 +2238,11 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getTvTranslations(tv_id: Int, callback: FrogoResponseCallback<TvTranslations>) {
+    override fun getTvTranslations(tv_id: Int, callback: ConsumeApiResponse<TvTranslations>) {
         movieRepository.getTvTranslations(
             tv_id,
             apiKey,
-            object : FrogoResponseCallback<TvTranslations> {
+            object : ConsumeApiResponse<TvTranslations> {
                 override fun onSuccess(data: TvTranslations) {
                     callback.onSuccess(data)
                 }
@@ -2264,13 +2264,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getTvVideos(
         tv_id: Int,
         language: String?,
-        callback: FrogoResponseCallback<TvVideos>
+        callback: ConsumeApiResponse<TvVideos>
     ) {
         movieRepository.getTvVideos(
             tv_id,
             apiKey,
             language,
-            object : FrogoResponseCallback<TvVideos> {
+            object : ConsumeApiResponse<TvVideos> {
                 override fun onSuccess(data: TvVideos) {
                     callback.onSuccess(data)
                 }
@@ -2289,11 +2289,11 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getTvLatest(language: String?, callback: FrogoResponseCallback<TvLatest>) {
+    override fun getTvLatest(language: String?, callback: ConsumeApiResponse<TvLatest>) {
         movieRepository.getTvLatest(
             apiKey,
             language,
-            object : FrogoResponseCallback<TvLatest> {
+            object : ConsumeApiResponse<TvLatest> {
                 override fun onSuccess(data: TvLatest) {
                     callback.onSuccess(data)
                 }
@@ -2315,13 +2315,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getTvAiringToday(
         language: String?,
         page: Int?,
-        callback: FrogoResponseCallback<TvAiringToday>
+        callback: ConsumeApiResponse<TvAiringToday>
     ) {
         movieRepository.getTvAiringToday(
             apiKey,
             language,
             page,
-            object : FrogoResponseCallback<TvAiringToday> {
+            object : ConsumeApiResponse<TvAiringToday> {
                 override fun onSuccess(data: TvAiringToday) {
                     callback.onSuccess(data)
                 }
@@ -2343,13 +2343,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getTvOnTheAir(
         language: String?,
         page: Int?,
-        callback: FrogoResponseCallback<TvOnTheAir>
+        callback: ConsumeApiResponse<TvOnTheAir>
     ) {
         movieRepository.getTvOnTheAir(
             apiKey,
             language,
             page,
-            object : FrogoResponseCallback<TvOnTheAir> {
+            object : ConsumeApiResponse<TvOnTheAir> {
                 override fun onSuccess(data: TvOnTheAir) {
                     callback.onSuccess(data)
                 }
@@ -2371,13 +2371,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getTvPopular(
         language: String?,
         page: Int?,
-        callback: FrogoResponseCallback<TvPopular>
+        callback: ConsumeApiResponse<TvPopular>
     ) {
         movieRepository.getTvPopular(
             apiKey,
             language,
             page,
-            object : FrogoResponseCallback<TvPopular> {
+            object : ConsumeApiResponse<TvPopular> {
                 override fun onSuccess(data: TvPopular) {
                     callback.onSuccess(data)
                 }
@@ -2399,13 +2399,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getTvTopRated(
         language: String?,
         page: Int?,
-        callback: FrogoResponseCallback<TvTopRated>
+        callback: ConsumeApiResponse<TvTopRated>
     ) {
         movieRepository.getTvTopRated(
             apiKey,
             language,
             page,
-            object : FrogoResponseCallback<TvTopRated> {
+            object : ConsumeApiResponse<TvTopRated> {
                 override fun onSuccess(data: TvTopRated) {
                     callback.onSuccess(data)
                 }
@@ -2429,7 +2429,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         season_number: Int,
         language: String?,
         append_to_response: String?,
-        callback: FrogoResponseCallback<TvSeasonsDetails>
+        callback: ConsumeApiResponse<TvSeasonsDetails>
     ) {
         movieRepository.getTvSeasonsDetails(
             tv_id,
@@ -2437,7 +2437,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             apiKey,
             language,
             append_to_response,
-            object : FrogoResponseCallback<TvSeasonsDetails> {
+            object : ConsumeApiResponse<TvSeasonsDetails> {
                 override fun onSuccess(data: TvSeasonsDetails) {
                     callback.onSuccess(data)
                 }
@@ -2461,7 +2461,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         startDate: String?,
         endDate: String?,
         page: Int?,
-        callback: FrogoResponseCallback<TvSeasonsChanges>
+        callback: ConsumeApiResponse<TvSeasonsChanges>
     ) {
         movieRepository.getTvSeasonsChanges(
             season_id,
@@ -2469,7 +2469,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             startDate,
             endDate,
             page,
-            object : FrogoResponseCallback<TvSeasonsChanges> {
+            object : ConsumeApiResponse<TvSeasonsChanges> {
                 override fun onSuccess(data: TvSeasonsChanges) {
                     callback.onSuccess(data)
                 }
@@ -2494,7 +2494,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         language: String?,
         guest_session_id: String?,
         session_id: String?,
-        callback: FrogoResponseCallback<TvSeasonsAccountStates>
+        callback: ConsumeApiResponse<TvSeasonsAccountStates>
     ) {
         movieRepository.getTvSeasonsAccountStates(
             tv_id,
@@ -2503,7 +2503,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             language,
             guest_session_id,
             session_id,
-            object : FrogoResponseCallback<TvSeasonsAccountStates> {
+            object : ConsumeApiResponse<TvSeasonsAccountStates> {
                 override fun onSuccess(data: TvSeasonsAccountStates) {
                     callback.onSuccess(data)
                 }
@@ -2526,14 +2526,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         tv_id: Int,
         season_number: Int,
         language: String?,
-        callback: FrogoResponseCallback<TvSeasonsCredits>
+        callback: ConsumeApiResponse<TvSeasonsCredits>
     ) {
         movieRepository.getTvSeasonsCredits(
             tv_id,
             season_number,
             apiKey,
             language,
-            object : FrogoResponseCallback<TvSeasonsCredits> {
+            object : ConsumeApiResponse<TvSeasonsCredits> {
                 override fun onSuccess(data: TvSeasonsCredits) {
                     callback.onSuccess(data)
                 }
@@ -2556,14 +2556,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         tv_id: Int,
         season_number: Int,
         language: String?,
-        callback: FrogoResponseCallback<TvSeasonsExternalIds>
+        callback: ConsumeApiResponse<TvSeasonsExternalIds>
     ) {
         movieRepository.getTvSeasonsExternalIds(
             tv_id,
             season_number,
             apiKey,
             language,
-            object : FrogoResponseCallback<TvSeasonsExternalIds> {
+            object : ConsumeApiResponse<TvSeasonsExternalIds> {
                 override fun onSuccess(data: TvSeasonsExternalIds) {
                     callback.onSuccess(data)
                 }
@@ -2586,14 +2586,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         tv_id: Int,
         season_number: Int,
         language: String?,
-        callback: FrogoResponseCallback<TvSeasonsImages>
+        callback: ConsumeApiResponse<TvSeasonsImages>
     ) {
         movieRepository.getTvSeasonsImages(
             tv_id,
             season_number,
             apiKey,
             language,
-            object : FrogoResponseCallback<TvSeasonsImages> {
+            object : ConsumeApiResponse<TvSeasonsImages> {
                 override fun onSuccess(data: TvSeasonsImages) {
                     callback.onSuccess(data)
                 }
@@ -2616,14 +2616,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         tv_id: Int,
         season_number: Int,
         language: String?,
-        callback: FrogoResponseCallback<TvSeasonsVideos>
+        callback: ConsumeApiResponse<TvSeasonsVideos>
     ) {
         movieRepository.getTvSeasonsVideos(
             tv_id,
             season_number,
             apiKey,
             language,
-            object : FrogoResponseCallback<TvSeasonsVideos> {
+            object : ConsumeApiResponse<TvSeasonsVideos> {
                 override fun onSuccess(data: TvSeasonsVideos) {
                     callback.onSuccess(data)
                 }
@@ -2648,7 +2648,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         episode_number: Int,
         language: String?,
         append_to_response: String?,
-        callback: FrogoResponseCallback<TvEpisodeDetails>
+        callback: ConsumeApiResponse<TvEpisodeDetails>
     ) {
         movieRepository.getTvEpisodeDetails(
             tv_id,
@@ -2657,7 +2657,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             apiKey,
             language,
             append_to_response,
-            object : FrogoResponseCallback<TvEpisodeDetails> {
+            object : ConsumeApiResponse<TvEpisodeDetails> {
                 override fun onSuccess(data: TvEpisodeDetails) {
                     callback.onSuccess(data)
                 }
@@ -2681,7 +2681,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         startDate: String?,
         endDate: String?,
         page: Int?,
-        callback: FrogoResponseCallback<TvEpisodeChanges>
+        callback: ConsumeApiResponse<TvEpisodeChanges>
     ) {
         movieRepository.getTvEpisodeChanges(
             episode_id,
@@ -2689,7 +2689,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             startDate,
             endDate,
             page,
-            object : FrogoResponseCallback<TvEpisodeChanges> {
+            object : ConsumeApiResponse<TvEpisodeChanges> {
                 override fun onSuccess(data: TvEpisodeChanges) {
                     callback.onSuccess(data)
                 }
@@ -2714,7 +2714,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         episode_number: Int,
         guest_session_id: String?,
         session_id: String?,
-        callback: FrogoResponseCallback<TvEpisodeAccountStates>
+        callback: ConsumeApiResponse<TvEpisodeAccountStates>
     ) {
         movieRepository.getTvEpisodeAccountStates(
             tv_id,
@@ -2723,7 +2723,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             apiKey,
             guest_session_id,
             session_id,
-            object : FrogoResponseCallback<TvEpisodeAccountStates> {
+            object : ConsumeApiResponse<TvEpisodeAccountStates> {
                 override fun onSuccess(data: TvEpisodeAccountStates) {
                     callback.onSuccess(data)
                 }
@@ -2746,14 +2746,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        callback: FrogoResponseCallback<TvEpisodeCredits>
+        callback: ConsumeApiResponse<TvEpisodeCredits>
     ) {
         movieRepository.getTvEpisodeCredits(
             tv_id,
             season_number,
             episode_number,
             apiKey,
-            object : FrogoResponseCallback<TvEpisodeCredits> {
+            object : ConsumeApiResponse<TvEpisodeCredits> {
                 override fun onSuccess(data: TvEpisodeCredits) {
                     callback.onSuccess(data)
                 }
@@ -2776,14 +2776,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        callback: FrogoResponseCallback<TvEpisodeExternalIds>
+        callback: ConsumeApiResponse<TvEpisodeExternalIds>
     ) {
         movieRepository.getTvEpisodeExternalIds(
             tv_id,
             season_number,
             episode_number,
             apiKey,
-            object : FrogoResponseCallback<TvEpisodeExternalIds> {
+            object : ConsumeApiResponse<TvEpisodeExternalIds> {
                 override fun onSuccess(data: TvEpisodeExternalIds) {
                     callback.onSuccess(data)
                 }
@@ -2806,14 +2806,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        callback: FrogoResponseCallback<TvEpisodeImages>
+        callback: ConsumeApiResponse<TvEpisodeImages>
     ) {
         movieRepository.getTvEpisodeImages(
             tv_id,
             season_number,
             episode_number,
             apiKey,
-            object : FrogoResponseCallback<TvEpisodeImages> {
+            object : ConsumeApiResponse<TvEpisodeImages> {
                 override fun onSuccess(data: TvEpisodeImages) {
                     callback.onSuccess(data)
                 }
@@ -2836,14 +2836,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        callback: FrogoResponseCallback<TvEpisodeTranslation>
+        callback: ConsumeApiResponse<TvEpisodeTranslation>
     ) {
         movieRepository.getTvEpisodeTranslations(
             tv_id,
             season_number,
             episode_number,
             apiKey,
-            object : FrogoResponseCallback<TvEpisodeTranslation> {
+            object : ConsumeApiResponse<TvEpisodeTranslation> {
                 override fun onSuccess(data: TvEpisodeTranslation) {
                     callback.onSuccess(data)
                 }
@@ -2867,7 +2867,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         season_number: Int,
         episode_number: Int,
         language: String?,
-        callback: FrogoResponseCallback<TvEpisodeVideos>
+        callback: ConsumeApiResponse<TvEpisodeVideos>
     ) {
         movieRepository.getTvEpisodeVideos(
             tv_id,
@@ -2875,7 +2875,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             episode_number,
             apiKey,
             language,
-            object : FrogoResponseCallback<TvEpisodeVideos> {
+            object : ConsumeApiResponse<TvEpisodeVideos> {
                 override fun onSuccess(data: TvEpisodeVideos) {
                     callback.onSuccess(data)
                 }
@@ -2897,13 +2897,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getTvEpisodeGroupsDetails(
         id: String?,
         language: String?,
-        callback: FrogoResponseCallback<TvEpisodeGroupsDetails>
+        callback: ConsumeApiResponse<TvEpisodeGroupsDetails>
     ) {
         movieRepository.getTvEpisodeGroupsDetails(
             id,
             apiKey,
             language,
-            object : FrogoResponseCallback<TvEpisodeGroupsDetails> {
+            object : ConsumeApiResponse<TvEpisodeGroupsDetails> {
                 override fun onSuccess(data: TvEpisodeGroupsDetails) {
                     callback.onSuccess(data)
                 }
@@ -2925,13 +2925,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getPeopleDetails(
         person_id: Int,
         language: String?,
-        callback: FrogoResponseCallback<PeopleDetails>
+        callback: ConsumeApiResponse<PeopleDetails>
     ) {
         movieRepository.getPeopleDetails(
             person_id,
             apiKey,
             language,
-            object : FrogoResponseCallback<PeopleDetails> {
+            object : ConsumeApiResponse<PeopleDetails> {
                 override fun onSuccess(data: PeopleDetails) {
                     callback.onSuccess(data)
                 }
@@ -2955,7 +2955,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         endDate: String?,
         page: Int?,
         startDate: String?,
-        callback: FrogoResponseCallback<PeopleChanges>
+        callback: ConsumeApiResponse<PeopleChanges>
     ) {
         movieRepository.getPeopleChanges(
             person_id,
@@ -2963,7 +2963,7 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             endDate,
             page,
             startDate,
-            object : FrogoResponseCallback<PeopleChanges> {
+            object : ConsumeApiResponse<PeopleChanges> {
                 override fun onSuccess(data: PeopleChanges) {
                     callback.onSuccess(data)
                 }
@@ -2985,13 +2985,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getPeopleMovieCredits(
         person_id: Int,
         language: String?,
-        callback: FrogoResponseCallback<PeopleMovieCredits>
+        callback: ConsumeApiResponse<PeopleMovieCredits>
     ) {
         movieRepository.getPeopleMovieCredits(
             person_id,
             apiKey,
             language,
-            object : FrogoResponseCallback<PeopleMovieCredits> {
+            object : ConsumeApiResponse<PeopleMovieCredits> {
                 override fun onSuccess(data: PeopleMovieCredits) {
                     callback.onSuccess(data)
                 }
@@ -3013,13 +3013,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getPeopleTvCredits(
         person_id: Int,
         language: String?,
-        callback: FrogoResponseCallback<PeopleTvCredits>
+        callback: ConsumeApiResponse<PeopleTvCredits>
     ) {
         movieRepository.getPeopleTvCredits(
             person_id,
             apiKey,
             language,
-            object : FrogoResponseCallback<PeopleTvCredits> {
+            object : ConsumeApiResponse<PeopleTvCredits> {
                 override fun onSuccess(data: PeopleTvCredits) {
                     callback.onSuccess(data)
                 }
@@ -3041,13 +3041,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getPeopleCombinedCredits(
         person_id: Int,
         language: String?,
-        callback: FrogoResponseCallback<PeopleCombinedCredits>
+        callback: ConsumeApiResponse<PeopleCombinedCredits>
     ) {
         movieRepository.getPeopleCombinedCredits(
             person_id,
             apiKey,
             language,
-            object : FrogoResponseCallback<PeopleCombinedCredits> {
+            object : ConsumeApiResponse<PeopleCombinedCredits> {
                 override fun onSuccess(data: PeopleCombinedCredits) {
                     callback.onSuccess(data)
                 }
@@ -3069,13 +3069,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getPeopleExternalIds(
         person_id: Int,
         language: String?,
-        callback: FrogoResponseCallback<PeopleExternalIds>
+        callback: ConsumeApiResponse<PeopleExternalIds>
     ) {
         movieRepository.getPeopleExternalIds(
             person_id,
             apiKey,
             language,
-            object : FrogoResponseCallback<PeopleExternalIds> {
+            object : ConsumeApiResponse<PeopleExternalIds> {
                 override fun onSuccess(data: PeopleExternalIds) {
                     callback.onSuccess(data)
                 }
@@ -3094,11 +3094,11 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getPeopleImages(person_id: Int, callback: FrogoResponseCallback<PeopleImages>) {
+    override fun getPeopleImages(person_id: Int, callback: ConsumeApiResponse<PeopleImages>) {
         movieRepository.getPeopleImages(
             person_id,
             apiKey,
-            object : FrogoResponseCallback<PeopleImages> {
+            object : ConsumeApiResponse<PeopleImages> {
                 override fun onSuccess(data: PeopleImages) {
                     callback.onSuccess(data)
                 }
@@ -3121,14 +3121,14 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
         person_id: Int,
         language: String?,
         page: Int?,
-        callback: FrogoResponseCallback<PeopleTaggedImages>
+        callback: ConsumeApiResponse<PeopleTaggedImages>
     ) {
         movieRepository.getPeopleTaggedImages(
             person_id,
             apiKey,
             language,
             page,
-            object : FrogoResponseCallback<PeopleTaggedImages> {
+            object : ConsumeApiResponse<PeopleTaggedImages> {
                 override fun onSuccess(data: PeopleTaggedImages) {
                     callback.onSuccess(data)
                 }
@@ -3150,13 +3150,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getPeopleTranslations(
         person_id: Int,
         language: String?,
-        callback: FrogoResponseCallback<PeopleTranslations>
+        callback: ConsumeApiResponse<PeopleTranslations>
     ) {
         movieRepository.getPeopleTranslations(
             person_id,
             apiKey,
             language,
-            object : FrogoResponseCallback<PeopleTranslations> {
+            object : ConsumeApiResponse<PeopleTranslations> {
                 override fun onSuccess(data: PeopleTranslations) {
                     callback.onSuccess(data)
                 }
@@ -3175,11 +3175,11 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
             })
     }
 
-    override fun getPeopleLatest(language: String?, callback: FrogoResponseCallback<PeopleLatest>) {
+    override fun getPeopleLatest(language: String?, callback: ConsumeApiResponse<PeopleLatest>) {
         movieRepository.getPeopleLatest(
             apiKey,
             language,
-            object : FrogoResponseCallback<PeopleLatest> {
+            object : ConsumeApiResponse<PeopleLatest> {
                 override fun onSuccess(data: PeopleLatest) {
                     callback.onSuccess(data)
                 }
@@ -3201,13 +3201,13 @@ class ConsumeMovieApi(private val apiKey: String) : IConsumeMovieApi {
     override fun getPeoplePopular(
         language: String?,
         page: Int?,
-        callback: FrogoResponseCallback<PeoplePopular>
+        callback: ConsumeApiResponse<PeoplePopular>
     ) {
         movieRepository.getPeoplePopular(
             apiKey,
             language,
             page,
-            object : FrogoResponseCallback<PeoplePopular> {
+            object : ConsumeApiResponse<PeoplePopular> {
                 override fun onSuccess(data: PeoplePopular) {
                     callback.onSuccess(data)
                 }

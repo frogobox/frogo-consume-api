@@ -3,7 +3,7 @@ package com.frogobox.api.news
 import android.content.Context
 import com.frogobox.api.news.response.ArticleResponse
 import com.frogobox.api.news.response.SourceResponse
-import com.frogobox.sdk.core.FrogoResponseCallback
+import com.frogobox.api.core.ConsumeApiResponse
 
 /**
  * Created by Faisal Amir
@@ -35,7 +35,7 @@ interface IConsumeNewsApi {
         country: String?,
         pageSize: Int?,
         page: Int?,
-        callback: FrogoResponseCallback<ArticleResponse>
+        callback: ConsumeApiResponse<ArticleResponse>
     )
 
     // Get Everythings
@@ -51,7 +51,7 @@ interface IConsumeNewsApi {
         sortBy: String?,
         pageSize: Int?,
         page: Int?,
-        callback: FrogoResponseCallback<ArticleResponse>
+        callback: ConsumeApiResponse<ArticleResponse>
     )
 
     // Get Sources
@@ -59,7 +59,7 @@ interface IConsumeNewsApi {
         language: String,
         country: String,
         category: String,
-        callback: FrogoResponseCallback<SourceResponse>
+        callback: ConsumeApiResponse<SourceResponse>
     )
 
 }

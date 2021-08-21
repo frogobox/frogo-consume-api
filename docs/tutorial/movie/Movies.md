@@ -6,7 +6,7 @@
         movie_id: Int,
         language: String?,
         append_to_response: String?,
-        callback: FrogoResponseCallback<MovieDetail>
+        callback: ConsumeApiResponse<MovieDetail>
     )
 
     // MOVIES
@@ -15,7 +15,7 @@
         movie_id: Int,
         session_id: String,
         guest_session_id: String?,
-        callback: FrogoResponseCallback<MovieAccountState>
+        callback: ConsumeApiResponse<MovieAccountState>
     )
 
     // MOVIES
@@ -23,7 +23,7 @@
     fun getMoviesAlternativeTitles(
         movie_id: Int,
         country: String?,
-        callback: FrogoResponseCallback<MovieAlternativeTitle>
+        callback: ConsumeApiResponse<MovieAlternativeTitle>
     )
 
     // MOVIES
@@ -33,21 +33,21 @@
         start_date: String?,
         end_date: String?,
         page: Int?,
-        callback: FrogoResponseCallback<MovieChanges>
+        callback: ConsumeApiResponse<MovieChanges>
     )
 
     // MOVIES
     // Get Credits
     fun getMoviesCredits(
         movie_id: Int,
-        callback: FrogoResponseCallback<MovieCredit>
+        callback: ConsumeApiResponse<MovieCredit>
     )
 
     // MOVIES
     // Get External Ids
     fun getMoviesExternalIds(
         movie_id: Int,
-        callback: FrogoResponseCallback<MovieExternalId>
+        callback: ConsumeApiResponse<MovieExternalId>
     )
 
     // MOVIES
@@ -56,21 +56,21 @@
         movie_id: Int,
         language: String?,
         include_image_language: String?,
-        callback: FrogoResponseCallback<MovieImages>
+        callback: ConsumeApiResponse<MovieImages>
     )
 
     // MOVIES
     // Get Keywords
     fun getMoviesKeywords(
         movie_id: Int,
-        callback: FrogoResponseCallback<MovieKeywords>
+        callback: ConsumeApiResponse<MovieKeywords>
     )
 
     // MOVIES
     // Get Release Dates
     fun getMoviesReleaseDates(
         movie_id: Int,
-        callback: FrogoResponseCallback<MovieReleaseDates>
+        callback: ConsumeApiResponse<MovieReleaseDates>
     )
 
     // MOVIES
@@ -78,14 +78,14 @@
     fun getMoviesVideos(
         movie_id: Int,
         language: String?,
-        callback: FrogoResponseCallback<MovieVideos>
+        callback: ConsumeApiResponse<MovieVideos>
     )
 
     // MOVIES
     // Get Translations
     fun getMoviesTranslations(
         movie_id: Int,
-        callback: FrogoResponseCallback<MovieTranslations>
+        callback: ConsumeApiResponse<MovieTranslations>
     )
 
     // MOVIES
@@ -94,7 +94,7 @@
         movie_id: Int,
         language: String?,
         page: Int?,
-        callback: FrogoResponseCallback<MovieRecommendations>
+        callback: ConsumeApiResponse<MovieRecommendations>
     )
 
     // MOVIES
@@ -103,7 +103,7 @@
         movie_id: Int,
         language: String?,
         page: Int?,
-        callback: FrogoResponseCallback<MovieSimilarMovies>
+        callback: ConsumeApiResponse<MovieSimilarMovies>
     )
 
     // MOVIES
@@ -112,7 +112,7 @@
         movie_id: Int,
         language: String?,
         page: Int?,
-        callback: FrogoResponseCallback<MovieReviews>
+        callback: ConsumeApiResponse<MovieReviews>
     )
 
     // MOVIES
@@ -121,14 +121,14 @@
         movie_id: Int,
         language: String?,
         page: Int?,
-        callback: FrogoResponseCallback<MovieLists>
+        callback: ConsumeApiResponse<MovieLists>
     )
 
     // MOVIES
     // Get Latest
     fun getMoviesLatest(
         language: String?,
-        callback: FrogoResponseCallback<MovieLatest>
+        callback: ConsumeApiResponse<MovieLatest>
     )
 
     // MOVIES
@@ -137,7 +137,7 @@
         language: String?,
         page: Int?,
         region: String?,
-        callback: FrogoResponseCallback<MovieNowPlayings>
+        callback: ConsumeApiResponse<MovieNowPlayings>
     )
 
     // MOVIES
@@ -146,7 +146,7 @@
         language: String?,
         page: Int?,
         region: String?,
-        callback: FrogoResponseCallback<MoviePopulars>
+        callback: ConsumeApiResponse<MoviePopulars>
     )
 
     // MOVIES
@@ -155,7 +155,7 @@
         language: String?,
         page: Int?,
         region: String?,
-        callback: FrogoResponseCallback<MovieTopRated>
+        callback: ConsumeApiResponse<MovieTopRated>
     )
 
     // MOVIES
@@ -164,6 +164,6 @@
         language: String?,
         page: Int?,
         region: String?,
-        callback: FrogoResponseCallback<MovieUpcoming>
+        callback: ConsumeApiResponse<MovieUpcoming>
     )
 

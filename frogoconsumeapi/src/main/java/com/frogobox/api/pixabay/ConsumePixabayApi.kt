@@ -5,7 +5,7 @@ import com.frogobox.api.pixabay.model.PixabayImage
 import com.frogobox.api.pixabay.model.PixabayVideo
 import com.frogobox.api.pixabay.response.Response
 import com.frogobox.api.pixabay.source.PixabayRepository
-import com.frogobox.sdk.core.FrogoResponseCallback
+import com.frogobox.api.core.ConsumeApiResponse
 
 /**
  * Created by Faisal Amir
@@ -47,7 +47,7 @@ class ConsumePixabayApi(private val apiKey: String) : IConsumePixabayApi {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: FrogoResponseCallback<Response<PixabayImage>>
+        callback: ConsumeApiResponse<Response<PixabayImage>>
     ) {
         pixabayRepository.searchImage(
             apiKey,
@@ -81,7 +81,7 @@ class ConsumePixabayApi(private val apiKey: String) : IConsumePixabayApi {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: FrogoResponseCallback<Response<PixabayVideo>>
+        callback: ConsumeApiResponse<Response<PixabayVideo>>
     ) {
         pixabayRepository.searchVideo(
             apiKey,

@@ -35,7 +35,7 @@
         with_runtime_gte: Double?,
         with_runtime_lte: Double?,
         with_original_language: String?,
-        callback: FrogoResponseCallback<Discover<DiscoverMovie>>
+        callback: ConsumeApiResponse<Discover<DiscoverMovie>>
     )
 
     // DISCOVER
@@ -63,5 +63,5 @@
         screened_theatrically: String?,
         with_companies: String?,
         with_keywords: String?,
-        callback: FrogoResponseCallback<Discover<DiscoverTv>>
+        callback: ConsumeApiResponse<Discover<DiscoverTv>>
     )

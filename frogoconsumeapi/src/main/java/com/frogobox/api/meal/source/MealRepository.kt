@@ -8,7 +8,7 @@ import com.frogobox.api.meal.util.MealConstant
 import com.frogobox.api.meal.util.MealUrl
 import com.frogobox.sdk.core.FrogoApiCallback
 import com.frogobox.sdk.core.FrogoApiClient
-import com.frogobox.sdk.core.FrogoResponseCallback
+import com.frogobox.api.core.ConsumeApiResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -40,7 +40,7 @@ object MealRepository : MealDataSource {
     override fun searchMeal(
         apiKey: String,
         mealName: String,
-        callback: FrogoResponseCallback<MealResponse<Meal>>
+        callback: ConsumeApiResponse<MealResponse<Meal>>
     ) {
         mealApiService
             .searchMeal(apiKey, mealName)
@@ -63,7 +63,7 @@ object MealRepository : MealDataSource {
     override fun listAllMeal(
         apiKey: String,
         firstLetter: String,
-        callback: FrogoResponseCallback<MealResponse<Meal>>
+        callback: ConsumeApiResponse<MealResponse<Meal>>
     ) {
         mealApiService
             .listAllMeal(apiKey, firstLetter)
@@ -87,7 +87,7 @@ object MealRepository : MealDataSource {
     override fun lookupFullMeal(
         apiKey: String,
         idMeal: String,
-        callback: FrogoResponseCallback<MealResponse<Meal>>
+        callback: ConsumeApiResponse<MealResponse<Meal>>
     ) {
         mealApiService
             .lookupFullMeal(apiKey, idMeal)
@@ -108,7 +108,7 @@ object MealRepository : MealDataSource {
 
     override fun lookupRandomMeal(
         apiKey: String,
-        callback: FrogoResponseCallback<MealResponse<Meal>>
+        callback: ConsumeApiResponse<MealResponse<Meal>>
     ) {
         mealApiService
             .lookupRandomMeal(apiKey)
@@ -129,7 +129,7 @@ object MealRepository : MealDataSource {
 
     override fun listMealCategories(
         apiKey: String,
-        callback: FrogoResponseCallback<CategoryResponse>
+        callback: ConsumeApiResponse<CategoryResponse>
     ) {
         mealApiService
             .listMealCategories(apiKey)
@@ -150,7 +150,7 @@ object MealRepository : MealDataSource {
 
     override fun listAllCateories(
         apiKey: String,
-        callback: FrogoResponseCallback<MealResponse<Category>>
+        callback: ConsumeApiResponse<MealResponse<Category>>
     ) {
         mealApiService
             .listAllCateories(apiKey, MealConstant.VALUE_LIST)
@@ -171,7 +171,7 @@ object MealRepository : MealDataSource {
 
     override fun listAllArea(
         apiKey: String,
-        callback: FrogoResponseCallback<MealResponse<Area>>
+        callback: ConsumeApiResponse<MealResponse<Area>>
     ) {
         mealApiService
             .listAllArea(apiKey, MealConstant.VALUE_LIST)
@@ -194,7 +194,7 @@ object MealRepository : MealDataSource {
 
     override fun listAllIngredients(
         apiKey: String,
-        callback: FrogoResponseCallback<MealResponse<Ingredient>>
+        callback: ConsumeApiResponse<MealResponse<Ingredient>>
     ) {
         mealApiService
             .listAllIngredients(apiKey, MealConstant.VALUE_LIST)
@@ -216,7 +216,7 @@ object MealRepository : MealDataSource {
     override fun filterByIngredient(
         apiKey: String,
         ingredient: String,
-        callback: FrogoResponseCallback<MealResponse<MealFilter>>
+        callback: ConsumeApiResponse<MealResponse<MealFilter>>
     ) {
         mealApiService
             .filterByIngredient(apiKey, ingredient)
@@ -238,7 +238,7 @@ object MealRepository : MealDataSource {
     override fun filterByCategory(
         apiKey: String,
         category: String,
-        callback: FrogoResponseCallback<MealResponse<MealFilter>>
+        callback: ConsumeApiResponse<MealResponse<MealFilter>>
     ) {
         mealApiService
             .filterByCategory(apiKey, category)
@@ -260,7 +260,7 @@ object MealRepository : MealDataSource {
     override fun filterByArea(
         apiKey: String,
         area: String,
-        callback: FrogoResponseCallback<MealResponse<MealFilter>>
+        callback: ConsumeApiResponse<MealResponse<MealFilter>>
     ) {
         mealApiService
             .filterByArea(apiKey, area)

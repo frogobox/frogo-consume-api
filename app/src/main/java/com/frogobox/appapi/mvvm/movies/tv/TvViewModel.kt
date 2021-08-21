@@ -5,7 +5,7 @@ import com.frogobox.appapi.mvvm.movies.core.MoviesViewModel
 import com.frogobox.api.movie.model.TrendingTv
 import com.frogobox.api.movie.response.Trending
 import com.frogobox.sdk.core.FrogoLiveEvent
-import com.frogobox.sdk.core.FrogoResponseCallback
+import com.frogobox.api.core.ConsumeApiResponse
 
 /*
  * Created by faisalamir on 28/07/21
@@ -25,7 +25,7 @@ class TvViewModel(private val context: Application) : MoviesViewModel(context) {
     val listDataWeek = FrogoLiveEvent<List<TrendingTv>>()
 
     fun getTrendingTvDay() {
-        consumeMovieApi().getTrendingTvDay(object : FrogoResponseCallback<Trending<TrendingTv>> {
+        consumeMovieApi().getTrendingTvDay(object : ConsumeApiResponse<Trending<TrendingTv>> {
             override fun onSuccess(data: Trending<TrendingTv>) {
                 // On Success
                 data.results?.let { listDataDay.postValue(it) }
@@ -49,7 +49,7 @@ class TvViewModel(private val context: Application) : MoviesViewModel(context) {
     }
 
     fun getTrendingTvWeek() {
-        consumeMovieApi().getTrendingTvWeek(object : FrogoResponseCallback<Trending<TrendingTv>> {
+        consumeMovieApi().getTrendingTvWeek(object : ConsumeApiResponse<Trending<TrendingTv>> {
             override fun onSuccess(data: Trending<TrendingTv>) {
                 // On Success
                 data.results?.let { listDataWeek.postValue(it) }

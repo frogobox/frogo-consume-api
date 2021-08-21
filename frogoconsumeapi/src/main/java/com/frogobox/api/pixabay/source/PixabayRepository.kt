@@ -7,7 +7,7 @@ import com.frogobox.api.pixabay.response.Response
 import com.frogobox.api.pixabay.util.PixabayUrl
 import com.frogobox.sdk.core.FrogoApiCallback
 import com.frogobox.sdk.core.FrogoApiClient
-import com.frogobox.sdk.core.FrogoResponseCallback
+import com.frogobox.api.core.ConsumeApiResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -52,7 +52,7 @@ object PixabayRepository : PixabayDataSource {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: FrogoResponseCallback<Response<PixabayImage>>
+        callback: ConsumeApiResponse<Response<PixabayImage>>
     ) {
         pixabayApiService.searchImage(
                 apiKey,
@@ -100,7 +100,7 @@ object PixabayRepository : PixabayDataSource {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: FrogoResponseCallback<Response<PixabayVideo>>
+        callback: ConsumeApiResponse<Response<PixabayVideo>>
     ) {
         pixabayApiService.searchVideo(
                 apiKey,

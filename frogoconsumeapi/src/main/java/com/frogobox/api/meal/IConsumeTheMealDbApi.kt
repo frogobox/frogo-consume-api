@@ -4,7 +4,7 @@ import android.content.Context
 import com.frogobox.api.meal.response.MealResponse
 import com.frogobox.api.meal.model.*
 import com.frogobox.api.meal.response.CategoryResponse
-import com.frogobox.sdk.core.FrogoResponseCallback
+import com.frogobox.api.core.ConsumeApiResponse
 
 /**
  * Created by Faisal Amir
@@ -29,36 +29,36 @@ interface IConsumeTheMealDbApi {
     fun usingChuckInterceptor(context: Context)
 
     // Search meal by name
-    fun searchMeal(mealName: String, callback: FrogoResponseCallback<MealResponse<Meal>>)
+    fun searchMeal(mealName: String, callback: ConsumeApiResponse<MealResponse<Meal>>)
 
     // List all meals by first letter
-    fun listAllMeal(firstLetter: String, callback: FrogoResponseCallback<MealResponse<Meal>>)
+    fun listAllMeal(firstLetter: String, callback: ConsumeApiResponse<MealResponse<Meal>>)
 
     // Lookup full meal details by id
-    fun lookupFullMeal(idMeal: String, callback: FrogoResponseCallback<MealResponse<Meal>>)
+    fun lookupFullMeal(idMeal: String, callback: ConsumeApiResponse<MealResponse<Meal>>)
 
     // Lookup a single random meal
-    fun lookupRandomMeal(callback: FrogoResponseCallback<MealResponse<Meal>>)
+    fun lookupRandomMeal(callback: ConsumeApiResponse<MealResponse<Meal>>)
 
     // List all meal categories
-    fun listMealCategories(callback: FrogoResponseCallback<CategoryResponse>)
+    fun listMealCategories(callback: ConsumeApiResponse<CategoryResponse>)
 
     // List all Categories
-    fun listAllCateories(callback: FrogoResponseCallback<MealResponse<Category>>)
+    fun listAllCateories(callback: ConsumeApiResponse<MealResponse<Category>>)
 
     // List all Area
-    fun listAllArea(callback: FrogoResponseCallback<MealResponse<Area>>)
+    fun listAllArea(callback: ConsumeApiResponse<MealResponse<Area>>)
 
     // List all Ingredients
-    fun listAllIngredients(callback: FrogoResponseCallback<MealResponse<Ingredient>>)
+    fun listAllIngredients(callback: ConsumeApiResponse<MealResponse<Ingredient>>)
 
     // Filter by main ingredient
-    fun filterByIngredient(ingredient: String, callback: FrogoResponseCallback<MealResponse<MealFilter>>)
+    fun filterByIngredient(ingredient: String, callback: ConsumeApiResponse<MealResponse<MealFilter>>)
 
     // Filter by Category
-    fun filterByCategory(category: String, callback: FrogoResponseCallback<MealResponse<MealFilter>>)
+    fun filterByCategory(category: String, callback: ConsumeApiResponse<MealResponse<MealFilter>>)
 
     // Filter by Area
-    fun filterByArea(area: String, callback: FrogoResponseCallback<MealResponse<MealFilter>>)
+    fun filterByArea(area: String, callback: ConsumeApiResponse<MealResponse<MealFilter>>)
 
 }

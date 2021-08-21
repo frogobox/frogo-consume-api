@@ -6,7 +6,7 @@ import com.frogobox.api.sport.model.Team
 import com.frogobox.api.sport.response.Teams
 import com.frogobox.api.sport.util.SportUrl
 import com.frogobox.sdk.core.FrogoLiveEvent
-import com.frogobox.sdk.core.FrogoResponseCallback
+import com.frogobox.api.core.ConsumeApiResponse
 import com.frogobox.sdk.core.FrogoViewModel
 
 /*
@@ -29,7 +29,7 @@ class SportViewModel(private val context: Application) : FrogoViewModel(context)
     fun searchAllTeam() {
         consumeTheSportDbApi.usingChuckInterceptor(context)
         consumeTheSportDbApi.searchAllTeam("English Premier League",
-            object : FrogoResponseCallback<Teams> {
+            object : ConsumeApiResponse<Teams> {
                 override fun onSuccess(data: Teams) {
                     data.teams?.let { listData.postValue(it) }
                 }
