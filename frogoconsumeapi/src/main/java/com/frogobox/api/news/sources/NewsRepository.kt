@@ -1,7 +1,6 @@
 package com.frogobox.api.news.sources
 
 import android.content.Context
-import com.frogobox.frogolog.FLog
 import com.frogobox.api.news.response.ArticleResponse
 import com.frogobox.api.news.response.SourceResponse
 import com.frogobox.api.news.util.NewsUrl
@@ -34,7 +33,6 @@ object NewsRepository : NewsDataSource {
 
     override fun usingChuckInterceptor(context: Context) {
         newsApiService = FrogoApiClient.create(NewsUrl.BASE_URL, context)
-        FLog.d("Using Chuck Interceptor")
     }
 
     override fun getTopHeadline(
