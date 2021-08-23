@@ -20,7 +20,7 @@ class TvDayFragment : FrogoFragment<FragmentTrendingChildBinding>() {
 
     override fun setupViewBinding(
         inflater: LayoutInflater,
-        container: ViewGroup
+        container: ViewGroup?
     ): FragmentTrendingChildBinding {
         return FragmentTrendingChildBinding.inflate(inflater, container, false)
     }

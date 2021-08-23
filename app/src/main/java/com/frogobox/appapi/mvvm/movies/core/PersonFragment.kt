@@ -18,7 +18,7 @@ class PersonFragment : FrogoFragment<FragmentTrendingBinding>() {
 
     override fun setupViewBinding(
         inflater: LayoutInflater,
-        container: ViewGroup
+        container: ViewGroup?
     ): FragmentTrendingBinding {
         return FragmentTrendingBinding.inflate(inflater, container, false)
     }

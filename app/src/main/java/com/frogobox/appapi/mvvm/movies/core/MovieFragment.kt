@@ -9,12 +9,11 @@ import com.frogobox.appapi.mvvm.movies.movie.MovieDayFragment
 import com.frogobox.appapi.mvvm.movies.movie.MovieWeekFragment
 import com.frogobox.appapi.util.PagerAdapter
 import com.frogobox.sdk.core.FrogoFragment
-
 class MovieFragment : FrogoFragment<FragmentTrendingBinding>() {
 
     override fun setupViewBinding(
         inflater: LayoutInflater,
-        container: ViewGroup
+        container: ViewGroup?
     ): FragmentTrendingBinding {
         return FragmentTrendingBinding.inflate(inflater, container, false)
     }
