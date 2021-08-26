@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Consumable">
 
+        <activity android:name=".mvvm.news.NewsDetailActivity"/>
         <activity android:name=".mvvm.pixabay.PixabayActivity" />
         <activity android:name=".mvvm.sport.SportActivity" />
         <activity android:name=".mvvm.movies.MoviesActivity" />
