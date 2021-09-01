@@ -17,7 +17,7 @@ SDK for anything your problem to make easier developing android apps
 ## Version Release
 This Is Latest Release
 
-    $version_release = 1.0.5
+    $version_release = 1.0.6
 
 What's New??
 
@@ -28,6 +28,7 @@ What's New??
     * update: upgrade from FrogoResponseCallback to ConsumeApiResponse *
     * Delete Unused Import and Resources *
     * Delete Admob Implementation *
+    * Add Log From Consume API *
 
 ## Download this project
 
@@ -46,7 +47,7 @@ What's New??
     
     dependencies {
             // library frogo-consume-api
-            implementation 'com.github.frogobox:frogo-consume-api:1.0.5'
+            implementation 'com.github.frogobox:frogo-consume-api:1.0.6'
     }
 
 ### Step 3. Click Detail Below
