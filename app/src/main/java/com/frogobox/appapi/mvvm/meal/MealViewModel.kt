@@ -1,11 +1,11 @@
 package com.frogobox.appapi.mvvm.meal
 
 import android.app.Application
+import com.frogobox.api.core.ConsumeApiLiveEvent
 import com.frogobox.api.meal.ConsumeTheMealDbApi
 import com.frogobox.api.meal.model.Meal
 import com.frogobox.api.meal.response.MealResponse
 import com.frogobox.api.meal.util.MealUrl
-import com.frogobox.sdk.core.FrogoLiveEvent
 import com.frogobox.api.core.ConsumeApiResponse
 import com.frogobox.sdk.core.FrogoViewModel
 
@@ -23,7 +23,7 @@ import com.frogobox.sdk.core.FrogoViewModel
  */
 class MealViewModel(private val context: Application) : FrogoViewModel(context) {
 
-    val listData = FrogoLiveEvent<List<Meal>>()
+    val listData = ConsumeApiLiveEvent<List<Meal>>()
     private val consumeTheMealDbApi = ConsumeTheMealDbApi(MealUrl.API_KEY)
 
     fun getListMeals(firstLetter: String) {

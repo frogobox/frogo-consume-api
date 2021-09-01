@@ -1,6 +1,7 @@
 package com.frogobox.api.news.sources
 
 import android.content.Context
+import android.util.Log
 import com.frogobox.api.news.response.ArticleResponse
 import com.frogobox.api.news.response.SourceResponse
 import com.frogobox.api.news.util.NewsUrl
@@ -29,9 +30,11 @@ import io.reactivex.schedulers.Schedulers
  */
 object NewsRepository : NewsDataSource {
 
+    private val TAG = NewsRepository::class.java.simpleName
     private var newsApiService = FrogoApiClient.create<NewsApiService>(NewsUrl.BASE_URL)
 
     override fun usingChuckInterceptor(context: Context) {
+        Log.d(TAG, "Using Chuck Interceptor")
         newsApiService = FrogoApiClient.create(NewsUrl.BASE_URL, context)
     }
 
@@ -45,6 +48,7 @@ object NewsRepository : NewsDataSource {
         page: Int?,
         callback: ConsumeApiResponse<ArticleResponse>
     ) {
+        Log.d(TAG, "Get Top Headline")
         newsApiService.getTopHeadline(apiKey, q, sources, category, country, pageSize, page)
             .subscribeOn(Schedulers.io())
             .doOnSubscribe { callback.onShowProgress() }
@@ -76,6 +80,7 @@ object NewsRepository : NewsDataSource {
         page: Int?,
         callback: ConsumeApiResponse<ArticleResponse>
     ) {
+        Log.d(TAG, "Get Everythings")
         newsApiService.getEverythings(
             apiKey,
             q,
@@ -112,6 +117,7 @@ object NewsRepository : NewsDataSource {
         category: String,
         callback: ConsumeApiResponse<SourceResponse>
     ) {
+        Log.d(TAG, "Get Sources")
         newsApiService.getSources(apiKey, language, country, category)
             .subscribeOn(Schedulers.io())
             .doOnSubscribe { callback.onShowProgress() }

@@ -4,7 +4,7 @@ import android.app.Application
 import com.frogobox.appapi.mvvm.movies.core.MoviesViewModel
 import com.frogobox.api.movie.model.TrendingPerson
 import com.frogobox.api.movie.response.Trending
-import com.frogobox.sdk.core.FrogoLiveEvent
+import com.frogobox.api.core.ConsumeApiLiveEvent
 import com.frogobox.api.core.ConsumeApiResponse
 
 /*
@@ -21,8 +21,8 @@ import com.frogobox.api.core.ConsumeApiResponse
  */
 class PersonViewModel(private val context: Application) : MoviesViewModel(context) {
 
-    val listDataDay = FrogoLiveEvent<List<TrendingPerson>>()
-    val listDataWeek = FrogoLiveEvent<List<TrendingPerson>>()
+    val listDataDay = ConsumeApiLiveEvent<List<TrendingPerson>>()
+    val listDataWeek = ConsumeApiLiveEvent<List<TrendingPerson>>()
 
     fun getTrendingPersonDay() {
         consumeMovieApi().getTrendingPersonDay(object : ConsumeApiResponse<Trending<TrendingPerson>> {

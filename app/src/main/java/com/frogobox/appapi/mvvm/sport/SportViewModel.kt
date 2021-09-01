@@ -5,7 +5,7 @@ import com.frogobox.api.sport.ConsumeTheSportDbApi
 import com.frogobox.api.sport.model.Team
 import com.frogobox.api.sport.response.Teams
 import com.frogobox.api.sport.util.SportUrl
-import com.frogobox.sdk.core.FrogoLiveEvent
+import com.frogobox.api.core.ConsumeApiLiveEvent
 import com.frogobox.api.core.ConsumeApiResponse
 import com.frogobox.sdk.core.FrogoViewModel
 
@@ -23,7 +23,7 @@ import com.frogobox.sdk.core.FrogoViewModel
  */
 class SportViewModel(private val context: Application) : FrogoViewModel(context) {
 
-    val listData = FrogoLiveEvent<List<Team>>()
+    val listData = ConsumeApiLiveEvent<List<Team>>()
     private val consumeTheSportDbApi = ConsumeTheSportDbApi(SportUrl.API_KEY) // Your API Key
 
     fun searchAllTeam() {

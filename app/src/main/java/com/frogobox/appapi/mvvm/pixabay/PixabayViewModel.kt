@@ -5,7 +5,7 @@ import com.frogobox.api.pixabay.ConsumePixabayApi
 import com.frogobox.api.pixabay.model.PixabayImage
 import com.frogobox.api.pixabay.response.Response
 import com.frogobox.api.pixabay.util.PixabayUrl
-import com.frogobox.sdk.core.FrogoLiveEvent
+import com.frogobox.api.core.ConsumeApiLiveEvent
 import com.frogobox.api.core.ConsumeApiResponse
 import com.frogobox.sdk.core.FrogoViewModel
 
@@ -23,7 +23,7 @@ import com.frogobox.sdk.core.FrogoViewModel
  */
 class PixabayViewModel(private val context: Application) : FrogoViewModel(context) {
 
-    val listData = FrogoLiveEvent<List<PixabayImage>>()
+    val listData = ConsumeApiLiveEvent<List<PixabayImage>>()
     private val consumePixabayApi = ConsumePixabayApi(PixabayUrl.API_KEY) // Your API Key
 
     fun searchImage(query: String) {

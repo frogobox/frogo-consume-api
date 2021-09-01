@@ -77,7 +77,7 @@ interface MovieApiService {
     // ---------------------------------------------------------------------------------------------
 
     // COLLECTION
-    // Get Details
+    // Get Collection Details
     @GET(MovieUrl.COLLECTION_GET_DETAIL)
     fun getCollectionDetails(
         @Path(MovieConstant.PATH_COLLECTION_ID) collection_id: Int,
@@ -86,7 +86,7 @@ interface MovieApiService {
     ): Observable<CollectionsDetail>
 
     // COLLECTION
-    // Get Images
+    // Get Collection Images
     @GET(MovieUrl.COLLECTION_GET_IMAGES)
     fun getCollectionImages(
         @Path(MovieConstant.PATH_COLLECTION_ID) collection_id: Int,
@@ -95,7 +95,7 @@ interface MovieApiService {
     ): Observable<CollectionsImage>
 
     // COLLECTION
-    // Get Translations
+    // Get Collection Translations
     @GET(MovieUrl.COLLECTION_GET_TRANSLATTIONS)
     fun getCollectionTranslations(
         @Path(MovieConstant.PATH_COLLECTION_ID) collection_id: Int,
@@ -106,7 +106,7 @@ interface MovieApiService {
     // ---------------------------------------------------------------------------------------------
 
     // COMPANIES
-    // Get Details
+    // Get Companies Details
     @GET(MovieUrl.COMPANY_GET_DETAIL)
     fun getCompaniesDetails(
         @Path(MovieConstant.PATH_COMPANY_ID) company_id: Int,
@@ -114,7 +114,7 @@ interface MovieApiService {
     ): Observable<CompaniesDetail>
 
     // COMPANIES
-    // Get Alternative Names
+    // Get Companies Alternative Names
     @GET(MovieUrl.COMPANY_GET_ALTERNATIVE_NAME)
     fun getCompaniesAlternativeName(
         @Path(MovieConstant.PATH_COMPANY_ID) company_id: Int,
@@ -122,7 +122,7 @@ interface MovieApiService {
     ): Observable<CompaniesAlternateName>
 
     // COMPANIES
-    // Get Images
+    // Get Companies Images
     @GET(MovieUrl.COMPANY_GET_IMAGE)
     fun getCompaniesImage(
         @Path(MovieConstant.PATH_COMPANY_ID) company_id: Int,

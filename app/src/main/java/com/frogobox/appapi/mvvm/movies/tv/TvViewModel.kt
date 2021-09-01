@@ -4,7 +4,7 @@ import android.app.Application
 import com.frogobox.appapi.mvvm.movies.core.MoviesViewModel
 import com.frogobox.api.movie.model.TrendingTv
 import com.frogobox.api.movie.response.Trending
-import com.frogobox.sdk.core.FrogoLiveEvent
+import com.frogobox.api.core.ConsumeApiLiveEvent
 import com.frogobox.api.core.ConsumeApiResponse
 
 /*
@@ -21,8 +21,8 @@ import com.frogobox.api.core.ConsumeApiResponse
  */
 class TvViewModel(private val context: Application) : MoviesViewModel(context) {
 
-    val listDataDay = FrogoLiveEvent<List<TrendingTv>>()
-    val listDataWeek = FrogoLiveEvent<List<TrendingTv>>()
+    val listDataDay = ConsumeApiLiveEvent<List<TrendingTv>>()
+    val listDataWeek = ConsumeApiLiveEvent<List<TrendingTv>>()
 
     fun getTrendingTvDay() {
         consumeMovieApi().getTrendingTvDay(object : ConsumeApiResponse<Trending<TrendingTv>> {

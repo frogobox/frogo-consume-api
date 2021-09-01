@@ -1,6 +1,7 @@
 package com.frogobox.api.meal.source
 
 import android.content.Context
+import android.util.Log
 import com.frogobox.api.meal.response.MealResponse
 import com.frogobox.api.meal.model.*
 import com.frogobox.api.meal.response.CategoryResponse
@@ -9,6 +10,7 @@ import com.frogobox.api.meal.util.MealUrl
 import com.frogobox.sdk.core.FrogoApiCallback
 import com.frogobox.sdk.core.FrogoApiClient
 import com.frogobox.api.core.ConsumeApiResponse
+import com.frogobox.api.news.sources.NewsRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -31,9 +33,11 @@ import io.reactivex.schedulers.Schedulers
  */
 object MealRepository : MealDataSource {
 
+    private val TAG = MealRepository::class.java.simpleName
     private var mealApiService = FrogoApiClient.create<MealApiService>(MealUrl.BASE_URL)
 
     override fun usingChuckInterceptor(context: Context) {
+        Log.d(TAG, "Using Chuck Interceptor")
         mealApiService = FrogoApiClient.create(MealUrl.BASE_URL, context)
     }
 
@@ -42,6 +46,7 @@ object MealRepository : MealDataSource {
         mealName: String,
         callback: ConsumeApiResponse<MealResponse<Meal>>
     ) {
+        Log.d(TAG,"")
         mealApiService
             .searchMeal(apiKey, mealName)
             .subscribeOn(Schedulers.io())
@@ -65,6 +70,7 @@ object MealRepository : MealDataSource {
         firstLetter: String,
         callback: ConsumeApiResponse<MealResponse<Meal>>
     ) {
+        Log.d(TAG,"")
         mealApiService
             .listAllMeal(apiKey, firstLetter)
             .subscribeOn(Schedulers.io())
@@ -89,6 +95,7 @@ object MealRepository : MealDataSource {
         idMeal: String,
         callback: ConsumeApiResponse<MealResponse<Meal>>
     ) {
+        Log.d(TAG,"")
         mealApiService
             .lookupFullMeal(apiKey, idMeal)
             .subscribeOn(Schedulers.io())
@@ -110,6 +117,7 @@ object MealRepository : MealDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<MealResponse<Meal>>
     ) {
+        Log.d(TAG,"")
         mealApiService
             .lookupRandomMeal(apiKey)
             .subscribeOn(Schedulers.io())
@@ -131,6 +139,7 @@ object MealRepository : MealDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<CategoryResponse>
     ) {
+        Log.d(TAG,"")
         mealApiService
             .listMealCategories(apiKey)
             .subscribeOn(Schedulers.io())
@@ -152,6 +161,7 @@ object MealRepository : MealDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<MealResponse<Category>>
     ) {
+        Log.d(TAG,"")
         mealApiService
             .listAllCateories(apiKey, MealConstant.VALUE_LIST)
             .subscribeOn(Schedulers.io())
@@ -173,6 +183,7 @@ object MealRepository : MealDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<MealResponse<Area>>
     ) {
+        Log.d(TAG,"")
         mealApiService
             .listAllArea(apiKey, MealConstant.VALUE_LIST)
             .subscribeOn(Schedulers.io())
@@ -196,6 +207,7 @@ object MealRepository : MealDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<MealResponse<Ingredient>>
     ) {
+        Log.d(TAG,"")
         mealApiService
             .listAllIngredients(apiKey, MealConstant.VALUE_LIST)
             .subscribeOn(Schedulers.io())
@@ -218,6 +230,7 @@ object MealRepository : MealDataSource {
         ingredient: String,
         callback: ConsumeApiResponse<MealResponse<MealFilter>>
     ) {
+        Log.d(TAG,"")
         mealApiService
             .filterByIngredient(apiKey, ingredient)
             .subscribeOn(Schedulers.io())
@@ -240,6 +253,7 @@ object MealRepository : MealDataSource {
         category: String,
         callback: ConsumeApiResponse<MealResponse<MealFilter>>
     ) {
+        Log.d(TAG,"")
         mealApiService
             .filterByCategory(apiKey, category)
             .subscribeOn(Schedulers.io())
@@ -262,6 +276,7 @@ object MealRepository : MealDataSource {
         area: String,
         callback: ConsumeApiResponse<MealResponse<MealFilter>>
     ) {
+        Log.d(TAG,"")
         mealApiService
             .filterByArea(apiKey, area)
             .subscribeOn(Schedulers.io())

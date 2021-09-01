@@ -1,12 +1,13 @@
 package com.frogobox.api.movie.source
 
 import android.content.Context
+import android.util.Log
+import com.frogobox.api.core.ConsumeApiResponse
 import com.frogobox.api.movie.model.*
 import com.frogobox.api.movie.response.*
 import com.frogobox.api.movie.util.MovieUrl
 import com.frogobox.sdk.core.FrogoApiCallback
 import com.frogobox.sdk.core.FrogoApiClient
-import com.frogobox.api.core.ConsumeApiResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -29,9 +30,11 @@ import io.reactivex.schedulers.Schedulers
  */
 object MovieRepository : MovieDataSource {
 
+    private val TAG = MovieRepository::class.java.simpleName
     private var movieApiService = FrogoApiClient.create<MovieApiService>(MovieUrl.BASE_URL)
 
     override fun usingChuckInterceptor(context: Context) {
+        Log.d(TAG, "Using Chuck Interceptor")
         movieApiService = FrogoApiClient.create(MovieUrl.BASE_URL, context)
     }
 
@@ -39,8 +42,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<Certifications<CertificationMovie>>
     ) {
-        movieApiService
-            .getMovieCertifications(apiKey)
+        Log.d(TAG, "Get Movie Certifications")
+        movieApiService.getMovieCertifications(apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -60,8 +63,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<Certifications<CertificationTv>>
     ) {
-        movieApiService
-            .getTvCertifications(apiKey)
+        Log.d(TAG, "Get TV Certifications")
+        movieApiService.getTvCertifications(apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -84,8 +87,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<Changes>
     ) {
-        movieApiService
-            .getMovieChangeList(apiKey, endDate, startDate, page)
+        Log.d(TAG, "Get Movie Change List")
+        movieApiService.getMovieChangeList(apiKey, endDate, startDate, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -108,8 +111,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<Changes>
     ) {
-        movieApiService
-            .getTvChangeList(apiKey, endDate, startDate, page)
+        Log.d(TAG, "Get TV Change List")
+        movieApiService.getTvChangeList(apiKey, endDate, startDate, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -132,8 +135,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<Changes>
     ) {
-        movieApiService
-            .getPersonChangeList(apiKey, endDate, startDate, page)
+        Log.d(TAG, "Get Person Change List")
+        movieApiService.getPersonChangeList(apiKey, endDate, startDate, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -155,8 +158,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<CollectionsDetail>
     ) {
-        movieApiService
-            .getCollectionDetails(collection_id, apiKey, language)
+        Log.d(TAG, "")
+        movieApiService.getCollectionDetails(collection_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -178,8 +181,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<CollectionsImage>
     ) {
-        movieApiService
-            .getCollectionImages(collection_id, apiKey, language)
+        Log.d(TAG, "")
+        movieApiService.getCollectionImages(collection_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -201,8 +204,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<CollectionsTranslation>
     ) {
-        movieApiService
-            .getCollectionTranslations(collection_id, apiKey, language)
+        Log.d(TAG, "")
+        movieApiService.getCollectionTranslations(collection_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -223,8 +226,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<CompaniesDetail>
     ) {
-        movieApiService
-            .getCompaniesDetails(company_id, apiKey)
+        Log.d(TAG, "")
+        movieApiService.getCompaniesDetails(company_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -245,8 +248,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<CompaniesAlternateName>
     ) {
-        movieApiService
-            .getCompaniesAlternativeName(company_id, apiKey)
+        Log.d(TAG, "")
+        movieApiService.getCompaniesAlternativeName(company_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -267,8 +270,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<CompaniesImage>
     ) {
-        movieApiService
-            .getCompaniesImage(company_id, apiKey)
+        Log.d(TAG, "")
+        movieApiService.getCompaniesImage(company_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -288,6 +291,7 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<ConfigurationApi>
     ) {
+        Log.d(TAG, "")
         movieApiService
             .getConfigurationApi(apiKey)
             .subscribeOn(Schedulers.io())
@@ -309,8 +313,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<List<ConfigurationCountry>>
     ) {
-        movieApiService
-            .getConfigurationCountries(apiKey)
+        Log.d(TAG, "")
+        movieApiService.getConfigurationCountries(apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -330,8 +334,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<List<ConfigurationJob>>
     ) {
-        movieApiService
-            .getConfigurationJobs(apiKey)
+        Log.d(TAG, "")
+        movieApiService.getConfigurationJobs(apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -351,8 +355,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<List<ConfigurationLanguage>>
     ) {
-        movieApiService
-            .getConfigurationLanguages(apiKey)
+        Log.d(TAG, "")
+        movieApiService.getConfigurationLanguages(apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -372,8 +376,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<List<String>>
     ) {
-        movieApiService
-            .getConfigurationTranslations(apiKey)
+        Log.d(TAG, "")
+        movieApiService.getConfigurationTranslations(apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -393,8 +397,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<List<ConfigurationTimezone>>
     ) {
-        movieApiService
-            .getConfigurationTimezones(apiKey)
+        Log.d(TAG, "")
+        movieApiService.getConfigurationTimezones(apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -415,8 +419,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<Credits>
     ) {
-        movieApiService
-            .getCreditsDetails(credit_id, apiKey)
+        Log.d(TAG, "")
+        movieApiService.getCreditsDetails(credit_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -468,42 +472,42 @@ object MovieRepository : MovieDataSource {
         with_original_language: String?,
         callback: ConsumeApiResponse<Discover<DiscoverMovie>>
     ) {
-        movieApiService
-            .getDiscoverMovie(
-                apiKey,
-                language,
-                region,
-                sort_by,
-                certification_country,
-                certification,
-                certification_lte,
-                certification_gte,
-                include_adult,
-                include_video,
-                page,
-                primary_release_year,
-                primary_release_date_gte,
-                primary_release_date_lte,
-                release_date_gte,
-                release_date_lte,
-                with_release_type,
-                year,
-                vote_count_gte,
-                vote_count_lte,
-                vote_average_gte,
-                vote_average_lte,
-                with_cast,
-                with_crew,
-                with_people,
-                with_companies,
-                with_genres,
-                without_genres,
-                with_keywords,
-                without_keywords,
-                with_runtime_gte,
-                with_runtime_lte,
-                with_original_language
-            )
+        Log.d(TAG, "")
+        movieApiService.getDiscoverMovie(
+            apiKey,
+            language,
+            region,
+            sort_by,
+            certification_country,
+            certification,
+            certification_lte,
+            certification_gte,
+            include_adult,
+            include_video,
+            page,
+            primary_release_year,
+            primary_release_date_gte,
+            primary_release_date_lte,
+            release_date_gte,
+            release_date_lte,
+            with_release_type,
+            year,
+            vote_count_gte,
+            vote_count_lte,
+            vote_average_gte,
+            vote_average_lte,
+            with_cast,
+            with_crew,
+            with_people,
+            with_companies,
+            with_genres,
+            without_genres,
+            with_keywords,
+            without_keywords,
+            with_runtime_gte,
+            with_runtime_lte,
+            with_original_language
+        )
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -545,32 +549,32 @@ object MovieRepository : MovieDataSource {
         with_keywords: String?,
         callback: ConsumeApiResponse<Discover<DiscoverTv>>
     ) {
-        movieApiService
-            .getDiscoverTv(
-                apiKey,
-                language,
-                sort_by,
-                air_date_gte,
-                air_date_lte,
-                first_air_date_gte,
-                first_air_date_lte,
-                first_air_date_year,
-                page,
-                timezone,
-                vote_average_gte,
-                vote_count_gte,
-                with_genres,
-                with_networks,
-                without_genres,
-                with_runtime_gte,
-                with_runtime_lte,
-                include_null_first_air_dates,
-                with_original_language,
-                without_keywords,
-                screened_theatrically,
-                with_companies,
-                with_keywords
-            )
+        Log.d(TAG, "")
+        movieApiService.getDiscoverTv(
+            apiKey,
+            language,
+            sort_by,
+            air_date_gte,
+            air_date_lte,
+            first_air_date_gte,
+            first_air_date_lte,
+            first_air_date_year,
+            page,
+            timezone,
+            vote_average_gte,
+            vote_count_gte,
+            with_genres,
+            with_networks,
+            without_genres,
+            with_runtime_gte,
+            with_runtime_lte,
+            include_null_first_air_dates,
+            with_original_language,
+            without_keywords,
+            screened_theatrically,
+            with_companies,
+            with_keywords
+        )
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -593,8 +597,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<Find>
     ) {
-        movieApiService
-            .getFindById(external_id, apiKey, external_source, language)
+        Log.d(TAG, "")
+        movieApiService.getFindById(external_id, apiKey, external_source, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -615,8 +619,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<Genres>
     ) {
-        movieApiService
-            .getGenresMovie(apiKey, language)
+        Log.d(TAG, "")
+        movieApiService.getGenresMovie(apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -637,8 +641,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<Genres>
     ) {
-        movieApiService
-            .getGenresTv(apiKey, language)
+        Log.d(TAG, "")
+        movieApiService.getGenresTv(apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -659,8 +663,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<KeywordsDetail>
     ) {
-        movieApiService
-            .getKeywordsDetail(keyword_id, apiKey)
+        Log.d(TAG, "")
+        movieApiService.getKeywordsDetail(keyword_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -683,8 +687,8 @@ object MovieRepository : MovieDataSource {
         include_adult: Boolean?,
         callback: ConsumeApiResponse<KeywordsMovies>
     ) {
-        movieApiService
-            .getKeywordsMovie(keyword_id, apiKey, language, include_adult)
+        Log.d(TAG, "")
+        movieApiService.getKeywordsMovie(keyword_id, apiKey, language, include_adult)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -707,8 +711,8 @@ object MovieRepository : MovieDataSource {
         append_to_response: String?,
         callback: ConsumeApiResponse<MovieDetail>
     ) {
-        movieApiService
-            .getMoviesDetails(movie_id, apiKey, language, append_to_response)
+        Log.d(TAG, "")
+        movieApiService.getMoviesDetails(movie_id, apiKey, language, append_to_response)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -731,8 +735,8 @@ object MovieRepository : MovieDataSource {
         guest_session_id: String?,
         callback: ConsumeApiResponse<MovieAccountState>
     ) {
-        movieApiService
-            .getMoviesAccountState(movie_id, apiKey, session_id, guest_session_id)
+        Log.d(TAG, "")
+        movieApiService.getMoviesAccountState(movie_id, apiKey, session_id, guest_session_id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -754,8 +758,8 @@ object MovieRepository : MovieDataSource {
         country: String?,
         callback: ConsumeApiResponse<MovieAlternativeTitle>
     ) {
-        movieApiService
-            .getMoviesAlternativeTitles(movie_id, apiKey, country)
+        Log.d(TAG, "")
+        movieApiService.getMoviesAlternativeTitles(movie_id, apiKey, country)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -779,8 +783,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<MovieChanges>
     ) {
-        movieApiService
-            .getMoviesChanges(movie_id, apiKey, start_date, end_date, page)
+        Log.d(TAG, "")
+        movieApiService.getMoviesChanges(movie_id, apiKey, start_date, end_date, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -801,8 +805,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<MovieCredit>
     ) {
-        movieApiService
-            .getMoviesCredits(movie_id, apiKey)
+        Log.d(TAG, "")
+        movieApiService.getMoviesCredits(movie_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -846,6 +850,7 @@ object MovieRepository : MovieDataSource {
         include_image_language: String?,
         callback: ConsumeApiResponse<MovieImages>
     ) {
+        Log.d(TAG, "")
         movieApiService.getMoviesImages(
             movie_id,
             apiKey,
@@ -872,6 +877,7 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<MovieKeywords>
     ) {
+        Log.d(TAG, "")
         movieApiService.getMoviesKeywords(movie_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -893,6 +899,7 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<MovieReleaseDates>
     ) {
+        Log.d(TAG, "")
         movieApiService.getMoviesReleaseDates(movie_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -915,6 +922,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<MovieVideos>
     ) {
+        Log.d(TAG, "")
         movieApiService.getMoviesVideos(movie_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -936,6 +944,7 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<MovieTranslations>
     ) {
+        Log.d(TAG, "")
         movieApiService.getMoviesTranslations(movie_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -959,6 +968,7 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<MovieRecommendations>
     ) {
+        Log.d(TAG, "")
         movieApiService.getMoviesRecommendations(movie_id, apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -982,6 +992,7 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<MovieSimilarMovies>
     ) {
+        Log.d(TAG, "")
         movieApiService.getMoviesSimilarMovies(movie_id, apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -1005,6 +1016,7 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<MovieReviews>
     ) {
+        Log.d(TAG, "")
         movieApiService.getMoviesReviews(movie_id, apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -1028,6 +1040,7 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<MovieLists>
     ) {
+        Log.d(TAG, "")
         movieApiService.getMoviesLists(movie_id, apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -1049,6 +1062,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<MovieLatest>
     ) {
+        Log.d(TAG, "")
         movieApiService.getMoviesLatest(apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -1072,6 +1086,7 @@ object MovieRepository : MovieDataSource {
         region: String?,
         callback: ConsumeApiResponse<MovieNowPlayings>
     ) {
+        Log.d(TAG, "")
         movieApiService.getMoviesNowPlaying(apiKey, language, page, region)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -1095,6 +1110,7 @@ object MovieRepository : MovieDataSource {
         region: String?,
         callback: ConsumeApiResponse<MoviePopulars>
     ) {
+        Log.d(TAG, "")
         movieApiService.getMoviesPopular(apiKey, language, page, region)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -1118,6 +1134,7 @@ object MovieRepository : MovieDataSource {
         region: String?,
         callback: ConsumeApiResponse<MovieTopRated>
     ) {
+        Log.d(TAG, "")
         movieApiService.getMoviesTopRated(apiKey, language, page, region)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -1141,6 +1158,7 @@ object MovieRepository : MovieDataSource {
         region: String?,
         callback: ConsumeApiResponse<MovieUpcoming>
     ) {
+        Log.d(TAG, "")
         movieApiService.getMoviesUpcoming(apiKey, language, page, region)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -1163,6 +1181,7 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<Trending<TrendingAll>>
     ) {
+        Log.d(TAG, "")
         movieApiService
             .getTrendingAll(media_type, time_window, apiKey)
             .subscribeOn(Schedulers.io())
@@ -1186,8 +1205,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<Trending<TrendingMovie>>
     ) {
-        movieApiService
-            .getTrendingMovie(media_type, time_window, apiKey)
+        Log.d(TAG, "")
+        movieApiService.getTrendingMovie(media_type, time_window, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1209,8 +1228,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<Trending<TrendingPerson>>
     ) {
-        movieApiService
-            .getTrendingPerson(media_type, time_window, apiKey)
+        Log.d(TAG, "")
+        movieApiService.getTrendingPerson(media_type, time_window, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1232,8 +1251,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<Trending<TrendingTv>>
     ) {
-        movieApiService
-            .getTrendingTv(media_type, time_window, apiKey)
+        Log.d(TAG, "")
+        movieApiService.getTrendingTv(media_type, time_window, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1254,8 +1273,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<Reviews>
     ) {
-        movieApiService
-            .getReviews(review_id, apiKey)
+        Log.d(TAG, "")
+        movieApiService.getReviews(review_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1276,8 +1295,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<NetworkDetail>
     ) {
-        movieApiService
-            .getNetworkDetail(network_id, apiKey)
+        Log.d(TAG, "")
+        movieApiService.getNetworkDetail(network_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1298,8 +1317,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<NetworkAlternativeName>
     ) {
-        movieApiService
-            .getNetworkAlternativeName(network_id, apiKey)
+        Log.d(TAG, "")
+        movieApiService.getNetworkAlternativeName(network_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1320,8 +1339,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<NetworkImage>
     ) {
-        movieApiService
-            .getNetworkImage(network_id, apiKey)
+        Log.d(TAG, "")
+        movieApiService.getNetworkImage(network_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1343,8 +1362,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<SearchCompanies>
     ) {
-        movieApiService
-            .searchCompanies(apiKey, query, page)
+        Log.d(TAG, "")
+        movieApiService.searchCompanies(apiKey, query, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1367,8 +1386,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<SearchCollections>
     ) {
-        movieApiService
-            .searchCollections(apiKey, query, language, page)
+        Log.d(TAG, "")
+        movieApiService.searchCollections(apiKey, query, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1390,8 +1409,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<SearchKeywords>
     ) {
-        movieApiService
-            .searchKeywords(apiKey, query, page)
+        Log.d(TAG, "")
+        movieApiService.searchKeywords(apiKey, query, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1418,17 +1437,17 @@ object MovieRepository : MovieDataSource {
         primary_release_year: Int?,
         callback: ConsumeApiResponse<SearchMovies>
     ) {
-        movieApiService
-            .searchMovies(
-                apiKey,
-                query,
-                language,
-                page,
-                include_adult,
-                region,
-                year,
-                primary_release_year
-            )
+        Log.d(TAG, "")
+        movieApiService.searchMovies(
+            apiKey,
+            query,
+            language,
+            page,
+            include_adult,
+            region,
+            year,
+            primary_release_year
+        )
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1453,8 +1472,8 @@ object MovieRepository : MovieDataSource {
         region: String?,
         callback: ConsumeApiResponse<SearchMulti>
     ) {
-        movieApiService
-            .searchMultiSearch(apiKey, query, language, page, include_adult, region)
+        Log.d(TAG, "")
+        movieApiService.searchMultiSearch(apiKey, query, language, page, include_adult, region)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1479,8 +1498,8 @@ object MovieRepository : MovieDataSource {
         region: String?,
         callback: ConsumeApiResponse<SearchPeople>
     ) {
-        movieApiService
-            .searchPeople(apiKey, query, language, page, include_adult, region)
+        Log.d(TAG, "")
+        movieApiService.searchPeople(apiKey, query, language, page, include_adult, region)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1505,8 +1524,15 @@ object MovieRepository : MovieDataSource {
         first_air_date_year: Int?,
         callback: ConsumeApiResponse<SearchMovies>
     ) {
-        movieApiService
-            .searchTvShows(apiKey, query, language, page, include_adult, first_air_date_year)
+        Log.d(TAG, "")
+        movieApiService.searchTvShows(
+            apiKey,
+            query,
+            language,
+            page,
+            include_adult,
+            first_air_date_year
+        )
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1529,8 +1555,8 @@ object MovieRepository : MovieDataSource {
         append_to_response: String?,
         callback: ConsumeApiResponse<TvDetails>
     ) {
-        movieApiService
-            .getTvDetails(tv_id, apiKey, language, append_to_response)
+        Log.d(TAG, "")
+        movieApiService.getTvDetails(tv_id, apiKey, language, append_to_response)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1554,8 +1580,8 @@ object MovieRepository : MovieDataSource {
         session_id: String?,
         callback: ConsumeApiResponse<TvAccountStates>
     ) {
-        movieApiService
-            .getTvAccountStates(tv_id, apiKey, language, guest_session_id, session_id)
+        Log.d(TAG, "")
+        movieApiService.getTvAccountStates(tv_id, apiKey, language, guest_session_id, session_id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1577,8 +1603,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvAlternativeTitles>
     ) {
-        movieApiService
-            .getTvAlternativeTitles(tv_id, apiKey, language)
+        Log.d(TAG, "")
+        movieApiService.getTvAlternativeTitles(tv_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1602,8 +1628,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<TvChanges>
     ) {
-        movieApiService
-            .getTvChanges(tv_id, apiKey, startDate, endDate, page)
+        Log.d(TAG, "")
+        movieApiService.getTvChanges(tv_id, apiKey, startDate, endDate, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1625,8 +1651,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvContentRatings>
     ) {
-        movieApiService
-            .getTvContentRatings(tv_id, apiKey, language)
+        Log.d(TAG, "")
+        movieApiService.getTvContentRatings(tv_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1648,8 +1674,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvCredits>
     ) {
-        movieApiService
-            .getTvCredits(tv_id, apiKey, language)
+        Log.d(TAG, "")
+        movieApiService.getTvCredits(tv_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1671,8 +1697,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvEpisodeGroups>
     ) {
-        movieApiService
-            .getTvEpisodeGroups(tv_id, apiKey, language)
+        Log.d(TAG, "")
+        movieApiService.getTvEpisodeGroups(tv_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1694,8 +1720,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvExternalIds>
     ) {
-        movieApiService
-            .getTvExternalIds(tv_id, apiKey, language)
+        Log.d(TAG, "")
+        movieApiService.getTvExternalIds(tv_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1717,8 +1743,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvImages>
     ) {
-        movieApiService
-            .getTvImages(tv_id, apiKey, language)
+        Log.d(TAG, "")
+        movieApiService.getTvImages(tv_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1739,8 +1765,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<TvKeywords>
     ) {
-        movieApiService
-            .getTvKeyword(tv_id, apiKey)
+        Log.d(TAG, "")
+        movieApiService.getTvKeyword(tv_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1763,8 +1789,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<TvRecommendations>
     ) {
-        movieApiService
-            .getTvRecommendations(tv_id, apiKey, language, page)
+        Log.d(TAG, "")
+        movieApiService.getTvRecommendations(tv_id, apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1785,8 +1811,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<TvReviews>
     ) {
-        movieApiService
-            .getTvReviews(tv_id, apiKey)
+        Log.d(TAG, "")
+        movieApiService.getTvReviews(tv_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1807,8 +1833,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<TvScreenedTheatrically>
     ) {
-        movieApiService
-            .getTvScreenedTheatrically(tv_id, apiKey)
+        Log.d(TAG, "")
+        movieApiService.getTvScreenedTheatrically(tv_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1831,8 +1857,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<TvSimilarTVShows>
     ) {
-        movieApiService
-            .getTvSimilarTvShows(tv_id, apiKey, language, page)
+        Log.d(TAG, "")
+        movieApiService.getTvSimilarTvShows(tv_id, apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1853,8 +1879,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<TvTranslations>
     ) {
-        movieApiService
-            .getTvTranslations(tv_id, apiKey)
+        Log.d(TAG, "")
+        movieApiService.getTvTranslations(tv_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1876,8 +1902,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvVideos>
     ) {
-        movieApiService
-            .getTvVideos(tv_id, apiKey, language)
+        Log.d(TAG, "")
+        movieApiService.getTvVideos(tv_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1898,8 +1924,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvLatest>
     ) {
-        movieApiService
-            .getTvLatest(apiKey, language)
+        Log.d(TAG, "")
+        movieApiService.getTvLatest(apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1921,8 +1947,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<TvAiringToday>
     ) {
-        movieApiService
-            .getTvAiringToday(apiKey, language, page)
+        Log.d(TAG, "")
+        movieApiService.getTvAiringToday(apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1944,8 +1970,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<TvOnTheAir>
     ) {
-        movieApiService
-            .getTvOnTheAir(apiKey, language, page)
+        Log.d(TAG, "")
+        movieApiService.getTvOnTheAir(apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1967,8 +1993,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<TvPopular>
     ) {
-        movieApiService
-            .getTvPopular(apiKey, language, page)
+        Log.d(TAG, "")
+        movieApiService.getTvPopular(apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -1990,8 +2016,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<TvTopRated>
     ) {
-        movieApiService
-            .getTvTopRated(apiKey, language, page)
+        Log.d(TAG, "")
+        movieApiService.getTvTopRated(apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -2015,8 +2041,14 @@ object MovieRepository : MovieDataSource {
         append_to_response: String?,
         callback: ConsumeApiResponse<TvSeasonsDetails>
     ) {
-        movieApiService
-            .getTvSeasonsDetails(tv_id, season_number, apiKey, language, append_to_response)
+        Log.d(TAG, "")
+        movieApiService.getTvSeasonsDetails(
+            tv_id,
+            season_number,
+            apiKey,
+            language,
+            append_to_response
+        )
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -2040,6 +2072,7 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<TvSeasonsChanges>
     ) {
+        Log.d(TAG, "")
         movieApiService
             .getTvSeasonsChanges(season_id, apiKey, startDate, endDate, page)
             .subscribeOn(Schedulers.io())
@@ -2066,6 +2099,7 @@ object MovieRepository : MovieDataSource {
         session_id: String?,
         callback: ConsumeApiResponse<TvSeasonsAccountStates>
     ) {
+        Log.d(TAG, "")
         movieApiService
             .getTvSeasonsAccountStates(
                 tv_id,
@@ -2097,6 +2131,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvSeasonsCredits>
     ) {
+        Log.d(TAG, "")
         movieApiService
             .getTvSeasonsCredits(tv_id, season_number, apiKey, language)
             .subscribeOn(Schedulers.io())
@@ -2121,6 +2156,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvSeasonsExternalIds>
     ) {
+        Log.d(TAG, "")
         movieApiService
             .getTvSeasonsExternalIds(tv_id, season_number, apiKey, language)
             .subscribeOn(Schedulers.io())
@@ -2145,6 +2181,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvSeasonsImages>
     ) {
+        Log.d(TAG, "")
         movieApiService
             .getTvSeasonsImages(tv_id, season_number, apiKey, language)
             .subscribeOn(Schedulers.io())
@@ -2169,6 +2206,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvSeasonsVideos>
     ) {
+        Log.d(TAG, "")
         movieApiService
             .getTvSeasonsVideos(tv_id, season_number, apiKey, language)
             .subscribeOn(Schedulers.io())
@@ -2195,6 +2233,7 @@ object MovieRepository : MovieDataSource {
         append_to_response: String?,
         callback: ConsumeApiResponse<TvEpisodeDetails>
     ) {
+        Log.d(TAG, "")
         movieApiService
             .getTvEpisodeDetails(
                 tv_id,
@@ -2227,6 +2266,7 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<TvEpisodeChanges>
     ) {
+        Log.d(TAG, "")
         movieApiService
             .getTvEpisodeChanges(episode_id, apiKey, startDate, endDate, page)
             .subscribeOn(Schedulers.io())
@@ -2253,6 +2293,7 @@ object MovieRepository : MovieDataSource {
         session_id: String?,
         callback: ConsumeApiResponse<TvEpisodeAccountStates>
     ) {
+        Log.d(TAG, "")
         movieApiService
             .getTvEpisodeAccountStates(
                 tv_id,
@@ -2284,6 +2325,7 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<TvEpisodeCredits>
     ) {
+        Log.d(TAG, "")
         movieApiService
             .getTvEpisodeCredits(tv_id, season_number, episode_number, apiKey)
             .subscribeOn(Schedulers.io())
@@ -2308,6 +2350,7 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<TvEpisodeExternalIds>
     ) {
+        Log.d(TAG, "")
         movieApiService
             .getTvEpisodeExternalIds(tv_id, season_number, episode_number, apiKey)
             .subscribeOn(Schedulers.io())
@@ -2332,6 +2375,7 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<TvEpisodeImages>
     ) {
+        Log.d(TAG, "")
         movieApiService
             .getTvEpisodeImages(tv_id, season_number, episode_number, apiKey)
             .subscribeOn(Schedulers.io())
@@ -2356,6 +2400,7 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<TvEpisodeTranslation>
     ) {
+        Log.d(TAG, "")
         movieApiService
             .getTvEpisodeTranslations(tv_id, season_number, episode_number, apiKey)
             .subscribeOn(Schedulers.io())
@@ -2381,6 +2426,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvEpisodeVideos>
     ) {
+        Log.d(TAG, "")
         movieApiService
             .getTvEpisodeVideos(tv_id, season_number, episode_number, apiKey, language)
             .subscribeOn(Schedulers.io())
@@ -2404,6 +2450,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvEpisodeGroupsDetails>
     ) {
+        Log.d(TAG, "")
         movieApiService
             .getTvEpisodeGroupsDetails(id, apiKey, language)
             .subscribeOn(Schedulers.io())
@@ -2427,6 +2474,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<PeopleDetails>
     ) {
+        Log.d(TAG, "")
         movieApiService
             .getPeopleDetails(person_id, apiKey, language)
             .subscribeOn(Schedulers.io())
@@ -2452,6 +2500,7 @@ object MovieRepository : MovieDataSource {
         startDate: String?,
         callback: ConsumeApiResponse<PeopleChanges>
     ) {
+        Log.d(TAG, "")
         movieApiService
             .getPeopleChanges(person_id, apiKey, endDate, page, startDate)
             .subscribeOn(Schedulers.io())
@@ -2475,6 +2524,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<PeopleMovieCredits>
     ) {
+        Log.d(TAG, "")
         movieApiService
             .getPeopleMovieCredits(person_id, apiKey, language)
             .subscribeOn(Schedulers.io())
@@ -2498,6 +2548,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<PeopleTvCredits>
     ) {
+        Log.d(TAG, "")
         movieApiService
             .getPeopleTvCredits(person_id, apiKey, language)
             .subscribeOn(Schedulers.io())
@@ -2521,6 +2572,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<PeopleCombinedCredits>
     ) {
+        Log.d(TAG, "")
         movieApiService
             .getPeopleCombinedCredits(person_id, apiKey, language)
             .subscribeOn(Schedulers.io())
@@ -2544,8 +2596,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<PeopleExternalIds>
     ) {
-        movieApiService
-            .getPeopleExternalIds(person_id, apiKey, language)
+        Log.d(TAG, "")
+        movieApiService.getPeopleExternalIds(person_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -2566,8 +2618,8 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<PeopleImages>
     ) {
-        movieApiService
-            .getPeopleImages(person_id, apiKey)
+        Log.d(TAG, "")
+        movieApiService.getPeopleImages(person_id, apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -2590,8 +2642,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<PeopleTaggedImages>
     ) {
-        movieApiService
-            .getPeopleTaggedImages(person_id, apiKey, language, page)
+        Log.d(TAG, "")
+        movieApiService.getPeopleTaggedImages(person_id, apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -2613,8 +2665,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<PeopleTranslations>
     ) {
-        movieApiService
-            .getPeopleTranslations(person_id, apiKey, language)
+        Log.d(TAG, "")
+        movieApiService.getPeopleTranslations(person_id, apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -2635,8 +2687,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<PeopleLatest>
     ) {
-        movieApiService
-            .getPeopleLatest(apiKey, language)
+        Log.d(TAG, "")
+        movieApiService.getPeopleLatest(apiKey, language)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -2658,8 +2710,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<PeoplePopular>
     ) {
-        movieApiService
-            .getPeoplePopular(apiKey, language, page)
+        Log.d(TAG, "")
+        movieApiService.getPeoplePopular(apiKey, language, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }

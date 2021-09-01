@@ -5,7 +5,7 @@ import com.frogobox.api.news.ConsumeNewsApi
 import com.frogobox.api.news.model.Article
 import com.frogobox.api.news.response.ArticleResponse
 import com.frogobox.api.news.util.NewsUrl
-import com.frogobox.sdk.core.FrogoLiveEvent
+import com.frogobox.api.core.ConsumeApiLiveEvent
 import com.frogobox.api.core.ConsumeApiResponse
 import com.frogobox.api.news.util.NewsConstant.CATEGORY_BUSINESS
 import com.frogobox.api.news.util.NewsConstant.CATEGORY_ENTERTAIMENT
@@ -31,9 +31,9 @@ import com.frogobox.sdk.core.FrogoViewModel
  */
 class NewsViewModel(private val context: Application) : FrogoViewModel(context) {
 
-    val listDataCategory = FrogoLiveEvent<List<Article>>()
-    val listData = FrogoLiveEvent<List<Article>>()
-    val listCategory = FrogoLiveEvent<List<String>>()
+    val listDataCategory = ConsumeApiLiveEvent<List<Article>>()
+    val listData = ConsumeApiLiveEvent<List<Article>>()
+    val listCategory = ConsumeApiLiveEvent<List<String>>()
     private val consumeNewsApi = ConsumeNewsApi(NewsUrl.API_KEY)
 
     fun setupCategory() {

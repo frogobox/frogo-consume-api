@@ -1,11 +1,12 @@
 package com.frogobox.api.sport.source
 
 import android.content.Context
+import android.util.Log
+import com.frogobox.api.core.ConsumeApiResponse
 import com.frogobox.api.sport.response.*
 import com.frogobox.api.sport.util.SportUrl
 import com.frogobox.sdk.core.FrogoApiCallback
 import com.frogobox.sdk.core.FrogoApiClient
-import com.frogobox.api.core.ConsumeApiResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -27,12 +28,13 @@ import io.reactivex.schedulers.Schedulers
  * com.frogobox.frogoconsumeapi.sport.source
  *
  */
-object SportRepository :
-    SportDataSource {
+object SportRepository : SportDataSource {
 
+    private val TAG = SportRepository::class.java.simpleName
     private var sportApiService = FrogoApiClient.create<SportApiService>(SportUrl.BASE_URL)
 
     override fun usingChuckInterceptor(context: Context) {
+        Log.d(TAG, "Using Chuck Interceptor")
         sportApiService = FrogoApiClient.create(SportUrl.BASE_URL, context)
     }
 
@@ -41,8 +43,8 @@ object SportRepository :
         teamName: String?,
         callback: ConsumeApiResponse<Teams>
     ) {
-        sportApiService
-            .searchForTeamByName(apiKey, teamName)
+        Log.d(TAG, "Search for team by name")
+        sportApiService.searchForTeamByName(apiKey, teamName)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -63,8 +65,8 @@ object SportRepository :
         shortCode: String?,
         callback: ConsumeApiResponse<Teams>
     ) {
-        sportApiService
-            .searchForTeamByShortCode(apiKey, shortCode)
+        Log.d(TAG, "Search for team short code")
+        sportApiService.searchForTeamByShortCode(apiKey, shortCode)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -85,8 +87,8 @@ object SportRepository :
         teamName: String?,
         callback: ConsumeApiResponse<Players>
     ) {
-        sportApiService
-            .searchForAllPlayer(apiKey, teamName)
+        Log.d(TAG, "Search for all players from team *Patreon ONLY*")
+        sportApiService.searchForAllPlayer(apiKey, teamName)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -107,8 +109,8 @@ object SportRepository :
         playerName: String?,
         callback: ConsumeApiResponse<Players>
     ) {
-        sportApiService
-            .searchForPlayer(apiKey, playerName)
+        Log.d(TAG, "Search for players by player name")
+        sportApiService.searchForPlayer(apiKey, playerName)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -130,8 +132,8 @@ object SportRepository :
         teamName: String?,
         callback: ConsumeApiResponse<Players>
     ) {
-        sportApiService
-            .searchForPlayer(apiKey, playerName, teamName)
+        Log.d(TAG, "Search for players by player name and team name")
+        sportApiService.searchForPlayer(apiKey, playerName, teamName)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -152,8 +154,8 @@ object SportRepository :
         eventName: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApiService
-            .searchForEvent(apiKey, eventName)
+        Log.d(TAG, "Search for event by event name")
+        sportApiService.searchForEvent(apiKey, eventName)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -175,8 +177,8 @@ object SportRepository :
         season: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApiService
-            .searchForEvent(apiKey, eventName, season)
+        Log.d(TAG, "Search For event by event name and season")
+        sportApiService.searchForEvent(apiKey, eventName, season)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -197,8 +199,8 @@ object SportRepository :
         eventFileName: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApiService
-            .searchForEventFileName(apiKey, eventFileName)
+        Log.d(TAG, "Search for event by event file name")
+        sportApiService.searchForEventFileName(apiKey, eventFileName)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -215,6 +217,7 @@ object SportRepository :
     }
 
     override fun getAllSports(apiKey: String, callback: ConsumeApiResponse<Sports>) {
+        Log.d(TAG, "List all sports")
         sportApiService.getAllSports(apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -231,10 +234,8 @@ object SportRepository :
             })
     }
 
-    override fun getAllLeagues(
-        apiKey: String,
-        callback: ConsumeApiResponse<Leagues>
-    ) {
+    override fun getAllLeagues(apiKey: String, callback: ConsumeApiResponse<Leagues>) {
+        Log.d(TAG, "List all leagues")
         sportApiService.getAllLeagues(apiKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -256,6 +257,7 @@ object SportRepository :
         countryName: String?,
         callback: ConsumeApiResponse<Countrys>
     ) {
+        Log.d(TAG, "List all Leagues in a country")
         sportApiService.searchAllLeagues(apiKey, countryName)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -278,6 +280,7 @@ object SportRepository :
         sportName: String?,
         callback: ConsumeApiResponse<Countrys>
     ) {
+        Log.d(TAG, "List all Leagues in a country specific by sport")
         sportApiService.searchAllLeagues(apiKey, countryName, sportName)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -299,6 +302,7 @@ object SportRepository :
         idTeam: String?,
         callback: ConsumeApiResponse<Seasons>
     ) {
+        Log.d(TAG, "List all Seasons in a League")
         sportApiService.searchAllSeasons(apiKey, idTeam)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -320,6 +324,7 @@ object SportRepository :
         league: String?,
         callback: ConsumeApiResponse<Teams>
     ) {
+        Log.d(TAG, "List all Teams in a League")
         sportApiService
             .searchAllTeam(apiKey, league)
             .subscribeOn(Schedulers.io())
@@ -343,6 +348,7 @@ object SportRepository :
         countryName: String?,
         callback: ConsumeApiResponse<Teams>
     ) {
+        Log.d(TAG, "List all Teams in Sport and Country")
         sportApiService
             .searchAllTeam(apiKey, sportName, countryName)
             .subscribeOn(Schedulers.io())
@@ -365,6 +371,7 @@ object SportRepository :
         idLeague: String?,
         callback: ConsumeApiResponse<Teams>
     ) {
+        Log.d(TAG, "List All teams details in a league by Id")
         sportApiService
             .lookupAllTeam(apiKey, idLeague)
             .subscribeOn(Schedulers.io())
@@ -387,6 +394,7 @@ object SportRepository :
         idTeam: String?,
         callback: ConsumeApiResponse<Players>
     ) {
+        Log.d(TAG, "List All players in a team by Team Id *Patreon ONLY*")
         sportApiService
             .lookupAllPlayer(apiKey, idTeam)
             .subscribeOn(Schedulers.io())
@@ -409,8 +417,8 @@ object SportRepository :
         userName: String?,
         callback: ConsumeApiResponse<Users>
     ) {
-        sportApiService
-            .searchLoves(apiKey, userName)
+        Log.d(TAG, "List all users loved teams and players")
+        sportApiService.searchLoves(apiKey, userName)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -431,8 +439,8 @@ object SportRepository :
         idLeague: String?,
         callback: ConsumeApiResponse<Leagues>
     ) {
-        sportApiService
-            .lookupLeagues(apiKey, idLeague)
+        Log.d(TAG, "League Details by Id")
+        sportApiService.lookupLeagues(apiKey, idLeague)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -453,8 +461,8 @@ object SportRepository :
         idTeam: String?,
         callback: ConsumeApiResponse<Teams>
     ) {
-        sportApiService
-            .lookupTeam(apiKey, idTeam)
+        Log.d(TAG, "Team Details by Id")
+        sportApiService.lookupTeam(apiKey, idTeam)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -475,8 +483,8 @@ object SportRepository :
         idPlayer: String?,
         callback: ConsumeApiResponse<Players>
     ) {
-        sportApiService
-            .lookupPlayer(apiKey, idPlayer)
+        Log.d(TAG, "Player Details by Id")
+        sportApiService.lookupPlayer(apiKey, idPlayer)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -497,8 +505,8 @@ object SportRepository :
         idEvent: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApiService
-            .lookupEvent(apiKey, idEvent)
+        Log.d(TAG, "Event Details by Id")
+        sportApiService.lookupEvent(apiKey, idEvent)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -519,8 +527,8 @@ object SportRepository :
         idPlayer: String?,
         callback: ConsumeApiResponse<Honors>
     ) {
-        sportApiService
-            .lookupHonour(apiKey, idPlayer)
+        Log.d(TAG, "Player Honours by Player Id")
+        sportApiService.lookupHonour(apiKey, idPlayer)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -541,8 +549,8 @@ object SportRepository :
         idPlayer: String?,
         callback: ConsumeApiResponse<FormerTeams>
     ) {
-        sportApiService
-            .lookupFormerTeam(apiKey, idPlayer)
+        Log.d(TAG, "Player Former Teams by Player Id")
+        sportApiService.lookupFormerTeam(apiKey, idPlayer)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -563,8 +571,8 @@ object SportRepository :
         idPlayer: String?,
         callback: ConsumeApiResponse<Contracts>
     ) {
-        sportApiService
-            .lookupContract(apiKey, idPlayer)
+        Log.d(TAG, "Player Contracts by Player Id")
+        sportApiService.lookupContract(apiKey, idPlayer)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -586,8 +594,8 @@ object SportRepository :
         season: String?,
         callback: ConsumeApiResponse<Tables>
     ) {
-        sportApiService
-            .lookupTable(apiKey, idLeague, season)
+        Log.d(TAG, "Lookup Table by League ID and Season")
+        sportApiService.lookupTable(apiKey, idLeague, season)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -608,8 +616,8 @@ object SportRepository :
         idTeam: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApiService
-            .eventsNext(apiKey, idTeam)
+        Log.d(TAG, "Next 5 Events by Team Id")
+        sportApiService.eventsNext(apiKey, idTeam)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -630,8 +638,8 @@ object SportRepository :
         idLeague: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApiService
-            .eventsNextLeague(apiKey, idLeague)
+        Log.d(TAG, "Next 15 Events by League Id")
+        sportApiService.eventsNextLeague(apiKey, idLeague)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -652,8 +660,8 @@ object SportRepository :
         idTeam: String?,
         callback: ConsumeApiResponse<Results>
     ) {
-        sportApiService
-            .eventsLast(apiKey, idTeam)
+        Log.d(TAG, "Last 5 Events by Team Id")
+        sportApiService.eventsLast(apiKey, idTeam)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -674,8 +682,8 @@ object SportRepository :
         idLeague: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApiService
-            .eventsPastLeague(apiKey, idLeague)
+        Log.d(TAG, "Last 15 Events by League Id")
+        sportApiService.eventsPastLeague(apiKey, idLeague)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -698,8 +706,8 @@ object SportRepository :
         season: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApiService
-            .eventsRound(apiKey, idLeague, round, season)
+        Log.d(TAG, "Events in a specific round by league id/round/season")
+        sportApiService.eventsRound(apiKey, idLeague, round, season)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -721,8 +729,8 @@ object SportRepository :
         season: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApiService
-            .eventsSeason(apiKey, idLeague, season)
+        Log.d(TAG, "All events in specific league by season (Free tier limited to 200 events)")
+        sportApiService.eventsSeason(apiKey, idLeague, season)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }

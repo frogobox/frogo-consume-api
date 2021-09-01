@@ -1,13 +1,14 @@
 package com.frogobox.api.pixabay.source
 
 import android.content.Context
+import android.util.Log
+import com.frogobox.api.core.ConsumeApiResponse
 import com.frogobox.api.pixabay.model.PixabayImage
 import com.frogobox.api.pixabay.model.PixabayVideo
 import com.frogobox.api.pixabay.response.Response
 import com.frogobox.api.pixabay.util.PixabayUrl
 import com.frogobox.sdk.core.FrogoApiCallback
 import com.frogobox.sdk.core.FrogoApiClient
-import com.frogobox.api.core.ConsumeApiResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -30,9 +31,11 @@ import io.reactivex.schedulers.Schedulers
  */
 object PixabayRepository : PixabayDataSource {
 
+    private val TAG = PixabayRepository::class.java.simpleName
     private var pixabayApiService = FrogoApiClient.create<PixabayApiService>(PixabayUrl.BASE_URL)
 
     override fun usingChuckInterceptor(context: Context) {
+        Log.d(TAG, "Using Chuck Interceptor")
         pixabayApiService = FrogoApiClient.create(PixabayUrl.BASE_URL, context)
     }
 
@@ -54,23 +57,24 @@ object PixabayRepository : PixabayDataSource {
         perPage: Int?,
         callback: ConsumeApiResponse<Response<PixabayImage>>
     ) {
+        Log.d(TAG, "Search for Image")
         pixabayApiService.searchImage(
-                apiKey,
-                q,
-                lang,
-                id,
-                imageType,
-                orientation,
-                category,
-                minWidth,
-                minHeight,
-                colors,
-                editorsChoice,
-                safeSearch,
-                order,
-                page,
-                perPage
-            )
+            apiKey,
+            q,
+            lang,
+            id,
+            imageType,
+            orientation,
+            category,
+            minWidth,
+            minHeight,
+            colors,
+            editorsChoice,
+            safeSearch,
+            order,
+            page,
+            perPage
+        )
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -102,21 +106,22 @@ object PixabayRepository : PixabayDataSource {
         perPage: Int?,
         callback: ConsumeApiResponse<Response<PixabayVideo>>
     ) {
+        Log.d(TAG, "Search for Video")
         pixabayApiService.searchVideo(
-                apiKey,
-                q,
-                lang,
-                id,
-                videoType,
-                category,
-                minWidth,
-                minHeight,
-                editorsChoice,
-                safeSearch,
-                order,
-                page,
-                perPage
-            )
+            apiKey,
+            q,
+            lang,
+            id,
+            videoType,
+            category,
+            minWidth,
+            minHeight,
+            editorsChoice,
+            safeSearch,
+            order,
+            page,
+            perPage
+        )
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
