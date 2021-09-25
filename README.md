@@ -17,7 +17,7 @@ SDK for anything your problem to make easier developing android apps
 ## Version Release
 This Is Latest Release
 
-    $version_release = 1.0.6
+    $version_release = 1.0.7
 
 What's New??
 
@@ -29,31 +29,58 @@ What's New??
     * Delete Unused Import and Resources *
     * Delete Admob Implementation *
     * Add Log From Consume API *
+    * Migrate From Groovy to Kotlin DSL*
 
 ## Download this project
 
 ### Step 1. Add the JitPack repository to your build file (build.gradle : Project)
     
-    Add it in your root build.gradle at the end of repositories:
-    
-    	allprojects {
-    		repositories {
-    			...
-    			maven { url 'https://jitpack.io' }
-    		}
-    	}
-      
-### Step 2. Add the dependency (build.gradle : Module)
-    
-    dependencies {
-            // library frogo-consume-api
-            implementation 'com.github.frogobox:frogo-consume-api:1.0.6'
+#### <Option 1> Groovy Gradle
+
+    // Add it in your root build.gradle at the end of repositories:
+
+    allprojects {
+        repositories {
+            ...
+            maven { url 'https://jitpack.io' }
+        }
     }
+
+#### <Option 2> Kotlin DSL Gradle
+
+```kotlin
+// Add it in your root build.gradle.kts at the end of repositories:
+
+allprojects {
+    repositories {
+        ...
+        maven { url = uri("https://jitpack.io") }
+    }
+}
+```
+
+### Step 2. Add the dependency (build.gradle : Module)
+
+#### <Option 1> Groovy Gradle
+
+    dependencies {
+        // library frogo-consume-api
+        implementation 'com.github.frogobox:frogo-consume-api:1.0.7'
+    }
+
+#### <Option 2> Kotlin DSL Gradle
+
+    dependencies {
+        // library frogo-consume-api
+        implementation("com.github.frogobox:frogo-consume-api:1.0.7")
+    }
+
 
 ### Step 3. Click Detail Below
 
-
-<details><summary>News Api</summary>
+#### News Api
+<details>
+<summary>Click for detail !!!</summary>
 
 ### About
 Eliminates the method of retrieving json data using retrofit repeatedly. so this project has a set of functions to retrieve data without the need for fetching data using the retrofit of the API
@@ -151,7 +178,9 @@ https://newsapi.org/
     )
 </details>
 
-<details><summary>Meal Api</summary>
+#### Meals API
+<details>
+<summary>Click for detail !!!</summary>
 
 ### About    
 Eliminates the method of retrieving json data using retrofit repeatedly. so this project has a set of functions to retrieve data without the need for fetching data using the retrofit of the API <br>
@@ -231,7 +260,9 @@ https://www.themealdb.com/api.php
     
 </details>
 
-<details><summary>Pixabay Api</summary>
+#### Pixabay API
+<details>
+<summary>Click for detail !!!</summary>
 
 ### About
 Eliminates the method of retrieving json data using retrofit repeatedly. so this project has a set of functions to retrieve data without the need for fetching data using the retrofit of the API
@@ -326,7 +357,9 @@ https://pixabay.com/api/docs/
     
 </details>
 
-<details><summary>Sport Api</summary>
+#### Sport API
+<details>
+<summary>Click for detail !!!</summary>
 
 ### About
 Eliminates the method of retrieving json data using retrofit repeatedly. so this project has a set of functions to retrieve data without the need for fetching data using the retrofit of the API
@@ -475,7 +508,9 @@ https://www.thesportsdb.com/api.php
     
 </details>
 
-<details><summary>Movie Api</summary>
+#### Movie API
+<details>
+<summary>Click for detail !!!</summary>
     
 ### About
 Eliminates the method of retrieving json data using retrofit repeatedly. so this project has a set of functions to retrieve data without the need for fetching data using the retrofit of the API
