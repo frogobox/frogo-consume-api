@@ -17,19 +17,12 @@ SDK for anything your problem to make easier developing android apps
 ## Version Release
 This Is Latest Release
 
-    $version_release = 1.0.7
+    $version_release = 1.0.8
 
 What's New??
 
     * Update Code *
-    * Enhance Performance *
-    * Please Re Import Class and Function *
-    * Update Android Gradle Plugin 7.0.0 *
-    * update: upgrade from FrogoResponseCallback to ConsumeApiResponse *
-    * Delete Unused Import and Resources *
-    * Delete Admob Implementation *
-    * Add Log From Consume API *
-    * Migrate From Groovy to Kotlin DSL*
+    * Upgrade from FrogoResponseCallback to ConsumeApiResponse *
 
 ## Download this project
 
@@ -65,14 +58,14 @@ allprojects {
 
     dependencies {
         // library frogo-consume-api
-        implementation 'com.github.frogobox:frogo-consume-api:1.0.7'
+        implementation 'com.github.frogobox:frogo-consume-api:1.0.8'
     }
 
 #### <Option 2> Kotlin DSL Gradle
 
     dependencies {
         // library frogo-consume-api
-        implementation("com.github.frogobox:frogo-consume-api:1.0.7")
+        implementation("com.github.frogobox:frogo-consume-api:1.0.8")
     }
 
 
