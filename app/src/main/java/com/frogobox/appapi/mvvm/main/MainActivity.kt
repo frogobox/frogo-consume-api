@@ -13,6 +13,7 @@ import com.frogobox.appapi.mvvm.pixabay.PixabayActivity
 import com.frogobox.appapi.mvvm.sport.SportActivity
 import com.frogobox.appapi.util.Constant
 import com.frogobox.appapi.util.Helper
+import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.sdk.core.FrogoActivity
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 
@@ -36,17 +37,32 @@ class MainActivity : FrogoActivity<ActivityMainBinding>() {
     private fun setupRV() {
 
         val adapterCallback = object : IFrogoBindingAdapter<MainModel, ItemMainBinding> {
-            override fun onItemClicked(data: MainModel) {
+            override fun onItemClicked(
+                binding: ItemMainBinding,
+                data: MainModel,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<MainModel>
+            ) {
                 setupIntentActivity(data.code, data)
             }
 
-            override fun onItemLongClicked(data: MainModel) {}
+            override fun onItemLongClicked(
+                binding: ItemMainBinding,
+                data: MainModel,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<MainModel>
+            ) {}
 
             override fun setViewBinding(parent: ViewGroup): ItemMainBinding {
                 return ItemMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             }
 
-            override fun setupInitComponent(binding: ItemMainBinding, data: MainModel) {
+            override fun setupInitComponent(
+                binding: ItemMainBinding,
+                data: MainModel,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<MainModel>
+            ) {
                 binding.apply {
                     Glide.with(root.context).load(data.image).into(ivIcon)
                     tvTitle.text = data.name

@@ -10,6 +10,7 @@ import com.frogobox.appapi.databinding.ActivityNewsBinding
 import com.frogobox.appapi.databinding.ContentArticleHorizontalBinding
 import com.frogobox.appapi.databinding.ContentArticleVerticalBinding
 import com.frogobox.appapi.databinding.ContentCategoryBinding
+import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.core.FrogoActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -29,25 +30,25 @@ class NewsActivity : FrogoActivity<ActivityNewsBinding>() {
             getTopHeadline(NewsConstant.CATEGORY_HEALTH)
             setupCategory()
 
-            eventShowProgress.observe(this@NewsActivity, {
+            eventShowProgress.observe(this@NewsActivity) {
                 setupEventProgressView(binding.progressView, it)
-            })
+            }
 
-            eventFailed.observe(this@NewsActivity, {
+            eventFailed.observe(this@NewsActivity) {
                 showToast(it)
-            })
+            }
 
-            listData.observe(this@NewsActivity, {
+            listData.observe(this@NewsActivity) {
                 setupRvHeader(it)
-            })
+            }
 
-            listCategory.observe(this@NewsActivity, {
+            listCategory.observe(this@NewsActivity) {
                 setupRvCategory(it)
-            })
+            }
 
-            listDataCategory.observe(this@NewsActivity, {
+            listDataCategory.observe(this@NewsActivity) {
                 setupRvBody(it)
-            })
+            }
 
         }
     }
@@ -59,12 +60,22 @@ class NewsActivity : FrogoActivity<ActivityNewsBinding>() {
     private fun setupRvCategory(data: List<String>) {
 
         val callback = object : IFrogoBindingAdapter<String, ContentCategoryBinding> {
-            override fun onItemClicked(data: String) {
-                binding.tvTopHeadline.text = "category $data"
+            override fun onItemClicked(
+                binding: ContentCategoryBinding,
+                data: String,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<String>
+            ) {
+                binding.tvCategory.text = "category $data"
                 newsViewModel.getTopHeadline(data)
             }
 
-            override fun onItemLongClicked(data: String) {
+            override fun onItemLongClicked(
+                binding: ContentCategoryBinding,
+                data: String,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<String>
+            ) {
             }
 
             override fun setViewBinding(parent: ViewGroup): ContentCategoryBinding {
@@ -75,7 +86,12 @@ class NewsActivity : FrogoActivity<ActivityNewsBinding>() {
                 )
             }
 
-            override fun setupInitComponent(binding: ContentCategoryBinding, data: String) {
+            override fun setupInitComponent(
+                binding: ContentCategoryBinding,
+                data: String,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<String>
+            ) {
                 binding.tvCategory.text = data
             }
         }
@@ -90,11 +106,21 @@ class NewsActivity : FrogoActivity<ActivityNewsBinding>() {
     private fun setupRvHeader(data: List<Article>) {
 
         val callback = object : IFrogoBindingAdapter<Article, ContentArticleHorizontalBinding> {
-            override fun onItemClicked(data: Article) {
+            override fun onItemClicked(
+                binding: ContentArticleHorizontalBinding,
+                data: Article,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<Article>
+            ) {
                 baseStartActivity<NewsDetailActivity, Article>(NewsDetailActivity.EXTRA_DATA, data)
             }
 
-            override fun onItemLongClicked(data: Article) {
+            override fun onItemLongClicked(
+                binding: ContentArticleHorizontalBinding,
+                data: Article,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<Article>
+            ) {
                 data.description?.let { showToast(it) }
             }
 
@@ -108,7 +134,9 @@ class NewsActivity : FrogoActivity<ActivityNewsBinding>() {
 
             override fun setupInitComponent(
                 binding: ContentArticleHorizontalBinding,
-                data: Article
+                data: Article,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<Article>
             ) {
                 binding.apply {
                     tvTitle.text = data.title
@@ -130,11 +158,21 @@ class NewsActivity : FrogoActivity<ActivityNewsBinding>() {
     private fun setupRvBody(data: List<Article>) {
 
         val callback = object : IFrogoBindingAdapter<Article, ContentArticleVerticalBinding> {
-            override fun onItemClicked(data: Article) {
+            override fun onItemClicked(
+                binding: ContentArticleVerticalBinding,
+                data: Article,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<Article>
+            ) {
                 baseStartActivity<NewsDetailActivity, Article>(NewsDetailActivity.EXTRA_DATA, data)
             }
 
-            override fun onItemLongClicked(data: Article) {
+            override fun onItemLongClicked(
+                binding: ContentArticleVerticalBinding,
+                data: Article,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<Article>
+            ) {
                 data.description?.let { showToast(it) }
             }
 
@@ -148,7 +186,9 @@ class NewsActivity : FrogoActivity<ActivityNewsBinding>() {
 
             override fun setupInitComponent(
                 binding: ContentArticleVerticalBinding,
-                data: Article
+                data: Article,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<Article>
             ) {
                 binding.apply {
                     tvTitle.text = data.title

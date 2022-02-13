@@ -9,6 +9,7 @@ import com.frogobox.appapi.databinding.ContentItemBinding
 import com.frogobox.appapi.databinding.FragmentTrendingChildBinding
 import com.frogobox.api.movie.model.TrendingPerson
 import com.frogobox.api.movie.util.MovieUrl
+import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.sdk.core.FrogoFragment
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 
@@ -32,17 +33,17 @@ class PersonDayFragment : FrogoFragment<FragmentTrendingChildBinding>() {
         personViewModel.apply {
             getTrendingPersonDay()
 
-            eventShowProgress.observe(viewLifecycleOwner, {
+            eventShowProgress.observe(viewLifecycleOwner) {
                 setupEventProgressView(binding.progressView, it)
-            })
+            }
 
-            eventFailed.observe(viewLifecycleOwner, {
+            eventFailed.observe(viewLifecycleOwner) {
                 showToast(it)
-            })
+            }
 
-            listDataDay.observe(viewLifecycleOwner, {
+            listDataDay.observe(viewLifecycleOwner) {
                 setupRV(it)
-            })
+            }
         }
     }
 
@@ -52,15 +53,30 @@ class PersonDayFragment : FrogoFragment<FragmentTrendingChildBinding>() {
     private fun setupRV(data: List<TrendingPerson>) {
 
         val adapterCallback = object : IFrogoBindingAdapter<TrendingPerson, ContentItemBinding> {
-            override fun onItemClicked(data: TrendingPerson) {}
+            override fun onItemClicked(
+                binding: ContentItemBinding,
+                data: TrendingPerson,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<TrendingPerson>
+            ) {}
 
-            override fun onItemLongClicked(data: TrendingPerson) {}
+            override fun onItemLongClicked(
+                binding: ContentItemBinding,
+                data: TrendingPerson,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<TrendingPerson>
+            ) {}
 
             override fun setViewBinding(parent: ViewGroup): ContentItemBinding {
                 return ContentItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             }
 
-            override fun setupInitComponent(binding: ContentItemBinding, data: TrendingPerson) {
+            override fun setupInitComponent(
+                binding: ContentItemBinding,
+                data: TrendingPerson,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<TrendingPerson>
+            ) {
                 binding.apply {
                     tvTitle.text = data.name
                     tvOverview.text = data.known_for_department

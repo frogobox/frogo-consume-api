@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ActivityMealBinding
 import com.frogobox.api.meal.model.Meal
+import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.uikit.databinding.FrogoRvGridType2Binding
 import com.frogobox.sdk.core.FrogoActivity
 import com.frogobox.recycler.core.IFrogoBindingAdapter
@@ -23,17 +24,17 @@ class MealActivity : FrogoActivity<ActivityMealBinding>() {
         mealViewModel.apply {
             getListMeals("b")
 
-            eventShowProgress.observe(this@MealActivity, {
+            eventShowProgress.observe(this@MealActivity) {
                 setupEventProgressView(binding.progressBar, it)
-            })
+            }
 
-            eventFailed.observe(this@MealActivity, {
+            eventFailed.observe(this@MealActivity) {
                 showToast(it)
-            })
+            }
 
-            listData.observe(this@MealActivity, {
+            listData.observe(this@MealActivity) {
                 setupRv(it)
-            })
+            }
 
         }
 
@@ -55,7 +56,12 @@ class MealActivity : FrogoActivity<ActivityMealBinding>() {
                 )
             }
 
-            override fun setupInitComponent(binding: FrogoRvGridType2Binding, data: Meal) {
+            override fun setupInitComponent(
+                binding: FrogoRvGridType2Binding,
+                data: Meal,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<Meal>
+            ) {
                 binding.apply {
                     Glide.with(root.context).load(data.strMealThumb).into(frogoRvGridType2IvPoster)
                     frogoRvGridType2TvTitle.text = data.strMeal
@@ -63,11 +69,21 @@ class MealActivity : FrogoActivity<ActivityMealBinding>() {
                 }
             }
 
-            override fun onItemClicked(data: Meal) {
+            override fun onItemClicked(
+                binding: FrogoRvGridType2Binding,
+                data: Meal,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<Meal>
+            ) {
                 data.strMeal?.let { showToast(it) }
             }
 
-            override fun onItemLongClicked(data: Meal) {
+            override fun onItemLongClicked(
+                binding: FrogoRvGridType2Binding,
+                data: Meal,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<Meal>
+            ) {
                 data.strMeal?.let { showToast(it) }
             }
 

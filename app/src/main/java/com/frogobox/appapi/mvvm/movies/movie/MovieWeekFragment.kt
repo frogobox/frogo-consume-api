@@ -9,6 +9,7 @@ import com.frogobox.appapi.databinding.ContentItemBinding
 import com.frogobox.appapi.databinding.FragmentTrendingChildBinding
 import com.frogobox.api.movie.model.TrendingMovie
 import com.frogobox.api.movie.util.MovieUrl
+import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.sdk.core.FrogoFragment
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -32,17 +33,17 @@ class MovieWeekFragment : FrogoFragment<FragmentTrendingChildBinding>() {
         movieViewModel.apply {
             getTrendingMovieWeek()
 
-            eventShowProgress.observe(viewLifecycleOwner, {
+            eventShowProgress.observe(viewLifecycleOwner) {
                 setupEventProgressView(binding.progressView, it)
-            })
+            }
 
-            eventFailed.observe(viewLifecycleOwner, {
+            eventFailed.observe(viewLifecycleOwner) {
                 showToast(it)
-            })
+            }
 
-            listDataWeek.observe(viewLifecycleOwner, {
+            listDataWeek.observe(viewLifecycleOwner) {
                 setupRV(it)
-            })
+            }
         }
     }
 
@@ -52,15 +53,30 @@ class MovieWeekFragment : FrogoFragment<FragmentTrendingChildBinding>() {
     private fun setupRV(data: List<TrendingMovie>) {
 
         val adapterCallback = object : IFrogoBindingAdapter<TrendingMovie, ContentItemBinding> {
-            override fun onItemClicked(data: TrendingMovie) {}
+            override fun onItemClicked(
+                binding: ContentItemBinding,
+                data: TrendingMovie,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<TrendingMovie>
+            ) {}
 
-            override fun onItemLongClicked(data: TrendingMovie) {}
+            override fun onItemLongClicked(
+                binding: ContentItemBinding,
+                data: TrendingMovie,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<TrendingMovie>
+            ) {}
 
             override fun setViewBinding(parent: ViewGroup): ContentItemBinding {
                 return ContentItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             }
 
-            override fun setupInitComponent(binding: ContentItemBinding, data: TrendingMovie) {
+            override fun setupInitComponent(
+                binding: ContentItemBinding,
+                data: TrendingMovie,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<TrendingMovie>
+            ) {
                 binding.apply {
                     tvTitle.text = data.title
                     tvOverview.text = data.overview

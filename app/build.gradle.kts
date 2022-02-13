@@ -1,6 +1,6 @@
 plugins {
     id("com.android.application")
-    id("kotlin-android")
+    id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
 }
 
@@ -93,7 +93,7 @@ dependencies {
 
     implementation("com.github.bumptech.glide:glide:4.12.0")
 
-    implementation("com.github.amirisback:frogo-recycler-view:3.8.8")
+    implementation("com.github.amirisback:frogo-recycler-view:4.0.2")
     implementation("com.github.amirisback:frogo-log:2.0.6")
 
     implementation("com.github.frogobox:frogo-android-ui-kit:1.0.5")

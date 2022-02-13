@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ActivitySportBinding
 import com.frogobox.api.sport.model.Team
+import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.uikit.databinding.FrogoRvGridType3Binding
 import com.frogobox.sdk.core.FrogoActivity
 import com.frogobox.recycler.core.IFrogoBindingAdapter
@@ -24,17 +25,17 @@ class SportActivity : FrogoActivity<ActivitySportBinding>() {
 
             searchAllTeam()
 
-            eventShowProgress.observe(this@SportActivity, {
+            eventShowProgress.observe(this@SportActivity) {
                 setupEventProgressView(binding.progressView, it)
-            })
+            }
 
-            eventFailed.observe(this@SportActivity, {
+            eventFailed.observe(this@SportActivity) {
                 showToast(it)
-            })
+            }
 
-            listData.observe(this@SportActivity, {
+            listData.observe(this@SportActivity) {
                 setupRv(it)
-            })
+            }
 
         }
     }
@@ -46,15 +47,30 @@ class SportActivity : FrogoActivity<ActivitySportBinding>() {
     private fun setupRv(data: List<Team>) {
 
         val adapterCallback = object : IFrogoBindingAdapter<Team, FrogoRvGridType3Binding> {
-            override fun onItemClicked(data: Team) {}
+            override fun onItemClicked(
+                binding: FrogoRvGridType3Binding,
+                data: Team,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<Team>
+            ) {}
 
-            override fun onItemLongClicked(data: Team) {}
+            override fun onItemLongClicked(
+                binding: FrogoRvGridType3Binding,
+                data: Team,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<Team>
+            ) {}
 
             override fun setViewBinding(parent: ViewGroup): FrogoRvGridType3Binding {
                 return FrogoRvGridType3Binding.inflate(LayoutInflater.from(parent.context), parent, false)
             }
 
-            override fun setupInitComponent(binding: FrogoRvGridType3Binding, data: Team) {
+            override fun setupInitComponent(
+                binding: FrogoRvGridType3Binding,
+                data: Team,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<Team>
+            ) {
                 binding.apply {
                     frogoRvGridType3TvTitle.text = data.strTeam
                     frogoRvGridType3TvSubtitle.text = data.strAlternate
