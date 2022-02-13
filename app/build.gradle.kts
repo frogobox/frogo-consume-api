@@ -1,6 +1,6 @@
 plugins {
     id("com.android.application")
-    kotlin("android")
+    id("kotlin-android")
     id("kotlin-kapt")
 }
 
@@ -76,20 +76,20 @@ android {
 
     composeOptions {
         kotlinCompilerExtensionVersion = Dependency.COMPOSE_VERSION
-        kotlinCompilerVersion = Dependency.KOTLIN_VERSION
     }
 
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions {
             jvmTarget = JavaVersion.VERSION_11.toString()
-            useIR = true
         }
     }
 
     packagingOptions {
-        exclude("META-INF/AL2.0")
-        exclude("META-INF/LGPL2.1")
+        resources {
+            excludes += setOf("META-INF/AL2.0", "META-INF/LGPL2.1")
+        }
     }
+
 }
 
 
@@ -98,23 +98,23 @@ dependencies {
 
     implementation(project(":frogoconsumeapi"))
 
-    implementation("androidx.core:core-ktx:1.6.0")
-    implementation("androidx.appcompat:appcompat:1.3.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.0")
+    implementation("androidx.core:core-ktx:1.7.0")
+    implementation("androidx.appcompat:appcompat:1.4.1")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
-    implementation("com.google.code.gson:gson:2.8.8")
-    implementation("com.google.android.material:material:1.4.0")
+    implementation("com.google.code.gson:gson:2.8.9")
+    implementation("com.google.android.material:material:1.5.0")
 
     implementation("de.hdodenhof:circleimageview:3.1.0")
 
     implementation("com.github.bumptech.glide:glide:4.12.0")
 
     implementation("com.github.amirisback:frogo-recycler-view:3.8.8")
-    implementation("com.github.amirisback:frogo-log:2.0.4")
+    implementation("com.github.amirisback:frogo-log:2.0.6")
 
-    implementation("com.github.frogobox:frogo-android-ui-kit:1.0.4")
-    implementation("com.github.frogobox:frogo-android-sdk:2.0.4")
+    implementation("com.github.frogobox:frogo-android-ui-kit:1.0.5")
+    implementation("com.github.frogobox:frogo-android-sdk:2.0.6")
 
     implementation("io.insert-koin:koin-core:${Dependency.KOIN_VERSION}") // Koin core features
     implementation("io.insert-koin:koin-android:${Dependency.KOIN_VERSION}") // Koin main features for Android (Scope,ViewModel ...)
@@ -122,7 +122,7 @@ dependencies {
     implementation("io.insert-koin:koin-androidx-workmanager:${Dependency.KOIN_VERSION}") // Koin for Jetpack WorkManager
     implementation("io.insert-koin:koin-androidx-compose:${Dependency.KOIN_VERSION}") // Koin for Jetpack Compose
 
-    kapt("com.github.bumptech.glide:compiler:4.11.0")
+    kapt("com.github.bumptech.glide:compiler:4.12.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")

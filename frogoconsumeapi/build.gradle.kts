@@ -1,6 +1,6 @@
 plugins {
     id("com.android.library")
-    kotlin("android")
+    id("kotlin-android")
     id("kotlin-kapt")
     `maven-publish`
 }
@@ -44,19 +44,18 @@ android {
 
     composeOptions {
         kotlinCompilerExtensionVersion = Dependency.COMPOSE_VERSION
-        kotlinCompilerVersion = Dependency.KOTLIN_VERSION
     }
 
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions {
             jvmTarget = JavaVersion.VERSION_11.toString()
-            useIR = true
         }
     }
 
     packagingOptions {
-        exclude("META-INF/AL2.0")
-        exclude("META-INF/LGPL2.1")
+        resources {
+            excludes += setOf("META-INF/AL2.0", "META-INF/LGPL2.1")
+        }
     }
 
 }
@@ -65,30 +64,30 @@ dependencies {
 
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Dependency.KOTLIN_VERSION}")
 
-    implementation("androidx.appcompat:appcompat:1.3.1")
-    implementation("androidx.core:core-ktx:1.6.0")
-    implementation("androidx.preference:preference-ktx:1.1.1")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
-    implementation("androidx.activity:activity-compose:1.3.1")
+    implementation("androidx.appcompat:appcompat:1.4.1")
+    implementation("androidx.core:core-ktx:1.7.0")
+    implementation("androidx.preference:preference-ktx:1.2.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
+    implementation("androidx.activity:activity-compose:1.4.0")
 
     implementation("androidx.compose.ui:ui:${Dependency.COMPOSE_VERSION}")
     implementation("androidx.compose.material:material:${Dependency.COMPOSE_VERSION}")
     implementation("androidx.compose.ui:ui-tooling-preview:${Dependency.COMPOSE_VERSION}")
 
-    implementation("com.google.code.gson:gson:2.8.8")
+    implementation("com.google.code.gson:gson:2.8.9")
 
-    implementation("com.squareup.okhttp3:okhttp:4.9.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
+    implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.2")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
 
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.retrofit2:adapter-rxjava:2.3.0")
+    implementation("com.squareup.retrofit2:adapter-rxjava:2.9.0")
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
 
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
-    implementation("io.reactivex.rxjava2:rxjava:2.2.19")
+    implementation("io.reactivex.rxjava2:rxjava:2.2.21")
 
-    implementation("com.github.frogobox:frogo-android-sdk:2.0.4")
+    implementation("com.github.frogobox:frogo-android-sdk:2.0.6")
 
     implementation("com.facebook.stetho:stetho:1.5.1")
     implementation("com.readystatesoftware.chuck:library:1.1.0")
