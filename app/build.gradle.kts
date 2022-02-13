@@ -19,6 +19,7 @@ android {
         vectorDrawables.useSupportLibrary = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        resourceConfigurations += setOf("en", "id")
 
         // Naming APK // AAB
         setProperty("archivesBaseName", "${ProjectSetting.NAME_APK}(${versionName})")
@@ -27,23 +28,9 @@ android {
         val debugAttribute = "Development"
         val nameAppDebug = "${ProjectSetting.NAME_APP} $debugAttribute"
 
-        resConfigs("en", "id")
-
         // Inject app name for debug
         resValue("string", "app_name", nameAppDebug)
 
-    }
-
-    signingConfigs {
-        create("release") {
-            // You need to specify either an absolute path or include the
-            // keystore file in the same directory as the build.gradle file.
-            // [PROJECT FOLDER NAME/app/[COPY YOUT KEY STORE] .jks in here
-            storeFile = file("frogoboxdev.jks")
-            storePassword = "cronoclez"
-            keyAlias = "frogobox"
-            keyPassword = "xeonranger"
-        }
     }
 
     buildTypes {
@@ -54,9 +41,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-
-            // Generated Signed APK / AAB
-            signingConfig = signingConfigs.getByName("release")
 
             // Inject app name for release
             resValue("string", "app_name", ProjectSetting.APP_NAME)
@@ -91,7 +75,6 @@ android {
     }
 
 }
-
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${Dependency.KOTLIN_VERSION}")
