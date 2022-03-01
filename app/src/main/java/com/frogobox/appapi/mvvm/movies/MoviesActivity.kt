@@ -6,7 +6,7 @@ import com.frogobox.appapi.databinding.ActivityMovieBinding
 import com.frogobox.appapi.mvvm.movies.core.MovieFragment
 import com.frogobox.appapi.mvvm.movies.core.PersonFragment
 import com.frogobox.appapi.mvvm.movies.core.TvFragment
-import com.frogobox.sdk.core.FrogoActivity
+import com.frogobox.sdk.FrogoActivity
 
 class MoviesActivity : FrogoActivity<ActivityMovieBinding>() {
 
@@ -17,7 +17,7 @@ class MoviesActivity : FrogoActivity<ActivityMovieBinding>() {
     override fun setupViewModel() {
     }
 
-    override fun setupUI(savedInstanceState: Bundle?) {
+    override fun setupOnCreate(savedInstanceState: Bundle?) {
         setupDetailActivity("Movie Api")
         setupToolbar()
         setupBottomNav(binding.framelayoutMainContainer.id)
@@ -42,7 +42,7 @@ class MoviesActivity : FrogoActivity<ActivityMovieBinding>() {
             setOnNavigationItemSelectedListener {
                 when (it.itemId) {
                     R.id.bottom_menu_movie -> {
-                        setupCustomTitleToolbar(R.string.title_movie)
+                        supportActionBar?.title = getString(R.string.title_movie)
                         setupChildFragment(
                             frameLayout,
                             MovieFragment()
@@ -50,7 +50,7 @@ class MoviesActivity : FrogoActivity<ActivityMovieBinding>() {
                     }
 
                     R.id.bottom_menu_person -> {
-                        setupCustomTitleToolbar(R.string.title_person)
+                        supportActionBar?.title = getString(R.string.title_person)
                         setupChildFragment(
                             frameLayout,
                             PersonFragment()
@@ -58,7 +58,7 @@ class MoviesActivity : FrogoActivity<ActivityMovieBinding>() {
                     }
 
                     R.id.bottom_menu_tv -> {
-                        setupCustomTitleToolbar(R.string.title_tv)
+                        supportActionBar?.title = getString(R.string.title_tv)
                         setupChildFragment(
                             frameLayout,
                             TvFragment()

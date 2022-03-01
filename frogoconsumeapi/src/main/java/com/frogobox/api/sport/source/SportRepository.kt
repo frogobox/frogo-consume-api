@@ -2,11 +2,12 @@ package com.frogobox.api.sport.source
 
 import android.content.Context
 import android.util.Log
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.frogobox.api.core.ConsumeApiResponse
 import com.frogobox.api.sport.response.*
 import com.frogobox.api.sport.util.SportUrl
-import com.frogobox.sdk.core.FrogoApiCallback
-import com.frogobox.sdk.core.FrogoApiClient
+import com.frogobox.coresdk.FrogoApiClient
+import com.frogobox.coresdk.FrogoApiObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -35,7 +36,7 @@ object SportRepository : SportDataSource {
 
     override fun usingChuckInterceptor(context: Context) {
         Log.d(TAG, "Using Chuck Interceptor")
-        sportApiService = FrogoApiClient.create(SportUrl.BASE_URL, context)
+        sportApiService = FrogoApiClient.createWithClient(SportUrl.BASE_URL, ChuckerInterceptor(context))
     }
 
     override fun searchForTeamByName(
@@ -49,7 +50,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Teams>() {
+            .subscribe(object : FrogoApiObserver<Teams>() {
                 override fun onSuccess(data: Teams) {
                     callback.onSuccess(data)
                 }
@@ -71,7 +72,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Teams>() {
+            .subscribe(object : FrogoApiObserver<Teams>() {
                 override fun onSuccess(data: Teams) {
                     callback.onSuccess(data)
                 }
@@ -93,7 +94,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Players>() {
+            .subscribe(object : FrogoApiObserver<Players>() {
                 override fun onSuccess(data: Players) {
                     callback.onSuccess(data)
                 }
@@ -115,7 +116,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Players>() {
+            .subscribe(object : FrogoApiObserver<Players>() {
                 override fun onSuccess(data: Players) {
                     callback.onSuccess(data)
                 }
@@ -138,7 +139,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Players>() {
+            .subscribe(object : FrogoApiObserver<Players>() {
                 override fun onSuccess(data: Players) {
                     callback.onSuccess(data)
                 }
@@ -160,7 +161,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Events>() {
+            .subscribe(object : FrogoApiObserver<Events>() {
                 override fun onSuccess(data: Events) {
                     callback.onSuccess(data)
                 }
@@ -183,7 +184,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Events>() {
+            .subscribe(object : FrogoApiObserver<Events>() {
                 override fun onSuccess(data: Events) {
                     callback.onSuccess(data)
                 }
@@ -205,7 +206,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Events>() {
+            .subscribe(object : FrogoApiObserver<Events>() {
                 override fun onSuccess(data: Events) {
                     callback.onSuccess(data)
                 }
@@ -223,7 +224,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Sports>() {
+            .subscribe(object : FrogoApiObserver<Sports>() {
                 override fun onSuccess(data: Sports) {
                     callback.onSuccess(data)
                 }
@@ -241,7 +242,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Leagues>() {
+            .subscribe(object : FrogoApiObserver<Leagues>() {
                 override fun onSuccess(data: Leagues) {
                     callback.onSuccess(data)
                 }
@@ -263,7 +264,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Countrys>() {
+            .subscribe(object : FrogoApiObserver<Countrys>() {
                 override fun onSuccess(data: Countrys) {
                     callback.onSuccess(data)
                 }
@@ -286,7 +287,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Countrys>() {
+            .subscribe(object : FrogoApiObserver<Countrys>() {
                 override fun onSuccess(data: Countrys) {
                     callback.onSuccess(data)
                 }
@@ -308,7 +309,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Seasons>() {
+            .subscribe(object : FrogoApiObserver<Seasons>() {
                 override fun onSuccess(data: Seasons) {
                     callback.onSuccess(data)
                 }
@@ -331,7 +332,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Teams>() {
+            .subscribe(object : FrogoApiObserver<Teams>() {
                 override fun onSuccess(data: Teams) {
                     callback.onSuccess(data)
                 }
@@ -355,7 +356,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Teams>() {
+            .subscribe(object : FrogoApiObserver<Teams>() {
                 override fun onSuccess(data: Teams) {
                     callback.onSuccess(data)
                 }
@@ -378,7 +379,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Teams>() {
+            .subscribe(object : FrogoApiObserver<Teams>() {
                 override fun onSuccess(data: Teams) {
                     callback.onSuccess(data)
                 }
@@ -401,7 +402,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Players>() {
+            .subscribe(object : FrogoApiObserver<Players>() {
                 override fun onSuccess(data: Players) {
                     callback.onSuccess(data)
                 }
@@ -423,7 +424,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Users>() {
+            .subscribe(object : FrogoApiObserver<Users>() {
                 override fun onSuccess(data: Users) {
                     callback.onSuccess(data)
                 }
@@ -445,7 +446,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Leagues>() {
+            .subscribe(object : FrogoApiObserver<Leagues>() {
                 override fun onSuccess(data: Leagues) {
                     callback.onSuccess(data)
                 }
@@ -467,7 +468,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Teams>() {
+            .subscribe(object : FrogoApiObserver<Teams>() {
                 override fun onSuccess(data: Teams) {
                     callback.onSuccess(data)
                 }
@@ -489,7 +490,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Players>() {
+            .subscribe(object : FrogoApiObserver<Players>() {
                 override fun onSuccess(data: Players) {
                     callback.onSuccess(data)
                 }
@@ -511,7 +512,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Events>() {
+            .subscribe(object : FrogoApiObserver<Events>() {
                 override fun onSuccess(data: Events) {
                     callback.onSuccess(data)
                 }
@@ -533,7 +534,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Honors>() {
+            .subscribe(object : FrogoApiObserver<Honors>() {
                 override fun onSuccess(data: Honors) {
                     callback.onSuccess(data)
                 }
@@ -555,7 +556,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<FormerTeams>() {
+            .subscribe(object : FrogoApiObserver<FormerTeams>() {
                 override fun onSuccess(data: FormerTeams) {
                     callback.onSuccess(data)
                 }
@@ -577,7 +578,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Contracts>() {
+            .subscribe(object : FrogoApiObserver<Contracts>() {
                 override fun onSuccess(data: Contracts) {
                     callback.onSuccess(data)
                 }
@@ -600,7 +601,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Tables>() {
+            .subscribe(object : FrogoApiObserver<Tables>() {
                 override fun onSuccess(data: Tables) {
                     callback.onSuccess(data)
                 }
@@ -622,7 +623,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Events>() {
+            .subscribe(object : FrogoApiObserver<Events>() {
                 override fun onSuccess(data: Events) {
                     callback.onSuccess(data)
                 }
@@ -644,7 +645,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Events>() {
+            .subscribe(object : FrogoApiObserver<Events>() {
                 override fun onSuccess(data: Events) {
                     callback.onSuccess(data)
                 }
@@ -666,7 +667,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Results>() {
+            .subscribe(object : FrogoApiObserver<Results>() {
                 override fun onSuccess(data: Results) {
                     callback.onSuccess(data)
                 }
@@ -688,7 +689,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Events>() {
+            .subscribe(object : FrogoApiObserver<Events>() {
                 override fun onSuccess(data: Events) {
                     callback.onSuccess(data)
                 }
@@ -712,7 +713,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Events>() {
+            .subscribe(object : FrogoApiObserver<Events>() {
                 override fun onSuccess(data: Events) {
                     callback.onSuccess(data)
                 }
@@ -735,7 +736,7 @@ object SportRepository : SportDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Events>() {
+            .subscribe(object : FrogoApiObserver<Events>() {
                 override fun onSuccess(data: Events) {
                     callback.onSuccess(data)
                 }

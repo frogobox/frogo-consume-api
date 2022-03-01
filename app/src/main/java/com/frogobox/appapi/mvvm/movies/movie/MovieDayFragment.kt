@@ -2,6 +2,7 @@ package com.frogobox.appapi.mvvm.movies.movie
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
@@ -10,7 +11,7 @@ import com.frogobox.appapi.databinding.FragmentTrendingChildBinding
 import com.frogobox.api.movie.model.TrendingMovie
 import com.frogobox.api.movie.util.MovieUrl
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
-import com.frogobox.sdk.core.FrogoFragment
+import com.frogobox.sdk.FrogoFragment
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -33,7 +34,7 @@ class MovieDayFragment : FrogoFragment<FragmentTrendingChildBinding>() {
             getTrendingMovieDay()
 
             eventShowProgress.observe(viewLifecycleOwner) {
-                setupEventProgressView(binding.progressView, it)
+                setupProgressView(binding.progressView, it)
             }
 
             eventFailed.observe(viewLifecycleOwner) {
@@ -46,7 +47,7 @@ class MovieDayFragment : FrogoFragment<FragmentTrendingChildBinding>() {
         }
     }
 
-    override fun setupUI(savedInstanceState: Bundle?) {
+    override fun setupOnViewCreated(view: View, savedInstanceState: Bundle?) {
     }
 
     private fun setupRV(data: List<TrendingMovie>) {

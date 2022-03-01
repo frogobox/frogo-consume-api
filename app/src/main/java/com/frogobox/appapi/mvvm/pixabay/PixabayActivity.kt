@@ -7,8 +7,8 @@ import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ActivityPixabayBinding
 import com.frogobox.api.pixabay.model.PixabayImage
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
-import com.frogobox.uikit.databinding.FrogoRvGridType1Binding
-import com.frogobox.sdk.core.FrogoActivity
+import com.frogobox.ui.databinding.FrogoRvGridType1Binding
+import com.frogobox.sdk.FrogoActivity
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -26,7 +26,7 @@ class PixabayActivity : FrogoActivity<ActivityPixabayBinding>() {
             searchImage("Nature")
 
             eventShowProgress.observe(this@PixabayActivity) {
-                setupEventProgressView(binding.progressBar, it)
+                setupProgressView(binding.progressBar, it)
             }
 
             eventFailed.observe(this@PixabayActivity) {
@@ -40,7 +40,7 @@ class PixabayActivity : FrogoActivity<ActivityPixabayBinding>() {
         }
     }
 
-    override fun setupUI(savedInstanceState: Bundle?) {
+    override fun setupOnCreate(savedInstanceState: Bundle?) {
         setupDetailActivity("Pixabay Api")
     }
 

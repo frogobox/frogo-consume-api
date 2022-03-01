@@ -2,6 +2,7 @@ package com.frogobox.appapi.mvvm.movies.core
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.frogobox.appapi.R
@@ -9,7 +10,7 @@ import com.frogobox.appapi.databinding.FragmentTrendingBinding
 import com.frogobox.appapi.mvvm.movies.tv.TvDayFragment
 import com.frogobox.appapi.mvvm.movies.tv.TvWeekFragment
 import com.frogobox.appapi.util.PagerAdapter
-import com.frogobox.sdk.core.FrogoFragment
+import com.frogobox.sdk.FrogoFragment
 
 /**
  * A simple [Fragment] subclass.
@@ -26,7 +27,7 @@ class TvFragment : FrogoFragment<FragmentTrendingBinding>() {
     override fun setupViewModel() {
     }
 
-    override fun setupUI(savedInstanceState: Bundle?) {
+    override fun setupOnViewCreated(view: View, savedInstanceState: Bundle?) {
         val pagerAdapter = PagerAdapter(childFragmentManager)
         pagerAdapter.setupPagerFragment(
             TvDayFragment(),

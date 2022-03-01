@@ -7,8 +7,8 @@ import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ActivityMealBinding
 import com.frogobox.api.meal.model.Meal
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
-import com.frogobox.uikit.databinding.FrogoRvGridType2Binding
-import com.frogobox.sdk.core.FrogoActivity
+import com.frogobox.ui.databinding.FrogoRvGridType2Binding
+import com.frogobox.sdk.FrogoActivity
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -25,7 +25,7 @@ class MealActivity : FrogoActivity<ActivityMealBinding>() {
             getListMeals("b")
 
             eventShowProgress.observe(this@MealActivity) {
-                setupEventProgressView(binding.progressBar, it)
+                setupProgressView(binding.progressBar, it)
             }
 
             eventFailed.observe(this@MealActivity) {
@@ -40,7 +40,7 @@ class MealActivity : FrogoActivity<ActivityMealBinding>() {
 
     }
 
-    override fun setupUI(savedInstanceState: Bundle?) {
+    override fun setupOnCreate(savedInstanceState: Bundle?) {
         setupDetailActivity("Meal Api")
     }
 

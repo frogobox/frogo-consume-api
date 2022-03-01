@@ -86,18 +86,20 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
-    implementation("com.google.code.gson:gson:2.8.9")
+    implementation("androidx.work:work-runtime:2.8.0-alpha01")
+
+    implementation("com.google.code.gson:gson:2.9.0")
     implementation("com.google.android.material:material:1.5.0")
 
     implementation("de.hdodenhof:circleimageview:3.1.0")
 
     implementation("com.github.bumptech.glide:glide:4.12.0")
 
-    implementation("com.github.amirisback:frogo-recycler-view:4.0.2")
-    implementation("com.github.amirisback:frogo-log:2.0.6")
+    implementation("com.github.amirisback:frogo-recycler-view:4.0.4")
+    implementation("com.github.amirisback:frogo-log:2.0.8")
 
-    implementation("com.github.frogobox:frogo-android-ui-kit:1.0.5")
-    implementation("com.github.frogobox:frogo-android-sdk:2.0.6")
+    implementation("com.github.frogobox:frogo-ui:0.0.1-beta01")
+    implementation("com.github.frogobox:frogo-sdk:0.0.1-beta03")
 
     implementation("io.insert-koin:koin-core:${Dependency.KOIN_VERSION}") // Koin core features
     implementation("io.insert-koin:koin-android:${Dependency.KOIN_VERSION}") // Koin main features for Android (Scope,ViewModel ...)

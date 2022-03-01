@@ -2,13 +2,14 @@ package com.frogobox.api.pixabay.source
 
 import android.content.Context
 import android.util.Log
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.frogobox.api.core.ConsumeApiResponse
 import com.frogobox.api.pixabay.model.PixabayImage
 import com.frogobox.api.pixabay.model.PixabayVideo
 import com.frogobox.api.pixabay.response.Response
 import com.frogobox.api.pixabay.util.PixabayUrl
-import com.frogobox.sdk.core.FrogoApiCallback
-import com.frogobox.sdk.core.FrogoApiClient
+import com.frogobox.coresdk.FrogoApiClient
+import com.frogobox.coresdk.FrogoApiObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -36,7 +37,7 @@ object PixabayRepository : PixabayDataSource {
 
     override fun usingChuckInterceptor(context: Context) {
         Log.d(TAG, "Using Chuck Interceptor")
-        pixabayApiService = FrogoApiClient.create(PixabayUrl.BASE_URL, context)
+        pixabayApiService = FrogoApiClient.createWithClient(PixabayUrl.BASE_URL, ChuckerInterceptor(context))
     }
 
     override fun searchImage(
@@ -79,7 +80,7 @@ object PixabayRepository : PixabayDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Response<PixabayImage>>() {
+            .subscribe(object : FrogoApiObserver<Response<PixabayImage>>() {
                 override fun onSuccess(data: Response<PixabayImage>) {
                     callback.onSuccess(data)
                 }
@@ -126,7 +127,7 @@ object PixabayRepository : PixabayDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Response<PixabayVideo>>() {
+            .subscribe(object : FrogoApiObserver<Response<PixabayVideo>>() {
                 override fun onSuccess(data: Response<PixabayVideo>) {
                     callback.onSuccess(data)
                 }

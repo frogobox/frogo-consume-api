@@ -2,12 +2,13 @@ package com.frogobox.api.movie.source
 
 import android.content.Context
 import android.util.Log
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.frogobox.api.core.ConsumeApiResponse
 import com.frogobox.api.movie.model.*
 import com.frogobox.api.movie.response.*
 import com.frogobox.api.movie.util.MovieUrl
-import com.frogobox.sdk.core.FrogoApiCallback
-import com.frogobox.sdk.core.FrogoApiClient
+import com.frogobox.coresdk.FrogoApiClient
+import com.frogobox.coresdk.FrogoApiObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -35,7 +36,7 @@ object MovieRepository : MovieDataSource {
 
     override fun usingChuckInterceptor(context: Context) {
         Log.d(TAG, "Using Chuck Interceptor")
-        movieApiService = FrogoApiClient.create(MovieUrl.BASE_URL, context)
+        movieApiService = FrogoApiClient.createWithClient(MovieUrl.BASE_URL, ChuckerInterceptor(context))
     }
 
     override fun getMovieCertifications(
@@ -48,7 +49,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Certifications<CertificationMovie>>() {
+            .subscribe(object : FrogoApiObserver<Certifications<CertificationMovie>>() {
                 override fun onSuccess(data: Certifications<CertificationMovie>) {
                     callback.onSuccess(data)
                 }
@@ -69,7 +70,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Certifications<CertificationTv>>() {
+            .subscribe(object : FrogoApiObserver<Certifications<CertificationTv>>() {
                 override fun onSuccess(data: Certifications<CertificationTv>) {
                     callback.onSuccess(data)
                 }
@@ -93,7 +94,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Changes>() {
+            .subscribe(object : FrogoApiObserver<Changes>() {
                 override fun onSuccess(data: Changes) {
                     callback.onSuccess(data)
                 }
@@ -117,7 +118,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Changes>() {
+            .subscribe(object : FrogoApiObserver<Changes>() {
                 override fun onSuccess(data: Changes) {
                     callback.onSuccess(data)
                 }
@@ -141,7 +142,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Changes>() {
+            .subscribe(object : FrogoApiObserver<Changes>() {
                 override fun onSuccess(data: Changes) {
                     callback.onSuccess(data)
                 }
@@ -164,7 +165,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<CollectionsDetail>() {
+            .subscribe(object : FrogoApiObserver<CollectionsDetail>() {
                 override fun onSuccess(data: CollectionsDetail) {
                     callback.onSuccess(data)
                 }
@@ -187,7 +188,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<CollectionsImage>() {
+            .subscribe(object : FrogoApiObserver<CollectionsImage>() {
                 override fun onSuccess(data: CollectionsImage) {
                     callback.onSuccess(data)
                 }
@@ -210,7 +211,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<CollectionsTranslation>() {
+            .subscribe(object : FrogoApiObserver<CollectionsTranslation>() {
                 override fun onSuccess(data: CollectionsTranslation) {
                     callback.onSuccess(data)
                 }
@@ -232,7 +233,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<CompaniesDetail>() {
+            .subscribe(object : FrogoApiObserver<CompaniesDetail>() {
                 override fun onSuccess(data: CompaniesDetail) {
                     callback.onSuccess(data)
                 }
@@ -254,7 +255,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<CompaniesAlternateName>() {
+            .subscribe(object : FrogoApiObserver<CompaniesAlternateName>() {
                 override fun onSuccess(data: CompaniesAlternateName) {
                     callback.onSuccess(data)
                 }
@@ -276,7 +277,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<CompaniesImage>() {
+            .subscribe(object : FrogoApiObserver<CompaniesImage>() {
                 override fun onSuccess(data: CompaniesImage) {
                     callback.onSuccess(data)
                 }
@@ -298,7 +299,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<ConfigurationApi>() {
+            .subscribe(object : FrogoApiObserver<ConfigurationApi>() {
                 override fun onSuccess(data: ConfigurationApi) {
                     callback.onSuccess(data)
                 }
@@ -319,7 +320,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<List<ConfigurationCountry>>() {
+            .subscribe(object : FrogoApiObserver<List<ConfigurationCountry>>() {
                 override fun onSuccess(data: List<ConfigurationCountry>) {
                     callback.onSuccess(data)
                 }
@@ -340,7 +341,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<List<ConfigurationJob>>() {
+            .subscribe(object : FrogoApiObserver<List<ConfigurationJob>>() {
                 override fun onSuccess(data: List<ConfigurationJob>) {
                     callback.onSuccess(data)
                 }
@@ -361,7 +362,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<List<ConfigurationLanguage>>() {
+            .subscribe(object : FrogoApiObserver<List<ConfigurationLanguage>>() {
                 override fun onSuccess(data: List<ConfigurationLanguage>) {
                     callback.onSuccess(data)
                 }
@@ -382,7 +383,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<List<String>>() {
+            .subscribe(object : FrogoApiObserver<List<String>>() {
                 override fun onSuccess(data: List<String>) {
                     callback.onSuccess(data)
                 }
@@ -403,7 +404,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<List<ConfigurationTimezone>>() {
+            .subscribe(object : FrogoApiObserver<List<ConfigurationTimezone>>() {
                 override fun onSuccess(data: List<ConfigurationTimezone>) {
                     callback.onSuccess(data)
                 }
@@ -425,7 +426,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Credits>() {
+            .subscribe(object : FrogoApiObserver<Credits>() {
                 override fun onSuccess(data: Credits) {
                     callback.onSuccess(data)
                 }
@@ -512,7 +513,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Discover<DiscoverMovie>>() {
+            .subscribe(object : FrogoApiObserver<Discover<DiscoverMovie>>() {
                 override fun onSuccess(data: Discover<DiscoverMovie>) {
                     callback.onSuccess(data)
                 }
@@ -579,7 +580,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Discover<DiscoverTv>>() {
+            .subscribe(object : FrogoApiObserver<Discover<DiscoverTv>>() {
                 override fun onSuccess(data: Discover<DiscoverTv>) {
                     callback.onSuccess(data)
                 }
@@ -603,7 +604,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Find>() {
+            .subscribe(object : FrogoApiObserver<Find>() {
                 override fun onSuccess(data: Find) {
                     callback.onSuccess(data)
                 }
@@ -625,7 +626,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Genres>() {
+            .subscribe(object : FrogoApiObserver<Genres>() {
                 override fun onSuccess(data: Genres) {
                     callback.onSuccess(data)
                 }
@@ -647,7 +648,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Genres>() {
+            .subscribe(object : FrogoApiObserver<Genres>() {
                 override fun onSuccess(data: Genres) {
                     callback.onSuccess(data)
                 }
@@ -669,7 +670,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<KeywordsDetail>() {
+            .subscribe(object : FrogoApiObserver<KeywordsDetail>() {
                 override fun onSuccess(data: KeywordsDetail) {
                     callback.onSuccess(data)
                 }
@@ -693,7 +694,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<KeywordsMovies>() {
+            .subscribe(object : FrogoApiObserver<KeywordsMovies>() {
                 override fun onSuccess(data: KeywordsMovies) {
                     callback.onSuccess(data)
                 }
@@ -717,7 +718,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<MovieDetail>() {
+            .subscribe(object : FrogoApiObserver<MovieDetail>() {
                 override fun onSuccess(data: MovieDetail) {
                     callback.onSuccess(data)
                 }
@@ -741,7 +742,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<MovieAccountState>() {
+            .subscribe(object : FrogoApiObserver<MovieAccountState>() {
                 override fun onSuccess(data: MovieAccountState) {
                     callback.onSuccess(data)
                 }
@@ -764,7 +765,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<MovieAlternativeTitle>() {
+            .subscribe(object : FrogoApiObserver<MovieAlternativeTitle>() {
                 override fun onSuccess(data: MovieAlternativeTitle) {
                     callback.onSuccess(data)
                 }
@@ -789,7 +790,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<MovieChanges>() {
+            .subscribe(object : FrogoApiObserver<MovieChanges>() {
                 override fun onSuccess(data: MovieChanges) {
                     callback.onSuccess(data)
                 }
@@ -811,7 +812,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<MovieCredit>() {
+            .subscribe(object : FrogoApiObserver<MovieCredit>() {
                 override fun onSuccess(data: MovieCredit) {
                     callback.onSuccess(data)
                 }
@@ -832,7 +833,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<MovieExternalId>() {
+            .subscribe(object : FrogoApiObserver<MovieExternalId>() {
                 override fun onSuccess(data: MovieExternalId) {
                     callback.onSuccess(data)
                 }
@@ -861,7 +862,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<MovieImages>() {
+            .subscribe(object : FrogoApiObserver<MovieImages>() {
                 override fun onSuccess(data: MovieImages) {
                     callback.onSuccess(data)
                 }
@@ -883,7 +884,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<MovieKeywords>() {
+            .subscribe(object : FrogoApiObserver<MovieKeywords>() {
                 override fun onSuccess(data: MovieKeywords) {
                     callback.onSuccess(data)
                 }
@@ -905,7 +906,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<MovieReleaseDates>() {
+            .subscribe(object : FrogoApiObserver<MovieReleaseDates>() {
                 override fun onSuccess(data: MovieReleaseDates) {
                     callback.onSuccess(data)
                 }
@@ -928,7 +929,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<MovieVideos>() {
+            .subscribe(object : FrogoApiObserver<MovieVideos>() {
                 override fun onSuccess(data: MovieVideos) {
                     callback.onSuccess(data)
                 }
@@ -950,7 +951,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<MovieTranslations>() {
+            .subscribe(object : FrogoApiObserver<MovieTranslations>() {
                 override fun onSuccess(data: MovieTranslations) {
                     callback.onSuccess(data)
                 }
@@ -974,7 +975,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<MovieRecommendations>() {
+            .subscribe(object : FrogoApiObserver<MovieRecommendations>() {
                 override fun onSuccess(data: MovieRecommendations) {
                     callback.onSuccess(data)
                 }
@@ -998,7 +999,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<MovieSimilarMovies>() {
+            .subscribe(object : FrogoApiObserver<MovieSimilarMovies>() {
                 override fun onSuccess(data: MovieSimilarMovies) {
                     callback.onSuccess(data)
                 }
@@ -1022,7 +1023,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<MovieReviews>() {
+            .subscribe(object : FrogoApiObserver<MovieReviews>() {
                 override fun onSuccess(data: MovieReviews) {
                     callback.onSuccess(data)
                 }
@@ -1046,7 +1047,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<MovieLists>() {
+            .subscribe(object : FrogoApiObserver<MovieLists>() {
                 override fun onSuccess(data: MovieLists) {
                     callback.onSuccess(data)
                 }
@@ -1068,7 +1069,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<MovieLatest>() {
+            .subscribe(object : FrogoApiObserver<MovieLatest>() {
                 override fun onSuccess(data: MovieLatest) {
                     callback.onSuccess(data)
                 }
@@ -1092,7 +1093,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<MovieNowPlayings>() {
+            .subscribe(object : FrogoApiObserver<MovieNowPlayings>() {
                 override fun onSuccess(data: MovieNowPlayings) {
                     callback.onSuccess(data)
                 }
@@ -1116,7 +1117,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<MoviePopulars>() {
+            .subscribe(object : FrogoApiObserver<MoviePopulars>() {
                 override fun onSuccess(data: MoviePopulars) {
                     callback.onSuccess(data)
                 }
@@ -1140,7 +1141,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<MovieTopRated>() {
+            .subscribe(object : FrogoApiObserver<MovieTopRated>() {
                 override fun onSuccess(data: MovieTopRated) {
                     callback.onSuccess(data)
                 }
@@ -1164,7 +1165,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<MovieUpcoming>() {
+            .subscribe(object : FrogoApiObserver<MovieUpcoming>() {
                 override fun onSuccess(data: MovieUpcoming) {
                     callback.onSuccess(data)
                 }
@@ -1188,7 +1189,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Trending<TrendingAll>>() {
+            .subscribe(object : FrogoApiObserver<Trending<TrendingAll>>() {
                 override fun onSuccess(data: Trending<TrendingAll>) {
                     callback.onSuccess(data)
                 }
@@ -1211,7 +1212,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Trending<TrendingMovie>>() {
+            .subscribe(object : FrogoApiObserver<Trending<TrendingMovie>>() {
                 override fun onSuccess(data: Trending<TrendingMovie>) {
                     callback.onSuccess(data)
                 }
@@ -1234,7 +1235,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Trending<TrendingPerson>>() {
+            .subscribe(object : FrogoApiObserver<Trending<TrendingPerson>>() {
                 override fun onSuccess(data: Trending<TrendingPerson>) {
                     callback.onSuccess(data)
                 }
@@ -1257,7 +1258,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Trending<TrendingTv>>() {
+            .subscribe(object : FrogoApiObserver<Trending<TrendingTv>>() {
                 override fun onSuccess(data: Trending<TrendingTv>) {
                     callback.onSuccess(data)
                 }
@@ -1279,7 +1280,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<Reviews>() {
+            .subscribe(object : FrogoApiObserver<Reviews>() {
                 override fun onSuccess(data: Reviews) {
                     callback.onSuccess(data)
                 }
@@ -1301,7 +1302,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<NetworkDetail>() {
+            .subscribe(object : FrogoApiObserver<NetworkDetail>() {
                 override fun onSuccess(data: NetworkDetail) {
                     callback.onSuccess(data)
                 }
@@ -1323,7 +1324,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<NetworkAlternativeName>() {
+            .subscribe(object : FrogoApiObserver<NetworkAlternativeName>() {
                 override fun onSuccess(data: NetworkAlternativeName) {
                     callback.onSuccess(data)
                 }
@@ -1345,7 +1346,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<NetworkImage>() {
+            .subscribe(object : FrogoApiObserver<NetworkImage>() {
                 override fun onSuccess(data: NetworkImage) {
                     callback.onSuccess(data)
                 }
@@ -1368,7 +1369,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<SearchCompanies>() {
+            .subscribe(object : FrogoApiObserver<SearchCompanies>() {
                 override fun onSuccess(data: SearchCompanies) {
                     callback.onSuccess(data)
                 }
@@ -1392,7 +1393,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<SearchCollections>() {
+            .subscribe(object : FrogoApiObserver<SearchCollections>() {
                 override fun onSuccess(data: SearchCollections) {
                     callback.onSuccess(data)
                 }
@@ -1415,7 +1416,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<SearchKeywords>() {
+            .subscribe(object : FrogoApiObserver<SearchKeywords>() {
                 override fun onSuccess(data: SearchKeywords) {
                     callback.onSuccess(data)
                 }
@@ -1452,7 +1453,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<SearchMovies>() {
+            .subscribe(object : FrogoApiObserver<SearchMovies>() {
                 override fun onSuccess(data: SearchMovies) {
                     callback.onSuccess(data)
                 }
@@ -1478,7 +1479,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<SearchMulti>() {
+            .subscribe(object : FrogoApiObserver<SearchMulti>() {
                 override fun onSuccess(data: SearchMulti) {
                     callback.onSuccess(data)
                 }
@@ -1504,7 +1505,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<SearchPeople>() {
+            .subscribe(object : FrogoApiObserver<SearchPeople>() {
                 override fun onSuccess(data: SearchPeople) {
                     callback.onSuccess(data)
                 }
@@ -1537,7 +1538,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<SearchMovies>() {
+            .subscribe(object : FrogoApiObserver<SearchMovies>() {
                 override fun onSuccess(data: SearchMovies) {
                     callback.onSuccess(data)
                 }
@@ -1561,7 +1562,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvDetails>() {
+            .subscribe(object : FrogoApiObserver<TvDetails>() {
                 override fun onSuccess(data: TvDetails) {
                     callback.onSuccess(data)
                 }
@@ -1586,7 +1587,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvAccountStates>() {
+            .subscribe(object : FrogoApiObserver<TvAccountStates>() {
                 override fun onSuccess(data: TvAccountStates) {
                     callback.onSuccess(data)
                 }
@@ -1609,7 +1610,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvAlternativeTitles>() {
+            .subscribe(object : FrogoApiObserver<TvAlternativeTitles>() {
                 override fun onSuccess(data: TvAlternativeTitles) {
                     callback.onSuccess(data)
                 }
@@ -1634,7 +1635,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvChanges>() {
+            .subscribe(object : FrogoApiObserver<TvChanges>() {
                 override fun onSuccess(data: TvChanges) {
                     callback.onSuccess(data)
                 }
@@ -1657,7 +1658,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvContentRatings>() {
+            .subscribe(object : FrogoApiObserver<TvContentRatings>() {
                 override fun onSuccess(data: TvContentRatings) {
                     callback.onSuccess(data)
                 }
@@ -1680,7 +1681,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvCredits>() {
+            .subscribe(object : FrogoApiObserver<TvCredits>() {
                 override fun onSuccess(data: TvCredits) {
                     callback.onSuccess(data)
                 }
@@ -1703,7 +1704,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvEpisodeGroups>() {
+            .subscribe(object : FrogoApiObserver<TvEpisodeGroups>() {
                 override fun onSuccess(data: TvEpisodeGroups) {
                     callback.onSuccess(data)
                 }
@@ -1726,7 +1727,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvExternalIds>() {
+            .subscribe(object : FrogoApiObserver<TvExternalIds>() {
                 override fun onSuccess(data: TvExternalIds) {
                     callback.onSuccess(data)
                 }
@@ -1749,7 +1750,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvImages>() {
+            .subscribe(object : FrogoApiObserver<TvImages>() {
                 override fun onSuccess(data: TvImages) {
                     callback.onSuccess(data)
                 }
@@ -1771,7 +1772,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvKeywords>() {
+            .subscribe(object : FrogoApiObserver<TvKeywords>() {
                 override fun onSuccess(data: TvKeywords) {
                     callback.onSuccess(data)
                 }
@@ -1795,7 +1796,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvRecommendations>() {
+            .subscribe(object : FrogoApiObserver<TvRecommendations>() {
                 override fun onSuccess(data: TvRecommendations) {
                     callback.onSuccess(data)
                 }
@@ -1817,7 +1818,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvReviews>() {
+            .subscribe(object : FrogoApiObserver<TvReviews>() {
                 override fun onSuccess(data: TvReviews) {
                     callback.onSuccess(data)
                 }
@@ -1839,7 +1840,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvScreenedTheatrically>() {
+            .subscribe(object : FrogoApiObserver<TvScreenedTheatrically>() {
                 override fun onSuccess(data: TvScreenedTheatrically) {
                     callback.onSuccess(data)
                 }
@@ -1863,7 +1864,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvSimilarTVShows>() {
+            .subscribe(object : FrogoApiObserver<TvSimilarTVShows>() {
                 override fun onSuccess(data: TvSimilarTVShows) {
                     callback.onSuccess(data)
                 }
@@ -1885,7 +1886,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvTranslations>() {
+            .subscribe(object : FrogoApiObserver<TvTranslations>() {
                 override fun onSuccess(data: TvTranslations) {
                     callback.onSuccess(data)
                 }
@@ -1908,7 +1909,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvVideos>() {
+            .subscribe(object : FrogoApiObserver<TvVideos>() {
                 override fun onSuccess(data: TvVideos) {
                     callback.onSuccess(data)
                 }
@@ -1930,7 +1931,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvLatest>() {
+            .subscribe(object : FrogoApiObserver<TvLatest>() {
                 override fun onSuccess(data: TvLatest) {
                     callback.onSuccess(data)
                 }
@@ -1953,7 +1954,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvAiringToday>() {
+            .subscribe(object : FrogoApiObserver<TvAiringToday>() {
                 override fun onSuccess(data: TvAiringToday) {
                     callback.onSuccess(data)
                 }
@@ -1976,7 +1977,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvOnTheAir>() {
+            .subscribe(object : FrogoApiObserver<TvOnTheAir>() {
                 override fun onSuccess(data: TvOnTheAir) {
                     callback.onSuccess(data)
                 }
@@ -1999,7 +2000,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvPopular>() {
+            .subscribe(object : FrogoApiObserver<TvPopular>() {
                 override fun onSuccess(data: TvPopular) {
                     callback.onSuccess(data)
                 }
@@ -2022,7 +2023,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvTopRated>() {
+            .subscribe(object : FrogoApiObserver<TvTopRated>() {
                 override fun onSuccess(data: TvTopRated) {
                     callback.onSuccess(data)
                 }
@@ -2053,7 +2054,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvSeasonsDetails>() {
+            .subscribe(object : FrogoApiObserver<TvSeasonsDetails>() {
                 override fun onSuccess(data: TvSeasonsDetails) {
                     callback.onSuccess(data)
                 }
@@ -2079,7 +2080,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvSeasonsChanges>() {
+            .subscribe(object : FrogoApiObserver<TvSeasonsChanges>() {
                 override fun onSuccess(data: TvSeasonsChanges) {
                     callback.onSuccess(data)
                 }
@@ -2113,7 +2114,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvSeasonsAccountStates>() {
+            .subscribe(object : FrogoApiObserver<TvSeasonsAccountStates>() {
                 override fun onSuccess(data: TvSeasonsAccountStates) {
                     callback.onSuccess(data)
                 }
@@ -2138,7 +2139,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvSeasonsCredits>() {
+            .subscribe(object : FrogoApiObserver<TvSeasonsCredits>() {
                 override fun onSuccess(data: TvSeasonsCredits) {
                     callback.onSuccess(data)
                 }
@@ -2163,7 +2164,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvSeasonsExternalIds>() {
+            .subscribe(object : FrogoApiObserver<TvSeasonsExternalIds>() {
                 override fun onSuccess(data: TvSeasonsExternalIds) {
                     callback.onSuccess(data)
                 }
@@ -2188,7 +2189,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvSeasonsImages>() {
+            .subscribe(object : FrogoApiObserver<TvSeasonsImages>() {
                 override fun onSuccess(data: TvSeasonsImages) {
                     callback.onSuccess(data)
                 }
@@ -2213,7 +2214,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvSeasonsVideos>() {
+            .subscribe(object : FrogoApiObserver<TvSeasonsVideos>() {
                 override fun onSuccess(data: TvSeasonsVideos) {
                     callback.onSuccess(data)
                 }
@@ -2247,7 +2248,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvEpisodeDetails>() {
+            .subscribe(object : FrogoApiObserver<TvEpisodeDetails>() {
                 override fun onSuccess(data: TvEpisodeDetails) {
                     callback.onSuccess(data)
                 }
@@ -2273,7 +2274,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvEpisodeChanges>() {
+            .subscribe(object : FrogoApiObserver<TvEpisodeChanges>() {
                 override fun onSuccess(data: TvEpisodeChanges) {
                     callback.onSuccess(data)
                 }
@@ -2307,7 +2308,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvEpisodeAccountStates>() {
+            .subscribe(object : FrogoApiObserver<TvEpisodeAccountStates>() {
                 override fun onSuccess(data: TvEpisodeAccountStates) {
                     callback.onSuccess(data)
                 }
@@ -2332,7 +2333,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvEpisodeCredits>() {
+            .subscribe(object : FrogoApiObserver<TvEpisodeCredits>() {
                 override fun onSuccess(data: TvEpisodeCredits) {
                     callback.onSuccess(data)
                 }
@@ -2357,7 +2358,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvEpisodeExternalIds>() {
+            .subscribe(object : FrogoApiObserver<TvEpisodeExternalIds>() {
                 override fun onSuccess(data: TvEpisodeExternalIds) {
                     callback.onSuccess(data)
                 }
@@ -2382,7 +2383,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvEpisodeImages>() {
+            .subscribe(object : FrogoApiObserver<TvEpisodeImages>() {
                 override fun onSuccess(data: TvEpisodeImages) {
                     callback.onSuccess(data)
                 }
@@ -2407,7 +2408,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvEpisodeTranslation>() {
+            .subscribe(object : FrogoApiObserver<TvEpisodeTranslation>() {
                 override fun onSuccess(data: TvEpisodeTranslation) {
                     callback.onSuccess(data)
                 }
@@ -2433,7 +2434,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvEpisodeVideos>() {
+            .subscribe(object : FrogoApiObserver<TvEpisodeVideos>() {
                 override fun onSuccess(data: TvEpisodeVideos) {
                     callback.onSuccess(data)
                 }
@@ -2457,7 +2458,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<TvEpisodeGroupsDetails>() {
+            .subscribe(object : FrogoApiObserver<TvEpisodeGroupsDetails>() {
                 override fun onSuccess(data: TvEpisodeGroupsDetails) {
                     callback.onSuccess(data)
                 }
@@ -2481,7 +2482,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<PeopleDetails>() {
+            .subscribe(object : FrogoApiObserver<PeopleDetails>() {
                 override fun onSuccess(data: PeopleDetails) {
                     callback.onSuccess(data)
                 }
@@ -2507,7 +2508,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<PeopleChanges>() {
+            .subscribe(object : FrogoApiObserver<PeopleChanges>() {
                 override fun onSuccess(data: PeopleChanges) {
                     callback.onSuccess(data)
                 }
@@ -2531,7 +2532,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<PeopleMovieCredits>() {
+            .subscribe(object : FrogoApiObserver<PeopleMovieCredits>() {
                 override fun onSuccess(data: PeopleMovieCredits) {
                     callback.onSuccess(data)
                 }
@@ -2555,7 +2556,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<PeopleTvCredits>() {
+            .subscribe(object : FrogoApiObserver<PeopleTvCredits>() {
                 override fun onSuccess(data: PeopleTvCredits) {
                     callback.onSuccess(data)
                 }
@@ -2579,7 +2580,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<PeopleCombinedCredits>() {
+            .subscribe(object : FrogoApiObserver<PeopleCombinedCredits>() {
                 override fun onSuccess(data: PeopleCombinedCredits) {
                     callback.onSuccess(data)
                 }
@@ -2602,7 +2603,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<PeopleExternalIds>() {
+            .subscribe(object : FrogoApiObserver<PeopleExternalIds>() {
                 override fun onSuccess(data: PeopleExternalIds) {
                     callback.onSuccess(data)
                 }
@@ -2624,7 +2625,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<PeopleImages>() {
+            .subscribe(object : FrogoApiObserver<PeopleImages>() {
                 override fun onSuccess(data: PeopleImages) {
                     callback.onSuccess(data)
                 }
@@ -2648,7 +2649,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<PeopleTaggedImages>() {
+            .subscribe(object : FrogoApiObserver<PeopleTaggedImages>() {
                 override fun onSuccess(data: PeopleTaggedImages) {
                     callback.onSuccess(data)
                 }
@@ -2671,7 +2672,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<PeopleTranslations>() {
+            .subscribe(object : FrogoApiObserver<PeopleTranslations>() {
                 override fun onSuccess(data: PeopleTranslations) {
                     callback.onSuccess(data)
                 }
@@ -2693,7 +2694,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<PeopleLatest>() {
+            .subscribe(object : FrogoApiObserver<PeopleLatest>() {
                 override fun onSuccess(data: PeopleLatest) {
                     callback.onSuccess(data)
                 }
@@ -2716,7 +2717,7 @@ object MovieRepository : MovieDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiCallback<PeoplePopular>() {
+            .subscribe(object : FrogoApiObserver<PeoplePopular>() {
                 override fun onSuccess(data: PeoplePopular) {
                     callback.onSuccess(data)
                 }

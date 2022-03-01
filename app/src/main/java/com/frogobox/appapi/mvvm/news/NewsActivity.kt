@@ -12,7 +12,7 @@ import com.frogobox.appapi.databinding.ContentArticleVerticalBinding
 import com.frogobox.appapi.databinding.ContentCategoryBinding
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
-import com.frogobox.sdk.core.FrogoActivity
+import com.frogobox.sdk.FrogoActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NewsActivity : FrogoActivity<ActivityNewsBinding>() {
@@ -31,7 +31,7 @@ class NewsActivity : FrogoActivity<ActivityNewsBinding>() {
             setupCategory()
 
             eventShowProgress.observe(this@NewsActivity) {
-                setupEventProgressView(binding.progressView, it)
+                setupProgressView(binding.progressView, it)
             }
 
             eventFailed.observe(this@NewsActivity) {
@@ -53,7 +53,7 @@ class NewsActivity : FrogoActivity<ActivityNewsBinding>() {
         }
     }
 
-    override fun setupUI(savedInstanceState: Bundle?) {
+    override fun setupOnCreate(savedInstanceState: Bundle?) {
         setupDetailActivity("News API")
     }
 

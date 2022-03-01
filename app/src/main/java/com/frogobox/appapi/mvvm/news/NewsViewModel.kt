@@ -15,7 +15,7 @@ import com.frogobox.api.news.util.NewsConstant.CATEGORY_SCIENCE
 import com.frogobox.api.news.util.NewsConstant.CATEGORY_SPORTS
 import com.frogobox.api.news.util.NewsConstant.CATEGORY_TECHNOLOGY
 import com.frogobox.api.news.util.NewsConstant.COUNTRY_ID
-import com.frogobox.sdk.core.FrogoViewModel
+import com.frogobox.sdk.FrogoViewModel
 
 /*
  * Created by faisalamir on 28/07/21

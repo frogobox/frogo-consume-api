@@ -7,7 +7,7 @@ import com.frogobox.api.meal.model.Meal
 import com.frogobox.api.meal.response.MealResponse
 import com.frogobox.api.meal.util.MealUrl
 import com.frogobox.api.core.ConsumeApiResponse
-import com.frogobox.sdk.core.FrogoViewModel
+import com.frogobox.sdk.FrogoViewModel
 
 /*
  * Created by faisalamir on 28/07/21

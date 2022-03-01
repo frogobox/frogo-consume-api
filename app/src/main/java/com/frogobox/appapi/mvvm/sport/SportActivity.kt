@@ -7,8 +7,8 @@ import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ActivitySportBinding
 import com.frogobox.api.sport.model.Team
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
-import com.frogobox.uikit.databinding.FrogoRvGridType3Binding
-import com.frogobox.sdk.core.FrogoActivity
+import com.frogobox.ui.databinding.FrogoRvGridType3Binding
+import com.frogobox.sdk.FrogoActivity
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -26,7 +26,7 @@ class SportActivity : FrogoActivity<ActivitySportBinding>() {
             searchAllTeam()
 
             eventShowProgress.observe(this@SportActivity) {
-                setupEventProgressView(binding.progressView, it)
+                setupProgressView(binding.progressView, it)
             }
 
             eventFailed.observe(this@SportActivity) {
@@ -40,7 +40,7 @@ class SportActivity : FrogoActivity<ActivitySportBinding>() {
         }
     }
 
-    override fun setupUI(savedInstanceState: Bundle?) {
+    override fun setupOnCreate(savedInstanceState: Bundle?) {
         setupDetailActivity("Sport Api")
     }
 

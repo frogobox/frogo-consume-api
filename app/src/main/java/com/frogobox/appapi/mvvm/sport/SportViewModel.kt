@@ -7,7 +7,7 @@ import com.frogobox.api.sport.response.Teams
 import com.frogobox.api.sport.util.SportUrl
 import com.frogobox.api.core.ConsumeApiLiveEvent
 import com.frogobox.api.core.ConsumeApiResponse
-import com.frogobox.sdk.core.FrogoViewModel
+import com.frogobox.sdk.FrogoViewModel
 
 /*
  * Created by faisalamir on 28/07/21

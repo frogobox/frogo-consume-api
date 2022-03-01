@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.frogobox.api.news.model.Article
 import com.frogobox.appapi.databinding.ActivityNewsDetailBinding
-import com.frogobox.sdk.core.FrogoActivity
+import com.frogobox.sdk.FrogoActivity
 
 class NewsDetailActivity : FrogoActivity<ActivityNewsDetailBinding>() {
 
@@ -19,7 +19,7 @@ class NewsDetailActivity : FrogoActivity<ActivityNewsDetailBinding>() {
     override fun setupViewModel() {}
 
 
-    override fun setupUI(savedInstanceState: Bundle?) {
+    override fun setupOnCreate(savedInstanceState: Bundle?) {
         setupDetailActivity("Detail Berita")
 
         val extraArticle = baseGetExtraData<Article>(EXTRA_DATA)

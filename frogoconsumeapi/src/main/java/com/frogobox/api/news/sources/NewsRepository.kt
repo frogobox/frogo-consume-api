@@ -2,12 +2,13 @@ package com.frogobox.api.news.sources
 
 import android.content.Context
 import android.util.Log
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.frogobox.api.news.response.ArticleResponse
 import com.frogobox.api.news.response.SourceResponse
 import com.frogobox.api.news.util.NewsUrl
-import com.frogobox.sdk.core.FrogoApiCallback
-import com.frogobox.sdk.core.FrogoApiClient
 import com.frogobox.api.core.ConsumeApiResponse
+import com.frogobox.coresdk.FrogoApiClient
+import com.frogobox.coresdk.FrogoApiObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -35,7 +36,7 @@ object NewsRepository : NewsDataSource {
 
     override fun usingChuckInterceptor(context: Context) {
         Log.d(TAG, "Using Chuck Interceptor")
-        newsApiService = FrogoApiClient.create(NewsUrl.BASE_URL, context)
+        newsApiService = FrogoApiClient.createWithClient(NewsUrl.BASE_URL, ChuckerInterceptor(context))
     }
 
     override fun getTopHeadline(
@@ -54,7 +55,7 @@ object NewsRepository : NewsDataSource {
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : FrogoApiCallback<ArticleResponse>() {
+            .subscribe(object : FrogoApiObserver<ArticleResponse>() {
                 override fun onSuccess(data: ArticleResponse) {
                     callback.onSuccess(data)
                 }
@@ -99,7 +100,7 @@ object NewsRepository : NewsDataSource {
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : FrogoApiCallback<ArticleResponse>() {
+            .subscribe(object : FrogoApiObserver<ArticleResponse>() {
                 override fun onSuccess(data: ArticleResponse) {
                     callback.onSuccess(data)
                 }
@@ -123,7 +124,7 @@ object NewsRepository : NewsDataSource {
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : FrogoApiCallback<SourceResponse>() {
+            .subscribe(object : FrogoApiObserver<SourceResponse>() {
                 override fun onSuccess(data: SourceResponse) {
                     callback.onSuccess(data)
                 }
