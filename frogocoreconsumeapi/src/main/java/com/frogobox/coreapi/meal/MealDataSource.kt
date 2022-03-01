@@ -1,6 +1,5 @@
-package com.frogobox.api.meal
+package com.frogobox.coreapi.meal
 
-import android.content.Context
 import com.frogobox.coreapi.meal.response.CategoryResponse
 import com.frogobox.coreapi.meal.response.MealResponse
 import com.frogobox.coreapi.ConsumeApiResponse
@@ -24,9 +23,6 @@ import com.frogobox.coreapi.meal.model.*
  *
  */
 interface MealDataSource {
-
-    // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(context: Context)
 
     // Search meal by name
     fun searchMeal(apiKey: String, mealName: String, callback: ConsumeApiResponse<MealResponse<Meal>>)

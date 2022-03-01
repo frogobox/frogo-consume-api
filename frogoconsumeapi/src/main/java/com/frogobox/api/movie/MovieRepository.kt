@@ -5,6 +5,7 @@ import android.util.Log
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.movie.MovieApiService
+import com.frogobox.coreapi.movie.MovieDataSource
 import com.frogobox.coreapi.movie.MovieUrl
 import com.frogobox.coreapi.movie.model.*
 import com.frogobox.coreapi.movie.response.*
@@ -35,7 +36,8 @@ object MovieRepository : MovieDataSource {
     private val TAG = MovieRepository::class.java.simpleName
     private var movieApiService = FrogoApiClient.create<MovieApiService>(MovieUrl.BASE_URL)
 
-    override fun usingChuckInterceptor(context: Context) {
+    // Switch For Using Chuck Interceptor
+    fun usingChuckInterceptor(context: Context) {
         Log.d(TAG, "Using Chuck Interceptor")
         movieApiService = FrogoApiClient.createWithClient(MovieUrl.BASE_URL, ChuckerInterceptor(context))
     }

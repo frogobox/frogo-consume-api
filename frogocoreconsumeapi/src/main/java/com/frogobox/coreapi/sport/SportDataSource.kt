@@ -1,6 +1,5 @@
-package com.frogobox.api.sport
+package com.frogobox.coreapi.sport
 
-import android.content.Context
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.sport.response.*
 
@@ -22,9 +21,6 @@ import com.frogobox.coreapi.sport.response.*
  *
  */
 interface SportDataSource {
-
-    // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(context: Context)
 
     // Search for team by name
     fun searchForTeamByName(apiKey: String, teamName: String?, callback: ConsumeApiResponse<Teams>)

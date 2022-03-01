@@ -5,6 +5,7 @@ import android.util.Log
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.sport.SportApiService
+import com.frogobox.coreapi.sport.SportDataSource
 import com.frogobox.coreapi.sport.SportUrl
 import com.frogobox.coreapi.sport.response.*
 import com.frogobox.coresdk.FrogoApiClient
@@ -35,7 +36,8 @@ object SportRepository : SportDataSource {
     private val TAG = SportRepository::class.java.simpleName
     private var sportApiService = FrogoApiClient.create<SportApiService>(SportUrl.BASE_URL)
 
-    override fun usingChuckInterceptor(context: Context) {
+    // Switch For Using Chuck Interceptor
+    fun usingChuckInterceptor(context: Context) {
         Log.d(TAG, "Using Chuck Interceptor")
         sportApiService = FrogoApiClient.createWithClient(SportUrl.BASE_URL, ChuckerInterceptor(context))
     }

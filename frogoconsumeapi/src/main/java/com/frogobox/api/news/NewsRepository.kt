@@ -8,6 +8,7 @@ import com.frogobox.coreapi.news.response.SourceResponse
 import com.frogobox.coreapi.news.NewsUrl
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.news.NewsApiService
+import com.frogobox.coreapi.news.NewsDataSource
 import com.frogobox.coresdk.FrogoApiClient
 import com.frogobox.coresdk.FrogoApiObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -35,7 +36,8 @@ object NewsRepository : NewsDataSource {
     private val TAG = NewsRepository::class.java.simpleName
     private var newsApiService = FrogoApiClient.create<NewsApiService>(NewsUrl.BASE_URL)
 
-    override fun usingChuckInterceptor(context: Context) {
+    // Switch For Using Chuck Interceptor
+    fun usingChuckInterceptor(context: Context) {
         Log.d(TAG, "Using Chuck Interceptor")
         newsApiService = FrogoApiClient.createWithClient(NewsUrl.BASE_URL, ChuckerInterceptor(context))
     }

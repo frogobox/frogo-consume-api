@@ -5,6 +5,7 @@ import android.util.Log
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.pixabay.PixabayApiService
+import com.frogobox.coreapi.pixabay.PixabayDataSource
 import com.frogobox.coreapi.pixabay.model.PixabayImage
 import com.frogobox.coreapi.pixabay.model.PixabayVideo
 import com.frogobox.coreapi.pixabay.response.Response
@@ -36,7 +37,8 @@ object PixabayRepository : PixabayDataSource {
     private val TAG = PixabayRepository::class.java.simpleName
     private var pixabayApiService = FrogoApiClient.create<PixabayApiService>(PixabayUrl.BASE_URL)
 
-    override fun usingChuckInterceptor(context: Context) {
+    // Switch For Using Chuck Interceptor
+    fun usingChuckInterceptor(context: Context) {
         Log.d(TAG, "Using Chuck Interceptor")
         pixabayApiService = FrogoApiClient.createWithClient(PixabayUrl.BASE_URL, ChuckerInterceptor(context))
     }

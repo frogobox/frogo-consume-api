@@ -116,7 +116,7 @@ dependencies {
     implementation("com.github.amirisback:frogo-recycler-view:4.0.4")
     implementation("com.github.amirisback:frogo-log:2.0.8")
 
-    implementation("com.github.frogobox:frogo-ui:0.0.1-beta02")
+    implementation("com.github.frogobox:frogo-ui:0.0.1-beta03")
     implementation("com.github.frogobox:frogo-sdk:0.0.1-beta05")
 
     implementation("io.insert-koin:koin-core:${Dependency.KOIN_VERSION}") // Koin core features

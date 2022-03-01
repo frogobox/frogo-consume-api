@@ -1,6 +1,5 @@
-package com.frogobox.api.news
+package com.frogobox.coreapi.news
 
-import android.content.Context
 import com.frogobox.coreapi.news.response.ArticleResponse
 import com.frogobox.coreapi.news.response.SourceResponse
 import com.frogobox.coreapi.ConsumeApiResponse
@@ -23,9 +22,6 @@ import com.frogobox.coreapi.ConsumeApiResponse
  *
  */
 interface NewsDataSource {
-
-    // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(context: Context)
 
     // Get Top Headline
     fun getTopHeadline(

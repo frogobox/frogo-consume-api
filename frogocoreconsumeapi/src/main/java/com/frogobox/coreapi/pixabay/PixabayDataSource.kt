@@ -1,6 +1,5 @@
-package com.frogobox.api.pixabay
+package com.frogobox.coreapi.pixabay
 
-import android.content.Context
 import com.frogobox.coreapi.pixabay.model.PixabayImage
 import com.frogobox.coreapi.pixabay.model.PixabayVideo
 import com.frogobox.coreapi.pixabay.response.Response
@@ -25,9 +24,6 @@ import com.frogobox.coreapi.ConsumeApiResponse
  */
 
 interface PixabayDataSource {
-
-    // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(context: Context)
 
     // Search for Image
     fun searchImage(

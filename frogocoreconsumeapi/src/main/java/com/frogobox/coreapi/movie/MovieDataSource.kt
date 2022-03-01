@@ -1,6 +1,5 @@
-package com.frogobox.api.movie
+package com.frogobox.coreapi.movie
 
-import android.content.Context
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.movie.model.*
 import com.frogobox.coreapi.movie.response.*
@@ -23,11 +22,6 @@ import com.frogobox.coreapi.movie.response.*
  *
  */
 interface MovieDataSource {
-
-    // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(context: Context)
-
-    // ---------------------------------------------------------------------------------------------
 
     // CERTIFICATIONS
     // Get Movie Certifications

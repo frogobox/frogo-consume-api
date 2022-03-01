@@ -9,6 +9,7 @@ import com.frogobox.coreapi.meal.MealConstant
 import com.frogobox.coreapi.meal.MealUrl
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.meal.MealApiService
+import com.frogobox.coreapi.meal.MealDataSource
 import com.frogobox.coreapi.meal.model.*
 import com.frogobox.coresdk.FrogoApiClient
 import com.frogobox.coresdk.FrogoApiObserver
@@ -37,7 +38,7 @@ object MealRepository : MealDataSource {
     private val TAG = MealRepository::class.java.simpleName
     private var mealApiService = FrogoApiClient.create<MealApiService>(MealUrl.BASE_URL)
 
-    override fun usingChuckInterceptor(context: Context) {
+    fun usingChuckInterceptor(context: Context) {
         Log.d(TAG, "Using Chuck Interceptor")
         mealApiService = FrogoApiClient.createWithClient(MealUrl.BASE_URL, ChuckerInterceptor(context))
     }
