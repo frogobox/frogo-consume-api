@@ -1,11 +1,10 @@
 package com.frogobox.api.meal
 
 import android.content.Context
-import com.frogobox.api.meal.response.MealResponse
-import com.frogobox.api.meal.source.MealRepository
-import com.frogobox.api.meal.model.*
-import com.frogobox.api.meal.response.CategoryResponse
-import com.frogobox.api.core.ConsumeApiResponse
+import com.frogobox.coreapi.meal.response.MealResponse
+import com.frogobox.coreapi.meal.response.CategoryResponse
+import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.coreapi.meal.model.*
 
 /**
  * Created by Faisal Amir

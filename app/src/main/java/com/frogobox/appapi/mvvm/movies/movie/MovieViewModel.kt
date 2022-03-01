@@ -1,11 +1,11 @@
 package com.frogobox.appapi.mvvm.movies.movie
 
 import android.app.Application
-import com.frogobox.api.core.ConsumeApiLiveEvent
 import com.frogobox.appapi.mvvm.movies.core.MoviesViewModel
-import com.frogobox.api.movie.model.TrendingMovie
-import com.frogobox.api.movie.response.Trending
-import com.frogobox.api.core.ConsumeApiResponse
+import com.frogobox.coreapi.movie.model.TrendingMovie
+import com.frogobox.coreapi.movie.response.Trending
+import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.sdk.FrogoMutableLiveData
 
 /*
  * Created by faisalamir on 28/07/21
@@ -21,8 +21,8 @@ import com.frogobox.api.core.ConsumeApiResponse
  */
 class MovieViewModel(private val context: Application) : MoviesViewModel(context) {
 
-    val listDataDay = ConsumeApiLiveEvent<List<TrendingMovie>>()
-    val listDataWeek = ConsumeApiLiveEvent<List<TrendingMovie>>()
+    val listDataDay = FrogoMutableLiveData<List<TrendingMovie>>()
+    val listDataWeek = FrogoMutableLiveData<List<TrendingMovie>>()
 
     fun getTrendingMovieDay() {
         consumeMovieApi().getTrendingMovieDay(object : ConsumeApiResponse<Trending<TrendingMovie>> {

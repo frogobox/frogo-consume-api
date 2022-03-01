@@ -2,19 +2,19 @@ package com.frogobox.appapi.mvvm.news
 
 import android.app.Application
 import com.frogobox.api.news.ConsumeNewsApi
-import com.frogobox.api.news.model.Article
-import com.frogobox.api.news.response.ArticleResponse
-import com.frogobox.api.news.util.NewsUrl
-import com.frogobox.api.core.ConsumeApiLiveEvent
-import com.frogobox.api.core.ConsumeApiResponse
-import com.frogobox.api.news.util.NewsConstant.CATEGORY_BUSINESS
-import com.frogobox.api.news.util.NewsConstant.CATEGORY_ENTERTAIMENT
-import com.frogobox.api.news.util.NewsConstant.CATEGORY_GENERAL
-import com.frogobox.api.news.util.NewsConstant.CATEGORY_HEALTH
-import com.frogobox.api.news.util.NewsConstant.CATEGORY_SCIENCE
-import com.frogobox.api.news.util.NewsConstant.CATEGORY_SPORTS
-import com.frogobox.api.news.util.NewsConstant.CATEGORY_TECHNOLOGY
-import com.frogobox.api.news.util.NewsConstant.COUNTRY_ID
+import com.frogobox.coreapi.news.model.Article
+import com.frogobox.coreapi.news.response.ArticleResponse
+import com.frogobox.coreapi.news.NewsUrl
+import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.coreapi.news.NewsConstant.CATEGORY_BUSINESS
+import com.frogobox.coreapi.news.NewsConstant.CATEGORY_ENTERTAIMENT
+import com.frogobox.coreapi.news.NewsConstant.CATEGORY_GENERAL
+import com.frogobox.coreapi.news.NewsConstant.CATEGORY_HEALTH
+import com.frogobox.coreapi.news.NewsConstant.CATEGORY_SCIENCE
+import com.frogobox.coreapi.news.NewsConstant.CATEGORY_SPORTS
+import com.frogobox.coreapi.news.NewsConstant.CATEGORY_TECHNOLOGY
+import com.frogobox.coreapi.news.NewsConstant.COUNTRY_ID
+import com.frogobox.sdk.FrogoMutableLiveData
 import com.frogobox.sdk.FrogoViewModel
 
 /*
@@ -31,9 +31,9 @@ import com.frogobox.sdk.FrogoViewModel
  */
 class NewsViewModel(private val context: Application) : FrogoViewModel(context) {
 
-    val listDataCategory = ConsumeApiLiveEvent<List<Article>>()
-    val listData = ConsumeApiLiveEvent<List<Article>>()
-    val listCategory = ConsumeApiLiveEvent<List<String>>()
+    val listDataCategory = FrogoMutableLiveData<List<Article>>()
+    val listData = FrogoMutableLiveData<List<Article>>()
+    val listCategory = FrogoMutableLiveData<List<String>>()
     private val consumeNewsApi = ConsumeNewsApi(NewsUrl.API_KEY)
 
     fun setupCategory() {

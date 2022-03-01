@@ -2,11 +2,11 @@ package com.frogobox.appapi.mvvm.sport
 
 import android.app.Application
 import com.frogobox.api.sport.ConsumeTheSportDbApi
-import com.frogobox.api.sport.model.Team
-import com.frogobox.api.sport.response.Teams
-import com.frogobox.api.sport.util.SportUrl
-import com.frogobox.api.core.ConsumeApiLiveEvent
-import com.frogobox.api.core.ConsumeApiResponse
+import com.frogobox.coreapi.sport.response.Teams
+import com.frogobox.coreapi.sport.SportUrl
+import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.coreapi.sport.model.Team
+import com.frogobox.sdk.FrogoMutableLiveData
 import com.frogobox.sdk.FrogoViewModel
 
 /*
@@ -23,7 +23,7 @@ import com.frogobox.sdk.FrogoViewModel
  */
 class SportViewModel(private val context: Application) : FrogoViewModel(context) {
 
-    val listData = ConsumeApiLiveEvent<List<Team>>()
+    val listData = FrogoMutableLiveData<List<Team>>()
     private val consumeTheSportDbApi = ConsumeTheSportDbApi(SportUrl.API_KEY) // Your API Key
 
     fun searchAllTeam() {

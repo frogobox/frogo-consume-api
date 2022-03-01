@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ContentItemBinding
 import com.frogobox.appapi.databinding.FragmentTrendingChildBinding
-import com.frogobox.api.movie.model.TrendingTv
-import com.frogobox.api.movie.util.MovieUrl
+import com.frogobox.coreapi.movie.MovieUrl
+import com.frogobox.coreapi.movie.model.TrendingTv
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.sdk.FrogoFragment
 import com.frogobox.recycler.core.IFrogoBindingAdapter

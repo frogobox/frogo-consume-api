@@ -1,11 +1,10 @@
 package com.frogobox.api.pixabay
 
 import android.content.Context
-import com.frogobox.api.pixabay.model.PixabayImage
-import com.frogobox.api.pixabay.model.PixabayVideo
-import com.frogobox.api.pixabay.response.Response
-import com.frogobox.api.pixabay.source.PixabayRepository
-import com.frogobox.api.core.ConsumeApiResponse
+import com.frogobox.coreapi.pixabay.model.PixabayImage
+import com.frogobox.coreapi.pixabay.model.PixabayVideo
+import com.frogobox.coreapi.pixabay.response.Response
+import com.frogobox.coreapi.ConsumeApiResponse
 
 /**
  * Created by Faisal Amir

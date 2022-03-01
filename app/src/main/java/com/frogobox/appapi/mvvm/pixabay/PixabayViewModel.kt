@@ -2,11 +2,11 @@ package com.frogobox.appapi.mvvm.pixabay
 
 import android.app.Application
 import com.frogobox.api.pixabay.ConsumePixabayApi
-import com.frogobox.api.pixabay.model.PixabayImage
-import com.frogobox.api.pixabay.response.Response
-import com.frogobox.api.pixabay.util.PixabayUrl
-import com.frogobox.api.core.ConsumeApiLiveEvent
-import com.frogobox.api.core.ConsumeApiResponse
+import com.frogobox.coreapi.pixabay.model.PixabayImage
+import com.frogobox.coreapi.pixabay.response.Response
+import com.frogobox.coreapi.pixabay.PixabayUrl
+import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.sdk.FrogoMutableLiveData
 import com.frogobox.sdk.FrogoViewModel
 
 /*
@@ -23,7 +23,7 @@ import com.frogobox.sdk.FrogoViewModel
  */
 class PixabayViewModel(private val context: Application) : FrogoViewModel(context) {
 
-    val listData = ConsumeApiLiveEvent<List<PixabayImage>>()
+    val listData = FrogoMutableLiveData<List<PixabayImage>>()
     private val consumePixabayApi = ConsumePixabayApi(PixabayUrl.API_KEY) // Your API Key
 
     fun searchImage(query: String) {

@@ -1,9 +1,8 @@
 package com.frogobox.api.sport
 
 import android.content.Context
-import com.frogobox.api.sport.response.*
-import com.frogobox.api.sport.source.SportRepository
-import com.frogobox.api.core.ConsumeApiResponse
+import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.coreapi.sport.response.*
 
 /**
  * Created by Faisal Amir

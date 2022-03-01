@@ -1,11 +1,10 @@
 package com.frogobox.api.movie
 
 import android.content.Context
-import com.frogobox.api.movie.model.*
-import com.frogobox.api.movie.response.*
-import com.frogobox.api.movie.source.MovieRepository
-import com.frogobox.api.movie.util.MovieConstant
-import com.frogobox.api.core.ConsumeApiResponse
+import com.frogobox.coreapi.movie.MovieConstant
+import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.coreapi.movie.model.*
+import com.frogobox.coreapi.movie.response.*
 
 /**
  * Created by Faisal Amir

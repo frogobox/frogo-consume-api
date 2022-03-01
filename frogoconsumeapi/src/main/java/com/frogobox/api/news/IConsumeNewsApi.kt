@@ -1,9 +1,9 @@
 package com.frogobox.api.news
 
 import android.content.Context
-import com.frogobox.api.news.response.ArticleResponse
-import com.frogobox.api.news.response.SourceResponse
-import com.frogobox.api.core.ConsumeApiResponse
+import com.frogobox.coreapi.news.response.ArticleResponse
+import com.frogobox.coreapi.news.response.SourceResponse
+import com.frogobox.coreapi.ConsumeApiResponse
 
 /**
  * Created by Faisal Amir
