@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.compose") version Dependency.COMPOSE_MULTIPLATFORM_VERSION
     id("kotlin-kapt")
     `maven-publish`
 }
@@ -42,10 +43,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
-    composeOptions {
-        kotlinCompilerExtensionVersion = Dependency.COMPOSE_VERSION
-    }
-
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions {
             jvmTarget = JavaVersion.VERSION_11.toString()
@@ -62,30 +59,33 @@ android {
 
 dependencies {
 
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Dependency.KOTLIN_VERSION}")
-
     implementation("androidx.appcompat:appcompat:1.4.1")
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.preference:preference-ktx:1.2.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
     implementation("androidx.activity:activity-compose:1.4.0")
-
     implementation("androidx.work:work-runtime:2.8.0-alpha01")
 
-    implementation("androidx.compose.ui:ui:${Dependency.COMPOSE_VERSION}")
-    implementation("androidx.compose.material:material:${Dependency.COMPOSE_VERSION}")
-    implementation("androidx.compose.ui:ui-tooling-preview:${Dependency.COMPOSE_VERSION}")
+    implementation(compose.ui)
+    implementation(compose.runtime)
+    implementation(compose.preview)
+    implementation(compose.uiTooling)
+    implementation(compose.material)
+    implementation(compose.materialIconsExtended)
 
-    implementation("com.google.code.gson:gson:2.9.0")
+    implementation("com.google.code.gson:gson:${Dependency.GSON_VERSION}")
 
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:retrofit:${Dependency.RETROFIT_VERSION}")
 
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
     implementation("io.reactivex.rxjava2:rxjava:2.2.21")
 
-    implementation("com.github.frogobox:frogo-sdk:0.0.1-beta03")
+    implementation("com.github.frogobox:frogo-sdk:0.0.1-beta05")
 
     implementation("com.facebook.stetho:stetho:1.5.1")
+
+    debugImplementation(compose.ui)
+    debugImplementation(compose.uiTooling)
 
     debugImplementation("com.github.chuckerteam.chucker:library:3.5.2")
     releaseImplementation("com.github.chuckerteam.chucker:library-no-op:3.5.2")
@@ -105,11 +105,11 @@ afterEvaluate {
 
                 // Library Package Name (Example : "com.frogobox.androidfirstlib")
                 // NOTE : Different GroupId For Each Library / Module, So That Each Library Is Not Overwritten
-                groupId = ProjectSetting.PROJECT_LIB_ID
+                groupId = ProjectSetting.PROJECT_LIB_ID_API
 
                 // Library Name / Module Name (Example : "androidfirstlib")
                 // NOTE : Different ArtifactId For Each Library / Module, So That Each Library Is Not Overwritten
-                artifactId = ProjectSetting.NAME_APK
+                artifactId = ProjectSetting.MODULE_NAME_API
 
                 // Version Library Name (Example : "1.0.0")
                 version = ProjectSetting.PROJECT_VERSION_NAME
