@@ -78,13 +78,7 @@ dependencies {
 
     implementation("com.google.code.gson:gson:2.9.0")
 
-    implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.2")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
-
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.retrofit2:adapter-rxjava:2.9.0")
-    implementation("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
 
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
     implementation("io.reactivex.rxjava2:rxjava:2.2.21")
@@ -92,16 +86,10 @@ dependencies {
     implementation("com.github.frogobox:frogo-sdk:0.0.1-beta03")
 
     implementation("com.facebook.stetho:stetho:1.5.1")
+
     debugImplementation("com.github.chuckerteam.chucker:library:3.5.2")
     releaseImplementation("com.github.chuckerteam.chucker:library-no-op:3.5.2")
 
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test:runner:1.4.0")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
-
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:${Dependency.COMPOSE_VERSION}") 
-    debugImplementation("androidx.compose.ui:ui-tooling:${Dependency.COMPOSE_VERSION}")
- 
 }
 
 afterEvaluate {
