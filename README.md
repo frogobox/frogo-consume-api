@@ -1,9 +1,11 @@
 ![ScreenShoot Apps](docs/image/ss_banner.png?raw=true)
 
 ## About This Project
-
 [![](https://jitpack.io/v/frogobox/frogo-consume-api.svg?style=flat-square)](https://jitpack.io/#frogobox/frogo-consume-api) <br>
-SDK for anything your problem to make easier developing android apps
+
+- SDK for anything your problem to make easier developing android apps
+- Privacy Policy [Click Here](https://github.com/frogobox/frogo-consume-api/blob/master/PRIVACY-POLICY.md)
+- License [Click Here](https://github.com/frogobox/frogo-consume-api/blob/master/LICENSE)
 
 ## Screen Shoot
 | The Meals API      |   Chuck Data 1               |   Chuck Data 2        |
