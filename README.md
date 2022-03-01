@@ -4,6 +4,8 @@
 [![](https://jitpack.io/v/frogobox/frogo-consume-api.svg?style=flat-square)](https://jitpack.io/#frogobox/frogo-consume-api) <br>
 
 - SDK for anything your problem to make easier developing android apps
+- Migrate frogo-android-sdk to frogo-sdk [Click Here](github.com/frogobox/frogo-sdk)
+- Migrate frogo-android-ui-kit to frogo-ui [Click Here](github.com/frogobox/frogo-ui)
 - Privacy Policy [Click Here](https://github.com/frogobox/frogo-consume-api/blob/master/PRIVACY-POLICY.md)
 - License [Click Here](https://github.com/frogobox/frogo-consume-api/blob/master/LICENSE)
 
@@ -19,12 +21,16 @@
 ## Version Release
 This Is Latest Release
 
-    $version_release = 1.0.8
+    $version_release = 2.0.0
 
 What's New??
 
     * Update Code *
-    * Upgrade from FrogoResponseCallback to ConsumeApiResponse *
+    * Available for android and desktop *
+    * Migrate frogo-android-sdk to frogo-sdk *
+    * Migrate frogo-android-ui-kit to frogo-ui *
+    * Migrate Chuck Ready Software To ChuckerTeam/Chuck *
+    * Please Reimport RedColored Code *
 
 ## Download this project
 
@@ -60,14 +66,14 @@ allprojects {
 
     dependencies {
         // library frogo-consume-api
-        implementation 'com.github.frogobox:frogo-consume-api:1.0.8'
+        implementation 'com.github.frogobox:frogo-consume-api:2.0.0'
     }
 
 #### <Option 2> Kotlin DSL Gradle
 
     dependencies {
         // library frogo-consume-api
-        implementation("com.github.frogobox:frogo-consume-api:1.0.8")
+        implementation("com.github.frogobox:frogo-consume-api:2.0.0")
     }
 
 
