@@ -1,7 +1,7 @@
 package com.frogobox.coreapi.movie
 
 import com.frogobox.coreapi.movie.model.*
-import io.reactivex.Observable
+import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

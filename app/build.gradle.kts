@@ -93,11 +93,10 @@ dependencies {
     implementation(project(":frogoconsumeapi"))
     implementation(project(":frogocoreconsumeapi"))
 
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.appcompat:appcompat:1.4.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.work:work-runtime:2.8.0-alpha01")
+    implementation(Androidx.Core.ktx)
+    implementation(Androidx.appCompat)
+    implementation(Androidx.constraintLayout)
+    implementation(Androidx.Work.runtimeKtx)
 
     implementation(compose.ui)
     implementation(compose.runtime)
@@ -106,26 +105,26 @@ dependencies {
     implementation(compose.material)
     implementation(compose.materialIconsExtended)
 
-    implementation("com.google.code.gson:gson:2.9.0")
-    implementation("com.google.android.material:material:1.5.0")
+    implementation(Google.gson)
+    implementation(Google.material)
 
-    implementation("de.hdodenhof:circleimageview:3.1.0")
+    implementation(Koin.core)
+    implementation(Koin.android)
+    implementation(Koin.androidCompat)
+    implementation(Koin.androidxWorkManager)
+    implementation(Koin.androidxCompose)
+    implementation(Koin.ktor)
 
-    implementation("com.github.bumptech.glide:glide:4.12.0")
+    implementation(Util.glide)
+    implementation(Util.hdodenhofCircleImageView)
 
     implementation("com.github.amirisback:frogo-recycler-view:4.0.4")
     implementation("com.github.amirisback:frogo-log:2.0.8")
 
-    implementation("com.github.frogobox:frogo-ui:0.0.1-beta03")
-    implementation("com.github.frogobox:frogo-sdk:0.0.1-beta05")
+    implementation("com.github.frogobox:frogo-ui:0.0.1-beta04")
+    implementation("com.github.frogobox:frogo-sdk:0.0.1-beta08")
 
-    implementation("io.insert-koin:koin-core:${Dependency.KOIN_VERSION}") // Koin core features
-    implementation("io.insert-koin:koin-android:${Dependency.KOIN_VERSION}") // Koin main features for Android (Scope,ViewModel ...)
-    implementation("io.insert-koin:koin-android-compat:${Dependency.KOIN_VERSION}") // Koin Java Compatibility
-    implementation("io.insert-koin:koin-androidx-workmanager:${Dependency.KOIN_VERSION}") // Koin for Jetpack WorkManager
-    implementation("io.insert-koin:koin-androidx-compose:${Dependency.KOIN_VERSION}") // Koin for Jetpack Compose
-
-    kapt("com.github.bumptech.glide:compiler:4.12.0")
+    kapt(Util.glideCompiler)
 
     debugImplementation(compose.ui)
     debugImplementation(compose.uiTooling)

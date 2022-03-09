@@ -61,12 +61,12 @@ dependencies {
 
     implementation(project(":frogocoreconsumeapi"))
 
-    implementation("androidx.appcompat:appcompat:1.4.1")
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.preference:preference-ktx:1.2.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
-    implementation("androidx.activity:activity-compose:1.4.0")
-    implementation("androidx.work:work-runtime:2.8.0-alpha01")
+    implementation(Androidx.appCompat)
+    implementation(Androidx.Core.ktx)
+    implementation(Androidx.preferenceKtx)
+    implementation(Androidx.Work.runtimeKtx)
+    implementation(Androidx.Lifecycle.runtimeKtx)
+    implementation(Compose.activity)
 
     implementation(compose.ui)
     implementation(compose.runtime)
@@ -75,16 +75,15 @@ dependencies {
     implementation(compose.material)
     implementation(compose.materialIconsExtended)
 
-    implementation("com.google.code.gson:gson:${Dependency.GSON_VERSION}")
+    implementation(Google.gson)
+    implementation(Square.Retrofit2.retrofit)
+    implementation(Square.Retrofit2.converterGson)
+    implementation(Square.Retrofit2.adapterRxJava3)
 
-    implementation("com.squareup.retrofit2:retrofit:${Dependency.RETROFIT_VERSION}")
+    implementation(Reactivex.rxJava3)
+    implementation(Reactivex.rxAndroid3)
 
-    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
-    implementation("io.reactivex.rxjava2:rxjava:2.2.21")
-
-    implementation("com.github.frogobox:frogo-sdk:0.0.1-beta05")
-
-    implementation("com.facebook.stetho:stetho:1.5.1")
+    implementation("com.github.frogobox:frogo-sdk:0.0.1-beta08")
 
     debugImplementation(compose.ui)
     debugImplementation(compose.uiTooling)

@@ -28,18 +28,20 @@ dependencies {
     implementation(compose.material)
     implementation(compose.materialIconsExtended)
 
-    implementation("com.google.code.gson:gson:${Dependency.GSON_VERSION}")
+    implementation(Google.gson)
 
-    implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.2")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
+    implementation(Square.okhttp)
+    implementation(Square.okhttpLogging)
 
-    implementation("com.squareup.retrofit2:retrofit:${Dependency.RETROFIT_VERSION}")
+    implementation(Square.Retrofit2.retrofit)
+    implementation(Square.Retrofit2.converterGson)
+    implementation(Square.Retrofit2.adapterRxJava3)
 
-    implementation("io.insert-koin:koin-core:${Dependency.KOIN_VERSION}") // Koin core features
+    implementation(Reactivex.rxJava3)
 
-    implementation("io.reactivex.rxjava2:rxjava:2.2.21")
+    implementation(Koin.core)
 
-    implementation("com.github.frogobox.frogo-sdk:frogocoresdk:0.0.1-beta05")
+    implementation("com.github.frogobox.frogo-sdk:frogocoresdk:0.0.1-beta08")
 
 }
 

@@ -1,7 +1,7 @@
 package com.frogobox.coreapi.sport
 
 import com.frogobox.coreapi.sport.response.*
-import io.reactivex.Observable
+import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
