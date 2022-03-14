@@ -1,7 +1,10 @@
 ![ScreenShoot Apps](docs/image/ss_banner.png?raw=true)
 
 ## About This Project
-[![](https://jitpack.io/v/frogobox/frogo-consume-api.svg?style=flat-square)](https://jitpack.io/#frogobox/frogo-consume-api) <br>
+[![](https://jitpack.io/v/frogobox/frogo-consume-api.svg?style=flat-square)](https://jitpack.io/#frogobox/frogo-consume-api)
+[![Android CI](https://github.com/frogobox/frogo-consume-api/actions/workflows/android-ci.yml/badge.svg)](https://github.com/frogobox/frogo-consume-api/actions/workflows/android-ci.yml)
+[![Scan with Detekt](https://github.com/frogobox/frogo-consume-api/actions/workflows/detekt-analysis.yml/badge.svg)](https://github.com/frogobox/frogo-consume-api/actions/workflows/detekt-analysis.yml)
+[![pages-build-deployment](https://github.com/frogobox/frogo-consume-api/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/frogobox/frogo-consume-api/actions/workflows/pages/pages-build-deployment)
 
 - SDK for anything your problem to make easier developing android apps
 - Migrate frogo-android-sdk to frogo-sdk [Click Here](github.com/frogobox/frogo-sdk)
