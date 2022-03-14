@@ -62,11 +62,11 @@ dependencies {
     implementation(project(":frogocoreconsumeapi"))
 
     implementation(Androidx.appCompat)
-    implementation(Androidx.Core.ktx)
     implementation(Androidx.preferenceKtx)
+    implementation(Androidx.Core.ktx)
     implementation(Androidx.Work.runtimeKtx)
     implementation(Androidx.Lifecycle.runtimeKtx)
-    implementation(Compose.activity)
+    implementation(Androidx.Compose.activity)
 
     implementation(compose.ui)
     implementation(compose.runtime)
@@ -83,7 +83,7 @@ dependencies {
     implementation(Reactivex.rxJava3)
     implementation(Reactivex.rxAndroid3)
 
-    implementation("com.github.frogobox:frogo-sdk:0.0.1-beta08")
+    implementation("com.github.frogobox:frogo-sdk:0.0.1-beta09")
     implementation("com.github.chuckerteam.chucker:library:3.5.2")
 
     debugImplementation(compose.ui)

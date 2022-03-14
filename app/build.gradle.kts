@@ -118,11 +118,11 @@ dependencies {
     implementation(Util.glide)
     implementation(Util.hdodenhofCircleImageView)
 
-    implementation("com.github.amirisback:frogo-recycler-view:4.0.4")
-    implementation("com.github.amirisback:frogo-log:2.0.8")
+    implementation("com.github.amirisback:frogo-recycler-view:4.0.5")
+    implementation("com.github.amirisback:frogo-log:2.0.9")
 
-    implementation("com.github.frogobox:frogo-ui:0.0.1-beta04")
-    implementation("com.github.frogobox:frogo-sdk:0.0.1-beta08")
+    implementation("com.github.frogobox:frogo-ui:0.0.1-beta05")
+    implementation("com.github.frogobox:frogo-sdk:0.0.1-beta09")
 
     kapt(Util.glideCompiler)
 
