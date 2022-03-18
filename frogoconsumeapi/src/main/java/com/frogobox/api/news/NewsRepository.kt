@@ -39,7 +39,7 @@ object NewsRepository : NewsDataSource {
     // Switch For Using Chuck Interceptor
     fun usingChuckInterceptor(context: Context) {
         Log.d(TAG, "Using Chuck Interceptor")
-        newsApiService = FrogoApiClient.createWithClient(NewsUrl.BASE_URL, ChuckerInterceptor(context))
+        newsApiService = FrogoApiClient.createWithInterceptor(NewsUrl.BASE_URL, ChuckerInterceptor(context))
     }
 
     override fun getTopHeadline(

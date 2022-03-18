@@ -40,7 +40,7 @@ object MealRepository : MealDataSource {
 
     fun usingChuckInterceptor(context: Context) {
         Log.d(TAG, "Using Chuck Interceptor")
-        mealApiService = FrogoApiClient.createWithClient(MealUrl.BASE_URL, ChuckerInterceptor(context))
+        mealApiService = FrogoApiClient.createWithInterceptor(MealUrl.BASE_URL, ChuckerInterceptor(context))
     }
 
     override fun searchMeal(

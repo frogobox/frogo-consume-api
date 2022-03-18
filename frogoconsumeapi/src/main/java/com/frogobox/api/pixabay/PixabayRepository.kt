@@ -40,7 +40,7 @@ object PixabayRepository : PixabayDataSource {
     // Switch For Using Chuck Interceptor
     fun usingChuckInterceptor(context: Context) {
         Log.d(TAG, "Using Chuck Interceptor")
-        pixabayApiService = FrogoApiClient.createWithClient(PixabayUrl.BASE_URL, ChuckerInterceptor(context))
+        pixabayApiService = FrogoApiClient.createWithInterceptor(PixabayUrl.BASE_URL, ChuckerInterceptor(context))
     }
 
     override fun searchImage(

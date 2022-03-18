@@ -39,7 +39,7 @@ object MovieRepository : MovieDataSource {
     // Switch For Using Chuck Interceptor
     fun usingChuckInterceptor(context: Context) {
         Log.d(TAG, "Using Chuck Interceptor")
-        movieApiService = FrogoApiClient.createWithClient(MovieUrl.BASE_URL, ChuckerInterceptor(context))
+        movieApiService = FrogoApiClient.createWithInterceptor(MovieUrl.BASE_URL, ChuckerInterceptor(context))
     }
 
     override fun getMovieCertifications(

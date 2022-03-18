@@ -39,7 +39,7 @@ object SportRepository : SportDataSource {
     // Switch For Using Chuck Interceptor
     fun usingChuckInterceptor(context: Context) {
         Log.d(TAG, "Using Chuck Interceptor")
-        sportApiService = FrogoApiClient.createWithClient(SportUrl.BASE_URL, ChuckerInterceptor(context))
+        sportApiService = FrogoApiClient.createWithInterceptor(SportUrl.BASE_URL, ChuckerInterceptor(context))
     }
 
     override fun searchForTeamByName(
