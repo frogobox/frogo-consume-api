@@ -22,7 +22,7 @@ class NewsDetailActivity : FrogoActivity<ActivityNewsDetailBinding>() {
     override fun setupOnCreate(savedInstanceState: Bundle?) {
         setupDetailActivity("Detail Berita")
 
-        val extraArticle = baseGetExtraData<Article>(EXTRA_DATA)
+        val extraArticle = frogoGetExtraData<Article>(EXTRA_DATA)
         binding.apply {
             tvTitle.text = extraArticle.title
             tvSource.text = extraArticle.source?.name ?: ""

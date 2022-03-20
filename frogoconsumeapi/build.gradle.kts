@@ -83,7 +83,7 @@ dependencies {
     implementation(Reactivex.rxJava3)
     implementation(Reactivex.rxAndroid3)
 
-    implementation("com.github.frogobox:frogo-sdk:0.0.1-beta10")
+    implementation("com.github.frogobox:frogo-sdk:0.0.2-beta01")
     implementation("com.github.chuckerteam.chucker:library:3.5.2")
 
     debugImplementation(compose.ui)

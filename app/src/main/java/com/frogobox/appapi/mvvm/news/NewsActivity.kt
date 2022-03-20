@@ -112,7 +112,7 @@ class NewsActivity : FrogoActivity<ActivityNewsBinding>() {
                 position: Int,
                 notifyListener: FrogoRecyclerNotifyListener<Article>
             ) {
-                baseStartActivity<NewsDetailActivity, Article>(NewsDetailActivity.EXTRA_DATA, data)
+                frogoStartActivity<NewsDetailActivity, Article>(NewsDetailActivity.EXTRA_DATA, data)
             }
 
             override fun onItemLongClicked(
@@ -164,7 +164,7 @@ class NewsActivity : FrogoActivity<ActivityNewsBinding>() {
                 position: Int,
                 notifyListener: FrogoRecyclerNotifyListener<Article>
             ) {
-                baseStartActivity<NewsDetailActivity, Article>(NewsDetailActivity.EXTRA_DATA, data)
+                frogoStartActivity<NewsDetailActivity, Article>(NewsDetailActivity.EXTRA_DATA, data)
             }
 
             override fun onItemLongClicked(

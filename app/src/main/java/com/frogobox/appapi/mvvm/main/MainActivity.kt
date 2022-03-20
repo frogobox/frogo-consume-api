@@ -82,19 +82,19 @@ class MainActivity : FrogoActivity<ActivityMainBinding>() {
     private fun setupIntentActivity(codeActivity: Int, data: MainModel) {
         when (codeActivity) {
             0 -> {
-                baseStartActivity<NewsActivity, MainModel>(Constant.EXTRA_MAIN, data)
+                frogoStartActivity<NewsActivity, MainModel>(Constant.EXTRA_MAIN, data)
             }
             1 -> {
-                baseStartActivity<MoviesActivity, MainModel>(Constant.EXTRA_MAIN, data)
+                frogoStartActivity<MoviesActivity, MainModel>(Constant.EXTRA_MAIN, data)
             }
             2 -> {
-                baseStartActivity<SportActivity, MainModel>(Constant.EXTRA_MAIN, data)
+                frogoStartActivity<SportActivity, MainModel>(Constant.EXTRA_MAIN, data)
             }
             3 -> {
-                baseStartActivity<MealActivity, MainModel>(Constant.EXTRA_MAIN, data)
+                frogoStartActivity<MealActivity, MainModel>(Constant.EXTRA_MAIN, data)
             }
             4 -> {
-                baseStartActivity<PixabayActivity, MainModel>(Constant.EXTRA_MAIN, data)
+                frogoStartActivity<PixabayActivity, MainModel>(Constant.EXTRA_MAIN, data)
             }
         }
 

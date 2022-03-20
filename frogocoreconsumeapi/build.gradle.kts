@@ -41,7 +41,7 @@ dependencies {
 
     implementation(Koin.core)
 
-    implementation("com.github.frogobox.frogo-sdk:frogocoresdk:0.0.1-beta10")
+    implementation("com.github.frogobox.frogo-sdk:frogocoresdk:0.0.2-beta01")
 
 }
 

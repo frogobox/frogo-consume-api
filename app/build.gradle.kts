@@ -121,8 +121,8 @@ dependencies {
     implementation("com.github.amirisback:frogo-recycler-view:4.0.5")
     implementation("com.github.amirisback:frogo-log:2.0.9")
 
-    implementation("com.github.frogobox:frogo-ui:0.0.1-beta05")
-    implementation("com.github.frogobox:frogo-sdk:0.0.1-beta09")
+    implementation("com.github.frogobox:frogo-ui:0.0.1-beta06")
+    implementation("com.github.frogobox:frogo-sdk:0.0.2-beta01")
 
     kapt(Util.glideCompiler)
 
