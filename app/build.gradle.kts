@@ -92,8 +92,8 @@ android {
 
 dependencies {
 
-    implementation(project(":frogoconsumeapi"))
-    implementation(project(":frogocoreconsumeapi"))
+    implementation(project(DependencyGradle.FROGO_PATH_CONSUME_API))
+    implementation(project(DependencyGradle.FROGO_PATH_CORE_CONSUME_API))
 
     implementation(Androidx.Core.ktx)
     implementation(Androidx.appCompat)
@@ -117,15 +117,15 @@ dependencies {
     implementation(Koin.androidxCompose)
     implementation(Koin.ktor)
 
-    implementation(Util.glide)
+    implementation(GitHub.glide)
     implementation(Util.hdodenhofCircleImageView)
 
-    implementation("com.github.amirisback:frogo-recycler-view:4.0.6")
+    implementation("com.github.amirisback:frogo-recycler-view:4.0.7")
 
-    implementation("com.github.frogobox:frogo-ui:0.0.1-beta08")
-    implementation("com.github.frogobox:frogo-sdk:0.0.2-beta02")
+    implementation("com.github.frogobox:frogo-ui:0.0.1")
+    implementation("com.github.frogobox:frogo-sdk:0.0.2")
 
-    kapt(Util.glideCompiler)
+    kapt(GitHub.glideCompiler)
 
     debugImplementation(compose.ui)
     debugImplementation(compose.uiTooling)
