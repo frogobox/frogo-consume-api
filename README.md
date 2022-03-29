@@ -1,4 +1,4 @@
-![ScreenShoot Apps](docs/image/ss_banner.png?raw=true)
+![ScreenShoot Apps](https://raw.githubusercontent.com/frogobox/frogo-consume-api/master/docs/image/ss_banner.png?raw=true)
 
 ## About This Project
 [![](https://jitpack.io/v/frogobox/frogo-consume-api.svg?style=flat-square)](https://jitpack.io/#frogobox/frogo-consume-api)
@@ -58,7 +58,7 @@ What's New??
 allprojects {
     repositories {
         ...
-        maven { url = uri("https://jitpack.io") }
+        maven("https://jitpack.io")
     }
 }
 ```
