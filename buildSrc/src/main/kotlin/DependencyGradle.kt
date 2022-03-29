@@ -11,14 +11,9 @@
  *
  */
 
-object Dependency {
+object DependencyGradle {
 
-    const val KOTLIN_VERSION = "1.6.10"
-    const val COMPOSE_MULTIPLATFORM_VERSION = "1.1.0"
-
-    const val KOIN_VERSION = "3.1.1"
-
-    const val RETROFIT_VERSION = "2.9.0"
-    const val GSON_VERSION = "2.9.0"
+    const val KOTLIN_VERSION = Version.JetBrains.kotlin
+    const val COMPOSE_MULTIPLATFORM_VERSION = Version.Androidx.composeMultiPlatform
 
 }

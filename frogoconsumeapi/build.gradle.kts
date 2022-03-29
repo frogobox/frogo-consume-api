@@ -1,7 +1,9 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.compose") version Dependency.COMPOSE_MULTIPLATFORM_VERSION
+    id("org.jetbrains.compose") version DependencyGradle.COMPOSE_MULTIPLATFORM_VERSION
     id("kotlin-kapt")
     `maven-publish`
 }
@@ -43,7 +45,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    tasks.withType<KotlinCompile> {
         kotlinOptions {
             jvmTarget = JavaVersion.VERSION_11.toString()
         }
@@ -83,8 +85,9 @@ dependencies {
     implementation(Reactivex.rxJava3)
     implementation(Reactivex.rxAndroid3)
 
-    implementation("com.github.frogobox:frogo-sdk:0.0.2-beta01")
-    implementation("com.github.chuckerteam.chucker:library:3.5.2")
+    implementation(Util.chucker)
+
+    implementation("com.github.frogobox:frogo-sdk:0.0.2-beta02")
 
     debugImplementation(compose.ui)
     debugImplementation(compose.uiTooling)

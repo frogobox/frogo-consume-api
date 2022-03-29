@@ -3,7 +3,7 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
-        maven { url = uri("https://jitpack.io") }
+        maven("https://jitpack.io")
     }
 }
 
@@ -12,10 +12,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url = uri("https://jitpack.io") }
+        maven("https://jitpack.io")
     }
 }
 
 rootProject.name = "FrogoConsumeApi"
-include(":app", ":frogoconsumeapi")
-include(":frogocoreconsumeapi")
+include(":app", ":frogoconsumeapi", ":frogocoreconsumeapi")

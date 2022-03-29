@@ -1,7 +1,9 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.compose") version Dependency.COMPOSE_MULTIPLATFORM_VERSION
+    id("org.jetbrains.compose") version DependencyGradle.COMPOSE_MULTIPLATFORM_VERSION
     id("kotlin-kapt")
 }
 
@@ -74,7 +76,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    tasks.withType<KotlinCompile> {
         kotlinOptions {
             jvmTarget = JavaVersion.VERSION_11.toString()
         }
@@ -118,11 +120,10 @@ dependencies {
     implementation(Util.glide)
     implementation(Util.hdodenhofCircleImageView)
 
-    implementation("com.github.amirisback:frogo-recycler-view:4.0.5")
-    implementation("com.github.amirisback:frogo-log:2.0.9")
+    implementation("com.github.amirisback:frogo-recycler-view:4.0.6")
 
-    implementation("com.github.frogobox:frogo-ui:0.0.1-beta06")
-    implementation("com.github.frogobox:frogo-sdk:0.0.2-beta01")
+    implementation("com.github.frogobox:frogo-ui:0.0.1-beta08")
+    implementation("com.github.frogobox:frogo-sdk:0.0.2-beta02")
 
     kapt(Util.glideCompiler)
 

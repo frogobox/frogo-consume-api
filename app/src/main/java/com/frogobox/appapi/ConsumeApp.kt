@@ -22,4 +22,8 @@ class ConsumeApp : FrogoApplication() {
         koinApplication.modules(viewModelModule)
     }
 
+    override fun setupOnCreate() {
+
+    }
+
 }

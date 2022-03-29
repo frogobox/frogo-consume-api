@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     id("java-library")
     id("org.jetbrains.kotlin.jvm")
-    id("org.jetbrains.compose") version Dependency.COMPOSE_MULTIPLATFORM_VERSION
+    id("org.jetbrains.compose") version DependencyGradle.COMPOSE_MULTIPLATFORM_VERSION
     `maven-publish`
 }
 
@@ -41,7 +41,7 @@ dependencies {
 
     implementation(Koin.core)
 
-    implementation("com.github.frogobox.frogo-sdk:frogocoresdk:0.0.2-beta01")
+    implementation("com.github.frogobox.frogo-sdk:frogocoresdk:0.0.2-beta02")
 
 }
 
@@ -70,7 +70,7 @@ publishing {
     }
 
     repositories {
-        maven { url = uri("https://jitpack.io") }
+        maven(Util.jitpackUrl)
     }
 
 }
