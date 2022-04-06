@@ -4,14 +4,13 @@ import android.content.Context
 import android.util.Log
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.coreapi.doRequest
 import com.frogobox.coreapi.sport.SportApiService
 import com.frogobox.coreapi.sport.SportDataSource
 import com.frogobox.coreapi.sport.SportUrl
 import com.frogobox.coreapi.sport.response.*
 import com.frogobox.coresdk.FrogoApiClient
-import com.frogobox.coresdk.FrogoApiObserver
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
 
 
 /**
@@ -39,7 +38,8 @@ object SportRepository : SportDataSource {
     // Switch For Using Chuck Interceptor
     fun usingChuckInterceptor(context: Context) {
         Log.d(TAG, "Using Chuck Interceptor")
-        sportApiService = FrogoApiClient.createWithInterceptor(SportUrl.BASE_URL, ChuckerInterceptor(context))
+        sportApiService =
+            FrogoApiClient.createWithInterceptor(SportUrl.BASE_URL, ChuckerInterceptor(context))
     }
 
     override fun searchForTeamByName(
@@ -49,19 +49,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "Search for team by name")
         sportApiService.searchForTeamByName(apiKey, teamName)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Teams>() {
-                override fun onSuccess(data: Teams) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun searchForTeamByShortCode(
@@ -71,19 +59,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "Search for team short code")
         sportApiService.searchForTeamByShortCode(apiKey, shortCode)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Teams>() {
-                override fun onSuccess(data: Teams) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun searchForAllPlayer(
@@ -93,19 +69,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "Search for all players from team *Patreon ONLY*")
         sportApiService.searchForAllPlayer(apiKey, teamName)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Players>() {
-                override fun onSuccess(data: Players) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun searchForPlayer(
@@ -115,19 +79,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "Search for players by player name")
         sportApiService.searchForPlayer(apiKey, playerName)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Players>() {
-                override fun onSuccess(data: Players) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun searchForPlayer(
@@ -138,19 +90,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "Search for players by player name and team name")
         sportApiService.searchForPlayer(apiKey, playerName, teamName)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Players>() {
-                override fun onSuccess(data: Players) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun searchForEvent(
@@ -160,19 +100,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "Search for event by event name")
         sportApiService.searchForEvent(apiKey, eventName)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Events>() {
-                override fun onSuccess(data: Events) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun searchForEvent(
@@ -183,19 +111,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "Search For event by event name and season")
         sportApiService.searchForEvent(apiKey, eventName, season)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Events>() {
-                override fun onSuccess(data: Events) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun searchForEventFileName(
@@ -205,55 +121,19 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "Search for event by event file name")
         sportApiService.searchForEventFileName(apiKey, eventFileName)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Events>() {
-                override fun onSuccess(data: Events) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getAllSports(apiKey: String, callback: ConsumeApiResponse<Sports>) {
         Log.d(TAG, "List all sports")
         sportApiService.getAllSports(apiKey)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Sports>() {
-                override fun onSuccess(data: Sports) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getAllLeagues(apiKey: String, callback: ConsumeApiResponse<Leagues>) {
         Log.d(TAG, "List all leagues")
         sportApiService.getAllLeagues(apiKey)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Leagues>() {
-                override fun onSuccess(data: Leagues) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun searchAllLeagues(
@@ -263,19 +143,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "List all Leagues in a country")
         sportApiService.searchAllLeagues(apiKey, countryName)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Countrys>() {
-                override fun onSuccess(data: Countrys) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun searchAllLeagues(
@@ -286,19 +154,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "List all Leagues in a country specific by sport")
         sportApiService.searchAllLeagues(apiKey, countryName, sportName)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Countrys>() {
-                override fun onSuccess(data: Countrys) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun searchAllSeasons(
@@ -308,19 +164,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "List all Seasons in a League")
         sportApiService.searchAllSeasons(apiKey, idTeam)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Seasons>() {
-                override fun onSuccess(data: Seasons) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun searchAllTeam(
@@ -329,21 +173,8 @@ object SportRepository : SportDataSource {
         callback: ConsumeApiResponse<Teams>
     ) {
         Log.d(TAG, "List all Teams in a League")
-        sportApiService
-            .searchAllTeam(apiKey, league)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Teams>() {
-                override fun onSuccess(data: Teams) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+        sportApiService.searchAllTeam(apiKey, league)
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun searchAllTeam(
@@ -353,21 +184,8 @@ object SportRepository : SportDataSource {
         callback: ConsumeApiResponse<Teams>
     ) {
         Log.d(TAG, "List all Teams in Sport and Country")
-        sportApiService
-            .searchAllTeam(apiKey, sportName, countryName)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Teams>() {
-                override fun onSuccess(data: Teams) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+        sportApiService.searchAllTeam(apiKey, sportName, countryName)
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun lookupAllTeam(
@@ -376,21 +194,8 @@ object SportRepository : SportDataSource {
         callback: ConsumeApiResponse<Teams>
     ) {
         Log.d(TAG, "List All teams details in a league by Id")
-        sportApiService
-            .lookupAllTeam(apiKey, idLeague)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Teams>() {
-                override fun onSuccess(data: Teams) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+        sportApiService.lookupAllTeam(apiKey, idLeague)
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun lookupAllPlayer(
@@ -399,21 +204,8 @@ object SportRepository : SportDataSource {
         callback: ConsumeApiResponse<Players>
     ) {
         Log.d(TAG, "List All players in a team by Team Id *Patreon ONLY*")
-        sportApiService
-            .lookupAllPlayer(apiKey, idTeam)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Players>() {
-                override fun onSuccess(data: Players) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+        sportApiService.lookupAllPlayer(apiKey, idTeam)
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun searchLoves(
@@ -423,19 +215,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "List all users loved teams and players")
         sportApiService.searchLoves(apiKey, userName)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Users>() {
-                override fun onSuccess(data: Users) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun lookupLeagues(
@@ -445,19 +225,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "League Details by Id")
         sportApiService.lookupLeagues(apiKey, idLeague)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Leagues>() {
-                override fun onSuccess(data: Leagues) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun lookupTeam(
@@ -467,19 +235,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "Team Details by Id")
         sportApiService.lookupTeam(apiKey, idTeam)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Teams>() {
-                override fun onSuccess(data: Teams) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun lookupPlayer(
@@ -489,19 +245,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "Player Details by Id")
         sportApiService.lookupPlayer(apiKey, idPlayer)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Players>() {
-                override fun onSuccess(data: Players) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun lookupEvent(
@@ -511,19 +255,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "Event Details by Id")
         sportApiService.lookupEvent(apiKey, idEvent)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Events>() {
-                override fun onSuccess(data: Events) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun lookupHonour(
@@ -533,19 +265,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "Player Honours by Player Id")
         sportApiService.lookupHonour(apiKey, idPlayer)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Honors>() {
-                override fun onSuccess(data: Honors) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun lookupFormerTeam(
@@ -555,19 +275,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "Player Former Teams by Player Id")
         sportApiService.lookupFormerTeam(apiKey, idPlayer)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<FormerTeams>() {
-                override fun onSuccess(data: FormerTeams) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun lookupContract(
@@ -577,19 +285,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "Player Contracts by Player Id")
         sportApiService.lookupContract(apiKey, idPlayer)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Contracts>() {
-                override fun onSuccess(data: Contracts) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun lookupTable(
@@ -600,19 +296,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "Lookup Table by League ID and Season")
         sportApiService.lookupTable(apiKey, idLeague, season)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Tables>() {
-                override fun onSuccess(data: Tables) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun eventsNext(
@@ -622,19 +306,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "Next 5 Events by Team Id")
         sportApiService.eventsNext(apiKey, idTeam)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Events>() {
-                override fun onSuccess(data: Events) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun eventsNextLeague(
@@ -644,19 +316,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "Next 15 Events by League Id")
         sportApiService.eventsNextLeague(apiKey, idLeague)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Events>() {
-                override fun onSuccess(data: Events) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun eventsLast(
@@ -666,19 +326,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "Last 5 Events by Team Id")
         sportApiService.eventsLast(apiKey, idTeam)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Results>() {
-                override fun onSuccess(data: Results) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun eventsPastLeague(
@@ -688,19 +336,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "Last 15 Events by League Id")
         sportApiService.eventsPastLeague(apiKey, idLeague)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Events>() {
-                override fun onSuccess(data: Events) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun eventsRound(
@@ -712,19 +348,7 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "Events in a specific round by league id/round/season")
         sportApiService.eventsRound(apiKey, idLeague, round, season)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Events>() {
-                override fun onSuccess(data: Events) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun eventsSeason(
@@ -735,18 +359,6 @@ object SportRepository : SportDataSource {
     ) {
         Log.d(TAG, "All events in specific league by season (Free tier limited to 200 events)")
         sportApiService.eventsSeason(apiKey, idLeague, season)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Events>() {
-                override fun onSuccess(data: Events) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+            .doRequest(AndroidSchedulers.mainThread(), callback)
     }
 }

@@ -4,16 +4,15 @@ import android.content.Context
 import android.util.Log
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.coreapi.doRequest
 import com.frogobox.coreapi.pixabay.PixabayApiService
 import com.frogobox.coreapi.pixabay.PixabayDataSource
+import com.frogobox.coreapi.pixabay.PixabayUrl
 import com.frogobox.coreapi.pixabay.model.PixabayImage
 import com.frogobox.coreapi.pixabay.model.PixabayVideo
 import com.frogobox.coreapi.pixabay.response.Response
-import com.frogobox.coreapi.pixabay.PixabayUrl
 import com.frogobox.coresdk.FrogoApiClient
-import com.frogobox.coresdk.FrogoApiObserver
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
 
 /**
  * Created by Faisal Amir
@@ -40,7 +39,8 @@ object PixabayRepository : PixabayDataSource {
     // Switch For Using Chuck Interceptor
     fun usingChuckInterceptor(context: Context) {
         Log.d(TAG, "Using Chuck Interceptor")
-        pixabayApiService = FrogoApiClient.createWithInterceptor(PixabayUrl.BASE_URL, ChuckerInterceptor(context))
+        pixabayApiService =
+            FrogoApiClient.createWithInterceptor(PixabayUrl.BASE_URL, ChuckerInterceptor(context))
     }
 
     override fun searchImage(
@@ -78,20 +78,7 @@ object PixabayRepository : PixabayDataSource {
             order,
             page,
             perPage
-        )
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Response<PixabayImage>>() {
-                override fun onSuccess(data: Response<PixabayImage>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+        ).doRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun searchVideo(
@@ -125,20 +112,7 @@ object PixabayRepository : PixabayDataSource {
             order,
             page,
             perPage
-        )
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { callback.onShowProgress() }
-            .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : FrogoApiObserver<Response<PixabayVideo>>() {
-                override fun onSuccess(data: Response<PixabayVideo>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailure(code: Int, errorMessage: String) {
-                    callback.onFailed(code, errorMessage)
-                }
-            })
+        ).doRequest(AndroidSchedulers.mainThread(), callback)
     }
 }
 
