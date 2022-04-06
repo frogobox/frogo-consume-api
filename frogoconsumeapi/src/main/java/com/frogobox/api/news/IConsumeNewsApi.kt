@@ -1,65 +1,24 @@
 package com.frogobox.api.news
 
 import android.content.Context
-import com.frogobox.coreapi.news.response.ArticleResponse
-import com.frogobox.coreapi.news.response.SourceResponse
-import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.coreapi.news.INewsApi
 
-/**
- * Created by Faisal Amir
- * FrogoBox Inc License
- * =========================================
- * consumable-code-news-api
- * Copyright (C) 15/03/2020.
- * All rights reserved
+
+/*
+ * Created by faisalamir on 07/04/22
+ * FrogoConsumeApi
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
  * E-mail   : faisalamircs@gmail.com
  * Github   : github.com/amirisback
- * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
- * FrogoBox Software Industries
- * com.frogobox.frogoconsumeapi.news
+ * Copyright (C) 2022 Frogobox Media Inc.      
+ * All rights reserved
  *
  */
-interface IConsumeNewsApi {
 
-    // Switch For Using Chuck Interceptor
+interface IConsumeNewsApi : INewsApi {
+
     fun usingChuckInterceptor(context: Context)
-
-    // Get Top Headline
-    fun getTopHeadline(
-        q: String?,
-        sources: String?,
-        category: String?,
-        country: String?,
-        pageSize: Int?,
-        page: Int?,
-        callback: ConsumeApiResponse<ArticleResponse>
-    )
-
-    // Get Everythings
-    fun getEverythings(
-        q: String?,
-        from: String?,
-        to: String?,
-        qInTitle: String?,
-        sources: String?,
-        domains: String?,
-        excludeDomains: String?,
-        language: String?,
-        sortBy: String?,
-        pageSize: Int?,
-        page: Int?,
-        callback: ConsumeApiResponse<ArticleResponse>
-    )
-
-    // Get Sources
-    fun getSources(
-        language: String,
-        country: String,
-        category: String,
-        callback: ConsumeApiResponse<SourceResponse>
-    )
 
 }

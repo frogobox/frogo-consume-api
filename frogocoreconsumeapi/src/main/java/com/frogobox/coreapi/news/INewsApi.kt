@@ -1,37 +1,31 @@
 package com.frogobox.coreapi.news
 
+import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.news.response.ArticleResponse
 import com.frogobox.coreapi.news.response.SourceResponse
-import com.frogobox.coreapi.ConsumeApiResponse
-import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
 
-/**
- * Created by Faisal Amir
- * FrogoBox Inc License
- * =========================================
- * consumable-code-news-api
- * Copyright (C) 15/03/2020.
- * All rights reserved
+
+/*
+ * Created by faisalamir on 07/04/22
+ * FrogoConsumeApi
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
  * E-mail   : faisalamircs@gmail.com
  * Github   : github.com/amirisback
- * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
- * FrogoBox Software Industries
- * com.frogobox.frogoconsumeapi.news.data.source
+ * Copyright (C) 2022 Frogobox Media Inc.      
+ * All rights reserved
  *
  */
-interface NewsDataSource {
+
+interface INewsApi {
 
     // Switch For Using Chuck Interceptor
     fun usingChuckInterceptor(chuckerInterceptor: Interceptor)
 
     // Get Top Headline
     fun getTopHeadline(
-        scheduler: Scheduler?,
-        apiKey: String,
         q: String?,
         sources: String?,
         category: String?,
@@ -43,8 +37,6 @@ interface NewsDataSource {
 
     // Get Everythings
     fun getEverythings(
-        scheduler: Scheduler?,
-        apiKey: String,
         q: String?,
         from: String?,
         to: String?,
@@ -61,8 +53,6 @@ interface NewsDataSource {
 
     // Get Sources
     fun getSources(
-        scheduler: Scheduler?,
-        apiKey: String,
         language: String,
         country: String,
         category: String,

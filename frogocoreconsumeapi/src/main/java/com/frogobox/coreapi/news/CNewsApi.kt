@@ -1,37 +1,31 @@
-package com.frogobox.api.news
+package com.frogobox.coreapi.news
 
-import android.content.Context
-import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.coreapi.news.NewsApi
 import com.frogobox.coreapi.news.response.ArticleResponse
 import com.frogobox.coreapi.news.response.SourceResponse
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.Interceptor
 
-/**
- * Created by Faisal Amir
- * FrogoBox Inc License
- * =========================================
- * consumable-code-news-api
- * Copyright (C) 15/03/2020.
- * All rights reserved
+
+/*
+ * Created by faisalamir on 07/04/22
+ * FrogoConsumeApi
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
  * E-mail   : faisalamircs@gmail.com
  * Github   : github.com/amirisback
- * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
- * FrogoBox Software Industries
- * com.frogobox.frogoconsumeapi.news
+ * Copyright (C) 2022 Frogobox Media Inc.      
+ * All rights reserved
  *
  */
-class ConsumeNewsApi(apiKey: String) : IConsumeNewsApi {
 
-    private val newsApi = NewsApi(AndroidSchedulers.mainThread(), apiKey)
+class CNewsApi(usingScheduler: Boolean, apiKey: String) : INewsApi {
 
-    override fun usingChuckInterceptor(context: Context) {
-        usingChuckInterceptor(ChuckerInterceptor(context))
+    private val newsApi = if (usingScheduler) {
+        NewsApi(Schedulers.single(), apiKey)
+    } else {
+        NewsApi(null, apiKey)
     }
 
     override fun usingChuckInterceptor(chuckerInterceptor: Interceptor) {
@@ -47,15 +41,7 @@ class ConsumeNewsApi(apiKey: String) : IConsumeNewsApi {
         page: Int?,
         callback: ConsumeApiResponse<ArticleResponse>
     ) {
-        newsApi.getTopHeadline(
-            q,
-            sources,
-            category,
-            country,
-            pageSize,
-            page,
-            callback
-        )
+        newsApi.getTopHeadline(q, sources, category, country, pageSize, page, callback)
     }
 
     override fun getEverythings(
@@ -94,12 +80,7 @@ class ConsumeNewsApi(apiKey: String) : IConsumeNewsApi {
         category: String,
         callback: ConsumeApiResponse<SourceResponse>
     ) {
-        newsApi.getSources(
-            language,
-            country,
-            category,
-            callback
-        )
+        newsApi.getSources(language, country, category, callback)
     }
 
 }
