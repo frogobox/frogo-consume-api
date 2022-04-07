@@ -1,50 +1,39 @@
-package com.frogobox.api.pixabay
+package com.frogobox.coreapi.pixabay
 
-import android.content.Context
-import android.util.Log
-import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.coreapi.pixabay.PixabayApiService
-import com.frogobox.coreapi.pixabay.PixabayDataSource
-import com.frogobox.coreapi.pixabay.PixabayUrl
 import com.frogobox.coreapi.pixabay.model.PixabayImage
 import com.frogobox.coreapi.pixabay.model.PixabayVideo
 import com.frogobox.coreapi.pixabay.response.Response
-import com.frogobox.coresdk.FrogoApiClient
-import com.frogobox.coresdk.ext.doApiRequest
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
+import okhttp3.Interceptor
 
-/**
- * Created by Faisal Amir
- * FrogoBox Inc License
- * =========================================
- * PixabayAPI
- * Copyright (C) 14/03/2020.
- * All rights reserved
+
+/*
+ * Created by faisalamir on 07/04/22
+ * FrogoConsumeApi
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
  * E-mail   : faisalamircs@gmail.com
  * Github   : github.com/amirisback
- * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
- * FrogoBox Software Industries
- * com.frogobox.frogoconsumeapi.pixabay.data.source
+ * Copyright (C) 2022 Frogobox Media Inc.      
+ * All rights reserved
  *
  */
-object PixabayRepository : PixabayDataSource {
 
-    private val TAG = PixabayRepository::class.java.simpleName
-    private var pixabayApiService = FrogoApiClient.create<PixabayApiService>(PixabayUrl.BASE_URL)
+class CPixabayApi(usingScheduler: Boolean, apiKey: String) : IPixabayApi {
 
-    // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(context: Context) {
-        Log.d(TAG, "Using Chuck Interceptor")
-        pixabayApiService =
-            FrogoApiClient.createWithInterceptor(PixabayUrl.BASE_URL, ChuckerInterceptor(context))
+    private val pixabayApi = if (usingScheduler) {
+        PixabayApi(Schedulers.single(), apiKey)
+    } else {
+        PixabayApi(null, apiKey)
+    }
+
+    override fun usingChuckInterceptor(chuckerInterceptor: Interceptor) {
+        pixabayApi.usingChuckInterceptor(chuckerInterceptor)
     }
 
     override fun searchImage(
-        apiKey: String,
         q: String,
         lang: String?,
         id: String?,
@@ -61,9 +50,7 @@ object PixabayRepository : PixabayDataSource {
         perPage: Int?,
         callback: ConsumeApiResponse<Response<PixabayImage>>
     ) {
-        Log.d(TAG, "Search for Image")
-        pixabayApiService.searchImage(
-            apiKey,
+        pixabayApi.searchImage(
             q,
             lang,
             id,
@@ -77,12 +64,12 @@ object PixabayRepository : PixabayDataSource {
             safeSearch,
             order,
             page,
-            perPage
-        ).doApiRequest(AndroidSchedulers.mainThread(), callback)
+            perPage,
+            callback
+        )
     }
 
     override fun searchVideo(
-        apiKey: String,
         q: String,
         lang: String?,
         id: String?,
@@ -97,9 +84,7 @@ object PixabayRepository : PixabayDataSource {
         perPage: Int?,
         callback: ConsumeApiResponse<Response<PixabayVideo>>
     ) {
-        Log.d(TAG, "Search for Video")
-        pixabayApiService.searchVideo(
-            apiKey,
+        pixabayApi.searchVideo(
             q,
             lang,
             id,
@@ -111,9 +96,8 @@ object PixabayRepository : PixabayDataSource {
             safeSearch,
             order,
             page,
-            perPage
-        ).doApiRequest(AndroidSchedulers.mainThread(), callback)
+            perPage,
+            callback
+        )
     }
 }
-
-

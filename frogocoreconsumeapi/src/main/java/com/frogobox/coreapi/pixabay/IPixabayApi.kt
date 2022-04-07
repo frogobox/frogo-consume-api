@@ -1,39 +1,32 @@
 package com.frogobox.coreapi.pixabay
 
+import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.pixabay.model.PixabayImage
 import com.frogobox.coreapi.pixabay.model.PixabayVideo
 import com.frogobox.coreapi.pixabay.response.Response
-import com.frogobox.coreapi.ConsumeApiResponse
-import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
 
-/**
- * Created by Faisal Amir
- * FrogoBox Inc License
- * =========================================
- * PixabayAPI
- * Copyright (C) 14/03/2020.
- * All rights reserved
+
+/*
+ * Created by faisalamir on 07/04/22
+ * FrogoConsumeApi
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
  * E-mail   : faisalamircs@gmail.com
  * Github   : github.com/amirisback
- * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
- * FrogoBox Software Industries
- * com.frogobox.frogoconsumeapi.pixabay.data.source
+ * Copyright (C) 2022 Frogobox Media Inc.      
+ * All rights reserved
  *
  */
 
-interface PixabayDataSource {
+interface IPixabayApi {
 
     // Switch For Using Chuck Interceptor
     fun usingChuckInterceptor(chuckerInterceptor: Interceptor)
 
     // Search for Image
     fun searchImage(
-        scheduler: Scheduler?,
-        apiKey: String,
         q: String,
         lang: String?,
         id: String?,
@@ -53,8 +46,6 @@ interface PixabayDataSource {
 
     // Search for Video
     fun searchVideo(
-        scheduler: Scheduler?,
-        apiKey: String,
         q: String,
         lang: String?,
         id: String?,

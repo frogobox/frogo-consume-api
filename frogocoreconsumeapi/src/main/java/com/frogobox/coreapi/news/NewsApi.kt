@@ -20,7 +20,10 @@ import okhttp3.Interceptor
  *
  */
 
-class NewsApi(private val scheduler: Scheduler?, private val apiKey: String) : INewsApi {
+class NewsApi(
+    private val scheduler: Scheduler?,
+    private val apiKey: String
+) : INewsApi {
 
     private val newsRepository = NewsRepository
 

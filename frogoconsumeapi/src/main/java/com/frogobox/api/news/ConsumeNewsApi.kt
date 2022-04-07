@@ -28,7 +28,7 @@ import okhttp3.Interceptor
  */
 class ConsumeNewsApi(apiKey: String) : IConsumeNewsApi {
 
-    private val newsApi = NewsApi(AndroidSchedulers.mainThread(), apiKey)
+    private var newsApi = NewsApi(AndroidSchedulers.mainThread(), apiKey)
 
     override fun usingChuckInterceptor(context: Context) {
         usingChuckInterceptor(ChuckerInterceptor(context))

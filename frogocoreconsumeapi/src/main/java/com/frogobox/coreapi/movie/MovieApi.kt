@@ -1,7 +1,4 @@
-package com.frogobox.api.news
-
-import android.content.Context
-import com.frogobox.coreapi.news.INewsApi
+package com.frogobox.coreapi.movie
 
 
 /*
@@ -17,9 +14,5 @@ import com.frogobox.coreapi.news.INewsApi
  *
  */
 
-interface IConsumeNewsApi : INewsApi {
-
-    // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(context: Context)
-
+class MovieApi {
 }
