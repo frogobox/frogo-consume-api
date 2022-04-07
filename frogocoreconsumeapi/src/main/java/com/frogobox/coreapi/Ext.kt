@@ -19,7 +19,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
  *
  */
 
-fun <T : Any> Observable<T>.doRequest(scheduler: Scheduler, callback: ConsumeApiResponse<T>) {
+fun <T : Any> Observable<T>.doApiRequest(scheduler: Scheduler, callback: ConsumeApiResponse<T>) {
     subscribeOn(Schedulers.io())
         .doOnSubscribe { callback.onShowProgress() }
         .doOnTerminate { callback.onHideProgress() }
@@ -35,7 +35,7 @@ fun <T : Any> Observable<T>.doRequest(scheduler: Scheduler, callback: ConsumeApi
         })
 }
 
-fun <T : Any> Observable<T>.doRequest(callback: ConsumeApiResponse<T>) {
+fun <T : Any> Observable<T>.doApiRequest(callback: ConsumeApiResponse<T>) {
     doOnSubscribe { callback.onShowProgress() }
         .doOnTerminate { callback.onHideProgress() }
         .subscribe(object : FrogoApiObserver<T>() {

@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.coreapi.doRequest
+import com.frogobox.coreapi.doApiRequest
 import com.frogobox.coreapi.movie.MovieApiService
 import com.frogobox.coreapi.movie.MovieDataSource
 import com.frogobox.coreapi.movie.MovieUrl
@@ -48,7 +48,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Get Movie Certifications")
         movieApiService.getMovieCertifications(apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvCertifications(
@@ -57,7 +57,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Get TV Certifications")
         movieApiService.getTvCertifications(apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getMovieChangeList(
@@ -69,7 +69,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Get Movie Change List")
         movieApiService.getMovieChangeList(apiKey, endDate, startDate, page)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvChangeList(
@@ -81,7 +81,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Get TV Change List")
         movieApiService.getTvChangeList(apiKey, endDate, startDate, page)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getPersonChangeList(
@@ -93,7 +93,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Get Person Change List")
         movieApiService.getPersonChangeList(apiKey, endDate, startDate, page)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getCollectionDetails(
@@ -104,7 +104,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getCollectionDetails(collection_id, apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getCollectionImages(
@@ -115,7 +115,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getCollectionImages(collection_id, apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getCollectionTranslations(
@@ -126,7 +126,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getCollectionTranslations(collection_id, apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getCompaniesDetails(
@@ -136,7 +136,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getCompaniesDetails(company_id, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getCompaniesAlternativeName(
@@ -146,7 +146,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getCompaniesAlternativeName(company_id, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getCompaniesImage(
@@ -156,7 +156,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getCompaniesImage(company_id, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getConfigurationApi(
@@ -165,7 +165,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getConfigurationApi(apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getConfigurationCountries(
@@ -174,7 +174,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getConfigurationCountries(apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getConfigurationJobs(
@@ -183,7 +183,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getConfigurationJobs(apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getConfigurationLanguages(
@@ -192,7 +192,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getConfigurationLanguages(apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getConfigurationTranslations(
@@ -201,7 +201,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getConfigurationTranslations(apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getConfigurationTimezones(
@@ -210,7 +210,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getConfigurationTimezones(apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getCreditsDetails(
@@ -220,7 +220,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getCreditsDetails(credit_id, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getDiscoverMovie(
@@ -294,7 +294,7 @@ object MovieRepository : MovieDataSource {
             with_runtime_gte,
             with_runtime_lte,
             with_original_language
-        ).doRequest(AndroidSchedulers.mainThread(), callback)
+        ).doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getDiscoverTv(
@@ -348,7 +348,7 @@ object MovieRepository : MovieDataSource {
             screened_theatrically,
             with_companies,
             with_keywords
-        ).doRequest(AndroidSchedulers.mainThread(), callback)
+        ).doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getFindById(
@@ -360,7 +360,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getFindById(external_id, apiKey, external_source, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getGenresMovie(
@@ -370,7 +370,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getGenresMovie(apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getGenresTv(
@@ -380,7 +380,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getGenresTv(apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getKeywordsDetail(
@@ -390,7 +390,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getKeywordsDetail(keyword_id, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getKeywordsMovie(
@@ -402,7 +402,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getKeywordsMovie(keyword_id, apiKey, language, include_adult)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getMoviesDetails(
@@ -414,7 +414,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getMoviesDetails(movie_id, apiKey, language, append_to_response)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getMoviesAccountState(
@@ -426,7 +426,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getMoviesAccountState(movie_id, apiKey, session_id, guest_session_id)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getMoviesAlternativeTitles(
@@ -437,7 +437,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getMoviesAlternativeTitles(movie_id, apiKey, country)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getMoviesChanges(
@@ -450,7 +450,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getMoviesChanges(movie_id, apiKey, start_date, end_date, page)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getMoviesCredits(
@@ -460,7 +460,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getMoviesCredits(movie_id, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getMoviesExternalIds(
@@ -469,7 +469,7 @@ object MovieRepository : MovieDataSource {
         callback: ConsumeApiResponse<MovieExternalId>
     ) {
         movieApiService.getMoviesExternalIds(movie_id, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getMoviesImages(
@@ -485,7 +485,7 @@ object MovieRepository : MovieDataSource {
             apiKey,
             language,
             include_image_language
-        ).doRequest(AndroidSchedulers.mainThread(), callback)
+        ).doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getMoviesKeywords(
@@ -495,7 +495,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getMoviesKeywords(movie_id, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getMoviesReleaseDates(
@@ -505,7 +505,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getMoviesReleaseDates(movie_id, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getMoviesVideos(
@@ -516,7 +516,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getMoviesVideos(movie_id, apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getMoviesTranslations(
@@ -526,7 +526,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getMoviesTranslations(movie_id, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getMoviesRecommendations(
@@ -538,7 +538,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getMoviesRecommendations(movie_id, apiKey, language, page)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getMoviesSimilarMovies(
@@ -550,7 +550,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getMoviesSimilarMovies(movie_id, apiKey, language, page)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getMoviesReviews(
@@ -562,7 +562,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getMoviesReviews(movie_id, apiKey, language, page)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getMoviesLists(
@@ -574,7 +574,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getMoviesLists(movie_id, apiKey, language, page)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getMoviesLatest(
@@ -584,7 +584,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getMoviesLatest(apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getMoviesNowPlaying(
@@ -596,7 +596,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getMoviesNowPlaying(apiKey, language, page, region)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getMoviesPopular(
@@ -608,7 +608,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getMoviesPopular(apiKey, language, page, region)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getMoviesTopRated(
@@ -620,7 +620,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getMoviesTopRated(apiKey, language, page, region)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getMoviesUpcoming(
@@ -632,7 +632,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getMoviesUpcoming(apiKey, language, page, region)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTrendingAll(
@@ -643,7 +643,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTrendingAll(media_type, time_window, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTrendingMovie(
@@ -654,7 +654,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTrendingMovie(media_type, time_window, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTrendingPerson(
@@ -688,7 +688,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTrendingTv(media_type, time_window, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getReviews(
@@ -698,7 +698,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getReviews(review_id, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getNetworkDetail(
@@ -708,7 +708,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getNetworkDetail(network_id, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getNetworkAlternativeName(
@@ -718,7 +718,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getNetworkAlternativeName(network_id, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getNetworkImage(
@@ -728,7 +728,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getNetworkImage(network_id, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun searchCompanies(
@@ -739,7 +739,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.searchCompanies(apiKey, query, page)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun searchCollections(
@@ -751,7 +751,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.searchCollections(apiKey, query, language, page)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun searchKeywords(
@@ -762,7 +762,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.searchKeywords(apiKey, query, page)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun searchMovies(
@@ -786,7 +786,7 @@ object MovieRepository : MovieDataSource {
             region,
             year,
             primary_release_year
-        ).doRequest(AndroidSchedulers.mainThread(), callback)
+        ).doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun searchMultiSearch(
@@ -800,7 +800,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.searchMultiSearch(apiKey, query, language, page, include_adult, region)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun searchPeople(
@@ -814,7 +814,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.searchPeople(apiKey, query, language, page, include_adult, region)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun searchTvShows(
@@ -834,7 +834,7 @@ object MovieRepository : MovieDataSource {
             page,
             include_adult,
             first_air_date_year
-        ).doRequest(AndroidSchedulers.mainThread(), callback)
+        ).doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvDetails(
@@ -846,7 +846,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvDetails(tv_id, apiKey, language, append_to_response)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvAccountStates(
@@ -859,7 +859,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvAccountStates(tv_id, apiKey, language, guest_session_id, session_id)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvAlternativeTitles(
@@ -870,7 +870,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvAlternativeTitles(tv_id, apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvChanges(
@@ -883,7 +883,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvChanges(tv_id, apiKey, startDate, endDate, page)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvContentRatings(
@@ -894,7 +894,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvContentRatings(tv_id, apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvCredits(
@@ -905,7 +905,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvCredits(tv_id, apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvEpisodeGroups(
@@ -916,7 +916,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvEpisodeGroups(tv_id, apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvExternalIds(
@@ -927,7 +927,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvExternalIds(tv_id, apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvImages(
@@ -938,7 +938,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvImages(tv_id, apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvKeyword(
@@ -948,7 +948,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvKeyword(tv_id, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvRecommendations(
@@ -960,7 +960,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvRecommendations(tv_id, apiKey, language, page)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvReviews(
@@ -970,7 +970,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvReviews(tv_id, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvScreenedTheatrically(
@@ -980,7 +980,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvScreenedTheatrically(tv_id, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvSimilarTvShows(
@@ -992,7 +992,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvSimilarTvShows(tv_id, apiKey, language, page)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvTranslations(
@@ -1002,7 +1002,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvTranslations(tv_id, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvVideos(
@@ -1013,7 +1013,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvVideos(tv_id, apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvLatest(
@@ -1023,7 +1023,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvLatest(apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvAiringToday(
@@ -1034,7 +1034,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvAiringToday(apiKey, language, page)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvOnTheAir(
@@ -1045,7 +1045,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvOnTheAir(apiKey, language, page)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvPopular(
@@ -1056,7 +1056,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvPopular(apiKey, language, page)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvTopRated(
@@ -1067,7 +1067,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvTopRated(apiKey, language, page)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvSeasonsDetails(
@@ -1085,7 +1085,7 @@ object MovieRepository : MovieDataSource {
             apiKey,
             language,
             append_to_response
-        ).doRequest(AndroidSchedulers.mainThread(), callback)
+        ).doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvSeasonsChanges(
@@ -1098,7 +1098,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvSeasonsChanges(season_id, apiKey, startDate, endDate, page)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvSeasonsAccountStates(
@@ -1118,7 +1118,7 @@ object MovieRepository : MovieDataSource {
             language,
             guest_session_id,
             session_id
-        ).doRequest(AndroidSchedulers.mainThread(), callback)
+        ).doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvSeasonsCredits(
@@ -1130,7 +1130,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvSeasonsCredits(tv_id, season_number, apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvSeasonsExternalIds(
@@ -1142,7 +1142,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvSeasonsExternalIds(tv_id, season_number, apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvSeasonsImages(
@@ -1154,7 +1154,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvSeasonsImages(tv_id, season_number, apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvSeasonsVideos(
@@ -1166,7 +1166,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvSeasonsVideos(tv_id, season_number, apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvEpisodeDetails(
@@ -1187,7 +1187,7 @@ object MovieRepository : MovieDataSource {
             language,
             append_to_response
         )
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvEpisodeChanges(
@@ -1200,7 +1200,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvEpisodeChanges(episode_id, apiKey, startDate, endDate, page)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvEpisodeAccountStates(
@@ -1220,7 +1220,7 @@ object MovieRepository : MovieDataSource {
             apiKey,
             guest_session_id,
             session_id
-        ).doRequest(AndroidSchedulers.mainThread(), callback)
+        ).doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvEpisodeCredits(
@@ -1232,7 +1232,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvEpisodeCredits(tv_id, season_number, episode_number, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvEpisodeExternalIds(
@@ -1244,7 +1244,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvEpisodeExternalIds(tv_id, season_number, episode_number, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvEpisodeImages(
@@ -1256,7 +1256,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvEpisodeImages(tv_id, season_number, episode_number, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvEpisodeTranslations(
@@ -1268,7 +1268,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvEpisodeTranslations(tv_id, season_number, episode_number, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvEpisodeVideos(
@@ -1281,7 +1281,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvEpisodeVideos(tv_id, season_number, episode_number, apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getTvEpisodeGroupsDetails(
@@ -1292,7 +1292,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getTvEpisodeGroupsDetails(id, apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getPeopleDetails(
@@ -1303,7 +1303,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getPeopleDetails(person_id, apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getPeopleChanges(
@@ -1316,7 +1316,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getPeopleChanges(person_id, apiKey, endDate, page, startDate)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getPeopleMovieCredits(
@@ -1327,7 +1327,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getPeopleMovieCredits(person_id, apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getPeopleTvCredits(
@@ -1338,7 +1338,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getPeopleTvCredits(person_id, apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getPeopleCombinedCredits(
@@ -1349,7 +1349,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getPeopleCombinedCredits(person_id, apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getPeopleExternalIds(
@@ -1360,7 +1360,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getPeopleExternalIds(person_id, apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getPeopleImages(
@@ -1370,7 +1370,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getPeopleImages(person_id, apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getPeopleTaggedImages(
@@ -1382,7 +1382,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getPeopleTaggedImages(person_id, apiKey, language, page)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getPeopleTranslations(
@@ -1393,7 +1393,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getPeopleTranslations(person_id, apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getPeopleLatest(
@@ -1403,7 +1403,7 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getPeopleLatest(apiKey, language)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun getPeoplePopular(
@@ -1414,6 +1414,6 @@ object MovieRepository : MovieDataSource {
     ) {
         Log.d(TAG, "Request Data From The Movie DB API")
         movieApiService.getPeoplePopular(apiKey, language, page)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 }

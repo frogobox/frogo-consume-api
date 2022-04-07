@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.coreapi.doRequest
+import com.frogobox.coreapi.doApiRequest
 import com.frogobox.coreapi.meal.MealApiService
 import com.frogobox.coreapi.meal.MealConstant
 import com.frogobox.coreapi.meal.MealDataSource
@@ -49,7 +49,7 @@ object MealRepository : MealDataSource {
     ) {
         Log.d(TAG, "")
         mealApiService.searchMeal(apiKey, mealName)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun listAllMeal(
@@ -59,7 +59,7 @@ object MealRepository : MealDataSource {
     ) {
         Log.d(TAG, "")
         mealApiService.listAllMeal(apiKey, firstLetter)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun lookupFullMeal(
@@ -69,7 +69,7 @@ object MealRepository : MealDataSource {
     ) {
         Log.d(TAG, "")
         mealApiService.lookupFullMeal(apiKey, idMeal)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun lookupRandomMeal(
@@ -78,7 +78,7 @@ object MealRepository : MealDataSource {
     ) {
         Log.d(TAG, "")
         mealApiService.lookupRandomMeal(apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun listMealCategories(
@@ -87,7 +87,7 @@ object MealRepository : MealDataSource {
     ) {
         Log.d(TAG, "")
         mealApiService.listMealCategories(apiKey)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun listAllCateories(
@@ -96,7 +96,7 @@ object MealRepository : MealDataSource {
     ) {
         Log.d(TAG, "")
         mealApiService.listAllCateories(apiKey, MealConstant.VALUE_LIST)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun listAllArea(
@@ -105,7 +105,7 @@ object MealRepository : MealDataSource {
     ) {
         Log.d(TAG, "")
         mealApiService.listAllArea(apiKey, MealConstant.VALUE_LIST)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun listAllIngredients(
@@ -114,7 +114,7 @@ object MealRepository : MealDataSource {
     ) {
         Log.d(TAG, "")
         mealApiService.listAllIngredients(apiKey, MealConstant.VALUE_LIST)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun filterByIngredient(
@@ -124,7 +124,7 @@ object MealRepository : MealDataSource {
     ) {
         Log.d(TAG, "")
         mealApiService.filterByIngredient(apiKey, ingredient)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun filterByCategory(
@@ -134,7 +134,7 @@ object MealRepository : MealDataSource {
     ) {
         Log.d(TAG, "")
         mealApiService.filterByCategory(apiKey, category)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun filterByArea(
@@ -144,6 +144,6 @@ object MealRepository : MealDataSource {
     ) {
         Log.d(TAG, "")
         mealApiService.filterByArea(apiKey, area)
-            .doRequest(AndroidSchedulers.mainThread(), callback)
+            .doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 }

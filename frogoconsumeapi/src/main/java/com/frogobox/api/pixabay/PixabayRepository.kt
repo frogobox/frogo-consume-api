@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.coreapi.doRequest
+import com.frogobox.coreapi.doApiRequest
 import com.frogobox.coreapi.pixabay.PixabayApiService
 import com.frogobox.coreapi.pixabay.PixabayDataSource
 import com.frogobox.coreapi.pixabay.PixabayUrl
@@ -78,7 +78,7 @@ object PixabayRepository : PixabayDataSource {
             order,
             page,
             perPage
-        ).doRequest(AndroidSchedulers.mainThread(), callback)
+        ).doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 
     override fun searchVideo(
@@ -112,7 +112,7 @@ object PixabayRepository : PixabayDataSource {
             order,
             page,
             perPage
-        ).doRequest(AndroidSchedulers.mainThread(), callback)
+        ).doApiRequest(AndroidSchedulers.mainThread(), callback)
     }
 }
 

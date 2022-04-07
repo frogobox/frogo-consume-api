@@ -1,7 +1,7 @@
 package com.frogobox.coreapi.news
 
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.coreapi.doRequest
+import com.frogobox.coreapi.doApiRequest
 import com.frogobox.coreapi.news.response.ArticleResponse
 import com.frogobox.coreapi.news.response.SourceResponse
 import com.frogobox.coresdk.FrogoApiClient
@@ -44,10 +44,10 @@ object NewsRepository : NewsDataSource {
     ) {
         if (scheduler != null) {
             newsApiService.getTopHeadline(apiKey, q, sources, category, country, pageSize, page)
-                .doRequest(scheduler, callback)
+                .doApiRequest(scheduler, callback)
         } else {
             newsApiService.getTopHeadline(apiKey, q, sources, category, country, pageSize, page)
-                .doRequest(callback)
+                .doApiRequest(callback)
         }
     }
 
@@ -81,7 +81,7 @@ object NewsRepository : NewsDataSource {
                 sortBy,
                 pageSize,
                 page
-            ).doRequest(scheduler, callback)
+            ).doApiRequest(scheduler, callback)
         } else {
             newsApiService.getEverythings(
                 apiKey,
@@ -96,7 +96,7 @@ object NewsRepository : NewsDataSource {
                 sortBy,
                 pageSize,
                 page
-            ).doRequest(callback)
+            ).doApiRequest(callback)
         }
     }
 
@@ -110,10 +110,10 @@ object NewsRepository : NewsDataSource {
     ) {
         if (scheduler != null) {
             newsApiService.getSources(apiKey, language, country, category)
-                .doRequest(scheduler, callback)
+                .doApiRequest(scheduler, callback)
         } else {
             newsApiService.getSources(apiKey, language, country, category)
-                .doRequest(callback)
+                .doApiRequest(callback)
         }
     }
 
