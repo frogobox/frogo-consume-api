@@ -23,7 +23,7 @@ import okhttp3.Interceptor
 
 class CMealApi(usingScheduler: Boolean, apiKey: String) : IMealApi {
 
-    private val mealApi = if (usingScheduler) {
+    private var mealApi = if (usingScheduler) {
         MealApi(Schedulers.single(), apiKey)
     } else {
         MealApi(null, apiKey)

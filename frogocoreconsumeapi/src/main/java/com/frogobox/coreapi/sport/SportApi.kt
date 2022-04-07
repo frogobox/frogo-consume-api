@@ -1,48 +1,41 @@
-package com.frogobox.api.sport
+package com.frogobox.coreapi.sport
 
-import android.content.Context
-import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.coreapi.sport.SportApi
 import com.frogobox.coreapi.sport.response.*
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
 
-/**
- * Created by Faisal Amir
- * FrogoBox Inc License
- * =========================================
- * TheSportDBApi
- * Copyright (C) 04/03/2020.
- * All rights reserved
+
+/*
+ * Created by faisalamir on 07/04/22
+ * FrogoConsumeApi
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
  * E-mail   : faisalamircs@gmail.com
  * Github   : github.com/amirisback
- * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
- * FrogoBox Software Industries
- * com.frogobox.frogoconsumeapi.sport
+ * Copyright (C) 2022 Frogobox Media Inc.      
+ * All rights reserved
  *
  */
-class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
 
-    private var sportApi = SportApi(AndroidSchedulers.mainThread(), apiKey)
+class SportApi(
+    private val scheduler: Scheduler?,
+    private val apiKey: String
+) : ISportApi {
+
+    private val sportRepository = SportRepository
 
     override fun usingChuckInterceptor(chuckerInterceptor: Interceptor) {
-        sportApi.usingChuckInterceptor(chuckerInterceptor)
-    }
-
-    override fun usingChuckInterceptor(context: Context) {
-        usingChuckInterceptor(ChuckerInterceptor(context))
+        sportRepository.usingChuckInterceptor(chuckerInterceptor)
     }
 
     override fun searchForTeamByName(
         teamName: String?,
         sportResultCallback: ConsumeApiResponse<Teams>
     ) {
-        sportApi.searchForTeamByName(
-
+        sportRepository.searchForTeamByName(
+            scheduler, apiKey,
             teamName,
             object : ConsumeApiResponse<Teams> {
                 override fun onSuccess(data: Teams) {
@@ -68,8 +61,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
         shortCode: String?,
         sportResultCallback: ConsumeApiResponse<Teams>
     ) {
-        sportApi.searchForTeamByShortCode(
-
+        sportRepository.searchForTeamByShortCode(
+            scheduler, apiKey,
             shortCode,
             object : ConsumeApiResponse<Teams> {
                 override fun onSuccess(data: Teams) {
@@ -94,8 +87,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
         teamName: String?,
         sportResultCallback: ConsumeApiResponse<Players>
     ) {
-        sportApi.searchForAllPlayer(
-
+        sportRepository.searchForAllPlayer(
+            scheduler, apiKey,
             teamName,
             object : ConsumeApiResponse<Players> {
                 override fun onSuccess(data: Players) {
@@ -120,8 +113,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
         playerName: String?,
         sportResultCallback: ConsumeApiResponse<Players>
     ) {
-        sportApi.searchForPlayer(
-
+        sportRepository.searchForPlayer(
+            scheduler, apiKey,
             playerName,
             object : ConsumeApiResponse<Players> {
                 override fun onSuccess(data: Players) {
@@ -147,8 +140,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
         teamName: String?,
         sportResultCallback: ConsumeApiResponse<Players>
     ) {
-        sportApi.searchForPlayer(
-
+        sportRepository.searchForPlayer(
+            scheduler, apiKey,
             playerName,
             teamName,
             object : ConsumeApiResponse<Players> {
@@ -174,8 +167,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
         eventName: String?,
         sportResultCallback: ConsumeApiResponse<Events>
     ) {
-        sportApi.searchForEvent(
-
+        sportRepository.searchForEvent(
+            scheduler, apiKey,
             eventName,
             object : ConsumeApiResponse<Events> {
                 override fun onSuccess(data: Events) {
@@ -201,8 +194,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
         season: String?,
         sportResultCallback: ConsumeApiResponse<Events>
     ) {
-        sportApi.searchForEvent(
-
+        sportRepository.searchForEvent(
+            scheduler, apiKey,
             eventName,
             season,
             object : ConsumeApiResponse<Events> {
@@ -229,8 +222,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
         sportResultCallback: ConsumeApiResponse<Events>
     ) {
 
-        sportApi.searchForEventFileName(
-
+        sportRepository.searchForEventFileName(
+            scheduler, apiKey,
             eventFileName,
             object : ConsumeApiResponse<Events> {
                 override fun onSuccess(data: Events) {
@@ -253,7 +246,7 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
     }
 
     override fun getAllSports(sportResultCallback: ConsumeApiResponse<Sports>) {
-        sportApi.getAllSports(object : ConsumeApiResponse<Sports> {
+        sportRepository.getAllSports(scheduler, apiKey, object : ConsumeApiResponse<Sports> {
             override fun onSuccess(data: Sports) {
                 sportResultCallback.onSuccess(data)
             }
@@ -273,7 +266,7 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
     }
 
     override fun getAllLeagues(sportResultCallback: ConsumeApiResponse<Leagues>) {
-        sportApi.getAllLeagues(object : ConsumeApiResponse<Leagues> {
+        sportRepository.getAllLeagues(scheduler, apiKey, object : ConsumeApiResponse<Leagues> {
             override fun onSuccess(data: Leagues) {
                 sportResultCallback.onSuccess(data)
             }
@@ -296,8 +289,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
         countryName: String?,
         sportResultCallback: ConsumeApiResponse<Countrys>
     ) {
-        sportApi.searchAllLeagues(
-
+        sportRepository.searchAllLeagues(
+            scheduler, apiKey,
             countryName,
             object : ConsumeApiResponse<Countrys> {
                 override fun onSuccess(data: Countrys) {
@@ -323,8 +316,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
         sportName: String?,
         sportResultCallback: ConsumeApiResponse<Countrys>
     ) {
-        sportApi.searchAllLeagues(
-
+        sportRepository.searchAllLeagues(
+            scheduler, apiKey,
             countryName,
             sportName,
             object : ConsumeApiResponse<Countrys> {
@@ -350,8 +343,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
         idTeam: String?,
         sportResultCallback: ConsumeApiResponse<Seasons>
     ) {
-        sportApi.searchAllSeasons(
-
+        sportRepository.searchAllSeasons(
+            scheduler, apiKey,
             idTeam,
             object : ConsumeApiResponse<Seasons> {
                 override fun onSuccess(data: Seasons) {
@@ -377,8 +370,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
         sportResultCallback: ConsumeApiResponse<Teams>
     ) {
 
-        sportApi.searchAllTeam(
-
+        sportRepository.searchAllTeam(
+            scheduler, apiKey,
             league,
             object : ConsumeApiResponse<Teams> {
                 override fun onSuccess(data: Teams) {
@@ -404,8 +397,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
         countryName: String?,
         sportResultCallback: ConsumeApiResponse<Teams>
     ) {
-        sportApi.searchAllTeam(
-
+        sportRepository.searchAllTeam(
+            scheduler, apiKey,
             sportName,
             countryName,
             object : ConsumeApiResponse<Teams> {
@@ -429,8 +422,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
 
     override fun lookupAllTeam(idLeague: String?, sportResultCallback: ConsumeApiResponse<Teams>) {
 
-        sportApi.lookupAllTeam(
-
+        sportRepository.lookupAllTeam(
+            scheduler, apiKey,
             idLeague,
             object : ConsumeApiResponse<Teams> {
                 override fun onSuccess(data: Teams) {
@@ -456,8 +449,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
         idTeam: String?,
         sportResultCallback: ConsumeApiResponse<Players>
     ) {
-        sportApi.lookupAllPlayer(
-
+        sportRepository.lookupAllPlayer(
+            scheduler, apiKey,
             idTeam,
             object : ConsumeApiResponse<Players> {
                 override fun onSuccess(data: Players) {
@@ -479,8 +472,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
     }
 
     override fun searchLoves(userName: String?, sportResultCallback: ConsumeApiResponse<Users>) {
-        sportApi.searchLoves(
-
+        sportRepository.searchLoves(
+            scheduler, apiKey,
             userName,
             object : ConsumeApiResponse<Users> {
                 override fun onSuccess(data: Users) {
@@ -505,8 +498,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
         idLeague: String?,
         sportResultCallback: ConsumeApiResponse<Leagues>
     ) {
-        sportApi.lookupLeagues(
-
+        sportRepository.lookupLeagues(
+            scheduler, apiKey,
             idLeague,
             object : ConsumeApiResponse<Leagues> {
                 override fun onSuccess(data: Leagues) {
@@ -528,8 +521,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
     }
 
     override fun lookupTeam(idTeam: String?, sportResultCallback: ConsumeApiResponse<Teams>) {
-        sportApi.lookupTeam(
-
+        sportRepository.lookupTeam(
+            scheduler, apiKey,
             idTeam,
             object : ConsumeApiResponse<Teams> {
                 override fun onSuccess(data: Teams) {
@@ -551,8 +544,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
     }
 
     override fun lookupPlayer(idPlayer: String?, sportResultCallback: ConsumeApiResponse<Players>) {
-        sportApi.lookupPlayer(
-
+        sportRepository.lookupPlayer(
+            scheduler, apiKey,
             idPlayer,
             object : ConsumeApiResponse<Players> {
                 override fun onSuccess(data: Players) {
@@ -574,8 +567,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
     }
 
     override fun lookupEvent(idEvent: String?, sportResultCallback: ConsumeApiResponse<Events>) {
-        sportApi.lookupEvent(
-
+        sportRepository.lookupEvent(
+            scheduler, apiKey,
             idEvent,
             object : ConsumeApiResponse<Events> {
                 override fun onSuccess(data: Events) {
@@ -597,8 +590,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
     }
 
     override fun lookupHonour(idPlayer: String?, sportResultCallback: ConsumeApiResponse<Honors>) {
-        sportApi.lookupHonour(
-
+        sportRepository.lookupHonour(
+            scheduler, apiKey,
             idPlayer,
             object : ConsumeApiResponse<Honors> {
                 override fun onSuccess(data: Honors) {
@@ -623,8 +616,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
         idPlayer: String?,
         sportResultCallback: ConsumeApiResponse<FormerTeams>
     ) {
-        sportApi.lookupFormerTeam(
-
+        sportRepository.lookupFormerTeam(
+            scheduler, apiKey,
             idPlayer,
             object : ConsumeApiResponse<FormerTeams> {
                 override fun onSuccess(data: FormerTeams) {
@@ -649,8 +642,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
         idPlayer: String?,
         sportResultCallback: ConsumeApiResponse<Contracts>
     ) {
-        sportApi.lookupContract(
-
+        sportRepository.lookupContract(
+            scheduler, apiKey,
             idPlayer,
             object : ConsumeApiResponse<Contracts> {
                 override fun onSuccess(data: Contracts) {
@@ -676,8 +669,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
         season: String?,
         sportResultCallback: ConsumeApiResponse<Tables>
     ) {
-        sportApi.lookupTable(
-
+        sportRepository.lookupTable(
+            scheduler, apiKey,
             idLeague,
             season,
             object : ConsumeApiResponse<Tables> {
@@ -700,8 +693,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
     }
 
     override fun eventsNext(idTeam: String?, sportResultCallback: ConsumeApiResponse<Events>) {
-        sportApi.eventsNext(
-
+        sportRepository.eventsNext(
+            scheduler, apiKey,
             idTeam,
             object : ConsumeApiResponse<Events> {
                 override fun onSuccess(data: Events) {
@@ -726,8 +719,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
         idLeague: String?,
         sportResultCallback: ConsumeApiResponse<Events>
     ) {
-        sportApi.eventsNextLeague(
-
+        sportRepository.eventsNextLeague(
+            scheduler, apiKey,
             idLeague,
             object : ConsumeApiResponse<Events> {
                 override fun onSuccess(data: Events) {
@@ -749,8 +742,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
     }
 
     override fun eventsLast(idTeam: String?, sportResultCallback: ConsumeApiResponse<Results>) {
-        sportApi.eventsLast(
-
+        sportRepository.eventsLast(
+            scheduler, apiKey,
             idTeam,
             object : ConsumeApiResponse<Results> {
                 override fun onSuccess(data: Results) {
@@ -775,8 +768,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
         idLeague: String?,
         sportResultCallback: ConsumeApiResponse<Events>
     ) {
-        sportApi.eventsPastLeague(
-
+        sportRepository.eventsPastLeague(
+            scheduler, apiKey,
             idLeague,
             object : ConsumeApiResponse<Events> {
                 override fun onSuccess(data: Events) {
@@ -803,7 +796,7 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
         season: String?,
         sportResultCallback: ConsumeApiResponse<Events>
     ) {
-        sportApi.eventsRound(
+        sportRepository.eventsRound(scheduler, apiKey,
             idLeague,
             round,
             season,
@@ -831,8 +824,8 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
         season: String?,
         sportResultCallback: ConsumeApiResponse<Events>
     ) {
-        sportApi.eventsSeason(
-
+        sportRepository.eventsSeason(
+            scheduler, apiKey,
             idLeague,
             season,
             object : ConsumeApiResponse<Events> {

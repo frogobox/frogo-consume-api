@@ -29,7 +29,7 @@ import okhttp3.Interceptor
  */
 class ConsumeTheMealDbApi(apiKey: String) : IConsumeTheMealDbApi {
 
-    private val mealApi = MealApi(AndroidSchedulers.mainThread(), apiKey)
+    private var mealApi = MealApi(AndroidSchedulers.mainThread(), apiKey)
 
     override fun usingChuckInterceptor(context: Context) {
         usingChuckInterceptor(ChuckerInterceptor(context))

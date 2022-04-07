@@ -1,40 +1,34 @@
-package com.frogobox.api.sport
+package com.frogobox.coreapi.sport
 
-import android.content.Context
-import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.coreapi.sport.SportApi
 import com.frogobox.coreapi.sport.response.*
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.Interceptor
 
-/**
- * Created by Faisal Amir
- * FrogoBox Inc License
- * =========================================
- * TheSportDBApi
- * Copyright (C) 04/03/2020.
- * All rights reserved
+
+/*
+ * Created by faisalamir on 07/04/22
+ * FrogoConsumeApi
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
  * E-mail   : faisalamircs@gmail.com
  * Github   : github.com/amirisback
- * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
- * FrogoBox Software Industries
- * com.frogobox.frogoconsumeapi.sport
+ * Copyright (C) 2022 Frogobox Media Inc.      
+ * All rights reserved
  *
  */
-class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
 
-    private var sportApi = SportApi(AndroidSchedulers.mainThread(), apiKey)
+class CSportApi(usingScheduler: Boolean, apiKey: String) : ISportApi {
+
+    private var sportApi = if (usingScheduler) {
+        SportApi(Schedulers.single(), apiKey)
+    } else {
+        SportApi(null, apiKey)
+    }
 
     override fun usingChuckInterceptor(chuckerInterceptor: Interceptor) {
         sportApi.usingChuckInterceptor(chuckerInterceptor)
-    }
-
-    override fun usingChuckInterceptor(context: Context) {
-        usingChuckInterceptor(ChuckerInterceptor(context))
     }
 
     override fun searchForTeamByName(
