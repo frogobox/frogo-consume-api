@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.Log
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.coreapi.doApiRequest
 import com.frogobox.coreapi.pixabay.PixabayApiService
 import com.frogobox.coreapi.pixabay.PixabayDataSource
 import com.frogobox.coreapi.pixabay.PixabayUrl
@@ -12,6 +11,7 @@ import com.frogobox.coreapi.pixabay.model.PixabayImage
 import com.frogobox.coreapi.pixabay.model.PixabayVideo
 import com.frogobox.coreapi.pixabay.response.Response
 import com.frogobox.coresdk.FrogoApiClient
+import com.frogobox.coresdk.ext.doApiRequest
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 
 /**

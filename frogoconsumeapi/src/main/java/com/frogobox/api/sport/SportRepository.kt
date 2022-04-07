@@ -4,12 +4,12 @@ import android.content.Context
 import android.util.Log
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.coreapi.doApiRequest
 import com.frogobox.coreapi.sport.SportApiService
 import com.frogobox.coreapi.sport.SportDataSource
 import com.frogobox.coreapi.sport.SportUrl
 import com.frogobox.coreapi.sport.response.*
 import com.frogobox.coresdk.FrogoApiClient
+import com.frogobox.coresdk.ext.doApiRequest
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 
 

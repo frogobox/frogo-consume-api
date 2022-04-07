@@ -87,7 +87,7 @@ dependencies {
 
     implementation(GitHub.chucker)
 
-    implementation("com.github.frogobox:frogo-sdk:0.0.2")
+    implementation(DependencyGradle.FROGO_SDK)
 
     debugImplementation(compose.ui)
     debugImplementation(compose.uiTooling)

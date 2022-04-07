@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.Log
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.coreapi.doApiRequest
 import com.frogobox.coreapi.meal.MealApiService
 import com.frogobox.coreapi.meal.MealConstant
 import com.frogobox.coreapi.meal.MealDataSource
@@ -13,6 +12,7 @@ import com.frogobox.coreapi.meal.model.*
 import com.frogobox.coreapi.meal.response.CategoryResponse
 import com.frogobox.coreapi.meal.response.MealResponse
 import com.frogobox.coresdk.FrogoApiClient
+import com.frogobox.coresdk.ext.doApiRequest
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 
 /**

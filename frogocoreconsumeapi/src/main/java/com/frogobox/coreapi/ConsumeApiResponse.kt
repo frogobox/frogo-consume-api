@@ -1,5 +1,7 @@
 package com.frogobox.coreapi
 
+import com.frogobox.coresdk.FrogoDataResponse
+
 /*
  * Created by faisalamir on 21/08/21
  * FrogoConsumeApi
@@ -12,14 +14,6 @@ package com.frogobox.coreapi
  * All rights reserved
  *
  */
-interface ConsumeApiResponse<T> {
-
-    fun onSuccess(data: T)
-
-    fun onFailed(statusCode: Int, errorMessage: String? = "")
-
-    fun onShowProgress()
-
-    fun onHideProgress()
+interface ConsumeApiResponse<T> : FrogoDataResponse<T> {
 
 }
