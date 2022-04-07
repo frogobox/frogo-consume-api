@@ -23,7 +23,7 @@ import okhttp3.Interceptor
 
 class CPixabayApi(usingScheduler: Boolean, apiKey: String) : IPixabayApi {
 
-    private val pixabayApi = if (usingScheduler) {
+    private var pixabayApi = if (usingScheduler) {
         PixabayApi(Schedulers.single(), apiKey)
     } else {
         PixabayApi(null, apiKey)

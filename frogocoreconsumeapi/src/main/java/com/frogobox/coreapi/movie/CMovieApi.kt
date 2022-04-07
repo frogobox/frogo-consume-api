@@ -3,7 +3,7 @@ package com.frogobox.coreapi.movie
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.movie.model.*
 import com.frogobox.coreapi.movie.response.*
-import io.reactivex.rxjava3.core.Scheduler
+import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.Interceptor
 
 
@@ -12,7 +12,7 @@ import okhttp3.Interceptor
  * FrogoConsumeApi
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
- * E-mail   : MMfaisalamircs@gmail.com
+ * E-mail   : faisalamircs@gmail.com
  * Github   : github.com/amirisback
  * -----------------------------------------
  * Copyright (C) 2022 Frogobox Media Inc.      
@@ -20,20 +20,20 @@ import okhttp3.Interceptor
  *
  */
 
-class MovieApi(
-    private val scheduler: Scheduler?,
-    private val apiKey: String
-) : IMovieApi {
+class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
 
-    private val movieRepository = MovieRepository
+    private var movieApi = if (usingScheduler) {
+        MovieApi(Schedulers.single(), apiKey)
+    } else {
+        MovieApi(null, apiKey)
+    }
 
     override fun usingChuckInterceptor(chuckerInterceptor: Interceptor) {
-        movieRepository.usingChuckInterceptor(chuckerInterceptor)
+        movieApi.usingChuckInterceptor(chuckerInterceptor)
     }
 
     override fun getMovieCertifications(callback: ConsumeApiResponse<Certifications<CertificationMovie>>) {
-        movieRepository.getMovieCertifications(
-            scheduler, apiKey,
+        movieApi.getMovieCertifications(
             object : ConsumeApiResponse<Certifications<CertificationMovie>> {
                 override fun onSuccess(data: Certifications<CertificationMovie>) {
                     callback.onSuccess(data)
@@ -54,8 +54,8 @@ class MovieApi(
     }
 
     override fun getTvCertifications(callback: ConsumeApiResponse<Certifications<CertificationTv>>) {
-        movieRepository.getTvCertifications(
-            scheduler, apiKey,
+        movieApi.getTvCertifications(
+
             object : ConsumeApiResponse<Certifications<CertificationTv>> {
                 override fun onSuccess(data: Certifications<CertificationTv>) {
                     callback.onSuccess(data)
@@ -81,8 +81,8 @@ class MovieApi(
         page: Int?,
         callback: ConsumeApiResponse<Changes>
     ) {
-        movieRepository.getMovieChangeList(
-            scheduler, apiKey,
+        movieApi.getMovieChangeList(
+
             endDate,
             startDate,
             page,
@@ -111,8 +111,8 @@ class MovieApi(
         page: Int?,
         callback: ConsumeApiResponse<Changes>
     ) {
-        movieRepository.getTvChangeList(
-            scheduler, apiKey,
+        movieApi.getTvChangeList(
+
             endDate,
             startDate,
             page,
@@ -141,8 +141,8 @@ class MovieApi(
         page: Int?,
         callback: ConsumeApiResponse<Changes>
     ) {
-        movieRepository.getPersonChangeList(
-            scheduler, apiKey,
+        movieApi.getPersonChangeList(
+
             endDate,
             startDate,
             page,
@@ -170,9 +170,9 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<CollectionsDetail>
     ) {
-        movieRepository.getCollectionDetails(
+        movieApi.getCollectionDetails(
             collection_id,
-            scheduler, apiKey,
+
             language,
             object : ConsumeApiResponse<CollectionsDetail> {
                 override fun onSuccess(data: CollectionsDetail) {
@@ -198,9 +198,9 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<CollectionsImage>
     ) {
-        movieRepository.getCollectionImages(
+        movieApi.getCollectionImages(
             collection_id,
-            scheduler, apiKey,
+
             language,
             object : ConsumeApiResponse<CollectionsImage> {
                 override fun onSuccess(data: CollectionsImage) {
@@ -226,9 +226,9 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<CollectionsTranslation>
     ) {
-        movieRepository.getCollectionTranslations(
+        movieApi.getCollectionTranslations(
             collection_id,
-            scheduler, apiKey,
+
             language,
             object : ConsumeApiResponse<CollectionsTranslation> {
                 override fun onSuccess(data: CollectionsTranslation) {
@@ -253,9 +253,9 @@ class MovieApi(
         company_id: Int,
         callback: ConsumeApiResponse<CompaniesDetail>
     ) {
-        movieRepository.getCompaniesDetails(
+        movieApi.getCompaniesDetails(
             company_id,
-            scheduler, apiKey,
+
             object : ConsumeApiResponse<CompaniesDetail> {
                 override fun onSuccess(data: CompaniesDetail) {
                     callback.onSuccess(data)
@@ -279,9 +279,9 @@ class MovieApi(
         company_id: Int,
         callback: ConsumeApiResponse<CompaniesAlternateName>
     ) {
-        movieRepository.getCompaniesAlternativeName(
+        movieApi.getCompaniesAlternativeName(
             company_id,
-            scheduler, apiKey,
+
             object : ConsumeApiResponse<CompaniesAlternateName> {
                 override fun onSuccess(data: CompaniesAlternateName) {
                     callback.onSuccess(data)
@@ -302,9 +302,9 @@ class MovieApi(
     }
 
     override fun getCompaniesImage(company_id: Int, callback: ConsumeApiResponse<CompaniesImage>) {
-        movieRepository.getCompaniesImage(
+        movieApi.getCompaniesImage(
             company_id,
-            scheduler, apiKey,
+
             object : ConsumeApiResponse<CompaniesImage> {
                 override fun onSuccess(data: CompaniesImage) {
                     callback.onSuccess(data)
@@ -325,8 +325,8 @@ class MovieApi(
     }
 
     override fun getConfigurationApi(callback: ConsumeApiResponse<ConfigurationApi>) {
-        movieRepository.getConfigurationApi(
-            scheduler, apiKey,
+        movieApi.getConfigurationApi(
+
             object : ConsumeApiResponse<ConfigurationApi> {
                 override fun onSuccess(data: ConfigurationApi) {
                     callback.onSuccess(data)
@@ -347,8 +347,8 @@ class MovieApi(
     }
 
     override fun getConfigurationCountries(callback: ConsumeApiResponse<List<ConfigurationCountry>>) {
-        movieRepository.getConfigurationCountries(
-            scheduler, apiKey,
+        movieApi.getConfigurationCountries(
+
             object : ConsumeApiResponse<List<ConfigurationCountry>> {
                 override fun onSuccess(data: List<ConfigurationCountry>) {
                     callback.onSuccess(data)
@@ -369,8 +369,8 @@ class MovieApi(
     }
 
     override fun getConfigurationJobs(callback: ConsumeApiResponse<List<ConfigurationJob>>) {
-        movieRepository.getConfigurationJobs(
-            scheduler, apiKey,
+        movieApi.getConfigurationJobs(
+
             object : ConsumeApiResponse<List<ConfigurationJob>> {
                 override fun onSuccess(data: List<ConfigurationJob>) {
                     callback.onSuccess(data)
@@ -391,8 +391,8 @@ class MovieApi(
     }
 
     override fun getConfigurationLanguages(callback: ConsumeApiResponse<List<ConfigurationLanguage>>) {
-        movieRepository.getConfigurationLanguages(
-            scheduler, apiKey,
+        movieApi.getConfigurationLanguages(
+
             object : ConsumeApiResponse<List<ConfigurationLanguage>> {
                 override fun onSuccess(data: List<ConfigurationLanguage>) {
                     callback.onSuccess(data)
@@ -413,8 +413,8 @@ class MovieApi(
     }
 
     override fun getConfigurationTranslations(callback: ConsumeApiResponse<List<String>>) {
-        movieRepository.getConfigurationTranslations(
-            scheduler, apiKey,
+        movieApi.getConfigurationTranslations(
+
             object : ConsumeApiResponse<List<String>> {
                 override fun onSuccess(data: List<String>) {
                     callback.onSuccess(data)
@@ -435,8 +435,8 @@ class MovieApi(
     }
 
     override fun getConfigurationTimezones(callback: ConsumeApiResponse<List<ConfigurationTimezone>>) {
-        movieRepository.getConfigurationTimezones(
-            scheduler, apiKey,
+        movieApi.getConfigurationTimezones(
+
             object : ConsumeApiResponse<List<ConfigurationTimezone>> {
                 override fun onSuccess(data: List<ConfigurationTimezone>) {
                     callback.onSuccess(data)
@@ -457,9 +457,9 @@ class MovieApi(
     }
 
     override fun getCreditsDetails(credit_id: String, callback: ConsumeApiResponse<Credits>) {
-        movieRepository.getCreditsDetails(
+        movieApi.getCreditsDetails(
             credit_id,
-            scheduler, apiKey,
+
             object : ConsumeApiResponse<Credits> {
                 override fun onSuccess(data: Credits) {
                     callback.onSuccess(data)
@@ -514,8 +514,8 @@ class MovieApi(
         with_original_language: String?,
         callback: ConsumeApiResponse<Discover<DiscoverMovie>>
     ) {
-        movieRepository.getDiscoverMovie(
-            scheduler, apiKey,
+        movieApi.getDiscoverMovie(
+
             language,
             region,
             sort_by,
@@ -593,8 +593,8 @@ class MovieApi(
         with_keywords: String?,
         callback: ConsumeApiResponse<Discover<DiscoverTv>>
     ) {
-        movieRepository.getDiscoverTv(
-            scheduler, apiKey, language,
+        movieApi.getDiscoverTv(
+            language,
             sort_by,
             air_date_gte,
             air_date_lte,
@@ -642,9 +642,9 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<Find>
     ) {
-        movieRepository.getFindById(
+        movieApi.getFindById(
             external_id,
-            scheduler, apiKey,
+
             external_source,
             language,
             object : ConsumeApiResponse<Find> {
@@ -667,8 +667,8 @@ class MovieApi(
     }
 
     override fun getGenresMovie(language: String?, callback: ConsumeApiResponse<Genres>) {
-        movieRepository.getGenresMovie(
-            scheduler, apiKey,
+        movieApi.getGenresMovie(
+
             language,
             object : ConsumeApiResponse<Genres> {
                 override fun onSuccess(data: Genres) {
@@ -690,8 +690,8 @@ class MovieApi(
     }
 
     override fun getGenresTv(language: String?, callback: ConsumeApiResponse<Genres>) {
-        movieRepository.getGenresTv(
-            scheduler, apiKey,
+        movieApi.getGenresTv(
+
             language,
             object : ConsumeApiResponse<Genres> {
                 override fun onSuccess(data: Genres) {
@@ -713,9 +713,9 @@ class MovieApi(
     }
 
     override fun getKeywordsDetail(keyword_id: Int, callback: ConsumeApiResponse<KeywordsDetail>) {
-        movieRepository.getKeywordsDetail(
+        movieApi.getKeywordsDetail(
             keyword_id,
-            scheduler, apiKey,
+
             object : ConsumeApiResponse<KeywordsDetail> {
                 override fun onSuccess(data: KeywordsDetail) {
                     callback.onSuccess(data)
@@ -741,9 +741,9 @@ class MovieApi(
         include_adult: Boolean?,
         callback: ConsumeApiResponse<KeywordsMovies>
     ) {
-        movieRepository.getKeywordsMovie(
+        movieApi.getKeywordsMovie(
             keyword_id,
-            scheduler, apiKey,
+
             language,
             include_adult,
             object : ConsumeApiResponse<KeywordsMovies> {
@@ -771,9 +771,9 @@ class MovieApi(
         append_to_response: String?,
         callback: ConsumeApiResponse<MovieDetail>
     ) {
-        movieRepository.getMoviesDetails(
+        movieApi.getMoviesDetails(
             movie_id,
-            scheduler, apiKey,
+
             language,
             append_to_response,
             object : ConsumeApiResponse<MovieDetail> {
@@ -801,9 +801,9 @@ class MovieApi(
         guest_session_id: String?,
         callback: ConsumeApiResponse<MovieAccountState>
     ) {
-        movieRepository.getMoviesAccountState(
+        movieApi.getMoviesAccountState(
             movie_id,
-            scheduler, apiKey,
+
             session_id,
             guest_session_id,
             object : ConsumeApiResponse<MovieAccountState> {
@@ -830,9 +830,9 @@ class MovieApi(
         country: String?,
         callback: ConsumeApiResponse<MovieAlternativeTitle>
     ) {
-        movieRepository.getMoviesAlternativeTitles(
+        movieApi.getMoviesAlternativeTitles(
             movie_id,
-            scheduler, apiKey,
+
             country,
             object : ConsumeApiResponse<MovieAlternativeTitle> {
                 override fun onSuccess(data: MovieAlternativeTitle) {
@@ -860,9 +860,9 @@ class MovieApi(
         page: Int?,
         callback: ConsumeApiResponse<MovieChanges>
     ) {
-        movieRepository.getMoviesChanges(
+        movieApi.getMoviesChanges(
             movie_id,
-            scheduler, apiKey,
+
             start_date,
             end_date,
             page,
@@ -886,9 +886,9 @@ class MovieApi(
     }
 
     override fun getMoviesCredits(movie_id: Int, callback: ConsumeApiResponse<MovieCredit>) {
-        movieRepository.getMoviesCredits(
+        movieApi.getMoviesCredits(
             movie_id,
-            scheduler, apiKey,
+
             object : ConsumeApiResponse<MovieCredit> {
                 override fun onSuccess(data: MovieCredit) {
                     callback.onSuccess(data)
@@ -912,9 +912,9 @@ class MovieApi(
         movie_id: Int,
         callback: ConsumeApiResponse<MovieExternalId>
     ) {
-        movieRepository.getMoviesExternalIds(
+        movieApi.getMoviesExternalIds(
             movie_id,
-            scheduler, apiKey,
+
             object : ConsumeApiResponse<MovieExternalId> {
                 override fun onSuccess(data: MovieExternalId) {
                     callback.onSuccess(data)
@@ -940,9 +940,9 @@ class MovieApi(
         include_image_language: String?,
         callback: ConsumeApiResponse<MovieImages>
     ) {
-        movieRepository.getMoviesImages(
+        movieApi.getMoviesImages(
             movie_id,
-            scheduler, apiKey,
+
             language,
             include_image_language,
             object : ConsumeApiResponse<MovieImages> {
@@ -965,9 +965,9 @@ class MovieApi(
     }
 
     override fun getMoviesKeywords(movie_id: Int, callback: ConsumeApiResponse<MovieKeywords>) {
-        movieRepository.getMoviesKeywords(
+        movieApi.getMoviesKeywords(
             movie_id,
-            scheduler, apiKey,
+
             object : ConsumeApiResponse<MovieKeywords> {
                 override fun onSuccess(data: MovieKeywords) {
                     callback.onSuccess(data)
@@ -991,9 +991,9 @@ class MovieApi(
         movie_id: Int,
         callback: ConsumeApiResponse<MovieReleaseDates>
     ) {
-        movieRepository.getMoviesReleaseDates(
+        movieApi.getMoviesReleaseDates(
             movie_id,
-            scheduler, apiKey,
+
             object : ConsumeApiResponse<MovieReleaseDates> {
                 override fun onSuccess(data: MovieReleaseDates) {
                     callback.onSuccess(data)
@@ -1018,9 +1018,9 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<MovieVideos>
     ) {
-        movieRepository.getMoviesVideos(
+        movieApi.getMoviesVideos(
             movie_id,
-            scheduler, apiKey,
+
             language,
             object : ConsumeApiResponse<MovieVideos> {
                 override fun onSuccess(data: MovieVideos) {
@@ -1045,9 +1045,9 @@ class MovieApi(
         movie_id: Int,
         callback: ConsumeApiResponse<MovieTranslations>
     ) {
-        movieRepository.getMoviesTranslations(
+        movieApi.getMoviesTranslations(
             movie_id,
-            scheduler, apiKey,
+
             object : ConsumeApiResponse<MovieTranslations> {
                 override fun onSuccess(data: MovieTranslations) {
                     callback.onSuccess(data)
@@ -1073,9 +1073,9 @@ class MovieApi(
         page: Int?,
         callback: ConsumeApiResponse<MovieRecommendations>
     ) {
-        movieRepository.getMoviesRecommendations(
+        movieApi.getMoviesRecommendations(
             movie_id,
-            scheduler, apiKey,
+
             language,
             page,
             object : ConsumeApiResponse<MovieRecommendations> {
@@ -1103,9 +1103,9 @@ class MovieApi(
         page: Int?,
         callback: ConsumeApiResponse<MovieSimilarMovies>
     ) {
-        movieRepository.getMoviesSimilarMovies(
+        movieApi.getMoviesSimilarMovies(
             movie_id,
-            scheduler, apiKey,
+
             language,
             page,
             object : ConsumeApiResponse<MovieSimilarMovies> {
@@ -1133,9 +1133,9 @@ class MovieApi(
         page: Int?,
         callback: ConsumeApiResponse<MovieReviews>
     ) {
-        movieRepository.getMoviesReviews(
+        movieApi.getMoviesReviews(
             movie_id,
-            scheduler, apiKey,
+
             language,
             page,
             object : ConsumeApiResponse<MovieReviews> {
@@ -1163,9 +1163,9 @@ class MovieApi(
         page: Int?,
         callback: ConsumeApiResponse<MovieLists>
     ) {
-        movieRepository.getMoviesLists(
+        movieApi.getMoviesLists(
             movie_id,
-            scheduler, apiKey,
+
             language,
             page,
             object : ConsumeApiResponse<MovieLists> {
@@ -1188,8 +1188,8 @@ class MovieApi(
     }
 
     override fun getMoviesLatest(language: String?, callback: ConsumeApiResponse<MovieLatest>) {
-        movieRepository.getMoviesLatest(
-            scheduler, apiKey,
+        movieApi.getMoviesLatest(
+
             language,
             object : ConsumeApiResponse<MovieLatest> {
                 override fun onSuccess(data: MovieLatest) {
@@ -1216,8 +1216,8 @@ class MovieApi(
         region: String?,
         callback: ConsumeApiResponse<MovieNowPlayings>
     ) {
-        movieRepository.getMoviesNowPlaying(
-            scheduler, apiKey,
+        movieApi.getMoviesNowPlaying(
+
             language,
             page,
             region,
@@ -1246,8 +1246,8 @@ class MovieApi(
         region: String?,
         callback: ConsumeApiResponse<MoviePopulars>
     ) {
-        movieRepository.getMoviesPopular(
-            scheduler, apiKey,
+        movieApi.getMoviesPopular(
+
             language,
             page,
             region,
@@ -1276,8 +1276,8 @@ class MovieApi(
         region: String?,
         callback: ConsumeApiResponse<MovieTopRated>
     ) {
-        movieRepository.getMoviesTopRated(
-            scheduler, apiKey,
+        movieApi.getMoviesTopRated(
+
             language,
             page,
             region,
@@ -1306,8 +1306,8 @@ class MovieApi(
         region: String?,
         callback: ConsumeApiResponse<MovieUpcoming>
     ) {
-        movieRepository.getMoviesUpcoming(
-            scheduler, apiKey,
+        movieApi.getMoviesUpcoming(
+
             language,
             page,
             region,
@@ -1331,201 +1331,41 @@ class MovieApi(
     }
 
     override fun getTrendingAllDay(callback: ConsumeApiResponse<Trending<TrendingAll>>) {
-        movieRepository.getTrendingAll(
-            MovieConstant.VALUE_MEDIA_TYPE_ALL,
-            MovieConstant.VALUE_TIME_WINDOW_DAY,
-            scheduler, apiKey,
-            object : ConsumeApiResponse<Trending<TrendingAll>> {
-                override fun onSuccess(data: Trending<TrendingAll>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+        movieApi.getTrendingAllDay(callback)
     }
 
     override fun getTrendingAllWeek(callback: ConsumeApiResponse<Trending<TrendingAll>>) {
-        movieRepository.getTrendingAll(
-            MovieConstant.VALUE_MEDIA_TYPE_ALL,
-            MovieConstant.VALUE_TIME_WINDOW_WEEK,
-            scheduler, apiKey,
-            object : ConsumeApiResponse<Trending<TrendingAll>> {
-                override fun onSuccess(data: Trending<TrendingAll>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+        movieApi.getTrendingAllWeek(callback)
     }
 
     override fun getTrendingMovieDay(callback: ConsumeApiResponse<Trending<TrendingMovie>>) {
-        movieRepository.getTrendingMovie(
-            MovieConstant.VALUE_MEDIA_TYPE_MOVIE,
-            MovieConstant.VALUE_TIME_WINDOW_DAY,
-            scheduler, apiKey,
-            object : ConsumeApiResponse<Trending<TrendingMovie>> {
-                override fun onSuccess(data: Trending<TrendingMovie>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+        movieApi.getTrendingMovieDay(callback)
     }
 
     override fun getTrendingMovieWeek(callback: ConsumeApiResponse<Trending<TrendingMovie>>) {
-        movieRepository.getTrendingMovie(
-            MovieConstant.VALUE_MEDIA_TYPE_MOVIE,
-            MovieConstant.VALUE_TIME_WINDOW_WEEK,
-            scheduler, apiKey,
-            object : ConsumeApiResponse<Trending<TrendingMovie>> {
-                override fun onSuccess(data: Trending<TrendingMovie>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+        movieApi.getTrendingMovieWeek(callback)
     }
 
     override fun getTrendingPersonDay(callback: ConsumeApiResponse<Trending<TrendingPerson>>) {
-        movieRepository.getTrendingPerson(
-            MovieConstant.VALUE_MEDIA_TYPE_PERSON,
-            MovieConstant.VALUE_TIME_WINDOW_DAY,
-            scheduler, apiKey,
-            object : ConsumeApiResponse<Trending<TrendingPerson>> {
-                override fun onSuccess(data: Trending<TrendingPerson>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+        movieApi.getTrendingPersonDay(callback)
     }
 
     override fun getTrendingPersonWeek(callback: ConsumeApiResponse<Trending<TrendingPerson>>) {
-        movieRepository.getTrendingPerson(
-            MovieConstant.VALUE_MEDIA_TYPE_PERSON,
-            MovieConstant.VALUE_TIME_WINDOW_WEEK,
-            scheduler, apiKey,
-            object : ConsumeApiResponse<Trending<TrendingPerson>> {
-                override fun onSuccess(data: Trending<TrendingPerson>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+        movieApi.getTrendingPersonWeek(callback)
     }
 
     override fun getTrendingTvDay(callback: ConsumeApiResponse<Trending<TrendingTv>>) {
-        movieRepository.getTrendingTv(
-            MovieConstant.VALUE_MEDIA_TYPE_TV,
-            MovieConstant.VALUE_TIME_WINDOW_DAY,
-            scheduler, apiKey,
-            object : ConsumeApiResponse<Trending<TrendingTv>> {
-                override fun onSuccess(data: Trending<TrendingTv>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+        movieApi.getTrendingTvDay(callback)
     }
 
     override fun getTrendingTvWeek(callback: ConsumeApiResponse<Trending<TrendingTv>>) {
-        movieRepository.getTrendingTv(
-            MovieConstant.VALUE_MEDIA_TYPE_TV,
-            MovieConstant.VALUE_TIME_WINDOW_WEEK,
-            scheduler, apiKey,
-            object : ConsumeApiResponse<Trending<TrendingTv>> {
-                override fun onSuccess(data: Trending<TrendingTv>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+        movieApi.getTrendingTvWeek(callback)
     }
 
     override fun getReviews(review_id: String, callback: ConsumeApiResponse<Reviews>) {
-        movieRepository.getReviews(
+        movieApi.getReviews(
             review_id,
-            scheduler, apiKey,
+
             object : ConsumeApiResponse<Reviews> {
                 override fun onSuccess(data: Reviews) {
                     callback.onSuccess(data)
@@ -1546,9 +1386,8 @@ class MovieApi(
     }
 
     override fun getNetworkDetail(network_id: Int, callback: ConsumeApiResponse<NetworkDetail>) {
-        movieRepository.getNetworkDetail(
+        movieApi.getNetworkDetail(
             network_id,
-            scheduler, apiKey,
             object : ConsumeApiResponse<NetworkDetail> {
                 override fun onSuccess(data: NetworkDetail) {
                     callback.onSuccess(data)
@@ -1572,9 +1411,9 @@ class MovieApi(
         network_id: Int,
         callback: ConsumeApiResponse<NetworkAlternativeName>
     ) {
-        movieRepository.getNetworkAlternativeName(
+        movieApi.getNetworkAlternativeName(
             network_id,
-            scheduler, apiKey,
+
             object : ConsumeApiResponse<NetworkAlternativeName> {
                 override fun onSuccess(data: NetworkAlternativeName) {
                     callback.onSuccess(data)
@@ -1595,9 +1434,9 @@ class MovieApi(
     }
 
     override fun getNetworkImage(network_id: Int, callback: ConsumeApiResponse<NetworkImage>) {
-        movieRepository.getNetworkImage(
+        movieApi.getNetworkImage(
             network_id,
-            scheduler, apiKey,
+
             object : ConsumeApiResponse<NetworkImage> {
                 override fun onSuccess(data: NetworkImage) {
                     callback.onSuccess(data)
@@ -1622,8 +1461,7 @@ class MovieApi(
         page: Int?,
         callback: ConsumeApiResponse<SearchCompanies>
     ) {
-        movieRepository.searchCompanies(
-            scheduler, apiKey,
+        movieApi.searchCompanies(
             query,
             page,
             object : ConsumeApiResponse<SearchCompanies> {
@@ -1651,8 +1489,8 @@ class MovieApi(
         page: Int?,
         callback: ConsumeApiResponse<SearchCollections>
     ) {
-        movieRepository.searchCollections(
-            scheduler, apiKey,
+        movieApi.searchCollections(
+
             query,
             language,
             page,
@@ -1680,8 +1518,8 @@ class MovieApi(
         page: Int?,
         callback: ConsumeApiResponse<SearchKeywords>
     ) {
-        movieRepository.searchKeywords(
-            scheduler, apiKey,
+        movieApi.searchKeywords(
+
             query,
             page,
             object : ConsumeApiResponse<SearchKeywords> {
@@ -1713,8 +1551,8 @@ class MovieApi(
         primary_release_year: Int?,
         callback: ConsumeApiResponse<SearchMovies>
     ) {
-        movieRepository.searchMovies(
-            scheduler, apiKey,
+        movieApi.searchMovies(
+
             query,
             language,
             page,
@@ -1749,8 +1587,8 @@ class MovieApi(
         region: String?,
         callback: ConsumeApiResponse<SearchMulti>
     ) {
-        movieRepository.searchMultiSearch(
-            scheduler, apiKey,
+        movieApi.searchMultiSearch(
+
             query,
             language,
             page,
@@ -1783,8 +1621,8 @@ class MovieApi(
         region: String?,
         callback: ConsumeApiResponse<SearchPeople>
     ) {
-        movieRepository.searchPeople(
-            scheduler, apiKey,
+        movieApi.searchPeople(
+
             query,
             language,
             page,
@@ -1817,8 +1655,8 @@ class MovieApi(
         first_air_date_year: Int?,
         callback: ConsumeApiResponse<SearchMovies>
     ) {
-        movieRepository.searchTvShows(
-            scheduler, apiKey,
+        movieApi.searchTvShows(
+
             query,
             language,
             page,
@@ -1849,9 +1687,9 @@ class MovieApi(
         append_to_response: String?,
         callback: ConsumeApiResponse<TvDetails>
     ) {
-        movieRepository.getTvDetails(
+        movieApi.getTvDetails(
             tv_id,
-            scheduler, apiKey,
+
             language,
             append_to_response,
             object : ConsumeApiResponse<TvDetails> {
@@ -1880,9 +1718,9 @@ class MovieApi(
         session_id: String?,
         callback: ConsumeApiResponse<TvAccountStates>
     ) {
-        movieRepository.getTvAccountStates(
+        movieApi.getTvAccountStates(
             tv_id,
-            scheduler, apiKey,
+
             language,
             guest_session_id,
             session_id,
@@ -1910,9 +1748,9 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<TvAlternativeTitles>
     ) {
-        movieRepository.getTvAlternativeTitles(
+        movieApi.getTvAlternativeTitles(
             tv_id,
-            scheduler, apiKey,
+
             language,
             object : ConsumeApiResponse<TvAlternativeTitles> {
                 override fun onSuccess(data: TvAlternativeTitles) {
@@ -1940,9 +1778,9 @@ class MovieApi(
         page: Int?,
         callback: ConsumeApiResponse<TvChanges>
     ) {
-        movieRepository.getTvChanges(
+        movieApi.getTvChanges(
             tv_id,
-            scheduler, apiKey,
+
             startDate,
             endDate,
             page,
@@ -1970,9 +1808,9 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<TvContentRatings>
     ) {
-        movieRepository.getTvContentRatings(
+        movieApi.getTvContentRatings(
             tv_id,
-            scheduler, apiKey,
+
             language,
             object : ConsumeApiResponse<TvContentRatings> {
                 override fun onSuccess(data: TvContentRatings) {
@@ -1998,9 +1836,9 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<TvCredits>
     ) {
-        movieRepository.getTvCredits(
+        movieApi.getTvCredits(
             tv_id,
-            scheduler, apiKey,
+
             language,
             object : ConsumeApiResponse<TvCredits> {
                 override fun onSuccess(data: TvCredits) {
@@ -2026,9 +1864,9 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<TvEpisodeGroups>
     ) {
-        movieRepository.getTvEpisodeGroups(
+        movieApi.getTvEpisodeGroups(
             tv_id,
-            scheduler, apiKey,
+
             language,
             object : ConsumeApiResponse<TvEpisodeGroups> {
                 override fun onSuccess(data: TvEpisodeGroups) {
@@ -2054,9 +1892,9 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<TvExternalIds>
     ) {
-        movieRepository.getTvExternalIds(
+        movieApi.getTvExternalIds(
             tv_id,
-            scheduler, apiKey,
+
             language,
             object : ConsumeApiResponse<TvExternalIds> {
                 override fun onSuccess(data: TvExternalIds) {
@@ -2082,9 +1920,9 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<TvImages>
     ) {
-        movieRepository.getTvImages(
+        movieApi.getTvImages(
             tv_id,
-            scheduler, apiKey,
+
             language,
             object : ConsumeApiResponse<TvImages> {
                 override fun onSuccess(data: TvImages) {
@@ -2106,9 +1944,9 @@ class MovieApi(
     }
 
     override fun getTvKeyword(tv_id: Int, callback: ConsumeApiResponse<TvKeywords>) {
-        movieRepository.getTvKeyword(
+        movieApi.getTvKeyword(
             tv_id,
-            scheduler, apiKey,
+
             object : ConsumeApiResponse<TvKeywords> {
                 override fun onSuccess(data: TvKeywords) {
                     callback.onSuccess(data)
@@ -2134,9 +1972,9 @@ class MovieApi(
         page: Int?,
         callback: ConsumeApiResponse<TvRecommendations>
     ) {
-        movieRepository.getTvRecommendations(
+        movieApi.getTvRecommendations(
             tv_id,
-            scheduler, apiKey,
+
             language,
             page,
             object : ConsumeApiResponse<TvRecommendations> {
@@ -2159,9 +1997,9 @@ class MovieApi(
     }
 
     override fun getTvReviews(tv_id: Int, callback: ConsumeApiResponse<TvReviews>) {
-        movieRepository.getTvReviews(
+        movieApi.getTvReviews(
             tv_id,
-            scheduler, apiKey,
+
             object : ConsumeApiResponse<TvReviews> {
                 override fun onSuccess(data: TvReviews) {
                     callback.onSuccess(data)
@@ -2185,9 +2023,9 @@ class MovieApi(
         tv_id: Int,
         callback: ConsumeApiResponse<TvScreenedTheatrically>
     ) {
-        movieRepository.getTvScreenedTheatrically(
+        movieApi.getTvScreenedTheatrically(
             tv_id,
-            scheduler, apiKey,
+
             object : ConsumeApiResponse<TvScreenedTheatrically> {
                 override fun onSuccess(data: TvScreenedTheatrically) {
                     callback.onSuccess(data)
@@ -2213,9 +2051,9 @@ class MovieApi(
         page: Int?,
         callback: ConsumeApiResponse<TvSimilarTVShows>
     ) {
-        movieRepository.getTvSimilarTvShows(
+        movieApi.getTvSimilarTvShows(
             tv_id,
-            scheduler, apiKey,
+
             language,
             page,
             object : ConsumeApiResponse<TvSimilarTVShows> {
@@ -2238,9 +2076,9 @@ class MovieApi(
     }
 
     override fun getTvTranslations(tv_id: Int, callback: ConsumeApiResponse<TvTranslations>) {
-        movieRepository.getTvTranslations(
+        movieApi.getTvTranslations(
             tv_id,
-            scheduler, apiKey,
+
             object : ConsumeApiResponse<TvTranslations> {
                 override fun onSuccess(data: TvTranslations) {
                     callback.onSuccess(data)
@@ -2265,9 +2103,9 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<TvVideos>
     ) {
-        movieRepository.getTvVideos(
+        movieApi.getTvVideos(
             tv_id,
-            scheduler, apiKey,
+
             language,
             object : ConsumeApiResponse<TvVideos> {
                 override fun onSuccess(data: TvVideos) {
@@ -2289,8 +2127,8 @@ class MovieApi(
     }
 
     override fun getTvLatest(language: String?, callback: ConsumeApiResponse<TvLatest>) {
-        movieRepository.getTvLatest(
-            scheduler, apiKey,
+        movieApi.getTvLatest(
+
             language,
             object : ConsumeApiResponse<TvLatest> {
                 override fun onSuccess(data: TvLatest) {
@@ -2316,8 +2154,8 @@ class MovieApi(
         page: Int?,
         callback: ConsumeApiResponse<TvAiringToday>
     ) {
-        movieRepository.getTvAiringToday(
-            scheduler, apiKey,
+        movieApi.getTvAiringToday(
+
             language,
             page,
             object : ConsumeApiResponse<TvAiringToday> {
@@ -2344,8 +2182,8 @@ class MovieApi(
         page: Int?,
         callback: ConsumeApiResponse<TvOnTheAir>
     ) {
-        movieRepository.getTvOnTheAir(
-            scheduler, apiKey,
+        movieApi.getTvOnTheAir(
+
             language,
             page,
             object : ConsumeApiResponse<TvOnTheAir> {
@@ -2372,8 +2210,8 @@ class MovieApi(
         page: Int?,
         callback: ConsumeApiResponse<TvPopular>
     ) {
-        movieRepository.getTvPopular(
-            scheduler, apiKey,
+        movieApi.getTvPopular(
+
             language,
             page,
             object : ConsumeApiResponse<TvPopular> {
@@ -2400,8 +2238,8 @@ class MovieApi(
         page: Int?,
         callback: ConsumeApiResponse<TvTopRated>
     ) {
-        movieRepository.getTvTopRated(
-            scheduler, apiKey,
+        movieApi.getTvTopRated(
+
             language,
             page,
             object : ConsumeApiResponse<TvTopRated> {
@@ -2430,10 +2268,10 @@ class MovieApi(
         append_to_response: String?,
         callback: ConsumeApiResponse<TvSeasonsDetails>
     ) {
-        movieRepository.getTvSeasonsDetails(
+        movieApi.getTvSeasonsDetails(
             tv_id,
             season_number,
-            scheduler, apiKey,
+
             language,
             append_to_response,
             object : ConsumeApiResponse<TvSeasonsDetails> {
@@ -2462,9 +2300,9 @@ class MovieApi(
         page: Int?,
         callback: ConsumeApiResponse<TvSeasonsChanges>
     ) {
-        movieRepository.getTvSeasonsChanges(
+        movieApi.getTvSeasonsChanges(
             season_id,
-            scheduler, apiKey,
+
             startDate,
             endDate,
             page,
@@ -2495,10 +2333,10 @@ class MovieApi(
         session_id: String?,
         callback: ConsumeApiResponse<TvSeasonsAccountStates>
     ) {
-        movieRepository.getTvSeasonsAccountStates(
+        movieApi.getTvSeasonsAccountStates(
             tv_id,
             season_number,
-            scheduler, apiKey,
+
             language,
             guest_session_id,
             session_id,
@@ -2527,10 +2365,10 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<TvSeasonsCredits>
     ) {
-        movieRepository.getTvSeasonsCredits(
+        movieApi.getTvSeasonsCredits(
             tv_id,
             season_number,
-            scheduler, apiKey,
+
             language,
             object : ConsumeApiResponse<TvSeasonsCredits> {
                 override fun onSuccess(data: TvSeasonsCredits) {
@@ -2557,10 +2395,10 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<TvSeasonsExternalIds>
     ) {
-        movieRepository.getTvSeasonsExternalIds(
+        movieApi.getTvSeasonsExternalIds(
             tv_id,
             season_number,
-            scheduler, apiKey,
+
             language,
             object : ConsumeApiResponse<TvSeasonsExternalIds> {
                 override fun onSuccess(data: TvSeasonsExternalIds) {
@@ -2587,10 +2425,10 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<TvSeasonsImages>
     ) {
-        movieRepository.getTvSeasonsImages(
+        movieApi.getTvSeasonsImages(
             tv_id,
             season_number,
-            scheduler, apiKey,
+
             language,
             object : ConsumeApiResponse<TvSeasonsImages> {
                 override fun onSuccess(data: TvSeasonsImages) {
@@ -2617,10 +2455,10 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<TvSeasonsVideos>
     ) {
-        movieRepository.getTvSeasonsVideos(
+        movieApi.getTvSeasonsVideos(
             tv_id,
             season_number,
-            scheduler, apiKey,
+
             language,
             object : ConsumeApiResponse<TvSeasonsVideos> {
                 override fun onSuccess(data: TvSeasonsVideos) {
@@ -2649,11 +2487,11 @@ class MovieApi(
         append_to_response: String?,
         callback: ConsumeApiResponse<TvEpisodeDetails>
     ) {
-        movieRepository.getTvEpisodeDetails(
+        movieApi.getTvEpisodeDetails(
             tv_id,
             season_number,
             episode_number,
-            scheduler, apiKey,
+
             language,
             append_to_response,
             object : ConsumeApiResponse<TvEpisodeDetails> {
@@ -2682,9 +2520,9 @@ class MovieApi(
         page: Int?,
         callback: ConsumeApiResponse<TvEpisodeChanges>
     ) {
-        movieRepository.getTvEpisodeChanges(
+        movieApi.getTvEpisodeChanges(
             episode_id,
-            scheduler, apiKey,
+
             startDate,
             endDate,
             page,
@@ -2715,11 +2553,11 @@ class MovieApi(
         session_id: String?,
         callback: ConsumeApiResponse<TvEpisodeAccountStates>
     ) {
-        movieRepository.getTvEpisodeAccountStates(
+        movieApi.getTvEpisodeAccountStates(
             tv_id,
             season_number,
             episode_number,
-            scheduler, apiKey,
+
             guest_session_id,
             session_id,
             object : ConsumeApiResponse<TvEpisodeAccountStates> {
@@ -2747,11 +2585,11 @@ class MovieApi(
         episode_number: Int,
         callback: ConsumeApiResponse<TvEpisodeCredits>
     ) {
-        movieRepository.getTvEpisodeCredits(
+        movieApi.getTvEpisodeCredits(
             tv_id,
             season_number,
             episode_number,
-            scheduler, apiKey,
+
             object : ConsumeApiResponse<TvEpisodeCredits> {
                 override fun onSuccess(data: TvEpisodeCredits) {
                     callback.onSuccess(data)
@@ -2777,11 +2615,11 @@ class MovieApi(
         episode_number: Int,
         callback: ConsumeApiResponse<TvEpisodeExternalIds>
     ) {
-        movieRepository.getTvEpisodeExternalIds(
+        movieApi.getTvEpisodeExternalIds(
             tv_id,
             season_number,
             episode_number,
-            scheduler, apiKey,
+
             object : ConsumeApiResponse<TvEpisodeExternalIds> {
                 override fun onSuccess(data: TvEpisodeExternalIds) {
                     callback.onSuccess(data)
@@ -2807,11 +2645,11 @@ class MovieApi(
         episode_number: Int,
         callback: ConsumeApiResponse<TvEpisodeImages>
     ) {
-        movieRepository.getTvEpisodeImages(
+        movieApi.getTvEpisodeImages(
             tv_id,
             season_number,
             episode_number,
-            scheduler, apiKey,
+
             object : ConsumeApiResponse<TvEpisodeImages> {
                 override fun onSuccess(data: TvEpisodeImages) {
                     callback.onSuccess(data)
@@ -2837,11 +2675,11 @@ class MovieApi(
         episode_number: Int,
         callback: ConsumeApiResponse<TvEpisodeTranslation>
     ) {
-        movieRepository.getTvEpisodeTranslations(
+        movieApi.getTvEpisodeTranslations(
             tv_id,
             season_number,
             episode_number,
-            scheduler, apiKey,
+
             object : ConsumeApiResponse<TvEpisodeTranslation> {
                 override fun onSuccess(data: TvEpisodeTranslation) {
                     callback.onSuccess(data)
@@ -2868,11 +2706,11 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<TvEpisodeVideos>
     ) {
-        movieRepository.getTvEpisodeVideos(
+        movieApi.getTvEpisodeVideos(
             tv_id,
             season_number,
             episode_number,
-            scheduler, apiKey,
+
             language,
             object : ConsumeApiResponse<TvEpisodeVideos> {
                 override fun onSuccess(data: TvEpisodeVideos) {
@@ -2898,9 +2736,9 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<TvEpisodeGroupsDetails>
     ) {
-        movieRepository.getTvEpisodeGroupsDetails(
+        movieApi.getTvEpisodeGroupsDetails(
             id,
-            scheduler, apiKey,
+
             language,
             object : ConsumeApiResponse<TvEpisodeGroupsDetails> {
                 override fun onSuccess(data: TvEpisodeGroupsDetails) {
@@ -2926,9 +2764,9 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<PeopleDetails>
     ) {
-        movieRepository.getPeopleDetails(
+        movieApi.getPeopleDetails(
             person_id,
-            scheduler, apiKey,
+
             language,
             object : ConsumeApiResponse<PeopleDetails> {
                 override fun onSuccess(data: PeopleDetails) {
@@ -2956,9 +2794,9 @@ class MovieApi(
         startDate: String?,
         callback: ConsumeApiResponse<PeopleChanges>
     ) {
-        movieRepository.getPeopleChanges(
+        movieApi.getPeopleChanges(
             person_id,
-            scheduler, apiKey,
+
             endDate,
             page,
             startDate,
@@ -2986,9 +2824,9 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<PeopleMovieCredits>
     ) {
-        movieRepository.getPeopleMovieCredits(
+        movieApi.getPeopleMovieCredits(
             person_id,
-            scheduler, apiKey,
+
             language,
             object : ConsumeApiResponse<PeopleMovieCredits> {
                 override fun onSuccess(data: PeopleMovieCredits) {
@@ -3014,9 +2852,9 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<PeopleTvCredits>
     ) {
-        movieRepository.getPeopleTvCredits(
+        movieApi.getPeopleTvCredits(
             person_id,
-            scheduler, apiKey,
+
             language,
             object : ConsumeApiResponse<PeopleTvCredits> {
                 override fun onSuccess(data: PeopleTvCredits) {
@@ -3042,9 +2880,9 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<PeopleCombinedCredits>
     ) {
-        movieRepository.getPeopleCombinedCredits(
+        movieApi.getPeopleCombinedCredits(
             person_id,
-            scheduler, apiKey,
+
             language,
             object : ConsumeApiResponse<PeopleCombinedCredits> {
                 override fun onSuccess(data: PeopleCombinedCredits) {
@@ -3070,9 +2908,9 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<PeopleExternalIds>
     ) {
-        movieRepository.getPeopleExternalIds(
+        movieApi.getPeopleExternalIds(
             person_id,
-            scheduler, apiKey,
+
             language,
             object : ConsumeApiResponse<PeopleExternalIds> {
                 override fun onSuccess(data: PeopleExternalIds) {
@@ -3094,9 +2932,9 @@ class MovieApi(
     }
 
     override fun getPeopleImages(person_id: Int, callback: ConsumeApiResponse<PeopleImages>) {
-        movieRepository.getPeopleImages(
+        movieApi.getPeopleImages(
             person_id,
-            scheduler, apiKey,
+
             object : ConsumeApiResponse<PeopleImages> {
                 override fun onSuccess(data: PeopleImages) {
                     callback.onSuccess(data)
@@ -3122,9 +2960,9 @@ class MovieApi(
         page: Int?,
         callback: ConsumeApiResponse<PeopleTaggedImages>
     ) {
-        movieRepository.getPeopleTaggedImages(
+        movieApi.getPeopleTaggedImages(
             person_id,
-            scheduler, apiKey,
+
             language,
             page,
             object : ConsumeApiResponse<PeopleTaggedImages> {
@@ -3151,9 +2989,9 @@ class MovieApi(
         language: String?,
         callback: ConsumeApiResponse<PeopleTranslations>
     ) {
-        movieRepository.getPeopleTranslations(
+        movieApi.getPeopleTranslations(
             person_id,
-            scheduler, apiKey,
+
             language,
             object : ConsumeApiResponse<PeopleTranslations> {
                 override fun onSuccess(data: PeopleTranslations) {
@@ -3175,8 +3013,8 @@ class MovieApi(
     }
 
     override fun getPeopleLatest(language: String?, callback: ConsumeApiResponse<PeopleLatest>) {
-        movieRepository.getPeopleLatest(
-            scheduler, apiKey,
+        movieApi.getPeopleLatest(
+
             language,
             object : ConsumeApiResponse<PeopleLatest> {
                 override fun onSuccess(data: PeopleLatest) {
@@ -3202,8 +3040,8 @@ class MovieApi(
         page: Int?,
         callback: ConsumeApiResponse<PeoplePopular>
     ) {
-        movieRepository.getPeoplePopular(
-            scheduler, apiKey,
+        movieApi.getPeoplePopular(
+
             language,
             page,
             object : ConsumeApiResponse<PeoplePopular> {

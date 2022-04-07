@@ -22,7 +22,7 @@ import okhttp3.Interceptor
 
 class CNewsApi(usingScheduler: Boolean, apiKey: String) : INewsApi {
 
-    private val newsApi = if (usingScheduler) {
+    private var newsApi = if (usingScheduler) {
         NewsApi(Schedulers.single(), apiKey)
     } else {
         NewsApi(null, apiKey)

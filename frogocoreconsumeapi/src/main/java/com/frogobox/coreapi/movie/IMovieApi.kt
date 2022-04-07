@@ -3,54 +3,42 @@ package com.frogobox.coreapi.movie
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.movie.model.*
 import com.frogobox.coreapi.movie.response.*
-import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
 
-/**
- * Created by Faisal Amir
- * FrogoBox Inc License
- * =========================================
- * TMDBAPI
- * Copyright (C) 10/03/2020.
- * All rights reserved
+
+/*
+ * Created by faisalamir on 07/04/22
+ * FrogoConsumeApi
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
  * E-mail   : faisalamircs@gmail.com
  * Github   : github.com/amirisback
- * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
- * FrogoBox Software Industries
- * com.frogobox.frogoconsumeapi.movie.data.source
+ * Copyright (C) 2022 Frogobox Media Inc.      
+ * All rights reserved
  *
  */
-interface MovieDataSource {
+
+interface IMovieApi {
 
     // Switch For Using Chuck Interceptor
     fun usingChuckInterceptor(chuckerInterceptor: Interceptor)
 
+    // ---------------------------------------------------------------------------------------------
+
     // CERTIFICATIONS
     // Get Movie Certifications
-    fun getMovieCertifications(
-        scheduler: Scheduler?,
-        apiKey: String,
-        callback: ConsumeApiResponse<Certifications<CertificationMovie>>
-    )
+    fun getMovieCertifications(callback: ConsumeApiResponse<Certifications<CertificationMovie>>)
 
     // CERTIFICATIONS
     // Get TV Certifications
-    fun getTvCertifications(
-        scheduler: Scheduler?,
-        apiKey: String,
-        callback: ConsumeApiResponse<Certifications<CertificationTv>>
-    )
+    fun getTvCertifications(callback: ConsumeApiResponse<Certifications<CertificationTv>>)
 
     // ---------------------------------------------------------------------------------------------
 
     // CHANGES
     // Get Movie Change List
     fun getMovieChangeList(
-        scheduler: Scheduler?,
-        apiKey: String,
         endDate: String?,
         startDate: String?,
         page: Int?,
@@ -60,8 +48,6 @@ interface MovieDataSource {
     // CHANGES
     // Get TV Change List
     fun getTvChangeList(
-        scheduler: Scheduler?,
-        apiKey: String,
         endDate: String?,
         startDate: String?,
         page: Int?,
@@ -71,8 +57,6 @@ interface MovieDataSource {
     // CHANGES
     // Get Person Change List
     fun getPersonChangeList(
-        scheduler: Scheduler?,
-        apiKey: String,
         endDate: String?,
         startDate: String?,
         page: Int?,
@@ -85,8 +69,6 @@ interface MovieDataSource {
     // Get Details
     fun getCollectionDetails(
         collection_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<CollectionsDetail>
     )
@@ -95,8 +77,6 @@ interface MovieDataSource {
     // Get Images
     fun getCollectionImages(
         collection_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<CollectionsImage>
     )
@@ -105,8 +85,6 @@ interface MovieDataSource {
     // Get Translations
     fun getCollectionTranslations(
         collection_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<CollectionsTranslation>
     )
@@ -117,8 +95,6 @@ interface MovieDataSource {
     // Get Details
     fun getCompaniesDetails(
         company_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         callback: ConsumeApiResponse<CompaniesDetail>
     )
 
@@ -126,8 +102,6 @@ interface MovieDataSource {
     // Get Alternative Names
     fun getCompaniesAlternativeName(
         company_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         callback: ConsumeApiResponse<CompaniesAlternateName>
     )
 
@@ -135,8 +109,6 @@ interface MovieDataSource {
     // Get Images
     fun getCompaniesImage(
         company_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         callback: ConsumeApiResponse<CompaniesImage>
     )
 
@@ -144,68 +116,39 @@ interface MovieDataSource {
 
     // CONFIGURATION
     // Get API Configuration
-    fun getConfigurationApi(
-        scheduler: Scheduler?,
-        apiKey: String,
-        callback: ConsumeApiResponse<ConfigurationApi>
-    )
+    fun getConfigurationApi(callback: ConsumeApiResponse<ConfigurationApi>)
 
     // CONFIGURATION
     // Get Countries
-    fun getConfigurationCountries(
-        scheduler: Scheduler?,
-        apiKey: String,
-        callback: ConsumeApiResponse<List<ConfigurationCountry>>
-    )
+    fun getConfigurationCountries(callback: ConsumeApiResponse<List<ConfigurationCountry>>)
 
     // CONFIGURATION
     // Get Jobs
-    fun getConfigurationJobs(
-        scheduler: Scheduler?,
-        apiKey: String,
-        callback: ConsumeApiResponse<List<ConfigurationJob>>
-    )
+    fun getConfigurationJobs(callback: ConsumeApiResponse<List<ConfigurationJob>>)
 
     // CONFIGURATION
     // Get Languages
-    fun getConfigurationLanguages(
-        scheduler: Scheduler?,
-        apiKey: String,
-        callback: ConsumeApiResponse<List<ConfigurationLanguage>>
-    )
+    fun getConfigurationLanguages(callback: ConsumeApiResponse<List<ConfigurationLanguage>>)
 
     // CONFIGURATION
     // Get Primary Translations
-    fun getConfigurationTranslations(
-        scheduler: Scheduler?,
-        apiKey: String,
-        callback: ConsumeApiResponse<List<String>>
-    )
+    fun getConfigurationTranslations(callback: ConsumeApiResponse<List<String>>)
 
     // CONFIGURATION
     // Get Timezones
-    fun getConfigurationTimezones(
-        scheduler: Scheduler?,
-        apiKey: String,
-        callback: ConsumeApiResponse<List<ConfigurationTimezone>>
-    )
+    fun getConfigurationTimezones(callback: ConsumeApiResponse<List<ConfigurationTimezone>>)
 
     // ---------------------------------------------------------------------------------------------
 
     // CREDITS
     // Get Details
-    fun getCreditsDetails(
-        credit_id: String,
-        scheduler: Scheduler?,
-        apiKey: String,
-        callback: ConsumeApiResponse<Credits>
-    )
+    fun getCreditsDetails(credit_id: String, callback: ConsumeApiResponse<Credits>)
+
+    // ---------------------------------------------------------------------------------------------
 
     // DISCOVER
     // Movie Discover
     fun getDiscoverMovie(
-        scheduler: Scheduler?,
-        apiKey: String,
         language: String?,
         region: String?,
         sort_by: String?,
@@ -239,16 +182,11 @@ interface MovieDataSource {
         with_runtime_lte: Double?,
         with_original_language: String?,
         callback: ConsumeApiResponse<Discover<DiscoverMovie>>
-
     )
-
-    // ---------------------------------------------------------------------------------------------
 
     // DISCOVER
     // TV Discover
     fun getDiscoverTv(
-        scheduler: Scheduler?,
-        apiKey: String,
         language: String?,
         sort_by: String?,
         air_date_gte: String?,
@@ -280,7 +218,6 @@ interface MovieDataSource {
     // Find by ID
     fun getFindById(
         external_id: String,
-        scheduler: Scheduler?, apiKey: String,
         external_source: String,
         language: String?,
         callback: ConsumeApiResponse<Find>
@@ -291,8 +228,6 @@ interface MovieDataSource {
     // GENRES
     // Get Movie List
     fun getGenresMovie(
-        scheduler: Scheduler?,
-        apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<Genres>
     )
@@ -300,8 +235,6 @@ interface MovieDataSource {
     // GENRES
     // Get TV List
     fun getGenresTv(
-        scheduler: Scheduler?,
-        apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<Genres>
     )
@@ -312,8 +245,6 @@ interface MovieDataSource {
     // Get Details
     fun getKeywordsDetail(
         keyword_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         callback: ConsumeApiResponse<KeywordsDetail>
     )
 
@@ -321,8 +252,6 @@ interface MovieDataSource {
     // Get Movies
     fun getKeywordsMovie(
         keyword_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         language: String?,
         include_adult: Boolean?,
         callback: ConsumeApiResponse<KeywordsMovies>
@@ -334,8 +263,6 @@ interface MovieDataSource {
     // Get Details
     fun getMoviesDetails(
         movie_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         language: String?,
         append_to_response: String?,
         callback: ConsumeApiResponse<MovieDetail>
@@ -345,8 +272,6 @@ interface MovieDataSource {
     // Get Account States
     fun getMoviesAccountState(
         movie_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         session_id: String,
         guest_session_id: String?,
         callback: ConsumeApiResponse<MovieAccountState>
@@ -356,8 +281,6 @@ interface MovieDataSource {
     // Get Alternative Titles
     fun getMoviesAlternativeTitles(
         movie_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         country: String?,
         callback: ConsumeApiResponse<MovieAlternativeTitle>
     )
@@ -366,8 +289,6 @@ interface MovieDataSource {
     // Get Changes
     fun getMoviesChanges(
         movie_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         start_date: String?,
         end_date: String?,
         page: Int?,
@@ -378,8 +299,6 @@ interface MovieDataSource {
     // Get Credits
     fun getMoviesCredits(
         movie_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         callback: ConsumeApiResponse<MovieCredit>
     )
 
@@ -387,8 +306,6 @@ interface MovieDataSource {
     // Get External Ids
     fun getMoviesExternalIds(
         movie_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         callback: ConsumeApiResponse<MovieExternalId>
     )
 
@@ -396,8 +313,6 @@ interface MovieDataSource {
     // Get Images
     fun getMoviesImages(
         movie_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         language: String?,
         include_image_language: String?,
         callback: ConsumeApiResponse<MovieImages>
@@ -407,8 +322,6 @@ interface MovieDataSource {
     // Get Keywords
     fun getMoviesKeywords(
         movie_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         callback: ConsumeApiResponse<MovieKeywords>
     )
 
@@ -416,8 +329,6 @@ interface MovieDataSource {
     // Get Release Dates
     fun getMoviesReleaseDates(
         movie_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         callback: ConsumeApiResponse<MovieReleaseDates>
     )
 
@@ -425,8 +336,6 @@ interface MovieDataSource {
     // Get Videos
     fun getMoviesVideos(
         movie_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<MovieVideos>
     )
@@ -435,8 +344,6 @@ interface MovieDataSource {
     // Get Translations
     fun getMoviesTranslations(
         movie_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         callback: ConsumeApiResponse<MovieTranslations>
     )
 
@@ -444,8 +351,6 @@ interface MovieDataSource {
     // Get Recommendations
     fun getMoviesRecommendations(
         movie_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         language: String?,
         page: Int?,
         callback: ConsumeApiResponse<MovieRecommendations>
@@ -455,8 +360,6 @@ interface MovieDataSource {
     // Get Similar Movies
     fun getMoviesSimilarMovies(
         movie_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         language: String?,
         page: Int?,
         callback: ConsumeApiResponse<MovieSimilarMovies>
@@ -466,7 +369,6 @@ interface MovieDataSource {
     // Get Reviews
     fun getMoviesReviews(
         movie_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
         callback: ConsumeApiResponse<MovieReviews>
@@ -476,7 +378,6 @@ interface MovieDataSource {
     // Get Lists
     fun getMoviesLists(
         movie_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
         callback: ConsumeApiResponse<MovieLists>
@@ -485,7 +386,6 @@ interface MovieDataSource {
     // MOVIES
     // Get Latest
     fun getMoviesLatest(
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<MovieLatest>
     )
@@ -493,7 +393,6 @@ interface MovieDataSource {
     // MOVIES
     // Get Now Playing
     fun getMoviesNowPlaying(
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
         region: String?,
@@ -503,7 +402,6 @@ interface MovieDataSource {
     // MOVIES
     // Get Popular
     fun getMoviesPopular(
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
         region: String?,
@@ -513,7 +411,6 @@ interface MovieDataSource {
     // MOVIES
     // Get Top Rated
     fun getMoviesTopRated(
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
         region: String?,
@@ -523,7 +420,6 @@ interface MovieDataSource {
     // MOVIES
     // Get Upcoming
     fun getMoviesUpcoming(
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
         region: String?,
@@ -533,38 +429,50 @@ interface MovieDataSource {
     // ---------------------------------------------------------------------------------------------
 
     // TRENDING
-    // Get Trending All
-    fun getTrendingAll(
-        media_type: String,
-        time_window: String,
-        scheduler: Scheduler?, apiKey: String,
+    // Get Trending All Day
+    fun getTrendingAllDay(
         callback: ConsumeApiResponse<Trending<TrendingAll>>
     )
 
     // TRENDING
-    // Get Trending Movie
-    fun getTrendingMovie(
-        media_type: String,
-        time_window: String,
-        scheduler: Scheduler?, apiKey: String,
+    // Get Trending All Week
+    fun getTrendingAllWeek(
+        callback: ConsumeApiResponse<Trending<TrendingAll>>
+    )
+
+    // TRENDING
+    // Get Trending Movie Day
+    fun getTrendingMovieDay(
         callback: ConsumeApiResponse<Trending<TrendingMovie>>
     )
 
     // TRENDING
-    // Get Trending Person
-    fun getTrendingPerson(
-        media_type: String,
-        time_window: String,
-        scheduler: Scheduler?, apiKey: String,
+    // Get Trending Movie Week
+    fun getTrendingMovieWeek(
+        callback: ConsumeApiResponse<Trending<TrendingMovie>>
+    )
+
+    // TRENDING
+    // Get Trending Person Day
+    fun getTrendingPersonDay(
         callback: ConsumeApiResponse<Trending<TrendingPerson>>
     )
 
     // TRENDING
-    // Get Trending Movie
-    fun getTrendingTv(
-        media_type: String,
-        time_window: String,
-        scheduler: Scheduler?, apiKey: String,
+    // Get Trending Person Week
+    fun getTrendingPersonWeek(
+        callback: ConsumeApiResponse<Trending<TrendingPerson>>
+    )
+
+    // TRENDING
+    // Get Trending TV Day
+    fun getTrendingTvDay(
+        callback: ConsumeApiResponse<Trending<TrendingTv>>
+    )
+
+    // TRENDING
+    // Get Trending TV Week
+    fun getTrendingTvWeek(
         callback: ConsumeApiResponse<Trending<TrendingTv>>
     )
 
@@ -574,7 +482,6 @@ interface MovieDataSource {
     // Get Details
     fun getReviews(
         review_id: String,
-        scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<Reviews>
     )
 
@@ -584,7 +491,6 @@ interface MovieDataSource {
     // Get Details
     fun getNetworkDetail(
         network_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<NetworkDetail>
     )
 
@@ -592,7 +498,6 @@ interface MovieDataSource {
     // Get Alternative Names
     fun getNetworkAlternativeName(
         network_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<NetworkAlternativeName>
     )
 
@@ -600,7 +505,6 @@ interface MovieDataSource {
     // Get Images
     fun getNetworkImage(
         network_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<NetworkImage>
     )
 
@@ -609,7 +513,6 @@ interface MovieDataSource {
     // SEARCH
     // Search Companies
     fun searchCompanies(
-        scheduler: Scheduler?, apiKey: String,
         query: String,
         page: Int?,
         callback: ConsumeApiResponse<SearchCompanies>
@@ -618,7 +521,6 @@ interface MovieDataSource {
     // SEARCH
     // Search Collections
     fun searchCollections(
-        scheduler: Scheduler?, apiKey: String,
         query: String,
         language: String?,
         page: Int?,
@@ -628,7 +530,6 @@ interface MovieDataSource {
     // SEARCH
     // Search Keywords
     fun searchKeywords(
-        scheduler: Scheduler?, apiKey: String,
         query: String,
         page: Int?,
         callback: ConsumeApiResponse<SearchKeywords>
@@ -637,7 +538,6 @@ interface MovieDataSource {
     // SEARCH
     // Search Movies
     fun searchMovies(
-        scheduler: Scheduler?, apiKey: String,
         query: String,
         language: String?,
         page: Int?,
@@ -651,7 +551,6 @@ interface MovieDataSource {
     // SEARCH
     // Multi Search
     fun searchMultiSearch(
-        scheduler: Scheduler?, apiKey: String,
         query: String,
         language: String?,
         page: Int?,
@@ -663,7 +562,6 @@ interface MovieDataSource {
     // SEARCH
     // Search People
     fun searchPeople(
-        scheduler: Scheduler?, apiKey: String,
         query: String,
         language: String?,
         page: Int?,
@@ -675,7 +573,6 @@ interface MovieDataSource {
     // SEARCH
     // Search Tv Shows
     fun searchTvShows(
-        scheduler: Scheduler?, apiKey: String,
         query: String,
         language: String?,
         page: Int?,
@@ -690,7 +587,6 @@ interface MovieDataSource {
     // Get Details
     fun getTvDetails(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         append_to_response: String?,
         callback: ConsumeApiResponse<TvDetails>
@@ -700,7 +596,6 @@ interface MovieDataSource {
     // Get Account States
     fun getTvAccountStates(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         guest_session_id: String?,
         session_id: String?,
@@ -711,7 +606,6 @@ interface MovieDataSource {
     // Get Alternative Titles
     fun getTvAlternativeTitles(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<TvAlternativeTitles>
     )
@@ -720,7 +614,6 @@ interface MovieDataSource {
     // Get Changes
     fun getTvChanges(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         startDate: String?,
         endDate: String?,
         page: Int?,
@@ -731,7 +624,6 @@ interface MovieDataSource {
     // Get Content Ratings
     fun getTvContentRatings(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<TvContentRatings>
     )
@@ -740,7 +632,6 @@ interface MovieDataSource {
     // Get Credits
     fun getTvCredits(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<TvCredits>
     )
@@ -749,7 +640,6 @@ interface MovieDataSource {
     // Get Episode Groups
     fun getTvEpisodeGroups(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<TvEpisodeGroups>
     )
@@ -758,7 +648,6 @@ interface MovieDataSource {
     // Get External IDs
     fun getTvExternalIds(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<TvExternalIds>
     )
@@ -767,7 +656,6 @@ interface MovieDataSource {
     // Get Images
     fun getTvImages(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<TvImages>
     )
@@ -776,7 +664,6 @@ interface MovieDataSource {
     // Get Keyword
     fun getTvKeyword(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<TvKeywords>
     )
 
@@ -784,7 +671,6 @@ interface MovieDataSource {
     // Get Recommendations
     fun getTvRecommendations(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
         callback: ConsumeApiResponse<TvRecommendations>
@@ -794,8 +680,6 @@ interface MovieDataSource {
     // Get Reviews
     fun getTvReviews(
         tv_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         callback: ConsumeApiResponse<TvReviews>
     )
 
@@ -803,8 +687,6 @@ interface MovieDataSource {
     // Get Screened Theatrically
     fun getTvScreenedTheatrically(
         tv_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         callback: ConsumeApiResponse<TvScreenedTheatrically>
     )
 
@@ -812,8 +694,6 @@ interface MovieDataSource {
     // Get Similar TV Shows
     fun getTvSimilarTvShows(
         tv_id: Int,
-        scheduler: Scheduler?,
-        apiKey: String,
         language: String?,
         page: Int?,
         callback: ConsumeApiResponse<TvSimilarTVShows>
@@ -823,7 +703,6 @@ interface MovieDataSource {
     // Get Translations
     fun getTvTranslations(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<TvTranslations>
     )
 
@@ -831,7 +710,6 @@ interface MovieDataSource {
     // Get Videos
     fun getTvVideos(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<TvVideos>
     )
@@ -839,7 +717,6 @@ interface MovieDataSource {
     // TV
     // Get Latest
     fun getTvLatest(
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<TvLatest>
     )
@@ -847,7 +724,6 @@ interface MovieDataSource {
     // TV
     // Get TV Airing Today
     fun getTvAiringToday(
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
         callback: ConsumeApiResponse<TvAiringToday>
@@ -856,7 +732,6 @@ interface MovieDataSource {
     // TV
     // Get TV On The Air
     fun getTvOnTheAir(
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
         callback: ConsumeApiResponse<TvOnTheAir>
@@ -865,7 +740,6 @@ interface MovieDataSource {
     // TV
     // Get Popular
     fun getTvPopular(
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
         callback: ConsumeApiResponse<TvPopular>
@@ -874,7 +748,6 @@ interface MovieDataSource {
     // TV
     // Get Top Rated
     fun getTvTopRated(
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
         callback: ConsumeApiResponse<TvTopRated>
@@ -887,7 +760,6 @@ interface MovieDataSource {
     fun getTvSeasonsDetails(
         tv_id: Int,
         season_number: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         append_to_response: String?,
         callback: ConsumeApiResponse<TvSeasonsDetails>
@@ -897,7 +769,6 @@ interface MovieDataSource {
     // Get Changes
     fun getTvSeasonsChanges(
         season_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         startDate: String?,
         endDate: String?,
         page: Int?,
@@ -909,7 +780,6 @@ interface MovieDataSource {
     fun getTvSeasonsAccountStates(
         tv_id: Int,
         season_number: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         guest_session_id: String?,
         session_id: String?,
@@ -921,7 +791,6 @@ interface MovieDataSource {
     fun getTvSeasonsCredits(
         tv_id: Int,
         season_number: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<TvSeasonsCredits>
     )
@@ -931,7 +800,6 @@ interface MovieDataSource {
     fun getTvSeasonsExternalIds(
         tv_id: Int,
         season_number: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<TvSeasonsExternalIds>
     )
@@ -941,7 +809,6 @@ interface MovieDataSource {
     fun getTvSeasonsImages(
         tv_id: Int,
         season_number: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<TvSeasonsImages>
     )
@@ -951,7 +818,6 @@ interface MovieDataSource {
     fun getTvSeasonsVideos(
         tv_id: Int,
         season_number: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<TvSeasonsVideos>
     )
@@ -964,7 +830,6 @@ interface MovieDataSource {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         append_to_response: String?,
         callback: ConsumeApiResponse<TvEpisodeDetails>
@@ -974,7 +839,6 @@ interface MovieDataSource {
     // Get Changes
     fun getTvEpisodeChanges(
         episode_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         startDate: String?,
         endDate: String?,
         page: Int?,
@@ -987,7 +851,6 @@ interface MovieDataSource {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        scheduler: Scheduler?, apiKey: String,
         guest_session_id: String?,
         session_id: String?,
         callback: ConsumeApiResponse<TvEpisodeAccountStates>
@@ -999,7 +862,6 @@ interface MovieDataSource {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<TvEpisodeCredits>
     )
 
@@ -1009,7 +871,6 @@ interface MovieDataSource {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<TvEpisodeExternalIds>
     )
 
@@ -1019,7 +880,6 @@ interface MovieDataSource {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<TvEpisodeImages>
     )
 
@@ -1029,7 +889,6 @@ interface MovieDataSource {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<TvEpisodeTranslation>
     )
 
@@ -1039,7 +898,6 @@ interface MovieDataSource {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<TvEpisodeVideos>
     )
@@ -1050,7 +908,6 @@ interface MovieDataSource {
     // Get Details
     fun getTvEpisodeGroupsDetails(
         id: String?,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<TvEpisodeGroupsDetails>
     )
@@ -1061,7 +918,6 @@ interface MovieDataSource {
     // Get Details
     fun getPeopleDetails(
         person_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<PeopleDetails>
     )
@@ -1070,7 +926,6 @@ interface MovieDataSource {
     // Get Changes
     fun getPeopleChanges(
         person_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         endDate: String?,
         page: Int?,
         startDate: String?,
@@ -1081,7 +936,6 @@ interface MovieDataSource {
     // Get Movie Credits
     fun getPeopleMovieCredits(
         person_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<PeopleMovieCredits>
     )
@@ -1090,7 +944,6 @@ interface MovieDataSource {
     // Get TV Credits
     fun getPeopleTvCredits(
         person_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<PeopleTvCredits>
     )
@@ -1099,7 +952,6 @@ interface MovieDataSource {
     // Get Combined Credits
     fun getPeopleCombinedCredits(
         person_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<PeopleCombinedCredits>
     )
@@ -1108,7 +960,6 @@ interface MovieDataSource {
     // Get External IDs
     fun getPeopleExternalIds(
         person_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<PeopleExternalIds>
     )
@@ -1117,7 +968,6 @@ interface MovieDataSource {
     // Get Images
     fun getPeopleImages(
         person_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<PeopleImages>
     )
 
@@ -1125,7 +975,6 @@ interface MovieDataSource {
     // Get Tagged Images
     fun getPeopleTaggedImages(
         person_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
         callback: ConsumeApiResponse<PeopleTaggedImages>
@@ -1135,7 +984,6 @@ interface MovieDataSource {
     // Get Translations
     fun getPeopleTranslations(
         person_id: Int,
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<PeopleTranslations>
     )
@@ -1143,7 +991,6 @@ interface MovieDataSource {
     // PEOPLE
     // Get Latest
     fun getPeopleLatest(
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         callback: ConsumeApiResponse<PeopleLatest>
     )
@@ -1151,68 +998,10 @@ interface MovieDataSource {
     // PEOPLE
     // Get Popular
     fun getPeoplePopular(
-        scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
         callback: ConsumeApiResponse<PeoplePopular>
     )
 
-    // ---------------------------------------------------------------------------------------------
-
-    // LIST
-    // Get Details
-    // fun getListDetails()
-
-    // LIST
-    // Check Item Status
-    // fun getListCheckItemStatus()
-
-    // METHOD POST AND DELETE ----------------------------------------------------------------------
-
-    // MOVIES
-    // POST Rate Movie
-    // fun postMoviesRateMovies()
-
-    // MOVIES
-    // DELETE delete Rating
-    // fun deleteMoviesDeleteRating()
-
-    // TV
-    // POST Rate TV Shows
-    // fun postTvRateTvShows()
-
-    // TV
-    // DELETE Rating
-    // fun deleteTvDeleteRating()
-
-    // TV EPISODE
-    // POST Rate TV Episode
-    // fun postTvEpisodeRateTvEpisode()
-
-    // TV EPISODE
-    // DELETE Rating
-    // fun deleteTvEpisodeDeleteRating()
-
-    // LIST
-    // POST Create List
-    // fun postListCreateList()
-
-    // LIST
-    // POST Add Movie
-    // fun postListAddMovie()
-
-    // LIST
-    // POST Remove Movie
-    // fun postListRemoveMovie()
-
-    // LIST
-    // POST Clear List
-    // fun postListClearList()
-
-    // LIST
-    // DELETE List
-    // fun deleteList
-
-    // ---------------------------------------------------------------------------------------------
 
 }
