@@ -21,7 +21,7 @@ import okhttp3.Interceptor
  *
  */
 
-class CMealApi(usingScheduler: Boolean, apiKey: String) : IMealApi {
+class CTheMealDbApi(usingScheduler: Boolean, apiKey: String) : IMealApi {
 
     private var mealApi = if (usingScheduler) {
         MealApi(Schedulers.single(), apiKey)

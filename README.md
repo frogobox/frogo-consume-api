@@ -24,7 +24,7 @@
 ## Version Release
 This Is Latest Release
 
-    $version_release = 2.0.5
+    $version_release = 2.1.0
 
 What's New??
 
@@ -34,6 +34,8 @@ What's New??
     * Migrate frogo-android-ui-kit to frogo-ui *
     * Migrate Chuck Ready Software To ChuckerTeam/Chuck *
     * Please Reimport RedColored Code *
+    * For Android >> Consume{class}Api - Sample : ConsumeNewsApi*
+    * For Desktop >> C{class}Api - Sample : CNewsApi *
 
 ## Download this project
 
@@ -69,14 +71,14 @@ allprojects {
 
     dependencies {
         // library frogo-consume-api
-        implementation 'com.github.frogobox:frogo-consume-api:2.0.5'
+        implementation 'com.github.frogobox:frogo-consume-api:2.1.0'
     }
 
 #### <Option 2> Kotlin DSL Gradle
 
     dependencies {
         // library frogo-consume-api
-        implementation("com.github.frogobox:frogo-consume-api:2.0.5")
+        implementation("com.github.frogobox:frogo-consume-api:2.1.0")
     }
 
 

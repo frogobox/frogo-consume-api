@@ -19,7 +19,7 @@ import okhttp3.Interceptor
  *
  */
 
-class CSportApi(usingScheduler: Boolean, apiKey: String) : ISportApi {
+class CTheSportDbApi(usingScheduler: Boolean, apiKey: String) : ISportApi {
 
     private var sportApi = if (usingScheduler) {
         SportApi(Schedulers.single(), apiKey)
