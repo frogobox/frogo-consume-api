@@ -1,38 +1,32 @@
-package com.frogobox.api.meal
+package com.frogobox.coreapi.meal
 
-import android.content.Context
-import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.coreapi.meal.MealApi
 import com.frogobox.coreapi.meal.model.*
 import com.frogobox.coreapi.meal.response.CategoryResponse
 import com.frogobox.coreapi.meal.response.MealResponse
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.Interceptor
 
-/**
- * Created by Faisal Amir
- * FrogoBox Inc License
- * =========================================
- * consumable-code-the-meal-db-api
- * Copyright (C) 15/03/2020.
- * All rights reserved
+
+/*
+ * Created by faisalamir on 07/04/22
+ * FrogoConsumeApi
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
  * E-mail   : faisalamircs@gmail.com
  * Github   : github.com/amirisback
- * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
- * FrogoBox Software Industries
- * com.frogobox.frogomealsapi
+ * Copyright (C) 2022 Frogobox Media Inc.      
+ * All rights reserved
  *
  */
-class ConsumeTheMealDbApi(apiKey: String) : IConsumeTheMealDbApi {
 
-    private val mealApi = MealApi(AndroidSchedulers.mainThread(), apiKey)
+class CMealApi(usingScheduler: Boolean, apiKey: String) : IMealApi {
 
-    override fun usingChuckInterceptor(context: Context) {
-        usingChuckInterceptor(ChuckerInterceptor(context))
+    private val mealApi = if (usingScheduler) {
+        MealApi(Schedulers.single(), apiKey)
+    } else {
+        MealApi(null, apiKey)
     }
 
     override fun usingChuckInterceptor(chuckerInterceptor: Interceptor) {
@@ -97,4 +91,5 @@ class ConsumeTheMealDbApi(apiKey: String) : IConsumeTheMealDbApi {
     ) {
         mealApi.filterByArea(area, callback)
     }
+
 }

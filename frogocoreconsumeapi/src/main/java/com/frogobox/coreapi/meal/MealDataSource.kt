@@ -1,9 +1,11 @@
 package com.frogobox.coreapi.meal
 
-import com.frogobox.coreapi.meal.response.CategoryResponse
-import com.frogobox.coreapi.meal.response.MealResponse
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.meal.model.*
+import com.frogobox.coreapi.meal.response.CategoryResponse
+import com.frogobox.coreapi.meal.response.MealResponse
+import io.reactivex.rxjava3.core.Scheduler
+import okhttp3.Interceptor
 
 /**
  * Created by Faisal Amir
@@ -24,38 +26,90 @@ import com.frogobox.coreapi.meal.model.*
  */
 interface MealDataSource {
 
+    // Switch For Using Chuck Interceptor
+    fun usingChuckInterceptor(chuckerInterceptor: Interceptor)
+
     // Search meal by name
-    fun searchMeal(apiKey: String, mealName: String, callback: ConsumeApiResponse<MealResponse<Meal>>)
+    fun searchMeal(
+        scheduler: Scheduler?,
+        apiKey: String,
+        mealName: String,
+        callback: ConsumeApiResponse<MealResponse<Meal>>
+    )
 
     // List all meals by first letter
-    fun listAllMeal(apiKey: String, firstLetter: String, callback: ConsumeApiResponse<MealResponse<Meal>>)
+    fun listAllMeal(
+        scheduler: Scheduler?,
+        apiKey: String,
+        firstLetter: String,
+        callback: ConsumeApiResponse<MealResponse<Meal>>
+    )
 
     // Lookup full meal details by id
-    fun lookupFullMeal(apiKey: String, idMeal: String, callback: ConsumeApiResponse<MealResponse<Meal>>)
+    fun lookupFullMeal(
+        scheduler: Scheduler?,
+        apiKey: String,
+        idMeal: String,
+        callback: ConsumeApiResponse<MealResponse<Meal>>
+    )
 
     // Lookup a single random meal
-    fun lookupRandomMeal(apiKey: String, callback: ConsumeApiResponse<MealResponse<Meal>>)
+    fun lookupRandomMeal(
+        scheduler: Scheduler?,
+        apiKey: String,
+        callback: ConsumeApiResponse<MealResponse<Meal>>
+    )
 
     // List all meal categories
-    fun listMealCategories(apiKey: String, callback: ConsumeApiResponse<CategoryResponse>)
+    fun listMealCategories(
+        scheduler: Scheduler?,
+        apiKey: String,
+        callback: ConsumeApiResponse<CategoryResponse>
+    )
 
     // List all Categories
-    fun listAllCateories(apiKey: String, callback: ConsumeApiResponse<MealResponse<Category>>)
+    fun listAllCateories(
+        scheduler: Scheduler?,
+        apiKey: String,
+        callback: ConsumeApiResponse<MealResponse<Category>>
+    )
 
     // List all Area
-    fun listAllArea(apiKey: String, callback: ConsumeApiResponse<MealResponse<Area>>)
+    fun listAllArea(
+        scheduler: Scheduler?,
+        apiKey: String,
+        callback: ConsumeApiResponse<MealResponse<Area>>
+    )
 
     // List all Ingredients
-    fun listAllIngredients(apiKey: String, callback: ConsumeApiResponse<MealResponse<Ingredient>>)
+    fun listAllIngredients(
+        scheduler: Scheduler?,
+        apiKey: String,
+        callback: ConsumeApiResponse<MealResponse<Ingredient>>
+    )
 
     // Filter by main ingredient
-    fun filterByIngredient(apiKey: String, ingredient: String, callback: ConsumeApiResponse<MealResponse<MealFilter>>)
+    fun filterByIngredient(
+        scheduler: Scheduler?,
+        apiKey: String,
+        ingredient: String,
+        callback: ConsumeApiResponse<MealResponse<MealFilter>>
+    )
 
     // Filter by Category
-    fun filterByCategory(apiKey: String, category: String, callback: ConsumeApiResponse<MealResponse<MealFilter>>)
+    fun filterByCategory(
+        scheduler: Scheduler?,
+        apiKey: String,
+        category: String,
+        callback: ConsumeApiResponse<MealResponse<MealFilter>>
+    )
 
     // Filter by Area
-    fun filterByArea(apiKey: String, area: String, callback: ConsumeApiResponse<MealResponse<MealFilter>>)
-
+    fun filterByArea(
+        scheduler: Scheduler?,
+        apiKey: String,
+        area: String,
+        callback: ConsumeApiResponse<MealResponse<MealFilter>>
+    )
 
 }

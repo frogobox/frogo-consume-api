@@ -1,100 +1,93 @@
-package com.frogobox.api.meal
+package com.frogobox.coreapi.meal
 
-import android.content.Context
-import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.coreapi.meal.MealApi
 import com.frogobox.coreapi.meal.model.*
 import com.frogobox.coreapi.meal.response.CategoryResponse
 import com.frogobox.coreapi.meal.response.MealResponse
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
 
-/**
- * Created by Faisal Amir
- * FrogoBox Inc License
- * =========================================
- * consumable-code-the-meal-db-api
- * Copyright (C) 15/03/2020.
- * All rights reserved
+
+/*
+ * Created by faisalamir on 07/04/22
+ * FrogoConsumeApi
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
  * E-mail   : faisalamircs@gmail.com
  * Github   : github.com/amirisback
- * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
- * FrogoBox Software Industries
- * com.frogobox.frogomealsapi
+ * Copyright (C) 2022 Frogobox Media Inc.      
+ * All rights reserved
  *
  */
-class ConsumeTheMealDbApi(apiKey: String) : IConsumeTheMealDbApi {
 
-    private val mealApi = MealApi(AndroidSchedulers.mainThread(), apiKey)
+class MealApi(
+    private val scheduler: Scheduler?,
+    private val apiKey: String
+) : IMealApi {
 
-    override fun usingChuckInterceptor(context: Context) {
-        usingChuckInterceptor(ChuckerInterceptor(context))
-    }
+    private val mealRepository = MealRepository
 
     override fun usingChuckInterceptor(chuckerInterceptor: Interceptor) {
-        mealApi.usingChuckInterceptor(chuckerInterceptor)
+        mealRepository.usingChuckInterceptor(chuckerInterceptor)
     }
 
     override fun searchMeal(mealName: String, callback: ConsumeApiResponse<MealResponse<Meal>>) {
-        mealApi.searchMeal(mealName, callback)
+        mealRepository.searchMeal(scheduler, apiKey, mealName, callback)
     }
 
     override fun listAllMeal(
         firstLetter: String,
         callback: ConsumeApiResponse<MealResponse<Meal>>
     ) {
-        mealApi.listAllMeal(firstLetter, callback)
+        mealRepository.listAllMeal(scheduler, apiKey, firstLetter, callback)
     }
 
     override fun lookupFullMeal(
         idMeal: String,
         callback: ConsumeApiResponse<MealResponse<Meal>>
     ) {
-        mealApi.lookupFullMeal(idMeal, callback)
+        mealRepository.lookupFullMeal(scheduler, apiKey, idMeal, callback)
     }
 
     override fun lookupRandomMeal(callback: ConsumeApiResponse<MealResponse<Meal>>) {
-        mealApi.lookupRandomMeal(callback)
+        mealRepository.lookupRandomMeal(scheduler, apiKey, callback)
     }
 
     override fun listMealCategories(callback: ConsumeApiResponse<CategoryResponse>) {
-        mealApi.listMealCategories(callback)
+        mealRepository.listMealCategories(scheduler, apiKey, callback)
     }
 
     override fun listAllCateories(callback: ConsumeApiResponse<MealResponse<Category>>) {
-        mealApi.listAllCateories(callback)
+        mealRepository.listAllCateories(scheduler, apiKey, callback)
     }
 
     override fun listAllArea(callback: ConsumeApiResponse<MealResponse<Area>>) {
-        mealApi.listAllArea(callback)
+        mealRepository.listAllArea(scheduler, apiKey, callback)
     }
 
     override fun listAllIngredients(callback: ConsumeApiResponse<MealResponse<Ingredient>>) {
-        mealApi.listAllIngredients(callback)
+        mealRepository.listAllIngredients(scheduler, apiKey, callback)
     }
 
     override fun filterByIngredient(
         ingredient: String,
         callback: ConsumeApiResponse<MealResponse<MealFilter>>
     ) {
-        mealApi.filterByIngredient(ingredient, callback)
+        mealRepository.filterByIngredient(scheduler, apiKey, ingredient, callback)
     }
 
     override fun filterByCategory(
         category: String,
         callback: ConsumeApiResponse<MealResponse<MealFilter>>
     ) {
-        mealApi.filterByCategory(category, callback)
+        mealRepository.filterByCategory(scheduler, apiKey, category, callback)
     }
 
     override fun filterByArea(
         area: String,
         callback: ConsumeApiResponse<MealResponse<MealFilter>>
     ) {
-        mealApi.filterByArea(area, callback)
+        mealRepository.filterByArea(scheduler, apiKey, area, callback)
     }
 }
