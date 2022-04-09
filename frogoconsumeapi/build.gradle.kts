@@ -61,33 +61,33 @@ android {
 
 dependencies {
 
-    implementation(project(DependencyGradle.FROGO_PATH_CORE_CONSUME_API))
+    api(project(DependencyGradle.FROGO_PATH_CORE_CONSUME_API))
 
-    implementation(Androidx.appCompat)
-    implementation(Androidx.preferenceKtx)
-    implementation(Androidx.Core.ktx)
-    implementation(Androidx.Work.runtimeKtx)
-    implementation(Androidx.Lifecycle.runtimeKtx)
-    implementation(Androidx.Compose.activity)
+    api(Androidx.appCompat)
+    api(Androidx.preferenceKtx)
+    api(Androidx.Core.ktx)
+    api(Androidx.Work.runtimeKtx)
+    api(Androidx.Lifecycle.runtimeKtx)
+    api(Androidx.Compose.activity)
 
-    implementation(compose.ui)
-    implementation(compose.runtime)
-    implementation(compose.preview)
-    implementation(compose.uiTooling)
-    implementation(compose.material)
-    implementation(compose.materialIconsExtended)
+    api(compose.ui)
+    api(compose.runtime)
+    api(compose.preview)
+    api(compose.uiTooling)
+    api(compose.material)
+    api(compose.materialIconsExtended)
 
-    implementation(Google.gson)
-    implementation(Square.Retrofit2.retrofit)
-    implementation(Square.Retrofit2.converterGson)
-    implementation(Square.Retrofit2.adapterRxJava3)
+    api(Google.gson)
+    api(Square.Retrofit2.retrofit)
+    api(Square.Retrofit2.converterGson)
+    api(Square.Retrofit2.adapterRxJava3)
 
-    implementation(Reactivex.rxJava3)
-    implementation(Reactivex.rxAndroid3)
+    api(Reactivex.rxJava3)
+    api(Reactivex.rxAndroid3)
 
-    implementation(GitHub.chucker)
+    api(GitHub.chucker)
 
-    implementation(DependencyGradle.FROGO_SDK)
+    api(DependencyGradle.FROGO_SDK)
 
     debugImplementation(compose.ui)
     debugImplementation(compose.uiTooling)
