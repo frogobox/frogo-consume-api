@@ -1,6 +1,7 @@
 ![ScreenShoot Apps](https://raw.githubusercontent.com/frogobox/frogo-consume-api/master/docs/image/ss_banner.png?raw=true)
 
 ## About This Project
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-frogo--consume--api-brightgreen.svg?style=flat-square)](https://android-arsenal.com/details/1/8407)
 [![](https://jitpack.io/v/frogobox/frogo-consume-api.svg?style=flat-square)](https://jitpack.io/#frogobox/frogo-consume-api)
 [![Android CI](https://github.com/frogobox/frogo-consume-api/actions/workflows/android-ci.yml/badge.svg)](https://github.com/frogobox/frogo-consume-api/actions/workflows/android-ci.yml)
 [![Scan with Detekt](https://github.com/frogobox/frogo-consume-api/actions/workflows/detekt-analysis.yml/badge.svg)](https://github.com/frogobox/frogo-consume-api/actions/workflows/detekt-analysis.yml)
