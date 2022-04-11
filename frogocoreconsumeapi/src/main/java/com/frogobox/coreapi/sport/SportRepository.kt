@@ -2,8 +2,8 @@ package com.frogobox.coreapi.sport
 
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.sport.response.*
-import com.frogobox.coresdk.source.FrogoApiClient
 import com.frogobox.coresdk.ext.doApiRequest
+import com.frogobox.coresdk.source.FrogoApiClient
 import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
 
@@ -484,13 +484,12 @@ object SportRepository : SportDataSource {
         season: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApiService.eventsSeason(apiKey, idLeague, season)
-            .apply {
-                if (scheduler != null) {
-                    doApiRequest(scheduler, callback)
-                } else {
-                    doApiRequest(callback)
-                }
+        sportApiService.eventsSeason(apiKey, idLeague, season).apply {
+            if (scheduler != null) {
+                doApiRequest(scheduler, callback)
+            } else {
+                doApiRequest(callback)
             }
+        }
     }
 }

@@ -3,8 +3,8 @@ package com.frogobox.coreapi.news
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.news.response.ArticleResponse
 import com.frogobox.coreapi.news.response.SourceResponse
-import com.frogobox.coresdk.source.FrogoApiClient
 import com.frogobox.coresdk.ext.doApiRequest
+import com.frogobox.coresdk.source.FrogoApiClient
 import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
 
@@ -42,13 +42,14 @@ object NewsRepository : NewsDataSource {
         page: Int?,
         callback: ConsumeApiResponse<ArticleResponse>
     ) {
-        if (scheduler != null) {
-            newsApiService.getTopHeadline(apiKey, q, sources, category, country, pageSize, page)
-                .doApiRequest(scheduler, callback)
-        } else {
-            newsApiService.getTopHeadline(apiKey, q, sources, category, country, pageSize, page)
-                .doApiRequest(callback)
-        }
+        newsApiService.getTopHeadline(apiKey, q, sources, category, country, pageSize, page)
+            .apply {
+                if (scheduler != null) {
+                    doApiRequest(scheduler, callback)
+                } else {
+                    doApiRequest(callback)
+                }
+            }
     }
 
     override fun getEverythings(
@@ -67,36 +68,25 @@ object NewsRepository : NewsDataSource {
         page: Int?,
         callback: ConsumeApiResponse<ArticleResponse>
     ) {
-        if (scheduler != null) {
-            newsApiService.getEverythings(
-                apiKey,
-                q,
-                from,
-                to,
-                qInTitle,
-                sources,
-                domains,
-                excludeDomains,
-                language,
-                sortBy,
-                pageSize,
-                page
-            ).doApiRequest(scheduler, callback)
-        } else {
-            newsApiService.getEverythings(
-                apiKey,
-                q,
-                from,
-                to,
-                qInTitle,
-                sources,
-                domains,
-                excludeDomains,
-                language,
-                sortBy,
-                pageSize,
-                page
-            ).doApiRequest(callback)
+        newsApiService.getEverythings(
+            apiKey,
+            q,
+            from,
+            to,
+            qInTitle,
+            sources,
+            domains,
+            excludeDomains,
+            language,
+            sortBy,
+            pageSize,
+            page
+        ).apply {
+            if (scheduler != null) {
+                doApiRequest(scheduler, callback)
+            } else {
+                doApiRequest(callback)
+            }
         }
     }
 
@@ -108,12 +98,12 @@ object NewsRepository : NewsDataSource {
         category: String,
         callback: ConsumeApiResponse<SourceResponse>
     ) {
-        if (scheduler != null) {
-            newsApiService.getSources(apiKey, language, country, category)
-                .doApiRequest(scheduler, callback)
-        } else {
-            newsApiService.getSources(apiKey, language, country, category)
-                .doApiRequest(callback)
+        newsApiService.getSources(apiKey, language, country, category).apply {
+            if (scheduler != null) {
+                doApiRequest(scheduler, callback)
+            } else {
+                doApiRequest(callback)
+            }
         }
     }
 

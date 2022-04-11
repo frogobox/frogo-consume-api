@@ -897,10 +897,7 @@ class ConsumeMovieApi(apiKey: String) : IConsumeMovieApi {
         language: String?,
         callback: ConsumeApiResponse<TvSeasonsCredits>
     ) {
-        movieApi.getTvSeasonsCredits(
-            tv_id,
-            season_number, language, callback
-        )
+        movieApi.getTvSeasonsCredits(tv_id, season_number, language, callback)
     }
 
     override fun getTvSeasonsExternalIds(
@@ -909,10 +906,7 @@ class ConsumeMovieApi(apiKey: String) : IConsumeMovieApi {
         language: String?,
         callback: ConsumeApiResponse<TvSeasonsExternalIds>
     ) {
-        movieApi.getTvSeasonsExternalIds(
-            tv_id,
-            season_number, language, callback
-        )
+        movieApi.getTvSeasonsExternalIds(tv_id, season_number, language, callback)
     }
 
     override fun getTvSeasonsImages(
@@ -921,10 +915,7 @@ class ConsumeMovieApi(apiKey: String) : IConsumeMovieApi {
         language: String?,
         callback: ConsumeApiResponse<TvSeasonsImages>
     ) {
-        movieApi.getTvSeasonsImages(
-            tv_id,
-            season_number, language, callback
-        )
+        movieApi.getTvSeasonsImages(tv_id, season_number, language, callback)
     }
 
     override fun getTvSeasonsVideos(
