@@ -56,27 +56,8 @@ class MovieApi(
             endDate,
             startDate,
             page,
-            object : ConsumeApiResponse<Changes> {
-                override fun onSuccess(data: Changes) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvChangeList(
@@ -90,27 +71,8 @@ class MovieApi(
             endDate,
             startDate,
             page,
-            object : ConsumeApiResponse<Changes> {
-                override fun onSuccess(data: Changes) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getPersonChangeList(
@@ -124,27 +86,8 @@ class MovieApi(
             endDate,
             startDate,
             page,
-            object : ConsumeApiResponse<Changes> {
-                override fun onSuccess(data: Changes) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getCollectionDetails(
@@ -156,27 +99,8 @@ class MovieApi(
             collection_id,
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<CollectionsDetail> {
-                override fun onSuccess(data: CollectionsDetail) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getCollectionImages(
@@ -188,27 +112,8 @@ class MovieApi(
             collection_id,
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<CollectionsImage> {
-                override fun onSuccess(data: CollectionsImage) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getCollectionTranslations(
@@ -220,27 +125,8 @@ class MovieApi(
             collection_id,
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<CollectionsTranslation> {
-                override fun onSuccess(data: CollectionsTranslation) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getCompaniesDetails(
@@ -250,27 +136,8 @@ class MovieApi(
         movieRepository.getCompaniesDetails(
             company_id,
             scheduler, apiKey,
-            object : ConsumeApiResponse<CompaniesDetail> {
-                override fun onSuccess(data: CompaniesDetail) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getCompaniesAlternativeName(
@@ -280,237 +147,66 @@ class MovieApi(
         movieRepository.getCompaniesAlternativeName(
             company_id,
             scheduler, apiKey,
-            object : ConsumeApiResponse<CompaniesAlternateName> {
-                override fun onSuccess(data: CompaniesAlternateName) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getCompaniesImage(company_id: Int, callback: ConsumeApiResponse<CompaniesImage>) {
         movieRepository.getCompaniesImage(
             company_id,
             scheduler, apiKey,
-            object : ConsumeApiResponse<CompaniesImage> {
-                override fun onSuccess(data: CompaniesImage) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getConfigurationApi(callback: ConsumeApiResponse<ConfigurationApi>) {
         movieRepository.getConfigurationApi(
             scheduler, apiKey,
-            object : ConsumeApiResponse<ConfigurationApi> {
-                override fun onSuccess(data: ConfigurationApi) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getConfigurationCountries(callback: ConsumeApiResponse<List<ConfigurationCountry>>) {
         movieRepository.getConfigurationCountries(
             scheduler, apiKey,
-            object : ConsumeApiResponse<List<ConfigurationCountry>> {
-                override fun onSuccess(data: List<ConfigurationCountry>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getConfigurationJobs(callback: ConsumeApiResponse<List<ConfigurationJob>>) {
         movieRepository.getConfigurationJobs(
             scheduler, apiKey,
-            object : ConsumeApiResponse<List<ConfigurationJob>> {
-                override fun onSuccess(data: List<ConfigurationJob>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getConfigurationLanguages(callback: ConsumeApiResponse<List<ConfigurationLanguage>>) {
         movieRepository.getConfigurationLanguages(
             scheduler, apiKey,
-            object : ConsumeApiResponse<List<ConfigurationLanguage>> {
-                override fun onSuccess(data: List<ConfigurationLanguage>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getConfigurationTranslations(callback: ConsumeApiResponse<List<String>>) {
         movieRepository.getConfigurationTranslations(
             scheduler, apiKey,
-            object : ConsumeApiResponse<List<String>> {
-                override fun onSuccess(data: List<String>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getConfigurationTimezones(callback: ConsumeApiResponse<List<ConfigurationTimezone>>) {
         movieRepository.getConfigurationTimezones(
             scheduler, apiKey,
-            object : ConsumeApiResponse<List<ConfigurationTimezone>> {
-                override fun onSuccess(data: List<ConfigurationTimezone>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getCreditsDetails(credit_id: String, callback: ConsumeApiResponse<Credits>) {
         movieRepository.getCreditsDetails(
             credit_id,
             scheduler, apiKey,
-            object : ConsumeApiResponse<Credits> {
-                override fun onSuccess(data: Credits) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getDiscoverMovie(
@@ -582,27 +278,7 @@ class MovieApi(
             with_runtime_gte,
             with_runtime_lte,
             with_original_language,
-            object : ConsumeApiResponse<Discover<DiscoverMovie>> {
-                override fun onSuccess(data: Discover<DiscoverMovie>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            }
+            callback
         )
     }
 
@@ -654,27 +330,7 @@ class MovieApi(
             screened_theatrically,
             with_companies,
             with_keywords,
-            object : ConsumeApiResponse<Discover<DiscoverTv>> {
-                override fun onSuccess(data: Discover<DiscoverTv>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            }
+            callback
         )
     }
 
@@ -689,108 +345,32 @@ class MovieApi(
             scheduler, apiKey,
             external_source,
             language,
-            object : ConsumeApiResponse<Find> {
-                override fun onSuccess(data: Find) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getGenresMovie(language: String?, callback: ConsumeApiResponse<Genres>) {
         movieRepository.getGenresMovie(
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<Genres> {
-                override fun onSuccess(data: Genres) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getGenresTv(language: String?, callback: ConsumeApiResponse<Genres>) {
         movieRepository.getGenresTv(
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<Genres> {
-                override fun onSuccess(data: Genres) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getKeywordsDetail(keyword_id: Int, callback: ConsumeApiResponse<KeywordsDetail>) {
         movieRepository.getKeywordsDetail(
             keyword_id,
             scheduler, apiKey,
-            object : ConsumeApiResponse<KeywordsDetail> {
-                override fun onSuccess(data: KeywordsDetail) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getKeywordsMovie(
@@ -804,27 +384,8 @@ class MovieApi(
             scheduler, apiKey,
             language,
             include_adult,
-            object : ConsumeApiResponse<KeywordsMovies> {
-                override fun onSuccess(data: KeywordsMovies) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getMoviesDetails(
@@ -838,27 +399,8 @@ class MovieApi(
             scheduler, apiKey,
             language,
             append_to_response,
-            object : ConsumeApiResponse<MovieDetail> {
-                override fun onSuccess(data: MovieDetail) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getMoviesAccountState(
@@ -872,27 +414,8 @@ class MovieApi(
             scheduler, apiKey,
             session_id,
             guest_session_id,
-            object : ConsumeApiResponse<MovieAccountState> {
-                override fun onSuccess(data: MovieAccountState) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getMoviesAlternativeTitles(
@@ -904,27 +427,8 @@ class MovieApi(
             movie_id,
             scheduler, apiKey,
             country,
-            object : ConsumeApiResponse<MovieAlternativeTitle> {
-                override fun onSuccess(data: MovieAlternativeTitle) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getMoviesChanges(
@@ -940,54 +444,16 @@ class MovieApi(
             start_date,
             end_date,
             page,
-            object : ConsumeApiResponse<MovieChanges> {
-                override fun onSuccess(data: MovieChanges) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getMoviesCredits(movie_id: Int, callback: ConsumeApiResponse<MovieCredit>) {
         movieRepository.getMoviesCredits(
             movie_id,
             scheduler, apiKey,
-            object : ConsumeApiResponse<MovieCredit> {
-                override fun onSuccess(data: MovieCredit) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getMoviesExternalIds(
@@ -997,27 +463,8 @@ class MovieApi(
         movieRepository.getMoviesExternalIds(
             movie_id,
             scheduler, apiKey,
-            object : ConsumeApiResponse<MovieExternalId> {
-                override fun onSuccess(data: MovieExternalId) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getMoviesImages(
@@ -1031,54 +478,16 @@ class MovieApi(
             scheduler, apiKey,
             language,
             include_image_language,
-            object : ConsumeApiResponse<MovieImages> {
-                override fun onSuccess(data: MovieImages) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getMoviesKeywords(movie_id: Int, callback: ConsumeApiResponse<MovieKeywords>) {
         movieRepository.getMoviesKeywords(
             movie_id,
             scheduler, apiKey,
-            object : ConsumeApiResponse<MovieKeywords> {
-                override fun onSuccess(data: MovieKeywords) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getMoviesReleaseDates(
@@ -1088,27 +497,8 @@ class MovieApi(
         movieRepository.getMoviesReleaseDates(
             movie_id,
             scheduler, apiKey,
-            object : ConsumeApiResponse<MovieReleaseDates> {
-                override fun onSuccess(data: MovieReleaseDates) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getMoviesVideos(
@@ -1120,27 +510,8 @@ class MovieApi(
             movie_id,
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<MovieVideos> {
-                override fun onSuccess(data: MovieVideos) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getMoviesTranslations(
@@ -1150,27 +521,8 @@ class MovieApi(
         movieRepository.getMoviesTranslations(
             movie_id,
             scheduler, apiKey,
-            object : ConsumeApiResponse<MovieTranslations> {
-                override fun onSuccess(data: MovieTranslations) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getMoviesRecommendations(
@@ -1184,27 +536,8 @@ class MovieApi(
             scheduler, apiKey,
             language,
             page,
-            object : ConsumeApiResponse<MovieRecommendations> {
-                override fun onSuccess(data: MovieRecommendations) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getMoviesSimilarMovies(
@@ -1218,27 +551,8 @@ class MovieApi(
             scheduler, apiKey,
             language,
             page,
-            object : ConsumeApiResponse<MovieSimilarMovies> {
-                override fun onSuccess(data: MovieSimilarMovies) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getMoviesReviews(
@@ -1252,27 +566,8 @@ class MovieApi(
             scheduler, apiKey,
             language,
             page,
-            object : ConsumeApiResponse<MovieReviews> {
-                override fun onSuccess(data: MovieReviews) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getMoviesLists(
@@ -1286,54 +581,16 @@ class MovieApi(
             scheduler, apiKey,
             language,
             page,
-            object : ConsumeApiResponse<MovieLists> {
-                override fun onSuccess(data: MovieLists) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getMoviesLatest(language: String?, callback: ConsumeApiResponse<MovieLatest>) {
         movieRepository.getMoviesLatest(
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<MovieLatest> {
-                override fun onSuccess(data: MovieLatest) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getMoviesNowPlaying(
@@ -1347,27 +604,8 @@ class MovieApi(
             language,
             page,
             region,
-            object : ConsumeApiResponse<MovieNowPlayings> {
-                override fun onSuccess(data: MovieNowPlayings) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getMoviesPopular(
@@ -1381,27 +619,8 @@ class MovieApi(
             language,
             page,
             region,
-            object : ConsumeApiResponse<MoviePopulars> {
-                override fun onSuccess(data: MoviePopulars) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getMoviesTopRated(
@@ -1415,27 +634,8 @@ class MovieApi(
             language,
             page,
             region,
-            object : ConsumeApiResponse<MovieTopRated> {
-                override fun onSuccess(data: MovieTopRated) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getMoviesUpcoming(
@@ -1449,27 +649,8 @@ class MovieApi(
             language,
             page,
             region,
-            object : ConsumeApiResponse<MovieUpcoming> {
-                override fun onSuccess(data: MovieUpcoming) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTrendingAllDay(callback: ConsumeApiResponse<Trending<TrendingAll>>) {
@@ -1477,27 +658,8 @@ class MovieApi(
             MovieConstant.VALUE_MEDIA_TYPE_ALL,
             MovieConstant.VALUE_TIME_WINDOW_DAY,
             scheduler, apiKey,
-            object : ConsumeApiResponse<Trending<TrendingAll>> {
-                override fun onSuccess(data: Trending<TrendingAll>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTrendingAllWeek(callback: ConsumeApiResponse<Trending<TrendingAll>>) {
@@ -1505,27 +667,8 @@ class MovieApi(
             MovieConstant.VALUE_MEDIA_TYPE_ALL,
             MovieConstant.VALUE_TIME_WINDOW_WEEK,
             scheduler, apiKey,
-            object : ConsumeApiResponse<Trending<TrendingAll>> {
-                override fun onSuccess(data: Trending<TrendingAll>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTrendingMovieDay(callback: ConsumeApiResponse<Trending<TrendingMovie>>) {
@@ -1533,27 +676,8 @@ class MovieApi(
             MovieConstant.VALUE_MEDIA_TYPE_MOVIE,
             MovieConstant.VALUE_TIME_WINDOW_DAY,
             scheduler, apiKey,
-            object : ConsumeApiResponse<Trending<TrendingMovie>> {
-                override fun onSuccess(data: Trending<TrendingMovie>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTrendingMovieWeek(callback: ConsumeApiResponse<Trending<TrendingMovie>>) {
@@ -1561,27 +685,8 @@ class MovieApi(
             MovieConstant.VALUE_MEDIA_TYPE_MOVIE,
             MovieConstant.VALUE_TIME_WINDOW_WEEK,
             scheduler, apiKey,
-            object : ConsumeApiResponse<Trending<TrendingMovie>> {
-                override fun onSuccess(data: Trending<TrendingMovie>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTrendingPersonDay(callback: ConsumeApiResponse<Trending<TrendingPerson>>) {
@@ -1589,27 +694,8 @@ class MovieApi(
             MovieConstant.VALUE_MEDIA_TYPE_PERSON,
             MovieConstant.VALUE_TIME_WINDOW_DAY,
             scheduler, apiKey,
-            object : ConsumeApiResponse<Trending<TrendingPerson>> {
-                override fun onSuccess(data: Trending<TrendingPerson>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTrendingPersonWeek(callback: ConsumeApiResponse<Trending<TrendingPerson>>) {
@@ -1617,27 +703,8 @@ class MovieApi(
             MovieConstant.VALUE_MEDIA_TYPE_PERSON,
             MovieConstant.VALUE_TIME_WINDOW_WEEK,
             scheduler, apiKey,
-            object : ConsumeApiResponse<Trending<TrendingPerson>> {
-                override fun onSuccess(data: Trending<TrendingPerson>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTrendingTvDay(callback: ConsumeApiResponse<Trending<TrendingTv>>) {
@@ -1645,27 +712,8 @@ class MovieApi(
             MovieConstant.VALUE_MEDIA_TYPE_TV,
             MovieConstant.VALUE_TIME_WINDOW_DAY,
             scheduler, apiKey,
-            object : ConsumeApiResponse<Trending<TrendingTv>> {
-                override fun onSuccess(data: Trending<TrendingTv>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTrendingTvWeek(callback: ConsumeApiResponse<Trending<TrendingTv>>) {
@@ -1673,81 +721,24 @@ class MovieApi(
             MovieConstant.VALUE_MEDIA_TYPE_TV,
             MovieConstant.VALUE_TIME_WINDOW_WEEK,
             scheduler, apiKey,
-            object : ConsumeApiResponse<Trending<TrendingTv>> {
-                override fun onSuccess(data: Trending<TrendingTv>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getReviews(review_id: String, callback: ConsumeApiResponse<Reviews>) {
         movieRepository.getReviews(
             review_id,
             scheduler, apiKey,
-            object : ConsumeApiResponse<Reviews> {
-                override fun onSuccess(data: Reviews) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getNetworkDetail(network_id: Int, callback: ConsumeApiResponse<NetworkDetail>) {
         movieRepository.getNetworkDetail(
             network_id,
             scheduler, apiKey,
-            object : ConsumeApiResponse<NetworkDetail> {
-                override fun onSuccess(data: NetworkDetail) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getNetworkAlternativeName(
@@ -1757,54 +748,16 @@ class MovieApi(
         movieRepository.getNetworkAlternativeName(
             network_id,
             scheduler, apiKey,
-            object : ConsumeApiResponse<NetworkAlternativeName> {
-                override fun onSuccess(data: NetworkAlternativeName) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getNetworkImage(network_id: Int, callback: ConsumeApiResponse<NetworkImage>) {
         movieRepository.getNetworkImage(
             network_id,
             scheduler, apiKey,
-            object : ConsumeApiResponse<NetworkImage> {
-                override fun onSuccess(data: NetworkImage) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun searchCompanies(
@@ -1816,27 +769,8 @@ class MovieApi(
             scheduler, apiKey,
             query,
             page,
-            object : ConsumeApiResponse<SearchCompanies> {
-                override fun onSuccess(data: SearchCompanies) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun searchCollections(
@@ -1850,27 +784,8 @@ class MovieApi(
             query,
             language,
             page,
-            object : ConsumeApiResponse<SearchCollections> {
-                override fun onSuccess(data: SearchCollections) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun searchKeywords(
@@ -1882,27 +797,8 @@ class MovieApi(
             scheduler, apiKey,
             query,
             page,
-            object : ConsumeApiResponse<SearchKeywords> {
-                override fun onSuccess(data: SearchKeywords) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun searchMovies(
@@ -1924,27 +820,8 @@ class MovieApi(
             region,
             year,
             primary_release_year,
-            object : ConsumeApiResponse<SearchMovies> {
-                override fun onSuccess(data: SearchMovies) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun searchMultiSearch(
@@ -1962,27 +839,8 @@ class MovieApi(
             page,
             include_adult,
             region,
-            object : ConsumeApiResponse<SearchMulti> {
-                override fun onSuccess(data: SearchMulti) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun searchPeople(
@@ -2000,27 +858,8 @@ class MovieApi(
             page,
             include_adult,
             region,
-            object : ConsumeApiResponse<SearchPeople> {
-                override fun onSuccess(data: SearchPeople) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun searchTvShows(
@@ -2038,27 +877,8 @@ class MovieApi(
             page,
             include_adult,
             first_air_date_year,
-            object : ConsumeApiResponse<SearchMovies> {
-                override fun onSuccess(data: SearchMovies) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvDetails(
@@ -2072,27 +892,8 @@ class MovieApi(
             scheduler, apiKey,
             language,
             append_to_response,
-            object : ConsumeApiResponse<TvDetails> {
-                override fun onSuccess(data: TvDetails) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvAccountStates(
@@ -2108,27 +909,8 @@ class MovieApi(
             language,
             guest_session_id,
             session_id,
-            object : ConsumeApiResponse<TvAccountStates> {
-                override fun onSuccess(data: TvAccountStates) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvAlternativeTitles(
@@ -2140,27 +922,8 @@ class MovieApi(
             tv_id,
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<TvAlternativeTitles> {
-                override fun onSuccess(data: TvAlternativeTitles) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvChanges(
@@ -2176,27 +939,8 @@ class MovieApi(
             startDate,
             endDate,
             page,
-            object : ConsumeApiResponse<TvChanges> {
-                override fun onSuccess(data: TvChanges) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvContentRatings(
@@ -2208,27 +952,8 @@ class MovieApi(
             tv_id,
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<TvContentRatings> {
-                override fun onSuccess(data: TvContentRatings) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvCredits(
@@ -2240,27 +965,8 @@ class MovieApi(
             tv_id,
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<TvCredits> {
-                override fun onSuccess(data: TvCredits) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvEpisodeGroups(
@@ -2272,27 +978,8 @@ class MovieApi(
             tv_id,
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<TvEpisodeGroups> {
-                override fun onSuccess(data: TvEpisodeGroups) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvExternalIds(
@@ -2304,27 +991,8 @@ class MovieApi(
             tv_id,
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<TvExternalIds> {
-                override fun onSuccess(data: TvExternalIds) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvImages(
@@ -2336,54 +1004,16 @@ class MovieApi(
             tv_id,
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<TvImages> {
-                override fun onSuccess(data: TvImages) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvKeyword(tv_id: Int, callback: ConsumeApiResponse<TvKeywords>) {
         movieRepository.getTvKeyword(
             tv_id,
             scheduler, apiKey,
-            object : ConsumeApiResponse<TvKeywords> {
-                override fun onSuccess(data: TvKeywords) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvRecommendations(
@@ -2397,54 +1027,16 @@ class MovieApi(
             scheduler, apiKey,
             language,
             page,
-            object : ConsumeApiResponse<TvRecommendations> {
-                override fun onSuccess(data: TvRecommendations) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvReviews(tv_id: Int, callback: ConsumeApiResponse<TvReviews>) {
         movieRepository.getTvReviews(
             tv_id,
             scheduler, apiKey,
-            object : ConsumeApiResponse<TvReviews> {
-                override fun onSuccess(data: TvReviews) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvScreenedTheatrically(
@@ -2454,27 +1046,8 @@ class MovieApi(
         movieRepository.getTvScreenedTheatrically(
             tv_id,
             scheduler, apiKey,
-            object : ConsumeApiResponse<TvScreenedTheatrically> {
-                override fun onSuccess(data: TvScreenedTheatrically) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvSimilarTvShows(
@@ -2488,54 +1061,16 @@ class MovieApi(
             scheduler, apiKey,
             language,
             page,
-            object : ConsumeApiResponse<TvSimilarTVShows> {
-                override fun onSuccess(data: TvSimilarTVShows) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvTranslations(tv_id: Int, callback: ConsumeApiResponse<TvTranslations>) {
         movieRepository.getTvTranslations(
             tv_id,
             scheduler, apiKey,
-            object : ConsumeApiResponse<TvTranslations> {
-                override fun onSuccess(data: TvTranslations) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvVideos(
@@ -2547,54 +1082,16 @@ class MovieApi(
             tv_id,
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<TvVideos> {
-                override fun onSuccess(data: TvVideos) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvLatest(language: String?, callback: ConsumeApiResponse<TvLatest>) {
         movieRepository.getTvLatest(
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<TvLatest> {
-                override fun onSuccess(data: TvLatest) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvAiringToday(
@@ -2606,27 +1103,8 @@ class MovieApi(
             scheduler, apiKey,
             language,
             page,
-            object : ConsumeApiResponse<TvAiringToday> {
-                override fun onSuccess(data: TvAiringToday) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvOnTheAir(
@@ -2638,27 +1116,8 @@ class MovieApi(
             scheduler, apiKey,
             language,
             page,
-            object : ConsumeApiResponse<TvOnTheAir> {
-                override fun onSuccess(data: TvOnTheAir) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvPopular(
@@ -2670,27 +1129,8 @@ class MovieApi(
             scheduler, apiKey,
             language,
             page,
-            object : ConsumeApiResponse<TvPopular> {
-                override fun onSuccess(data: TvPopular) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvTopRated(
@@ -2702,27 +1142,8 @@ class MovieApi(
             scheduler, apiKey,
             language,
             page,
-            object : ConsumeApiResponse<TvTopRated> {
-                override fun onSuccess(data: TvTopRated) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvSeasonsDetails(
@@ -2738,27 +1159,8 @@ class MovieApi(
             scheduler, apiKey,
             language,
             append_to_response,
-            object : ConsumeApiResponse<TvSeasonsDetails> {
-                override fun onSuccess(data: TvSeasonsDetails) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvSeasonsChanges(
@@ -2774,27 +1176,8 @@ class MovieApi(
             startDate,
             endDate,
             page,
-            object : ConsumeApiResponse<TvSeasonsChanges> {
-                override fun onSuccess(data: TvSeasonsChanges) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvSeasonsAccountStates(
@@ -2812,27 +1195,8 @@ class MovieApi(
             language,
             guest_session_id,
             session_id,
-            object : ConsumeApiResponse<TvSeasonsAccountStates> {
-                override fun onSuccess(data: TvSeasonsAccountStates) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvSeasonsCredits(
@@ -2846,27 +1210,8 @@ class MovieApi(
             season_number,
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<TvSeasonsCredits> {
-                override fun onSuccess(data: TvSeasonsCredits) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvSeasonsExternalIds(
@@ -2880,27 +1225,8 @@ class MovieApi(
             season_number,
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<TvSeasonsExternalIds> {
-                override fun onSuccess(data: TvSeasonsExternalIds) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvSeasonsImages(
@@ -2914,27 +1240,8 @@ class MovieApi(
             season_number,
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<TvSeasonsImages> {
-                override fun onSuccess(data: TvSeasonsImages) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvSeasonsVideos(
@@ -2948,27 +1255,8 @@ class MovieApi(
             season_number,
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<TvSeasonsVideos> {
-                override fun onSuccess(data: TvSeasonsVideos) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvEpisodeDetails(
@@ -2986,27 +1274,8 @@ class MovieApi(
             scheduler, apiKey,
             language,
             append_to_response,
-            object : ConsumeApiResponse<TvEpisodeDetails> {
-                override fun onSuccess(data: TvEpisodeDetails) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvEpisodeChanges(
@@ -3022,27 +1291,8 @@ class MovieApi(
             startDate,
             endDate,
             page,
-            object : ConsumeApiResponse<TvEpisodeChanges> {
-                override fun onSuccess(data: TvEpisodeChanges) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvEpisodeAccountStates(
@@ -3060,27 +1310,8 @@ class MovieApi(
             scheduler, apiKey,
             guest_session_id,
             session_id,
-            object : ConsumeApiResponse<TvEpisodeAccountStates> {
-                override fun onSuccess(data: TvEpisodeAccountStates) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvEpisodeCredits(
@@ -3094,27 +1325,8 @@ class MovieApi(
             season_number,
             episode_number,
             scheduler, apiKey,
-            object : ConsumeApiResponse<TvEpisodeCredits> {
-                override fun onSuccess(data: TvEpisodeCredits) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvEpisodeExternalIds(
@@ -3128,27 +1340,8 @@ class MovieApi(
             season_number,
             episode_number,
             scheduler, apiKey,
-            object : ConsumeApiResponse<TvEpisodeExternalIds> {
-                override fun onSuccess(data: TvEpisodeExternalIds) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvEpisodeImages(
@@ -3162,27 +1355,8 @@ class MovieApi(
             season_number,
             episode_number,
             scheduler, apiKey,
-            object : ConsumeApiResponse<TvEpisodeImages> {
-                override fun onSuccess(data: TvEpisodeImages) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvEpisodeTranslations(
@@ -3196,27 +1370,8 @@ class MovieApi(
             season_number,
             episode_number,
             scheduler, apiKey,
-            object : ConsumeApiResponse<TvEpisodeTranslation> {
-                override fun onSuccess(data: TvEpisodeTranslation) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvEpisodeVideos(
@@ -3232,27 +1387,8 @@ class MovieApi(
             episode_number,
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<TvEpisodeVideos> {
-                override fun onSuccess(data: TvEpisodeVideos) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvEpisodeGroupsDetails(
@@ -3264,27 +1400,8 @@ class MovieApi(
             id,
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<TvEpisodeGroupsDetails> {
-                override fun onSuccess(data: TvEpisodeGroupsDetails) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getPeopleDetails(
@@ -3296,27 +1413,8 @@ class MovieApi(
             person_id,
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<PeopleDetails> {
-                override fun onSuccess(data: PeopleDetails) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getPeopleChanges(
@@ -3332,27 +1430,8 @@ class MovieApi(
             endDate,
             page,
             startDate,
-            object : ConsumeApiResponse<PeopleChanges> {
-                override fun onSuccess(data: PeopleChanges) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getPeopleMovieCredits(
@@ -3364,27 +1443,8 @@ class MovieApi(
             person_id,
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<PeopleMovieCredits> {
-                override fun onSuccess(data: PeopleMovieCredits) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getPeopleTvCredits(
@@ -3396,27 +1456,8 @@ class MovieApi(
             person_id,
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<PeopleTvCredits> {
-                override fun onSuccess(data: PeopleTvCredits) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getPeopleCombinedCredits(
@@ -3428,27 +1469,8 @@ class MovieApi(
             person_id,
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<PeopleCombinedCredits> {
-                override fun onSuccess(data: PeopleCombinedCredits) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getPeopleExternalIds(
@@ -3460,27 +1482,8 @@ class MovieApi(
             person_id,
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<PeopleExternalIds> {
-                override fun onSuccess(data: PeopleExternalIds) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onFinish() {
-                    callback.onFinish()
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getPeopleImages(person_id: Int, callback: ConsumeApiResponse<PeopleImages>) {
