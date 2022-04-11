@@ -3,7 +3,7 @@ package com.frogobox.appapi.mvvm.movies.core
 import android.app.Application
 import com.frogobox.api.movie.ConsumeMovieApi
 import com.frogobox.coreapi.movie.MovieUrl
-import com.frogobox.sdk.FrogoViewModel
+import com.frogobox.sdk.view.FrogoViewModel
 
 /*
  * Created by faisalamir on 28/07/21

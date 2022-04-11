@@ -34,45 +34,15 @@ class MovieApi(
     override fun getMovieCertifications(callback: ConsumeApiResponse<Certifications<CertificationMovie>>) {
         movieRepository.getMovieCertifications(
             scheduler, apiKey,
-            object : ConsumeApiResponse<Certifications<CertificationMovie>> {
-                override fun onSuccess(data: Certifications<CertificationMovie>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getTvCertifications(callback: ConsumeApiResponse<Certifications<CertificationTv>>) {
         movieRepository.getTvCertifications(
             scheduler, apiKey,
-            object : ConsumeApiResponse<Certifications<CertificationTv>> {
-                override fun onSuccess(data: Certifications<CertificationTv>) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getMovieChangeList(
@@ -91,8 +61,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -121,8 +95,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -151,8 +129,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -179,8 +161,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -207,8 +193,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -235,8 +225,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -261,8 +255,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -287,8 +285,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -310,8 +312,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -332,8 +338,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -354,8 +364,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -376,8 +390,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -398,8 +416,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -420,8 +442,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -442,8 +468,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -465,8 +495,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -553,8 +587,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -621,8 +659,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -652,8 +694,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -675,8 +721,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -698,8 +748,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -721,8 +775,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -751,8 +809,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -781,8 +843,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -811,8 +877,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -839,8 +909,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -871,8 +945,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -894,8 +972,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -920,8 +1002,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -950,8 +1036,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -973,8 +1063,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -999,8 +1093,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1027,8 +1125,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1053,8 +1155,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1083,8 +1189,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1113,8 +1223,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1143,8 +1257,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1173,8 +1291,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1196,8 +1318,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1226,8 +1352,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1256,8 +1386,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1286,8 +1420,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1316,8 +1454,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1340,8 +1482,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1364,8 +1510,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1388,8 +1538,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1412,8 +1566,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1436,8 +1594,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1460,8 +1622,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1484,8 +1650,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1508,8 +1678,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1531,8 +1705,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1554,8 +1732,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1580,8 +1762,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1603,8 +1789,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1631,8 +1821,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1661,8 +1855,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1689,8 +1887,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1727,8 +1929,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1761,8 +1967,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1795,8 +2005,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1829,8 +2043,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1859,8 +2077,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1891,8 +2113,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1919,8 +2145,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1951,8 +2181,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1979,8 +2213,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2007,8 +2245,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2035,8 +2277,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2063,8 +2309,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2091,8 +2341,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2114,8 +2368,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2144,8 +2402,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2167,8 +2429,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2193,8 +2459,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2223,8 +2493,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2246,8 +2520,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2274,8 +2552,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2297,8 +2579,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2325,8 +2611,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2353,8 +2643,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2381,8 +2675,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2409,8 +2707,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2441,8 +2743,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2473,8 +2779,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2507,8 +2817,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2537,8 +2851,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2567,8 +2885,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2597,8 +2919,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2627,8 +2953,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2661,8 +2991,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2693,8 +3027,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2727,8 +3065,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2757,8 +3099,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2787,8 +3133,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2817,8 +3167,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2847,8 +3201,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2879,8 +3237,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2907,8 +3269,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2935,8 +3301,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2967,8 +3337,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2995,8 +3369,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -3023,8 +3401,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -3051,8 +3433,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -3079,8 +3465,12 @@ class MovieApi(
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -3097,23 +3487,8 @@ class MovieApi(
         movieRepository.getPeopleImages(
             person_id,
             scheduler, apiKey,
-            object : ConsumeApiResponse<PeopleImages> {
-                override fun onSuccess(data: PeopleImages) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getPeopleTaggedImages(
@@ -3127,23 +3502,8 @@ class MovieApi(
             scheduler, apiKey,
             language,
             page,
-            object : ConsumeApiResponse<PeopleTaggedImages> {
-                override fun onSuccess(data: PeopleTaggedImages) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getPeopleTranslations(
@@ -3155,46 +3515,16 @@ class MovieApi(
             person_id,
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<PeopleTranslations> {
-                override fun onSuccess(data: PeopleTranslations) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getPeopleLatest(language: String?, callback: ConsumeApiResponse<PeopleLatest>) {
         movieRepository.getPeopleLatest(
             scheduler, apiKey,
             language,
-            object : ConsumeApiResponse<PeopleLatest> {
-                override fun onSuccess(data: PeopleLatest) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun getPeoplePopular(
@@ -3206,22 +3536,7 @@ class MovieApi(
             scheduler, apiKey,
             language,
             page,
-            object : ConsumeApiResponse<PeoplePopular> {
-                override fun onSuccess(data: PeoplePopular) {
-                    callback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    callback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    callback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    callback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 }

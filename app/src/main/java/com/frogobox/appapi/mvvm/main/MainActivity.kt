@@ -14,7 +14,7 @@ import com.frogobox.appapi.mvvm.sport.SportActivity
 import com.frogobox.appapi.util.Constant
 import com.frogobox.appapi.util.Helper
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
-import com.frogobox.sdk.FrogoActivity
+import com.frogobox.sdk.view.FrogoActivity
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 
 class MainActivity : FrogoActivity<ActivityMainBinding>() {

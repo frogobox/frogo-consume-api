@@ -10,7 +10,7 @@ import com.frogobox.appapi.databinding.FragmentTrendingBinding
 import com.frogobox.appapi.mvvm.movies.person.PersonDayFragment
 import com.frogobox.appapi.mvvm.movies.person.PersonWeekFragment
 import com.frogobox.appapi.util.PagerAdapter
-import com.frogobox.sdk.FrogoFragment
+import com.frogobox.sdk.view.FrogoFragment
 
 /**
  * A simple [Fragment] subclass.

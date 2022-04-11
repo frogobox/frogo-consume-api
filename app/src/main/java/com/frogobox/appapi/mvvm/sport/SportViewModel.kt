@@ -6,8 +6,8 @@ import com.frogobox.coreapi.sport.response.Teams
 import com.frogobox.coreapi.sport.SportUrl
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.sport.model.Team
-import com.frogobox.sdk.FrogoMutableLiveData
-import com.frogobox.sdk.FrogoViewModel
+import com.frogobox.sdk.util.FrogoMutableLiveData
+import com.frogobox.sdk.view.FrogoViewModel
 
 /*
  * Created by faisalamir on 28/07/21
@@ -34,9 +34,13 @@ class SportViewModel(private val context: Application) : FrogoViewModel(context)
                     data.teams?.let { listData.postValue(it) }
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     // failed result
                     eventFailed.postValue(errorMessage)
+                }
+
+                override fun onFinish() {
+
                 }
 
                 override fun onShowProgress() {

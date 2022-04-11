@@ -11,8 +11,9 @@ import com.frogobox.appapi.databinding.FragmentTrendingChildBinding
 import com.frogobox.coreapi.movie.MovieUrl
 import com.frogobox.coreapi.movie.model.TrendingTv
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
-import com.frogobox.sdk.FrogoFragment
+import com.frogobox.sdk.view.FrogoFragment
 import com.frogobox.recycler.core.IFrogoBindingAdapter
+import com.frogobox.sdk.ext.progressViewHandle
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -35,7 +36,7 @@ class TvWeekFragment : FrogoFragment<FragmentTrendingChildBinding>() {
             getTrendingTvWeek()
 
             eventShowProgress.observe(viewLifecycleOwner) {
-                setupProgressView(binding.progressView, it)
+                binding.progressView.progressViewHandle(it)
             }
 
             eventFailed.observe(viewLifecycleOwner) {

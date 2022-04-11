@@ -5,7 +5,7 @@ import com.frogobox.appapi.mvvm.movies.core.MoviesViewModel
 import com.frogobox.coreapi.movie.model.TrendingPerson
 import com.frogobox.coreapi.movie.response.Trending
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.sdk.FrogoMutableLiveData
+import com.frogobox.sdk.util.FrogoMutableLiveData
 
 /*
  * Created by faisalamir on 28/07/21
@@ -31,9 +31,12 @@ class PersonViewModel(private val context: Application) : MoviesViewModel(contex
                 data.results?.let { listDataDay.postValue(it) }
             }
 
-            override fun onFailed(statusCode: Int, errorMessage: String?) {
+            override fun onFailed(statusCode: Int, errorMessage: String) {
                 // Your failed to do
                 eventFailed.postValue(errorMessage)
+            }
+
+            override fun onFinish() {
             }
 
             override fun onShowProgress() {
@@ -56,9 +59,13 @@ class PersonViewModel(private val context: Application) : MoviesViewModel(contex
                 data.results?.let { listDataWeek.postValue(it) }
             }
 
-            override fun onFailed(statusCode: Int, errorMessage: String?) {
+            override fun onFailed(statusCode: Int, errorMessage: String) {
                 // Your failed to do
                 eventFailed.postValue(errorMessage)
+            }
+
+            override fun onFinish() {
+
             }
 
             override fun onShowProgress() {

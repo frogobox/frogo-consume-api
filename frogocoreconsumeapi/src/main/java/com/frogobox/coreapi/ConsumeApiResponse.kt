@@ -1,6 +1,6 @@
 package com.frogobox.coreapi
 
-import com.frogobox.coresdk.FrogoDataResponse
+import com.frogobox.coresdk.response.FrogoDataResponse
 
 /*
  * Created by faisalamir on 21/08/21

@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.frogobox.coreapi.news.model.Article
 import com.frogobox.appapi.databinding.ActivityNewsDetailBinding
-import com.frogobox.sdk.FrogoActivity
+import com.frogobox.sdk.view.FrogoActivity
 
 class NewsDetailActivity : FrogoActivity<ActivityNewsDetailBinding>() {
 

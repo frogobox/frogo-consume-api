@@ -6,7 +6,7 @@ import com.frogobox.appapi.databinding.ActivityMovieBinding
 import com.frogobox.appapi.mvvm.movies.core.MovieFragment
 import com.frogobox.appapi.mvvm.movies.core.PersonFragment
 import com.frogobox.appapi.mvvm.movies.core.TvFragment
-import com.frogobox.sdk.FrogoActivity
+import com.frogobox.sdk.view.FrogoActivity
 
 class MoviesActivity : FrogoActivity<ActivityMovieBinding>() {
 

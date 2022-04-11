@@ -6,8 +6,8 @@ import com.frogobox.coreapi.meal.model.Meal
 import com.frogobox.coreapi.meal.response.MealResponse
 import com.frogobox.coreapi.meal.MealUrl
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.sdk.FrogoMutableLiveData
-import com.frogobox.sdk.FrogoViewModel
+import com.frogobox.sdk.util.FrogoMutableLiveData
+import com.frogobox.sdk.view.FrogoViewModel
 
 /*
  * Created by faisalamir on 28/07/21
@@ -36,9 +36,13 @@ class MealViewModel(private val context: Application) : FrogoViewModel(context) 
                     data.meals?.let { listData.postValue(it) }
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     // on Failed
                     eventFailed.postValue(errorMessage)
+                }
+
+                override fun onFinish() {
+
                 }
 
                 override fun onShowProgress() {

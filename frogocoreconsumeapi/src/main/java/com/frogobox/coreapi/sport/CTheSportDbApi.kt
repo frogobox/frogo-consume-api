@@ -33,818 +33,319 @@ class CTheSportDbApi(usingScheduler: Boolean, apiKey: String) : ISportApi {
 
     override fun searchForTeamByName(
         teamName: String?,
-        sportResultCallback: ConsumeApiResponse<Teams>
+        callback: ConsumeApiResponse<Teams>
     ) {
         sportApi.searchForTeamByName(
-
             teamName,
-            object : ConsumeApiResponse<Teams> {
-                override fun onSuccess(data: Teams) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-
-            })
+            callback
+        )
     }
 
     override fun searchForTeamByShortCode(
         shortCode: String?,
-        sportResultCallback: ConsumeApiResponse<Teams>
+        callback: ConsumeApiResponse<Teams>
     ) {
         sportApi.searchForTeamByShortCode(
-
             shortCode,
-            object : ConsumeApiResponse<Teams> {
-                override fun onSuccess(data: Teams) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun searchForAllPlayer(
         teamName: String?,
-        sportResultCallback: ConsumeApiResponse<Players>
+        callback: ConsumeApiResponse<Players>
     ) {
         sportApi.searchForAllPlayer(
 
             teamName,
-            object : ConsumeApiResponse<Players> {
-                override fun onSuccess(data: Players) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun searchForPlayer(
         playerName: String?,
-        sportResultCallback: ConsumeApiResponse<Players>
+        callback: ConsumeApiResponse<Players>
     ) {
         sportApi.searchForPlayer(
 
             playerName,
-            object : ConsumeApiResponse<Players> {
-                override fun onSuccess(data: Players) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun searchForPlayer(
         playerName: String?,
         teamName: String?,
-        sportResultCallback: ConsumeApiResponse<Players>
+        callback: ConsumeApiResponse<Players>
     ) {
         sportApi.searchForPlayer(
 
             playerName,
             teamName,
-            object : ConsumeApiResponse<Players> {
-                override fun onSuccess(data: Players) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun searchForEvent(
         eventName: String?,
-        sportResultCallback: ConsumeApiResponse<Events>
+        callback: ConsumeApiResponse<Events>
     ) {
         sportApi.searchForEvent(
 
             eventName,
-            object : ConsumeApiResponse<Events> {
-                override fun onSuccess(data: Events) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun searchForEvent(
         eventName: String?,
         season: String?,
-        sportResultCallback: ConsumeApiResponse<Events>
+        callback: ConsumeApiResponse<Events>
     ) {
         sportApi.searchForEvent(
 
             eventName,
             season,
-            object : ConsumeApiResponse<Events> {
-                override fun onSuccess(data: Events) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun searchForEventFileName(
         eventFileName: String?,
-        sportResultCallback: ConsumeApiResponse<Events>
+        callback: ConsumeApiResponse<Events>
     ) {
 
         sportApi.searchForEventFileName(
 
             eventFileName,
-            object : ConsumeApiResponse<Events> {
-                override fun onSuccess(data: Events) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
 
     }
 
-    override fun getAllSports(sportResultCallback: ConsumeApiResponse<Sports>) {
-        sportApi.getAllSports(object : ConsumeApiResponse<Sports> {
-            override fun onSuccess(data: Sports) {
-                sportResultCallback.onSuccess(data)
-            }
-
-            override fun onFailed(statusCode: Int, errorMessage: String?) {
-                sportResultCallback.onFailed(statusCode, errorMessage)
-            }
-
-            override fun onShowProgress() {
-                sportResultCallback.onShowProgress()
-            }
-
-            override fun onHideProgress() {
-                sportResultCallback.onHideProgress()
-            }
-        })
+    override fun getAllSports(callback: ConsumeApiResponse<Sports>) {
+        sportApi.getAllSports(callback)
     }
 
-    override fun getAllLeagues(sportResultCallback: ConsumeApiResponse<Leagues>) {
-        sportApi.getAllLeagues(object : ConsumeApiResponse<Leagues> {
-            override fun onSuccess(data: Leagues) {
-                sportResultCallback.onSuccess(data)
-            }
-
-            override fun onFailed(statusCode: Int, errorMessage: String?) {
-                sportResultCallback.onFailed(statusCode, errorMessage)
-            }
-
-            override fun onShowProgress() {
-                sportResultCallback.onShowProgress()
-            }
-
-            override fun onHideProgress() {
-                sportResultCallback.onHideProgress()
-            }
-        })
+    override fun getAllLeagues(callback: ConsumeApiResponse<Leagues>) {
+        sportApi.getAllLeagues(callback)
     }
 
     override fun searchAllLeagues(
         countryName: String?,
-        sportResultCallback: ConsumeApiResponse<Countrys>
+        callback: ConsumeApiResponse<Countrys>
     ) {
         sportApi.searchAllLeagues(
 
             countryName,
-            object : ConsumeApiResponse<Countrys> {
-                override fun onSuccess(data: Countrys) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun searchAllLeagues(
         countryName: String?,
         sportName: String?,
-        sportResultCallback: ConsumeApiResponse<Countrys>
+        callback: ConsumeApiResponse<Countrys>
     ) {
         sportApi.searchAllLeagues(
 
             countryName,
             sportName,
-            object : ConsumeApiResponse<Countrys> {
-                override fun onSuccess(data: Countrys) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun searchAllSeasons(
         idTeam: String?,
-        sportResultCallback: ConsumeApiResponse<Seasons>
+        callback: ConsumeApiResponse<Seasons>
     ) {
         sportApi.searchAllSeasons(
 
             idTeam,
-            object : ConsumeApiResponse<Seasons> {
-                override fun onSuccess(data: Seasons) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun searchAllTeam(
         league: String?,
-        sportResultCallback: ConsumeApiResponse<Teams>
+        callback: ConsumeApiResponse<Teams>
     ) {
 
         sportApi.searchAllTeam(
 
             league,
-            object : ConsumeApiResponse<Teams> {
-                override fun onSuccess(data: Teams) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun searchAllTeam(
         sportName: String?,
         countryName: String?,
-        sportResultCallback: ConsumeApiResponse<Teams>
+        callback: ConsumeApiResponse<Teams>
     ) {
         sportApi.searchAllTeam(
 
             sportName,
             countryName,
-            object : ConsumeApiResponse<Teams> {
-                override fun onSuccess(data: Teams) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
-    override fun lookupAllTeam(idLeague: String?, sportResultCallback: ConsumeApiResponse<Teams>) {
-
+    override fun lookupAllTeam(idLeague: String?, callback: ConsumeApiResponse<Teams>) {
         sportApi.lookupAllTeam(
-
             idLeague,
-            object : ConsumeApiResponse<Teams> {
-                override fun onSuccess(data: Teams) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
 
     }
 
     override fun lookupAllPlayer(
         idTeam: String?,
-        sportResultCallback: ConsumeApiResponse<Players>
+        callback: ConsumeApiResponse<Players>
     ) {
         sportApi.lookupAllPlayer(
-
             idTeam,
-            object : ConsumeApiResponse<Players> {
-                override fun onSuccess(data: Players) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
-    override fun searchLoves(userName: String?, sportResultCallback: ConsumeApiResponse<Users>) {
+    override fun searchLoves(userName: String?, callback: ConsumeApiResponse<Users>) {
         sportApi.searchLoves(
-
             userName,
-            object : ConsumeApiResponse<Users> {
-                override fun onSuccess(data: Users) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun lookupLeagues(
         idLeague: String?,
-        sportResultCallback: ConsumeApiResponse<Leagues>
+        callback: ConsumeApiResponse<Leagues>
     ) {
         sportApi.lookupLeagues(
-
             idLeague,
-            object : ConsumeApiResponse<Leagues> {
-                override fun onSuccess(data: Leagues) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
-    override fun lookupTeam(idTeam: String?, sportResultCallback: ConsumeApiResponse<Teams>) {
+    override fun lookupTeam(idTeam: String?, callback: ConsumeApiResponse<Teams>) {
         sportApi.lookupTeam(
-
             idTeam,
-            object : ConsumeApiResponse<Teams> {
-                override fun onSuccess(data: Teams) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
-    override fun lookupPlayer(idPlayer: String?, sportResultCallback: ConsumeApiResponse<Players>) {
+    override fun lookupPlayer(idPlayer: String?, callback: ConsumeApiResponse<Players>) {
         sportApi.lookupPlayer(
 
             idPlayer,
-            object : ConsumeApiResponse<Players> {
-                override fun onSuccess(data: Players) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
-    override fun lookupEvent(idEvent: String?, sportResultCallback: ConsumeApiResponse<Events>) {
+    override fun lookupEvent(idEvent: String?, callback: ConsumeApiResponse<Events>) {
         sportApi.lookupEvent(
-
             idEvent,
-            object : ConsumeApiResponse<Events> {
-                override fun onSuccess(data: Events) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
-    override fun lookupHonour(idPlayer: String?, sportResultCallback: ConsumeApiResponse<Honors>) {
+    override fun lookupHonour(idPlayer: String?, callback: ConsumeApiResponse<Honors>) {
         sportApi.lookupHonour(
 
             idPlayer,
-            object : ConsumeApiResponse<Honors> {
-                override fun onSuccess(data: Honors) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun lookupFormerTeam(
         idPlayer: String?,
-        sportResultCallback: ConsumeApiResponse<FormerTeams>
+        callback: ConsumeApiResponse<FormerTeams>
     ) {
         sportApi.lookupFormerTeam(
-
             idPlayer,
-            object : ConsumeApiResponse<FormerTeams> {
-                override fun onSuccess(data: FormerTeams) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun lookupContract(
         idPlayer: String?,
-        sportResultCallback: ConsumeApiResponse<Contracts>
+        callback: ConsumeApiResponse<Contracts>
     ) {
         sportApi.lookupContract(
-
             idPlayer,
-            object : ConsumeApiResponse<Contracts> {
-                override fun onSuccess(data: Contracts) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun lookupTable(
         idLeague: String?,
         season: String?,
-        sportResultCallback: ConsumeApiResponse<Tables>
+        callback: ConsumeApiResponse<Tables>
     ) {
         sportApi.lookupTable(
-
             idLeague,
             season,
-            object : ConsumeApiResponse<Tables> {
-                override fun onSuccess(data: Tables) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
-    override fun eventsNext(idTeam: String?, sportResultCallback: ConsumeApiResponse<Events>) {
+    override fun eventsNext(idTeam: String?, callback: ConsumeApiResponse<Events>) {
         sportApi.eventsNext(
-
             idTeam,
-            object : ConsumeApiResponse<Events> {
-                override fun onSuccess(data: Events) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun eventsNextLeague(
         idLeague: String?,
-        sportResultCallback: ConsumeApiResponse<Events>
+        callback: ConsumeApiResponse<Events>
     ) {
         sportApi.eventsNextLeague(
-
             idLeague,
-            object : ConsumeApiResponse<Events> {
-                override fun onSuccess(data: Events) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
-    override fun eventsLast(idTeam: String?, sportResultCallback: ConsumeApiResponse<Results>) {
+    override fun eventsLast(idTeam: String?, callback: ConsumeApiResponse<Results>) {
         sportApi.eventsLast(
-
             idTeam,
-            object : ConsumeApiResponse<Results> {
-                override fun onSuccess(data: Results) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun eventsPastLeague(
         idLeague: String?,
-        sportResultCallback: ConsumeApiResponse<Events>
+        callback: ConsumeApiResponse<Events>
     ) {
         sportApi.eventsPastLeague(
-
             idLeague,
-            object : ConsumeApiResponse<Events> {
-                override fun onSuccess(data: Events) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun eventsRound(
         idLeague: String?,
         round: String?,
         season: String?,
-        sportResultCallback: ConsumeApiResponse<Events>
+        callback: ConsumeApiResponse<Events>
     ) {
         sportApi.eventsRound(
             idLeague,
             round,
             season,
-            object : ConsumeApiResponse<Events> {
-                override fun onSuccess(data: Events) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
 
     override fun eventsSeason(
         idLeague: String?,
         season: String?,
-        sportResultCallback: ConsumeApiResponse<Events>
+        callback: ConsumeApiResponse<Events>
     ) {
         sportApi.eventsSeason(
-
             idLeague,
             season,
-            object : ConsumeApiResponse<Events> {
-                override fun onSuccess(data: Events) {
-                    sportResultCallback.onSuccess(data)
-                }
-
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    sportResultCallback.onFailed(statusCode, errorMessage)
-                }
-
-                override fun onShowProgress() {
-                    sportResultCallback.onShowProgress()
-                }
-
-                override fun onHideProgress() {
-                    sportResultCallback.onHideProgress()
-                }
-            })
+            callback
+        )
     }
+
 }

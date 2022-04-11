@@ -8,8 +8,9 @@ import com.frogobox.appapi.databinding.ActivitySportBinding
 import com.frogobox.coreapi.sport.model.*
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.ui.databinding.FrogoRvGridType3Binding
-import com.frogobox.sdk.FrogoActivity
+import com.frogobox.sdk.view.FrogoActivity
 import com.frogobox.recycler.core.IFrogoBindingAdapter
+import com.frogobox.sdk.ext.progressViewHandle
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SportActivity : FrogoActivity<ActivitySportBinding>() {
@@ -26,7 +27,7 @@ class SportActivity : FrogoActivity<ActivitySportBinding>() {
             searchAllTeam()
 
             eventShowProgress.observe(this@SportActivity) {
-                setupProgressView(binding.progressView, it)
+                binding.progressView.progressViewHandle(it)
             }
 
             eventFailed.observe(this@SportActivity) {

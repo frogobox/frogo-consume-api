@@ -6,8 +6,8 @@ import com.frogobox.coreapi.pixabay.model.PixabayImage
 import com.frogobox.coreapi.pixabay.response.Response
 import com.frogobox.coreapi.pixabay.PixabayUrl
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.sdk.FrogoMutableLiveData
-import com.frogobox.sdk.FrogoViewModel
+import com.frogobox.sdk.util.FrogoMutableLiveData
+import com.frogobox.sdk.view.FrogoViewModel
 
 /*
  * Created by faisalamir on 28/07/21
@@ -49,9 +49,13 @@ class PixabayViewModel(private val context: Application) : FrogoViewModel(contex
                     data.hits?.let { listData.postValue(it) }
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     // failed to do
                     eventFailed.postValue(errorMessage)
+                }
+
+                override fun onFinish() {
+
                 }
 
                 override fun onShowProgress() {

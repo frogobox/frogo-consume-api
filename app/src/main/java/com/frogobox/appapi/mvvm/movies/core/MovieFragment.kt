@@ -9,7 +9,7 @@ import com.frogobox.appapi.databinding.FragmentTrendingBinding
 import com.frogobox.appapi.mvvm.movies.movie.MovieDayFragment
 import com.frogobox.appapi.mvvm.movies.movie.MovieWeekFragment
 import com.frogobox.appapi.util.PagerAdapter
-import com.frogobox.sdk.FrogoFragment
+import com.frogobox.sdk.view.FrogoFragment
 
 class MovieFragment : FrogoFragment<FragmentTrendingBinding>() {
 

@@ -4,7 +4,7 @@ import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.meal.model.*
 import com.frogobox.coreapi.meal.response.CategoryResponse
 import com.frogobox.coreapi.meal.response.MealResponse
-import com.frogobox.coresdk.FrogoApiClient
+import com.frogobox.coresdk.source.FrogoApiClient
 import com.frogobox.coresdk.ext.doApiRequest
 import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor

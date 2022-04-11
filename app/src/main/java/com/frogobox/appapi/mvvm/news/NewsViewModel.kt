@@ -14,8 +14,8 @@ import com.frogobox.coreapi.news.NewsConstant.CATEGORY_SCIENCE
 import com.frogobox.coreapi.news.NewsConstant.CATEGORY_SPORTS
 import com.frogobox.coreapi.news.NewsConstant.CATEGORY_TECHNOLOGY
 import com.frogobox.coreapi.news.NewsConstant.COUNTRY_ID
-import com.frogobox.sdk.FrogoMutableLiveData
-import com.frogobox.sdk.FrogoViewModel
+import com.frogobox.sdk.util.FrogoMutableLiveData
+import com.frogobox.sdk.view.FrogoViewModel
 
 /*
  * Created by faisalamir on 28/07/21
@@ -64,21 +64,26 @@ class NewsViewModel(private val context: Application) : FrogoViewModel(context) 
                     data.articles?.let { listDataCategory.postValue(it) }
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     // Your failed to do
                     eventFailed.postValue(errorMessage)
                 }
 
+                override fun onFinish() {
+
+                }
+
                 override fun onShowProgress() {
                     // Your Progress Show
+                    showLogDebug("onShowProgress --------------------------------------------------->")
                     eventShowProgress.postValue(true)
                 }
 
                 override fun onHideProgress() {
                     // Your Progress Hide
+                    showLogDebug("onHideProgress --------------------------------------------------->")
                     eventShowProgress.postValue(false)
                 }
-
             })
     }
 
@@ -98,18 +103,24 @@ class NewsViewModel(private val context: Application) : FrogoViewModel(context) 
                     data.articles?.let { listData.postValue(it) }
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     // Your failed to do
                     eventFailed.postValue(errorMessage)
                 }
 
+                override fun onFinish() {
+
+                }
+
                 override fun onShowProgress() {
                     // Your Progress Show
+                    showLogDebug("onShowProgress --------------------------------------------------->")
                     eventShowProgress.postValue(true)
                 }
 
                 override fun onHideProgress() {
                     // Your Progress Hide
+                    showLogDebug("onHideProgress --------------------------------------------------->")
                     eventShowProgress.postValue(false)
                 }
 

@@ -12,7 +12,8 @@ import com.frogobox.appapi.databinding.ContentArticleVerticalBinding
 import com.frogobox.appapi.databinding.ContentCategoryBinding
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
-import com.frogobox.sdk.FrogoActivity
+import com.frogobox.sdk.ext.progressViewHandle
+import com.frogobox.sdk.view.FrogoActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NewsActivity : FrogoActivity<ActivityNewsBinding>() {
@@ -31,7 +32,7 @@ class NewsActivity : FrogoActivity<ActivityNewsBinding>() {
             setupCategory()
 
             eventShowProgress.observe(this@NewsActivity) {
-                setupProgressView(binding.progressView, it)
+                binding.progressView.progressViewHandle(it)
             }
 
             eventFailed.observe(this@NewsActivity) {

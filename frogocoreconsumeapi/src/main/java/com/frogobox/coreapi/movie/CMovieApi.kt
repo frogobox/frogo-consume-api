@@ -39,8 +39,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -61,8 +65,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -91,8 +99,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -121,8 +133,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -151,8 +167,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -179,8 +199,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -207,8 +231,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -235,8 +263,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -261,8 +293,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -287,8 +323,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -310,8 +350,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -332,8 +376,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -354,8 +402,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -376,8 +428,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -398,8 +454,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -420,8 +480,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -442,8 +506,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -465,8 +533,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -553,8 +625,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -621,8 +697,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -652,8 +732,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -675,8 +759,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -698,8 +786,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -721,8 +813,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -751,8 +847,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -781,8 +881,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -811,8 +915,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -839,8 +947,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -871,8 +983,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -894,8 +1010,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -920,8 +1040,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -950,8 +1074,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -973,8 +1101,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -999,8 +1131,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1027,8 +1163,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1053,8 +1193,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1083,8 +1227,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1113,8 +1261,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1143,8 +1295,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1173,8 +1329,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1196,8 +1356,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1226,8 +1390,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1256,8 +1424,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1286,8 +1458,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1316,8 +1492,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1371,8 +1551,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1393,8 +1577,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1419,8 +1607,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1442,8 +1634,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1469,8 +1665,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1499,8 +1699,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1527,8 +1731,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1565,8 +1773,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1599,8 +1811,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1633,8 +1849,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1667,8 +1887,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1697,8 +1921,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1729,8 +1957,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1757,8 +1989,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1789,8 +2025,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1817,8 +2057,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1845,8 +2089,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1873,8 +2121,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1901,8 +2153,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1929,8 +2185,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1952,8 +2212,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -1982,8 +2246,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2005,8 +2273,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2031,8 +2303,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2061,8 +2337,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2084,8 +2364,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2112,8 +2396,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2135,8 +2423,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2163,8 +2455,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2191,8 +2487,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2219,8 +2519,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2247,8 +2551,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2279,8 +2587,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2311,8 +2623,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2345,8 +2661,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2375,8 +2695,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2405,8 +2729,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2435,8 +2763,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2465,8 +2797,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2499,8 +2835,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2531,8 +2871,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2565,8 +2909,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2595,8 +2943,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2625,8 +2977,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2655,8 +3011,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2685,8 +3045,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2717,8 +3081,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2745,8 +3113,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2773,8 +3145,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2805,8 +3181,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2833,8 +3213,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2861,8 +3245,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2889,8 +3277,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2917,8 +3309,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2940,8 +3336,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2970,8 +3370,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -2998,8 +3402,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -3021,8 +3429,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {
@@ -3049,8 +3461,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
                     callback.onSuccess(data)
                 }
 
-                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                override fun onFailed(statusCode: Int, errorMessage: String) {
                     callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun onFinish() {
+                    callback.onFinish()
                 }
 
                 override fun onShowProgress() {

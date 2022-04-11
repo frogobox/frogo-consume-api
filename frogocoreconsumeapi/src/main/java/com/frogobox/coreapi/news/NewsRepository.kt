@@ -3,7 +3,7 @@ package com.frogobox.coreapi.news
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.news.response.ArticleResponse
 import com.frogobox.coreapi.news.response.SourceResponse
-import com.frogobox.coresdk.FrogoApiClient
+import com.frogobox.coresdk.source.FrogoApiClient
 import com.frogobox.coresdk.ext.doApiRequest
 import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
