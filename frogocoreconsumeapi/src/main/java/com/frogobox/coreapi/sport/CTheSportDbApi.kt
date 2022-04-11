@@ -35,42 +35,28 @@ class CTheSportDbApi(usingScheduler: Boolean, apiKey: String) : ISportApi {
         teamName: String?,
         callback: ConsumeApiResponse<Teams>
     ) {
-        sportApi.searchForTeamByName(
-            teamName,
-            callback
-        )
+        sportApi.searchForTeamByName(teamName, callback)
     }
 
     override fun searchForTeamByShortCode(
         shortCode: String?,
         callback: ConsumeApiResponse<Teams>
     ) {
-        sportApi.searchForTeamByShortCode(
-            shortCode,
-            callback
-        )
+        sportApi.searchForTeamByShortCode(shortCode, callback)
     }
 
     override fun searchForAllPlayer(
         teamName: String?,
         callback: ConsumeApiResponse<Players>
     ) {
-        sportApi.searchForAllPlayer(
-
-            teamName,
-            callback
-        )
+        sportApi.searchForAllPlayer(teamName, callback)
     }
 
     override fun searchForPlayer(
         playerName: String?,
         callback: ConsumeApiResponse<Players>
     ) {
-        sportApi.searchForPlayer(
-
-            playerName,
-            callback
-        )
+        sportApi.searchForPlayer(playerName, callback)
     }
 
     override fun searchForPlayer(
@@ -78,23 +64,14 @@ class CTheSportDbApi(usingScheduler: Boolean, apiKey: String) : ISportApi {
         teamName: String?,
         callback: ConsumeApiResponse<Players>
     ) {
-        sportApi.searchForPlayer(
-
-            playerName,
-            teamName,
-            callback
-        )
+        sportApi.searchForPlayer(playerName, teamName, callback)
     }
 
     override fun searchForEvent(
         eventName: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApi.searchForEvent(
-
-            eventName,
-            callback
-        )
+        sportApi.searchForEvent(eventName, callback)
     }
 
     override fun searchForEvent(
@@ -102,24 +79,14 @@ class CTheSportDbApi(usingScheduler: Boolean, apiKey: String) : ISportApi {
         season: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApi.searchForEvent(
-
-            eventName,
-            season,
-            callback
-        )
+        sportApi.searchForEvent(eventName, season, callback)
     }
 
     override fun searchForEventFileName(
         eventFileName: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-
-        sportApi.searchForEventFileName(
-
-            eventFileName,
-            callback
-        )
+        sportApi.searchForEventFileName(eventFileName, callback)
 
     }
 
@@ -135,11 +102,7 @@ class CTheSportDbApi(usingScheduler: Boolean, apiKey: String) : ISportApi {
         countryName: String?,
         callback: ConsumeApiResponse<Countrys>
     ) {
-        sportApi.searchAllLeagues(
-
-            countryName,
-            callback
-        )
+        sportApi.searchAllLeagues(countryName, callback)
     }
 
     override fun searchAllLeagues(
@@ -147,35 +110,21 @@ class CTheSportDbApi(usingScheduler: Boolean, apiKey: String) : ISportApi {
         sportName: String?,
         callback: ConsumeApiResponse<Countrys>
     ) {
-        sportApi.searchAllLeagues(
-
-            countryName,
-            sportName,
-            callback
-        )
+        sportApi.searchAllLeagues(countryName, sportName, callback)
     }
 
     override fun searchAllSeasons(
         idTeam: String?,
         callback: ConsumeApiResponse<Seasons>
     ) {
-        sportApi.searchAllSeasons(
-
-            idTeam,
-            callback
-        )
+        sportApi.searchAllSeasons(idTeam, callback)
     }
 
     override fun searchAllTeam(
         league: String?,
         callback: ConsumeApiResponse<Teams>
     ) {
-
-        sportApi.searchAllTeam(
-
-            league,
-            callback
-        )
+        sportApi.searchAllTeam(league, callback)
     }
 
     override fun searchAllTeam(
@@ -183,97 +132,59 @@ class CTheSportDbApi(usingScheduler: Boolean, apiKey: String) : ISportApi {
         countryName: String?,
         callback: ConsumeApiResponse<Teams>
     ) {
-        sportApi.searchAllTeam(
-
-            sportName,
-            countryName,
-            callback
-        )
+        sportApi.searchAllTeam(sportName, countryName, callback)
     }
 
     override fun lookupAllTeam(idLeague: String?, callback: ConsumeApiResponse<Teams>) {
-        sportApi.lookupAllTeam(
-            idLeague,
-            callback
-        )
-
+        sportApi.lookupAllTeam(idLeague, callback)
     }
 
     override fun lookupAllPlayer(
         idTeam: String?,
         callback: ConsumeApiResponse<Players>
     ) {
-        sportApi.lookupAllPlayer(
-            idTeam,
-            callback
-        )
+        sportApi.lookupAllPlayer(idTeam, callback)
     }
 
     override fun searchLoves(userName: String?, callback: ConsumeApiResponse<Users>) {
-        sportApi.searchLoves(
-            userName,
-            callback
-        )
+        sportApi.searchLoves(userName, callback)
     }
 
     override fun lookupLeagues(
         idLeague: String?,
         callback: ConsumeApiResponse<Leagues>
     ) {
-        sportApi.lookupLeagues(
-            idLeague,
-            callback
-        )
+        sportApi.lookupLeagues(idLeague, callback)
     }
 
     override fun lookupTeam(idTeam: String?, callback: ConsumeApiResponse<Teams>) {
-        sportApi.lookupTeam(
-            idTeam,
-            callback
-        )
+        sportApi.lookupTeam(idTeam, callback)
     }
 
     override fun lookupPlayer(idPlayer: String?, callback: ConsumeApiResponse<Players>) {
-        sportApi.lookupPlayer(
-
-            idPlayer,
-            callback
-        )
+        sportApi.lookupPlayer(idPlayer, callback)
     }
 
     override fun lookupEvent(idEvent: String?, callback: ConsumeApiResponse<Events>) {
-        sportApi.lookupEvent(
-            idEvent,
-            callback
-        )
+        sportApi.lookupEvent(idEvent, callback)
     }
 
     override fun lookupHonour(idPlayer: String?, callback: ConsumeApiResponse<Honors>) {
-        sportApi.lookupHonour(
-
-            idPlayer,
-            callback
-        )
+        sportApi.lookupHonour(idPlayer, callback)
     }
 
     override fun lookupFormerTeam(
         idPlayer: String?,
         callback: ConsumeApiResponse<FormerTeams>
     ) {
-        sportApi.lookupFormerTeam(
-            idPlayer,
-            callback
-        )
+        sportApi.lookupFormerTeam(idPlayer, callback)
     }
 
     override fun lookupContract(
         idPlayer: String?,
         callback: ConsumeApiResponse<Contracts>
     ) {
-        sportApi.lookupContract(
-            idPlayer,
-            callback
-        )
+        sportApi.lookupContract(idPlayer, callback)
     }
 
     override fun lookupTable(
@@ -281,45 +192,29 @@ class CTheSportDbApi(usingScheduler: Boolean, apiKey: String) : ISportApi {
         season: String?,
         callback: ConsumeApiResponse<Tables>
     ) {
-        sportApi.lookupTable(
-            idLeague,
-            season,
-            callback
-        )
+        sportApi.lookupTable(idLeague, season, callback)
     }
 
     override fun eventsNext(idTeam: String?, callback: ConsumeApiResponse<Events>) {
-        sportApi.eventsNext(
-            idTeam,
-            callback
-        )
+        sportApi.eventsNext(idTeam, callback)
     }
 
     override fun eventsNextLeague(
         idLeague: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApi.eventsNextLeague(
-            idLeague,
-            callback
-        )
+        sportApi.eventsNextLeague(idLeague, callback)
     }
 
     override fun eventsLast(idTeam: String?, callback: ConsumeApiResponse<Results>) {
-        sportApi.eventsLast(
-            idTeam,
-            callback
-        )
+        sportApi.eventsLast(idTeam, callback)
     }
 
     override fun eventsPastLeague(
         idLeague: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApi.eventsPastLeague(
-            idLeague,
-            callback
-        )
+        sportApi.eventsPastLeague(idLeague, callback)
     }
 
     override fun eventsRound(
@@ -328,12 +223,7 @@ class CTheSportDbApi(usingScheduler: Boolean, apiKey: String) : ISportApi {
         season: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApi.eventsRound(
-            idLeague,
-            round,
-            season,
-            callback
-        )
+        sportApi.eventsRound(idLeague, round, season, callback)
     }
 
     override fun eventsSeason(
@@ -341,11 +231,7 @@ class CTheSportDbApi(usingScheduler: Boolean, apiKey: String) : ISportApi {
         season: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApi.eventsSeason(
-            idLeague,
-            season,
-            callback
-        )
+        sportApi.eventsSeason(idLeague, season, callback)
     }
 
 }
