@@ -1,11 +1,11 @@
 package com.frogobox.api.news
 
 import android.content.Context
-import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.news.NewsApi
 import com.frogobox.coreapi.news.response.ArticleResponse
 import com.frogobox.coreapi.news.response.SourceResponse
+import com.frogobox.sdk.ext.usingChuck
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import okhttp3.Interceptor
 
@@ -31,7 +31,7 @@ class ConsumeNewsApi(apiKey: String) : IConsumeNewsApi {
     private var newsApi = NewsApi(AndroidSchedulers.mainThread(), apiKey)
 
     override fun usingChuckInterceptor(context: Context) {
-        usingChuckInterceptor(ChuckerInterceptor(context))
+        usingChuckInterceptor(context.usingChuck())
     }
 
     override fun usingChuckInterceptor(chuckerInterceptor: Interceptor) {

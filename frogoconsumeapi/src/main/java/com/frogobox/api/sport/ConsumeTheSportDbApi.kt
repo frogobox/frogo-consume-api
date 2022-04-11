@@ -1,10 +1,10 @@
 package com.frogobox.api.sport
 
 import android.content.Context
-import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.sport.SportApi
 import com.frogobox.coreapi.sport.response.*
+import com.frogobox.sdk.ext.usingChuck
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import okhttp3.Interceptor
 
@@ -34,7 +34,7 @@ class ConsumeTheSportDbApi(apiKey: String) : IConsumeTheSportDbApi {
     }
 
     override fun usingChuckInterceptor(context: Context) {
-        usingChuckInterceptor(ChuckerInterceptor(context))
+        usingChuckInterceptor(context.usingChuck())
     }
 
     override fun searchForTeamByName(
