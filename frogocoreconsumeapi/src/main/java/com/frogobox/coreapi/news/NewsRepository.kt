@@ -43,13 +43,7 @@ object NewsRepository : NewsDataSource {
         callback: ConsumeApiResponse<ArticleResponse>
     ) {
         newsApiService.getTopHeadline(apiKey, q, sources, category, country, pageSize, page)
-            .apply {
-                if (scheduler != null) {
-                    doApiRequest(scheduler, callback)
-                } else {
-                    doApiRequest(callback)
-                }
-            }
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getEverythings(
@@ -81,13 +75,7 @@ object NewsRepository : NewsDataSource {
             sortBy,
             pageSize,
             page
-        ).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        ).doApiRequest(scheduler, callback) {}
     }
 
     override fun getSources(
@@ -98,13 +86,8 @@ object NewsRepository : NewsDataSource {
         category: String,
         callback: ConsumeApiResponse<SourceResponse>
     ) {
-        newsApiService.getSources(apiKey, language, country, category).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        newsApiService.getSources(apiKey, language, country, category)
+            .doApiRequest(scheduler, callback) {}
     }
 
 }

@@ -122,7 +122,7 @@ dependencies {
 
     implementation("com.github.amirisback:frogo-recycler-view:4.0.8")
 
-    implementation("com.github.frogobox:frogo-ui:0.0.2")
+    implementation("com.github.frogobox:frogo-ui:1.0.0")
     implementation(DependencyGradle.FROGO_SDK)
 
     kapt(GitHub.glideCompiler)

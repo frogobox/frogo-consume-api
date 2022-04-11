@@ -41,13 +41,7 @@ object SportRepository : SportDataSource {
         teamName: String?,
         callback: ConsumeApiResponse<Teams>
     ) {
-        sportApiService.searchForTeamByName(apiKey, teamName).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.searchForTeamByName(apiKey, teamName).doApiRequest(scheduler, callback) {}
 
     }
 
@@ -56,13 +50,8 @@ object SportRepository : SportDataSource {
         shortCode: String?,
         callback: ConsumeApiResponse<Teams>
     ) {
-        sportApiService.searchForTeamByShortCode(apiKey, shortCode).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.searchForTeamByShortCode(apiKey, shortCode)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun searchForAllPlayer(
@@ -70,13 +59,7 @@ object SportRepository : SportDataSource {
         teamName: String?,
         callback: ConsumeApiResponse<Players>
     ) {
-        sportApiService.searchForAllPlayer(apiKey, teamName).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.searchForAllPlayer(apiKey, teamName).doApiRequest(scheduler, callback) {}
     }
 
     override fun searchForPlayer(
@@ -84,13 +67,7 @@ object SportRepository : SportDataSource {
         playerName: String?,
         callback: ConsumeApiResponse<Players>
     ) {
-        sportApiService.searchForPlayer(apiKey, playerName).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.searchForPlayer(apiKey, playerName).doApiRequest(scheduler, callback) {}
     }
 
     override fun searchForPlayer(
@@ -99,13 +76,8 @@ object SportRepository : SportDataSource {
         teamName: String?,
         callback: ConsumeApiResponse<Players>
     ) {
-        sportApiService.searchForPlayer(apiKey, playerName, teamName).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.searchForPlayer(apiKey, playerName, teamName)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun searchForEvent(
@@ -113,13 +85,7 @@ object SportRepository : SportDataSource {
         eventName: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApiService.searchForEvent(apiKey, eventName).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.searchForEvent(apiKey, eventName).doApiRequest(scheduler, callback) {}
     }
 
     override fun searchForEvent(
@@ -128,13 +94,8 @@ object SportRepository : SportDataSource {
         season: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApiService.searchForEvent(apiKey, eventName, season).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.searchForEvent(apiKey, eventName, season)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun searchForEventFileName(
@@ -142,13 +103,8 @@ object SportRepository : SportDataSource {
         eventFileName: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApiService.searchForEventFileName(apiKey, eventFileName).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.searchForEventFileName(apiKey, eventFileName)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getAllSports(
@@ -156,13 +112,7 @@ object SportRepository : SportDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<Sports>
     ) {
-        sportApiService.getAllSports(apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.getAllSports(apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getAllLeagues(
@@ -170,13 +120,7 @@ object SportRepository : SportDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<Leagues>
     ) {
-        sportApiService.getAllLeagues(apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.getAllLeagues(apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun searchAllLeagues(
@@ -184,13 +128,7 @@ object SportRepository : SportDataSource {
         countryName: String?,
         callback: ConsumeApiResponse<Countrys>
     ) {
-        sportApiService.searchAllLeagues(apiKey, countryName).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.searchAllLeagues(apiKey, countryName).doApiRequest(scheduler, callback) {}
     }
 
     override fun searchAllLeagues(
@@ -199,13 +137,8 @@ object SportRepository : SportDataSource {
         sportName: String?,
         callback: ConsumeApiResponse<Countrys>
     ) {
-        sportApiService.searchAllLeagues(apiKey, countryName, sportName).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.searchAllLeagues(apiKey, countryName, sportName)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun searchAllSeasons(
@@ -213,13 +146,7 @@ object SportRepository : SportDataSource {
         idTeam: String?,
         callback: ConsumeApiResponse<Seasons>
     ) {
-        sportApiService.searchAllSeasons(apiKey, idTeam).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.searchAllSeasons(apiKey, idTeam).doApiRequest(scheduler, callback) {}
     }
 
     override fun searchAllTeam(
@@ -227,13 +154,7 @@ object SportRepository : SportDataSource {
         league: String?,
         callback: ConsumeApiResponse<Teams>
     ) {
-        sportApiService.searchAllTeam(apiKey, league).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.searchAllTeam(apiKey, league).doApiRequest(scheduler, callback) {}
     }
 
     override fun searchAllTeam(
@@ -242,13 +163,8 @@ object SportRepository : SportDataSource {
         countryName: String?,
         callback: ConsumeApiResponse<Teams>
     ) {
-        sportApiService.searchAllTeam(apiKey, sportName, countryName).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.searchAllTeam(apiKey, sportName, countryName)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun lookupAllTeam(
@@ -256,13 +172,7 @@ object SportRepository : SportDataSource {
         idLeague: String?,
         callback: ConsumeApiResponse<Teams>
     ) {
-        sportApiService.lookupAllTeam(apiKey, idLeague).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.lookupAllTeam(apiKey, idLeague).doApiRequest(scheduler, callback) {}
     }
 
     override fun lookupAllPlayer(
@@ -270,13 +180,7 @@ object SportRepository : SportDataSource {
         idTeam: String?,
         callback: ConsumeApiResponse<Players>
     ) {
-        sportApiService.lookupAllPlayer(apiKey, idTeam).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.lookupAllPlayer(apiKey, idTeam).doApiRequest(scheduler, callback) {}
     }
 
     override fun searchLoves(
@@ -284,13 +188,7 @@ object SportRepository : SportDataSource {
         userName: String?,
         callback: ConsumeApiResponse<Users>
     ) {
-        sportApiService.searchLoves(apiKey, userName).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.searchLoves(apiKey, userName).doApiRequest(scheduler, callback) {}
     }
 
     override fun lookupLeagues(
@@ -298,13 +196,7 @@ object SportRepository : SportDataSource {
         idLeague: String?,
         callback: ConsumeApiResponse<Leagues>
     ) {
-        sportApiService.lookupLeagues(apiKey, idLeague).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.lookupLeagues(apiKey, idLeague).doApiRequest(scheduler, callback) {}
     }
 
     override fun lookupTeam(
@@ -312,13 +204,7 @@ object SportRepository : SportDataSource {
         idTeam: String?,
         callback: ConsumeApiResponse<Teams>
     ) {
-        sportApiService.lookupTeam(apiKey, idTeam).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.lookupTeam(apiKey, idTeam).doApiRequest(scheduler, callback) {}
     }
 
     override fun lookupPlayer(
@@ -326,13 +212,7 @@ object SportRepository : SportDataSource {
         idPlayer: String?,
         callback: ConsumeApiResponse<Players>
     ) {
-        sportApiService.lookupPlayer(apiKey, idPlayer).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.lookupPlayer(apiKey, idPlayer).doApiRequest(scheduler, callback) {}
     }
 
     override fun lookupEvent(
@@ -340,13 +220,7 @@ object SportRepository : SportDataSource {
         idEvent: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApiService.lookupEvent(apiKey, idEvent).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.lookupEvent(apiKey, idEvent).doApiRequest(scheduler, callback) {}
     }
 
     override fun lookupHonour(
@@ -354,13 +228,7 @@ object SportRepository : SportDataSource {
         idPlayer: String?,
         callback: ConsumeApiResponse<Honors>
     ) {
-        sportApiService.lookupHonour(apiKey, idPlayer).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.lookupHonour(apiKey, idPlayer).doApiRequest(scheduler, callback) {}
     }
 
     override fun lookupFormerTeam(
@@ -368,13 +236,7 @@ object SportRepository : SportDataSource {
         idPlayer: String?,
         callback: ConsumeApiResponse<FormerTeams>
     ) {
-        sportApiService.lookupFormerTeam(apiKey, idPlayer).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.lookupFormerTeam(apiKey, idPlayer).doApiRequest(scheduler, callback) {}
     }
 
     override fun lookupContract(
@@ -382,13 +244,7 @@ object SportRepository : SportDataSource {
         idPlayer: String?,
         callback: ConsumeApiResponse<Contracts>
     ) {
-        sportApiService.lookupContract(apiKey, idPlayer).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.lookupContract(apiKey, idPlayer).doApiRequest(scheduler, callback) {}
     }
 
     override fun lookupTable(
@@ -397,13 +253,7 @@ object SportRepository : SportDataSource {
         season: String?,
         callback: ConsumeApiResponse<Tables>
     ) {
-        sportApiService.lookupTable(apiKey, idLeague, season).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.lookupTable(apiKey, idLeague, season).doApiRequest(scheduler, callback) {}
     }
 
     override fun eventsNext(
@@ -411,13 +261,7 @@ object SportRepository : SportDataSource {
         idTeam: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApiService.eventsNext(apiKey, idTeam).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.eventsNext(apiKey, idTeam).doApiRequest(scheduler, callback) {}
     }
 
     override fun eventsNextLeague(
@@ -425,13 +269,7 @@ object SportRepository : SportDataSource {
         idLeague: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApiService.eventsNextLeague(apiKey, idLeague).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.eventsNextLeague(apiKey, idLeague).doApiRequest(scheduler, callback) {}
     }
 
     override fun eventsLast(
@@ -439,13 +277,7 @@ object SportRepository : SportDataSource {
         idTeam: String?,
         callback: ConsumeApiResponse<Results>
     ) {
-        sportApiService.eventsLast(apiKey, idTeam).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.eventsLast(apiKey, idTeam).doApiRequest(scheduler, callback) {}
     }
 
     override fun eventsPastLeague(
@@ -453,13 +285,7 @@ object SportRepository : SportDataSource {
         idLeague: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApiService.eventsPastLeague(apiKey, idLeague).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.eventsPastLeague(apiKey, idLeague).doApiRequest(scheduler, callback) {}
     }
 
     override fun eventsRound(
@@ -469,13 +295,8 @@ object SportRepository : SportDataSource {
         season: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApiService.eventsRound(apiKey, idLeague, round, season).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.eventsRound(apiKey, idLeague, round, season)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun eventsSeason(
@@ -484,12 +305,6 @@ object SportRepository : SportDataSource {
         season: String?,
         callback: ConsumeApiResponse<Events>
     ) {
-        sportApiService.eventsSeason(apiKey, idLeague, season).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        sportApiService.eventsSeason(apiKey, idLeague, season).doApiRequest(scheduler, callback) {}
     }
 }

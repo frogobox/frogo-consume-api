@@ -41,9 +41,9 @@ object MovieRepository : MovieDataSource {
         callback: ConsumeApiResponse<Certifications<CertificationMovie>>
     ) {
         if (scheduler != null) {
-            movieApiService.getMovieCertifications(apiKey).doApiRequest(scheduler, callback)
+            movieApiService.getMovieCertifications(apiKey).doApiRequest(scheduler, callback) {}
         } else {
-            movieApiService.getMovieCertifications(apiKey).doApiRequest(callback)
+            movieApiService.getMovieCertifications(apiKey).doApiRequest(null, callback) {}
         }
     }
 
@@ -52,13 +52,7 @@ object MovieRepository : MovieDataSource {
         apiKey: String,
         callback: ConsumeApiResponse<Certifications<CertificationTv>>
     ) {
-        movieApiService.getTvCertifications(apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvCertifications(apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getMovieChangeList(
@@ -69,13 +63,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<Changes>
     ) {
-        movieApiService.getMovieChangeList(apiKey, endDate, startDate, page).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getMovieChangeList(apiKey, endDate, startDate, page)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvChangeList(
@@ -86,13 +75,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<Changes>
     ) {
-        movieApiService.getTvChangeList(apiKey, endDate, startDate, page).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvChangeList(apiKey, endDate, startDate, page)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getPersonChangeList(
@@ -103,13 +87,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<Changes>
     ) {
-        movieApiService.getPersonChangeList(apiKey, endDate, startDate, page).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getPersonChangeList(apiKey, endDate, startDate, page)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getCollectionDetails(
@@ -119,13 +98,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<CollectionsDetail>
     ) {
-        movieApiService.getCollectionDetails(collection_id, apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getCollectionDetails(collection_id, apiKey, language)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getCollectionImages(
@@ -135,13 +109,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<CollectionsImage>
     ) {
-        movieApiService.getCollectionImages(collection_id, apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getCollectionImages(collection_id, apiKey, language)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getCollectionTranslations(
@@ -151,13 +120,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<CollectionsTranslation>
     ) {
-        movieApiService.getCollectionTranslations(collection_id, apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getCollectionTranslations(collection_id, apiKey, language)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getCompaniesDetails(
@@ -165,13 +129,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<CompaniesDetail>
     ) {
-        movieApiService.getCompaniesDetails(company_id, apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getCompaniesDetails(company_id, apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getCompaniesAlternativeName(
@@ -179,13 +137,8 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<CompaniesAlternateName>
     ) {
-        movieApiService.getCompaniesAlternativeName(company_id, apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getCompaniesAlternativeName(company_id, apiKey)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getCompaniesImage(
@@ -193,91 +146,49 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<CompaniesImage>
     ) {
-        movieApiService.getCompaniesImage(company_id, apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getCompaniesImage(company_id, apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getConfigurationApi(
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<ConfigurationApi>
     ) {
-        movieApiService.getConfigurationApi(apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getConfigurationApi(apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getConfigurationCountries(
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<List<ConfigurationCountry>>
     ) {
-        movieApiService.getConfigurationCountries(apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getConfigurationCountries(apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getConfigurationJobs(
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<List<ConfigurationJob>>
     ) {
-        movieApiService.getConfigurationJobs(apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getConfigurationJobs(apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getConfigurationLanguages(
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<List<ConfigurationLanguage>>
     ) {
-        movieApiService.getConfigurationLanguages(apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getConfigurationLanguages(apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getConfigurationTranslations(
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<List<String>>
     ) {
-        movieApiService.getConfigurationTranslations(apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getConfigurationTranslations(apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getConfigurationTimezones(
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<List<ConfigurationTimezone>>
     ) {
-        movieApiService.getConfigurationTimezones(apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getConfigurationTimezones(apiKey).doApiRequest(scheduler, callback) {}
 
     }
 
@@ -286,13 +197,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<Credits>
     ) {
-        movieApiService.getCreditsDetails(credit_id, apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getCreditsDetails(credit_id, apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getDiscoverMovie(
@@ -366,13 +271,7 @@ object MovieRepository : MovieDataSource {
             with_runtime_gte,
             with_runtime_lte,
             with_original_language
-        ).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        ).doApiRequest(scheduler, callback) {}
     }
 
     override fun getDiscoverTv(
@@ -425,13 +324,7 @@ object MovieRepository : MovieDataSource {
             screened_theatrically,
             with_companies,
             with_keywords
-        ).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        ).doApiRequest(scheduler, callback) {}
     }
 
     override fun getFindById(
@@ -441,13 +334,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<Find>
     ) {
-        movieApiService.getFindById(external_id, apiKey, external_source, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getFindById(external_id, apiKey, external_source, language)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getGenresMovie(
@@ -455,13 +343,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<Genres>
     ) {
-        movieApiService.getGenresMovie(apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getGenresMovie(apiKey, language).doApiRequest(scheduler, callback) {}
     }
 
     override fun getGenresTv(
@@ -469,13 +351,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<Genres>
     ) {
-        movieApiService.getGenresTv(apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getGenresTv(apiKey, language).doApiRequest(scheduler, callback) {}
     }
 
     override fun getKeywordsDetail(
@@ -483,13 +359,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<KeywordsDetail>
     ) {
-        movieApiService.getKeywordsDetail(keyword_id, apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getKeywordsDetail(keyword_id, apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getKeywordsMovie(
@@ -499,13 +369,8 @@ object MovieRepository : MovieDataSource {
         include_adult: Boolean?,
         callback: ConsumeApiResponse<KeywordsMovies>
     ) {
-        movieApiService.getKeywordsMovie(keyword_id, apiKey, language, include_adult).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getKeywordsMovie(keyword_id, apiKey, language, include_adult)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getMoviesDetails(
@@ -515,13 +380,8 @@ object MovieRepository : MovieDataSource {
         append_to_response: String?,
         callback: ConsumeApiResponse<MovieDetail>
     ) {
-        movieApiService.getMoviesDetails(movie_id, apiKey, language, append_to_response).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getMoviesDetails(movie_id, apiKey, language, append_to_response)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getMoviesAccountState(
@@ -532,13 +392,7 @@ object MovieRepository : MovieDataSource {
         callback: ConsumeApiResponse<MovieAccountState>
     ) {
         movieApiService.getMoviesAccountState(movie_id, apiKey, session_id, guest_session_id)
-            .apply {
-                if (scheduler != null) {
-                    doApiRequest(scheduler, callback)
-                } else {
-                    doApiRequest(callback)
-                }
-            }
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getMoviesAlternativeTitles(
@@ -547,13 +401,8 @@ object MovieRepository : MovieDataSource {
         country: String?,
         callback: ConsumeApiResponse<MovieAlternativeTitle>
     ) {
-        movieApiService.getMoviesAlternativeTitles(movie_id, apiKey, country).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getMoviesAlternativeTitles(movie_id, apiKey, country)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getMoviesChanges(
@@ -564,13 +413,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<MovieChanges>
     ) {
-        movieApiService.getMoviesChanges(movie_id, apiKey, start_date, end_date, page).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getMoviesChanges(movie_id, apiKey, start_date, end_date, page)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getMoviesCredits(
@@ -578,13 +422,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<MovieCredit>
     ) {
-        movieApiService.getMoviesCredits(movie_id, apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getMoviesCredits(movie_id, apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getMoviesExternalIds(
@@ -592,13 +430,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<MovieExternalId>
     ) {
-        movieApiService.getMoviesExternalIds(movie_id, apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getMoviesExternalIds(movie_id, apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getMoviesImages(
@@ -613,13 +445,7 @@ object MovieRepository : MovieDataSource {
             apiKey,
             language,
             include_image_language
-        ).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        ).doApiRequest(scheduler, callback) {}
     }
 
     override fun getMoviesKeywords(
@@ -627,13 +453,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<MovieKeywords>
     ) {
-        movieApiService.getMoviesKeywords(movie_id, apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getMoviesKeywords(movie_id, apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getMoviesReleaseDates(
@@ -641,13 +461,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<MovieReleaseDates>
     ) {
-        movieApiService.getMoviesReleaseDates(movie_id, apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getMoviesReleaseDates(movie_id, apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getMoviesVideos(
@@ -656,13 +470,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<MovieVideos>
     ) {
-        movieApiService.getMoviesVideos(movie_id, apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getMoviesVideos(movie_id, apiKey, language)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getMoviesTranslations(
@@ -670,13 +479,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<MovieTranslations>
     ) {
-        movieApiService.getMoviesTranslations(movie_id, apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getMoviesTranslations(movie_id, apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getMoviesRecommendations(
@@ -686,13 +489,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<MovieRecommendations>
     ) {
-        movieApiService.getMoviesRecommendations(movie_id, apiKey, language, page).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getMoviesRecommendations(movie_id, apiKey, language, page)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getMoviesSimilarMovies(
@@ -702,13 +500,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<MovieSimilarMovies>
     ) {
-        movieApiService.getMoviesSimilarMovies(movie_id, apiKey, language, page).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getMoviesSimilarMovies(movie_id, apiKey, language, page)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getMoviesReviews(
@@ -718,13 +511,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<MovieReviews>
     ) {
-        movieApiService.getMoviesReviews(movie_id, apiKey, language, page).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getMoviesReviews(movie_id, apiKey, language, page)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getMoviesLists(
@@ -734,13 +522,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<MovieLists>
     ) {
-        movieApiService.getMoviesLists(movie_id, apiKey, language, page).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getMoviesLists(movie_id, apiKey, language, page)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getMoviesLatest(
@@ -748,13 +531,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<MovieLatest>
     ) {
-        movieApiService.getMoviesLatest(apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getMoviesLatest(apiKey, language).doApiRequest(scheduler, callback) {}
     }
 
     override fun getMoviesNowPlaying(
@@ -764,13 +541,8 @@ object MovieRepository : MovieDataSource {
         region: String?,
         callback: ConsumeApiResponse<MovieNowPlayings>
     ) {
-        movieApiService.getMoviesNowPlaying(apiKey, language, page, region).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getMoviesNowPlaying(apiKey, language, page, region)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getMoviesPopular(
@@ -780,13 +552,8 @@ object MovieRepository : MovieDataSource {
         region: String?,
         callback: ConsumeApiResponse<MoviePopulars>
     ) {
-        movieApiService.getMoviesPopular(apiKey, language, page, region).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getMoviesPopular(apiKey, language, page, region)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getMoviesTopRated(
@@ -796,13 +563,8 @@ object MovieRepository : MovieDataSource {
         region: String?,
         callback: ConsumeApiResponse<MovieTopRated>
     ) {
-        movieApiService.getMoviesTopRated(apiKey, language, page, region).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getMoviesTopRated(apiKey, language, page, region)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getMoviesUpcoming(
@@ -814,10 +576,10 @@ object MovieRepository : MovieDataSource {
     ) {
         if (scheduler != null) {
             movieApiService.getMoviesUpcoming(apiKey, language, page, region)
-                .doApiRequest(scheduler, callback)
+                .doApiRequest(scheduler, callback) {}
         } else {
             movieApiService.getMoviesUpcoming(apiKey, language, page, region)
-                .doApiRequest(callback)
+                .doApiRequest(null, callback) {}
         }
     }
 
@@ -829,10 +591,10 @@ object MovieRepository : MovieDataSource {
     ) {
         if (scheduler != null) {
             movieApiService.getTrendingAll(media_type, time_window, apiKey)
-                .doApiRequest(scheduler, callback)
+                .doApiRequest(scheduler, callback) {}
         } else {
             movieApiService.getTrendingAll(media_type, time_window, apiKey)
-                .doApiRequest(callback)
+                .doApiRequest(null, callback) {}
         }
     }
 
@@ -844,9 +606,10 @@ object MovieRepository : MovieDataSource {
     ) {
         if (scheduler != null) {
             movieApiService.getTrendingMovie(media_type, time_window, apiKey)
-                .doApiRequest(scheduler, callback)
+                .doApiRequest(scheduler, callback) {}
         } else {
-            movieApiService.getTrendingMovie(media_type, time_window, apiKey).doApiRequest(callback)
+            movieApiService.getTrendingMovie(media_type, time_window, apiKey)
+                .doApiRequest(null, callback) {}
         }
     }
 
@@ -859,10 +622,10 @@ object MovieRepository : MovieDataSource {
     ) {
         if (scheduler != null) {
             movieApiService.getTrendingPerson(media_type, time_window, apiKey)
-                .doApiRequest(scheduler, callback)
+                .doApiRequest(scheduler, callback) {}
         } else {
             movieApiService.getTrendingPerson(media_type, time_window, apiKey)
-                .doApiRequest(callback)
+                .doApiRequest(null, callback) {}
         }
     }
 
@@ -875,10 +638,10 @@ object MovieRepository : MovieDataSource {
     ) {
         if (scheduler != null) {
             movieApiService.getTrendingTv(media_type, time_window, apiKey)
-                .doApiRequest(scheduler, callback)
+                .doApiRequest(scheduler, callback) {}
         } else {
             movieApiService.getTrendingTv(media_type, time_window, apiKey)
-                .doApiRequest(callback)
+                .doApiRequest(null, callback) {}
         }
     }
 
@@ -889,10 +652,10 @@ object MovieRepository : MovieDataSource {
     ) {
         if (scheduler != null) {
             movieApiService.getReviews(review_id, apiKey)
-                .doApiRequest(scheduler, callback)
+                .doApiRequest(scheduler, callback) {}
         } else {
             movieApiService.getReviews(review_id, apiKey)
-                .doApiRequest(callback)
+                .doApiRequest(null, callback) {}
         }
     }
 
@@ -901,13 +664,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<NetworkDetail>
     ) {
-        movieApiService.getNetworkDetail(network_id, apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getNetworkDetail(network_id, apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getNetworkAlternativeName(
@@ -915,13 +672,8 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<NetworkAlternativeName>
     ) {
-        movieApiService.getNetworkAlternativeName(network_id, apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getNetworkAlternativeName(network_id, apiKey)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getNetworkImage(
@@ -929,13 +681,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<NetworkImage>
     ) {
-        movieApiService.getNetworkImage(network_id, apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getNetworkImage(network_id, apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun searchCompanies(
@@ -944,13 +690,7 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<SearchCompanies>
     ) {
-        movieApiService.searchCompanies(apiKey, query, page).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.searchCompanies(apiKey, query, page).doApiRequest(scheduler, callback) {}
     }
 
     override fun searchCollections(
@@ -960,13 +700,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<SearchCollections>
     ) {
-        movieApiService.searchCollections(apiKey, query, language, page).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.searchCollections(apiKey, query, language, page)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun searchKeywords(
@@ -975,13 +710,7 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<SearchKeywords>
     ) {
-        movieApiService.searchKeywords(apiKey, query, page).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.searchKeywords(apiKey, query, page).doApiRequest(scheduler, callback) {}
     }
 
     override fun searchMovies(
@@ -1004,13 +733,7 @@ object MovieRepository : MovieDataSource {
             region,
             year,
             primary_release_year
-        ).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        ).doApiRequest(scheduler, callback) {}
     }
 
     override fun searchMultiSearch(
@@ -1023,13 +746,7 @@ object MovieRepository : MovieDataSource {
         callback: ConsumeApiResponse<SearchMulti>
     ) {
         movieApiService.searchMultiSearch(apiKey, query, language, page, include_adult, region)
-            .apply {
-                if (scheduler != null) {
-                    doApiRequest(scheduler, callback)
-                } else {
-                    doApiRequest(callback)
-                }
-            }
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun searchPeople(
@@ -1041,13 +758,8 @@ object MovieRepository : MovieDataSource {
         region: String?,
         callback: ConsumeApiResponse<SearchPeople>
     ) {
-        movieApiService.searchPeople(apiKey, query, language, page, include_adult, region).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.searchPeople(apiKey, query, language, page, include_adult, region)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun searchTvShows(
@@ -1066,13 +778,7 @@ object MovieRepository : MovieDataSource {
             page,
             include_adult,
             first_air_date_year
-        ).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        ).doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvDetails(
@@ -1082,13 +788,8 @@ object MovieRepository : MovieDataSource {
         append_to_response: String?,
         callback: ConsumeApiResponse<TvDetails>
     ) {
-        movieApiService.getTvDetails(tv_id, apiKey, language, append_to_response).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvDetails(tv_id, apiKey, language, append_to_response)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvAccountStates(
@@ -1100,13 +801,7 @@ object MovieRepository : MovieDataSource {
         callback: ConsumeApiResponse<TvAccountStates>
     ) {
         movieApiService.getTvAccountStates(tv_id, apiKey, language, guest_session_id, session_id)
-            .apply {
-                if (scheduler != null) {
-                    doApiRequest(scheduler, callback)
-                } else {
-                    doApiRequest(callback)
-                }
-            }
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvAlternativeTitles(
@@ -1115,13 +810,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvAlternativeTitles>
     ) {
-        movieApiService.getTvAlternativeTitles(tv_id, apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvAlternativeTitles(tv_id, apiKey, language)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvChanges(
@@ -1132,13 +822,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<TvChanges>
     ) {
-        movieApiService.getTvChanges(tv_id, apiKey, startDate, endDate, page).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvChanges(tv_id, apiKey, startDate, endDate, page)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvContentRatings(
@@ -1147,13 +832,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvContentRatings>
     ) {
-        movieApiService.getTvContentRatings(tv_id, apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvContentRatings(tv_id, apiKey, language)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvCredits(
@@ -1162,13 +842,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvCredits>
     ) {
-        movieApiService.getTvCredits(tv_id, apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvCredits(tv_id, apiKey, language).doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvEpisodeGroups(
@@ -1177,13 +851,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvEpisodeGroups>
     ) {
-        movieApiService.getTvEpisodeGroups(tv_id, apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvEpisodeGroups(tv_id, apiKey, language)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvExternalIds(
@@ -1192,13 +861,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvExternalIds>
     ) {
-        movieApiService.getTvExternalIds(tv_id, apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvExternalIds(tv_id, apiKey, language)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvImages(
@@ -1207,13 +871,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvImages>
     ) {
-        movieApiService.getTvImages(tv_id, apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvImages(tv_id, apiKey, language).doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvKeyword(
@@ -1221,13 +879,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<TvKeywords>
     ) {
-        movieApiService.getTvKeyword(tv_id, apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvKeyword(tv_id, apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvRecommendations(
@@ -1237,13 +889,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<TvRecommendations>
     ) {
-        movieApiService.getTvRecommendations(tv_id, apiKey, language, page).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvRecommendations(tv_id, apiKey, language, page)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvReviews(
@@ -1251,13 +898,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<TvReviews>
     ) {
-        movieApiService.getTvReviews(tv_id, apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvReviews(tv_id, apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvScreenedTheatrically(
@@ -1265,13 +906,8 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<TvScreenedTheatrically>
     ) {
-        movieApiService.getTvScreenedTheatrically(tv_id, apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvScreenedTheatrically(tv_id, apiKey)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvSimilarTvShows(
@@ -1281,13 +917,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<TvSimilarTVShows>
     ) {
-        movieApiService.getTvSimilarTvShows(tv_id, apiKey, language, page).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvSimilarTvShows(tv_id, apiKey, language, page)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvTranslations(
@@ -1295,13 +926,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<TvTranslations>
     ) {
-        movieApiService.getTvTranslations(tv_id, apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvTranslations(tv_id, apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvVideos(
@@ -1310,13 +935,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvVideos>
     ) {
-        movieApiService.getTvVideos(tv_id, apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvVideos(tv_id, apiKey, language).doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvLatest(
@@ -1324,13 +943,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvLatest>
     ) {
-        movieApiService.getTvLatest(apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvLatest(apiKey, language).doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvAiringToday(
@@ -1339,13 +952,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<TvAiringToday>
     ) {
-        movieApiService.getTvAiringToday(apiKey, language, page).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvAiringToday(apiKey, language, page)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvOnTheAir(
@@ -1354,13 +962,7 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<TvOnTheAir>
     ) {
-        movieApiService.getTvOnTheAir(apiKey, language, page).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvOnTheAir(apiKey, language, page).doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvPopular(
@@ -1369,13 +971,7 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<TvPopular>
     ) {
-        movieApiService.getTvPopular(apiKey, language, page).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvPopular(apiKey, language, page).doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvTopRated(
@@ -1384,13 +980,7 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<TvTopRated>
     ) {
-        movieApiService.getTvTopRated(apiKey, language, page).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvTopRated(apiKey, language, page).doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvSeasonsDetails(
@@ -1407,13 +997,7 @@ object MovieRepository : MovieDataSource {
             apiKey,
             language,
             append_to_response
-        ).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        ).doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvSeasonsChanges(
@@ -1424,13 +1008,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<TvSeasonsChanges>
     ) {
-        movieApiService.getTvSeasonsChanges(season_id, apiKey, startDate, endDate, page).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvSeasonsChanges(season_id, apiKey, startDate, endDate, page)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvSeasonsAccountStates(
@@ -1449,13 +1028,7 @@ object MovieRepository : MovieDataSource {
             language,
             guest_session_id,
             session_id
-        ).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        ).doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvSeasonsCredits(
@@ -1465,13 +1038,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvSeasonsCredits>
     ) {
-        movieApiService.getTvSeasonsCredits(tv_id, season_number, apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvSeasonsCredits(tv_id, season_number, apiKey, language)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvSeasonsExternalIds(
@@ -1481,13 +1049,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvSeasonsExternalIds>
     ) {
-        movieApiService.getTvSeasonsExternalIds(tv_id, season_number, apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvSeasonsExternalIds(tv_id, season_number, apiKey, language)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvSeasonsImages(
@@ -1497,13 +1060,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvSeasonsImages>
     ) {
-        movieApiService.getTvSeasonsImages(tv_id, season_number, apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvSeasonsImages(tv_id, season_number, apiKey, language)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvSeasonsVideos(
@@ -1513,13 +1071,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvSeasonsVideos>
     ) {
-        movieApiService.getTvSeasonsVideos(tv_id, season_number, apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvSeasonsVideos(tv_id, season_number, apiKey, language)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvEpisodeDetails(
@@ -1538,13 +1091,7 @@ object MovieRepository : MovieDataSource {
             apiKey,
             language,
             append_to_response
-        ).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        ).doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvEpisodeChanges(
@@ -1555,13 +1102,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<TvEpisodeChanges>
     ) {
-        movieApiService.getTvEpisodeChanges(episode_id, apiKey, startDate, endDate, page).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvEpisodeChanges(episode_id, apiKey, startDate, endDate, page)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvEpisodeAccountStates(
@@ -1580,13 +1122,7 @@ object MovieRepository : MovieDataSource {
             apiKey,
             guest_session_id,
             session_id
-        ).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        ).doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvEpisodeCredits(
@@ -1596,13 +1132,8 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<TvEpisodeCredits>
     ) {
-        movieApiService.getTvEpisodeCredits(tv_id, season_number, episode_number, apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvEpisodeCredits(tv_id, season_number, episode_number, apiKey)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvEpisodeExternalIds(
@@ -1613,13 +1144,7 @@ object MovieRepository : MovieDataSource {
         callback: ConsumeApiResponse<TvEpisodeExternalIds>
     ) {
         movieApiService.getTvEpisodeExternalIds(tv_id, season_number, episode_number, apiKey)
-            .apply {
-                if (scheduler != null) {
-                    doApiRequest(scheduler, callback)
-                } else {
-                    doApiRequest(callback)
-                }
-            }
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvEpisodeImages(
@@ -1629,13 +1154,8 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<TvEpisodeImages>
     ) {
-        movieApiService.getTvEpisodeImages(tv_id, season_number, episode_number, apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvEpisodeImages(tv_id, season_number, episode_number, apiKey)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvEpisodeTranslations(
@@ -1646,13 +1166,7 @@ object MovieRepository : MovieDataSource {
         callback: ConsumeApiResponse<TvEpisodeTranslation>
     ) {
         movieApiService.getTvEpisodeTranslations(tv_id, season_number, episode_number, apiKey)
-            .apply {
-                if (scheduler != null) {
-                    doApiRequest(scheduler, callback)
-                } else {
-                    doApiRequest(callback)
-                }
-            }
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvEpisodeVideos(
@@ -1664,13 +1178,7 @@ object MovieRepository : MovieDataSource {
         callback: ConsumeApiResponse<TvEpisodeVideos>
     ) {
         movieApiService.getTvEpisodeVideos(tv_id, season_number, episode_number, apiKey, language)
-            .apply {
-                if (scheduler != null) {
-                    doApiRequest(scheduler, callback)
-                } else {
-                    doApiRequest(callback)
-                }
-            }
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getTvEpisodeGroupsDetails(
@@ -1679,13 +1187,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<TvEpisodeGroupsDetails>
     ) {
-        movieApiService.getTvEpisodeGroupsDetails(id, apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getTvEpisodeGroupsDetails(id, apiKey, language)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getPeopleDetails(
@@ -1694,13 +1197,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<PeopleDetails>
     ) {
-        movieApiService.getPeopleDetails(person_id, apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getPeopleDetails(person_id, apiKey, language)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getPeopleChanges(
@@ -1711,13 +1209,8 @@ object MovieRepository : MovieDataSource {
         startDate: String?,
         callback: ConsumeApiResponse<PeopleChanges>
     ) {
-        movieApiService.getPeopleChanges(person_id, apiKey, endDate, page, startDate).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getPeopleChanges(person_id, apiKey, endDate, page, startDate)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getPeopleMovieCredits(
@@ -1726,13 +1219,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<PeopleMovieCredits>
     ) {
-        movieApiService.getPeopleMovieCredits(person_id, apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getPeopleMovieCredits(person_id, apiKey, language)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getPeopleTvCredits(
@@ -1741,13 +1229,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<PeopleTvCredits>
     ) {
-        movieApiService.getPeopleTvCredits(person_id, apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getPeopleTvCredits(person_id, apiKey, language)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getPeopleCombinedCredits(
@@ -1756,13 +1239,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<PeopleCombinedCredits>
     ) {
-        movieApiService.getPeopleCombinedCredits(person_id, apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getPeopleCombinedCredits(person_id, apiKey, language)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getPeopleExternalIds(
@@ -1771,13 +1249,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<PeopleExternalIds>
     ) {
-        movieApiService.getPeopleExternalIds(person_id, apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getPeopleExternalIds(person_id, apiKey, language)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getPeopleImages(
@@ -1785,13 +1258,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<PeopleImages>
     ) {
-        movieApiService.getPeopleImages(person_id, apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getPeopleImages(person_id, apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getPeopleTaggedImages(
@@ -1801,13 +1268,8 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<PeopleTaggedImages>
     ) {
-        movieApiService.getPeopleTaggedImages(person_id, apiKey, language, page).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getPeopleTaggedImages(person_id, apiKey, language, page)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getPeopleTranslations(
@@ -1816,13 +1278,8 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<PeopleTranslations>
     ) {
-        movieApiService.getPeopleTranslations(person_id, apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getPeopleTranslations(person_id, apiKey, language)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun getPeopleLatest(
@@ -1830,13 +1287,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         callback: ConsumeApiResponse<PeopleLatest>
     ) {
-        movieApiService.getPeopleLatest(apiKey, language).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getPeopleLatest(apiKey, language).doApiRequest(scheduler, callback) {}
     }
 
     override fun getPeoplePopular(
@@ -1845,12 +1296,7 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         callback: ConsumeApiResponse<PeoplePopular>
     ) {
-        movieApiService.getPeoplePopular(apiKey, language, page).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        movieApiService.getPeoplePopular(apiKey, language, page)
+            .doApiRequest(scheduler, callback) {}
     }
 }

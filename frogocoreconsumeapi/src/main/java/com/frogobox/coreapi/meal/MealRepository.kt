@@ -4,8 +4,8 @@ import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.meal.model.*
 import com.frogobox.coreapi.meal.response.CategoryResponse
 import com.frogobox.coreapi.meal.response.MealResponse
-import com.frogobox.coresdk.source.FrogoApiClient
 import com.frogobox.coresdk.ext.doApiRequest
+import com.frogobox.coresdk.source.FrogoApiClient
 import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
 
@@ -40,13 +40,7 @@ object MealRepository : MealDataSource {
         mealName: String,
         callback: ConsumeApiResponse<MealResponse<Meal>>
     ) {
-        mealApiService.searchMeal(apiKey, mealName).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        mealApiService.searchMeal(apiKey, mealName).doApiRequest(scheduler, callback) {}
     }
 
     override fun listAllMeal(
@@ -54,13 +48,7 @@ object MealRepository : MealDataSource {
         firstLetter: String,
         callback: ConsumeApiResponse<MealResponse<Meal>>
     ) {
-        mealApiService.listAllMeal(apiKey, firstLetter).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        mealApiService.listAllMeal(apiKey, firstLetter).doApiRequest(scheduler, callback) {}
     }
 
     override fun lookupFullMeal(
@@ -68,78 +56,45 @@ object MealRepository : MealDataSource {
         idMeal: String,
         callback: ConsumeApiResponse<MealResponse<Meal>>
     ) {
-        mealApiService.lookupFullMeal(apiKey, idMeal).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        mealApiService.lookupFullMeal(apiKey, idMeal).doApiRequest(scheduler, callback) {}
     }
 
     override fun lookupRandomMeal(
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<MealResponse<Meal>>
     ) {
-        mealApiService.lookupRandomMeal(apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        mealApiService.lookupRandomMeal(apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun listMealCategories(
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<CategoryResponse>
     ) {
-        mealApiService.listMealCategories(apiKey).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        mealApiService.listMealCategories(apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun listAllCateories(
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<MealResponse<Category>>
     ) {
-        mealApiService.listAllCateories(apiKey, MealConstant.VALUE_LIST).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        mealApiService.listAllCateories(apiKey, MealConstant.VALUE_LIST)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun listAllArea(
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<MealResponse<Area>>
     ) {
-        mealApiService.listAllArea(apiKey, MealConstant.VALUE_LIST).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        mealApiService.listAllArea(apiKey, MealConstant.VALUE_LIST)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun listAllIngredients(
         scheduler: Scheduler?, apiKey: String,
         callback: ConsumeApiResponse<MealResponse<Ingredient>>
     ) {
-        mealApiService.listAllIngredients(apiKey, MealConstant.VALUE_LIST).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        mealApiService.listAllIngredients(apiKey, MealConstant.VALUE_LIST)
+            .doApiRequest(scheduler, callback) {}
     }
 
     override fun filterByIngredient(
@@ -147,13 +102,7 @@ object MealRepository : MealDataSource {
         ingredient: String,
         callback: ConsumeApiResponse<MealResponse<MealFilter>>
     ) {
-        mealApiService.filterByIngredient(apiKey, ingredient).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        mealApiService.filterByIngredient(apiKey, ingredient).doApiRequest(scheduler, callback) {}
     }
 
     override fun filterByCategory(
@@ -161,13 +110,7 @@ object MealRepository : MealDataSource {
         category: String,
         callback: ConsumeApiResponse<MealResponse<MealFilter>>
     ) {
-        mealApiService.filterByCategory(apiKey, category).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        mealApiService.filterByCategory(apiKey, category).doApiRequest(scheduler, callback) {}
     }
 
     override fun filterByArea(
@@ -175,12 +118,6 @@ object MealRepository : MealDataSource {
         area: String,
         callback: ConsumeApiResponse<MealResponse<MealFilter>>
     ) {
-        mealApiService.filterByArea(apiKey, area).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        mealApiService.filterByArea(apiKey, area).doApiRequest(scheduler, callback) {}
     }
 }

@@ -68,13 +68,7 @@ object PixabayRepository : PixabayDataSource {
             order,
             page,
             perPage
-        ).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        ).doApiRequest(scheduler, callback) {}
     }
 
     override fun searchVideo(
@@ -108,12 +102,6 @@ object PixabayRepository : PixabayDataSource {
             order,
             page,
             perPage
-        ).apply {
-            if (scheduler != null) {
-                doApiRequest(scheduler, callback)
-            } else {
-                doApiRequest(callback)
-            }
-        }
+        ).doApiRequest(scheduler, callback) {}
     }
 }
