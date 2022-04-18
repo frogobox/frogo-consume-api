@@ -120,7 +120,7 @@ dependencies {
     implementation(GitHub.glide)
     implementation(Util.hdodenhofCircleImageView)
 
-    implementation("com.github.amirisback:frogo-recycler-view:4.0.8")
+    implementation("com.github.amirisback:frogo-recycler-view:4.1.3")
 
     implementation("com.github.frogobox:frogo-ui:1.0.0")
     implementation(DependencyGradle.FROGO_SDK)
