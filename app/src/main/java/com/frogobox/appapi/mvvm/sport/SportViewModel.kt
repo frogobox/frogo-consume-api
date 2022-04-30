@@ -1,13 +1,12 @@
 package com.frogobox.appapi.mvvm.sport
 
 import android.app.Application
-import com.frogobox.api.sport.ConsumeTheSportDbApi
-import com.frogobox.coreapi.sport.response.Teams
-import com.frogobox.coreapi.sport.SportUrl
+import com.frogobox.appapi.core.BaseViewModel
+import com.frogobox.appapi.source.ApiRepository
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.sport.model.Team
+import com.frogobox.coreapi.sport.response.Teams
 import com.frogobox.sdk.util.FrogoMutableLiveData
-import com.frogobox.sdk.view.FrogoViewModel
 
 /*
  * Created by faisalamir on 28/07/21
@@ -21,14 +20,15 @@ import com.frogobox.sdk.view.FrogoViewModel
  * All rights reserved
  *
  */
-class SportViewModel(private val context: Application) : FrogoViewModel(context) {
+class SportViewModel(
+    private val context: Application,
+    private val repository: ApiRepository
+) : BaseViewModel(context, repository) {
 
     val listData = FrogoMutableLiveData<List<Team>>()
-    private val consumeTheSportDbApi = ConsumeTheSportDbApi(SportUrl.API_KEY) // Your API Key
 
     fun searchAllTeam() {
-        consumeTheSportDbApi.usingChuckInterceptor(context)
-        consumeTheSportDbApi.searchAllTeam("English Premier League",
+        sportApi.searchAllTeam("English Premier League",
             object : ConsumeApiResponse<Teams> {
                 override fun onSuccess(data: Teams) {
                     data.teams?.let { listData.postValue(it) }

@@ -2,6 +2,8 @@ package com.frogobox.appapi.mvvm.news
 
 import android.app.Application
 import com.frogobox.api.news.ConsumeNewsApi
+import com.frogobox.appapi.core.BaseViewModel
+import com.frogobox.appapi.source.ApiRepository
 import com.frogobox.appapi.util.isDebug
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.news.NewsConstant.CATEGORY_BUSINESS
@@ -16,7 +18,6 @@ import com.frogobox.coreapi.news.NewsUrl
 import com.frogobox.coreapi.news.model.Article
 import com.frogobox.coreapi.news.response.ArticleResponse
 import com.frogobox.sdk.util.FrogoMutableLiveData
-import com.frogobox.sdk.view.FrogoViewModel
 
 /*
  * Created by faisalamir on 28/07/21
@@ -30,12 +31,14 @@ import com.frogobox.sdk.view.FrogoViewModel
  * All rights reserved
  *
  */
-class NewsViewModel(private val context: Application) : FrogoViewModel(context) {
+class NewsViewModel(
+    private val context: Application,
+    private val repository: ApiRepository
+) : BaseViewModel(context, repository) {
 
     val listDataCategory = FrogoMutableLiveData<List<Article>>()
     val listData = FrogoMutableLiveData<List<Article>>()
     val listCategory = FrogoMutableLiveData<List<String>>()
-    private val consumeNewsApi = ConsumeNewsApi(NewsUrl.API_KEY).usingChuckInterceptor(isDebug, context)
 
     fun setupCategory() {
         val categories = mutableListOf<String>()
@@ -50,7 +53,7 @@ class NewsViewModel(private val context: Application) : FrogoViewModel(context) 
     }
 
     fun getTopHeadline(category: String) {
-        consumeNewsApi.getTopHeadline(
+        newsApi.getTopHeadline(
             null,
             null,
             category,
@@ -88,7 +91,7 @@ class NewsViewModel(private val context: Application) : FrogoViewModel(context) 
     }
 
     fun getTopHeadline() {
-        consumeNewsApi.getTopHeadline(
+        newsApi.getTopHeadline(
             null,
             null,
             null,

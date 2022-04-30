@@ -27,31 +27,31 @@ import org.koin.dsl.module
 val viewModelModule = module {
 
     viewModel {
-        NewsViewModel(androidApplication())
+        NewsViewModel(androidApplication(), get())
     }
 
     viewModel {
-        MealViewModel(androidApplication())
+        MealViewModel(androidApplication(), get())
     }
 
     viewModel {
-        PixabayViewModel(androidApplication())
+        PixabayViewModel(androidApplication(), get())
     }
 
     viewModel {
-        SportViewModel(androidApplication())
+        SportViewModel(androidApplication(), get())
     }
 
     viewModel {
-        MovieViewModel(androidApplication())
+        MovieViewModel(androidApplication(), get())
     }
 
     viewModel {
-        TvViewModel(androidApplication())
+        TvViewModel(androidApplication(), get())
     }
 
     viewModel {
-        PersonViewModel(androidApplication())
+        PersonViewModel(androidApplication(), get())
     }
 
 }

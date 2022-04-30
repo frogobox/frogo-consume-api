@@ -2,12 +2,12 @@ package com.frogobox.appapi.mvvm.pixabay
 
 import android.app.Application
 import com.frogobox.api.pixabay.ConsumePixabayApi
+import com.frogobox.appapi.core.BaseViewModel
+import com.frogobox.appapi.source.ApiRepository
+import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.pixabay.model.PixabayImage
 import com.frogobox.coreapi.pixabay.response.Response
-import com.frogobox.coreapi.pixabay.PixabayUrl
-import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.sdk.util.FrogoMutableLiveData
-import com.frogobox.sdk.view.FrogoViewModel
 
 /*
  * Created by faisalamir on 28/07/21
@@ -21,14 +21,16 @@ import com.frogobox.sdk.view.FrogoViewModel
  * All rights reserved
  *
  */
-class PixabayViewModel(private val context: Application) : FrogoViewModel(context) {
+class PixabayViewModel(
+    private val context: Application,
+    private val repository: ApiRepository
+) : BaseViewModel(context, repository) {
 
     val listData = FrogoMutableLiveData<List<PixabayImage>>()
-    private val consumePixabayApi = ConsumePixabayApi(PixabayUrl.API_KEY) // Your API Key
 
     fun searchImage(query: String) {
-        consumePixabayApi.usingChuckInterceptor(context) // Using Chuck Interceptor
-        consumePixabayApi.searchImage(
+        // Using Chuck Interceptor
+        pixabayApi.searchImage(
             query,
             null,
             null,

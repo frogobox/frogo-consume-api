@@ -1,9 +1,9 @@
 package com.frogobox.coreapi.pixabay
 
-import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.pixabay.model.PixabayImage
 import com.frogobox.coreapi.pixabay.model.PixabayVideo
 import com.frogobox.coreapi.pixabay.response.Response
+import com.frogobox.coresdk.response.FrogoDataResponse
 import okhttp3.Interceptor
 
 
@@ -23,7 +23,7 @@ import okhttp3.Interceptor
 interface IPixabayApi {
 
     // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(chuckerInterceptor: Interceptor)
+    fun usingChuckInterceptor(isDebug: Boolean, chuckerInterceptor: Interceptor): IPixabayApi
 
     // Search for Image
     fun searchImage(

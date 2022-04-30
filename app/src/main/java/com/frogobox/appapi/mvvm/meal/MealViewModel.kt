@@ -1,13 +1,12 @@
 package com.frogobox.appapi.mvvm.meal
 
 import android.app.Application
-import com.frogobox.api.meal.ConsumeTheMealDbApi
+import com.frogobox.appapi.core.BaseViewModel
+import com.frogobox.appapi.source.ApiRepository
+import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.meal.model.Meal
 import com.frogobox.coreapi.meal.response.MealResponse
-import com.frogobox.coreapi.meal.MealUrl
-import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.sdk.util.FrogoMutableLiveData
-import com.frogobox.sdk.view.FrogoViewModel
 
 /*
  * Created by faisalamir on 28/07/21
@@ -21,14 +20,15 @@ import com.frogobox.sdk.view.FrogoViewModel
  * All rights reserved
  *
  */
-class MealViewModel(private val context: Application) : FrogoViewModel(context) {
+class MealViewModel(
+    private val context: Application,
+    private val repository: ApiRepository
+) : BaseViewModel(context, repository) {
 
     val listData = FrogoMutableLiveData<List<Meal>>()
-    private val consumeTheMealDbApi = ConsumeTheMealDbApi(MealUrl.API_KEY)
 
     fun getListMeals(firstLetter: String) {
-        consumeTheMealDbApi.usingChuckInterceptor(context)
-        consumeTheMealDbApi.listAllMeal(
+        mealApi.listAllMeal(
             firstLetter,
             object : ConsumeApiResponse<MealResponse<Meal>> {
                 override fun onSuccess(data: MealResponse<Meal>) {

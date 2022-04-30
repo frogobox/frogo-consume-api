@@ -1,5 +1,7 @@
 package com.frogobox.appapi
 
+import com.frogobox.appapi.di.consumeApiModule
+import com.frogobox.appapi.di.repositoryModule
 import com.frogobox.appapi.di.viewModelModule
 import com.frogobox.sdk.FrogoApplication
 import org.koin.core.KoinApplication
@@ -19,7 +21,7 @@ import org.koin.core.KoinApplication
 class ConsumeApp : FrogoApplication() {
 
     override fun setupKoinModule(koinApplication: KoinApplication) {
-        koinApplication.modules(viewModelModule)
+        koinApplication.modules(listOf(repositoryModule, viewModelModule, consumeApiModule))
     }
 
     override fun setupOnCreate() {

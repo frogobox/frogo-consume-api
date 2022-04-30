@@ -24,6 +24,6 @@ import com.frogobox.coreapi.pixabay.IPixabayApi
 interface IConsumePixabayApi : IPixabayApi {
 
     // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(context: Context)
+    fun usingChuckInterceptor(isDebug: Boolean, context: Context): IPixabayApi
 
 }

@@ -28,7 +28,7 @@ import okhttp3.Interceptor
 interface PixabayDataSource {
 
     // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(chuckerInterceptor: Interceptor)
+    fun usingChuckInterceptor(isDebug: Boolean, chuckerInterceptor: Interceptor): PixabayDataSource
 
     // Search for Image
     fun searchImage(

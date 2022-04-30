@@ -1,10 +1,10 @@
 package com.frogobox.coreapi.pixabay
 
-import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.pixabay.model.PixabayImage
 import com.frogobox.coreapi.pixabay.model.PixabayVideo
 import com.frogobox.coreapi.pixabay.response.Response
 import com.frogobox.coresdk.ext.doApiRequest
+import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coresdk.source.FrogoApiClient
 import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
@@ -28,9 +28,12 @@ object PixabayRepository : PixabayDataSource {
     private val TAG = PixabayRepository::class.java.simpleName
     private var pixabayApiService = FrogoApiClient.create<PixabayApiService>(PixabayUrl.BASE_URL)
 
-    override fun usingChuckInterceptor(chuckerInterceptor: Interceptor) {
-        pixabayApiService =
-            FrogoApiClient.createWithInterceptor(PixabayUrl.BASE_URL, chuckerInterceptor)
+    override fun usingChuckInterceptor(
+        isDebug: Boolean,
+        chuckerInterceptor: Interceptor
+    ): PixabayDataSource {
+        pixabayApiService = FrogoApiClient.create(PixabayUrl.BASE_URL, isDebug, chuckerInterceptor)
+        return this
     }
 
     override fun searchImage(

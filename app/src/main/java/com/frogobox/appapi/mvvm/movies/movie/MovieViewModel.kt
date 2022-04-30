@@ -1,10 +1,11 @@
 package com.frogobox.appapi.mvvm.movies.movie
 
 import android.app.Application
-import com.frogobox.appapi.mvvm.movies.core.MoviesViewModel
+import com.frogobox.appapi.core.BaseViewModel
+import com.frogobox.appapi.source.ApiRepository
+import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.movie.model.TrendingMovie
 import com.frogobox.coreapi.movie.response.Trending
-import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.sdk.util.FrogoMutableLiveData
 
 /*
@@ -19,13 +20,16 @@ import com.frogobox.sdk.util.FrogoMutableLiveData
  * All rights reserved
  *
  */
-class MovieViewModel(private val context: Application) : MoviesViewModel(context) {
+class MovieViewModel(
+    private val context: Application,
+    private val repository: ApiRepository
+) : BaseViewModel(context, repository) {
 
     val listDataDay = FrogoMutableLiveData<List<TrendingMovie>>()
     val listDataWeek = FrogoMutableLiveData<List<TrendingMovie>>()
 
     fun getTrendingMovieDay() {
-        consumeMovieApi().getTrendingMovieDay(object : ConsumeApiResponse<Trending<TrendingMovie>> {
+        movieApi.getTrendingMovieDay(object : ConsumeApiResponse<Trending<TrendingMovie>> {
             override fun onSuccess(data: Trending<TrendingMovie>) {
                 data.results?.let { listDataDay.postValue(it) }
             }
@@ -53,7 +57,7 @@ class MovieViewModel(private val context: Application) : MoviesViewModel(context
     }
 
     fun getTrendingMovieWeek() {
-        consumeMovieApi().getTrendingMovieWeek(object :
+        movieApi.getTrendingMovieWeek(object :
             ConsumeApiResponse<Trending<TrendingMovie>> {
             override fun onSuccess(data: Trending<TrendingMovie>) {
                 data.results?.let { listDataWeek.postValue(it) }
