@@ -23,6 +23,6 @@ import com.frogobox.coreapi.movie.IMovieApi
 interface IConsumeMovieApi : IMovieApi {
 
     // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(context: Context)
+    fun usingChuckInterceptor(isDebug: Boolean, context: Context): IMovieApi
 
 }

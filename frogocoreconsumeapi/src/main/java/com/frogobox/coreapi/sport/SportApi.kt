@@ -1,7 +1,7 @@
 package com.frogobox.coreapi.sport
 
-import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.sport.response.*
+import com.frogobox.coresdk.response.FrogoDataResponse
 import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
 
@@ -26,8 +26,12 @@ class SportApi(
 
     private val sportRepository = SportRepository
 
-    override fun usingChuckInterceptor(chuckerInterceptor: Interceptor) {
-        sportRepository.usingChuckInterceptor(chuckerInterceptor)
+    override fun usingChuckInterceptor(
+        isDebug: Boolean,
+        chuckerInterceptor: Interceptor
+    ): ISportApi {
+        sportRepository.usingChuckInterceptor(isDebug, chuckerInterceptor)
+        return this
     }
 
     override fun searchForTeamByName(

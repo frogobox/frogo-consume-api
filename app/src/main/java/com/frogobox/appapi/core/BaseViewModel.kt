@@ -25,9 +25,9 @@ open class BaseViewModel(
 ) : FrogoViewModel(context) {
 
     protected val newsApi = repository.consumeNewsApi().usingChuckInterceptor(isDebug, context)
-    protected val movieApi = repository.consumeMovieApi()
+    protected val movieApi = repository.consumeMovieApi().usingChuckInterceptor(isDebug, context)
     protected val pixabayApi = repository.consumePixabayApi().usingChuckInterceptor(isDebug, context)
-    protected val sportApi = repository.consumeTheSportDbApi()
-    protected val mealApi = repository.consumeTheMealDbApi()
+    protected val sportApi = repository.consumeTheSportDbApi().usingChuckInterceptor(isDebug, context)
+    protected val mealApi = repository.consumeTheMealDbApi().usingChuckInterceptor(isDebug, context)
 
 }

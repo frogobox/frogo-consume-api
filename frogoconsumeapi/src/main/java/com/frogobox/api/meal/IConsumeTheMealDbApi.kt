@@ -23,6 +23,6 @@ import com.frogobox.coreapi.meal.IMealApi
 interface IConsumeTheMealDbApi : IMealApi {
 
     // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(context: Context)
+    fun usingChuckInterceptor(isDebug: Boolean, context: Context): IMealApi
 
 }

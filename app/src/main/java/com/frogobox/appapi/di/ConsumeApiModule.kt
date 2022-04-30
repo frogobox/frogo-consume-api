@@ -5,15 +5,11 @@ import com.frogobox.api.movie.ConsumeMovieApi
 import com.frogobox.api.news.ConsumeNewsApi
 import com.frogobox.api.pixabay.ConsumePixabayApi
 import com.frogobox.api.sport.ConsumeTheSportDbApi
-import com.frogobox.appapi.source.ApiRepository
-import com.frogobox.appapi.util.isDebug
 import com.frogobox.coreapi.meal.MealUrl
 import com.frogobox.coreapi.movie.MovieUrl
 import com.frogobox.coreapi.news.NewsUrl
 import com.frogobox.coreapi.pixabay.PixabayUrl
 import com.frogobox.coreapi.sport.SportUrl
-import com.frogobox.sdk.ext.usingChuck
-import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
 

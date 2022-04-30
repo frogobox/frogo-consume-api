@@ -1,9 +1,9 @@
 package com.frogobox.coreapi.meal
 
-import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.meal.model.*
 import com.frogobox.coreapi.meal.response.CategoryResponse
 import com.frogobox.coreapi.meal.response.MealResponse
+import com.frogobox.coresdk.response.FrogoDataResponse
 import okhttp3.Interceptor
 
 
@@ -23,7 +23,7 @@ import okhttp3.Interceptor
 interface IMealApi {
 
     // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(chuckerInterceptor: Interceptor)
+    fun usingChuckInterceptor(isDebug: Boolean, chuckerInterceptor: Interceptor) : IMealApi
 
     // Search meal by name
     fun searchMeal(mealName: String, callback: FrogoDataResponse<MealResponse<Meal>>)

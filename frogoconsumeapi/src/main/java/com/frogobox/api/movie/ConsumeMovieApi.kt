@@ -1,10 +1,11 @@
 package com.frogobox.api.movie
 
 import android.content.Context
-import com.frogobox.coresdk.response.FrogoDataResponse
+import com.frogobox.coreapi.movie.IMovieApi
 import com.frogobox.coreapi.movie.MovieApi
 import com.frogobox.coreapi.movie.model.*
 import com.frogobox.coreapi.movie.response.*
+import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.sdk.ext.usingChuck
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import okhttp3.Interceptor
@@ -30,14 +31,16 @@ class ConsumeMovieApi(apiKey: String) : IConsumeMovieApi {
 
     private var movieApi = MovieApi(AndroidSchedulers.mainThread(), apiKey)
 
-    override fun usingChuckInterceptor(context: Context) {
-        usingChuckInterceptor(context.usingChuck())
+    override fun usingChuckInterceptor(isDebug: Boolean, context: Context): IMovieApi {
+        return usingChuckInterceptor(isDebug, context.usingChuck())
     }
 
-    override fun usingChuckInterceptor(chuckerInterceptor: Interceptor) {
-        movieApi.usingChuckInterceptor(chuckerInterceptor)
+    override fun usingChuckInterceptor(
+        isDebug: Boolean,
+        chuckerInterceptor: Interceptor
+    ): IMovieApi {
+        return movieApi.usingChuckInterceptor(isDebug, chuckerInterceptor)
     }
-
 
     override fun getMovieCertifications(callback: FrogoDataResponse<Certifications<CertificationMovie>>) {
         movieApi.getMovieCertifications(callback)

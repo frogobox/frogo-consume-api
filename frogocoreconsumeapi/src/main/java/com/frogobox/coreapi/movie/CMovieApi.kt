@@ -1,8 +1,8 @@
 package com.frogobox.coreapi.movie
 
-import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.movie.model.*
 import com.frogobox.coreapi.movie.response.*
+import com.frogobox.coresdk.response.FrogoDataResponse
 import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.Interceptor
 
@@ -28,8 +28,11 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         MovieApi(null, apiKey)
     }
 
-    override fun usingChuckInterceptor(chuckerInterceptor: Interceptor) {
-        movieApi.usingChuckInterceptor(chuckerInterceptor)
+    override fun usingChuckInterceptor(
+        isDebug: Boolean,
+        chuckerInterceptor: Interceptor
+    ): IMovieApi {
+        return movieApi.usingChuckInterceptor(isDebug, chuckerInterceptor)
     }
 
     override fun getMovieCertifications(callback: FrogoDataResponse<Certifications<CertificationMovie>>) {

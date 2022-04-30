@@ -1,8 +1,8 @@
 package com.frogobox.coreapi.sport
 
-import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.sport.response.*
 import com.frogobox.coresdk.ext.doApiRequest
+import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coresdk.source.FrogoApiClient
 import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
@@ -31,9 +31,12 @@ object SportRepository : SportDataSource {
     private var sportApiService = FrogoApiClient.create<SportApiService>(SportUrl.BASE_URL)
 
     // Switch For Using Chuck Interceptor
-    override fun usingChuckInterceptor(chuckerInterceptor: Interceptor) {
-        sportApiService =
-            FrogoApiClient.createWithInterceptor(SportUrl.BASE_URL, chuckerInterceptor)
+    override fun usingChuckInterceptor(
+        isDebug: Boolean,
+        chuckerInterceptor: Interceptor
+    ): SportDataSource {
+        sportApiService = FrogoApiClient.create(SportUrl.BASE_URL, isDebug, chuckerInterceptor)
+        return this
     }
 
     override fun searchForTeamByName(

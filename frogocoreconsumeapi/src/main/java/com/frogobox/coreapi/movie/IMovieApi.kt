@@ -1,8 +1,8 @@
 package com.frogobox.coreapi.movie
 
-import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.movie.model.*
 import com.frogobox.coreapi.movie.response.*
+import com.frogobox.coresdk.response.FrogoDataResponse
 import okhttp3.Interceptor
 
 
@@ -22,7 +22,7 @@ import okhttp3.Interceptor
 interface IMovieApi {
 
     // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(chuckerInterceptor: Interceptor)
+    fun usingChuckInterceptor(isDebug: Boolean, chuckerInterceptor: Interceptor): IMovieApi
 
     // ---------------------------------------------------------------------------------------------
 

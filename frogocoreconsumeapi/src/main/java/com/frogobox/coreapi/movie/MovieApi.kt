@@ -1,8 +1,8 @@
 package com.frogobox.coreapi.movie
 
-import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.movie.model.*
 import com.frogobox.coreapi.movie.response.*
+import com.frogobox.coresdk.response.FrogoDataResponse
 import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
 
@@ -27,8 +27,12 @@ class MovieApi(
 
     private val movieRepository = MovieRepository
 
-    override fun usingChuckInterceptor(chuckerInterceptor: Interceptor) {
-        movieRepository.usingChuckInterceptor(chuckerInterceptor)
+    override fun usingChuckInterceptor(
+        isDebug: Boolean,
+        chuckerInterceptor: Interceptor
+    ): IMovieApi {
+        movieRepository.usingChuckInterceptor(isDebug, chuckerInterceptor)
+        return this
     }
 
     override fun getMovieCertifications(callback: FrogoDataResponse<Certifications<CertificationMovie>>) {

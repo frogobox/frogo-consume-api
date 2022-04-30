@@ -1,7 +1,7 @@
 package com.frogobox.coreapi.sport
 
-import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.sport.response.*
+import com.frogobox.coresdk.response.FrogoDataResponse
 import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.Interceptor
 
@@ -27,8 +27,11 @@ class CTheSportDbApi(usingScheduler: Boolean, apiKey: String) : ISportApi {
         SportApi(null, apiKey)
     }
 
-    override fun usingChuckInterceptor(chuckerInterceptor: Interceptor) {
-        sportApi.usingChuckInterceptor(chuckerInterceptor)
+    override fun usingChuckInterceptor(
+        isDebug: Boolean,
+        chuckerInterceptor: Interceptor
+    ): ISportApi {
+        return sportApi.usingChuckInterceptor(isDebug, chuckerInterceptor)
     }
 
     override fun searchForTeamByName(

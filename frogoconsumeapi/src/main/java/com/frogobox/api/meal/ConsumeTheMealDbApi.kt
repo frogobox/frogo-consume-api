@@ -1,11 +1,12 @@
 package com.frogobox.api.meal
 
 import android.content.Context
-import com.frogobox.coresdk.response.FrogoDataResponse
+import com.frogobox.coreapi.meal.IMealApi
 import com.frogobox.coreapi.meal.MealApi
 import com.frogobox.coreapi.meal.model.*
 import com.frogobox.coreapi.meal.response.CategoryResponse
 import com.frogobox.coreapi.meal.response.MealResponse
+import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.sdk.ext.usingChuck
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import okhttp3.Interceptor
@@ -31,12 +32,15 @@ class ConsumeTheMealDbApi(apiKey: String) : IConsumeTheMealDbApi {
 
     private var mealApi = MealApi(AndroidSchedulers.mainThread(), apiKey)
 
-    override fun usingChuckInterceptor(context: Context) {
-        usingChuckInterceptor(context.usingChuck())
+    override fun usingChuckInterceptor(isDebug: Boolean, context: Context): IMealApi {
+        return usingChuckInterceptor(isDebug, context.usingChuck())
     }
 
-    override fun usingChuckInterceptor(chuckerInterceptor: Interceptor) {
-        mealApi.usingChuckInterceptor(chuckerInterceptor)
+    override fun usingChuckInterceptor(
+        isDebug: Boolean,
+        chuckerInterceptor: Interceptor
+    ): IMealApi {
+        return mealApi.usingChuckInterceptor(isDebug, chuckerInterceptor)
     }
 
     override fun searchMeal(mealName: String, callback: FrogoDataResponse<MealResponse<Meal>>) {

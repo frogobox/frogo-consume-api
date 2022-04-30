@@ -1,9 +1,9 @@
 package com.frogobox.coreapi.meal
 
-import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.meal.model.*
 import com.frogobox.coreapi.meal.response.CategoryResponse
 import com.frogobox.coreapi.meal.response.MealResponse
+import com.frogobox.coresdk.response.FrogoDataResponse
 import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.Interceptor
 
@@ -29,8 +29,11 @@ class CTheMealDbApi(usingScheduler: Boolean, apiKey: String) : IMealApi {
         MealApi(null, apiKey)
     }
 
-    override fun usingChuckInterceptor(chuckerInterceptor: Interceptor) {
-        mealApi.usingChuckInterceptor(chuckerInterceptor)
+    override fun usingChuckInterceptor(
+        isDebug: Boolean,
+        chuckerInterceptor: Interceptor
+    ): IMealApi {
+        return mealApi.usingChuckInterceptor(isDebug, chuckerInterceptor)
     }
 
     override fun searchMeal(mealName: String, callback: FrogoDataResponse<MealResponse<Meal>>) {

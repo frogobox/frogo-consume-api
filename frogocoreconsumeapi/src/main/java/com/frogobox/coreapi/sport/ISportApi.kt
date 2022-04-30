@@ -1,7 +1,7 @@
 package com.frogobox.coreapi.sport
 
-import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.sport.response.*
+import com.frogobox.coresdk.response.FrogoDataResponse
 import okhttp3.Interceptor
 
 
@@ -21,7 +21,7 @@ import okhttp3.Interceptor
 interface ISportApi {
 
     // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(chuckerInterceptor: Interceptor)
+    fun usingChuckInterceptor(isDebug: Boolean, chuckerInterceptor: Interceptor): ISportApi
 
     // Search for team by name
     fun searchForTeamByName(teamName: String?, callback: FrogoDataResponse<Teams>)

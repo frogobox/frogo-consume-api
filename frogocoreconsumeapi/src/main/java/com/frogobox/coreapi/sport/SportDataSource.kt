@@ -1,7 +1,7 @@
 package com.frogobox.coreapi.sport
 
-import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.sport.response.*
+import com.frogobox.coresdk.response.FrogoDataResponse
 import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
 
@@ -25,7 +25,7 @@ import okhttp3.Interceptor
 interface SportDataSource {
 
     // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(chuckerInterceptor: Interceptor)
+    fun usingChuckInterceptor(isDebug: Boolean, chuckerInterceptor: Interceptor): SportDataSource
 
     // Search for team by name
     fun searchForTeamByName(

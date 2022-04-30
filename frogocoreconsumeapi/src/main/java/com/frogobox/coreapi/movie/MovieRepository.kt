@@ -1,9 +1,9 @@
 package com.frogobox.coreapi.movie
 
-import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.movie.model.*
 import com.frogobox.coreapi.movie.response.*
 import com.frogobox.coresdk.ext.doApiRequest
+import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coresdk.source.FrogoApiClient
 import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
@@ -31,9 +31,12 @@ object MovieRepository : MovieDataSource {
     private var movieApiService = FrogoApiClient.create<MovieApiService>(MovieUrl.BASE_URL)
 
     // Switch For Using Chuck Interceptor
-    override fun usingChuckInterceptor(chuckerInterceptor: Interceptor) {
-        movieApiService =
-            FrogoApiClient.createWithInterceptor(MovieUrl.BASE_URL, chuckerInterceptor)
+    override fun usingChuckInterceptor(
+        isDebug: Boolean,
+        chuckerInterceptor: Interceptor
+    ): MovieDataSource {
+        movieApiService = FrogoApiClient.create(MovieUrl.BASE_URL, isDebug, chuckerInterceptor)
+        return this
     }
 
     override fun getMovieCertifications(

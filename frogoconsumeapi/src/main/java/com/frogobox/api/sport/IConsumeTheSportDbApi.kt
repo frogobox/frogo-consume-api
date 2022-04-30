@@ -1,9 +1,7 @@
 package com.frogobox.api.sport
 
 import android.content.Context
-import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.sport.ISportApi
-import com.frogobox.coreapi.sport.response.*
 
 /**
  * Created by Faisal Amir
@@ -26,6 +24,6 @@ import com.frogobox.coreapi.sport.response.*
 interface IConsumeTheSportDbApi : ISportApi {
 
     // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(context: Context)
+    fun usingChuckInterceptor(isDebug: Boolean, context: Context): ISportApi
 
 }

@@ -1,8 +1,8 @@
 package com.frogobox.coreapi.movie
 
-import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.movie.model.*
 import com.frogobox.coreapi.movie.response.*
+import com.frogobox.coresdk.response.FrogoDataResponse
 import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
 
@@ -26,7 +26,7 @@ import okhttp3.Interceptor
 interface MovieDataSource {
 
     // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(chuckerInterceptor: Interceptor)
+    fun usingChuckInterceptor(isDebug: Boolean, chuckerInterceptor: Interceptor): MovieDataSource
 
     // CERTIFICATIONS
     // Get Movie Certifications
