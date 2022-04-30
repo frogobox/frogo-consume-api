@@ -1,6 +1,6 @@
 package com.frogobox.coreapi.news
 
-import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.news.response.ArticleResponse
 import com.frogobox.coreapi.news.response.SourceResponse
 import okhttp3.Interceptor
@@ -22,7 +22,7 @@ import okhttp3.Interceptor
 interface INewsApi {
 
     // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(chuckerInterceptor: Interceptor)
+    fun usingChuckInterceptor(chuckerInterceptor: Interceptor) : INewsApi
 
     // Get Top Headline
     fun getTopHeadline(
@@ -32,7 +32,7 @@ interface INewsApi {
         country: String?,
         pageSize: Int?,
         page: Int?,
-        callback: ConsumeApiResponse<ArticleResponse>
+        callback: FrogoDataResponse<ArticleResponse>
     )
 
     // Get Everythings
@@ -48,7 +48,7 @@ interface INewsApi {
         sortBy: String?,
         pageSize: Int?,
         page: Int?,
-        callback: ConsumeApiResponse<ArticleResponse>
+        callback: FrogoDataResponse<ArticleResponse>
     )
 
     // Get Sources
@@ -56,7 +56,7 @@ interface INewsApi {
         language: String,
         country: String,
         category: String,
-        callback: ConsumeApiResponse<SourceResponse>
+        callback: FrogoDataResponse<SourceResponse>
     )
 
 }

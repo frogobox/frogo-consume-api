@@ -163,7 +163,7 @@ https://newsapi.org/
         country: String?,
         pageSize: Int?,
         page: Int?,
-        callback: ConsumeApiResponse<ArticleResponse>
+        callback: FrogoDataResponse<ArticleResponse>
     )
 
     // Get Everythings
@@ -179,7 +179,7 @@ https://newsapi.org/
         sortBy: String?,
         pageSize: Int?,
         page: Int?,
-        callback: ConsumeApiResponse<ArticleResponse>
+        callback: FrogoDataResponse<ArticleResponse>
     )
 
     // Get Sources
@@ -187,7 +187,7 @@ https://newsapi.org/
         language: String,
         country: String,
         category: String,
-        callback: ConsumeApiResponse<SourceResponse>
+        callback: FrogoDataResponse<SourceResponse>
     )
 </details>
 
@@ -239,37 +239,37 @@ https://www.themealdb.com/api.php
     fun usingChuckInterceptor(context: Context)
 
     // Search meal by name
-    fun searchMeal(mealName: String, callback: ConsumeApiResponse<MealResponse<Meal>>)
+    fun searchMeal(mealName: String, callback: FrogoDataResponse<MealResponse<Meal>>)
 
     // List all meals by first letter
-    fun listAllMeal(firstLetter: String, callback: ConsumeApiResponse<MealResponse<Meal>>)
+    fun listAllMeal(firstLetter: String, callback: FrogoDataResponse<MealResponse<Meal>>)
 
     // Lookup full meal details by id
-    fun lookupFullMeal(idMeal: String, callback: ConsumeApiResponse<MealResponse<Meal>>)
+    fun lookupFullMeal(idMeal: String, callback: FrogoDataResponse<MealResponse<Meal>>)
 
     // Lookup a single random meal
-    fun lookupRandomMeal(callback: ConsumeApiResponse<MealResponse<Meal>>)
+    fun lookupRandomMeal(callback: FrogoDataResponse<MealResponse<Meal>>)
 
     // List all meal categories
-    fun listMealCategories(callback: ConsumeApiResponse<CategoryResponse>)
+    fun listMealCategories(callback: FrogoDataResponse<CategoryResponse>)
 
     // List all Categories
-    fun listAllCateories(callback: ConsumeApiResponse<MealResponse<Category>>)
+    fun listAllCateories(callback: FrogoDataResponse<MealResponse<Category>>)
 
     // List all Area
-    fun listAllArea(callback: ConsumeApiResponse<MealResponse<Area>>)
+    fun listAllArea(callback: FrogoDataResponse<MealResponse<Area>>)
 
     // List all Ingredients
-    fun listAllIngredients(callback: ConsumeApiResponse<MealResponse<Ingredient>>)
+    fun listAllIngredients(callback: FrogoDataResponse<MealResponse<Ingredient>>)
 
     // Filter by main ingredient
-    fun filterByIngredient(ingredient: String, callback: ConsumeApiResponse<MealResponse<MealFilter>>)
+    fun filterByIngredient(ingredient: String, callback: FrogoDataResponse<MealResponse<MealFilter>>)
 
     // Filter by Category
-    fun filterByCategory(category: String, callback: ConsumeApiResponse<MealResponse<MealFilter>>)
+    fun filterByCategory(category: String, callback: FrogoDataResponse<MealResponse<MealFilter>>)
 
     // Filter by Area
-    fun filterByArea(area: String, callback: ConsumeApiResponse<MealResponse<MealFilter>>)
+    fun filterByArea(area: String, callback: FrogoDataResponse<MealResponse<MealFilter>>)
     
 </details>
 
@@ -348,7 +348,7 @@ https://pixabay.com/api/docs/
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: ConsumeApiResponse<Response<PixabayImage>>
+        callback: FrogoDataResponse<Response<PixabayImage>>
     )
 
     // Search for Video
@@ -365,7 +365,7 @@ https://pixabay.com/api/docs/
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: ConsumeApiResponse<Response<PixabayVideo>>
+        callback: FrogoDataResponse<Response<PixabayVideo>>
     )
     
 </details>
@@ -423,100 +423,100 @@ https://www.thesportsdb.com/api.php
     fun usingChuckInterceptor(context: Context)
 
     // Search for team by name
-    fun searchForTeamByName(teamName: String?, callback: ConsumeApiResponse<Teams>)
+    fun searchForTeamByName(teamName: String?, callback: FrogoDataResponse<Teams>)
 
     // Search for team short code
-    fun searchForTeamByShortCode(shortCode: String?, callback: ConsumeApiResponse<Teams>)
+    fun searchForTeamByShortCode(shortCode: String?, callback: FrogoDataResponse<Teams>)
 
     // Search for all players from team *Patreon ONLY*
-    fun searchForAllPlayer(teamName: String?, callback: ConsumeApiResponse<Players>)
+    fun searchForAllPlayer(teamName: String?, callback: FrogoDataResponse<Players>)
 
     // Search for players by player name
-    fun searchForPlayer(playerName: String?, callback: ConsumeApiResponse<Players>)
+    fun searchForPlayer(playerName: String?, callback: FrogoDataResponse<Players>)
 
     // Search for players by player name and team name
-    fun searchForPlayer(playerName: String?, teamName: String?, callback: ConsumeApiResponse<Players>)
+    fun searchForPlayer(playerName: String?, teamName: String?, callback: FrogoDataResponse<Players>)
 
     // Search for event by event name
-    fun searchForEvent(eventName: String?, callback: ConsumeApiResponse<Events>)
+    fun searchForEvent(eventName: String?, callback: FrogoDataResponse<Events>)
 
     // Search For event by event name and season
-    fun searchForEvent(eventName: String?, season: String?, callback: ConsumeApiResponse<Events>)
+    fun searchForEvent(eventName: String?, season: String?, callback: FrogoDataResponse<Events>)
 
     // Search for event by event file name
-    fun searchForEventFileName(eventFileName: String?, callback: ConsumeApiResponse<Events>)
+    fun searchForEventFileName(eventFileName: String?, callback: FrogoDataResponse<Events>)
 
     // List all sports
-    fun getAllSports(callback: ConsumeApiResponse<Sports>)
+    fun getAllSports(callback: FrogoDataResponse<Sports>)
 
     // List all leagues
-    fun getAllLeagues(callback: ConsumeApiResponse<Leagues>)
+    fun getAllLeagues(callback: FrogoDataResponse<Leagues>)
 
     // List all Leagues in a country
-    fun searchAllLeagues(countryName: String?, callback: ConsumeApiResponse<Countrys>)
+    fun searchAllLeagues(countryName: String?, callback: FrogoDataResponse<Countrys>)
 
     // List all Leagues in a country specific by sport
-    fun searchAllLeagues(countryName: String?, sportName: String?, callback: ConsumeApiResponse<Countrys>)
+    fun searchAllLeagues(countryName: String?, sportName: String?, callback: FrogoDataResponse<Countrys>)
 
     // List all Seasons in a League
-    fun searchAllSeasons(idTeam: String?, callback: ConsumeApiResponse<Seasons>)
+    fun searchAllSeasons(idTeam: String?, callback: FrogoDataResponse<Seasons>)
 
     // List all Teams in a League
-    fun searchAllTeam(league: String?, callback: ConsumeApiResponse<Teams>)
+    fun searchAllTeam(league: String?, callback: FrogoDataResponse<Teams>)
 
     // List all Teams in Sportname & Country Name
-    fun searchAllTeam(sportName: String?, countryName: String?, callback: ConsumeApiResponse<Teams>)
+    fun searchAllTeam(sportName: String?, countryName: String?, callback: FrogoDataResponse<Teams>)
 
     // List All teams details in a league by Id
-    fun lookupAllTeam(idLeague: String?, callback: ConsumeApiResponse<Teams>)
+    fun lookupAllTeam(idLeague: String?, callback: FrogoDataResponse<Teams>)
 
     // List All players in a team by Team Id *Patreon ONLY*
-    fun lookupAllPlayer(idTeam: String?, callback: ConsumeApiResponse<Players>)
+    fun lookupAllPlayer(idTeam: String?, callback: FrogoDataResponse<Players>)
 
     // List all users loved teams and players
-    fun searchLoves(userName: String?, callback: ConsumeApiResponse<Users>)
+    fun searchLoves(userName: String?, callback: FrogoDataResponse<Users>)
 
     // League Details by Id
-    fun lookupLeagues(idLeague: String?, callback: ConsumeApiResponse<Leagues>)
+    fun lookupLeagues(idLeague: String?, callback: FrogoDataResponse<Leagues>)
 
     // Team Details by Id
-    fun lookupTeam(idTeam: String?, callback: ConsumeApiResponse<Teams>)
+    fun lookupTeam(idTeam: String?, callback: FrogoDataResponse<Teams>)
 
     // Player Details by Id
-    fun lookupPlayer(idPlayer: String?, callback: ConsumeApiResponse<Players>)
+    fun lookupPlayer(idPlayer: String?, callback: FrogoDataResponse<Players>)
 
     // Event Details by Id
-    fun lookupEvent(idEvent: String?, callback: ConsumeApiResponse<Events>)
+    fun lookupEvent(idEvent: String?, callback: FrogoDataResponse<Events>)
 
     // Player Honours by Player Id
-    fun lookupHonour(idPlayer: String?, callback: ConsumeApiResponse<Honors>)
+    fun lookupHonour(idPlayer: String?, callback: FrogoDataResponse<Honors>)
 
     // Player Former Teams by Player Id
-    fun lookupFormerTeam(idPlayer: String?, callback: ConsumeApiResponse<FormerTeams>)
+    fun lookupFormerTeam(idPlayer: String?, callback: FrogoDataResponse<FormerTeams>)
 
     // Player Contracts by Player Id
-    fun lookupContract(idPlayer: String?, callback: ConsumeApiResponse<Contracts>)
+    fun lookupContract(idPlayer: String?, callback: FrogoDataResponse<Contracts>)
 
     // Lookup Table by League ID and Season
-    fun lookupTable(idLeague: String?, season: String?, callback: ConsumeApiResponse<Tables>)
+    fun lookupTable(idLeague: String?, season: String?, callback: FrogoDataResponse<Tables>)
 
     // Next 5 Events by Team Id
-    fun eventsNext(idTeam: String?, callback: ConsumeApiResponse<Events>)
+    fun eventsNext(idTeam: String?, callback: FrogoDataResponse<Events>)
 
     // Next 15 Events by League Id
-    fun eventsNextLeague(idLeague: String?, callback: ConsumeApiResponse<Events>)
+    fun eventsNextLeague(idLeague: String?, callback: FrogoDataResponse<Events>)
 
     // Last 5 Events by Team Id
-    fun eventsLast(idTeam: String?, callback: ConsumeApiResponse<Results>)
+    fun eventsLast(idTeam: String?, callback: FrogoDataResponse<Results>)
 
     // Last 15 Events by League Id
-    fun eventsPastLeague(idLeague: String?, callback: ConsumeApiResponse<Events>)
+    fun eventsPastLeague(idLeague: String?, callback: FrogoDataResponse<Events>)
 
     // Events in a specific round by league id/round/season
-    fun eventsRound(idLeague: String?, round: String?, season: String?, callback: ConsumeApiResponse<Events>)
+    fun eventsRound(idLeague: String?, round: String?, season: String?, callback: FrogoDataResponse<Events>)
 
     // All events in specific league by season (Free tier limited to 200 events)
-    fun eventsSeason(idLeague: String?, season: String?, callback: ConsumeApiResponse<Events>)
+    fun eventsSeason(idLeague: String?, season: String?, callback: FrogoDataResponse<Events>)
 
     
 </details>

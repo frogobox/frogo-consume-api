@@ -1,10 +1,11 @@
 package com.frogobox.api.news
 
 import android.content.Context
-import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.coreapi.news.INewsApi
 import com.frogobox.coreapi.news.NewsApi
 import com.frogobox.coreapi.news.response.ArticleResponse
 import com.frogobox.coreapi.news.response.SourceResponse
+import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.sdk.ext.usingChuck
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import okhttp3.Interceptor
@@ -30,12 +31,14 @@ class ConsumeNewsApi(apiKey: String) : IConsumeNewsApi {
 
     private var newsApi = NewsApi(AndroidSchedulers.mainThread(), apiKey)
 
-    override fun usingChuckInterceptor(context: Context) {
+    override fun usingChuckInterceptor(context: Context): INewsApi {
         usingChuckInterceptor(context.usingChuck())
+        return this
     }
 
-    override fun usingChuckInterceptor(chuckerInterceptor: Interceptor) {
+    override fun usingChuckInterceptor(chuckerInterceptor: Interceptor): INewsApi {
         newsApi.usingChuckInterceptor(chuckerInterceptor)
+        return this
     }
 
     override fun getTopHeadline(
@@ -45,7 +48,7 @@ class ConsumeNewsApi(apiKey: String) : IConsumeNewsApi {
         country: String?,
         pageSize: Int?,
         page: Int?,
-        callback: ConsumeApiResponse<ArticleResponse>
+        callback: FrogoDataResponse<ArticleResponse>
     ) {
         newsApi.getTopHeadline(
             q,
@@ -70,7 +73,7 @@ class ConsumeNewsApi(apiKey: String) : IConsumeNewsApi {
         sortBy: String?,
         pageSize: Int?,
         page: Int?,
-        callback: ConsumeApiResponse<ArticleResponse>
+        callback: FrogoDataResponse<ArticleResponse>
     ) {
         newsApi.getEverythings(
             q,
@@ -92,7 +95,7 @@ class ConsumeNewsApi(apiKey: String) : IConsumeNewsApi {
         language: String,
         country: String,
         category: String,
-        callback: ConsumeApiResponse<SourceResponse>
+        callback: FrogoDataResponse<SourceResponse>
     ) {
         newsApi.getSources(
             language,

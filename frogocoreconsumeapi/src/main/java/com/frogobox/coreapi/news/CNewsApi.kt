@@ -1,6 +1,6 @@
 package com.frogobox.coreapi.news
 
-import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.news.response.ArticleResponse
 import com.frogobox.coreapi.news.response.SourceResponse
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -28,8 +28,9 @@ class CNewsApi(usingScheduler: Boolean, apiKey: String) : INewsApi {
         NewsApi(null, apiKey)
     }
 
-    override fun usingChuckInterceptor(chuckerInterceptor: Interceptor) {
+    override fun usingChuckInterceptor(chuckerInterceptor: Interceptor): INewsApi {
         newsApi.usingChuckInterceptor(chuckerInterceptor)
+        return this
     }
 
     override fun getTopHeadline(
@@ -39,7 +40,7 @@ class CNewsApi(usingScheduler: Boolean, apiKey: String) : INewsApi {
         country: String?,
         pageSize: Int?,
         page: Int?,
-        callback: ConsumeApiResponse<ArticleResponse>
+        callback: FrogoDataResponse<ArticleResponse>
     ) {
         newsApi.getTopHeadline(q, sources, category, country, pageSize, page, callback)
     }
@@ -56,7 +57,7 @@ class CNewsApi(usingScheduler: Boolean, apiKey: String) : INewsApi {
         sortBy: String?,
         pageSize: Int?,
         page: Int?,
-        callback: ConsumeApiResponse<ArticleResponse>
+        callback: FrogoDataResponse<ArticleResponse>
     ) {
         newsApi.getEverythings(
             q,
@@ -78,7 +79,7 @@ class CNewsApi(usingScheduler: Boolean, apiKey: String) : INewsApi {
         language: String,
         country: String,
         category: String,
-        callback: ConsumeApiResponse<SourceResponse>
+        callback: FrogoDataResponse<SourceResponse>
     ) {
         newsApi.getSources(language, country, category, callback)
     }

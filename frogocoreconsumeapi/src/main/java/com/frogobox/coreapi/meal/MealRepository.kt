@@ -1,6 +1,6 @@
 package com.frogobox.coreapi.meal
 
-import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.meal.model.*
 import com.frogobox.coreapi.meal.response.CategoryResponse
 import com.frogobox.coreapi.meal.response.MealResponse
@@ -38,7 +38,7 @@ object MealRepository : MealDataSource {
     override fun searchMeal(
         scheduler: Scheduler?, apiKey: String,
         mealName: String,
-        callback: ConsumeApiResponse<MealResponse<Meal>>
+        callback: FrogoDataResponse<MealResponse<Meal>>
     ) {
         mealApiService.searchMeal(apiKey, mealName).doApiRequest(scheduler, callback) {}
     }
@@ -46,7 +46,7 @@ object MealRepository : MealDataSource {
     override fun listAllMeal(
         scheduler: Scheduler?, apiKey: String,
         firstLetter: String,
-        callback: ConsumeApiResponse<MealResponse<Meal>>
+        callback: FrogoDataResponse<MealResponse<Meal>>
     ) {
         mealApiService.listAllMeal(apiKey, firstLetter).doApiRequest(scheduler, callback) {}
     }
@@ -54,28 +54,28 @@ object MealRepository : MealDataSource {
     override fun lookupFullMeal(
         scheduler: Scheduler?, apiKey: String,
         idMeal: String,
-        callback: ConsumeApiResponse<MealResponse<Meal>>
+        callback: FrogoDataResponse<MealResponse<Meal>>
     ) {
         mealApiService.lookupFullMeal(apiKey, idMeal).doApiRequest(scheduler, callback) {}
     }
 
     override fun lookupRandomMeal(
         scheduler: Scheduler?, apiKey: String,
-        callback: ConsumeApiResponse<MealResponse<Meal>>
+        callback: FrogoDataResponse<MealResponse<Meal>>
     ) {
         mealApiService.lookupRandomMeal(apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun listMealCategories(
         scheduler: Scheduler?, apiKey: String,
-        callback: ConsumeApiResponse<CategoryResponse>
+        callback: FrogoDataResponse<CategoryResponse>
     ) {
         mealApiService.listMealCategories(apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun listAllCateories(
         scheduler: Scheduler?, apiKey: String,
-        callback: ConsumeApiResponse<MealResponse<Category>>
+        callback: FrogoDataResponse<MealResponse<Category>>
     ) {
         mealApiService.listAllCateories(apiKey, MealConstant.VALUE_LIST)
             .doApiRequest(scheduler, callback) {}
@@ -83,7 +83,7 @@ object MealRepository : MealDataSource {
 
     override fun listAllArea(
         scheduler: Scheduler?, apiKey: String,
-        callback: ConsumeApiResponse<MealResponse<Area>>
+        callback: FrogoDataResponse<MealResponse<Area>>
     ) {
         mealApiService.listAllArea(apiKey, MealConstant.VALUE_LIST)
             .doApiRequest(scheduler, callback) {}
@@ -91,7 +91,7 @@ object MealRepository : MealDataSource {
 
     override fun listAllIngredients(
         scheduler: Scheduler?, apiKey: String,
-        callback: ConsumeApiResponse<MealResponse<Ingredient>>
+        callback: FrogoDataResponse<MealResponse<Ingredient>>
     ) {
         mealApiService.listAllIngredients(apiKey, MealConstant.VALUE_LIST)
             .doApiRequest(scheduler, callback) {}
@@ -100,7 +100,7 @@ object MealRepository : MealDataSource {
     override fun filterByIngredient(
         scheduler: Scheduler?, apiKey: String,
         ingredient: String,
-        callback: ConsumeApiResponse<MealResponse<MealFilter>>
+        callback: FrogoDataResponse<MealResponse<MealFilter>>
     ) {
         mealApiService.filterByIngredient(apiKey, ingredient).doApiRequest(scheduler, callback) {}
     }
@@ -108,7 +108,7 @@ object MealRepository : MealDataSource {
     override fun filterByCategory(
         scheduler: Scheduler?, apiKey: String,
         category: String,
-        callback: ConsumeApiResponse<MealResponse<MealFilter>>
+        callback: FrogoDataResponse<MealResponse<MealFilter>>
     ) {
         mealApiService.filterByCategory(apiKey, category).doApiRequest(scheduler, callback) {}
     }
@@ -116,7 +116,7 @@ object MealRepository : MealDataSource {
     override fun filterByArea(
         scheduler: Scheduler?, apiKey: String,
         area: String,
-        callback: ConsumeApiResponse<MealResponse<MealFilter>>
+        callback: FrogoDataResponse<MealResponse<MealFilter>>
     ) {
         mealApiService.filterByArea(apiKey, area).doApiRequest(scheduler, callback) {}
     }

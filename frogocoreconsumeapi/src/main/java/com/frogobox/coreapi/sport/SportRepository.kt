@@ -1,6 +1,6 @@
 package com.frogobox.coreapi.sport
 
-import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.sport.response.*
 import com.frogobox.coresdk.ext.doApiRequest
 import com.frogobox.coresdk.source.FrogoApiClient
@@ -39,7 +39,7 @@ object SportRepository : SportDataSource {
     override fun searchForTeamByName(
         scheduler: Scheduler?, apiKey: String,
         teamName: String?,
-        callback: ConsumeApiResponse<Teams>
+        callback: FrogoDataResponse<Teams>
     ) {
         sportApiService.searchForTeamByName(apiKey, teamName).doApiRequest(scheduler, callback) {}
 
@@ -48,7 +48,7 @@ object SportRepository : SportDataSource {
     override fun searchForTeamByShortCode(
         scheduler: Scheduler?, apiKey: String,
         shortCode: String?,
-        callback: ConsumeApiResponse<Teams>
+        callback: FrogoDataResponse<Teams>
     ) {
         sportApiService.searchForTeamByShortCode(apiKey, shortCode)
             .doApiRequest(scheduler, callback) {}
@@ -57,7 +57,7 @@ object SportRepository : SportDataSource {
     override fun searchForAllPlayer(
         scheduler: Scheduler?, apiKey: String,
         teamName: String?,
-        callback: ConsumeApiResponse<Players>
+        callback: FrogoDataResponse<Players>
     ) {
         sportApiService.searchForAllPlayer(apiKey, teamName).doApiRequest(scheduler, callback) {}
     }
@@ -65,7 +65,7 @@ object SportRepository : SportDataSource {
     override fun searchForPlayer(
         scheduler: Scheduler?, apiKey: String,
         playerName: String?,
-        callback: ConsumeApiResponse<Players>
+        callback: FrogoDataResponse<Players>
     ) {
         sportApiService.searchForPlayer(apiKey, playerName).doApiRequest(scheduler, callback) {}
     }
@@ -74,7 +74,7 @@ object SportRepository : SportDataSource {
         scheduler: Scheduler?, apiKey: String,
         playerName: String?,
         teamName: String?,
-        callback: ConsumeApiResponse<Players>
+        callback: FrogoDataResponse<Players>
     ) {
         sportApiService.searchForPlayer(apiKey, playerName, teamName)
             .doApiRequest(scheduler, callback) {}
@@ -83,7 +83,7 @@ object SportRepository : SportDataSource {
     override fun searchForEvent(
         scheduler: Scheduler?, apiKey: String,
         eventName: String?,
-        callback: ConsumeApiResponse<Events>
+        callback: FrogoDataResponse<Events>
     ) {
         sportApiService.searchForEvent(apiKey, eventName).doApiRequest(scheduler, callback) {}
     }
@@ -92,7 +92,7 @@ object SportRepository : SportDataSource {
         scheduler: Scheduler?, apiKey: String,
         eventName: String?,
         season: String?,
-        callback: ConsumeApiResponse<Events>
+        callback: FrogoDataResponse<Events>
     ) {
         sportApiService.searchForEvent(apiKey, eventName, season)
             .doApiRequest(scheduler, callback) {}
@@ -101,7 +101,7 @@ object SportRepository : SportDataSource {
     override fun searchForEventFileName(
         scheduler: Scheduler?, apiKey: String,
         eventFileName: String?,
-        callback: ConsumeApiResponse<Events>
+        callback: FrogoDataResponse<Events>
     ) {
         sportApiService.searchForEventFileName(apiKey, eventFileName)
             .doApiRequest(scheduler, callback) {}
@@ -110,7 +110,7 @@ object SportRepository : SportDataSource {
     override fun getAllSports(
         scheduler: Scheduler?,
         apiKey: String,
-        callback: ConsumeApiResponse<Sports>
+        callback: FrogoDataResponse<Sports>
     ) {
         sportApiService.getAllSports(apiKey).doApiRequest(scheduler, callback) {}
     }
@@ -118,7 +118,7 @@ object SportRepository : SportDataSource {
     override fun getAllLeagues(
         scheduler: Scheduler?,
         apiKey: String,
-        callback: ConsumeApiResponse<Leagues>
+        callback: FrogoDataResponse<Leagues>
     ) {
         sportApiService.getAllLeagues(apiKey).doApiRequest(scheduler, callback) {}
     }
@@ -126,7 +126,7 @@ object SportRepository : SportDataSource {
     override fun searchAllLeagues(
         scheduler: Scheduler?, apiKey: String,
         countryName: String?,
-        callback: ConsumeApiResponse<Countrys>
+        callback: FrogoDataResponse<Countrys>
     ) {
         sportApiService.searchAllLeagues(apiKey, countryName).doApiRequest(scheduler, callback) {}
     }
@@ -135,7 +135,7 @@ object SportRepository : SportDataSource {
         scheduler: Scheduler?, apiKey: String,
         countryName: String?,
         sportName: String?,
-        callback: ConsumeApiResponse<Countrys>
+        callback: FrogoDataResponse<Countrys>
     ) {
         sportApiService.searchAllLeagues(apiKey, countryName, sportName)
             .doApiRequest(scheduler, callback) {}
@@ -144,7 +144,7 @@ object SportRepository : SportDataSource {
     override fun searchAllSeasons(
         scheduler: Scheduler?, apiKey: String,
         idTeam: String?,
-        callback: ConsumeApiResponse<Seasons>
+        callback: FrogoDataResponse<Seasons>
     ) {
         sportApiService.searchAllSeasons(apiKey, idTeam).doApiRequest(scheduler, callback) {}
     }
@@ -152,7 +152,7 @@ object SportRepository : SportDataSource {
     override fun searchAllTeam(
         scheduler: Scheduler?, apiKey: String,
         league: String?,
-        callback: ConsumeApiResponse<Teams>
+        callback: FrogoDataResponse<Teams>
     ) {
         sportApiService.searchAllTeam(apiKey, league).doApiRequest(scheduler, callback) {}
     }
@@ -161,7 +161,7 @@ object SportRepository : SportDataSource {
         scheduler: Scheduler?, apiKey: String,
         sportName: String?,
         countryName: String?,
-        callback: ConsumeApiResponse<Teams>
+        callback: FrogoDataResponse<Teams>
     ) {
         sportApiService.searchAllTeam(apiKey, sportName, countryName)
             .doApiRequest(scheduler, callback) {}
@@ -170,7 +170,7 @@ object SportRepository : SportDataSource {
     override fun lookupAllTeam(
         scheduler: Scheduler?, apiKey: String,
         idLeague: String?,
-        callback: ConsumeApiResponse<Teams>
+        callback: FrogoDataResponse<Teams>
     ) {
         sportApiService.lookupAllTeam(apiKey, idLeague).doApiRequest(scheduler, callback) {}
     }
@@ -178,7 +178,7 @@ object SportRepository : SportDataSource {
     override fun lookupAllPlayer(
         scheduler: Scheduler?, apiKey: String,
         idTeam: String?,
-        callback: ConsumeApiResponse<Players>
+        callback: FrogoDataResponse<Players>
     ) {
         sportApiService.lookupAllPlayer(apiKey, idTeam).doApiRequest(scheduler, callback) {}
     }
@@ -186,7 +186,7 @@ object SportRepository : SportDataSource {
     override fun searchLoves(
         scheduler: Scheduler?, apiKey: String,
         userName: String?,
-        callback: ConsumeApiResponse<Users>
+        callback: FrogoDataResponse<Users>
     ) {
         sportApiService.searchLoves(apiKey, userName).doApiRequest(scheduler, callback) {}
     }
@@ -194,7 +194,7 @@ object SportRepository : SportDataSource {
     override fun lookupLeagues(
         scheduler: Scheduler?, apiKey: String,
         idLeague: String?,
-        callback: ConsumeApiResponse<Leagues>
+        callback: FrogoDataResponse<Leagues>
     ) {
         sportApiService.lookupLeagues(apiKey, idLeague).doApiRequest(scheduler, callback) {}
     }
@@ -202,7 +202,7 @@ object SportRepository : SportDataSource {
     override fun lookupTeam(
         scheduler: Scheduler?, apiKey: String,
         idTeam: String?,
-        callback: ConsumeApiResponse<Teams>
+        callback: FrogoDataResponse<Teams>
     ) {
         sportApiService.lookupTeam(apiKey, idTeam).doApiRequest(scheduler, callback) {}
     }
@@ -210,7 +210,7 @@ object SportRepository : SportDataSource {
     override fun lookupPlayer(
         scheduler: Scheduler?, apiKey: String,
         idPlayer: String?,
-        callback: ConsumeApiResponse<Players>
+        callback: FrogoDataResponse<Players>
     ) {
         sportApiService.lookupPlayer(apiKey, idPlayer).doApiRequest(scheduler, callback) {}
     }
@@ -218,7 +218,7 @@ object SportRepository : SportDataSource {
     override fun lookupEvent(
         scheduler: Scheduler?, apiKey: String,
         idEvent: String?,
-        callback: ConsumeApiResponse<Events>
+        callback: FrogoDataResponse<Events>
     ) {
         sportApiService.lookupEvent(apiKey, idEvent).doApiRequest(scheduler, callback) {}
     }
@@ -226,7 +226,7 @@ object SportRepository : SportDataSource {
     override fun lookupHonour(
         scheduler: Scheduler?, apiKey: String,
         idPlayer: String?,
-        callback: ConsumeApiResponse<Honors>
+        callback: FrogoDataResponse<Honors>
     ) {
         sportApiService.lookupHonour(apiKey, idPlayer).doApiRequest(scheduler, callback) {}
     }
@@ -234,7 +234,7 @@ object SportRepository : SportDataSource {
     override fun lookupFormerTeam(
         scheduler: Scheduler?, apiKey: String,
         idPlayer: String?,
-        callback: ConsumeApiResponse<FormerTeams>
+        callback: FrogoDataResponse<FormerTeams>
     ) {
         sportApiService.lookupFormerTeam(apiKey, idPlayer).doApiRequest(scheduler, callback) {}
     }
@@ -242,7 +242,7 @@ object SportRepository : SportDataSource {
     override fun lookupContract(
         scheduler: Scheduler?, apiKey: String,
         idPlayer: String?,
-        callback: ConsumeApiResponse<Contracts>
+        callback: FrogoDataResponse<Contracts>
     ) {
         sportApiService.lookupContract(apiKey, idPlayer).doApiRequest(scheduler, callback) {}
     }
@@ -251,7 +251,7 @@ object SportRepository : SportDataSource {
         scheduler: Scheduler?, apiKey: String,
         idLeague: String?,
         season: String?,
-        callback: ConsumeApiResponse<Tables>
+        callback: FrogoDataResponse<Tables>
     ) {
         sportApiService.lookupTable(apiKey, idLeague, season).doApiRequest(scheduler, callback) {}
     }
@@ -259,7 +259,7 @@ object SportRepository : SportDataSource {
     override fun eventsNext(
         scheduler: Scheduler?, apiKey: String,
         idTeam: String?,
-        callback: ConsumeApiResponse<Events>
+        callback: FrogoDataResponse<Events>
     ) {
         sportApiService.eventsNext(apiKey, idTeam).doApiRequest(scheduler, callback) {}
     }
@@ -267,7 +267,7 @@ object SportRepository : SportDataSource {
     override fun eventsNextLeague(
         scheduler: Scheduler?, apiKey: String,
         idLeague: String?,
-        callback: ConsumeApiResponse<Events>
+        callback: FrogoDataResponse<Events>
     ) {
         sportApiService.eventsNextLeague(apiKey, idLeague).doApiRequest(scheduler, callback) {}
     }
@@ -275,7 +275,7 @@ object SportRepository : SportDataSource {
     override fun eventsLast(
         scheduler: Scheduler?, apiKey: String,
         idTeam: String?,
-        callback: ConsumeApiResponse<Results>
+        callback: FrogoDataResponse<Results>
     ) {
         sportApiService.eventsLast(apiKey, idTeam).doApiRequest(scheduler, callback) {}
     }
@@ -283,7 +283,7 @@ object SportRepository : SportDataSource {
     override fun eventsPastLeague(
         scheduler: Scheduler?, apiKey: String,
         idLeague: String?,
-        callback: ConsumeApiResponse<Events>
+        callback: FrogoDataResponse<Events>
     ) {
         sportApiService.eventsPastLeague(apiKey, idLeague).doApiRequest(scheduler, callback) {}
     }
@@ -293,7 +293,7 @@ object SportRepository : SportDataSource {
         idLeague: String?,
         round: String?,
         season: String?,
-        callback: ConsumeApiResponse<Events>
+        callback: FrogoDataResponse<Events>
     ) {
         sportApiService.eventsRound(apiKey, idLeague, round, season)
             .doApiRequest(scheduler, callback) {}
@@ -303,7 +303,7 @@ object SportRepository : SportDataSource {
         scheduler: Scheduler?, apiKey: String,
         idLeague: String?,
         season: String?,
-        callback: ConsumeApiResponse<Events>
+        callback: FrogoDataResponse<Events>
     ) {
         sportApiService.eventsSeason(apiKey, idLeague, season).doApiRequest(scheduler, callback) {}
     }

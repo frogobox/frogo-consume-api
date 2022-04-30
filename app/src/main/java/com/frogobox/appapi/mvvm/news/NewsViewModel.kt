@@ -2,9 +2,6 @@ package com.frogobox.appapi.mvvm.news
 
 import android.app.Application
 import com.frogobox.api.news.ConsumeNewsApi
-import com.frogobox.coreapi.news.model.Article
-import com.frogobox.coreapi.news.response.ArticleResponse
-import com.frogobox.coreapi.news.NewsUrl
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.news.NewsConstant.CATEGORY_BUSINESS
 import com.frogobox.coreapi.news.NewsConstant.CATEGORY_ENTERTAIMENT
@@ -14,6 +11,9 @@ import com.frogobox.coreapi.news.NewsConstant.CATEGORY_SCIENCE
 import com.frogobox.coreapi.news.NewsConstant.CATEGORY_SPORTS
 import com.frogobox.coreapi.news.NewsConstant.CATEGORY_TECHNOLOGY
 import com.frogobox.coreapi.news.NewsConstant.COUNTRY_ID
+import com.frogobox.coreapi.news.NewsUrl
+import com.frogobox.coreapi.news.model.Article
+import com.frogobox.coreapi.news.response.ArticleResponse
 import com.frogobox.sdk.util.FrogoMutableLiveData
 import com.frogobox.sdk.view.FrogoViewModel
 
@@ -34,7 +34,7 @@ class NewsViewModel(private val context: Application) : FrogoViewModel(context) 
     val listDataCategory = FrogoMutableLiveData<List<Article>>()
     val listData = FrogoMutableLiveData<List<Article>>()
     val listCategory = FrogoMutableLiveData<List<String>>()
-    private val consumeNewsApi = ConsumeNewsApi(NewsUrl.API_KEY)
+    private val consumeNewsApi = ConsumeNewsApi(NewsUrl.API_KEY).usingChuckInterceptor(context)
 
     fun setupCategory() {
         val categories = mutableListOf<String>()
@@ -49,7 +49,6 @@ class NewsViewModel(private val context: Application) : FrogoViewModel(context) 
     }
 
     fun getTopHeadline(category: String) {
-        consumeNewsApi.usingChuckInterceptor(context)
         consumeNewsApi.getTopHeadline(
             null,
             null,
@@ -88,7 +87,6 @@ class NewsViewModel(private val context: Application) : FrogoViewModel(context) 
     }
 
     fun getTopHeadline() {
-        consumeNewsApi.usingChuckInterceptor(context)
         consumeNewsApi.getTopHeadline(
             null,
             null,

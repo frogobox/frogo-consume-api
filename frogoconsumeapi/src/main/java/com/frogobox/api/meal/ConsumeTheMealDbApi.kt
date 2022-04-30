@@ -1,7 +1,7 @@
 package com.frogobox.api.meal
 
 import android.content.Context
-import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.meal.MealApi
 import com.frogobox.coreapi.meal.model.*
 import com.frogobox.coreapi.meal.response.CategoryResponse
@@ -39,61 +39,61 @@ class ConsumeTheMealDbApi(apiKey: String) : IConsumeTheMealDbApi {
         mealApi.usingChuckInterceptor(chuckerInterceptor)
     }
 
-    override fun searchMeal(mealName: String, callback: ConsumeApiResponse<MealResponse<Meal>>) {
+    override fun searchMeal(mealName: String, callback: FrogoDataResponse<MealResponse<Meal>>) {
         mealApi.searchMeal(mealName, callback)
     }
 
     override fun listAllMeal(
         firstLetter: String,
-        callback: ConsumeApiResponse<MealResponse<Meal>>
+        callback: FrogoDataResponse<MealResponse<Meal>>
     ) {
         mealApi.listAllMeal(firstLetter, callback)
     }
 
     override fun lookupFullMeal(
         idMeal: String,
-        callback: ConsumeApiResponse<MealResponse<Meal>>
+        callback: FrogoDataResponse<MealResponse<Meal>>
     ) {
         mealApi.lookupFullMeal(idMeal, callback)
     }
 
-    override fun lookupRandomMeal(callback: ConsumeApiResponse<MealResponse<Meal>>) {
+    override fun lookupRandomMeal(callback: FrogoDataResponse<MealResponse<Meal>>) {
         mealApi.lookupRandomMeal(callback)
     }
 
-    override fun listMealCategories(callback: ConsumeApiResponse<CategoryResponse>) {
+    override fun listMealCategories(callback: FrogoDataResponse<CategoryResponse>) {
         mealApi.listMealCategories(callback)
     }
 
-    override fun listAllCateories(callback: ConsumeApiResponse<MealResponse<Category>>) {
+    override fun listAllCateories(callback: FrogoDataResponse<MealResponse<Category>>) {
         mealApi.listAllCateories(callback)
     }
 
-    override fun listAllArea(callback: ConsumeApiResponse<MealResponse<Area>>) {
+    override fun listAllArea(callback: FrogoDataResponse<MealResponse<Area>>) {
         mealApi.listAllArea(callback)
     }
 
-    override fun listAllIngredients(callback: ConsumeApiResponse<MealResponse<Ingredient>>) {
+    override fun listAllIngredients(callback: FrogoDataResponse<MealResponse<Ingredient>>) {
         mealApi.listAllIngredients(callback)
     }
 
     override fun filterByIngredient(
         ingredient: String,
-        callback: ConsumeApiResponse<MealResponse<MealFilter>>
+        callback: FrogoDataResponse<MealResponse<MealFilter>>
     ) {
         mealApi.filterByIngredient(ingredient, callback)
     }
 
     override fun filterByCategory(
         category: String,
-        callback: ConsumeApiResponse<MealResponse<MealFilter>>
+        callback: FrogoDataResponse<MealResponse<MealFilter>>
     ) {
         mealApi.filterByCategory(category, callback)
     }
 
     override fun filterByArea(
         area: String,
-        callback: ConsumeApiResponse<MealResponse<MealFilter>>
+        callback: FrogoDataResponse<MealResponse<MealFilter>>
     ) {
         mealApi.filterByArea(area, callback)
     }

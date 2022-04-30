@@ -3,7 +3,7 @@ package com.frogobox.coreapi.pixabay
 import com.frogobox.coreapi.pixabay.model.PixabayImage
 import com.frogobox.coreapi.pixabay.model.PixabayVideo
 import com.frogobox.coreapi.pixabay.response.Response
-import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.coresdk.response.FrogoDataResponse
 import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
 
@@ -48,7 +48,7 @@ interface PixabayDataSource {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: ConsumeApiResponse<Response<PixabayImage>>
+        callback: FrogoDataResponse<Response<PixabayImage>>
     )
 
     // Search for Video
@@ -67,7 +67,7 @@ interface PixabayDataSource {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: ConsumeApiResponse<Response<PixabayVideo>>
+        callback: FrogoDataResponse<Response<PixabayVideo>>
     )
 
 }

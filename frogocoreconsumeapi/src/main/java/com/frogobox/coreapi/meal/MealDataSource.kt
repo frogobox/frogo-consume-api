@@ -1,6 +1,6 @@
 package com.frogobox.coreapi.meal
 
-import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.meal.model.*
 import com.frogobox.coreapi.meal.response.CategoryResponse
 import com.frogobox.coreapi.meal.response.MealResponse
@@ -34,7 +34,7 @@ interface MealDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         mealName: String,
-        callback: ConsumeApiResponse<MealResponse<Meal>>
+        callback: FrogoDataResponse<MealResponse<Meal>>
     )
 
     // List all meals by first letter
@@ -42,7 +42,7 @@ interface MealDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         firstLetter: String,
-        callback: ConsumeApiResponse<MealResponse<Meal>>
+        callback: FrogoDataResponse<MealResponse<Meal>>
     )
 
     // Lookup full meal details by id
@@ -50,42 +50,42 @@ interface MealDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         idMeal: String,
-        callback: ConsumeApiResponse<MealResponse<Meal>>
+        callback: FrogoDataResponse<MealResponse<Meal>>
     )
 
     // Lookup a single random meal
     fun lookupRandomMeal(
         scheduler: Scheduler?,
         apiKey: String,
-        callback: ConsumeApiResponse<MealResponse<Meal>>
+        callback: FrogoDataResponse<MealResponse<Meal>>
     )
 
     // List all meal categories
     fun listMealCategories(
         scheduler: Scheduler?,
         apiKey: String,
-        callback: ConsumeApiResponse<CategoryResponse>
+        callback: FrogoDataResponse<CategoryResponse>
     )
 
     // List all Categories
     fun listAllCateories(
         scheduler: Scheduler?,
         apiKey: String,
-        callback: ConsumeApiResponse<MealResponse<Category>>
+        callback: FrogoDataResponse<MealResponse<Category>>
     )
 
     // List all Area
     fun listAllArea(
         scheduler: Scheduler?,
         apiKey: String,
-        callback: ConsumeApiResponse<MealResponse<Area>>
+        callback: FrogoDataResponse<MealResponse<Area>>
     )
 
     // List all Ingredients
     fun listAllIngredients(
         scheduler: Scheduler?,
         apiKey: String,
-        callback: ConsumeApiResponse<MealResponse<Ingredient>>
+        callback: FrogoDataResponse<MealResponse<Ingredient>>
     )
 
     // Filter by main ingredient
@@ -93,7 +93,7 @@ interface MealDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         ingredient: String,
-        callback: ConsumeApiResponse<MealResponse<MealFilter>>
+        callback: FrogoDataResponse<MealResponse<MealFilter>>
     )
 
     // Filter by Category
@@ -101,7 +101,7 @@ interface MealDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         category: String,
-        callback: ConsumeApiResponse<MealResponse<MealFilter>>
+        callback: FrogoDataResponse<MealResponse<MealFilter>>
     )
 
     // Filter by Area
@@ -109,7 +109,7 @@ interface MealDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         area: String,
-        callback: ConsumeApiResponse<MealResponse<MealFilter>>
+        callback: FrogoDataResponse<MealResponse<MealFilter>>
     )
 
 }

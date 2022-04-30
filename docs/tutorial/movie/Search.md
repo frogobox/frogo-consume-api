@@ -5,7 +5,7 @@
     fun searchCompanies(
         query: String,
         page: Int?,
-        callback: ConsumeApiResponse<SearchCompanies>
+        callback: FrogoDataResponse<SearchCompanies>
     )
 
     // SEARCH
@@ -14,7 +14,7 @@
         query: String,
         language: String?,
         page: Int?,
-        callback: ConsumeApiResponse<SearchCollections>
+        callback: FrogoDataResponse<SearchCollections>
     )
 
     // SEARCH
@@ -22,7 +22,7 @@
     fun searchKeywords(
         query: String,
         page: Int?,
-        callback: ConsumeApiResponse<SearchKeywords>
+        callback: FrogoDataResponse<SearchKeywords>
     )
 
     // SEARCH
@@ -35,7 +35,7 @@
         region: String?,
         year: Int?,
         primary_release_year: Int?,
-        callback: ConsumeApiResponse<SearchMovies>
+        callback: FrogoDataResponse<SearchMovies>
     )
 
     // SEARCH
@@ -46,7 +46,7 @@
         page: Int?,
         include_adult: Boolean?,
         region: String?,
-        callback: ConsumeApiResponse<SearchMulti>
+        callback: FrogoDataResponse<SearchMulti>
     )
 
     // SEARCH
@@ -57,7 +57,7 @@
         page: Int?,
         include_adult: Boolean?,
         region: String?,
-        callback: ConsumeApiResponse<SearchPeople>
+        callback: FrogoDataResponse<SearchPeople>
     )
 
     // SEARCH
@@ -68,5 +68,5 @@
         page: Int?,
         include_adult: Boolean?,
         first_air_date_year: Int?,
-        callback: ConsumeApiResponse<SearchMovies>
+        callback: FrogoDataResponse<SearchMovies>
     )

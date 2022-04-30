@@ -1,6 +1,6 @@
 package com.frogobox.coreapi.movie
 
-import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.movie.model.*
 import com.frogobox.coreapi.movie.response.*
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -32,11 +32,11 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         movieApi.usingChuckInterceptor(chuckerInterceptor)
     }
 
-    override fun getMovieCertifications(callback: ConsumeApiResponse<Certifications<CertificationMovie>>) {
+    override fun getMovieCertifications(callback: FrogoDataResponse<Certifications<CertificationMovie>>) {
         movieApi.getMovieCertifications(callback)
     }
 
-    override fun getTvCertifications(callback: ConsumeApiResponse<Certifications<CertificationTv>>) {
+    override fun getTvCertifications(callback: FrogoDataResponse<Certifications<CertificationTv>>) {
         movieApi.getTvCertifications(callback)
     }
 
@@ -44,7 +44,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: ConsumeApiResponse<Changes>
+        callback: FrogoDataResponse<Changes>
     ) {
         movieApi.getMovieChangeList(endDate, startDate, page, callback)
     }
@@ -53,7 +53,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: ConsumeApiResponse<Changes>
+        callback: FrogoDataResponse<Changes>
     ) {
         movieApi.getTvChangeList(endDate, startDate, page, callback)
     }
@@ -62,7 +62,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: ConsumeApiResponse<Changes>
+        callback: FrogoDataResponse<Changes>
     ) {
         movieApi.getPersonChangeList(endDate, startDate, page, callback)
     }
@@ -70,7 +70,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun getCollectionDetails(
         collection_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<CollectionsDetail>
+        callback: FrogoDataResponse<CollectionsDetail>
     ) {
         movieApi.getCollectionDetails(collection_id, language, callback)
     }
@@ -78,7 +78,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun getCollectionImages(
         collection_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<CollectionsImage>
+        callback: FrogoDataResponse<CollectionsImage>
     ) {
         movieApi.getCollectionImages(
             collection_id, language, callback
@@ -88,7 +88,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun getCollectionTranslations(
         collection_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<CollectionsTranslation>
+        callback: FrogoDataResponse<CollectionsTranslation>
     ) {
         movieApi.getCollectionTranslations(
             collection_id, language, callback
@@ -97,7 +97,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
 
     override fun getCompaniesDetails(
         company_id: Int,
-        callback: ConsumeApiResponse<CompaniesDetail>
+        callback: FrogoDataResponse<CompaniesDetail>
     ) {
         movieApi.getCompaniesDetails(
             company_id, callback
@@ -106,44 +106,44 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
 
     override fun getCompaniesAlternativeName(
         company_id: Int,
-        callback: ConsumeApiResponse<CompaniesAlternateName>
+        callback: FrogoDataResponse<CompaniesAlternateName>
     ) {
         movieApi.getCompaniesAlternativeName(
             company_id, callback
         )
     }
 
-    override fun getCompaniesImage(company_id: Int, callback: ConsumeApiResponse<CompaniesImage>) {
+    override fun getCompaniesImage(company_id: Int, callback: FrogoDataResponse<CompaniesImage>) {
         movieApi.getCompaniesImage(
             company_id, callback
         )
     }
 
-    override fun getConfigurationApi(callback: ConsumeApiResponse<ConfigurationApi>) {
+    override fun getConfigurationApi(callback: FrogoDataResponse<ConfigurationApi>) {
         movieApi.getConfigurationApi(callback)
     }
 
-    override fun getConfigurationCountries(callback: ConsumeApiResponse<List<ConfigurationCountry>>) {
+    override fun getConfigurationCountries(callback: FrogoDataResponse<List<ConfigurationCountry>>) {
         movieApi.getConfigurationCountries(callback)
     }
 
-    override fun getConfigurationJobs(callback: ConsumeApiResponse<List<ConfigurationJob>>) {
+    override fun getConfigurationJobs(callback: FrogoDataResponse<List<ConfigurationJob>>) {
         movieApi.getConfigurationJobs(callback)
     }
 
-    override fun getConfigurationLanguages(callback: ConsumeApiResponse<List<ConfigurationLanguage>>) {
+    override fun getConfigurationLanguages(callback: FrogoDataResponse<List<ConfigurationLanguage>>) {
         movieApi.getConfigurationLanguages(callback)
     }
 
-    override fun getConfigurationTranslations(callback: ConsumeApiResponse<List<String>>) {
+    override fun getConfigurationTranslations(callback: FrogoDataResponse<List<String>>) {
         movieApi.getConfigurationTranslations(callback)
     }
 
-    override fun getConfigurationTimezones(callback: ConsumeApiResponse<List<ConfigurationTimezone>>) {
+    override fun getConfigurationTimezones(callback: FrogoDataResponse<List<ConfigurationTimezone>>) {
         movieApi.getConfigurationTimezones(callback)
     }
 
-    override fun getCreditsDetails(credit_id: String, callback: ConsumeApiResponse<Credits>) {
+    override fun getCreditsDetails(credit_id: String, callback: FrogoDataResponse<Credits>) {
         movieApi.getCreditsDetails(credit_id, callback)
     }
 
@@ -180,7 +180,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         with_runtime_gte: Double?,
         with_runtime_lte: Double?,
         with_original_language: String?,
-        callback: ConsumeApiResponse<Discover<DiscoverMovie>>
+        callback: FrogoDataResponse<Discover<DiscoverMovie>>
     ) {
         movieApi.getDiscoverMovie(
             language,
@@ -241,7 +241,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         screened_theatrically: String?,
         with_companies: String?,
         with_keywords: String?,
-        callback: ConsumeApiResponse<Discover<DiscoverTv>>
+        callback: FrogoDataResponse<Discover<DiscoverTv>>
     ) {
         movieApi.getDiscoverTv(
             language,
@@ -273,7 +273,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         external_id: String,
         external_source: String,
         language: String?,
-        callback: ConsumeApiResponse<Find>
+        callback: FrogoDataResponse<Find>
     ) {
         movieApi.getFindById(
             external_id,
@@ -282,15 +282,15 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         )
     }
 
-    override fun getGenresMovie(language: String?, callback: ConsumeApiResponse<Genres>) {
+    override fun getGenresMovie(language: String?, callback: FrogoDataResponse<Genres>) {
         movieApi.getGenresMovie(language, callback)
     }
 
-    override fun getGenresTv(language: String?, callback: ConsumeApiResponse<Genres>) {
+    override fun getGenresTv(language: String?, callback: FrogoDataResponse<Genres>) {
         movieApi.getGenresTv(language, callback)
     }
 
-    override fun getKeywordsDetail(keyword_id: Int, callback: ConsumeApiResponse<KeywordsDetail>) {
+    override fun getKeywordsDetail(keyword_id: Int, callback: FrogoDataResponse<KeywordsDetail>) {
         movieApi.getKeywordsDetail(
             keyword_id, callback
         )
@@ -300,7 +300,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         keyword_id: Int,
         language: String?,
         include_adult: Boolean?,
-        callback: ConsumeApiResponse<KeywordsMovies>
+        callback: FrogoDataResponse<KeywordsMovies>
     ) {
         movieApi.getKeywordsMovie(
             keyword_id, language,
@@ -312,7 +312,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         movie_id: Int,
         language: String?,
         append_to_response: String?,
-        callback: ConsumeApiResponse<MovieDetail>
+        callback: FrogoDataResponse<MovieDetail>
     ) {
         movieApi.getMoviesDetails(movie_id, language, append_to_response, callback)
     }
@@ -321,7 +321,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         movie_id: Int,
         session_id: String,
         guest_session_id: String?,
-        callback: ConsumeApiResponse<MovieAccountState>
+        callback: FrogoDataResponse<MovieAccountState>
     ) {
         movieApi.getMoviesAccountState(movie_id, session_id, guest_session_id, callback)
     }
@@ -329,7 +329,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun getMoviesAlternativeTitles(
         movie_id: Int,
         country: String?,
-        callback: ConsumeApiResponse<MovieAlternativeTitle>
+        callback: FrogoDataResponse<MovieAlternativeTitle>
     ) {
         movieApi.getMoviesAlternativeTitles(movie_id, country, callback)
     }
@@ -339,18 +339,18 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         start_date: String?,
         end_date: String?,
         page: Int?,
-        callback: ConsumeApiResponse<MovieChanges>
+        callback: FrogoDataResponse<MovieChanges>
     ) {
         movieApi.getMoviesChanges(movie_id, start_date, end_date, page, callback)
     }
 
-    override fun getMoviesCredits(movie_id: Int, callback: ConsumeApiResponse<MovieCredit>) {
+    override fun getMoviesCredits(movie_id: Int, callback: FrogoDataResponse<MovieCredit>) {
         movieApi.getMoviesCredits(movie_id, callback)
     }
 
     override fun getMoviesExternalIds(
         movie_id: Int,
-        callback: ConsumeApiResponse<MovieExternalId>
+        callback: FrogoDataResponse<MovieExternalId>
     ) {
         movieApi.getMoviesExternalIds(movie_id, callback)
     }
@@ -359,18 +359,18 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         movie_id: Int,
         language: String?,
         include_image_language: String?,
-        callback: ConsumeApiResponse<MovieImages>
+        callback: FrogoDataResponse<MovieImages>
     ) {
         movieApi.getMoviesImages(movie_id, language, include_image_language, callback)
     }
 
-    override fun getMoviesKeywords(movie_id: Int, callback: ConsumeApiResponse<MovieKeywords>) {
+    override fun getMoviesKeywords(movie_id: Int, callback: FrogoDataResponse<MovieKeywords>) {
         movieApi.getMoviesKeywords(movie_id, callback)
     }
 
     override fun getMoviesReleaseDates(
         movie_id: Int,
-        callback: ConsumeApiResponse<MovieReleaseDates>
+        callback: FrogoDataResponse<MovieReleaseDates>
     ) {
         movieApi.getMoviesReleaseDates(movie_id, callback)
     }
@@ -378,14 +378,14 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun getMoviesVideos(
         movie_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<MovieVideos>
+        callback: FrogoDataResponse<MovieVideos>
     ) {
         movieApi.getMoviesVideos(movie_id, language, callback)
     }
 
     override fun getMoviesTranslations(
         movie_id: Int,
-        callback: ConsumeApiResponse<MovieTranslations>
+        callback: FrogoDataResponse<MovieTranslations>
     ) {
         movieApi.getMoviesTranslations(movie_id, callback)
     }
@@ -394,7 +394,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         movie_id: Int,
         language: String?,
         page: Int?,
-        callback: ConsumeApiResponse<MovieRecommendations>
+        callback: FrogoDataResponse<MovieRecommendations>
     ) {
         movieApi.getMoviesRecommendations(movie_id, language, page, callback)
     }
@@ -403,7 +403,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         movie_id: Int,
         language: String?,
         page: Int?,
-        callback: ConsumeApiResponse<MovieSimilarMovies>
+        callback: FrogoDataResponse<MovieSimilarMovies>
     ) {
         movieApi.getMoviesSimilarMovies(movie_id, language, page, callback)
     }
@@ -412,7 +412,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         movie_id: Int,
         language: String?,
         page: Int?,
-        callback: ConsumeApiResponse<MovieReviews>
+        callback: FrogoDataResponse<MovieReviews>
     ) {
         movieApi.getMoviesReviews(movie_id, language, page, callback)
     }
@@ -421,12 +421,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         movie_id: Int,
         language: String?,
         page: Int?,
-        callback: ConsumeApiResponse<MovieLists>
+        callback: FrogoDataResponse<MovieLists>
     ) {
         movieApi.getMoviesLists(movie_id, language, page, callback)
     }
 
-    override fun getMoviesLatest(language: String?, callback: ConsumeApiResponse<MovieLatest>) {
+    override fun getMoviesLatest(language: String?, callback: FrogoDataResponse<MovieLatest>) {
         movieApi.getMoviesLatest(language, callback)
     }
 
@@ -434,7 +434,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         language: String?,
         page: Int?,
         region: String?,
-        callback: ConsumeApiResponse<MovieNowPlayings>
+        callback: FrogoDataResponse<MovieNowPlayings>
     ) {
         movieApi.getMoviesNowPlaying(
             language,
@@ -447,7 +447,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         language: String?,
         page: Int?,
         region: String?,
-        callback: ConsumeApiResponse<MoviePopulars>
+        callback: FrogoDataResponse<MoviePopulars>
     ) {
         movieApi.getMoviesPopular(
             language,
@@ -460,7 +460,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         language: String?,
         page: Int?,
         region: String?,
-        callback: ConsumeApiResponse<MovieTopRated>
+        callback: FrogoDataResponse<MovieTopRated>
     ) {
         movieApi.getMoviesTopRated(
             language,
@@ -473,7 +473,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         language: String?,
         page: Int?,
         region: String?,
-        callback: ConsumeApiResponse<MovieUpcoming>
+        callback: FrogoDataResponse<MovieUpcoming>
     ) {
         movieApi.getMoviesUpcoming(
             language,
@@ -482,43 +482,43 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         )
     }
 
-    override fun getTrendingAllDay(callback: ConsumeApiResponse<Trending<TrendingAll>>) {
+    override fun getTrendingAllDay(callback: FrogoDataResponse<Trending<TrendingAll>>) {
         movieApi.getTrendingAllDay(callback)
     }
 
-    override fun getTrendingAllWeek(callback: ConsumeApiResponse<Trending<TrendingAll>>) {
+    override fun getTrendingAllWeek(callback: FrogoDataResponse<Trending<TrendingAll>>) {
         movieApi.getTrendingAllWeek(callback)
     }
 
-    override fun getTrendingMovieDay(callback: ConsumeApiResponse<Trending<TrendingMovie>>) {
+    override fun getTrendingMovieDay(callback: FrogoDataResponse<Trending<TrendingMovie>>) {
         movieApi.getTrendingMovieDay(callback)
     }
 
-    override fun getTrendingMovieWeek(callback: ConsumeApiResponse<Trending<TrendingMovie>>) {
+    override fun getTrendingMovieWeek(callback: FrogoDataResponse<Trending<TrendingMovie>>) {
         movieApi.getTrendingMovieWeek(callback)
     }
 
-    override fun getTrendingPersonDay(callback: ConsumeApiResponse<Trending<TrendingPerson>>) {
+    override fun getTrendingPersonDay(callback: FrogoDataResponse<Trending<TrendingPerson>>) {
         movieApi.getTrendingPersonDay(callback)
     }
 
-    override fun getTrendingPersonWeek(callback: ConsumeApiResponse<Trending<TrendingPerson>>) {
+    override fun getTrendingPersonWeek(callback: FrogoDataResponse<Trending<TrendingPerson>>) {
         movieApi.getTrendingPersonWeek(callback)
     }
 
-    override fun getTrendingTvDay(callback: ConsumeApiResponse<Trending<TrendingTv>>) {
+    override fun getTrendingTvDay(callback: FrogoDataResponse<Trending<TrendingTv>>) {
         movieApi.getTrendingTvDay(callback)
     }
 
-    override fun getTrendingTvWeek(callback: ConsumeApiResponse<Trending<TrendingTv>>) {
+    override fun getTrendingTvWeek(callback: FrogoDataResponse<Trending<TrendingTv>>) {
         movieApi.getTrendingTvWeek(callback)
     }
 
-    override fun getReviews(review_id: String, callback: ConsumeApiResponse<Reviews>) {
+    override fun getReviews(review_id: String, callback: FrogoDataResponse<Reviews>) {
         movieApi.getReviews(review_id, callback)
     }
 
-    override fun getNetworkDetail(network_id: Int, callback: ConsumeApiResponse<NetworkDetail>) {
+    override fun getNetworkDetail(network_id: Int, callback: FrogoDataResponse<NetworkDetail>) {
         movieApi.getNetworkDetail(
             network_id, callback
         )
@@ -526,14 +526,14 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
 
     override fun getNetworkAlternativeName(
         network_id: Int,
-        callback: ConsumeApiResponse<NetworkAlternativeName>
+        callback: FrogoDataResponse<NetworkAlternativeName>
     ) {
         movieApi.getNetworkAlternativeName(
             network_id, callback
         )
     }
 
-    override fun getNetworkImage(network_id: Int, callback: ConsumeApiResponse<NetworkImage>) {
+    override fun getNetworkImage(network_id: Int, callback: FrogoDataResponse<NetworkImage>) {
         movieApi.getNetworkImage(
             network_id, callback
         )
@@ -542,7 +542,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun searchCompanies(
         query: String,
         page: Int?,
-        callback: ConsumeApiResponse<SearchCompanies>
+        callback: FrogoDataResponse<SearchCompanies>
     ) {
         movieApi.searchCompanies(
             query,
@@ -554,7 +554,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         query: String,
         language: String?,
         page: Int?,
-        callback: ConsumeApiResponse<SearchCollections>
+        callback: FrogoDataResponse<SearchCollections>
     ) {
         movieApi.searchCollections(
             query, language,
@@ -565,7 +565,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun searchKeywords(
         query: String,
         page: Int?,
-        callback: ConsumeApiResponse<SearchKeywords>
+        callback: FrogoDataResponse<SearchKeywords>
     ) {
         movieApi.searchKeywords(
             query,
@@ -581,7 +581,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         region: String?,
         year: Int?,
         primary_release_year: Int?,
-        callback: ConsumeApiResponse<SearchMovies>
+        callback: FrogoDataResponse<SearchMovies>
     ) {
         movieApi.searchMovies(
             query, language,
@@ -599,7 +599,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         page: Int?,
         include_adult: Boolean?,
         region: String?,
-        callback: ConsumeApiResponse<SearchMulti>
+        callback: FrogoDataResponse<SearchMulti>
     ) {
         movieApi.searchMultiSearch(
             query, language,
@@ -615,7 +615,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         page: Int?,
         include_adult: Boolean?,
         region: String?,
-        callback: ConsumeApiResponse<SearchPeople>
+        callback: FrogoDataResponse<SearchPeople>
     ) {
         movieApi.searchPeople(query, language, page, include_adult, region, callback)
     }
@@ -626,7 +626,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         page: Int?,
         include_adult: Boolean?,
         first_air_date_year: Int?,
-        callback: ConsumeApiResponse<SearchMovies>
+        callback: FrogoDataResponse<SearchMovies>
     ) {
         movieApi.searchTvShows(query, language, page, include_adult, first_air_date_year, callback)
     }
@@ -635,7 +635,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         tv_id: Int,
         language: String?,
         append_to_response: String?,
-        callback: ConsumeApiResponse<TvDetails>
+        callback: FrogoDataResponse<TvDetails>
     ) {
         movieApi.getTvDetails(tv_id, language, append_to_response, callback)
     }
@@ -645,7 +645,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         language: String?,
         guest_session_id: String?,
         session_id: String?,
-        callback: ConsumeApiResponse<TvAccountStates>
+        callback: FrogoDataResponse<TvAccountStates>
     ) {
         movieApi.getTvAccountStates(
             tv_id, language,
@@ -657,7 +657,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun getTvAlternativeTitles(
         tv_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<TvAlternativeTitles>
+        callback: FrogoDataResponse<TvAlternativeTitles>
     ) {
         movieApi.getTvAlternativeTitles(
             tv_id, language, callback
@@ -669,7 +669,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         startDate: String?,
         endDate: String?,
         page: Int?,
-        callback: ConsumeApiResponse<TvChanges>
+        callback: FrogoDataResponse<TvChanges>
     ) {
         movieApi.getTvChanges(
             tv_id,
@@ -683,7 +683,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun getTvContentRatings(
         tv_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<TvContentRatings>
+        callback: FrogoDataResponse<TvContentRatings>
     ) {
         movieApi.getTvContentRatings(
             tv_id, language, callback
@@ -693,7 +693,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun getTvCredits(
         tv_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<TvCredits>
+        callback: FrogoDataResponse<TvCredits>
     ) {
         movieApi.getTvCredits(
             tv_id, language, callback
@@ -703,7 +703,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun getTvEpisodeGroups(
         tv_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<TvEpisodeGroups>
+        callback: FrogoDataResponse<TvEpisodeGroups>
     ) {
         movieApi.getTvEpisodeGroups(
             tv_id, language, callback
@@ -713,7 +713,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun getTvExternalIds(
         tv_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<TvExternalIds>
+        callback: FrogoDataResponse<TvExternalIds>
     ) {
         movieApi.getTvExternalIds(
             tv_id, language, callback
@@ -723,14 +723,14 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun getTvImages(
         tv_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<TvImages>
+        callback: FrogoDataResponse<TvImages>
     ) {
         movieApi.getTvImages(
             tv_id, language, callback
         )
     }
 
-    override fun getTvKeyword(tv_id: Int, callback: ConsumeApiResponse<TvKeywords>) {
+    override fun getTvKeyword(tv_id: Int, callback: FrogoDataResponse<TvKeywords>) {
         movieApi.getTvKeyword(
             tv_id, callback
         )
@@ -740,7 +740,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         tv_id: Int,
         language: String?,
         page: Int?,
-        callback: ConsumeApiResponse<TvRecommendations>
+        callback: FrogoDataResponse<TvRecommendations>
     ) {
         movieApi.getTvRecommendations(
             tv_id, language,
@@ -748,7 +748,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         )
     }
 
-    override fun getTvReviews(tv_id: Int, callback: ConsumeApiResponse<TvReviews>) {
+    override fun getTvReviews(tv_id: Int, callback: FrogoDataResponse<TvReviews>) {
         movieApi.getTvReviews(
             tv_id, callback
         )
@@ -756,7 +756,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
 
     override fun getTvScreenedTheatrically(
         tv_id: Int,
-        callback: ConsumeApiResponse<TvScreenedTheatrically>
+        callback: FrogoDataResponse<TvScreenedTheatrically>
     ) {
         movieApi.getTvScreenedTheatrically(
             tv_id, callback
@@ -767,7 +767,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         tv_id: Int,
         language: String?,
         page: Int?,
-        callback: ConsumeApiResponse<TvSimilarTVShows>
+        callback: FrogoDataResponse<TvSimilarTVShows>
     ) {
         movieApi.getTvSimilarTvShows(
             tv_id, language,
@@ -775,7 +775,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         )
     }
 
-    override fun getTvTranslations(tv_id: Int, callback: ConsumeApiResponse<TvTranslations>) {
+    override fun getTvTranslations(tv_id: Int, callback: FrogoDataResponse<TvTranslations>) {
         movieApi.getTvTranslations(
             tv_id, callback
         )
@@ -784,21 +784,21 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun getTvVideos(
         tv_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<TvVideos>
+        callback: FrogoDataResponse<TvVideos>
     ) {
         movieApi.getTvVideos(
             tv_id, language, callback
         )
     }
 
-    override fun getTvLatest(language: String?, callback: ConsumeApiResponse<TvLatest>) {
+    override fun getTvLatest(language: String?, callback: FrogoDataResponse<TvLatest>) {
         movieApi.getTvLatest(language, callback)
     }
 
     override fun getTvAiringToday(
         language: String?,
         page: Int?,
-        callback: ConsumeApiResponse<TvAiringToday>
+        callback: FrogoDataResponse<TvAiringToday>
     ) {
         movieApi.getTvAiringToday(
             language,
@@ -809,7 +809,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun getTvOnTheAir(
         language: String?,
         page: Int?,
-        callback: ConsumeApiResponse<TvOnTheAir>
+        callback: FrogoDataResponse<TvOnTheAir>
     ) {
         movieApi.getTvOnTheAir(
             language,
@@ -820,7 +820,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun getTvPopular(
         language: String?,
         page: Int?,
-        callback: ConsumeApiResponse<TvPopular>
+        callback: FrogoDataResponse<TvPopular>
     ) {
         movieApi.getTvPopular(
             language,
@@ -831,7 +831,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun getTvTopRated(
         language: String?,
         page: Int?,
-        callback: ConsumeApiResponse<TvTopRated>
+        callback: FrogoDataResponse<TvTopRated>
     ) {
         movieApi.getTvTopRated(
             language,
@@ -844,7 +844,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         season_number: Int,
         language: String?,
         append_to_response: String?,
-        callback: ConsumeApiResponse<TvSeasonsDetails>
+        callback: FrogoDataResponse<TvSeasonsDetails>
     ) {
         movieApi.getTvSeasonsDetails(
             tv_id,
@@ -858,7 +858,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         startDate: String?,
         endDate: String?,
         page: Int?,
-        callback: ConsumeApiResponse<TvSeasonsChanges>
+        callback: FrogoDataResponse<TvSeasonsChanges>
     ) {
         movieApi.getTvSeasonsChanges(
             season_id,
@@ -874,7 +874,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         language: String?,
         guest_session_id: String?,
         session_id: String?,
-        callback: ConsumeApiResponse<TvSeasonsAccountStates>
+        callback: FrogoDataResponse<TvSeasonsAccountStates>
     ) {
         movieApi.getTvSeasonsAccountStates(
             tv_id,
@@ -888,7 +888,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         tv_id: Int,
         season_number: Int,
         language: String?,
-        callback: ConsumeApiResponse<TvSeasonsCredits>
+        callback: FrogoDataResponse<TvSeasonsCredits>
     ) {
         movieApi.getTvSeasonsCredits(
             tv_id,
@@ -900,7 +900,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         tv_id: Int,
         season_number: Int,
         language: String?,
-        callback: ConsumeApiResponse<TvSeasonsExternalIds>
+        callback: FrogoDataResponse<TvSeasonsExternalIds>
     ) {
         movieApi.getTvSeasonsExternalIds(
             tv_id,
@@ -912,7 +912,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         tv_id: Int,
         season_number: Int,
         language: String?,
-        callback: ConsumeApiResponse<TvSeasonsImages>
+        callback: FrogoDataResponse<TvSeasonsImages>
     ) {
         movieApi.getTvSeasonsImages(
             tv_id,
@@ -924,7 +924,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         tv_id: Int,
         season_number: Int,
         language: String?,
-        callback: ConsumeApiResponse<TvSeasonsVideos>
+        callback: FrogoDataResponse<TvSeasonsVideos>
     ) {
         movieApi.getTvSeasonsVideos(
             tv_id,
@@ -938,7 +938,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         episode_number: Int,
         language: String?,
         append_to_response: String?,
-        callback: ConsumeApiResponse<TvEpisodeDetails>
+        callback: FrogoDataResponse<TvEpisodeDetails>
     ) {
         movieApi.getTvEpisodeDetails(
             tv_id,
@@ -953,7 +953,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         startDate: String?,
         endDate: String?,
         page: Int?,
-        callback: ConsumeApiResponse<TvEpisodeChanges>
+        callback: FrogoDataResponse<TvEpisodeChanges>
     ) {
         movieApi.getTvEpisodeChanges(
             episode_id,
@@ -969,7 +969,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         episode_number: Int,
         guest_session_id: String?,
         session_id: String?,
-        callback: ConsumeApiResponse<TvEpisodeAccountStates>
+        callback: FrogoDataResponse<TvEpisodeAccountStates>
     ) {
         movieApi.getTvEpisodeAccountStates(
             tv_id,
@@ -985,7 +985,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        callback: ConsumeApiResponse<TvEpisodeCredits>
+        callback: FrogoDataResponse<TvEpisodeCredits>
     ) {
         movieApi.getTvEpisodeCredits(
             tv_id,
@@ -998,7 +998,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        callback: ConsumeApiResponse<TvEpisodeExternalIds>
+        callback: FrogoDataResponse<TvEpisodeExternalIds>
     ) {
         movieApi.getTvEpisodeExternalIds(
             tv_id,
@@ -1011,7 +1011,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        callback: ConsumeApiResponse<TvEpisodeImages>
+        callback: FrogoDataResponse<TvEpisodeImages>
     ) {
         movieApi.getTvEpisodeImages(
             tv_id,
@@ -1024,7 +1024,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        callback: ConsumeApiResponse<TvEpisodeTranslation>
+        callback: FrogoDataResponse<TvEpisodeTranslation>
     ) {
         movieApi.getTvEpisodeTranslations(
             tv_id,
@@ -1038,7 +1038,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         season_number: Int,
         episode_number: Int,
         language: String?,
-        callback: ConsumeApiResponse<TvEpisodeVideos>
+        callback: FrogoDataResponse<TvEpisodeVideos>
     ) {
         movieApi.getTvEpisodeVideos(tv_id, season_number, episode_number, language, callback)
     }
@@ -1046,7 +1046,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun getTvEpisodeGroupsDetails(
         id: String?,
         language: String?,
-        callback: ConsumeApiResponse<TvEpisodeGroupsDetails>
+        callback: FrogoDataResponse<TvEpisodeGroupsDetails>
     ) {
         movieApi.getTvEpisodeGroupsDetails(id, language, callback)
     }
@@ -1054,7 +1054,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun getPeopleDetails(
         person_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<PeopleDetails>
+        callback: FrogoDataResponse<PeopleDetails>
     ) {
         movieApi.getPeopleDetails(person_id, language, callback)
     }
@@ -1064,7 +1064,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         endDate: String?,
         page: Int?,
         startDate: String?,
-        callback: ConsumeApiResponse<PeopleChanges>
+        callback: FrogoDataResponse<PeopleChanges>
     ) {
         movieApi.getPeopleChanges(person_id, endDate, page, startDate, callback)
     }
@@ -1072,7 +1072,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun getPeopleMovieCredits(
         person_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<PeopleMovieCredits>
+        callback: FrogoDataResponse<PeopleMovieCredits>
     ) {
         movieApi.getPeopleMovieCredits(person_id, language, callback)
     }
@@ -1080,7 +1080,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun getPeopleTvCredits(
         person_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<PeopleTvCredits>
+        callback: FrogoDataResponse<PeopleTvCredits>
     ) {
         movieApi.getPeopleTvCredits(person_id, language, callback)
     }
@@ -1088,7 +1088,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun getPeopleCombinedCredits(
         person_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<PeopleCombinedCredits>
+        callback: FrogoDataResponse<PeopleCombinedCredits>
     ) {
         movieApi.getPeopleCombinedCredits(person_id, language, callback)
     }
@@ -1096,12 +1096,12 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun getPeopleExternalIds(
         person_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<PeopleExternalIds>
+        callback: FrogoDataResponse<PeopleExternalIds>
     ) {
         movieApi.getPeopleExternalIds(person_id, language, callback)
     }
 
-    override fun getPeopleImages(person_id: Int, callback: ConsumeApiResponse<PeopleImages>) {
+    override fun getPeopleImages(person_id: Int, callback: FrogoDataResponse<PeopleImages>) {
         movieApi.getPeopleImages(person_id, callback)
     }
 
@@ -1109,7 +1109,7 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
         person_id: Int,
         language: String?,
         page: Int?,
-        callback: ConsumeApiResponse<PeopleTaggedImages>
+        callback: FrogoDataResponse<PeopleTaggedImages>
     ) {
         movieApi.getPeopleTaggedImages(person_id, language, page, callback)
     }
@@ -1117,19 +1117,19 @@ class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
     override fun getPeopleTranslations(
         person_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<PeopleTranslations>
+        callback: FrogoDataResponse<PeopleTranslations>
     ) {
         movieApi.getPeopleTranslations(person_id, language, callback)
     }
 
-    override fun getPeopleLatest(language: String?, callback: ConsumeApiResponse<PeopleLatest>) {
+    override fun getPeopleLatest(language: String?, callback: FrogoDataResponse<PeopleLatest>) {
         movieApi.getPeopleLatest(language, callback)
     }
 
     override fun getPeoplePopular(
         language: String?,
         page: Int?,
-        callback: ConsumeApiResponse<PeoplePopular>
+        callback: FrogoDataResponse<PeoplePopular>
     ) {
         movieApi.getPeoplePopular(language, page, callback)
     }

@@ -1,6 +1,6 @@
 package com.frogobox.coreapi.news
 
-import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.news.response.ArticleResponse
 import com.frogobox.coreapi.news.response.SourceResponse
 import com.frogobox.coresdk.ext.doApiRequest
@@ -27,8 +27,9 @@ object NewsRepository : NewsDataSource {
     private val TAG = NewsRepository::class.java.simpleName
     private var newsApiService = FrogoApiClient.create<NewsApiService>(NewsUrl.BASE_URL)
 
-    override fun usingChuckInterceptor(chuckerInterceptor: Interceptor) {
+    override fun usingChuckInterceptor(chuckerInterceptor: Interceptor): NewsDataSource {
         newsApiService = FrogoApiClient.createWithInterceptor(NewsUrl.BASE_URL, chuckerInterceptor)
+        return this
     }
 
     override fun getTopHeadline(
@@ -40,7 +41,7 @@ object NewsRepository : NewsDataSource {
         country: String?,
         pageSize: Int?,
         page: Int?,
-        callback: ConsumeApiResponse<ArticleResponse>
+        callback: FrogoDataResponse<ArticleResponse>
     ) {
         newsApiService.getTopHeadline(apiKey, q, sources, category, country, pageSize, page)
             .doApiRequest(scheduler, callback) {}
@@ -60,7 +61,7 @@ object NewsRepository : NewsDataSource {
         sortBy: String?,
         pageSize: Int?,
         page: Int?,
-        callback: ConsumeApiResponse<ArticleResponse>
+        callback: FrogoDataResponse<ArticleResponse>
     ) {
         newsApiService.getEverythings(
             apiKey,
@@ -84,7 +85,7 @@ object NewsRepository : NewsDataSource {
         language: String,
         country: String,
         category: String,
-        callback: ConsumeApiResponse<SourceResponse>
+        callback: FrogoDataResponse<SourceResponse>
     ) {
         newsApiService.getSources(apiKey, language, country, category)
             .doApiRequest(scheduler, callback) {}

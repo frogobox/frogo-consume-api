@@ -6,7 +6,7 @@
         tv_id: Int,
         language: String?,
         append_to_response: String?,
-        callback: ConsumeApiResponse<TvDetails>
+        callback: FrogoDataResponse<TvDetails>
     )
 
     // TV
@@ -16,7 +16,7 @@
         language: String?,
         guest_session_id: String?,
         session_id: String?,
-        callback: ConsumeApiResponse<TvAccountStates>
+        callback: FrogoDataResponse<TvAccountStates>
     )
 
     // TV
@@ -24,7 +24,7 @@
     fun getTvAlternativeTitles(
         tv_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<TvAlternativeTitles>
+        callback: FrogoDataResponse<TvAlternativeTitles>
     )
 
     // TV
@@ -34,7 +34,7 @@
         startDate: String?,
         endDate: String?,
         page: Int?,
-        callback: ConsumeApiResponse<TvChanges>
+        callback: FrogoDataResponse<TvChanges>
     )
 
     // TV
@@ -42,7 +42,7 @@
     fun getTvContentRatings(
         tv_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<TvContentRatings>
+        callback: FrogoDataResponse<TvContentRatings>
     )
 
     // TV
@@ -50,7 +50,7 @@
     fun getTvCredits(
         tv_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<TvCredits>
+        callback: FrogoDataResponse<TvCredits>
     )
 
     // TV
@@ -58,7 +58,7 @@
     fun getTvEpisodeGroups(
         tv_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<TvEpisodeGroups>
+        callback: FrogoDataResponse<TvEpisodeGroups>
     )
 
     // TV
@@ -66,7 +66,7 @@
     fun getTvExternalIds(
         tv_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<TvExternalIds>
+        callback: FrogoDataResponse<TvExternalIds>
     )
 
     // TV
@@ -74,14 +74,14 @@
     fun getTvImages(
         tv_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<TvImages>
+        callback: FrogoDataResponse<TvImages>
     )
 
     // TV
     // Get Keyword
     fun getTvKeyword(
         tv_id: Int,
-        callback: ConsumeApiResponse<TvKeywords>
+        callback: FrogoDataResponse<TvKeywords>
     )
 
     // TV
@@ -90,21 +90,21 @@
         tv_id: Int,
         language: String?,
         page: Int?,
-        callback: ConsumeApiResponse<TvRecommendations>
+        callback: FrogoDataResponse<TvRecommendations>
     )
 
     // TV
     // Get Reviews
     fun getTvReviews(
         tv_id: Int,
-        callback: ConsumeApiResponse<TvReviews>
+        callback: FrogoDataResponse<TvReviews>
     )
 
     // TV
     // Get Screened Theatrically
     fun getTvScreenedTheatrically(
         tv_id: Int,
-        callback: ConsumeApiResponse<TvScreenedTheatrically>
+        callback: FrogoDataResponse<TvScreenedTheatrically>
     )
 
     // TV
@@ -113,14 +113,14 @@
         tv_id: Int,
         language: String?,
         page: Int?,
-        callback: ConsumeApiResponse<TvSimilarTVShows>
+        callback: FrogoDataResponse<TvSimilarTVShows>
     )
 
     // TV
     // Get Translations
     fun getTvTranslations(
         tv_id: Int,
-        callback: ConsumeApiResponse<TvTranslations>
+        callback: FrogoDataResponse<TvTranslations>
     )
 
     // TV
@@ -128,14 +128,14 @@
     fun getTvVideos(
         tv_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<TvVideos>
+        callback: FrogoDataResponse<TvVideos>
     )
 
     // TV
     // Get Latest
     fun getTvLatest(
         language: String?,
-        callback: ConsumeApiResponse<TvLatest>
+        callback: FrogoDataResponse<TvLatest>
     )
 
     // TV
@@ -143,7 +143,7 @@
     fun getTvAiringToday(
         language: String?,
         page: Int?,
-        callback: ConsumeApiResponse<TvAiringToday>
+        callback: FrogoDataResponse<TvAiringToday>
     )
 
     // TV
@@ -151,7 +151,7 @@
     fun getTvOnTheAir(
         language: String?,
         page: Int?,
-        callback: ConsumeApiResponse<TvOnTheAir>
+        callback: FrogoDataResponse<TvOnTheAir>
     )
 
     // TV
@@ -159,7 +159,7 @@
     fun getTvPopular(
         language: String?,
         page: Int?,
-        callback: ConsumeApiResponse<TvPopular>
+        callback: FrogoDataResponse<TvPopular>
     )
 
     // TV
@@ -167,5 +167,5 @@
     fun getTvTopRated(
         language: String?,
         page: Int?,
-        callback: ConsumeApiResponse<TvTopRated>
+        callback: FrogoDataResponse<TvTopRated>
     )

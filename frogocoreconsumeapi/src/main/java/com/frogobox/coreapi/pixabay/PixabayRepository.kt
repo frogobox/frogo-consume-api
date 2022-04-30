@@ -1,6 +1,6 @@
 package com.frogobox.coreapi.pixabay
 
-import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.pixabay.model.PixabayImage
 import com.frogobox.coreapi.pixabay.model.PixabayVideo
 import com.frogobox.coreapi.pixabay.response.Response
@@ -50,7 +50,7 @@ object PixabayRepository : PixabayDataSource {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: ConsumeApiResponse<Response<PixabayImage>>
+        callback: FrogoDataResponse<Response<PixabayImage>>
     ) {
         pixabayApiService.searchImage(
             apiKey,
@@ -86,7 +86,7 @@ object PixabayRepository : PixabayDataSource {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: ConsumeApiResponse<Response<PixabayVideo>>
+        callback: FrogoDataResponse<Response<PixabayVideo>>
     ) {
         pixabayApiService.searchVideo(
             apiKey,

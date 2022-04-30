@@ -5,5 +5,5 @@
     fun getTvEpisodeGroupsDetails(
         id: String?,
         language: String?,
-        callback: ConsumeApiResponse<TvEpisodeGroupsDetails>
+        callback: FrogoDataResponse<TvEpisodeGroupsDetails>
     )

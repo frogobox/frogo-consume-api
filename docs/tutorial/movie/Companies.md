@@ -4,19 +4,19 @@
     // Get Details
     fun getCompaniesDetails(
         company_id: Int,
-        callback: ConsumeApiResponse<CompaniesDetail>
+        callback: FrogoDataResponse<CompaniesDetail>
     )
 
     // COMPANIES
     // Get Alternative Names
     fun getCompaniesAlternativeName(
         company_id: Int,
-        callback: ConsumeApiResponse<CompaniesAlternateName>
+        callback: FrogoDataResponse<CompaniesAlternateName>
     )
 
     // COMPANIES
     // Get Images
     fun getCompaniesImage(
         company_id: Int,
-        callback: ConsumeApiResponse<CompaniesImage>
+        callback: FrogoDataResponse<CompaniesImage>
     )

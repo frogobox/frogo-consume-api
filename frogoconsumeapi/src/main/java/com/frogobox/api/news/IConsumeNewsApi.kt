@@ -20,6 +20,6 @@ import com.frogobox.coreapi.news.INewsApi
 interface IConsumeNewsApi : INewsApi {
 
     // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(context: Context)
+    fun usingChuckInterceptor(context: Context) : INewsApi
 
 }

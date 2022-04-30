@@ -1,7 +1,7 @@
 package com.frogobox.api.sport
 
 import android.content.Context
-import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.sport.ISportApi
 import com.frogobox.coreapi.sport.response.*
 

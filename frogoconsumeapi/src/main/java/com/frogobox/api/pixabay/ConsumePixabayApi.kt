@@ -1,7 +1,7 @@
 package com.frogobox.api.pixabay
 
 import android.content.Context
-import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.pixabay.PixabayApi
 import com.frogobox.coreapi.pixabay.model.PixabayImage
 import com.frogobox.coreapi.pixabay.model.PixabayVideo
@@ -54,7 +54,7 @@ class ConsumePixabayApi(apiKey: String) : IConsumePixabayApi {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: ConsumeApiResponse<Response<PixabayImage>>
+        callback: FrogoDataResponse<Response<PixabayImage>>
     ) {
         pixabayApi.searchImage(
             q,
@@ -88,7 +88,7 @@ class ConsumePixabayApi(apiKey: String) : IConsumePixabayApi {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: ConsumeApiResponse<Response<PixabayVideo>>
+        callback: FrogoDataResponse<Response<PixabayVideo>>
     ) {
         pixabayApi.searchVideo(
             q,

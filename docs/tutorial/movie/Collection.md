@@ -6,7 +6,7 @@
     fun getCollectionDetails(
         collection_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<CollectionsDetail>
+        callback: FrogoDataResponse<CollectionsDetail>
     )
 
     // COLLECTION
@@ -14,7 +14,7 @@
     fun getCollectionImages(
         collection_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<CollectionsImage>
+        callback: FrogoDataResponse<CollectionsImage>
     )
 
     // COLLECTION
@@ -22,5 +22,5 @@
     fun getCollectionTranslations(
         collection_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<CollectionsTranslation>
+        callback: FrogoDataResponse<CollectionsTranslation>
     )

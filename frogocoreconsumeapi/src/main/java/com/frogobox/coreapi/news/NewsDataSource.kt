@@ -2,7 +2,7 @@ package com.frogobox.coreapi.news
 
 import com.frogobox.coreapi.news.response.ArticleResponse
 import com.frogobox.coreapi.news.response.SourceResponse
-import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.coresdk.response.FrogoDataResponse
 import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
 
@@ -26,7 +26,7 @@ import okhttp3.Interceptor
 interface NewsDataSource {
 
     // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(chuckerInterceptor: Interceptor)
+    fun usingChuckInterceptor(chuckerInterceptor: Interceptor) : NewsDataSource
 
     // Get Top Headline
     fun getTopHeadline(
@@ -38,7 +38,7 @@ interface NewsDataSource {
         country: String?,
         pageSize: Int?,
         page: Int?,
-        callback: ConsumeApiResponse<ArticleResponse>
+        callback: FrogoDataResponse<ArticleResponse>
     )
 
     // Get Everythings
@@ -56,7 +56,7 @@ interface NewsDataSource {
         sortBy: String?,
         pageSize: Int?,
         page: Int?,
-        callback: ConsumeApiResponse<ArticleResponse>
+        callback: FrogoDataResponse<ArticleResponse>
     )
 
     // Get Sources
@@ -66,7 +66,7 @@ interface NewsDataSource {
         language: String,
         country: String,
         category: String,
-        callback: ConsumeApiResponse<SourceResponse>
+        callback: FrogoDataResponse<SourceResponse>
     )
 
 }

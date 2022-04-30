@@ -2,4 +2,4 @@
 
     // CREDITS
     // Get Details
-    fun getCreditsDetails(credit_id: String, callback: ConsumeApiResponse<Credits>)
+    fun getCreditsDetails(credit_id: String, callback: FrogoDataResponse<Credits>)

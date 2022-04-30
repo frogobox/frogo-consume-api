@@ -5,7 +5,7 @@
     fun getPeopleDetails(
         person_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<PeopleDetails>
+        callback: FrogoDataResponse<PeopleDetails>
     )
 
     // PEOPLE
@@ -15,7 +15,7 @@
         endDate: String?,
         page: Int?,
         startDate: String?,
-        callback: ConsumeApiResponse<PeopleChanges>
+        callback: FrogoDataResponse<PeopleChanges>
     )
 
     // PEOPLE
@@ -23,7 +23,7 @@
     fun getPeopleMovieCredits(
         person_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<PeopleMovieCredits>
+        callback: FrogoDataResponse<PeopleMovieCredits>
     )
 
     // PEOPLE
@@ -31,7 +31,7 @@
     fun getPeopleTvCredits(
         person_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<PeopleTvCredits>
+        callback: FrogoDataResponse<PeopleTvCredits>
     )
 
     // PEOPLE
@@ -39,7 +39,7 @@
     fun getPeopleCombinedCredits(
         person_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<PeopleCombinedCredits>
+        callback: FrogoDataResponse<PeopleCombinedCredits>
     )
 
     // PEOPLE
@@ -47,14 +47,14 @@
     fun getPeopleExternalIds(
         person_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<PeopleExternalIds>
+        callback: FrogoDataResponse<PeopleExternalIds>
     )
 
     // PEOPLE
     // Get Images
     fun getPeopleImages(
         person_id: Int,
-        callback: ConsumeApiResponse<PeopleImages>
+        callback: FrogoDataResponse<PeopleImages>
     )
 
     // PEOPLE
@@ -63,7 +63,7 @@
         person_id: Int,
         language: String?,
         page: Int?,
-        callback: ConsumeApiResponse<PeopleTaggedImages>
+        callback: FrogoDataResponse<PeopleTaggedImages>
     )
 
     // PEOPLE
@@ -71,14 +71,14 @@
     fun getPeopleTranslations(
         person_id: Int,
         language: String?,
-        callback: ConsumeApiResponse<PeopleTranslations>
+        callback: FrogoDataResponse<PeopleTranslations>
     )
 
     // PEOPLE
     // Get Latest
     fun getPeopleLatest(
         language: String?,
-        callback: ConsumeApiResponse<PeopleLatest>
+        callback: FrogoDataResponse<PeopleLatest>
     )
 
     // PEOPLE
@@ -86,5 +86,5 @@
     fun getPeoplePopular(
         language: String?,
         page: Int?,
-        callback: ConsumeApiResponse<PeoplePopular>
+        callback: FrogoDataResponse<PeoplePopular>
     )

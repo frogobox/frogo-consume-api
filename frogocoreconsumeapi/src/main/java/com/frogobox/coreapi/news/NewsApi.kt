@@ -1,6 +1,6 @@
 package com.frogobox.coreapi.news
 
-import com.frogobox.coreapi.ConsumeApiResponse
+import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.news.response.ArticleResponse
 import com.frogobox.coreapi.news.response.SourceResponse
 import io.reactivex.rxjava3.core.Scheduler
@@ -27,8 +27,9 @@ class NewsApi(
 
     private val newsRepository = NewsRepository
 
-    override fun usingChuckInterceptor(chuckerInterceptor: Interceptor) {
+    override fun usingChuckInterceptor(chuckerInterceptor: Interceptor): INewsApi {
         newsRepository.usingChuckInterceptor(chuckerInterceptor)
+        return this
     }
 
     override fun getTopHeadline(
@@ -38,7 +39,7 @@ class NewsApi(
         country: String?,
         pageSize: Int?,
         page: Int?,
-        callback: ConsumeApiResponse<ArticleResponse>
+        callback: FrogoDataResponse<ArticleResponse>
     ) {
         newsRepository.getTopHeadline(
             scheduler,
@@ -65,7 +66,7 @@ class NewsApi(
         sortBy: String?,
         pageSize: Int?,
         page: Int?,
-        callback: ConsumeApiResponse<ArticleResponse>
+        callback: FrogoDataResponse<ArticleResponse>
     ) {
         newsRepository.getEverythings(
             scheduler,
@@ -89,7 +90,7 @@ class NewsApi(
         language: String,
         country: String,
         category: String,
-        callback: ConsumeApiResponse<SourceResponse>
+        callback: FrogoDataResponse<SourceResponse>
     ) {
         newsRepository.getSources(
             scheduler,
