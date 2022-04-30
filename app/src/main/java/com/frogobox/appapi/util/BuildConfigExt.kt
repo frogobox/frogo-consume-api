@@ -1,11 +1,10 @@
-package com.frogobox.api.news
+package com.frogobox.appapi.util
 
-import android.content.Context
-import com.frogobox.coreapi.news.INewsApi
+import com.frogobox.appapi.BuildConfig
 
 
 /*
- * Created by faisalamir on 07/04/22
+ * Created by faisalamir on 01/05/22
  * FrogoConsumeApi
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
@@ -16,10 +15,5 @@ import com.frogobox.coreapi.news.INewsApi
  * All rights reserved
  *
  */
-
-interface IConsumeNewsApi : INewsApi {
-
-    // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(isDebug: Boolean, context: Context): INewsApi
-
-}
+ 
+val isDebug = BuildConfig.DEBUG

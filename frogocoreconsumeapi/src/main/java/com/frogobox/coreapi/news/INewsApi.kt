@@ -1,8 +1,8 @@
 package com.frogobox.coreapi.news
 
-import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.news.response.ArticleResponse
 import com.frogobox.coreapi.news.response.SourceResponse
+import com.frogobox.coresdk.response.FrogoDataResponse
 import okhttp3.Interceptor
 
 
@@ -22,7 +22,7 @@ import okhttp3.Interceptor
 interface INewsApi {
 
     // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(chuckerInterceptor: Interceptor) : INewsApi
+    fun usingChuckInterceptor(isDebug: Boolean, chuckerInterceptor: Interceptor): INewsApi
 
     // Get Top Headline
     fun getTopHeadline(

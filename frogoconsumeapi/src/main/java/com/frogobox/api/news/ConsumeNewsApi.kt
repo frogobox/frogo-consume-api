@@ -31,14 +31,15 @@ class ConsumeNewsApi(apiKey: String) : IConsumeNewsApi {
 
     private var newsApi = NewsApi(AndroidSchedulers.mainThread(), apiKey)
 
-    override fun usingChuckInterceptor(context: Context): INewsApi {
-        usingChuckInterceptor(context.usingChuck())
-        return this
+    override fun usingChuckInterceptor(isDebug: Boolean, context: Context): INewsApi {
+        return usingChuckInterceptor(isDebug, context.usingChuck())
     }
 
-    override fun usingChuckInterceptor(chuckerInterceptor: Interceptor): INewsApi {
-        newsApi.usingChuckInterceptor(chuckerInterceptor)
-        return this
+    override fun usingChuckInterceptor(
+        isDebug: Boolean,
+        chuckerInterceptor: Interceptor
+    ): INewsApi {
+        return newsApi.usingChuckInterceptor(isDebug, chuckerInterceptor)
     }
 
     override fun getTopHeadline(

@@ -1,8 +1,8 @@
 package com.frogobox.coreapi.news
 
-import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.news.response.ArticleResponse
 import com.frogobox.coreapi.news.response.SourceResponse
+import com.frogobox.coresdk.response.FrogoDataResponse
 import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
 
@@ -27,8 +27,11 @@ class NewsApi(
 
     private val newsRepository = NewsRepository
 
-    override fun usingChuckInterceptor(chuckerInterceptor: Interceptor): INewsApi {
-        newsRepository.usingChuckInterceptor(chuckerInterceptor)
+    override fun usingChuckInterceptor(
+        isDebug: Boolean,
+        chuckerInterceptor: Interceptor
+    ): INewsApi {
+        newsRepository.usingChuckInterceptor(isDebug, chuckerInterceptor)
         return this
     }
 

@@ -1,9 +1,9 @@
 package com.frogobox.coreapi.news
 
-import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.news.response.ArticleResponse
 import com.frogobox.coreapi.news.response.SourceResponse
 import com.frogobox.coresdk.ext.doApiRequest
+import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coresdk.source.FrogoApiClient
 import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
@@ -27,8 +27,11 @@ object NewsRepository : NewsDataSource {
     private val TAG = NewsRepository::class.java.simpleName
     private var newsApiService = FrogoApiClient.create<NewsApiService>(NewsUrl.BASE_URL)
 
-    override fun usingChuckInterceptor(chuckerInterceptor: Interceptor): NewsDataSource {
-        newsApiService = FrogoApiClient.createWithInterceptor(NewsUrl.BASE_URL, chuckerInterceptor)
+    override fun usingChuckInterceptor(
+        isDebug: Boolean,
+        chuckerInterceptor: Interceptor
+    ): NewsDataSource {
+        newsApiService = FrogoApiClient.create(NewsUrl.BASE_URL, isDebug, chuckerInterceptor)
         return this
     }
 

@@ -2,6 +2,7 @@ package com.frogobox.appapi.mvvm.news
 
 import android.app.Application
 import com.frogobox.api.news.ConsumeNewsApi
+import com.frogobox.appapi.util.isDebug
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.news.NewsConstant.CATEGORY_BUSINESS
 import com.frogobox.coreapi.news.NewsConstant.CATEGORY_ENTERTAIMENT
@@ -34,7 +35,7 @@ class NewsViewModel(private val context: Application) : FrogoViewModel(context) 
     val listDataCategory = FrogoMutableLiveData<List<Article>>()
     val listData = FrogoMutableLiveData<List<Article>>()
     val listCategory = FrogoMutableLiveData<List<String>>()
-    private val consumeNewsApi = ConsumeNewsApi(NewsUrl.API_KEY).usingChuckInterceptor(context)
+    private val consumeNewsApi = ConsumeNewsApi(NewsUrl.API_KEY).usingChuckInterceptor(isDebug, context)
 
     fun setupCategory() {
         val categories = mutableListOf<String>()

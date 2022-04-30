@@ -1,8 +1,8 @@
 package com.frogobox.coreapi.news
 
-import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coreapi.news.response.ArticleResponse
 import com.frogobox.coreapi.news.response.SourceResponse
+import com.frogobox.coresdk.response.FrogoDataResponse
 import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.Interceptor
 
@@ -28,9 +28,11 @@ class CNewsApi(usingScheduler: Boolean, apiKey: String) : INewsApi {
         NewsApi(null, apiKey)
     }
 
-    override fun usingChuckInterceptor(chuckerInterceptor: Interceptor): INewsApi {
-        newsApi.usingChuckInterceptor(chuckerInterceptor)
-        return this
+    override fun usingChuckInterceptor(
+        isDebug: Boolean,
+        chuckerInterceptor: Interceptor
+    ): INewsApi {
+        return newsApi.usingChuckInterceptor(isDebug, chuckerInterceptor)
     }
 
     override fun getTopHeadline(
