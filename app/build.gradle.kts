@@ -3,7 +3,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.compose") version DependencyGradle.COMPOSE_MULTIPLATFORM_VERSION
     id("kotlin-kapt")
 }
 
@@ -69,7 +68,6 @@ android {
 
     buildFeatures {
         viewBinding = true
-        compose = true
     }
 
     compileOptions {
@@ -96,17 +94,10 @@ dependencies {
     implementation(project(DependencyGradle.FROGO_PATH_CONSUME_API))
     implementation(project(DependencyGradle.FROGO_PATH_CORE_CONSUME_API))
 
-    implementation(Androidx.Core.ktx)
     implementation(Androidx.appCompat)
     implementation(Androidx.constraintLayout)
+    implementation(Androidx.Core.ktx)
     implementation(Androidx.Work.runtimeKtx)
-
-    implementation(compose.ui)
-    implementation(compose.runtime)
-    implementation(compose.preview)
-    implementation(compose.uiTooling)
-    implementation(compose.material)
-    implementation(compose.materialIconsExtended)
 
     implementation(Google.gson)
     implementation(Google.material)
@@ -126,8 +117,5 @@ dependencies {
     implementation(DependencyGradle.FROGO_SDK)
 
     kapt(GitHub.glideCompiler)
-
-    debugImplementation(compose.ui)
-    debugImplementation(compose.uiTooling)
 
 }

@@ -3,7 +3,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.compose") version DependencyGradle.COMPOSE_MULTIPLATFORM_VERSION
     id("kotlin-kapt")
     `maven-publish`
 }
@@ -38,7 +37,6 @@ android {
 
     buildFeatures {
         viewBinding = true
-        compose = true
     }
 
     compileOptions {
@@ -64,20 +62,6 @@ dependencies {
 
     api(project(DependencyGradle.FROGO_PATH_CORE_CONSUME_API))
 
-    api(Androidx.appCompat)
-    api(Androidx.preferenceKtx)
-    api(Androidx.Core.ktx)
-    api(Androidx.Work.runtimeKtx)
-    api(Androidx.Lifecycle.runtimeKtx)
-    api(Androidx.Compose.activity)
-
-    api(compose.ui)
-    api(compose.runtime)
-    api(compose.preview)
-    api(compose.uiTooling)
-    api(compose.material)
-    api(compose.materialIconsExtended)
-
     api(Google.gson)
     api(Square.Retrofit2.retrofit)
     api(Square.Retrofit2.converterGson)
@@ -89,9 +73,6 @@ dependencies {
     api(GitHub.chucker)
 
     api(DependencyGradle.FROGO_SDK)
-
-    debugImplementation(compose.ui)
-    debugImplementation(compose.uiTooling)
 
 }
 
