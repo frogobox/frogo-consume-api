@@ -7,6 +7,7 @@
 [![Scan with Detekt](https://github.com/frogobox/frogo-consume-api/actions/workflows/detekt-analysis.yml/badge.svg)](https://github.com/frogobox/frogo-consume-api/actions/workflows/detekt-analysis.yml)
 [![pages-build-deployment](https://github.com/frogobox/frogo-consume-api/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/frogobox/frogo-consume-api/actions/workflows/pages/pages-build-deployment)
 
+- Available on Google Dev Library [Click Here](https://devlibrary.withgoogle.com/products/android/repos/frogobox-frogo-consume-api)
 - SDK for anything your problem to make easier developing android apps
 - Migrate frogo-android-sdk to frogo-sdk [Click Here](https://github.com/frogobox/frogo-sdk)
 - Migrate frogo-android-ui-kit to frogo-ui [Click Here](https://github.com/frogobox/frogo-ui)
