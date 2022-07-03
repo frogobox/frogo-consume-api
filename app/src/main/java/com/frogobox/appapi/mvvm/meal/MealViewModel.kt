@@ -1,6 +1,8 @@
 package com.frogobox.appapi.mvvm.meal
 
 import android.app.Application
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.frogobox.appapi.core.BaseViewModel
 import com.frogobox.appapi.source.ApiRepository
 import com.frogobox.coreapi.ConsumeApiResponse
@@ -25,7 +27,8 @@ class MealViewModel(
     private val repository: ApiRepository
 ) : BaseViewModel(context, repository) {
 
-    val listData = FrogoMutableLiveData<List<Meal>>()
+    val _listData = MutableLiveData<List<Meal>>()
+    val listData : LiveData<List<Meal>> = _listData
 
     fun getListMeals(firstLetter: String) {
         mealApi.listAllMeal(
@@ -33,7 +36,7 @@ class MealViewModel(
             object : ConsumeApiResponse<MealResponse<Meal>> {
                 override fun onSuccess(data: MealResponse<Meal>) {
                     // on Success Request
-                    data.meals?.let { listData.postValue(it) }
+                    data.meals?.let { _listData.postValue(it) }
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String) {

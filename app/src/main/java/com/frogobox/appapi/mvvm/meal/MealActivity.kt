@@ -23,7 +23,6 @@ class MealActivity : FrogoBindActivity<ActivityMealBinding>() {
 
     override fun setupViewModel() {
         mealViewModel.apply {
-            getListMeals("b")
 
             eventShowProgress.observe(this@MealActivity) {
                 binding.progressBar.progressViewHandle(it)
@@ -43,6 +42,7 @@ class MealActivity : FrogoBindActivity<ActivityMealBinding>() {
 
     override fun onCreateExt(savedInstanceState: Bundle?) {
         setupDetailActivity("Meal Api")
+        mealViewModel.getListMeals("b")
     }
 
     private fun setupRv(data: List<Meal>) {
