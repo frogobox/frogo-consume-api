@@ -11,7 +11,7 @@ import com.frogobox.appapi.databinding.FragmentTrendingChildBinding
 import com.frogobox.coreapi.movie.MovieUrl
 import com.frogobox.coreapi.movie.model.TrendingMovie
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
-import com.frogobox.sdk.view.FrogoFragment
+import com.frogobox.sdk.view.FrogoBindFragment
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -19,7 +19,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 /**
  * A simple [Fragment] subclass.
  */
-class MovieWeekFragment : FrogoFragment<FragmentTrendingChildBinding>() {
+class MovieWeekFragment : FrogoBindFragment<FragmentTrendingChildBinding>() {
 
 
     private val movieViewModel : MovieViewModel by viewModel()
@@ -49,7 +49,7 @@ class MovieWeekFragment : FrogoFragment<FragmentTrendingChildBinding>() {
         }
     }
 
-    override fun setupOnViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreatedExt(view: View, savedInstanceState: Bundle?) {
     }
 
     private fun setupRV(data: List<TrendingMovie>) {

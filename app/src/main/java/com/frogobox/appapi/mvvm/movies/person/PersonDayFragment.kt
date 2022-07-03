@@ -13,13 +13,13 @@ import com.frogobox.coreapi.movie.model.TrendingPerson
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle
-import com.frogobox.sdk.view.FrogoFragment
+import com.frogobox.sdk.view.FrogoBindFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * A simple [Fragment] subclass.
  */
-class PersonDayFragment : FrogoFragment<FragmentTrendingChildBinding>() {
+class PersonDayFragment : FrogoBindFragment<FragmentTrendingChildBinding>() {
 
     private val personViewModel: PersonViewModel by viewModel()
 
@@ -48,7 +48,7 @@ class PersonDayFragment : FrogoFragment<FragmentTrendingChildBinding>() {
         }
     }
 
-    override fun setupOnViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreatedExt(view: View, savedInstanceState: Bundle?) {
     }
 
     private fun setupRV(data: List<TrendingPerson>) {

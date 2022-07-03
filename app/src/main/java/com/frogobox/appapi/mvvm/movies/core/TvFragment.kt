@@ -10,12 +10,12 @@ import com.frogobox.appapi.databinding.FragmentTrendingBinding
 import com.frogobox.appapi.mvvm.movies.tv.TvDayFragment
 import com.frogobox.appapi.mvvm.movies.tv.TvWeekFragment
 import com.frogobox.appapi.util.PagerAdapter
-import com.frogobox.sdk.view.FrogoFragment
+import com.frogobox.sdk.view.FrogoBindFragment
 
 /**
  * A simple [Fragment] subclass.
  */
-class TvFragment : FrogoFragment<FragmentTrendingBinding>() {
+class TvFragment : FrogoBindFragment<FragmentTrendingBinding>() {
 
     override fun setupViewBinding(
         inflater: LayoutInflater,
@@ -27,7 +27,7 @@ class TvFragment : FrogoFragment<FragmentTrendingBinding>() {
     override fun setupViewModel() {
     }
 
-    override fun setupOnViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreatedExt(view: View, savedInstanceState: Bundle?) {
         val pagerAdapter = PagerAdapter(childFragmentManager)
         pagerAdapter.setupPagerFragment(
             TvDayFragment(),

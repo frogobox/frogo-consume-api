@@ -6,9 +6,9 @@ import com.frogobox.appapi.databinding.ActivityMovieBinding
 import com.frogobox.appapi.mvvm.movies.core.MovieFragment
 import com.frogobox.appapi.mvvm.movies.core.PersonFragment
 import com.frogobox.appapi.mvvm.movies.core.TvFragment
-import com.frogobox.sdk.view.FrogoActivity
+import com.frogobox.sdk.view.FrogoBindActivity
 
-class MoviesActivity : FrogoActivity<ActivityMovieBinding>() {
+class MoviesActivity : FrogoBindActivity<ActivityMovieBinding>() {
 
     override fun setupViewBinding(): ActivityMovieBinding {
         return ActivityMovieBinding.inflate(layoutInflater)
@@ -17,7 +17,7 @@ class MoviesActivity : FrogoActivity<ActivityMovieBinding>() {
     override fun setupViewModel() {
     }
 
-    override fun setupOnCreate(savedInstanceState: Bundle?) {
+    override fun onCreateExt(savedInstanceState: Bundle?) {
         setupDetailActivity("Movie Api")
         setupToolbar()
         setupBottomNav(binding.framelayoutMainContainer.id)

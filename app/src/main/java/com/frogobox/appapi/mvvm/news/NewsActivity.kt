@@ -13,10 +13,10 @@ import com.frogobox.appapi.databinding.ContentCategoryBinding
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle
-import com.frogobox.sdk.view.FrogoActivity
+import com.frogobox.sdk.view.FrogoBindActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class NewsActivity : FrogoActivity<ActivityNewsBinding>() {
+class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
 
     private val newsViewModel: NewsViewModel by viewModel()
 
@@ -54,7 +54,7 @@ class NewsActivity : FrogoActivity<ActivityNewsBinding>() {
         }
     }
 
-    override fun setupOnCreate(savedInstanceState: Bundle?) {
+    override fun onCreateExt(savedInstanceState: Bundle?) {
         setupDetailActivity("News API")
     }
 

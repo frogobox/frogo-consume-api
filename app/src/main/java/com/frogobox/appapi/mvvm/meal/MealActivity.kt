@@ -8,12 +8,12 @@ import com.frogobox.appapi.databinding.ActivityMealBinding
 import com.frogobox.coreapi.meal.model.Meal
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.ui.databinding.FrogoRvGridType2Binding
-import com.frogobox.sdk.view.FrogoActivity
+import com.frogobox.sdk.view.FrogoBindActivity
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MealActivity : FrogoActivity<ActivityMealBinding>() {
+class MealActivity : FrogoBindActivity<ActivityMealBinding>() {
 
     private val mealViewModel: MealViewModel by viewModel()
 
@@ -41,7 +41,7 @@ class MealActivity : FrogoActivity<ActivityMealBinding>() {
 
     }
 
-    override fun setupOnCreate(savedInstanceState: Bundle?) {
+    override fun onCreateExt(savedInstanceState: Bundle?) {
         setupDetailActivity("Meal Api")
     }
 

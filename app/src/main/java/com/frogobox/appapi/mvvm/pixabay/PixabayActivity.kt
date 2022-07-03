@@ -8,12 +8,12 @@ import com.frogobox.appapi.databinding.ActivityPixabayBinding
 import com.frogobox.coreapi.pixabay.model.PixabayImage
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.ui.databinding.FrogoRvGridType1Binding
-import com.frogobox.sdk.view.FrogoActivity
+import com.frogobox.sdk.view.FrogoBindActivity
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class PixabayActivity : FrogoActivity<ActivityPixabayBinding>() {
+class PixabayActivity : FrogoBindActivity<ActivityPixabayBinding>() {
 
     private val pixabayViewModel: PixabayViewModel by viewModel()
 
@@ -41,7 +41,7 @@ class PixabayActivity : FrogoActivity<ActivityPixabayBinding>() {
         }
     }
 
-    override fun setupOnCreate(savedInstanceState: Bundle?) {
+    override fun onCreateExt(savedInstanceState: Bundle?) {
         setupDetailActivity("Pixabay Api")
     }
 

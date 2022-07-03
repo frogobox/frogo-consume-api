@@ -12,11 +12,11 @@ import com.frogobox.coreapi.movie.model.TrendingTv
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle
-import com.frogobox.sdk.view.FrogoFragment
+import com.frogobox.sdk.view.FrogoBindFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class TvDayFragment : FrogoFragment<FragmentTrendingChildBinding>() {
+class TvDayFragment : FrogoBindFragment<FragmentTrendingChildBinding>() {
 
     private val tvViewModel: TvViewModel by viewModel()
 
@@ -45,7 +45,7 @@ class TvDayFragment : FrogoFragment<FragmentTrendingChildBinding>() {
         }
     }
 
-    override fun setupOnViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreatedExt(view: View, savedInstanceState: Bundle?) {
     }
 
     private fun setupRV(data: List<TrendingTv>) {

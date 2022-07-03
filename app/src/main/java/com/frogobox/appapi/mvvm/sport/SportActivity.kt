@@ -8,12 +8,12 @@ import com.frogobox.appapi.databinding.ActivitySportBinding
 import com.frogobox.coreapi.sport.model.*
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.ui.databinding.FrogoRvGridType3Binding
-import com.frogobox.sdk.view.FrogoActivity
+import com.frogobox.sdk.view.FrogoBindActivity
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SportActivity : FrogoActivity<ActivitySportBinding>() {
+class SportActivity : FrogoBindActivity<ActivitySportBinding>() {
 
     private val sportViewModel: SportViewModel by viewModel()
 
@@ -41,7 +41,7 @@ class SportActivity : FrogoActivity<ActivitySportBinding>() {
         }
     }
 
-    override fun setupOnCreate(savedInstanceState: Bundle?) {
+    override fun onCreateExt(savedInstanceState: Bundle?) {
         setupDetailActivity("Sport Api")
     }
 
