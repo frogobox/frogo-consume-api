@@ -1,7 +1,6 @@
 package com.frogobox.appapi.mvvm.pixabay
 
 import android.app.Application
-import com.frogobox.api.pixabay.ConsumePixabayApi
 import com.frogobox.appapi.core.BaseViewModel
 import com.frogobox.appapi.source.ApiRepository
 import com.frogobox.coreapi.ConsumeApiResponse

@@ -24,7 +24,7 @@ object SportUrl {
 
     // Default Free API KEY The Sport DB API
     const val API_KEY = "2"
-    
+
     // Search for team by name & short code
     const val SEARCH_FOR_TEAM = "api/v1/json/{api_key}/searchteams.php"
 

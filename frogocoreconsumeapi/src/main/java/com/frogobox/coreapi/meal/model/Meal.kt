@@ -174,4 +174,4 @@ data class Meal(
     @SerializedName("dateModified")
     var dateModified: String? = null
 
-    )
+)

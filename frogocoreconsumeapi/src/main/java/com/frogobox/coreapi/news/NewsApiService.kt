@@ -1,10 +1,10 @@
 package com.frogobox.coreapi.news
 
-import com.frogobox.coreapi.news.response.ArticleResponse
-import com.frogobox.coreapi.news.response.SourceResponse
 import com.frogobox.coreapi.news.NewsUrl.URL_EVERYTHING
 import com.frogobox.coreapi.news.NewsUrl.URL_SOURCES
 import com.frogobox.coreapi.news.NewsUrl.URL_TOP_HEADLINE
+import com.frogobox.coreapi.news.response.ArticleResponse
+import com.frogobox.coreapi.news.response.SourceResponse
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query

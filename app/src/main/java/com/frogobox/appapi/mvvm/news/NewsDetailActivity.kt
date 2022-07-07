@@ -2,8 +2,8 @@ package com.frogobox.appapi.mvvm.news
 
 import android.os.Bundle
 import com.bumptech.glide.Glide
-import com.frogobox.coreapi.news.model.Article
 import com.frogobox.appapi.databinding.ActivityNewsDetailBinding
+import com.frogobox.coreapi.news.model.Article
 import com.frogobox.sdk.view.FrogoBindActivity
 
 class NewsDetailActivity : FrogoBindActivity<ActivityNewsDetailBinding>() {
@@ -30,7 +30,6 @@ class NewsDetailActivity : FrogoBindActivity<ActivityNewsDetailBinding>() {
             Glide.with(this@NewsDetailActivity).load(extraArticle.urlToImage).into(ivUrl)
         }
     }
-
 
 
 }

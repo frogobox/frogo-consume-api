@@ -22,7 +22,7 @@ import androidx.fragment.app.FragmentPagerAdapter
  *
  */
 
-class PagerAdapter(fragmentManager: FragmentManager): FragmentPagerAdapter(fragmentManager){
+class PagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
 
     private val fragments = ArrayList<Fragment>()
     private val titles = ArrayList<String>()

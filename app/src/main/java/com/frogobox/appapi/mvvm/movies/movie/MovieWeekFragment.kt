@@ -3,17 +3,17 @@ package com.frogobox.appapi.mvvm.movies.movie
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import androidx.fragment.app.Fragment
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ContentItemBinding
 import com.frogobox.appapi.databinding.FragmentTrendingChildBinding
 import com.frogobox.coreapi.movie.MovieUrl
 import com.frogobox.coreapi.movie.model.TrendingMovie
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
-import com.frogobox.sdk.view.FrogoBindFragment
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle
+import com.frogobox.sdk.view.FrogoBindFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -22,7 +22,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MovieWeekFragment : FrogoBindFragment<FragmentTrendingChildBinding>() {
 
 
-    private val movieViewModel : MovieViewModel by viewModel()
+    private val movieViewModel: MovieViewModel by viewModel()
 
     override fun setupViewBinding(
         inflater: LayoutInflater,
@@ -60,17 +60,23 @@ class MovieWeekFragment : FrogoBindFragment<FragmentTrendingChildBinding>() {
                 data: TrendingMovie,
                 position: Int,
                 notifyListener: FrogoRecyclerNotifyListener<TrendingMovie>
-            ) {}
+            ) {
+            }
 
             override fun onItemLongClicked(
                 binding: ContentItemBinding,
                 data: TrendingMovie,
                 position: Int,
                 notifyListener: FrogoRecyclerNotifyListener<TrendingMovie>
-            ) {}
+            ) {
+            }
 
             override fun setViewBinding(parent: ViewGroup): ContentItemBinding {
-                return ContentItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                return ContentItemBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
             }
 
             override fun setupInitComponent(

@@ -19,7 +19,7 @@ import com.google.gson.annotations.SerializedName
  * com.frogobox.frogoconsumeapi.movie.model
  *
  */
-data class CollectionImage (
+data class CollectionImage(
 
     @SerializedName("aspect_ratio")
     var aspect_ratio: Int? = null,

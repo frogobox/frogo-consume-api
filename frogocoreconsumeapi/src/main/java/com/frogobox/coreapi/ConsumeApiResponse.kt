@@ -14,6 +14,4 @@ import com.frogobox.coresdk.response.FrogoDataResponse
  * All rights reserved
  *
  */
-interface ConsumeApiResponse<T> : FrogoDataResponse<T> {
-
-}
+interface ConsumeApiResponse<T> : FrogoDataResponse<T>

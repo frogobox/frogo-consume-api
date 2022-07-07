@@ -23,7 +23,7 @@ import okhttp3.Interceptor
 interface IMealApi {
 
     // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(isDebug: Boolean, chuckerInterceptor: Interceptor) : IMealApi
+    fun usingChuckInterceptor(isDebug: Boolean, chuckerInterceptor: Interceptor): IMealApi
 
     // Search meal by name
     fun searchMeal(mealName: String, callback: FrogoDataResponse<MealResponse<Meal>>)

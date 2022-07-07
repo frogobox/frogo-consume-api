@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.frogobox.coreapi.movie.MovieUrl
 import com.frogobox.appapi.databinding.ContentItemBinding
 import com.frogobox.appapi.databinding.FragmentTrendingChildBinding
+import com.frogobox.coreapi.movie.MovieUrl
 import com.frogobox.coreapi.movie.model.TrendingPerson
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter

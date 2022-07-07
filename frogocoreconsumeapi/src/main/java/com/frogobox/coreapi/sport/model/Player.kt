@@ -79,7 +79,7 @@ import com.google.gson.annotations.SerializedName
  * com.frogobox.frogoconsumeapi.sport.data.model
  *
  */
-data class Player (
+data class Player(
 
     @SerializedName(ID_PLAYER)
     var idPlayer: String? = null,

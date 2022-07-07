@@ -10,14 +10,14 @@ import com.frogobox.appapi.databinding.FragmentTrendingChildBinding
 import com.frogobox.coreapi.movie.MovieUrl
 import com.frogobox.coreapi.movie.model.TrendingPerson
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
-import com.frogobox.sdk.view.FrogoBindFragment
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle
+import com.frogobox.sdk.view.FrogoBindFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PersonWeekFragment : FrogoBindFragment<FragmentTrendingChildBinding>() {
 
-    private val personViewModel : PersonViewModel by viewModel()
+    private val personViewModel: PersonViewModel by viewModel()
 
     override fun setupViewBinding(
         inflater: LayoutInflater,
@@ -55,17 +55,23 @@ class PersonWeekFragment : FrogoBindFragment<FragmentTrendingChildBinding>() {
                 data: TrendingPerson,
                 position: Int,
                 notifyListener: FrogoRecyclerNotifyListener<TrendingPerson>
-            ) {}
+            ) {
+            }
 
             override fun onItemLongClicked(
                 binding: ContentItemBinding,
                 data: TrendingPerson,
                 position: Int,
                 notifyListener: FrogoRecyclerNotifyListener<TrendingPerson>
-            ) {}
+            ) {
+            }
 
             override fun setViewBinding(parent: ViewGroup): ContentItemBinding {
-                return ContentItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                return ContentItemBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
             }
 
             override fun setupInitComponent(

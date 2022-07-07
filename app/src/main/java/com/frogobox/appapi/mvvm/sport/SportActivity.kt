@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ActivitySportBinding
-import com.frogobox.coreapi.sport.model.*
+import com.frogobox.coreapi.sport.model.Team
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
-import com.frogobox.ui.databinding.FrogoRvGridType3Binding
-import com.frogobox.sdk.view.FrogoBindActivity
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle
+import com.frogobox.sdk.view.FrogoBindActivity
+import com.frogobox.ui.databinding.FrogoRvGridType3Binding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SportActivity : FrogoBindActivity<ActivitySportBinding>() {
@@ -53,17 +53,23 @@ class SportActivity : FrogoBindActivity<ActivitySportBinding>() {
                 data: Team,
                 position: Int,
                 notifyListener: FrogoRecyclerNotifyListener<Team>
-            ) {}
+            ) {
+            }
 
             override fun onItemLongClicked(
                 binding: FrogoRvGridType3Binding,
                 data: Team,
                 position: Int,
                 notifyListener: FrogoRecyclerNotifyListener<Team>
-            ) {}
+            ) {
+            }
 
             override fun setViewBinding(parent: ViewGroup): FrogoRvGridType3Binding {
-                return FrogoRvGridType3Binding.inflate(LayoutInflater.from(parent.context), parent, false)
+                return FrogoRvGridType3Binding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
             }
 
             override fun setupInitComponent(

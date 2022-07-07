@@ -35,7 +35,7 @@ data class MovieChangeItem(
 
     @SerializedName("value")
     var value: String? = null,
-    
+
     @SerializedName("original_value")
     var original_value: String? = null
 

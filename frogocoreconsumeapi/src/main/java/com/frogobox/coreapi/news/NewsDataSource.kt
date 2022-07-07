@@ -26,7 +26,7 @@ import okhttp3.Interceptor
 interface NewsDataSource {
 
     // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(isDebug: Boolean, chuckerInterceptor: Interceptor) : NewsDataSource
+    fun usingChuckInterceptor(isDebug: Boolean, chuckerInterceptor: Interceptor): NewsDataSource
 
     // Get Top Headline
     fun getTopHeadline(

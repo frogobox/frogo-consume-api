@@ -15,5 +15,5 @@ import com.frogobox.appapi.BuildConfig
  * All rights reserved
  *
  */
- 
+
 val isDebug = BuildConfig.DEBUG

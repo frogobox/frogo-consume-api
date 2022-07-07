@@ -19,7 +19,7 @@ import com.google.gson.annotations.SerializedName
  * com.frogobox.frogoconsumeapi.movie.model
  *
  */
-data class Change (
+data class Change(
 
     @SerializedName("id")
     var id: Int? = null,

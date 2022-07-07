@@ -35,5 +35,5 @@ object SportConstant {
     const val QUERY_ROUND = "r"
     const val QUERY_ID = "id"
     const val QUERY_USER_LOVED = "u"
-    
+
 }

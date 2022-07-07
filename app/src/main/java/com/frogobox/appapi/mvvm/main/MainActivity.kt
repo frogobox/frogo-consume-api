@@ -14,8 +14,8 @@ import com.frogobox.appapi.mvvm.sport.SportActivity
 import com.frogobox.appapi.util.Constant
 import com.frogobox.appapi.util.Helper
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
-import com.frogobox.sdk.view.FrogoBindActivity
 import com.frogobox.recycler.core.IFrogoBindingAdapter
+import com.frogobox.sdk.view.FrogoBindActivity
 
 class MainActivity : FrogoBindActivity<ActivityMainBinding>() {
 
@@ -51,7 +51,8 @@ class MainActivity : FrogoBindActivity<ActivityMainBinding>() {
                 data: MainModel,
                 position: Int,
                 notifyListener: FrogoRecyclerNotifyListener<MainModel>
-            ) {}
+            ) {
+            }
 
             override fun setViewBinding(parent: ViewGroup): ItemMainBinding {
                 return ItemMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)

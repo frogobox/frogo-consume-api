@@ -8,7 +8,6 @@ import com.frogobox.appapi.source.ApiRepository
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.meal.model.Meal
 import com.frogobox.coreapi.meal.response.MealResponse
-import com.frogobox.sdk.util.FrogoMutableLiveData
 
 /*
  * Created by faisalamir on 28/07/21
@@ -28,7 +27,7 @@ class MealViewModel(
 ) : BaseViewModel(context, repository) {
 
     val _listData = MutableLiveData<List<Meal>>()
-    val listData : LiveData<List<Meal>> = _listData
+    val listData: LiveData<List<Meal>> = _listData
 
     fun getListMeals(firstLetter: String) {
         mealApi.listAllMeal(

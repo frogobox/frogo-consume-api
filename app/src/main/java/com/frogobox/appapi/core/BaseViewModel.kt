@@ -26,8 +26,10 @@ open class BaseViewModel(
 
     protected val newsApi = repository.consumeNewsApi().usingChuckInterceptor(isDebug, context)
     protected val movieApi = repository.consumeMovieApi().usingChuckInterceptor(isDebug, context)
-    protected val pixabayApi = repository.consumePixabayApi().usingChuckInterceptor(isDebug, context)
-    protected val sportApi = repository.consumeTheSportDbApi().usingChuckInterceptor(isDebug, context)
+    protected val pixabayApi =
+        repository.consumePixabayApi().usingChuckInterceptor(isDebug, context)
+    protected val sportApi =
+        repository.consumeTheSportDbApi().usingChuckInterceptor(isDebug, context)
     protected val mealApi = repository.consumeTheMealDbApi().usingChuckInterceptor(isDebug, context)
 
 }

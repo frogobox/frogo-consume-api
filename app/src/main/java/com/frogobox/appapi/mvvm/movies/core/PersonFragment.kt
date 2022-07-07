@@ -3,8 +3,8 @@ package com.frogobox.appapi.mvvm.movies.core
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import androidx.fragment.app.Fragment
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.frogobox.appapi.R
 import com.frogobox.appapi.databinding.FragmentTrendingBinding
 import com.frogobox.appapi.mvvm.movies.person.PersonDayFragment

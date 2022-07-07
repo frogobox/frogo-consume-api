@@ -1,11 +1,6 @@
 package com.frogobox.coreapi.movie.response
 
-import com.frogobox.coreapi.movie.model.TvDetailsCreatedBy
-import com.frogobox.coreapi.movie.model.TvDetailsGenre
-import com.frogobox.coreapi.movie.model.TvDetailsLastEpisodeToAir
-import com.frogobox.coreapi.movie.model.TvDetailsNetwork
-import com.frogobox.coreapi.movie.model.TvDetailsProductionCompany
-import com.frogobox.coreapi.movie.model.TvDetailsSeason
+import com.frogobox.coreapi.movie.model.*
 
 data class TvDetails(
     val backdrop_path: String?,

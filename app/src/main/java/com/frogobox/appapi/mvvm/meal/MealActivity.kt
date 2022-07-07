@@ -7,10 +7,10 @@ import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ActivityMealBinding
 import com.frogobox.coreapi.meal.model.Meal
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
-import com.frogobox.ui.databinding.FrogoRvGridType2Binding
-import com.frogobox.sdk.view.FrogoBindActivity
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle
+import com.frogobox.sdk.view.FrogoBindActivity
+import com.frogobox.ui.databinding.FrogoRvGridType2Binding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MealActivity : FrogoBindActivity<ActivityMealBinding>() {

@@ -19,7 +19,7 @@ import com.google.gson.annotations.SerializedName
  * com.frogobox.frogoconsumeapi.meal.data.response
  *
  */
-data class MealResponse<T> (
+data class MealResponse<T>(
 
     @SerializedName("meals")
     var meals: List<T>? = null

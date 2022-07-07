@@ -7,10 +7,10 @@ import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ActivityPixabayBinding
 import com.frogobox.coreapi.pixabay.model.PixabayImage
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
-import com.frogobox.ui.databinding.FrogoRvGridType1Binding
-import com.frogobox.sdk.view.FrogoBindActivity
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle
+import com.frogobox.sdk.view.FrogoBindActivity
+import com.frogobox.ui.databinding.FrogoRvGridType1Binding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PixabayActivity : FrogoBindActivity<ActivityPixabayBinding>() {
@@ -53,14 +53,16 @@ class PixabayActivity : FrogoBindActivity<ActivityPixabayBinding>() {
                 data: PixabayImage,
                 position: Int,
                 notifyListener: FrogoRecyclerNotifyListener<PixabayImage>
-            ) {}
+            ) {
+            }
 
             override fun onItemLongClicked(
                 binding: FrogoRvGridType1Binding,
                 data: PixabayImage,
                 position: Int,
                 notifyListener: FrogoRecyclerNotifyListener<PixabayImage>
-            ) {}
+            ) {
+            }
 
             override fun setViewBinding(parent: ViewGroup): FrogoRvGridType1Binding {
                 return FrogoRvGridType1Binding.inflate(
