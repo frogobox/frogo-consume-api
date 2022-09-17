@@ -106,8 +106,6 @@ dependencies {
     implementation(Koin.android)
     implementation(Koin.androidCompat)
     implementation(Koin.androidxWorkManager)
-    implementation(Koin.androidxCompose)
-    implementation(Koin.ktor)
 
     implementation(GitHub.glide)
     implementation(Util.hdodenhofCircleImageView)
