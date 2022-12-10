@@ -15,18 +15,18 @@
 - License [Click Here](https://github.com/frogobox/frogo-consume-api/blob/master/LICENSE)
 
 ## Screen Shoot
-| The Meals API      |   Chuck Data 1               |   Chuck Data 2        |
-|:------------------:|:----------------------------:|:---------------------:|
+|                             The Meals API                             |                               Chuck Data 1                               |                               Chuck Data 2                               |
+|:---------------------------------------------------------------------:|:------------------------------------------------------------------------:|:------------------------------------------------------------------------:|
 | <img width="200px" height="360px" src="docs/image/meals/ss_main.png"> | <img width="200px" height="360px" src="docs/image/meals/ss_chuck_1.png"> | <img width="200px" height="360px" src="docs/image/meals/ss_chuck_2.png"> |
 
-|TV                  |   Movie                      |     Person            |
-|:------------------:|:----------------------------:|:---------------------:|
+|                                 TV                                  |                                 Movie                                  |                                 Person                                  |
+|:-------------------------------------------------------------------:|:----------------------------------------------------------------------:|:-----------------------------------------------------------------------:|
 | <img width="200px" height="360px" src="docs/image/movie/ss_tv.png"> | <img width="200px" height="360px" src="docs/image/movie/ss_movie.png"> | <img width="200px" height="360px" src="docs/image/movie/ss_person.png"> |
 
 ## Version Release
 This Is Latest Release
 
-    $version_release = 2.4.1
+    $version_release = 2.4.2
 
 What's New??
 
@@ -73,20 +73,20 @@ allprojects {
 
     dependencies {
         // library frogo-consume-api
-        implementation 'com.github.frogobox:frogo-consume-api:2.4.1'
+        implementation 'com.github.frogobox:frogo-consume-api:2.4.2'
 
         // library frogo-consume-api for desktop
-        implementation 'com.github.frogobox.frogo-consume-api:frogocoreconsumeapi:2.4.1'
+        implementation 'com.github.frogobox.frogo-consume-api:frogocoreconsumeapi:2.4.2'
     }
 
 #### <Option 2> Kotlin DSL Gradle
 
     dependencies {
         // library frogo-consume-api
-        implementation("com.github.frogobox:frogo-consume-api:2.4.1")
+        implementation("com.github.frogobox:frogo-consume-api:2.4.2")
 
         // library frogo-consume-api for desktop
-        implementation("com.github.frogobox.frogo-consume-api:frogocoreconsumeapi:2.4.1")
+        implementation("com.github.frogobox.frogo-consume-api:frogocoreconsumeapi:2.4.2")
     }
 
 
