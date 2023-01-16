@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ActivityNewsDetailBinding
 import com.frogobox.coreapi.news.model.Article
+import com.frogobox.sdk.ext.getExtraDataExt
 import com.frogobox.sdk.view.FrogoBindActivity
 
 class NewsDetailActivity : FrogoBindActivity<ActivityNewsDetailBinding>() {
@@ -22,7 +23,7 @@ class NewsDetailActivity : FrogoBindActivity<ActivityNewsDetailBinding>() {
     override fun onCreateExt(savedInstanceState: Bundle?) {
         setupDetailActivity("Detail Berita")
 
-        val extraArticle = frogoGetExtraData<Article>(EXTRA_DATA)
+        val extraArticle = getExtraDataExt<Article>(EXTRA_DATA)
         binding.apply {
             tvTitle.text = extraArticle.title
             tvSource.text = extraArticle.source?.name ?: ""

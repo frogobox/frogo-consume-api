@@ -21,22 +21,7 @@ tasks.withType<KotlinCompile> {
 }
 
 dependencies {
-
-    api(Google.gson)
-
-    api(Square.OkHttp.okhttp)
-    api(Square.OkHttp.loggingInterceptor)
-
-    api(Square.Retrofit2.retrofit)
-    api(Square.Retrofit2.converterGson)
-    api(Square.Retrofit2.adapterRxJava3)
-
-    api(Reactivex.rxJava3)
-
-    api(Koin.core)
-
     api(DependencyGradle.FROGO_SDK_CORE)
-
 }
 
 publishing {

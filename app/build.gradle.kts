@@ -90,30 +90,9 @@ android {
 }
 
 dependencies {
-
     implementation(project(DependencyGradle.FROGO_PATH_CONSUME_API))
     implementation(project(DependencyGradle.FROGO_PATH_CORE_CONSUME_API))
-
-    implementation(Androidx.appCompat)
-    implementation(Androidx.constraintLayout)
-    implementation(Androidx.Core.ktx)
-    implementation(Androidx.Work.runtimeKtx)
-
-    implementation(Google.gson)
-    implementation(Google.material)
-
-    implementation(Koin.core)
-    implementation(Koin.android)
-    implementation(Koin.androidCompat)
-    implementation(Koin.androidxWorkManager)
-
-    implementation(GitHub.glide)
-    implementation(Util.hdodenhofCircleImageView)
-
     implementation(DependencyGradle.FROGO_RECYCLER_VIEW)
     implementation(DependencyGradle.FROGO_UI)
     implementation(DependencyGradle.FROGO_SDK)
-
-    kapt(GitHub.glideCompiler)
-
 }

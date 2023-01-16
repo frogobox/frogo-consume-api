@@ -15,6 +15,7 @@ import com.frogobox.appapi.util.Constant
 import com.frogobox.appapi.util.Helper
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
+import com.frogobox.sdk.ext.startActivityExt
 import com.frogobox.sdk.view.FrogoBindActivity
 
 class MainActivity : FrogoBindActivity<ActivityMainBinding>() {
@@ -83,19 +84,19 @@ class MainActivity : FrogoBindActivity<ActivityMainBinding>() {
     private fun setupIntentActivity(codeActivity: Int, data: MainModel) {
         when (codeActivity) {
             0 -> {
-                frogoStartActivity<NewsActivity, MainModel>(Constant.EXTRA_MAIN, data)
+                startActivityExt<NewsActivity, MainModel>(Constant.EXTRA_MAIN, data)
             }
             1 -> {
-                frogoStartActivity<MoviesActivity, MainModel>(Constant.EXTRA_MAIN, data)
+                startActivityExt<MoviesActivity, MainModel>(Constant.EXTRA_MAIN, data)
             }
             2 -> {
-                frogoStartActivity<SportActivity, MainModel>(Constant.EXTRA_MAIN, data)
+                startActivityExt<SportActivity, MainModel>(Constant.EXTRA_MAIN, data)
             }
             3 -> {
-                frogoStartActivity<MealActivity, MainModel>(Constant.EXTRA_MAIN, data)
+                startActivityExt<MealActivity, MainModel>(Constant.EXTRA_MAIN, data)
             }
             4 -> {
-                frogoStartActivity<PixabayActivity, MainModel>(Constant.EXTRA_MAIN, data)
+                startActivityExt<PixabayActivity, MainModel>(Constant.EXTRA_MAIN, data)
             }
         }
 

@@ -59,21 +59,8 @@ android {
 }
 
 dependencies {
-
     api(project(DependencyGradle.FROGO_PATH_CORE_CONSUME_API))
-
-    api(Google.gson)
-    api(Square.Retrofit2.retrofit)
-    api(Square.Retrofit2.converterGson)
-    api(Square.Retrofit2.adapterRxJava3)
-
-    api(Reactivex.rxJava3)
-    api(Reactivex.rxAndroid3)
-
-    api(GitHub.chucker)
-
     api(DependencyGradle.FROGO_SDK)
-
 }
 
 afterEvaluate {

@@ -13,6 +13,7 @@ import com.frogobox.coreapi.news.model.Article
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle
+import com.frogobox.sdk.ext.startActivityExt
 import com.frogobox.sdk.view.FrogoBindActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -113,7 +114,7 @@ class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
                 position: Int,
                 notifyListener: FrogoRecyclerNotifyListener<Article>
             ) {
-                frogoStartActivity<NewsDetailActivity, Article>(NewsDetailActivity.EXTRA_DATA, data)
+                startActivityExt<NewsDetailActivity, Article>(NewsDetailActivity.EXTRA_DATA, data)
             }
 
             override fun onItemLongClicked(
@@ -165,7 +166,7 @@ class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
                 position: Int,
                 notifyListener: FrogoRecyclerNotifyListener<Article>
             ) {
-                frogoStartActivity<NewsDetailActivity, Article>(NewsDetailActivity.EXTRA_DATA, data)
+                startActivityExt<NewsDetailActivity, Article>(NewsDetailActivity.EXTRA_DATA, data)
             }
 
             override fun onItemLongClicked(
