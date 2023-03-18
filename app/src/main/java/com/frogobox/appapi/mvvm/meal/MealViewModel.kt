@@ -1,10 +1,11 @@
 package com.frogobox.appapi.mvvm.meal
 
-import android.app.Application
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.frogobox.appapi.core.BaseViewModel
 import com.frogobox.appapi.source.ApiRepository
+import com.frogobox.appapi.util.isDebug
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.meal.model.Meal
 import com.frogobox.coreapi.meal.response.MealResponse
@@ -22,14 +23,14 @@ import com.frogobox.coreapi.meal.response.MealResponse
  *
  */
 class MealViewModel(
-    private val context: Application,
     private val repository: ApiRepository
-) : BaseViewModel(context, repository) {
+) : BaseViewModel() {
 
     val _listData = MutableLiveData<List<Meal>>()
     val listData: LiveData<List<Meal>> = _listData
 
-    fun getListMeals(firstLetter: String) {
+    fun getListMeals(context: Context, firstLetter: String) {
+        val mealApi = repository.consumeTheMealDbApi().usingChuckInterceptor(isDebug, context)
         mealApi.listAllMeal(
             firstLetter,
             object : ConsumeApiResponse<MealResponse<Meal>> {
@@ -40,21 +41,22 @@ class MealViewModel(
 
                 override fun onFailed(statusCode: Int, errorMessage: String) {
                     // on Failed
-                    eventFailed.postValue(errorMessage)
+                    _eventFailed.postValue(errorMessage)
                 }
 
                 override fun onFinish() {
-
+                    // on Finish
+                    _eventFinishState.postValue(true)
                 }
 
                 override fun onShowProgress() {
                     // Show Your Progress View
-                    eventShowProgress.postValue(true)
+                    _eventShowProgressState.postValue(true)
                 }
 
                 override fun onHideProgress() {
                     // Hide Your Progress View
-                    eventShowProgress.postValue(false)
+                    _eventShowProgressState.postValue(false)
                 }
             })
     }

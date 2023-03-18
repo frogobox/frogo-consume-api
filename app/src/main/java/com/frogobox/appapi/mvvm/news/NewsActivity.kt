@@ -13,6 +13,7 @@ import com.frogobox.coreapi.news.model.Article
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle
+import com.frogobox.sdk.ext.showToast
 import com.frogobox.sdk.ext.startActivityExt
 import com.frogobox.sdk.view.FrogoBindActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -32,7 +33,7 @@ class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
             getTopHeadline(NewsConstant.CATEGORY_HEALTH)
             setupCategory()
 
-            eventShowProgress.observe(this@NewsActivity) {
+            eventShowProgressState.observe(this@NewsActivity) {
                 binding.progressView.progressViewHandle(it)
             }
 

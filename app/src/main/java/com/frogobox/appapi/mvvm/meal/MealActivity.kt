@@ -9,6 +9,7 @@ import com.frogobox.coreapi.meal.model.Meal
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle
+import com.frogobox.sdk.ext.showToast
 import com.frogobox.sdk.view.FrogoBindActivity
 import com.frogobox.ui.databinding.FrogoRvGridType2Binding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -24,7 +25,7 @@ class MealActivity : FrogoBindActivity<ActivityMealBinding>() {
     override fun setupViewModel() {
         mealViewModel.apply {
 
-            eventShowProgress.observe(this@MealActivity) {
+            eventShowProgressState.observe(this@MealActivity) {
                 binding.progressBar.progressViewHandle(it)
             }
 
@@ -42,7 +43,7 @@ class MealActivity : FrogoBindActivity<ActivityMealBinding>() {
 
     override fun onCreateExt(savedInstanceState: Bundle?) {
         setupDetailActivity("Meal Api")
-        mealViewModel.getListMeals("b")
+        mealViewModel.getListMeals(this, "b")
     }
 
     private fun setupRv(data: List<Meal>) {

@@ -9,6 +9,7 @@ import com.frogobox.coreapi.pixabay.model.PixabayImage
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle
+import com.frogobox.sdk.ext.showToast
 import com.frogobox.sdk.view.FrogoBindActivity
 import com.frogobox.ui.databinding.FrogoRvGridType1Binding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -24,9 +25,9 @@ class PixabayActivity : FrogoBindActivity<ActivityPixabayBinding>() {
     override fun setupViewModel() {
         pixabayViewModel.apply {
 
-            searchImage("Nature")
+            searchImage(this@PixabayActivity, "Nature")
 
-            eventShowProgress.observe(this@PixabayActivity) {
+            eventShowProgressState.observe(this@PixabayActivity) {
                 binding.progressBar.progressViewHandle(it)
             }
 

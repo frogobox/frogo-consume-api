@@ -1,7 +1,7 @@
 package com.frogobox.appapi.mvvm.movies.person
 
 import android.app.Application
-import com.frogobox.appapi.core.BaseViewModel
+import com.frogobox.appapi.mvvm.movies.core.BaseMovieApiViewModel
 import com.frogobox.appapi.source.ApiRepository
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.movie.model.TrendingPerson
@@ -23,7 +23,7 @@ import com.frogobox.sdk.util.FrogoMutableLiveData
 class PersonViewModel(
     private val context: Application,
     private val repository: ApiRepository
-) : BaseViewModel(context, repository) {
+) : BaseMovieApiViewModel(context, repository) {
 
     val listDataDay = FrogoMutableLiveData<List<TrendingPerson>>()
     val listDataWeek = FrogoMutableLiveData<List<TrendingPerson>>()
@@ -37,7 +37,7 @@ class PersonViewModel(
 
             override fun onFailed(statusCode: Int, errorMessage: String) {
                 // Your failed to do
-                eventFailed.postValue(errorMessage)
+                _eventFailed.postValue(errorMessage)
             }
 
             override fun onFinish() {
@@ -45,12 +45,12 @@ class PersonViewModel(
 
             override fun onShowProgress() {
                 // Your Progress Show
-                eventShowProgress.postValue(true)
+                _eventShowProgressState.postValue(true)
             }
 
             override fun onHideProgress() {
                 // Your Progress Hide
-                eventShowProgress.postValue(false)
+                _eventShowProgressState.postValue(false)
             }
 
         })
@@ -65,7 +65,7 @@ class PersonViewModel(
 
             override fun onFailed(statusCode: Int, errorMessage: String) {
                 // Your failed to do
-                eventFailed.postValue(errorMessage)
+                _eventFailed.postValue(errorMessage)
             }
 
             override fun onFinish() {
@@ -74,12 +74,12 @@ class PersonViewModel(
 
             override fun onShowProgress() {
                 // Your Progress Show
-                eventShowProgress.postValue(true)
+                _eventShowProgressState.postValue(true)
             }
 
             override fun onHideProgress() {
                 // Your Progress Hide
-                eventShowProgress.postValue(false)
+                _eventShowProgressState.postValue(false)
             }
 
         })

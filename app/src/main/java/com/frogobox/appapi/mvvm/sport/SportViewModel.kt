@@ -1,12 +1,14 @@
 package com.frogobox.appapi.mvvm.sport
 
-import android.app.Application
+import android.content.Context
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.frogobox.appapi.core.BaseViewModel
 import com.frogobox.appapi.source.ApiRepository
+import com.frogobox.appapi.util.isDebug
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.sport.model.Team
 import com.frogobox.coreapi.sport.response.Teams
-import com.frogobox.sdk.util.FrogoMutableLiveData
 
 /*
  * Created by faisalamir on 28/07/21
@@ -21,22 +23,23 @@ import com.frogobox.sdk.util.FrogoMutableLiveData
  *
  */
 class SportViewModel(
-    private val context: Application,
-    private val repository: ApiRepository
-) : BaseViewModel(context, repository) {
+    private val repository: ApiRepository,
+) : BaseViewModel() {
 
-    val listData = FrogoMutableLiveData<List<Team>>()
+    private var _listData = MutableLiveData<List<Team>>()
+    var listData: LiveData<List<Team>> = _listData
 
-    fun searchAllTeam() {
+    fun searchAllTeam(context: Context) {
+        val sportApi = repository.consumeTheSportDbApi().usingChuckInterceptor(isDebug, context)
         sportApi.searchAllTeam("English Premier League",
             object : ConsumeApiResponse<Teams> {
                 override fun onSuccess(data: Teams) {
-                    data.teams?.let { listData.postValue(it) }
+                    data.teams?.let { _listData.postValue(it) }
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String) {
                     // failed result
-                    eventFailed.postValue(errorMessage)
+                    _eventFailed.postValue(errorMessage)
                 }
 
                 override fun onFinish() {
@@ -45,12 +48,12 @@ class SportViewModel(
 
                 override fun onShowProgress() {
                     // showing your progress view
-                    eventShowProgress.postValue(true)
+                    _eventShowProgressState.postValue(true)
                 }
 
                 override fun onHideProgress() {
                     // hiding your progress view
-                    eventShowProgress.postValue(false)
+                    _eventShowProgressState.postValue(false)
                 }
             })
 

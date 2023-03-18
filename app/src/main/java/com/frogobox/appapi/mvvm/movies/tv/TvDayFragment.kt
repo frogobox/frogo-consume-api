@@ -12,6 +12,7 @@ import com.frogobox.coreapi.movie.model.TrendingTv
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle
+import com.frogobox.sdk.ext.showToast
 import com.frogobox.sdk.view.FrogoBindFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -31,12 +32,12 @@ class TvDayFragment : FrogoBindFragment<FragmentTrendingChildBinding>() {
         tvViewModel.apply {
             getTrendingTvDay()
 
-            eventShowProgress.observe(viewLifecycleOwner) {
+            eventShowProgressState.observe(viewLifecycleOwner) {
                 binding.progressView.progressViewHandle(it)
             }
 
             eventFailed.observe(viewLifecycleOwner) {
-                showToast(it)
+                requireContext().showToast(it)
             }
 
             listDataDay.observe(viewLifecycleOwner) {

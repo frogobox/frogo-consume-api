@@ -1,8 +1,11 @@
 package com.frogobox.appapi.mvvm.news
 
-import android.app.Application
+import android.content.Context
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.frogobox.appapi.core.BaseViewModel
 import com.frogobox.appapi.source.ApiRepository
+import com.frogobox.appapi.util.isDebug
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreapi.news.NewsConstant.CATEGORY_BUSINESS
 import com.frogobox.coreapi.news.NewsConstant.CATEGORY_ENTERTAIMENT
@@ -14,7 +17,7 @@ import com.frogobox.coreapi.news.NewsConstant.CATEGORY_TECHNOLOGY
 import com.frogobox.coreapi.news.NewsConstant.COUNTRY_ID
 import com.frogobox.coreapi.news.model.Article
 import com.frogobox.coreapi.news.response.ArticleResponse
-import com.frogobox.sdk.util.FrogoMutableLiveData
+import com.frogobox.sdk.ext.showLogDebug
 
 /*
  * Created by faisalamir on 28/07/21
@@ -29,13 +32,20 @@ import com.frogobox.sdk.util.FrogoMutableLiveData
  *
  */
 class NewsViewModel(
-    private val context: Application,
-    private val repository: ApiRepository
-) : BaseViewModel(context, repository) {
+    private val context: Context,
+    private val repository: ApiRepository,
+) : BaseViewModel() {
 
-    val listDataCategory = FrogoMutableLiveData<List<Article>>()
-    val listData = FrogoMutableLiveData<List<Article>>()
-    val listCategory = FrogoMutableLiveData<List<String>>()
+    private var _listDataCategory = MutableLiveData<List<Article>>()
+    var listDataCategory: LiveData<List<Article>> = _listDataCategory
+
+    private var _listData = MutableLiveData<List<Article>>()
+    var listData: LiveData<List<Article>> = _listData
+
+    private var _listCategory = MutableLiveData<List<String>>()
+    var listCategory : LiveData<List<String>> = _listCategory
+
+    val newsApi = repository.consumeNewsApi().usingChuckInterceptor(isDebug, context)
 
     fun setupCategory() {
         val categories = mutableListOf<String>()
@@ -46,7 +56,7 @@ class NewsViewModel(
         categories.add(CATEGORY_SCIENCE)
         categories.add(CATEGORY_SPORTS)
         categories.add(CATEGORY_TECHNOLOGY)
-        listCategory.postValue(categories)
+        _listCategory.postValue(categories)
     }
 
     fun getTopHeadline(category: String) {
@@ -61,12 +71,12 @@ class NewsViewModel(
 
                 override fun onSuccess(data: ArticleResponse) {
                     // Your Ui or data
-                    data.articles?.let { listDataCategory.postValue(it) }
+                    data.articles?.let { _listDataCategory.postValue(it) }
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String) {
                     // Your failed to do
-                    eventFailed.postValue(errorMessage)
+                    _eventFailed.postValue(errorMessage)
                 }
 
                 override fun onFinish() {
@@ -76,13 +86,13 @@ class NewsViewModel(
                 override fun onShowProgress() {
                     // Your Progress Show
                     showLogDebug("onShowProgress --------------------------------------------------->")
-                    eventShowProgress.postValue(true)
+                    _eventShowProgressState.postValue(true)
                 }
 
                 override fun onHideProgress() {
                     // Your Progress Hide
                     showLogDebug("onHideProgress --------------------------------------------------->")
-                    eventShowProgress.postValue(false)
+                    _eventShowProgressState.postValue(false)
                 }
             })
     }
@@ -99,12 +109,12 @@ class NewsViewModel(
 
                 override fun onSuccess(data: ArticleResponse) {
                     // Your Ui or data
-                    data.articles?.let { listData.postValue(it) }
+                    data.articles?.let { _listData.postValue(it) }
                 }
 
                 override fun onFailed(statusCode: Int, errorMessage: String) {
                     // Your failed to do
-                    eventFailed.postValue(errorMessage)
+                    _eventFailed.postValue(errorMessage)
                 }
 
                 override fun onFinish() {
@@ -114,13 +124,13 @@ class NewsViewModel(
                 override fun onShowProgress() {
                     // Your Progress Show
                     showLogDebug("onShowProgress --------------------------------------------------->")
-                    eventShowProgress.postValue(true)
+                    _eventShowProgressState.postValue(true)
                 }
 
                 override fun onHideProgress() {
                     // Your Progress Hide
                     showLogDebug("onHideProgress --------------------------------------------------->")
-                    eventShowProgress.postValue(false)
+                    _eventShowProgressState.postValue(false)
                 }
 
             })

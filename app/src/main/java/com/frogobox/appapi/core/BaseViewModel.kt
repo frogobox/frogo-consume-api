@@ -1,9 +1,6 @@
 package com.frogobox.appapi.core
 
-import android.app.Application
-import com.frogobox.appapi.source.ApiRepository
-import com.frogobox.appapi.util.isDebug
-import com.frogobox.sdk.view.FrogoViewModel
+import com.frogobox.sdk.view.FrogoViewModel2
 
 
 /*
@@ -19,17 +16,6 @@ import com.frogobox.sdk.view.FrogoViewModel
  *
  */
 
-open class BaseViewModel(
-    private val context: Application,
-    private val repository: ApiRepository
-) : FrogoViewModel(context) {
-
-    protected val newsApi = repository.consumeNewsApi().usingChuckInterceptor(isDebug, context)
-    protected val movieApi = repository.consumeMovieApi().usingChuckInterceptor(isDebug, context)
-    protected val pixabayApi =
-        repository.consumePixabayApi().usingChuckInterceptor(isDebug, context)
-    protected val sportApi =
-        repository.consumeTheSportDbApi().usingChuckInterceptor(isDebug, context)
-    protected val mealApi = repository.consumeTheMealDbApi().usingChuckInterceptor(isDebug, context)
+open class BaseViewModel : FrogoViewModel2() {
 
 }

@@ -95,4 +95,5 @@ dependencies {
     implementation(DependencyGradle.FROGO_RECYCLER_VIEW)
     implementation(DependencyGradle.FROGO_UI)
     implementation(DependencyGradle.FROGO_SDK)
+    implementation(Util.hdodenhofCircleImageView)
 }
