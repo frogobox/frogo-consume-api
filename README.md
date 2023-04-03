@@ -26,7 +26,7 @@
 ## Version Release
 This Is Latest Release
 
-    $version_release = 2.4.4
+    $version_release = 2.4.5
 
 What's New??
 
@@ -73,20 +73,20 @@ allprojects {
 
     dependencies {
         // library frogo-consume-api
-        implementation 'com.github.frogobox:frogo-consume-api:2.4.4'
+        implementation 'com.github.frogobox:frogo-consume-api:2.4.5'
 
         // library frogo-consume-api for desktop
-        implementation 'com.github.frogobox.frogo-consume-api:frogocoreconsumeapi:2.4.4'
+        implementation 'com.github.frogobox.frogo-consume-api:frogocoreconsumeapi:2.4.5'
     }
 
 #### <Option 2> Kotlin DSL Gradle
 
     dependencies {
         // library frogo-consume-api
-        implementation("com.github.frogobox:frogo-consume-api:2.4.4")
+        implementation("com.github.frogobox:frogo-consume-api:2.4.5")
 
         // library frogo-consume-api for desktop
-        implementation("com.github.frogobox.frogo-consume-api:frogocoreconsumeapi:2.4.4")
+        implementation("com.github.frogobox.frogo-consume-api:frogocoreconsumeapi:2.4.5")
     }
 
 
@@ -103,9 +103,9 @@ Eliminates the method of retrieving json data using retrofit repeatedly. so this
 https://newsapi.org/
 
 ### Screenshoot Apps
-| News API           |   Chuck Data 1               |   Chuck Data 2        |
-|:------------------:|:----------------------------:|:---------------------:|
-|<img width="200px" height="360px" src="docs/image/news/ss_main.png"> | <img width="200px" height="360px" src="docs/image/news/ss_chuck_1.png"> | <img width="200px" height="360px" src="docs/image/news/ss_chuck_2.png"> |
+|                               News API                               |                              Chuck Data 1                               |                              Chuck Data 2                               |
+|:--------------------------------------------------------------------:|:-----------------------------------------------------------------------:|:-----------------------------------------------------------------------:|
+| <img width="200px" height="360px" src="docs/image/news/ss_main.png"> | <img width="200px" height="360px" src="docs/image/news/ss_chuck_1.png"> | <img width="200px" height="360px" src="docs/image/news/ss_chuck_2.png"> |
 
 ### Declaration ConsumeNewsApi
 
@@ -203,8 +203,8 @@ Eliminates the method of retrieving json data using retrofit repeatedly. so this
 https://www.themealdb.com/api.php
 
 ### Screen Shoot Apps
-| The Meals API      |   Chuck Data 1               |   Chuck Data 2        |
-|:------------------:|:----------------------------:|:---------------------:|
+|                             The Meals API                             |                               Chuck Data 1                               |                               Chuck Data 2                               |
+|:---------------------------------------------------------------------:|:------------------------------------------------------------------------:|:------------------------------------------------------------------------:|
 | <img width="200px" height="360px" src="docs/image/meals/ss_main.png"> | <img width="200px" height="360px" src="docs/image/meals/ss_chuck_1.png"> | <img width="200px" height="360px" src="docs/image/meals/ss_chuck_2.png"> |
     
 
@@ -285,9 +285,9 @@ Eliminates the method of retrieving json data using retrofit repeatedly. so this
 https://pixabay.com/api/docs/
 
 ### Screen Shoot Apps
-| Pixabay API        |   Chuck Data 1               |   Chuck Data 2        |
-|:------------------:|:----------------------------:|:---------------------:|
-| <img width="200px" height="360px" src="docs/image/pixabay/ss_main.png"> | <img width="200px" height="360px" src="docs/image/pixabay/ss_chuck_1.png">| <img width="200px" height="360px" src="docs/image/pixabay/ss_chuck_2.png"> |
+|                               Pixabay API                               |                                Chuck Data 1                                |                                Chuck Data 2                                |
+|:-----------------------------------------------------------------------:|:--------------------------------------------------------------------------:|:--------------------------------------------------------------------------:|
+| <img width="200px" height="360px" src="docs/image/pixabay/ss_main.png"> | <img width="200px" height="360px" src="docs/image/pixabay/ss_chuck_1.png"> | <img width="200px" height="360px" src="docs/image/pixabay/ss_chuck_2.png"> |
 
 ### Declaration ConsumePixabayApi
 
@@ -383,9 +383,9 @@ https://www.thesportsdb.com/api.php
 
 ### Screenshoot Apps
 
-| The Sport DB API   |   Chuck Data 1               |   Chuck Data 2        |
-|:------------------:|:----------------------------:|:---------------------:|
-|<img width="200px" height="360px" src="docs/image/sport/ss_main.png"> | <img width="200px" height="360px" src="docs/image/sport/ss_chuck_1.png"> | <img width="200px" height="360px" src="docs/image/sport/ss_chuck_2.png"> |
+|                           The Sport DB API                            |                               Chuck Data 1                               |                               Chuck Data 2                               |
+|:---------------------------------------------------------------------:|:------------------------------------------------------------------------:|:------------------------------------------------------------------------:|
+| <img width="200px" height="360px" src="docs/image/sport/ss_main.png"> | <img width="200px" height="360px" src="docs/image/sport/ss_chuck_1.png"> | <img width="200px" height="360px" src="docs/image/sport/ss_chuck_2.png"> |
 
     
 ### Declaration ConsumeTheSportDbApi
@@ -534,8 +534,8 @@ https://developers.themoviedb.org/3/getting-started/introduction
 
 
 ### Screen Shoot Apps
-|TV                  |   Movie                      |     Person            |       Chuck Data  |
-|:------------------:|:----------------------------:|:---------------------:|:-----------------:|
+|                                 TV                                  |                                 Movie                                  |                                 Person                                  |                              Chuck Data                              |
+|:-------------------------------------------------------------------:|:----------------------------------------------------------------------:|:-----------------------------------------------------------------------:|:--------------------------------------------------------------------:|
 | <img width="200px" height="360px" src="docs/image/movie/ss_tv.png"> | <img width="200px" height="360px" src="docs/image/movie/ss_movie.png"> | <img width="200px" height="360px" src="docs/image/movie/ss_person.png"> | <img width="200px" height="360px" src="docs/image/movie/ss_api.png"> |
 
 ### Step 3. Declaration ConsumeMovieApi
