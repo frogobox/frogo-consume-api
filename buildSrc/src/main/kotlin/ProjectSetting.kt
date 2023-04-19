@@ -29,7 +29,7 @@ object ProjectSetting {
 
     const val VERSION_MAJOR = 2
     const val VERSION_MINOR = 4
-    const val VERSION_PATCH = 5
+    const val VERSION_PATCH = 6
 
     // ---------------------------------------------------------------------------------------------
 
@@ -48,7 +48,7 @@ object ProjectSetting {
     const val PROJECT_VERSION_CODE = (VERSION_MAJOR * 100) + (VERSION_MINOR * 10) + (VERSION_PATCH * 1)
     const val PROJECT_VERSION_NAME = "$VERSION_MAJOR.$VERSION_MINOR.$VERSION_PATCH"
 
-    val NAME_APK = NAME_APP.toLowerCase().replace(" ", "-")
+    val NAME_APK = NAME_APP.lowercase().replace(" ", "-")
 
     // ---------------------------------------------------------------------------------------------
 
