@@ -17,4 +17,9 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "FrogoConsumeApi"
-include(":app", ":frogoconsumeapi", ":frogocoreconsumeapi")
+include(
+    ":app",
+    ":core-util",
+    ":core-api",
+    ":core-android-api"
+)

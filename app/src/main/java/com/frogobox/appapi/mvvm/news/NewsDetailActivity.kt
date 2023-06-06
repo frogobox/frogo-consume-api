@@ -3,7 +3,7 @@ package com.frogobox.appapi.mvvm.news
 import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ActivityNewsDetailBinding
-import com.frogobox.coreapi.news.model.Article
+import com.frogobox.coremodel.news.model.Article
 import com.frogobox.sdk.ext.getExtraDataExt
 import com.frogobox.sdk.view.FrogoBindActivity
 

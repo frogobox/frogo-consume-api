@@ -7,16 +7,16 @@ import com.frogobox.appapi.core.BaseViewModel
 import com.frogobox.appapi.source.ApiRepository
 import com.frogobox.appapi.util.isDebug
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.coreapi.news.NewsConstant.CATEGORY_BUSINESS
-import com.frogobox.coreapi.news.NewsConstant.CATEGORY_ENTERTAIMENT
-import com.frogobox.coreapi.news.NewsConstant.CATEGORY_GENERAL
-import com.frogobox.coreapi.news.NewsConstant.CATEGORY_HEALTH
-import com.frogobox.coreapi.news.NewsConstant.CATEGORY_SCIENCE
-import com.frogobox.coreapi.news.NewsConstant.CATEGORY_SPORTS
-import com.frogobox.coreapi.news.NewsConstant.CATEGORY_TECHNOLOGY
-import com.frogobox.coreapi.news.NewsConstant.COUNTRY_ID
-import com.frogobox.coreapi.news.model.Article
-import com.frogobox.coreapi.news.response.ArticleResponse
+import com.frogobox.coremodel.news.NewsConstant.CATEGORY_BUSINESS
+import com.frogobox.coremodel.news.NewsConstant.CATEGORY_ENTERTAIMENT
+import com.frogobox.coremodel.news.NewsConstant.CATEGORY_GENERAL
+import com.frogobox.coremodel.news.NewsConstant.CATEGORY_HEALTH
+import com.frogobox.coremodel.news.NewsConstant.CATEGORY_SCIENCE
+import com.frogobox.coremodel.news.NewsConstant.CATEGORY_SPORTS
+import com.frogobox.coremodel.news.NewsConstant.CATEGORY_TECHNOLOGY
+import com.frogobox.coremodel.news.NewsConstant.COUNTRY_ID
+import com.frogobox.coremodel.news.model.Article
+import com.frogobox.coremodel.news.response.ArticleResponse
 import com.frogobox.sdk.ext.showLogDebug
 
 /*
