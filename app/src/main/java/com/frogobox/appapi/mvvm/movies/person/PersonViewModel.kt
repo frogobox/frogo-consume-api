@@ -4,8 +4,8 @@ import android.app.Application
 import com.frogobox.appapi.mvvm.movies.core.BaseMovieApiViewModel
 import com.frogobox.appapi.source.ApiRepository
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.coreapi.movie.model.TrendingPerson
-import com.frogobox.coreapi.movie.response.Trending
+import com.frogobox.coremodel.movie.model.TrendingPerson
+import com.frogobox.coremodel.movie.response.Trending
 import com.frogobox.sdk.util.FrogoMutableLiveData
 
 /*
@@ -25,13 +25,13 @@ class PersonViewModel(
     private val repository: ApiRepository
 ) : BaseMovieApiViewModel(context, repository) {
 
-    val listDataDay = FrogoMutableLiveData<List<TrendingPerson>>()
-    val listDataWeek = FrogoMutableLiveData<List<TrendingPerson>>()
+    val listDataDay = FrogoMutableLiveData<List<com.frogobox.coremodel.movie.model.TrendingPerson>>()
+    val listDataWeek = FrogoMutableLiveData<List<com.frogobox.coremodel.movie.model.TrendingPerson>>()
 
     fun getTrendingPersonDay() {
         movieApi.getTrendingPersonDay(object :
-            ConsumeApiResponse<Trending<TrendingPerson>> {
-            override fun onSuccess(data: Trending<TrendingPerson>) {
+            ConsumeApiResponse<com.frogobox.coremodel.movie.response.Trending<com.frogobox.coremodel.movie.model.TrendingPerson>> {
+            override fun onSuccess(data: com.frogobox.coremodel.movie.response.Trending<com.frogobox.coremodel.movie.model.TrendingPerson>) {
                 data.results?.let { listDataDay.postValue(it) }
             }
 
@@ -58,8 +58,8 @@ class PersonViewModel(
 
     fun getTrendingPersonWeek() {
         movieApi.getTrendingPersonWeek(object :
-            ConsumeApiResponse<Trending<TrendingPerson>> {
-            override fun onSuccess(data: Trending<TrendingPerson>) {
+            ConsumeApiResponse<com.frogobox.coremodel.movie.response.Trending<com.frogobox.coremodel.movie.model.TrendingPerson>> {
+            override fun onSuccess(data: com.frogobox.coremodel.movie.response.Trending<com.frogobox.coremodel.movie.model.TrendingPerson>) {
                 data.results?.let { listDataWeek.postValue(it) }
             }
 

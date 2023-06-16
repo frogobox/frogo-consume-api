@@ -22,8 +22,9 @@ object ProjectSetting {
     const val LIBRARY_NAME_API = "api"
     const val LIBRARY_NAME_CORE_API = "coreapi"
 
-    const val MODULE_NAME_API = "frogoconsumeapi"
-    const val MODULE_NAME_CORE_API = "frogocoreconsumeapi"
+    const val MODULE_NAME_API = "core-android-api"
+    const val MODULE_NAME_CORE_API = "core-api"
+    const val MODULE_NAME_CORE_UTIL = "core-util"
 
     // ---------------------------------------------------------------------------------------------
 

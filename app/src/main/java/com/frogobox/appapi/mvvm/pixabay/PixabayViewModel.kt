@@ -7,8 +7,8 @@ import com.frogobox.appapi.core.BaseViewModel
 import com.frogobox.appapi.source.ApiRepository
 import com.frogobox.appapi.util.isDebug
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.coreapi.pixabay.model.PixabayImage
-import com.frogobox.coreapi.pixabay.response.Response
+import com.frogobox.coremodel.pixabay.model.PixabayImage
+import com.frogobox.coremodel.pixabay.response.Response
 
 /*
  * Created by faisalamir on 28/07/21

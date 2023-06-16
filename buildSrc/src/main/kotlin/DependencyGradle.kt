@@ -27,7 +27,8 @@ object DependencyGradle {
     const val FROGO_RECYCLER_VIEW_VERSION = "4.3.5"
     const val FROGO_RECYCLER_VIEW = "com.github.amirisback:frogo-recycler-view:$FROGO_RECYCLER_VIEW_VERSION"
 
-    const val FROGO_PATH_CORE_CONSUME_API = ":frogocoreconsumeapi"
-    const val FROGO_PATH_CONSUME_API = ":frogoconsumeapi"
+    const val FROGO_PATH_CORE_API = ":core-api"
+    const val FROGO_PATH_CORE_ANDROID_API = ":core-android-api"
+    const val FROGO_PATH_CORE_UTIL = ":core-util"
 
 }

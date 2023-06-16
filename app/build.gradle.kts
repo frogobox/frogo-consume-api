@@ -83,8 +83,8 @@ android {
 }
 
 dependencies {
-    implementation(project(DependencyGradle.FROGO_PATH_CONSUME_API))
-    implementation(project(DependencyGradle.FROGO_PATH_CORE_CONSUME_API))
+    implementation(project(DependencyGradle.FROGO_PATH_CORE_ANDROID_API))
+    implementation(project(DependencyGradle.FROGO_PATH_CORE_API))
     implementation(DependencyGradle.FROGO_RECYCLER_VIEW)
     implementation(DependencyGradle.FROGO_UI)
     implementation(DependencyGradle.FROGO_SDK)

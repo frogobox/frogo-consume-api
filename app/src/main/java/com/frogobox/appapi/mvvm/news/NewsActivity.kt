@@ -8,8 +8,8 @@ import com.frogobox.appapi.databinding.ActivityNewsBinding
 import com.frogobox.appapi.databinding.ContentArticleHorizontalBinding
 import com.frogobox.appapi.databinding.ContentArticleVerticalBinding
 import com.frogobox.appapi.databinding.ContentCategoryBinding
-import com.frogobox.coreapi.news.NewsConstant
-import com.frogobox.coreapi.news.model.Article
+import com.frogobox.coremodel.news.NewsConstant
+import com.frogobox.coremodel.news.model.Article
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle

@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ActivitySportBinding
-import com.frogobox.coreapi.sport.model.Team
+import com.frogobox.coremodel.sport.model.Team
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle

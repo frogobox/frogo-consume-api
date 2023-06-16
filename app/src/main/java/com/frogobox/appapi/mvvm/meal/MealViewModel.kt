@@ -7,8 +7,8 @@ import com.frogobox.appapi.core.BaseViewModel
 import com.frogobox.appapi.source.ApiRepository
 import com.frogobox.appapi.util.isDebug
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.coreapi.meal.model.Meal
-import com.frogobox.coreapi.meal.response.MealResponse
+import com.frogobox.coremodel.meal.model.Meal
+import com.frogobox.coremodel.meal.response.MealResponse
 
 /*
  * Created by faisalamir on 28/07/21
