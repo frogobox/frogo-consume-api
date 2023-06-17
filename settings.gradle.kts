@@ -21,5 +21,5 @@ include(
     ":app",
     ":core-util",
     ":core-api",
-    ":core-android-api"
+    ":core-api-android"
 )

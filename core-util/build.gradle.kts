@@ -6,7 +6,7 @@ plugins {
     `maven-publish`
 }
 
-group = ProjectSetting.PROJECT_LIB_ID_CORE_API
+group = ProjectSetting.PROJECT_LIB_ID_CORE_UTIL
 version = ProjectSetting.PROJECT_VERSION_NAME
 
 java {
@@ -35,7 +35,7 @@ publishing {
 
             // Library Package Name (Example : "com.frogobox.androidfirstlib")
             // NOTE : Different GroupId For Each Library / Module, So That Each Library Is Not Overwritten
-            groupId = ProjectSetting.PROJECT_LIB_ID_CORE_API
+            groupId = ProjectSetting.PROJECT_LIB_ID_CORE_UTIL
 
             // Library Name / Module Name (Example : "androidfirstlib")
             // NOTE : Different ArtifactId For Each Library / Module, So That Each Library Is Not Overwritten

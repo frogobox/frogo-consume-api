@@ -1,19 +1,19 @@
 package com.frogobox.coreapi.sport
 
 
-import com.frogobox.coremodel.sport.response.Contracts
-import com.frogobox.coremodel.sport.response.Countrys
-import com.frogobox.coremodel.sport.response.Events
-import com.frogobox.coremodel.sport.response.FormerTeams
-import com.frogobox.coremodel.sport.response.Honors
-import com.frogobox.coremodel.sport.response.Leagues
-import com.frogobox.coremodel.sport.response.Players
-import com.frogobox.coremodel.sport.response.Results
-import com.frogobox.coremodel.sport.response.Seasons
-import com.frogobox.coremodel.sport.response.Sports
-import com.frogobox.coremodel.sport.response.Tables
-import com.frogobox.coremodel.sport.response.Teams
-import com.frogobox.coremodel.sport.response.Users
+import com.frogobox.coreutil.sport.response.Contracts
+import com.frogobox.coreutil.sport.response.Countrys
+import com.frogobox.coreutil.sport.response.Events
+import com.frogobox.coreutil.sport.response.FormerTeams
+import com.frogobox.coreutil.sport.response.Honors
+import com.frogobox.coreutil.sport.response.Leagues
+import com.frogobox.coreutil.sport.response.Players
+import com.frogobox.coreutil.sport.response.Results
+import com.frogobox.coreutil.sport.response.Seasons
+import com.frogobox.coreutil.sport.response.Sports
+import com.frogobox.coreutil.sport.response.Tables
+import com.frogobox.coreutil.sport.response.Teams
+import com.frogobox.coreutil.sport.response.Users
 import com.frogobox.coresdk.response.FrogoDataResponse
 import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.Interceptor
@@ -49,28 +49,28 @@ class CTheSportDbApi(usingScheduler: Boolean, apiKey: String) : ISportApi {
 
     override fun searchForTeamByName(
         teamName: String?,
-        callback: FrogoDataResponse<Teams>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Teams>
     ) {
         sportApi.searchForTeamByName(teamName, callback)
     }
 
     override fun searchForTeamByShortCode(
         shortCode: String?,
-        callback: FrogoDataResponse<Teams>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Teams>
     ) {
         sportApi.searchForTeamByShortCode(shortCode, callback)
     }
 
     override fun searchForAllPlayer(
         teamName: String?,
-        callback: FrogoDataResponse<Players>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Players>
     ) {
         sportApi.searchForAllPlayer(teamName, callback)
     }
 
     override fun searchForPlayer(
         playerName: String?,
-        callback: FrogoDataResponse<Players>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Players>
     ) {
         sportApi.searchForPlayer(playerName, callback)
     }
@@ -78,14 +78,14 @@ class CTheSportDbApi(usingScheduler: Boolean, apiKey: String) : ISportApi {
     override fun searchForPlayer(
         playerName: String?,
         teamName: String?,
-        callback: FrogoDataResponse<Players>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Players>
     ) {
         sportApi.searchForPlayer(playerName, teamName, callback)
     }
 
     override fun searchForEvent(
         eventName: String?,
-        callback: FrogoDataResponse<Events>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     ) {
         sportApi.searchForEvent(eventName, callback)
     }
@@ -93,30 +93,30 @@ class CTheSportDbApi(usingScheduler: Boolean, apiKey: String) : ISportApi {
     override fun searchForEvent(
         eventName: String?,
         season: String?,
-        callback: FrogoDataResponse<Events>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     ) {
         sportApi.searchForEvent(eventName, season, callback)
     }
 
     override fun searchForEventFileName(
         eventFileName: String?,
-        callback: FrogoDataResponse<Events>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     ) {
         sportApi.searchForEventFileName(eventFileName, callback)
 
     }
 
-    override fun getAllSports(callback: FrogoDataResponse<Sports>) {
+    override fun getAllSports(callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Sports>) {
         sportApi.getAllSports(callback)
     }
 
-    override fun getAllLeagues(callback: FrogoDataResponse<Leagues>) {
+    override fun getAllLeagues(callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Leagues>) {
         sportApi.getAllLeagues(callback)
     }
 
     override fun searchAllLeagues(
         countryName: String?,
-        callback: FrogoDataResponse<Countrys>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Countrys>
     ) {
         sportApi.searchAllLeagues(countryName, callback)
     }
@@ -124,21 +124,21 @@ class CTheSportDbApi(usingScheduler: Boolean, apiKey: String) : ISportApi {
     override fun searchAllLeagues(
         countryName: String?,
         sportName: String?,
-        callback: FrogoDataResponse<Countrys>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Countrys>
     ) {
         sportApi.searchAllLeagues(countryName, sportName, callback)
     }
 
     override fun searchAllSeasons(
         idTeam: String?,
-        callback: FrogoDataResponse<Seasons>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Seasons>
     ) {
         sportApi.searchAllSeasons(idTeam, callback)
     }
 
     override fun searchAllTeam(
         league: String?,
-        callback: FrogoDataResponse<Teams>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Teams>
     ) {
         sportApi.searchAllTeam(league, callback)
     }
@@ -146,59 +146,59 @@ class CTheSportDbApi(usingScheduler: Boolean, apiKey: String) : ISportApi {
     override fun searchAllTeam(
         sportName: String?,
         countryName: String?,
-        callback: FrogoDataResponse<Teams>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Teams>
     ) {
         sportApi.searchAllTeam(sportName, countryName, callback)
     }
 
-    override fun lookupAllTeam(idLeague: String?, callback: FrogoDataResponse<Teams>) {
+    override fun lookupAllTeam(idLeague: String?, callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Teams>) {
         sportApi.lookupAllTeam(idLeague, callback)
     }
 
     override fun lookupAllPlayer(
         idTeam: String?,
-        callback: FrogoDataResponse<Players>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Players>
     ) {
         sportApi.lookupAllPlayer(idTeam, callback)
     }
 
-    override fun searchLoves(userName: String?, callback: FrogoDataResponse<Users>) {
+    override fun searchLoves(userName: String?, callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Users>) {
         sportApi.searchLoves(userName, callback)
     }
 
     override fun lookupLeagues(
         idLeague: String?,
-        callback: FrogoDataResponse<Leagues>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Leagues>
     ) {
         sportApi.lookupLeagues(idLeague, callback)
     }
 
-    override fun lookupTeam(idTeam: String?, callback: FrogoDataResponse<Teams>) {
+    override fun lookupTeam(idTeam: String?, callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Teams>) {
         sportApi.lookupTeam(idTeam, callback)
     }
 
-    override fun lookupPlayer(idPlayer: String?, callback: FrogoDataResponse<Players>) {
+    override fun lookupPlayer(idPlayer: String?, callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Players>) {
         sportApi.lookupPlayer(idPlayer, callback)
     }
 
-    override fun lookupEvent(idEvent: String?, callback: FrogoDataResponse<Events>) {
+    override fun lookupEvent(idEvent: String?, callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>) {
         sportApi.lookupEvent(idEvent, callback)
     }
 
-    override fun lookupHonour(idPlayer: String?, callback: FrogoDataResponse<Honors>) {
+    override fun lookupHonour(idPlayer: String?, callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Honors>) {
         sportApi.lookupHonour(idPlayer, callback)
     }
 
     override fun lookupFormerTeam(
         idPlayer: String?,
-        callback: FrogoDataResponse<FormerTeams>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.FormerTeams>
     ) {
         sportApi.lookupFormerTeam(idPlayer, callback)
     }
 
     override fun lookupContract(
         idPlayer: String?,
-        callback: FrogoDataResponse<Contracts>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Contracts>
     ) {
         sportApi.lookupContract(idPlayer, callback)
     }
@@ -206,29 +206,29 @@ class CTheSportDbApi(usingScheduler: Boolean, apiKey: String) : ISportApi {
     override fun lookupTable(
         idLeague: String?,
         season: String?,
-        callback: FrogoDataResponse<Tables>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Tables>
     ) {
         sportApi.lookupTable(idLeague, season, callback)
     }
 
-    override fun eventsNext(idTeam: String?, callback: FrogoDataResponse<Events>) {
+    override fun eventsNext(idTeam: String?, callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>) {
         sportApi.eventsNext(idTeam, callback)
     }
 
     override fun eventsNextLeague(
         idLeague: String?,
-        callback: FrogoDataResponse<Events>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     ) {
         sportApi.eventsNextLeague(idLeague, callback)
     }
 
-    override fun eventsLast(idTeam: String?, callback: FrogoDataResponse<Results>) {
+    override fun eventsLast(idTeam: String?, callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Results>) {
         sportApi.eventsLast(idTeam, callback)
     }
 
     override fun eventsPastLeague(
         idLeague: String?,
-        callback: FrogoDataResponse<Events>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     ) {
         sportApi.eventsPastLeague(idLeague, callback)
     }
@@ -237,7 +237,7 @@ class CTheSportDbApi(usingScheduler: Boolean, apiKey: String) : ISportApi {
         idLeague: String?,
         round: String?,
         season: String?,
-        callback: FrogoDataResponse<Events>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     ) {
         sportApi.eventsRound(idLeague, round, season, callback)
     }
@@ -245,7 +245,7 @@ class CTheSportDbApi(usingScheduler: Boolean, apiKey: String) : ISportApi {
     override fun eventsSeason(
         idLeague: String?,
         season: String?,
-        callback: FrogoDataResponse<Events>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     ) {
         sportApi.eventsSeason(idLeague, season, callback)
     }

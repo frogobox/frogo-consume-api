@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ActivitySportBinding
-import com.frogobox.coremodel.sport.model.Team
+import com.frogobox.coreutil.sport.model.Team
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle
@@ -46,22 +46,22 @@ class SportActivity : FrogoBindActivity<ActivitySportBinding>() {
         setupDetailActivity("Sport Api")
     }
 
-    private fun setupRv(data: List<Team>) {
+    private fun setupRv(data: List<com.frogobox.coreutil.sport.model.Team>) {
 
-        val adapterCallback = object : IFrogoBindingAdapter<Team, FrogoRvGridType3Binding> {
+        val adapterCallback = object : IFrogoBindingAdapter<com.frogobox.coreutil.sport.model.Team, FrogoRvGridType3Binding> {
             override fun onItemClicked(
                 binding: FrogoRvGridType3Binding,
-                data: Team,
+                data: com.frogobox.coreutil.sport.model.Team,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<Team>
+                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.sport.model.Team>
             ) {
             }
 
             override fun onItemLongClicked(
                 binding: FrogoRvGridType3Binding,
-                data: Team,
+                data: com.frogobox.coreutil.sport.model.Team,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<Team>
+                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.sport.model.Team>
             ) {
             }
 
@@ -75,9 +75,9 @@ class SportActivity : FrogoBindActivity<ActivitySportBinding>() {
 
             override fun setupInitComponent(
                 binding: FrogoRvGridType3Binding,
-                data: Team,
+                data: com.frogobox.coreutil.sport.model.Team,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<Team>
+                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.sport.model.Team>
             ) {
                 binding.apply {
                     frogoRvGridType3TvTitle.text = data.strTeam
@@ -88,7 +88,7 @@ class SportActivity : FrogoBindActivity<ActivitySportBinding>() {
             }
         }
 
-        binding.frogorecyclerview.injectorBinding<Team, FrogoRvGridType3Binding>()
+        binding.frogorecyclerview.injectorBinding<com.frogobox.coreutil.sport.model.Team, FrogoRvGridType3Binding>()
             .addData(data)
             .addCallback(adapterCallback)
             .createLayoutGrid(2)

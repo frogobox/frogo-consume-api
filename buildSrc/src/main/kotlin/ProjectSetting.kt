@@ -21,10 +21,11 @@ object ProjectSetting {
 
     const val LIBRARY_NAME_API = "api"
     const val LIBRARY_NAME_CORE_API = "coreapi"
+    const val LIBRARY_NAME_CORE_UTIL = "coreutil"
 
-    const val MODULE_NAME_API = "core-android-api"
-    const val MODULE_NAME_CORE_API = "core-api"
     const val MODULE_NAME_CORE_UTIL = "core-util"
+    const val MODULE_NAME_CORE_API = "core-api"
+    const val MODULE_NAME_API = "core-api-android"
 
     // ---------------------------------------------------------------------------------------------
 
@@ -43,8 +44,10 @@ object ProjectSetting {
     const val BASE_PACAKGE_NAME = "$APP_DOMAIN.$APP_PLAY_CONSOLE"
 
     const val PROJECT_APP_ID = "$BASE_PACAKGE_NAME.$APP_NAME"
+
     const val PROJECT_LIB_ID_API = "$BASE_PACAKGE_NAME.$LIBRARY_NAME_API"
     const val PROJECT_LIB_ID_CORE_API = "$BASE_PACAKGE_NAME.$LIBRARY_NAME_CORE_API"
+    const val PROJECT_LIB_ID_CORE_UTIL = "$BASE_PACAKGE_NAME.$LIBRARY_NAME_CORE_UTIL"
 
     const val PROJECT_VERSION_CODE = (VERSION_MAJOR * 100) + (VERSION_MINOR * 10) + (VERSION_PATCH * 1)
     const val PROJECT_VERSION_NAME = "$VERSION_MAJOR.$VERSION_MINOR.$VERSION_PATCH"

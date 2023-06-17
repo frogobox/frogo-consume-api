@@ -1,9 +1,8 @@
 package com.frogobox.coreapi.pixabay
 
-import com.frogobox.coremodel.pixabay.model.PixabayImage
-import com.frogobox.coremodel.pixabay.model.PixabayVideo
-import com.frogobox.coremodel.pixabay.response.Response
-import com.frogobox.coremodel.pixabay.PixabayUrl
+import com.frogobox.coreutil.pixabay.model.PixabayImage
+import com.frogobox.coreutil.pixabay.model.PixabayVideo
+import com.frogobox.coreutil.pixabay.response.Response
 import com.frogobox.coresdk.ext.doApiRequest
 import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coresdk.source.FrogoApiClient
@@ -27,13 +26,13 @@ import okhttp3.Interceptor
 object PixabayRepository : PixabayDataSource {
 
     private val TAG = PixabayRepository::class.java.simpleName
-    private var pixabayApiService = FrogoApiClient.create<PixabayApiService>(PixabayUrl.BASE_URL)
+    private var pixabayApiService = FrogoApiClient.create<PixabayApiService>(com.frogobox.coreutil.pixabay.PixabayUrl.BASE_URL)
 
     override fun usingChuckInterceptor(
         isDebug: Boolean,
         chuckerInterceptor: Interceptor
     ): PixabayDataSource {
-        pixabayApiService = FrogoApiClient.create(PixabayUrl.BASE_URL, isDebug, chuckerInterceptor)
+        pixabayApiService = FrogoApiClient.create(com.frogobox.coreutil.pixabay.PixabayUrl.BASE_URL, isDebug, chuckerInterceptor)
         return this
     }
 
@@ -54,7 +53,7 @@ object PixabayRepository : PixabayDataSource {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: FrogoDataResponse<Response<PixabayImage>>
+        callback: FrogoDataResponse<com.frogobox.coreutil.pixabay.response.Response<com.frogobox.coreutil.pixabay.model.PixabayImage>>
     ) {
         pixabayApiService.searchImage(
             apiKey,
@@ -90,7 +89,7 @@ object PixabayRepository : PixabayDataSource {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: FrogoDataResponse<Response<PixabayVideo>>
+        callback: FrogoDataResponse<com.frogobox.coreutil.pixabay.response.Response<com.frogobox.coreutil.pixabay.model.PixabayVideo>>
     ) {
         pixabayApiService.searchVideo(
             apiKey,

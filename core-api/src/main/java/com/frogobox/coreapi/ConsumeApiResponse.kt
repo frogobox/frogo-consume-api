@@ -2,7 +2,7 @@ package com.frogobox.coreapi
 
 import com.frogobox.coresdk.response.FrogoDataResponse
 
-/*
+/**
  * Created by faisalamir on 21/08/21
  * FrogoConsumeApi
  * -----------------------------------------

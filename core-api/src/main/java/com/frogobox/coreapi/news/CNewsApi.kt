@@ -1,7 +1,5 @@
 package com.frogobox.coreapi.news
 
-import com.frogobox.coremodel.news.response.ArticleResponse
-import com.frogobox.coremodel.news.response.SourceResponse
 import com.frogobox.coresdk.response.FrogoDataResponse
 import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.Interceptor
@@ -42,7 +40,7 @@ class CNewsApi(usingScheduler: Boolean, apiKey: String) : INewsApi {
         country: String?,
         pageSize: Int?,
         page: Int?,
-        callback: FrogoDataResponse<ArticleResponse>
+        callback: FrogoDataResponse<com.frogobox.coreutil.news.response.ArticleResponse>
     ) {
         newsApi.getTopHeadline(q, sources, category, country, pageSize, page, callback)
     }
@@ -59,7 +57,7 @@ class CNewsApi(usingScheduler: Boolean, apiKey: String) : INewsApi {
         sortBy: String?,
         pageSize: Int?,
         page: Int?,
-        callback: FrogoDataResponse<ArticleResponse>
+        callback: FrogoDataResponse<com.frogobox.coreutil.news.response.ArticleResponse>
     ) {
         newsApi.getEverythings(
             q,
@@ -81,7 +79,7 @@ class CNewsApi(usingScheduler: Boolean, apiKey: String) : INewsApi {
         language: String,
         country: String,
         category: String,
-        callback: FrogoDataResponse<SourceResponse>
+        callback: FrogoDataResponse<com.frogobox.coreutil.news.response.SourceResponse>
     ) {
         newsApi.getSources(language, country, category, callback)
     }

@@ -5,11 +5,11 @@ import com.frogobox.api.movie.ConsumeMovieApi
 import com.frogobox.api.news.ConsumeNewsApi
 import com.frogobox.api.pixabay.ConsumePixabayApi
 import com.frogobox.api.sport.ConsumeTheSportDbApi
-import com.frogobox.coremodel.meal.MealUrl
-import com.frogobox.coremodel.movie.MovieUrl
-import com.frogobox.coremodel.news.NewsUrl
-import com.frogobox.coremodel.pixabay.PixabayUrl
-import com.frogobox.coremodel.sport.SportUrl
+import com.frogobox.coreutil.meal.MealUrl
+import com.frogobox.coreutil.movie.MovieUrl
+import com.frogobox.coreutil.news.NewsUrl
+import com.frogobox.coreutil.pixabay.PixabayUrl
+import com.frogobox.coreutil.sport.SportUrl
 import org.koin.dsl.module
 
 
@@ -29,23 +29,23 @@ import org.koin.dsl.module
 val consumeApiModule = module {
 
     single {
-        ConsumeNewsApi(NewsUrl.API_KEY)
+        ConsumeNewsApi(com.frogobox.coreutil.news.NewsUrl.API_KEY)
     }
 
     single {
-        ConsumeTheSportDbApi(SportUrl.API_KEY)
+        ConsumeTheSportDbApi(com.frogobox.coreutil.sport.SportUrl.API_KEY)
     }
 
     single {
-        ConsumeTheMealDbApi(MealUrl.API_KEY)
+        ConsumeTheMealDbApi(com.frogobox.coreutil.meal.MealUrl.API_KEY)
     }
 
     single {
-        ConsumePixabayApi(PixabayUrl.API_KEY)
+        ConsumePixabayApi(com.frogobox.coreutil.pixabay.PixabayUrl.API_KEY)
     }
 
     single {
-        ConsumeMovieApi(MovieUrl.API_KEY)
+        ConsumeMovieApi(com.frogobox.coreutil.movie.MovieUrl.API_KEY)
     }
 
 }

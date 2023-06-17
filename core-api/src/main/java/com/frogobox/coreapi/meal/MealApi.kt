@@ -1,13 +1,13 @@
 package com.frogobox.coreapi.meal
 
 
-import com.frogobox.coremodel.meal.response.CategoryResponse
-import com.frogobox.coremodel.meal.response.MealResponse
-import com.frogobox.coremodel.meal.model.Area
-import com.frogobox.coremodel.meal.model.Category
-import com.frogobox.coremodel.meal.model.Ingredient
-import com.frogobox.coremodel.meal.model.Meal
-import com.frogobox.coremodel.meal.model.MealFilter
+import com.frogobox.coreutil.meal.response.CategoryResponse
+import com.frogobox.coreutil.meal.response.MealResponse
+import com.frogobox.coreutil.meal.model.Area
+import com.frogobox.coreutil.meal.model.Category
+import com.frogobox.coreutil.meal.model.Ingredient
+import com.frogobox.coreutil.meal.model.Meal
+import com.frogobox.coreutil.meal.model.MealFilter
 import com.frogobox.coresdk.response.FrogoDataResponse
 import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
@@ -41,61 +41,61 @@ class MealApi(
         return this
     }
 
-    override fun searchMeal(mealName: String, callback: FrogoDataResponse<MealResponse<Meal>>) {
+    override fun searchMeal(mealName: String, callback: FrogoDataResponse<com.frogobox.coreutil.meal.response.MealResponse<com.frogobox.coreutil.meal.model.Meal>>) {
         mealRepository.searchMeal(scheduler, apiKey, mealName, callback)
     }
 
     override fun listAllMeal(
         firstLetter: String,
-        callback: FrogoDataResponse<MealResponse<Meal>>
+        callback: FrogoDataResponse<com.frogobox.coreutil.meal.response.MealResponse<com.frogobox.coreutil.meal.model.Meal>>
     ) {
         mealRepository.listAllMeal(scheduler, apiKey, firstLetter, callback)
     }
 
     override fun lookupFullMeal(
         idMeal: String,
-        callback: FrogoDataResponse<MealResponse<Meal>>
+        callback: FrogoDataResponse<com.frogobox.coreutil.meal.response.MealResponse<com.frogobox.coreutil.meal.model.Meal>>
     ) {
         mealRepository.lookupFullMeal(scheduler, apiKey, idMeal, callback)
     }
 
-    override fun lookupRandomMeal(callback: FrogoDataResponse<MealResponse<Meal>>) {
+    override fun lookupRandomMeal(callback: FrogoDataResponse<com.frogobox.coreutil.meal.response.MealResponse<com.frogobox.coreutil.meal.model.Meal>>) {
         mealRepository.lookupRandomMeal(scheduler, apiKey, callback)
     }
 
-    override fun listMealCategories(callback: FrogoDataResponse<CategoryResponse>) {
+    override fun listMealCategories(callback: FrogoDataResponse<com.frogobox.coreutil.meal.response.CategoryResponse>) {
         mealRepository.listMealCategories(scheduler, apiKey, callback)
     }
 
-    override fun listAllCateories(callback: FrogoDataResponse<MealResponse<Category>>) {
+    override fun listAllCateories(callback: FrogoDataResponse<com.frogobox.coreutil.meal.response.MealResponse<com.frogobox.coreutil.meal.model.Category>>) {
         mealRepository.listAllCateories(scheduler, apiKey, callback)
     }
 
-    override fun listAllArea(callback: FrogoDataResponse<MealResponse<Area>>) {
+    override fun listAllArea(callback: FrogoDataResponse<com.frogobox.coreutil.meal.response.MealResponse<com.frogobox.coreutil.meal.model.Area>>) {
         mealRepository.listAllArea(scheduler, apiKey, callback)
     }
 
-    override fun listAllIngredients(callback: FrogoDataResponse<MealResponse<Ingredient>>) {
+    override fun listAllIngredients(callback: FrogoDataResponse<com.frogobox.coreutil.meal.response.MealResponse<com.frogobox.coreutil.meal.model.Ingredient>>) {
         mealRepository.listAllIngredients(scheduler, apiKey, callback)
     }
 
     override fun filterByIngredient(
         ingredient: String,
-        callback: FrogoDataResponse<MealResponse<MealFilter>>
+        callback: FrogoDataResponse<com.frogobox.coreutil.meal.response.MealResponse<com.frogobox.coreutil.meal.model.MealFilter>>
     ) {
         mealRepository.filterByIngredient(scheduler, apiKey, ingredient, callback)
     }
 
     override fun filterByCategory(
         category: String,
-        callback: FrogoDataResponse<MealResponse<MealFilter>>
+        callback: FrogoDataResponse<com.frogobox.coreutil.meal.response.MealResponse<com.frogobox.coreutil.meal.model.MealFilter>>
     ) {
         mealRepository.filterByCategory(scheduler, apiKey, category, callback)
     }
 
     override fun filterByArea(
         area: String,
-        callback: FrogoDataResponse<MealResponse<MealFilter>>
+        callback: FrogoDataResponse<com.frogobox.coreutil.meal.response.MealResponse<com.frogobox.coreutil.meal.model.MealFilter>>
     ) {
         mealRepository.filterByArea(scheduler, apiKey, area, callback)
     }

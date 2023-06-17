@@ -7,8 +7,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ContentItemBinding
 import com.frogobox.appapi.databinding.FragmentTrendingChildBinding
-import com.frogobox.coremodel.movie.MovieUrl
-import com.frogobox.coremodel.movie.model.TrendingPerson
+import com.frogobox.coreutil.movie.MovieUrl
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle
@@ -48,22 +47,22 @@ class PersonWeekFragment : FrogoBindFragment<FragmentTrendingChildBinding>() {
     override fun onViewCreatedExt(view: View, savedInstanceState: Bundle?) {
     }
 
-    private fun setupRV(data: List<com.frogobox.coremodel.movie.model.TrendingPerson>) {
+    private fun setupRV(data: List<com.frogobox.coreutil.movie.model.TrendingPerson>) {
 
-        val adapterCallback = object : IFrogoBindingAdapter<com.frogobox.coremodel.movie.model.TrendingPerson, ContentItemBinding> {
+        val adapterCallback = object : IFrogoBindingAdapter<com.frogobox.coreutil.movie.model.TrendingPerson, ContentItemBinding> {
             override fun onItemClicked(
                 binding: ContentItemBinding,
-                data: com.frogobox.coremodel.movie.model.TrendingPerson,
+                data: com.frogobox.coreutil.movie.model.TrendingPerson,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coremodel.movie.model.TrendingPerson>
+                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.movie.model.TrendingPerson>
             ) {
             }
 
             override fun onItemLongClicked(
                 binding: ContentItemBinding,
-                data: com.frogobox.coremodel.movie.model.TrendingPerson,
+                data: com.frogobox.coreutil.movie.model.TrendingPerson,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coremodel.movie.model.TrendingPerson>
+                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.movie.model.TrendingPerson>
             ) {
             }
 
@@ -77,21 +76,21 @@ class PersonWeekFragment : FrogoBindFragment<FragmentTrendingChildBinding>() {
 
             override fun setupInitComponent(
                 binding: ContentItemBinding,
-                data: com.frogobox.coremodel.movie.model.TrendingPerson,
+                data: com.frogobox.coreutil.movie.model.TrendingPerson,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coremodel.movie.model.TrendingPerson>
+                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.movie.model.TrendingPerson>
             ) {
                 binding.apply {
                     tvTitle.text = data.name
                     tvOverview.text = data.known_for_department
                     Glide.with(root.context)
-                        .load("${MovieUrl.BASE_URL_IMAGE_ORIGNAL}${data.profile_path}")
+                        .load("${com.frogobox.coreutil.movie.MovieUrl.BASE_URL_IMAGE_ORIGNAL}${data.profile_path}")
                         .into(ivPoster)
                 }
             }
         }
 
-        binding.frogoRecyclerView.injectorBinding<com.frogobox.coremodel.movie.model.TrendingPerson, ContentItemBinding>()
+        binding.frogoRecyclerView.injectorBinding<com.frogobox.coreutil.movie.model.TrendingPerson, ContentItemBinding>()
             .addData(data)
             .addCallback(adapterCallback)
             .createLayoutGrid(2)

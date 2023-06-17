@@ -8,8 +8,8 @@ import com.frogobox.appapi.databinding.ActivityNewsBinding
 import com.frogobox.appapi.databinding.ContentArticleHorizontalBinding
 import com.frogobox.appapi.databinding.ContentArticleVerticalBinding
 import com.frogobox.appapi.databinding.ContentCategoryBinding
-import com.frogobox.coremodel.news.NewsConstant
-import com.frogobox.coremodel.news.model.Article
+import com.frogobox.coreutil.news.NewsConstant
+import com.frogobox.coreutil.news.model.Article
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle
@@ -30,7 +30,7 @@ class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
         newsViewModel.apply {
 
             getTopHeadline()
-            getTopHeadline(NewsConstant.CATEGORY_HEALTH)
+            getTopHeadline(com.frogobox.coreutil.news.NewsConstant.CATEGORY_HEALTH)
             setupCategory()
 
             eventShowProgressState.observe(this@NewsActivity) {
@@ -106,23 +106,23 @@ class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
             .build()
     }
 
-    private fun setupRvHeader(data: List<Article>) {
+    private fun setupRvHeader(data: List<com.frogobox.coreutil.news.model.Article>) {
 
-        val callback = object : IFrogoBindingAdapter<Article, ContentArticleHorizontalBinding> {
+        val callback = object : IFrogoBindingAdapter<com.frogobox.coreutil.news.model.Article, ContentArticleHorizontalBinding> {
             override fun onItemClicked(
                 binding: ContentArticleHorizontalBinding,
-                data: Article,
+                data: com.frogobox.coreutil.news.model.Article,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<Article>
+                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.news.model.Article>
             ) {
-                startActivityExt<NewsDetailActivity, Article>(NewsDetailActivity.EXTRA_DATA, data)
+                startActivityExt<NewsDetailActivity, com.frogobox.coreutil.news.model.Article>(NewsDetailActivity.EXTRA_DATA, data)
             }
 
             override fun onItemLongClicked(
                 binding: ContentArticleHorizontalBinding,
-                data: Article,
+                data: com.frogobox.coreutil.news.model.Article,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<Article>
+                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.news.model.Article>
             ) {
                 data.description?.let { showToast(it) }
             }
@@ -137,9 +137,9 @@ class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
 
             override fun setupInitComponent(
                 binding: ContentArticleHorizontalBinding,
-                data: Article,
+                data: com.frogobox.coreutil.news.model.Article,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<Article>
+                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.news.model.Article>
             ) {
                 binding.apply {
                     tvTitle.text = data.title
@@ -150,7 +150,7 @@ class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
             }
         }
 
-        binding.rvNewsGeneral.injectorBinding<Article, ContentArticleHorizontalBinding>()
+        binding.rvNewsGeneral.injectorBinding<com.frogobox.coreutil.news.model.Article, ContentArticleHorizontalBinding>()
             .addData(data)
             .addCallback(callback)
             .createLayoutLinearHorizontal(false)
@@ -158,23 +158,23 @@ class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
 
     }
 
-    private fun setupRvBody(data: List<Article>) {
+    private fun setupRvBody(data: List<com.frogobox.coreutil.news.model.Article>) {
 
-        val callback = object : IFrogoBindingAdapter<Article, ContentArticleVerticalBinding> {
+        val callback = object : IFrogoBindingAdapter<com.frogobox.coreutil.news.model.Article, ContentArticleVerticalBinding> {
             override fun onItemClicked(
                 binding: ContentArticleVerticalBinding,
-                data: Article,
+                data: com.frogobox.coreutil.news.model.Article,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<Article>
+                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.news.model.Article>
             ) {
-                startActivityExt<NewsDetailActivity, Article>(NewsDetailActivity.EXTRA_DATA, data)
+                startActivityExt<NewsDetailActivity, com.frogobox.coreutil.news.model.Article>(NewsDetailActivity.EXTRA_DATA, data)
             }
 
             override fun onItemLongClicked(
                 binding: ContentArticleVerticalBinding,
-                data: Article,
+                data: com.frogobox.coreutil.news.model.Article,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<Article>
+                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.news.model.Article>
             ) {
                 data.description?.let { showToast(it) }
             }
@@ -189,9 +189,9 @@ class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
 
             override fun setupInitComponent(
                 binding: ContentArticleVerticalBinding,
-                data: Article,
+                data: com.frogobox.coreutil.news.model.Article,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<Article>
+                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.news.model.Article>
             ) {
                 binding.apply {
                     tvTitle.text = data.title
@@ -202,7 +202,7 @@ class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
             }
         }
 
-        binding.rvNewsCategory.injectorBinding<Article, ContentArticleVerticalBinding>()
+        binding.rvNewsCategory.injectorBinding<com.frogobox.coreutil.news.model.Article, ContentArticleVerticalBinding>()
             .addData(data)
             .addCallback(callback)
             .createLayoutLinearVertical(false)

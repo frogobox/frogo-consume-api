@@ -7,8 +7,8 @@ import com.frogobox.appapi.core.BaseViewModel
 import com.frogobox.appapi.source.ApiRepository
 import com.frogobox.appapi.util.isDebug
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.coremodel.sport.model.Team
-import com.frogobox.coremodel.sport.response.Teams
+import com.frogobox.coreutil.sport.model.Team
+import com.frogobox.coreutil.sport.response.Teams
 
 /*
  * Created by faisalamir on 28/07/21
@@ -26,14 +26,14 @@ class SportViewModel(
     private val repository: ApiRepository,
 ) : BaseViewModel() {
 
-    private var _listData = MutableLiveData<List<Team>>()
-    var listData: LiveData<List<Team>> = _listData
+    private var _listData = MutableLiveData<List<com.frogobox.coreutil.sport.model.Team>>()
+    var listData: LiveData<List<com.frogobox.coreutil.sport.model.Team>> = _listData
 
     fun searchAllTeam(context: Context) {
         val sportApi = repository.consumeTheSportDbApi().usingChuckInterceptor(isDebug, context)
         sportApi.searchAllTeam("English Premier League",
-            object : ConsumeApiResponse<Teams> {
-                override fun onSuccess(data: Teams) {
+            object : ConsumeApiResponse<com.frogobox.coreutil.sport.response.Teams> {
+                override fun onSuccess(data: com.frogobox.coreutil.sport.response.Teams) {
                     data.teams?.let { _listData.postValue(it) }
                 }
 
