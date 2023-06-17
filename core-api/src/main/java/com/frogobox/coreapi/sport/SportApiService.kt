@@ -1,21 +1,19 @@
 package com.frogobox.coreapi.sport
 
 
-import com.frogobox.coremodel.sport.response.Contracts
-import com.frogobox.coremodel.sport.response.Countrys
-import com.frogobox.coremodel.sport.response.Events
-import com.frogobox.coremodel.sport.response.FormerTeams
-import com.frogobox.coremodel.sport.response.Honors
-import com.frogobox.coremodel.sport.response.Leagues
-import com.frogobox.coremodel.sport.response.Players
-import com.frogobox.coremodel.sport.response.Results
-import com.frogobox.coremodel.sport.response.Seasons
-import com.frogobox.coremodel.sport.response.Sports
-import com.frogobox.coremodel.sport.response.Tables
-import com.frogobox.coremodel.sport.response.Teams
-import com.frogobox.coremodel.sport.response.Users
-import com.frogobox.coremodel.sport.SportConstant
-import com.frogobox.coremodel.sport.SportUrl
+import com.frogobox.coreutil.sport.response.Contracts
+import com.frogobox.coreutil.sport.response.Countrys
+import com.frogobox.coreutil.sport.response.Events
+import com.frogobox.coreutil.sport.response.FormerTeams
+import com.frogobox.coreutil.sport.response.Honors
+import com.frogobox.coreutil.sport.response.Leagues
+import com.frogobox.coreutil.sport.response.Players
+import com.frogobox.coreutil.sport.response.Results
+import com.frogobox.coreutil.sport.response.Seasons
+import com.frogobox.coreutil.sport.response.Sports
+import com.frogobox.coreutil.sport.response.Tables
+import com.frogobox.coreutil.sport.response.Teams
+import com.frogobox.coreutil.sport.response.Users
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -42,233 +40,233 @@ import retrofit2.http.Query
 interface SportApiService {
 
     // Search for team by name
-    @GET(SportUrl.SEARCH_FOR_TEAM)
+    @GET(com.frogobox.coreutil.sport.SportUrl.SEARCH_FOR_TEAM)
     fun searchForTeamByName(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_TEAM_NAME) teamName: String?
-    ): Observable<Teams>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_TEAM_NAME) teamName: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Teams>
 
     // Search for team short code
-    @GET(SportUrl.SEARCH_FOR_TEAM)
+    @GET(com.frogobox.coreutil.sport.SportUrl.SEARCH_FOR_TEAM)
     fun searchForTeamByShortCode(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_SHORT_CODE_NAME) shortCode: String?
-    ): Observable<Teams>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_SHORT_CODE_NAME) shortCode: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Teams>
 
     // Search for all players from team *Patreon ONLY*
-    @GET(SportUrl.PATREON_SEARCH_FOR_ALL_PLAYERS_FROM_TEAMS)
+    @GET(com.frogobox.coreutil.sport.SportUrl.PATREON_SEARCH_FOR_ALL_PLAYERS_FROM_TEAMS)
     fun searchForAllPlayer(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_TEAM_NAME) teamName: String?
-    ): Observable<Players>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_TEAM_NAME) teamName: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Players>
 
     // Search for players by player name
-    @GET(SportUrl.PATREON_SEARCH_FOR_ALL_PLAYERS_FROM_TEAMS)
+    @GET(com.frogobox.coreutil.sport.SportUrl.PATREON_SEARCH_FOR_ALL_PLAYERS_FROM_TEAMS)
     fun searchForPlayer(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_PLAYER_NAME) playerName: String?
-    ): Observable<Players>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_PLAYER_NAME) playerName: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Players>
 
     // Search for players by player name and team name
-    @GET(SportUrl.PATREON_SEARCH_FOR_ALL_PLAYERS_FROM_TEAMS)
+    @GET(com.frogobox.coreutil.sport.SportUrl.PATREON_SEARCH_FOR_ALL_PLAYERS_FROM_TEAMS)
     fun searchForPlayer(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_PLAYER_NAME) playerName: String?,
-        @Query(SportConstant.QUERY_TEAM_NAME) teamName: String?
-    ): Observable<Players>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_PLAYER_NAME) playerName: String?,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_TEAM_NAME) teamName: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Players>
 
     // Search for event by event name
-    @GET(SportUrl.SEARCH_FOR_EVENT)
+    @GET(com.frogobox.coreutil.sport.SportUrl.SEARCH_FOR_EVENT)
     fun searchForEvent(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_EVENT_NAME) eventName: String?
-    ): Observable<Events>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_EVENT_NAME) eventName: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Events>
 
     // Search For event by event name and season
-    @GET(SportUrl.SEARCH_FOR_EVENT)
+    @GET(com.frogobox.coreutil.sport.SportUrl.SEARCH_FOR_EVENT)
     fun searchForEvent(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_EVENT_NAME) eventName: String?,
-        @Query(SportConstant.QUERY_SEASON) season: String?
-    ): Observable<Events>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_EVENT_NAME) eventName: String?,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_SEASON) season: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Events>
 
     // Search for event by event file name
-    @GET(SportUrl.SEARCH_FOR_EVENT_FILE_NAME)
+    @GET(com.frogobox.coreutil.sport.SportUrl.SEARCH_FOR_EVENT_FILE_NAME)
     fun searchForEventFileName(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_EVENT_NAME) eventFileName: String?
-    ): Observable<Events>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_EVENT_NAME) eventFileName: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Events>
 
     // List all sports
-    @GET(SportUrl.GET_ALL_SPORTS)
+    @GET(com.frogobox.coreutil.sport.SportUrl.GET_ALL_SPORTS)
     fun getAllSports(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String
-    ): Observable<Sports>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String
+    ): Observable<com.frogobox.coreutil.sport.response.Sports>
 
     // List all leagues
-    @GET(SportUrl.GET_ALL_LEAGUES)
+    @GET(com.frogobox.coreutil.sport.SportUrl.GET_ALL_LEAGUES)
     fun getAllLeagues(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String
-    ): Observable<Leagues>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String
+    ): Observable<com.frogobox.coreutil.sport.response.Leagues>
 
     // List all Leagues in a country
-    @GET(SportUrl.SEARCH_ALL_LEAGUES)
+    @GET(com.frogobox.coreutil.sport.SportUrl.SEARCH_ALL_LEAGUES)
     fun searchAllLeagues(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_COUNTRY_NAME) countryName: String?
-    ): Observable<Countrys>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_COUNTRY_NAME) countryName: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Countrys>
 
     // List all Leagues in a country specific by sport
-    @GET(SportUrl.SEARCH_ALL_LEAGUES)
+    @GET(com.frogobox.coreutil.sport.SportUrl.SEARCH_ALL_LEAGUES)
     fun searchAllLeagues(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_COUNTRY_NAME) countryName: String?,
-        @Query(SportConstant.QUERY_SPORT_NAME) sportName: String?
-    ): Observable<Countrys>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_COUNTRY_NAME) countryName: String?,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_SPORT_NAME) sportName: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Countrys>
 
     // List all Seasons in a League
-    @GET(SportUrl.SEARCH_ALL_SEASONS)
+    @GET(com.frogobox.coreutil.sport.SportUrl.SEARCH_ALL_SEASONS)
     fun searchAllSeasons(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_ID) idTeam: String?
-    ): Observable<Seasons>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_ID) idTeam: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Seasons>
 
     // List all Teams in a League
-    @GET(SportUrl.SEARCH_ALL_TEAMS)
+    @GET(com.frogobox.coreutil.sport.SportUrl.SEARCH_ALL_TEAMS)
     fun searchAllTeam(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_LEAGUE_NAME) league: String?
-    ): Observable<Teams>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_LEAGUE_NAME) league: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Teams>
 
     // List all Teams in Sport and Country
-    @GET(SportUrl.SEARCH_ALL_TEAMS)
+    @GET(com.frogobox.coreutil.sport.SportUrl.SEARCH_ALL_TEAMS)
     fun searchAllTeam(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_SPORT_NAME) sportName: String?,
-        @Query(SportConstant.QUERY_COUNTRY_NAME) countryName: String?
-    ): Observable<Teams>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_SPORT_NAME) sportName: String?,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_COUNTRY_NAME) countryName: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Teams>
 
     // List All teams details in a league by Id
-    @GET(SportUrl.LOOKUP_ALL_TEAMS)
+    @GET(com.frogobox.coreutil.sport.SportUrl.LOOKUP_ALL_TEAMS)
     fun lookupAllTeam(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_ID) idLeague: String?
-    ): Observable<Teams>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_ID) idLeague: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Teams>
 
     // List All players in a team by Team Id *Patreon ONLY*
-    @GET(SportUrl.LOOKUP_ALL_PLAYER)
+    @GET(com.frogobox.coreutil.sport.SportUrl.LOOKUP_ALL_PLAYER)
     fun lookupAllPlayer(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_ID) idTeam: String?
-    ): Observable<Players>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_ID) idTeam: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Players>
 
     // List all users loved teams and players
-    @GET(SportUrl.SEARCH_LOVES)
+    @GET(com.frogobox.coreutil.sport.SportUrl.SEARCH_LOVES)
     fun searchLoves(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_USER_LOVED) userName: String?
-    ): Observable<Users>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_USER_LOVED) userName: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Users>
 
     // League Details by Id
-    @GET(SportUrl.LOOKUP_LEAGUE)
+    @GET(com.frogobox.coreutil.sport.SportUrl.LOOKUP_LEAGUE)
     fun lookupLeagues(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_ID) idLeague: String?
-    ): Observable<Leagues>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_ID) idLeague: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Leagues>
 
     // Team Details by Id
-    @GET(SportUrl.LOOKUP_TEAM)
+    @GET(com.frogobox.coreutil.sport.SportUrl.LOOKUP_TEAM)
     fun lookupTeam(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_ID) idTeam: String?
-    ): Observable<Teams>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_ID) idTeam: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Teams>
 
     // Player Details by Id
-    @GET(SportUrl.LOOKUP_PLAYER)
+    @GET(com.frogobox.coreutil.sport.SportUrl.LOOKUP_PLAYER)
     fun lookupPlayer(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_ID) idPlayer: String?
-    ): Observable<Players>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_ID) idPlayer: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Players>
 
     // Event Details by Id
-    @GET(SportUrl.LOOKUP_EVENT)
+    @GET(com.frogobox.coreutil.sport.SportUrl.LOOKUP_EVENT)
     fun lookupEvent(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_ID) idEvent: String?
-    ): Observable<Events>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_ID) idEvent: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Events>
 
     // Player Honours by Player Id
-    @GET(SportUrl.LOOKUP_HONOURS)
+    @GET(com.frogobox.coreutil.sport.SportUrl.LOOKUP_HONOURS)
     fun lookupHonour(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_ID) idPlayer: String?
-    ): Observable<Honors>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_ID) idPlayer: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Honors>
 
     // Player Former Teams by Player Id
-    @GET(SportUrl.LOOKUP_FORMER_TEAM)
+    @GET(com.frogobox.coreutil.sport.SportUrl.LOOKUP_FORMER_TEAM)
     fun lookupFormerTeam(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_ID) idPlayer: String?
-    ): Observable<FormerTeams>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_ID) idPlayer: String?
+    ): Observable<com.frogobox.coreutil.sport.response.FormerTeams>
 
     // Player Contracts by Player Id
-    @GET(SportUrl.LOOKUP_CONTRACTS)
+    @GET(com.frogobox.coreutil.sport.SportUrl.LOOKUP_CONTRACTS)
     fun lookupContract(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_ID) idPlayer: String?
-    ): Observable<Contracts>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_ID) idPlayer: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Contracts>
 
     // Lookup Table by League ID and Season
-    @GET(SportUrl.LOOKUP_TABLE)
+    @GET(com.frogobox.coreutil.sport.SportUrl.LOOKUP_TABLE)
     fun lookupTable(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_LEAGUE_NAME) idLeague: String?,
-        @Query(SportConstant.QUERY_SEASON) season: String?
-    ): Observable<Tables>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_LEAGUE_NAME) idLeague: String?,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_SEASON) season: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Tables>
 
     // Next 5 Events by Team Id
-    @GET(SportUrl.EVENTS_NEXT)
+    @GET(com.frogobox.coreutil.sport.SportUrl.EVENTS_NEXT)
     fun eventsNext(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_ID) idTeam: String?
-    ): Observable<Events>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_ID) idTeam: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Events>
 
     // Next 15 Events by League Id
-    @GET(SportUrl.EVENTS_NEXT_LEAGUE)
+    @GET(com.frogobox.coreutil.sport.SportUrl.EVENTS_NEXT_LEAGUE)
     fun eventsNextLeague(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_ID) idLeague: String?
-    ): Observable<Events>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_ID) idLeague: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Events>
 
     // Last 5 Events by Team Id
-    @GET(SportUrl.EVENTS_LAST)
+    @GET(com.frogobox.coreutil.sport.SportUrl.EVENTS_LAST)
     fun eventsLast(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_ID) idTeam: String?
-    ): Observable<Results>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_ID) idTeam: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Results>
 
     // Last 15 Events by League Id
-    @GET(SportUrl.EVENTS_PAST_LEAGUE)
+    @GET(com.frogobox.coreutil.sport.SportUrl.EVENTS_PAST_LEAGUE)
     fun eventsPastLeague(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_ID) idLeague: String?
-    ): Observable<Events>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_ID) idLeague: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Events>
 
     // Events in a specific round by league id/round/season
-    @GET(SportUrl.EVENTS_ROUND)
+    @GET(com.frogobox.coreutil.sport.SportUrl.EVENTS_ROUND)
     fun eventsRound(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_ID) idLeague: String?,
-        @Query(SportConstant.QUERY_ROUND) round: String?,
-        @Query(SportConstant.QUERY_SEASON) season: String?
-    ): Observable<Events>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_ID) idLeague: String?,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_ROUND) round: String?,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_SEASON) season: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Events>
 
     // All events in specific league by season (Free tier limited to 200 events)
-    @GET(SportUrl.EVENTS_SEASONS)
+    @GET(com.frogobox.coreutil.sport.SportUrl.EVENTS_SEASONS)
     fun eventsSeason(
-        @Path(SportConstant.PATH_API_KEY) apiKey: String,
-        @Query(SportConstant.QUERY_ID) idLeague: String?,
-        @Query(SportConstant.QUERY_SEASON) season: String?
-    ): Observable<Events>
+        @Path(com.frogobox.coreutil.sport.SportConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_ID) idLeague: String?,
+        @Query(com.frogobox.coreutil.sport.SportConstant.QUERY_SEASON) season: String?
+    ): Observable<com.frogobox.coreutil.sport.response.Events>
 
 }

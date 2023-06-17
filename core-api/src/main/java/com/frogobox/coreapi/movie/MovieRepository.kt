@@ -1,7 +1,6 @@
 package com.frogobox.coreapi.movie
 
 
-import com.frogobox.coremodel.movie.MovieUrl
 import com.frogobox.coresdk.ext.doApiRequest
 import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coresdk.source.FrogoApiClient
@@ -28,20 +27,20 @@ import okhttp3.Interceptor
 object MovieRepository : MovieDataSource {
 
     private val TAG = MovieRepository::class.java.simpleName
-    private var movieApiService = FrogoApiClient.create<MovieApiService>(MovieUrl.BASE_URL)
+    private var movieApiService = FrogoApiClient.create<MovieApiService>(com.frogobox.coreutil.movie.MovieUrl.BASE_URL)
 
     // Switch For Using Chuck Interceptor
     override fun usingChuckInterceptor(
         isDebug: Boolean,
         chuckerInterceptor: Interceptor
     ): MovieDataSource {
-        movieApiService = FrogoApiClient.create(MovieUrl.BASE_URL, isDebug, chuckerInterceptor)
+        movieApiService = FrogoApiClient.create(com.frogobox.coreutil.movie.MovieUrl.BASE_URL, isDebug, chuckerInterceptor)
         return this
     }
 
     override fun getMovieCertifications(
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.Certifications<com.frogobox.coremodel.movie.model.CertificationMovie>>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Certifications<com.frogobox.coreutil.movie.model.CertificationMovie>>
     ) {
         if (scheduler != null) {
             movieApiService.getMovieCertifications(apiKey).doApiRequest(scheduler, callback) {}
@@ -53,7 +52,7 @@ object MovieRepository : MovieDataSource {
     override fun getTvCertifications(
         scheduler: Scheduler?,
         apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.Certifications<com.frogobox.coremodel.movie.model.CertificationTv>>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Certifications<com.frogobox.coreutil.movie.model.CertificationTv>>
     ) {
         movieApiService.getTvCertifications(apiKey).doApiRequest(scheduler, callback) {}
     }
@@ -64,7 +63,7 @@ object MovieRepository : MovieDataSource {
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.Changes>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Changes>
     ) {
         movieApiService.getMovieChangeList(apiKey, endDate, startDate, page)
             .doApiRequest(scheduler, callback) {}
@@ -76,7 +75,7 @@ object MovieRepository : MovieDataSource {
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.Changes>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Changes>
     ) {
         movieApiService.getTvChangeList(apiKey, endDate, startDate, page)
             .doApiRequest(scheduler, callback) {}
@@ -88,7 +87,7 @@ object MovieRepository : MovieDataSource {
         endDate: String?,
         startDate: String?,
         page: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.Changes>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Changes>
     ) {
         movieApiService.getPersonChangeList(apiKey, endDate, startDate, page)
             .doApiRequest(scheduler, callback) {}
@@ -99,7 +98,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.CollectionsDetail>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.CollectionsDetail>
     ) {
         movieApiService.getCollectionDetails(collection_id, apiKey, language)
             .doApiRequest(scheduler, callback) {}
@@ -110,7 +109,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.CollectionsImage>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.CollectionsImage>
     ) {
         movieApiService.getCollectionImages(collection_id, apiKey, language)
             .doApiRequest(scheduler, callback) {}
@@ -121,7 +120,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.CollectionsTranslation>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.CollectionsTranslation>
     ) {
         movieApiService.getCollectionTranslations(collection_id, apiKey, language)
             .doApiRequest(scheduler, callback) {}
@@ -130,7 +129,7 @@ object MovieRepository : MovieDataSource {
     override fun getCompaniesDetails(
         company_id: Int,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.CompaniesDetail>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.CompaniesDetail>
     ) {
         movieApiService.getCompaniesDetails(company_id, apiKey).doApiRequest(scheduler, callback) {}
     }
@@ -138,7 +137,7 @@ object MovieRepository : MovieDataSource {
     override fun getCompaniesAlternativeName(
         company_id: Int,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.CompaniesAlternateName>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.CompaniesAlternateName>
     ) {
         movieApiService.getCompaniesAlternativeName(company_id, apiKey)
             .doApiRequest(scheduler, callback) {}
@@ -147,35 +146,35 @@ object MovieRepository : MovieDataSource {
     override fun getCompaniesImage(
         company_id: Int,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.CompaniesImage>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.CompaniesImage>
     ) {
         movieApiService.getCompaniesImage(company_id, apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getConfigurationApi(
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.ConfigurationApi>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.ConfigurationApi>
     ) {
         movieApiService.getConfigurationApi(apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getConfigurationCountries(
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<List<com.frogobox.coremodel.movie.model.ConfigurationCountry>>
+        callback: FrogoDataResponse<List<com.frogobox.coreutil.movie.model.ConfigurationCountry>>
     ) {
         movieApiService.getConfigurationCountries(apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getConfigurationJobs(
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<List<com.frogobox.coremodel.movie.model.ConfigurationJob>>
+        callback: FrogoDataResponse<List<com.frogobox.coreutil.movie.model.ConfigurationJob>>
     ) {
         movieApiService.getConfigurationJobs(apiKey).doApiRequest(scheduler, callback) {}
     }
 
     override fun getConfigurationLanguages(
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<List<com.frogobox.coremodel.movie.model.ConfigurationLanguage>>
+        callback: FrogoDataResponse<List<com.frogobox.coreutil.movie.model.ConfigurationLanguage>>
     ) {
         movieApiService.getConfigurationLanguages(apiKey).doApiRequest(scheduler, callback) {}
     }
@@ -189,7 +188,7 @@ object MovieRepository : MovieDataSource {
 
     override fun getConfigurationTimezones(
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<List<com.frogobox.coremodel.movie.model.ConfigurationTimezone>>
+        callback: FrogoDataResponse<List<com.frogobox.coreutil.movie.model.ConfigurationTimezone>>
     ) {
         movieApiService.getConfigurationTimezones(apiKey).doApiRequest(scheduler, callback) {}
 
@@ -198,7 +197,7 @@ object MovieRepository : MovieDataSource {
     override fun getCreditsDetails(
         credit_id: String,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.Credits>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Credits>
     ) {
         movieApiService.getCreditsDetails(credit_id, apiKey).doApiRequest(scheduler, callback) {}
     }
@@ -237,7 +236,7 @@ object MovieRepository : MovieDataSource {
         with_runtime_gte: Double?,
         with_runtime_lte: Double?,
         with_original_language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.Discover<com.frogobox.coremodel.movie.model.DiscoverMovie>>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Discover<com.frogobox.coreutil.movie.model.DiscoverMovie>>
     ) {
 
         movieApiService.getDiscoverMovie(
@@ -301,7 +300,7 @@ object MovieRepository : MovieDataSource {
         screened_theatrically: String?,
         with_companies: String?,
         with_keywords: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.Discover<com.frogobox.coremodel.movie.model.DiscoverTv>>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Discover<com.frogobox.coreutil.movie.model.DiscoverTv>>
     ) {
         movieApiService.getDiscoverTv(
             apiKey,
@@ -335,7 +334,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         external_source: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.Find>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Find>
     ) {
         movieApiService.getFindById(external_id, apiKey, external_source, language)
             .doApiRequest(scheduler, callback) {}
@@ -344,7 +343,7 @@ object MovieRepository : MovieDataSource {
     override fun getGenresMovie(
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.Genres>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Genres>
     ) {
         movieApiService.getGenresMovie(apiKey, language).doApiRequest(scheduler, callback) {}
     }
@@ -352,7 +351,7 @@ object MovieRepository : MovieDataSource {
     override fun getGenresTv(
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.Genres>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Genres>
     ) {
         movieApiService.getGenresTv(apiKey, language).doApiRequest(scheduler, callback) {}
     }
@@ -360,7 +359,7 @@ object MovieRepository : MovieDataSource {
     override fun getKeywordsDetail(
         keyword_id: Int,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.KeywordsDetail>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.KeywordsDetail>
     ) {
         movieApiService.getKeywordsDetail(keyword_id, apiKey).doApiRequest(scheduler, callback) {}
     }
@@ -370,7 +369,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         language: String?,
         include_adult: Boolean?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.KeywordsMovies>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.KeywordsMovies>
     ) {
         movieApiService.getKeywordsMovie(keyword_id, apiKey, language, include_adult)
             .doApiRequest(scheduler, callback) {}
@@ -381,7 +380,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         language: String?,
         append_to_response: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.MovieDetail>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieDetail>
     ) {
         movieApiService.getMoviesDetails(movie_id, apiKey, language, append_to_response)
             .doApiRequest(scheduler, callback) {}
@@ -392,7 +391,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         session_id: String,
         guest_session_id: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.MovieAccountState>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieAccountState>
     ) {
         movieApiService.getMoviesAccountState(movie_id, apiKey, session_id, guest_session_id)
             .doApiRequest(scheduler, callback) {}
@@ -402,7 +401,7 @@ object MovieRepository : MovieDataSource {
         movie_id: Int,
         scheduler: Scheduler?, apiKey: String,
         country: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.MovieAlternativeTitle>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieAlternativeTitle>
     ) {
         movieApiService.getMoviesAlternativeTitles(movie_id, apiKey, country)
             .doApiRequest(scheduler, callback) {}
@@ -414,7 +413,7 @@ object MovieRepository : MovieDataSource {
         start_date: String?,
         end_date: String?,
         page: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.MovieChanges>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieChanges>
     ) {
         movieApiService.getMoviesChanges(movie_id, apiKey, start_date, end_date, page)
             .doApiRequest(scheduler, callback) {}
@@ -423,7 +422,7 @@ object MovieRepository : MovieDataSource {
     override fun getMoviesCredits(
         movie_id: Int,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.MovieCredit>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieCredit>
     ) {
         movieApiService.getMoviesCredits(movie_id, apiKey).doApiRequest(scheduler, callback) {}
     }
@@ -431,7 +430,7 @@ object MovieRepository : MovieDataSource {
     override fun getMoviesExternalIds(
         movie_id: Int,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.MovieExternalId>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieExternalId>
     ) {
         movieApiService.getMoviesExternalIds(movie_id, apiKey).doApiRequest(scheduler, callback) {}
     }
@@ -441,7 +440,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         language: String?,
         include_image_language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.MovieImages>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieImages>
     ) {
         movieApiService.getMoviesImages(
             movie_id,
@@ -454,7 +453,7 @@ object MovieRepository : MovieDataSource {
     override fun getMoviesKeywords(
         movie_id: Int,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.MovieKeywords>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieKeywords>
     ) {
         movieApiService.getMoviesKeywords(movie_id, apiKey).doApiRequest(scheduler, callback) {}
     }
@@ -462,7 +461,7 @@ object MovieRepository : MovieDataSource {
     override fun getMoviesReleaseDates(
         movie_id: Int,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.MovieReleaseDates>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieReleaseDates>
     ) {
         movieApiService.getMoviesReleaseDates(movie_id, apiKey).doApiRequest(scheduler, callback) {}
     }
@@ -471,7 +470,7 @@ object MovieRepository : MovieDataSource {
         movie_id: Int,
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.MovieVideos>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieVideos>
     ) {
         movieApiService.getMoviesVideos(movie_id, apiKey, language)
             .doApiRequest(scheduler, callback) {}
@@ -480,7 +479,7 @@ object MovieRepository : MovieDataSource {
     override fun getMoviesTranslations(
         movie_id: Int,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.MovieTranslations>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieTranslations>
     ) {
         movieApiService.getMoviesTranslations(movie_id, apiKey).doApiRequest(scheduler, callback) {}
     }
@@ -490,7 +489,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.MovieRecommendations>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieRecommendations>
     ) {
         movieApiService.getMoviesRecommendations(movie_id, apiKey, language, page)
             .doApiRequest(scheduler, callback) {}
@@ -501,7 +500,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.MovieSimilarMovies>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieSimilarMovies>
     ) {
         movieApiService.getMoviesSimilarMovies(movie_id, apiKey, language, page)
             .doApiRequest(scheduler, callback) {}
@@ -512,7 +511,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.MovieReviews>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieReviews>
     ) {
         movieApiService.getMoviesReviews(movie_id, apiKey, language, page)
             .doApiRequest(scheduler, callback) {}
@@ -523,7 +522,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.MovieLists>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieLists>
     ) {
         movieApiService.getMoviesLists(movie_id, apiKey, language, page)
             .doApiRequest(scheduler, callback) {}
@@ -532,7 +531,7 @@ object MovieRepository : MovieDataSource {
     override fun getMoviesLatest(
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.MovieLatest>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieLatest>
     ) {
         movieApiService.getMoviesLatest(apiKey, language).doApiRequest(scheduler, callback) {}
     }
@@ -542,7 +541,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         page: Int?,
         region: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.MovieNowPlayings>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieNowPlayings>
     ) {
         movieApiService.getMoviesNowPlaying(apiKey, language, page, region)
             .doApiRequest(scheduler, callback) {}
@@ -553,7 +552,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         page: Int?,
         region: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.MoviePopulars>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MoviePopulars>
     ) {
         movieApiService.getMoviesPopular(apiKey, language, page, region)
             .doApiRequest(scheduler, callback) {}
@@ -564,7 +563,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         page: Int?,
         region: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.MovieTopRated>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieTopRated>
     ) {
         movieApiService.getMoviesTopRated(apiKey, language, page, region)
             .doApiRequest(scheduler, callback) {}
@@ -575,7 +574,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         page: Int?,
         region: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.MovieUpcoming>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieUpcoming>
     ) {
         if (scheduler != null) {
             movieApiService.getMoviesUpcoming(apiKey, language, page, region)
@@ -590,7 +589,7 @@ object MovieRepository : MovieDataSource {
         media_type: String,
         time_window: String,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.Trending<com.frogobox.coremodel.movie.model.TrendingAll>>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingAll>>
     ) {
         if (scheduler != null) {
             movieApiService.getTrendingAll(media_type, time_window, apiKey)
@@ -605,7 +604,7 @@ object MovieRepository : MovieDataSource {
         media_type: String,
         time_window: String,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.Trending<com.frogobox.coremodel.movie.model.TrendingMovie>>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingMovie>>
     ) {
         if (scheduler != null) {
             movieApiService.getTrendingMovie(media_type, time_window, apiKey)
@@ -621,7 +620,7 @@ object MovieRepository : MovieDataSource {
         time_window: String,
         scheduler: Scheduler?,
         apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.Trending<com.frogobox.coremodel.movie.model.TrendingPerson>>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingPerson>>
     ) {
         if (scheduler != null) {
             movieApiService.getTrendingPerson(media_type, time_window, apiKey)
@@ -637,7 +636,7 @@ object MovieRepository : MovieDataSource {
         time_window: String,
         scheduler: Scheduler?,
         apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.Trending<com.frogobox.coremodel.movie.model.TrendingTv>>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingTv>>
     ) {
         if (scheduler != null) {
             movieApiService.getTrendingTv(media_type, time_window, apiKey)
@@ -651,7 +650,7 @@ object MovieRepository : MovieDataSource {
     override fun getReviews(
         review_id: String,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.Reviews>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Reviews>
     ) {
         if (scheduler != null) {
             movieApiService.getReviews(review_id, apiKey)
@@ -665,7 +664,7 @@ object MovieRepository : MovieDataSource {
     override fun getNetworkDetail(
         network_id: Int,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.NetworkDetail>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.NetworkDetail>
     ) {
         movieApiService.getNetworkDetail(network_id, apiKey).doApiRequest(scheduler, callback) {}
     }
@@ -673,7 +672,7 @@ object MovieRepository : MovieDataSource {
     override fun getNetworkAlternativeName(
         network_id: Int,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.NetworkAlternativeName>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.NetworkAlternativeName>
     ) {
         movieApiService.getNetworkAlternativeName(network_id, apiKey)
             .doApiRequest(scheduler, callback) {}
@@ -682,7 +681,7 @@ object MovieRepository : MovieDataSource {
     override fun getNetworkImage(
         network_id: Int,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.NetworkImage>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.NetworkImage>
     ) {
         movieApiService.getNetworkImage(network_id, apiKey).doApiRequest(scheduler, callback) {}
     }
@@ -691,7 +690,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         query: String,
         page: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.SearchCompanies>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.SearchCompanies>
     ) {
         movieApiService.searchCompanies(apiKey, query, page).doApiRequest(scheduler, callback) {}
     }
@@ -701,7 +700,7 @@ object MovieRepository : MovieDataSource {
         query: String,
         language: String?,
         page: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.SearchCollections>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.SearchCollections>
     ) {
         movieApiService.searchCollections(apiKey, query, language, page)
             .doApiRequest(scheduler, callback) {}
@@ -711,7 +710,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         query: String,
         page: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.SearchKeywords>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.SearchKeywords>
     ) {
         movieApiService.searchKeywords(apiKey, query, page).doApiRequest(scheduler, callback) {}
     }
@@ -725,7 +724,7 @@ object MovieRepository : MovieDataSource {
         region: String?,
         year: Int?,
         primary_release_year: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.SearchMovies>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.SearchMovies>
     ) {
         movieApiService.searchMovies(
             apiKey,
@@ -746,7 +745,7 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         include_adult: Boolean?,
         region: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.SearchMulti>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.SearchMulti>
     ) {
         movieApiService.searchMultiSearch(apiKey, query, language, page, include_adult, region)
             .doApiRequest(scheduler, callback) {}
@@ -759,7 +758,7 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         include_adult: Boolean?,
         region: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.SearchPeople>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.SearchPeople>
     ) {
         movieApiService.searchPeople(apiKey, query, language, page, include_adult, region)
             .doApiRequest(scheduler, callback) {}
@@ -772,7 +771,7 @@ object MovieRepository : MovieDataSource {
         page: Int?,
         include_adult: Boolean?,
         first_air_date_year: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.SearchMovies>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.SearchMovies>
     ) {
         movieApiService.searchTvShows(
             apiKey,
@@ -789,7 +788,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         language: String?,
         append_to_response: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvDetails>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvDetails>
     ) {
         movieApiService.getTvDetails(tv_id, apiKey, language, append_to_response)
             .doApiRequest(scheduler, callback) {}
@@ -801,7 +800,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         guest_session_id: String?,
         session_id: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvAccountStates>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvAccountStates>
     ) {
         movieApiService.getTvAccountStates(tv_id, apiKey, language, guest_session_id, session_id)
             .doApiRequest(scheduler, callback) {}
@@ -811,7 +810,7 @@ object MovieRepository : MovieDataSource {
         tv_id: Int,
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvAlternativeTitles>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvAlternativeTitles>
     ) {
         movieApiService.getTvAlternativeTitles(tv_id, apiKey, language)
             .doApiRequest(scheduler, callback) {}
@@ -823,7 +822,7 @@ object MovieRepository : MovieDataSource {
         startDate: String?,
         endDate: String?,
         page: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvChanges>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvChanges>
     ) {
         movieApiService.getTvChanges(tv_id, apiKey, startDate, endDate, page)
             .doApiRequest(scheduler, callback) {}
@@ -833,7 +832,7 @@ object MovieRepository : MovieDataSource {
         tv_id: Int,
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvContentRatings>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvContentRatings>
     ) {
         movieApiService.getTvContentRatings(tv_id, apiKey, language)
             .doApiRequest(scheduler, callback) {}
@@ -843,7 +842,7 @@ object MovieRepository : MovieDataSource {
         tv_id: Int,
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvCredits>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvCredits>
     ) {
         movieApiService.getTvCredits(tv_id, apiKey, language).doApiRequest(scheduler, callback) {}
     }
@@ -852,7 +851,7 @@ object MovieRepository : MovieDataSource {
         tv_id: Int,
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvEpisodeGroups>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvEpisodeGroups>
     ) {
         movieApiService.getTvEpisodeGroups(tv_id, apiKey, language)
             .doApiRequest(scheduler, callback) {}
@@ -862,7 +861,7 @@ object MovieRepository : MovieDataSource {
         tv_id: Int,
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvExternalIds>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvExternalIds>
     ) {
         movieApiService.getTvExternalIds(tv_id, apiKey, language)
             .doApiRequest(scheduler, callback) {}
@@ -872,7 +871,7 @@ object MovieRepository : MovieDataSource {
         tv_id: Int,
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvImages>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvImages>
     ) {
         movieApiService.getTvImages(tv_id, apiKey, language).doApiRequest(scheduler, callback) {}
     }
@@ -880,7 +879,7 @@ object MovieRepository : MovieDataSource {
     override fun getTvKeyword(
         tv_id: Int,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvKeywords>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvKeywords>
     ) {
         movieApiService.getTvKeyword(tv_id, apiKey).doApiRequest(scheduler, callback) {}
     }
@@ -890,7 +889,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvRecommendations>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvRecommendations>
     ) {
         movieApiService.getTvRecommendations(tv_id, apiKey, language, page)
             .doApiRequest(scheduler, callback) {}
@@ -899,7 +898,7 @@ object MovieRepository : MovieDataSource {
     override fun getTvReviews(
         tv_id: Int,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvReviews>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvReviews>
     ) {
         movieApiService.getTvReviews(tv_id, apiKey).doApiRequest(scheduler, callback) {}
     }
@@ -907,7 +906,7 @@ object MovieRepository : MovieDataSource {
     override fun getTvScreenedTheatrically(
         tv_id: Int,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvScreenedTheatrically>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvScreenedTheatrically>
     ) {
         movieApiService.getTvScreenedTheatrically(tv_id, apiKey)
             .doApiRequest(scheduler, callback) {}
@@ -918,7 +917,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvSimilarTVShows>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvSimilarTVShows>
     ) {
         movieApiService.getTvSimilarTvShows(tv_id, apiKey, language, page)
             .doApiRequest(scheduler, callback) {}
@@ -927,7 +926,7 @@ object MovieRepository : MovieDataSource {
     override fun getTvTranslations(
         tv_id: Int,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvTranslations>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvTranslations>
     ) {
         movieApiService.getTvTranslations(tv_id, apiKey).doApiRequest(scheduler, callback) {}
     }
@@ -936,7 +935,7 @@ object MovieRepository : MovieDataSource {
         tv_id: Int,
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvVideos>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvVideos>
     ) {
         movieApiService.getTvVideos(tv_id, apiKey, language).doApiRequest(scheduler, callback) {}
     }
@@ -944,7 +943,7 @@ object MovieRepository : MovieDataSource {
     override fun getTvLatest(
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvLatest>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvLatest>
     ) {
         movieApiService.getTvLatest(apiKey, language).doApiRequest(scheduler, callback) {}
     }
@@ -953,7 +952,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvAiringToday>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvAiringToday>
     ) {
         movieApiService.getTvAiringToday(apiKey, language, page)
             .doApiRequest(scheduler, callback) {}
@@ -963,7 +962,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvOnTheAir>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvOnTheAir>
     ) {
         movieApiService.getTvOnTheAir(apiKey, language, page).doApiRequest(scheduler, callback) {}
     }
@@ -972,7 +971,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvPopular>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvPopular>
     ) {
         movieApiService.getTvPopular(apiKey, language, page).doApiRequest(scheduler, callback) {}
     }
@@ -981,7 +980,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvTopRated>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvTopRated>
     ) {
         movieApiService.getTvTopRated(apiKey, language, page).doApiRequest(scheduler, callback) {}
     }
@@ -992,7 +991,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         language: String?,
         append_to_response: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvSeasonsDetails>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvSeasonsDetails>
     ) {
         movieApiService.getTvSeasonsDetails(
             tv_id,
@@ -1009,7 +1008,7 @@ object MovieRepository : MovieDataSource {
         startDate: String?,
         endDate: String?,
         page: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvSeasonsChanges>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvSeasonsChanges>
     ) {
         movieApiService.getTvSeasonsChanges(season_id, apiKey, startDate, endDate, page)
             .doApiRequest(scheduler, callback) {}
@@ -1022,7 +1021,7 @@ object MovieRepository : MovieDataSource {
         language: String?,
         guest_session_id: String?,
         session_id: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvSeasonsAccountStates>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvSeasonsAccountStates>
     ) {
         movieApiService.getTvSeasonsAccountStates(
             tv_id,
@@ -1039,7 +1038,7 @@ object MovieRepository : MovieDataSource {
         season_number: Int,
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvSeasonsCredits>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvSeasonsCredits>
     ) {
         movieApiService.getTvSeasonsCredits(tv_id, season_number, apiKey, language)
             .doApiRequest(scheduler, callback) {}
@@ -1050,7 +1049,7 @@ object MovieRepository : MovieDataSource {
         season_number: Int,
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvSeasonsExternalIds>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvSeasonsExternalIds>
     ) {
         movieApiService.getTvSeasonsExternalIds(tv_id, season_number, apiKey, language)
             .doApiRequest(scheduler, callback) {}
@@ -1061,7 +1060,7 @@ object MovieRepository : MovieDataSource {
         season_number: Int,
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvSeasonsImages>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvSeasonsImages>
     ) {
         movieApiService.getTvSeasonsImages(tv_id, season_number, apiKey, language)
             .doApiRequest(scheduler, callback) {}
@@ -1072,7 +1071,7 @@ object MovieRepository : MovieDataSource {
         season_number: Int,
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvSeasonsVideos>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvSeasonsVideos>
     ) {
         movieApiService.getTvSeasonsVideos(tv_id, season_number, apiKey, language)
             .doApiRequest(scheduler, callback) {}
@@ -1085,7 +1084,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         language: String?,
         append_to_response: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvEpisodeDetails>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvEpisodeDetails>
     ) {
         movieApiService.getTvEpisodeDetails(
             tv_id,
@@ -1103,7 +1102,7 @@ object MovieRepository : MovieDataSource {
         startDate: String?,
         endDate: String?,
         page: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvEpisodeChanges>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvEpisodeChanges>
     ) {
         movieApiService.getTvEpisodeChanges(episode_id, apiKey, startDate, endDate, page)
             .doApiRequest(scheduler, callback) {}
@@ -1116,7 +1115,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         guest_session_id: String?,
         session_id: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvEpisodeAccountStates>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvEpisodeAccountStates>
     ) {
         movieApiService.getTvEpisodeAccountStates(
             tv_id,
@@ -1133,7 +1132,7 @@ object MovieRepository : MovieDataSource {
         season_number: Int,
         episode_number: Int,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvEpisodeCredits>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvEpisodeCredits>
     ) {
         movieApiService.getTvEpisodeCredits(tv_id, season_number, episode_number, apiKey)
             .doApiRequest(scheduler, callback) {}
@@ -1144,7 +1143,7 @@ object MovieRepository : MovieDataSource {
         season_number: Int,
         episode_number: Int,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvEpisodeExternalIds>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvEpisodeExternalIds>
     ) {
         movieApiService.getTvEpisodeExternalIds(tv_id, season_number, episode_number, apiKey)
             .doApiRequest(scheduler, callback) {}
@@ -1155,7 +1154,7 @@ object MovieRepository : MovieDataSource {
         season_number: Int,
         episode_number: Int,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvEpisodeImages>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvEpisodeImages>
     ) {
         movieApiService.getTvEpisodeImages(tv_id, season_number, episode_number, apiKey)
             .doApiRequest(scheduler, callback) {}
@@ -1166,7 +1165,7 @@ object MovieRepository : MovieDataSource {
         season_number: Int,
         episode_number: Int,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.model.TvEpisodeTranslation>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.model.TvEpisodeTranslation>
     ) {
         movieApiService.getTvEpisodeTranslations(tv_id, season_number, episode_number, apiKey)
             .doApiRequest(scheduler, callback) {}
@@ -1178,7 +1177,7 @@ object MovieRepository : MovieDataSource {
         episode_number: Int,
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvEpisodeVideos>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvEpisodeVideos>
     ) {
         movieApiService.getTvEpisodeVideos(tv_id, season_number, episode_number, apiKey, language)
             .doApiRequest(scheduler, callback) {}
@@ -1188,7 +1187,7 @@ object MovieRepository : MovieDataSource {
         id: String?,
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.TvEpisodeGroupsDetails>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvEpisodeGroupsDetails>
     ) {
         movieApiService.getTvEpisodeGroupsDetails(id, apiKey, language)
             .doApiRequest(scheduler, callback) {}
@@ -1198,7 +1197,7 @@ object MovieRepository : MovieDataSource {
         person_id: Int,
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.PeopleDetails>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeopleDetails>
     ) {
         movieApiService.getPeopleDetails(person_id, apiKey, language)
             .doApiRequest(scheduler, callback) {}
@@ -1210,7 +1209,7 @@ object MovieRepository : MovieDataSource {
         endDate: String?,
         page: Int?,
         startDate: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.PeopleChanges>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeopleChanges>
     ) {
         movieApiService.getPeopleChanges(person_id, apiKey, endDate, page, startDate)
             .doApiRequest(scheduler, callback) {}
@@ -1220,7 +1219,7 @@ object MovieRepository : MovieDataSource {
         person_id: Int,
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.PeopleMovieCredits>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeopleMovieCredits>
     ) {
         movieApiService.getPeopleMovieCredits(person_id, apiKey, language)
             .doApiRequest(scheduler, callback) {}
@@ -1230,7 +1229,7 @@ object MovieRepository : MovieDataSource {
         person_id: Int,
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.PeopleTvCredits>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeopleTvCredits>
     ) {
         movieApiService.getPeopleTvCredits(person_id, apiKey, language)
             .doApiRequest(scheduler, callback) {}
@@ -1240,7 +1239,7 @@ object MovieRepository : MovieDataSource {
         person_id: Int,
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.PeopleCombinedCredits>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeopleCombinedCredits>
     ) {
         movieApiService.getPeopleCombinedCredits(person_id, apiKey, language)
             .doApiRequest(scheduler, callback) {}
@@ -1250,7 +1249,7 @@ object MovieRepository : MovieDataSource {
         person_id: Int,
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.PeopleExternalIds>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeopleExternalIds>
     ) {
         movieApiService.getPeopleExternalIds(person_id, apiKey, language)
             .doApiRequest(scheduler, callback) {}
@@ -1259,7 +1258,7 @@ object MovieRepository : MovieDataSource {
     override fun getPeopleImages(
         person_id: Int,
         scheduler: Scheduler?, apiKey: String,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.PeopleImages>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeopleImages>
     ) {
         movieApiService.getPeopleImages(person_id, apiKey).doApiRequest(scheduler, callback) {}
     }
@@ -1269,7 +1268,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.PeopleTaggedImages>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeopleTaggedImages>
     ) {
         movieApiService.getPeopleTaggedImages(person_id, apiKey, language, page)
             .doApiRequest(scheduler, callback) {}
@@ -1279,7 +1278,7 @@ object MovieRepository : MovieDataSource {
         person_id: Int,
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.PeopleTranslations>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeopleTranslations>
     ) {
         movieApiService.getPeopleTranslations(person_id, apiKey, language)
             .doApiRequest(scheduler, callback) {}
@@ -1288,7 +1287,7 @@ object MovieRepository : MovieDataSource {
     override fun getPeopleLatest(
         scheduler: Scheduler?, apiKey: String,
         language: String?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.PeopleLatest>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeopleLatest>
     ) {
         movieApiService.getPeopleLatest(apiKey, language).doApiRequest(scheduler, callback) {}
     }
@@ -1297,7 +1296,7 @@ object MovieRepository : MovieDataSource {
         scheduler: Scheduler?, apiKey: String,
         language: String?,
         page: Int?,
-        callback: FrogoDataResponse<com.frogobox.coremodel.movie.response.PeoplePopular>
+        callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeoplePopular>
     ) {
         movieApiService.getPeoplePopular(apiKey, language, page)
             .doApiRequest(scheduler, callback) {}

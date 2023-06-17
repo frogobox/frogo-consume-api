@@ -7,16 +7,16 @@ import com.frogobox.appapi.core.BaseViewModel
 import com.frogobox.appapi.source.ApiRepository
 import com.frogobox.appapi.util.isDebug
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.coremodel.news.NewsConstant.CATEGORY_BUSINESS
-import com.frogobox.coremodel.news.NewsConstant.CATEGORY_ENTERTAIMENT
-import com.frogobox.coremodel.news.NewsConstant.CATEGORY_GENERAL
-import com.frogobox.coremodel.news.NewsConstant.CATEGORY_HEALTH
-import com.frogobox.coremodel.news.NewsConstant.CATEGORY_SCIENCE
-import com.frogobox.coremodel.news.NewsConstant.CATEGORY_SPORTS
-import com.frogobox.coremodel.news.NewsConstant.CATEGORY_TECHNOLOGY
-import com.frogobox.coremodel.news.NewsConstant.COUNTRY_ID
-import com.frogobox.coremodel.news.model.Article
-import com.frogobox.coremodel.news.response.ArticleResponse
+import com.frogobox.coreutil.news.NewsConstant.CATEGORY_BUSINESS
+import com.frogobox.coreutil.news.NewsConstant.CATEGORY_ENTERTAIMENT
+import com.frogobox.coreutil.news.NewsConstant.CATEGORY_GENERAL
+import com.frogobox.coreutil.news.NewsConstant.CATEGORY_HEALTH
+import com.frogobox.coreutil.news.NewsConstant.CATEGORY_SCIENCE
+import com.frogobox.coreutil.news.NewsConstant.CATEGORY_SPORTS
+import com.frogobox.coreutil.news.NewsConstant.CATEGORY_TECHNOLOGY
+import com.frogobox.coreutil.news.NewsConstant.COUNTRY_ID
+import com.frogobox.coreutil.news.model.Article
+import com.frogobox.coreutil.news.response.ArticleResponse
 import com.frogobox.sdk.ext.showLogDebug
 
 /*
@@ -36,11 +36,11 @@ class NewsViewModel(
     private val repository: ApiRepository,
 ) : BaseViewModel() {
 
-    private var _listDataCategory = MutableLiveData<List<Article>>()
-    var listDataCategory: LiveData<List<Article>> = _listDataCategory
+    private var _listDataCategory = MutableLiveData<List<com.frogobox.coreutil.news.model.Article>>()
+    var listDataCategory: LiveData<List<com.frogobox.coreutil.news.model.Article>> = _listDataCategory
 
-    private var _listData = MutableLiveData<List<Article>>()
-    var listData: LiveData<List<Article>> = _listData
+    private var _listData = MutableLiveData<List<com.frogobox.coreutil.news.model.Article>>()
+    var listData: LiveData<List<com.frogobox.coreutil.news.model.Article>> = _listData
 
     private var _listCategory = MutableLiveData<List<String>>()
     var listCategory : LiveData<List<String>> = _listCategory
@@ -67,9 +67,9 @@ class NewsViewModel(
             COUNTRY_ID,
             null,
             null,
-            object : ConsumeApiResponse<ArticleResponse> {
+            object : ConsumeApiResponse<com.frogobox.coreutil.news.response.ArticleResponse> {
 
-                override fun onSuccess(data: ArticleResponse) {
+                override fun onSuccess(data: com.frogobox.coreutil.news.response.ArticleResponse) {
                     // Your Ui or data
                     data.articles?.let { _listDataCategory.postValue(it) }
                 }
@@ -105,9 +105,9 @@ class NewsViewModel(
             COUNTRY_ID,
             null,
             null,
-            object : ConsumeApiResponse<ArticleResponse> {
+            object : ConsumeApiResponse<com.frogobox.coreutil.news.response.ArticleResponse> {
 
-                override fun onSuccess(data: ArticleResponse) {
+                override fun onSuccess(data: com.frogobox.coreutil.news.response.ArticleResponse) {
                     // Your Ui or data
                     data.articles?.let { _listData.postValue(it) }
                 }

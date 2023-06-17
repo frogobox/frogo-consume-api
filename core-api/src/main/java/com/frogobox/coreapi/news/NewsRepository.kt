@@ -1,8 +1,5 @@
 package com.frogobox.coreapi.news
 
-import com.frogobox.coremodel.news.response.ArticleResponse
-import com.frogobox.coremodel.news.response.SourceResponse
-import com.frogobox.coremodel.news.NewsUrl
 import com.frogobox.coresdk.ext.doApiRequest
 import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coresdk.source.FrogoApiClient
@@ -26,13 +23,13 @@ import okhttp3.Interceptor
 object NewsRepository : NewsDataSource {
 
     private val TAG = NewsRepository::class.java.simpleName
-    private var newsApiService = FrogoApiClient.create<NewsApiService>(NewsUrl.BASE_URL)
+    private var newsApiService = FrogoApiClient.create<NewsApiService>(com.frogobox.coreutil.news.NewsUrl.BASE_URL)
 
     override fun usingChuckInterceptor(
         isDebug: Boolean,
         chuckerInterceptor: Interceptor
     ): NewsDataSource {
-        newsApiService = FrogoApiClient.create(NewsUrl.BASE_URL, isDebug, chuckerInterceptor)
+        newsApiService = FrogoApiClient.create(com.frogobox.coreutil.news.NewsUrl.BASE_URL, isDebug, chuckerInterceptor)
         return this
     }
 
@@ -45,7 +42,7 @@ object NewsRepository : NewsDataSource {
         country: String?,
         pageSize: Int?,
         page: Int?,
-        callback: FrogoDataResponse<ArticleResponse>
+        callback: FrogoDataResponse<com.frogobox.coreutil.news.response.ArticleResponse>
     ) {
         newsApiService.getTopHeadline(apiKey, q, sources, category, country, pageSize, page)
             .doApiRequest(scheduler, callback) {}
@@ -65,7 +62,7 @@ object NewsRepository : NewsDataSource {
         sortBy: String?,
         pageSize: Int?,
         page: Int?,
-        callback: FrogoDataResponse<ArticleResponse>
+        callback: FrogoDataResponse<com.frogobox.coreutil.news.response.ArticleResponse>
     ) {
         newsApiService.getEverythings(
             apiKey,
@@ -89,7 +86,7 @@ object NewsRepository : NewsDataSource {
         language: String,
         country: String,
         category: String,
-        callback: FrogoDataResponse<SourceResponse>
+        callback: FrogoDataResponse<com.frogobox.coreutil.news.response.SourceResponse>
     ) {
         newsApiService.getSources(apiKey, language, country, category)
             .doApiRequest(scheduler, callback) {}

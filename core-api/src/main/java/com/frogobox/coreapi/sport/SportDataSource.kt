@@ -1,19 +1,19 @@
 package com.frogobox.coreapi.sport
 
 
-import com.frogobox.coremodel.sport.response.Contracts
-import com.frogobox.coremodel.sport.response.Countrys
-import com.frogobox.coremodel.sport.response.Events
-import com.frogobox.coremodel.sport.response.FormerTeams
-import com.frogobox.coremodel.sport.response.Honors
-import com.frogobox.coremodel.sport.response.Leagues
-import com.frogobox.coremodel.sport.response.Players
-import com.frogobox.coremodel.sport.response.Results
-import com.frogobox.coremodel.sport.response.Seasons
-import com.frogobox.coremodel.sport.response.Sports
-import com.frogobox.coremodel.sport.response.Tables
-import com.frogobox.coremodel.sport.response.Teams
-import com.frogobox.coremodel.sport.response.Users
+import com.frogobox.coreutil.sport.response.Contracts
+import com.frogobox.coreutil.sport.response.Countrys
+import com.frogobox.coreutil.sport.response.Events
+import com.frogobox.coreutil.sport.response.FormerTeams
+import com.frogobox.coreutil.sport.response.Honors
+import com.frogobox.coreutil.sport.response.Leagues
+import com.frogobox.coreutil.sport.response.Players
+import com.frogobox.coreutil.sport.response.Results
+import com.frogobox.coreutil.sport.response.Seasons
+import com.frogobox.coreutil.sport.response.Sports
+import com.frogobox.coreutil.sport.response.Tables
+import com.frogobox.coreutil.sport.response.Teams
+import com.frogobox.coreutil.sport.response.Users
 import com.frogobox.coresdk.response.FrogoDataResponse
 import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
@@ -45,14 +45,14 @@ interface SportDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         teamName: String?,
-        callback: FrogoDataResponse<Teams>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Teams>
     )
 
     // Search for team short code
     fun searchForTeamByShortCode(
         scheduler: Scheduler?, apiKey: String,
         shortCode: String?,
-        callback: FrogoDataResponse<Teams>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Teams>
     )
 
     // Search for all players from team *Patreon ONLY*
@@ -60,7 +60,7 @@ interface SportDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         teamName: String?,
-        callback: FrogoDataResponse<Players>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Players>
     )
 
     // Search for players by player name
@@ -68,7 +68,7 @@ interface SportDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         playerName: String?,
-        callback: FrogoDataResponse<Players>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Players>
     )
 
     // Search for players by player name and team name
@@ -76,7 +76,7 @@ interface SportDataSource {
         scheduler: Scheduler?, apiKey: String,
         playerName: String?,
         teamName: String?,
-        callback: FrogoDataResponse<Players>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Players>
     )
 
     // Search for event by event name
@@ -84,7 +84,7 @@ interface SportDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         eventName: String?,
-        callback: FrogoDataResponse<Events>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     )
 
     // Search For event by event name and season
@@ -92,28 +92,28 @@ interface SportDataSource {
         scheduler: Scheduler?, apiKey: String,
         eventName: String?,
         season: String?,
-        callback: FrogoDataResponse<Events>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     )
 
     // Search for event by event file name
     fun searchForEventFileName(
         scheduler: Scheduler?, apiKey: String,
         eventFileName: String?,
-        callback: FrogoDataResponse<Events>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     )
 
     // List all sports
-    fun getAllSports(scheduler: Scheduler?, apiKey: String, callback: FrogoDataResponse<Sports>)
+    fun getAllSports(scheduler: Scheduler?, apiKey: String, callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Sports>)
 
     // List all leagues
-    fun getAllLeagues(scheduler: Scheduler?, apiKey: String, callback: FrogoDataResponse<Leagues>)
+    fun getAllLeagues(scheduler: Scheduler?, apiKey: String, callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Leagues>)
 
     // List all Leagues in a country
     fun searchAllLeagues(
         scheduler: Scheduler?,
         apiKey: String,
         countryName: String?,
-        callback: FrogoDataResponse<Countrys>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Countrys>
     )
 
     // List all Leagues in a country specific by sport
@@ -121,7 +121,7 @@ interface SportDataSource {
         scheduler: Scheduler?, apiKey: String,
         countryName: String?,
         sportName: String?,
-        callback: FrogoDataResponse<Countrys>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Countrys>
     )
 
     // List all Seasons in a League
@@ -129,7 +129,7 @@ interface SportDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         idTeam: String?,
-        callback: FrogoDataResponse<Seasons>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Seasons>
     )
 
     // List all Teams in a League
@@ -137,7 +137,7 @@ interface SportDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         league: String?,
-        callback: FrogoDataResponse<Teams>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Teams>
     )
 
     // List all Teams in Sportname & Country Name
@@ -145,7 +145,7 @@ interface SportDataSource {
         scheduler: Scheduler?, apiKey: String,
         sportName: String?,
         countryName: String?,
-        callback: FrogoDataResponse<Teams>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Teams>
     )
 
     // List All teams details in a league by Id
@@ -153,7 +153,7 @@ interface SportDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         idLeague: String?,
-        callback: FrogoDataResponse<Teams>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Teams>
     )
 
     // List All players in a team by Team Id *Patreon ONLY*
@@ -161,7 +161,7 @@ interface SportDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         idTeam: String?,
-        callback: FrogoDataResponse<Players>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Players>
     )
 
     // List all users loved teams and players
@@ -169,7 +169,7 @@ interface SportDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         userName: String?,
-        callback: FrogoDataResponse<Users>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Users>
     )
 
     // League Details by Id
@@ -177,7 +177,7 @@ interface SportDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         idLeague: String?,
-        callback: FrogoDataResponse<Leagues>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Leagues>
     )
 
     // Team Details by Id
@@ -185,7 +185,7 @@ interface SportDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         idTeam: String?,
-        callback: FrogoDataResponse<Teams>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Teams>
     )
 
     // Player Details by Id
@@ -193,7 +193,7 @@ interface SportDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         idPlayer: String?,
-        callback: FrogoDataResponse<Players>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Players>
     )
 
     // Event Details by Id
@@ -201,7 +201,7 @@ interface SportDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         idEvent: String?,
-        callback: FrogoDataResponse<Events>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     )
 
     // Player Honours by Player Id
@@ -209,7 +209,7 @@ interface SportDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         idPlayer: String?,
-        callback: FrogoDataResponse<Honors>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Honors>
     )
 
     // Player Former Teams by Player Id
@@ -217,7 +217,7 @@ interface SportDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         idPlayer: String?,
-        callback: FrogoDataResponse<FormerTeams>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.FormerTeams>
     )
 
     // Player Contracts by Player Id
@@ -225,7 +225,7 @@ interface SportDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         idPlayer: String?,
-        callback: FrogoDataResponse<Contracts>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Contracts>
     )
 
     // Lookup Table by League ID and Season
@@ -233,7 +233,7 @@ interface SportDataSource {
         scheduler: Scheduler?, apiKey: String,
         idLeague: String?,
         season: String?,
-        callback: FrogoDataResponse<Tables>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Tables>
     )
 
     // Next 5 Events by Team Id
@@ -241,7 +241,7 @@ interface SportDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         idTeam: String?,
-        callback: FrogoDataResponse<Events>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     )
 
     // Next 15 Events by League Id
@@ -249,7 +249,7 @@ interface SportDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         idLeague: String?,
-        callback: FrogoDataResponse<Events>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     )
 
     // Last 5 Events by Team Id
@@ -257,7 +257,7 @@ interface SportDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         idTeam: String?,
-        callback: FrogoDataResponse<Results>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Results>
     )
 
     // Last 15 Events by League Id
@@ -265,7 +265,7 @@ interface SportDataSource {
         scheduler: Scheduler?,
         apiKey: String,
         idLeague: String?,
-        callback: FrogoDataResponse<Events>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     )
 
     // Events in a specific round by league id/round/season
@@ -274,7 +274,7 @@ interface SportDataSource {
         idLeague: String?,
         round: String?,
         season: String?,
-        callback: FrogoDataResponse<Events>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     )
 
     // All events in specific league by season (Free tier limited to 200 events)
@@ -282,7 +282,7 @@ interface SportDataSource {
         scheduler: Scheduler?, apiKey: String,
         idLeague: String?,
         season: String?,
-        callback: FrogoDataResponse<Events>
+        callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     )
 
     // Event TV by Event Id *Patreon ONLY*

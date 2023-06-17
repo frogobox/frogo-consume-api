@@ -1,7 +1,5 @@
 package com.frogobox.coreapi.news
 
-import com.frogobox.coremodel.news.response.ArticleResponse
-import com.frogobox.coremodel.news.response.SourceResponse
 import com.frogobox.coresdk.response.FrogoDataResponse
 import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
@@ -38,7 +36,7 @@ interface NewsDataSource {
         country: String?,
         pageSize: Int?,
         page: Int?,
-        callback: FrogoDataResponse<ArticleResponse>
+        callback: FrogoDataResponse<com.frogobox.coreutil.news.response.ArticleResponse>
     )
 
     // Get Everythings
@@ -56,7 +54,7 @@ interface NewsDataSource {
         sortBy: String?,
         pageSize: Int?,
         page: Int?,
-        callback: FrogoDataResponse<ArticleResponse>
+        callback: FrogoDataResponse<com.frogobox.coreutil.news.response.ArticleResponse>
     )
 
     // Get Sources
@@ -66,7 +64,7 @@ interface NewsDataSource {
         language: String,
         country: String,
         category: String,
-        callback: FrogoDataResponse<SourceResponse>
+        callback: FrogoDataResponse<com.frogobox.coreutil.news.response.SourceResponse>
     )
 
 }

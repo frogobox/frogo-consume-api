@@ -1,15 +1,13 @@
 package com.frogobox.coreapi.meal
 
 
-import com.frogobox.coremodel.meal.response.CategoryResponse
-import com.frogobox.coremodel.meal.response.MealResponse
-import com.frogobox.coremodel.meal.MealConstant
-import com.frogobox.coremodel.meal.MealUrl
-import com.frogobox.coremodel.meal.model.Area
-import com.frogobox.coremodel.meal.model.Category
-import com.frogobox.coremodel.meal.model.Ingredient
-import com.frogobox.coremodel.meal.model.Meal
-import com.frogobox.coremodel.meal.model.MealFilter
+import com.frogobox.coreutil.meal.response.CategoryResponse
+import com.frogobox.coreutil.meal.response.MealResponse
+import com.frogobox.coreutil.meal.model.Area
+import com.frogobox.coreutil.meal.model.Category
+import com.frogobox.coreutil.meal.model.Ingredient
+import com.frogobox.coreutil.meal.model.Meal
+import com.frogobox.coreutil.meal.model.MealFilter
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -35,76 +33,76 @@ import retrofit2.http.Query
 interface MealApiService {
 
     // Search meal by name
-    @GET(MealUrl.URL_SEARCH_MEAL)
+    @GET(com.frogobox.coreutil.meal.MealUrl.URL_SEARCH_MEAL)
     fun searchMeal(
-        @Path(MealConstant.PATH_API_KEY) apiKey: String,
-        @Query(MealConstant.QUERY_NAME) nameMeal: String
-    ): Observable<MealResponse<Meal>>
+        @Path(com.frogobox.coreutil.meal.MealConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.meal.MealConstant.QUERY_NAME) nameMeal: String
+    ): Observable<com.frogobox.coreutil.meal.response.MealResponse<com.frogobox.coreutil.meal.model.Meal>>
 
     // List all meals by first letter
-    @GET(MealUrl.URL_SEARCH_MEAL)
+    @GET(com.frogobox.coreutil.meal.MealUrl.URL_SEARCH_MEAL)
     fun listAllMeal(
-        @Path(MealConstant.PATH_API_KEY) apiKey: String,
-        @Query(MealConstant.QUERY_FIRST_LETTER) firstLetter: String
-    ): Observable<MealResponse<Meal>>
+        @Path(com.frogobox.coreutil.meal.MealConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.meal.MealConstant.QUERY_FIRST_LETTER) firstLetter: String
+    ): Observable<com.frogobox.coreutil.meal.response.MealResponse<com.frogobox.coreutil.meal.model.Meal>>
 
     // Lookup full meal details by id
-    @GET(MealUrl.URL_LOOKUP_MEAL)
+    @GET(com.frogobox.coreutil.meal.MealUrl.URL_LOOKUP_MEAL)
     fun lookupFullMeal(
-        @Path(MealConstant.PATH_API_KEY) apiKey: String,
-        @Query(MealConstant.QUERY_ID) idMeal: String
-    ): Observable<MealResponse<Meal>>
+        @Path(com.frogobox.coreutil.meal.MealConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.meal.MealConstant.QUERY_ID) idMeal: String
+    ): Observable<com.frogobox.coreutil.meal.response.MealResponse<com.frogobox.coreutil.meal.model.Meal>>
 
     // Lookup a single random meal
-    @GET(MealUrl.URL_RANDOM_MEAL)
+    @GET(com.frogobox.coreutil.meal.MealUrl.URL_RANDOM_MEAL)
     fun lookupRandomMeal(
-        @Path(MealConstant.PATH_API_KEY) apiKey: String
-    ): Observable<MealResponse<Meal>>
+        @Path(com.frogobox.coreutil.meal.MealConstant.PATH_API_KEY) apiKey: String
+    ): Observable<com.frogobox.coreutil.meal.response.MealResponse<com.frogobox.coreutil.meal.model.Meal>>
 
     // List all meal categories
-    @GET(MealUrl.URL_CATEGORIES)
+    @GET(com.frogobox.coreutil.meal.MealUrl.URL_CATEGORIES)
     fun listMealCategories(
-        @Path(MealConstant.PATH_API_KEY) apiKey: String
-    ): Observable<CategoryResponse>
+        @Path(com.frogobox.coreutil.meal.MealConstant.PATH_API_KEY) apiKey: String
+    ): Observable<com.frogobox.coreutil.meal.response.CategoryResponse>
 
     // List all Categories
-    @GET(MealUrl.URL_LIST)
+    @GET(com.frogobox.coreutil.meal.MealUrl.URL_LIST)
     fun listAllCateories(
-        @Path(MealConstant.PATH_API_KEY) apiKey: String,
-        @Query(MealConstant.QUERY_CATEGORY) query: String
-    ): Observable<MealResponse<Category>>
+        @Path(com.frogobox.coreutil.meal.MealConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.meal.MealConstant.QUERY_CATEGORY) query: String
+    ): Observable<com.frogobox.coreutil.meal.response.MealResponse<com.frogobox.coreutil.meal.model.Category>>
 
     // List all Area
-    @GET(MealUrl.URL_LIST)
+    @GET(com.frogobox.coreutil.meal.MealUrl.URL_LIST)
     fun listAllArea(
-        @Path(MealConstant.PATH_API_KEY) apiKey: String,
-        @Query(MealConstant.QUERY_AREA) query: String
-    ): Observable<MealResponse<Area>>
+        @Path(com.frogobox.coreutil.meal.MealConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.meal.MealConstant.QUERY_AREA) query: String
+    ): Observable<com.frogobox.coreutil.meal.response.MealResponse<com.frogobox.coreutil.meal.model.Area>>
 
     // List all Ingredients
-    @GET(MealUrl.URL_LIST)
+    @GET(com.frogobox.coreutil.meal.MealUrl.URL_LIST)
     fun listAllIngredients(
-        @Path(MealConstant.PATH_API_KEY) apiKey: String,
-        @Query(MealConstant.QUERY_INGREDIENT) query: String
-    ): Observable<MealResponse<Ingredient>>
+        @Path(com.frogobox.coreutil.meal.MealConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.meal.MealConstant.QUERY_INGREDIENT) query: String
+    ): Observable<com.frogobox.coreutil.meal.response.MealResponse<com.frogobox.coreutil.meal.model.Ingredient>>
 
     // Filter by main ingredient
-    @GET(MealUrl.URL_FILTER)
+    @GET(com.frogobox.coreutil.meal.MealUrl.URL_FILTER)
     fun filterByIngredient(
-        @Path(MealConstant.PATH_API_KEY) apiKey: String,
-        @Query(MealConstant.QUERY_INGREDIENT) ingredient: String
-    ): Observable<MealResponse<MealFilter>>
+        @Path(com.frogobox.coreutil.meal.MealConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.meal.MealConstant.QUERY_INGREDIENT) ingredient: String
+    ): Observable<com.frogobox.coreutil.meal.response.MealResponse<com.frogobox.coreutil.meal.model.MealFilter>>
 
     // Filter by Category
     fun filterByCategory(
-        @Path(MealConstant.PATH_API_KEY) apiKey: String,
-        @Query(MealConstant.QUERY_CATEGORY) category: String
-    ): Observable<MealResponse<MealFilter>>
+        @Path(com.frogobox.coreutil.meal.MealConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.meal.MealConstant.QUERY_CATEGORY) category: String
+    ): Observable<com.frogobox.coreutil.meal.response.MealResponse<com.frogobox.coreutil.meal.model.MealFilter>>
 
     // Filter by Area
     fun filterByArea(
-        @Path(MealConstant.PATH_API_KEY) apiKey: String,
-        @Query(MealConstant.QUERY_AREA) area: String
-    ): Observable<MealResponse<MealFilter>>
+        @Path(com.frogobox.coreutil.meal.MealConstant.PATH_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.meal.MealConstant.QUERY_AREA) area: String
+    ): Observable<com.frogobox.coreutil.meal.response.MealResponse<com.frogobox.coreutil.meal.model.MealFilter>>
 
 }

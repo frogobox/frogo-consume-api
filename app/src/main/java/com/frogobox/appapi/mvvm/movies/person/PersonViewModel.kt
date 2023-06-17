@@ -4,8 +4,6 @@ import android.app.Application
 import com.frogobox.appapi.mvvm.movies.core.BaseMovieApiViewModel
 import com.frogobox.appapi.source.ApiRepository
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.coremodel.movie.model.TrendingPerson
-import com.frogobox.coremodel.movie.response.Trending
 import com.frogobox.sdk.util.FrogoMutableLiveData
 
 /*
@@ -25,13 +23,13 @@ class PersonViewModel(
     private val repository: ApiRepository
 ) : BaseMovieApiViewModel(context, repository) {
 
-    val listDataDay = FrogoMutableLiveData<List<com.frogobox.coremodel.movie.model.TrendingPerson>>()
-    val listDataWeek = FrogoMutableLiveData<List<com.frogobox.coremodel.movie.model.TrendingPerson>>()
+    val listDataDay = FrogoMutableLiveData<List<com.frogobox.coreutil.movie.model.TrendingPerson>>()
+    val listDataWeek = FrogoMutableLiveData<List<com.frogobox.coreutil.movie.model.TrendingPerson>>()
 
     fun getTrendingPersonDay() {
         movieApi.getTrendingPersonDay(object :
-            ConsumeApiResponse<com.frogobox.coremodel.movie.response.Trending<com.frogobox.coremodel.movie.model.TrendingPerson>> {
-            override fun onSuccess(data: com.frogobox.coremodel.movie.response.Trending<com.frogobox.coremodel.movie.model.TrendingPerson>) {
+            ConsumeApiResponse<com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingPerson>> {
+            override fun onSuccess(data: com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingPerson>) {
                 data.results?.let { listDataDay.postValue(it) }
             }
 
@@ -58,8 +56,8 @@ class PersonViewModel(
 
     fun getTrendingPersonWeek() {
         movieApi.getTrendingPersonWeek(object :
-            ConsumeApiResponse<com.frogobox.coremodel.movie.response.Trending<com.frogobox.coremodel.movie.model.TrendingPerson>> {
-            override fun onSuccess(data: com.frogobox.coremodel.movie.response.Trending<com.frogobox.coremodel.movie.model.TrendingPerson>) {
+            ConsumeApiResponse<com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingPerson>> {
+            override fun onSuccess(data: com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingPerson>) {
                 data.results?.let { listDataWeek.postValue(it) }
             }
 

@@ -1,10 +1,8 @@
 package com.frogobox.coreapi.pixabay
 
-import com.frogobox.coremodel.pixabay.model.PixabayImage
-import com.frogobox.coremodel.pixabay.model.PixabayVideo
-import com.frogobox.coremodel.pixabay.response.Response
-import com.frogobox.coremodel.pixabay.PixabayConstant
-import com.frogobox.coremodel.pixabay.PixabayUrl
+import com.frogobox.coreutil.pixabay.model.PixabayImage
+import com.frogobox.coreutil.pixabay.model.PixabayVideo
+import com.frogobox.coreutil.pixabay.response.Response
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -29,41 +27,41 @@ import retrofit2.http.Query
 interface PixabayApiService {
 
     // Search for Image
-    @GET(PixabayUrl.PATH_IMAGE)
+    @GET(com.frogobox.coreutil.pixabay.PixabayUrl.PATH_IMAGE)
     fun searchImage(
-        @Query(PixabayConstant.QUERY_API_KEY) apiKey: String,
-        @Query(PixabayConstant.QUERY_Q) q: String,
-        @Query(PixabayConstant.QUERY_LANG) lang: String?,
-        @Query(PixabayConstant.QUERY_ID) id: String?,
-        @Query(PixabayConstant.QUERY_IMAGE_TYPE) imageType: String?,
-        @Query(PixabayConstant.QUERY_ORIENTATION) orientation: String?,
-        @Query(PixabayConstant.QUERY_CATEGORY) category: String?,
-        @Query(PixabayConstant.QUERY_MIN_WIDTH) minWidth: Int?,
-        @Query(PixabayConstant.QUERY_MIN_HEIGHT) minHeight: Int?,
-        @Query(PixabayConstant.QUERY_COLORS) colors: String?,
-        @Query(PixabayConstant.QUERY_EDITORS_CHOICE) editorsChoice: Boolean?,
-        @Query(PixabayConstant.QUERY_SAFE_SEARCH) safeSearch: Boolean?,
-        @Query(PixabayConstant.QUERY_ORDER) order: String?,
-        @Query(PixabayConstant.QUERY_PAGE) page: Int?,
-        @Query(PixabayConstant.QUERY_PER_PAGE) perPage: Int?
-    ): Observable<Response<PixabayImage>>
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_Q) q: String,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_LANG) lang: String?,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_ID) id: String?,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_IMAGE_TYPE) imageType: String?,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_ORIENTATION) orientation: String?,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_CATEGORY) category: String?,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_MIN_WIDTH) minWidth: Int?,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_MIN_HEIGHT) minHeight: Int?,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_COLORS) colors: String?,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_EDITORS_CHOICE) editorsChoice: Boolean?,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_SAFE_SEARCH) safeSearch: Boolean?,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_ORDER) order: String?,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_PAGE) page: Int?,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_PER_PAGE) perPage: Int?
+    ): Observable<com.frogobox.coreutil.pixabay.response.Response<com.frogobox.coreutil.pixabay.model.PixabayImage>>
 
     // Search for Video
-    @GET(PixabayUrl.PATH_VIDEO)
+    @GET(com.frogobox.coreutil.pixabay.PixabayUrl.PATH_VIDEO)
     fun searchVideo(
-        @Query(PixabayConstant.QUERY_API_KEY) apiKey: String,
-        @Query(PixabayConstant.QUERY_Q) q: String,
-        @Query(PixabayConstant.QUERY_LANG) lang: String?,
-        @Query(PixabayConstant.QUERY_ID) id: String?,
-        @Query(PixabayConstant.QUERY_VIDEO_TYPE) videoType: String?,
-        @Query(PixabayConstant.QUERY_CATEGORY) category: String?,
-        @Query(PixabayConstant.QUERY_MIN_WIDTH) minWidth: Int?,
-        @Query(PixabayConstant.QUERY_MIN_HEIGHT) minHeight: Int?,
-        @Query(PixabayConstant.QUERY_EDITORS_CHOICE) editorsChoice: Boolean?,
-        @Query(PixabayConstant.QUERY_SAFE_SEARCH) safeSearch: Boolean?,
-        @Query(PixabayConstant.QUERY_ORDER) order: String?,
-        @Query(PixabayConstant.QUERY_PAGE) page: Int?,
-        @Query(PixabayConstant.QUERY_PER_PAGE) perPage: Int?
-    ): Observable<Response<PixabayVideo>>
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_API_KEY) apiKey: String,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_Q) q: String,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_LANG) lang: String?,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_ID) id: String?,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_VIDEO_TYPE) videoType: String?,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_CATEGORY) category: String?,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_MIN_WIDTH) minWidth: Int?,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_MIN_HEIGHT) minHeight: Int?,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_EDITORS_CHOICE) editorsChoice: Boolean?,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_SAFE_SEARCH) safeSearch: Boolean?,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_ORDER) order: String?,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_PAGE) page: Int?,
+        @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_PER_PAGE) perPage: Int?
+    ): Observable<com.frogobox.coreutil.pixabay.response.Response<com.frogobox.coreutil.pixabay.model.PixabayVideo>>
 
 }
