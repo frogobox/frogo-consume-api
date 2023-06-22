@@ -26,7 +26,7 @@
 ## Version Release
 This Is Latest Release
 
-    $version_release = 2.4.9
+    $version_release = 2.5.0
 
 What's New??
 
@@ -73,20 +73,20 @@ allprojects {
 
     dependencies {
         // library frogo-consume-api
-        implementation 'com.github.frogobox:frogo-consume-api:2.4.9'
+        implementation 'com.github.frogobox:frogo-consume-api:2.5.0'
 
         // library frogo-consume-api for desktop
-        implementation 'com.github.frogobox.frogo-consume-api:core-api:2.4.9'
+        implementation 'com.github.frogobox.frogo-consume-api:core-api:2.5.0'
     }
 
 #### <Option 2> Kotlin DSL Gradle
 
     dependencies {
         // library frogo-consume-api
-        implementation("com.github.frogobox:frogo-consume-api:2.4.9")
+        implementation("com.github.frogobox:frogo-consume-api:2.5.0")
 
         // library frogo-consume-api for desktop
-        implementation("com.github.frogobox.frogo-consume-api:core-api:2.4.9")
+        implementation("com.github.frogobox.frogo-consume-api:core-api:2.5.0")
     }
 
 

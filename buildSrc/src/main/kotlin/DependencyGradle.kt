@@ -16,7 +16,7 @@ object DependencyGradle {
     const val KOTLIN_VERSION = Version.JetBrains.kotlin
     const val COMPOSE_MULTIPLATFORM_VERSION = Version.Androidx.composeMultiPlatform
 
-    const val FROGO_SDK_VERSION = "2.2.1"
+    const val FROGO_SDK_VERSION = "2.2.2"
     const val FROGO_SDK = "com.github.frogobox:frogo-sdk:$FROGO_SDK_VERSION"
     const val FROGO_SDK_CORE = "com.github.frogobox.frogo-sdk:core-sdk:$FROGO_SDK_VERSION"
 
