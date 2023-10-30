@@ -9,5 +9,8 @@
     <color name="white">#FFFFFFFF</color>
 
 
+    <color name="text_color">@color/black</color>
+    <color name="bg_card_color">@color/white</color>
+    <color name="tab_layout">@color/purple_700</color>
 
 </resources>

@@ -5,13 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ActivityMealBinding
+import com.frogobox.appapi.databinding.ItemGridImageBinding
 import com.frogobox.coreutil.meal.model.Meal
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
+import com.frogobox.sdk.ext.openDetailImageUri
 import com.frogobox.sdk.ext.progressViewHandle
 import com.frogobox.sdk.ext.showToast
 import com.frogobox.sdk.view.FrogoBindActivity
-import com.frogobox.ui.databinding.FrogoRvGridType2Binding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MealActivity : FrogoBindActivity<ActivityMealBinding>() {
@@ -46,12 +47,12 @@ class MealActivity : FrogoBindActivity<ActivityMealBinding>() {
         mealViewModel.getListMeals(this, "b")
     }
 
-    private fun setupRv(data: List<com.frogobox.coreutil.meal.model.Meal>) {
+    private fun setupRv(data: List<Meal>) {
 
-        val adapterCallback = object : IFrogoBindingAdapter<com.frogobox.coreutil.meal.model.Meal, FrogoRvGridType2Binding> {
+        val adapterCallback = object : IFrogoBindingAdapter<Meal, ItemGridImageBinding> {
 
-            override fun setViewBinding(parent: ViewGroup): FrogoRvGridType2Binding {
-                return FrogoRvGridType2Binding.inflate(
+            override fun setViewBinding(parent: ViewGroup): ItemGridImageBinding {
+                return ItemGridImageBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
@@ -59,39 +60,39 @@ class MealActivity : FrogoBindActivity<ActivityMealBinding>() {
             }
 
             override fun setupInitComponent(
-                binding: FrogoRvGridType2Binding,
-                data: com.frogobox.coreutil.meal.model.Meal,
+                binding: ItemGridImageBinding,
+                data: Meal,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.meal.model.Meal>
+                notifyListener: FrogoRecyclerNotifyListener<Meal>
             ) {
                 binding.apply {
-                    Glide.with(root.context).load(data.strMealThumb).into(frogoRvGridType2IvPoster)
-                    frogoRvGridType2TvTitle.text = data.strMeal
-                    frogoRvGridType2TvSubtitle.text = data.strCategory
+                    Glide.with(root.context).load(data.strMealThumb).into(ivIcon)
+                    tvTitle.text = data.strMeal
+                    tvSub.text = data.strCategory
                 }
             }
 
             override fun onItemClicked(
-                binding: FrogoRvGridType2Binding,
-                data: com.frogobox.coreutil.meal.model.Meal,
+                binding: ItemGridImageBinding,
+                data: Meal,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.meal.model.Meal>
+                notifyListener: FrogoRecyclerNotifyListener<Meal>
             ) {
-                data.strMeal?.let { showToast(it) }
+                openDetailImageUri(data.strMealThumb ?: "")
             }
 
             override fun onItemLongClicked(
-                binding: FrogoRvGridType2Binding,
-                data: com.frogobox.coreutil.meal.model.Meal,
+                binding: ItemGridImageBinding,
+                data: Meal,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.meal.model.Meal>
+                notifyListener: FrogoRecyclerNotifyListener<Meal>
             ) {
                 data.strMeal?.let { showToast(it) }
             }
 
         }
 
-        binding.frogoRv.injectorBinding<com.frogobox.coreutil.meal.model.Meal, FrogoRvGridType2Binding>()
+        binding.frogoRv.injectorBinding<Meal, ItemGridImageBinding>()
             .addData(data)
             .addCallback(adapterCallback)
             .createLayoutGrid(2)

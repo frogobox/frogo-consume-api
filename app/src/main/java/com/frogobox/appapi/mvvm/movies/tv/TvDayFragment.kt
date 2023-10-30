@@ -10,6 +10,7 @@ import com.frogobox.appapi.databinding.FragmentTrendingChildBinding
 import com.frogobox.coreutil.movie.MovieUrl
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
+import com.frogobox.sdk.ext.openDetailImageUri
 import com.frogobox.sdk.ext.progressViewHandle
 import com.frogobox.sdk.ext.showToast
 import com.frogobox.sdk.view.FrogoBindFragment
@@ -57,6 +58,7 @@ class TvDayFragment : FrogoBindFragment<FragmentTrendingChildBinding>() {
                 position: Int,
                 notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.movie.model.TrendingTv>
             ) {
+                requireActivity().openDetailImageUri("${MovieUrl.BASE_URL_IMAGE_ORIGNAL}${data.poster_path}")
             }
 
             override fun onItemLongClicked(
@@ -85,7 +87,7 @@ class TvDayFragment : FrogoBindFragment<FragmentTrendingChildBinding>() {
                     tvTitle.text = data.name
                     tvOverview.text = data.overview
                     Glide.with(root.context)
-                        .load("${com.frogobox.coreutil.movie.MovieUrl.BASE_URL_IMAGE_ORIGNAL}${data.poster_path}")
+                        .load("${MovieUrl.BASE_URL_IMAGE_ORIGNAL}${data.poster_path}")
                         .into(ivPoster)
                 }
             }

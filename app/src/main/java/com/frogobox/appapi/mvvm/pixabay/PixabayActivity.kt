@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ActivityPixabayBinding
+import com.frogobox.appapi.databinding.ItemGridImageBinding
 import com.frogobox.coreutil.pixabay.model.PixabayImage
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle
 import com.frogobox.sdk.ext.showToast
 import com.frogobox.sdk.view.FrogoBindActivity
-import com.frogobox.ui.databinding.FrogoRvGridType1Binding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PixabayActivity : FrogoBindActivity<ActivityPixabayBinding>() {
@@ -46,27 +46,27 @@ class PixabayActivity : FrogoBindActivity<ActivityPixabayBinding>() {
         setupDetailActivity("Pixabay Api")
     }
 
-    private fun setupRv(data: List<com.frogobox.coreutil.pixabay.model.PixabayImage>) {
+    private fun setupRv(data: List<PixabayImage>) {
 
-        val adapterCallback = object : IFrogoBindingAdapter<com.frogobox.coreutil.pixabay.model.PixabayImage, FrogoRvGridType1Binding> {
+        val adapterCallback = object : IFrogoBindingAdapter<PixabayImage, ItemGridImageBinding> {
             override fun onItemClicked(
-                binding: FrogoRvGridType1Binding,
-                data: com.frogobox.coreutil.pixabay.model.PixabayImage,
+                binding: ItemGridImageBinding,
+                data: PixabayImage,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.pixabay.model.PixabayImage>
+                notifyListener: FrogoRecyclerNotifyListener<PixabayImage>
             ) {
             }
 
             override fun onItemLongClicked(
-                binding: FrogoRvGridType1Binding,
-                data: com.frogobox.coreutil.pixabay.model.PixabayImage,
+                binding: ItemGridImageBinding,
+                data: PixabayImage,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.pixabay.model.PixabayImage>
+                notifyListener: FrogoRecyclerNotifyListener<PixabayImage>
             ) {
             }
 
-            override fun setViewBinding(parent: ViewGroup): FrogoRvGridType1Binding {
-                return FrogoRvGridType1Binding.inflate(
+            override fun setViewBinding(parent: ViewGroup): ItemGridImageBinding {
+                return ItemGridImageBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
@@ -74,20 +74,21 @@ class PixabayActivity : FrogoBindActivity<ActivityPixabayBinding>() {
             }
 
             override fun setupInitComponent(
-                binding: FrogoRvGridType1Binding,
-                data: com.frogobox.coreutil.pixabay.model.PixabayImage,
+                binding: ItemGridImageBinding,
+                data: PixabayImage,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.pixabay.model.PixabayImage>
+                notifyListener: FrogoRecyclerNotifyListener<PixabayImage>
             ) {
                 val totalLikes = "${data.likes} likes"
                 binding.apply {
-                    Glide.with(root.context).load(data.previewURL).into(frogoRvGridType1IvPoster)
-                    frogoRvGridType1TvTitle.text = totalLikes
+                    Glide.with(root.context).load(data.previewURL).into(ivIcon)
+                    tvTitle.text = totalLikes
+                    tvSub.text = data.user
                 }
             }
         }
 
-        binding.frogoRv.injectorBinding<com.frogobox.coreutil.pixabay.model.PixabayImage, FrogoRvGridType1Binding>()
+        binding.frogoRv.injectorBinding<PixabayImage, ItemGridImageBinding>()
             .addData(data)
             .addCallback(adapterCallback)
             .createLayoutGrid(2)

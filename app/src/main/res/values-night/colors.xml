@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="text_color">@color/white</color>
+    <color name="bg_card_color">@color/black</color>
+
+    <color name="tab_layout">@color/black</color>
+
+</resources>

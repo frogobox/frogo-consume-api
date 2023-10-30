@@ -24,7 +24,7 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="@dimen/frogo_dimen_16dp"
     android:layout_marginBottom="@dimen/frogo_dimen_16dp"
-    android:background="@drawable/frogo_bg_card_16dp"
+    android:background="@drawable/bg_card_16dp"
     android:elevation="4dp"
     android:padding="@dimen/frogo_dimen_8dp">
 
@@ -57,6 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:maxLines="2"
+        android:textColor="@color/text_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title" />

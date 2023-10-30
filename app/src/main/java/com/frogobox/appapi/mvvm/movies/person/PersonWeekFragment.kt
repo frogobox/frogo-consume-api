@@ -10,6 +10,7 @@ import com.frogobox.appapi.databinding.FragmentTrendingChildBinding
 import com.frogobox.coreutil.movie.MovieUrl
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
+import com.frogobox.sdk.ext.openDetailImageUri
 import com.frogobox.sdk.ext.progressViewHandle
 import com.frogobox.sdk.ext.showToast
 import com.frogobox.sdk.view.FrogoBindFragment
@@ -64,6 +65,7 @@ class PersonWeekFragment : FrogoBindFragment<FragmentTrendingChildBinding>() {
                 position: Int,
                 notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.movie.model.TrendingPerson>
             ) {
+                requireActivity().openDetailImageUri("${MovieUrl.BASE_URL_IMAGE_ORIGNAL}${data.profile_path}")
             }
 
             override fun setViewBinding(parent: ViewGroup): ContentItemBinding {

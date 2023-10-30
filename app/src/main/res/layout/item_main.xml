@@ -19,7 +19,7 @@
     android:layout_marginStart="@dimen/frogo_dimen_16dp"
     android:layout_marginTop="@dimen/frogo_dimen_16dp"
     android:layout_marginEnd="@dimen/frogo_dimen_16dp"
-    android:background="@drawable/frogo_bg_card_16dp"
+    android:background="@drawable/bg_card_16dp"
     android:elevation="@dimen/frogo_dimen_2dp"
     android:orientation="vertical"
     android:padding="@dimen/frogo_dimen_16dp">
@@ -49,6 +49,7 @@
             android:id="@+id/tv_link"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
             tools:text="@string/app_name" />
 
     </LinearLayout>

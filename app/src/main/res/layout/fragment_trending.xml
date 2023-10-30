@@ -8,7 +8,7 @@
         android:id="@+id/tablayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/frogoColorPrimary"
+        android:background="@color/tab_layout"
         app:layout_constraintBottom_toTopOf="@id/viewpager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
