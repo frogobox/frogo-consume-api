@@ -1,12 +1,12 @@
 package com.frogobox.appapi
 
+import com.frogobox.appapi.core.FrogoKoinApplication
 import com.frogobox.appapi.di.consumeApiModule
 import com.frogobox.appapi.di.repositoryModule
 import com.frogobox.appapi.di.viewModelModule
-import com.frogobox.sdk.FrogoKoinApplication
 import org.koin.core.KoinApplication
 
-/*
+/**
  * Created by faisalamir on 28/07/21
  * Consumable
  * -----------------------------------------
@@ -18,6 +18,7 @@ import org.koin.core.KoinApplication
  * All rights reserved
  *
  */
+
 class ConsumeApp : FrogoKoinApplication() {
 
     override fun setupKoinModule(koinApplication: KoinApplication) {

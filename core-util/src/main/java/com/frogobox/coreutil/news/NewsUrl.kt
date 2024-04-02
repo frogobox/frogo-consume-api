@@ -8,7 +8,6 @@ package com.frogobox.coreutil.news
  * E-mail   : faisalamircs@gmail.com
  * Github   : github.com/amirisback
  * -----------------------------------------
- * Copyright (C) 2021 FrogoBox Inc.      
  * All rights reserved
  *
  */
@@ -23,8 +22,8 @@ object NewsUrl {
     const val PATH_EVERYTHING = "everything"
     const val PATH_SOURCES = "sources"
 
-    const val URL_TOP_HEADLINE = "${com.frogobox.coreutil.news.NewsUrl.BASE_PATH}${com.frogobox.coreutil.news.NewsUrl.PATH_TOP_HEADLINE}"
-    const val URL_EVERYTHING = "${com.frogobox.coreutil.news.NewsUrl.BASE_PATH}${com.frogobox.coreutil.news.NewsUrl.PATH_EVERYTHING}"
-    const val URL_SOURCES = "${com.frogobox.coreutil.news.NewsUrl.BASE_PATH}${com.frogobox.coreutil.news.NewsUrl.PATH_SOURCES}"
+    const val URL_TOP_HEADLINE = "$BASE_PATH$PATH_TOP_HEADLINE"
+    const val URL_EVERYTHING = "$BASE_PATH$PATH_EVERYTHING"
+    const val URL_SOURCES = "$BASE_PATH$PATH_SOURCES"
 
 }

@@ -50,6 +50,13 @@ class MealActivity : FrogoBindActivity<ActivityMealBinding>() {
     private fun setupRv(data: List<Meal>) {
 
         val adapterCallback = object : IFrogoBindingAdapter<Meal, ItemGridImageBinding> {
+            override fun areContentsTheSame(oldItem: Meal, newItem: Meal): Boolean {
+                return oldItem == newItem
+            }
+
+            override fun areItemsTheSame(oldItem: Meal, newItem: Meal): Boolean {
+                return oldItem.idMeal == newItem.idMeal
+            }
 
             override fun setViewBinding(parent: ViewGroup): ItemGridImageBinding {
                 return ItemGridImageBinding.inflate(

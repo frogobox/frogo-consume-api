@@ -47,12 +47,12 @@ class MainActivity : FrogoBindActivity<ActivityMainBinding>() {
                 setupIntentActivity(data.code, data)
             }
 
-            override fun onItemLongClicked(
-                binding: ItemMainBinding,
-                data: MainModel,
-                position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<MainModel>
-            ) {
+            override fun areItemsTheSame(oldItem: MainModel, newItem: MainModel): Boolean {
+                return oldItem.code == newItem.code
+            }
+
+            override fun areContentsTheSame(oldItem: MainModel, newItem: MainModel): Boolean {
+                return oldItem == newItem
             }
 
             override fun setViewBinding(parent: ViewGroup): ItemMainBinding {

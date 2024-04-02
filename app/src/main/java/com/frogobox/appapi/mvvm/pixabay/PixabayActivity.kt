@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ActivityPixabayBinding
 import com.frogobox.appapi.databinding.ItemGridImageBinding
+import com.frogobox.coreutil.news.model.Article
 import com.frogobox.coreutil.pixabay.model.PixabayImage
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
@@ -57,12 +58,12 @@ class PixabayActivity : FrogoBindActivity<ActivityPixabayBinding>() {
             ) {
             }
 
-            override fun onItemLongClicked(
-                binding: ItemGridImageBinding,
-                data: PixabayImage,
-                position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<PixabayImage>
-            ) {
+            override fun areItemsTheSame(oldItem: PixabayImage, newItem: PixabayImage): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: PixabayImage, newItem: PixabayImage): Boolean {
+                return oldItem == newItem
             }
 
             override fun setViewBinding(parent: ViewGroup): ItemGridImageBinding {

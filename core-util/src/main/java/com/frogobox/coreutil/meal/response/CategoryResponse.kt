@@ -23,6 +23,6 @@ import com.google.gson.annotations.SerializedName
 data class CategoryResponse(
 
     @SerializedName("categories")
-    var categories: List<com.frogobox.coreutil.meal.model.Category>? = null
+    var categories: List<Category>? = null
 
 )

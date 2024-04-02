@@ -8,6 +8,8 @@ import com.frogobox.appapi.databinding.ActivityNewsBinding
 import com.frogobox.appapi.databinding.ContentArticleHorizontalBinding
 import com.frogobox.appapi.databinding.ContentArticleVerticalBinding
 import com.frogobox.appapi.databinding.ContentCategoryBinding
+import com.frogobox.coreutil.movie.model.TrendingMovie
+import com.frogobox.coreutil.movie.model.TrendingTv
 import com.frogobox.coreutil.news.NewsConstant
 import com.frogobox.coreutil.news.model.Article
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
@@ -73,14 +75,13 @@ class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
                 newsViewModel.getTopHeadline(data)
             }
 
-            override fun onItemLongClicked(
-                binding: ContentCategoryBinding,
-                data: String,
-                position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<String>
-            ) {
+            override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
+                return oldItem.hashCode() == newItem.hashCode()
             }
 
+            override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
+                return oldItem == newItem
+            }
             override fun setViewBinding(parent: ViewGroup): ContentCategoryBinding {
                 return ContentCategoryBinding.inflate(
                     LayoutInflater.from(parent.context),
@@ -106,25 +107,33 @@ class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
             .build()
     }
 
-    private fun setupRvHeader(data: List<com.frogobox.coreutil.news.model.Article>) {
+    private fun setupRvHeader(data: List<Article>) {
 
-        val callback = object : IFrogoBindingAdapter<com.frogobox.coreutil.news.model.Article, ContentArticleHorizontalBinding> {
+        val callback = object : IFrogoBindingAdapter<Article, ContentArticleHorizontalBinding> {
             override fun onItemClicked(
                 binding: ContentArticleHorizontalBinding,
-                data: com.frogobox.coreutil.news.model.Article,
+                data: Article,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.news.model.Article>
+                notifyListener: FrogoRecyclerNotifyListener<Article>
             ) {
-                startActivityExt<NewsDetailActivity, com.frogobox.coreutil.news.model.Article>(NewsDetailActivity.EXTRA_DATA, data)
+                startActivityExt<NewsDetailActivity, Article>(NewsDetailActivity.EXTRA_DATA, data)
             }
 
             override fun onItemLongClicked(
                 binding: ContentArticleHorizontalBinding,
-                data: com.frogobox.coreutil.news.model.Article,
+                data: Article,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.news.model.Article>
+                notifyListener: FrogoRecyclerNotifyListener<Article>
             ) {
                 data.description?.let { showToast(it) }
+            }
+
+            override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
+                return oldItem.title == newItem.title
+            }
+
+            override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
+                return oldItem == newItem
             }
 
             override fun setViewBinding(parent: ViewGroup): ContentArticleHorizontalBinding {
@@ -137,9 +146,9 @@ class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
 
             override fun setupInitComponent(
                 binding: ContentArticleHorizontalBinding,
-                data: com.frogobox.coreutil.news.model.Article,
+                data: Article,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.news.model.Article>
+                notifyListener: FrogoRecyclerNotifyListener<Article>
             ) {
                 binding.apply {
                     tvTitle.text = data.title
@@ -150,7 +159,7 @@ class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
             }
         }
 
-        binding.rvNewsGeneral.injectorBinding<com.frogobox.coreutil.news.model.Article, ContentArticleHorizontalBinding>()
+        binding.rvNewsGeneral.injectorBinding<Article, ContentArticleHorizontalBinding>()
             .addData(data)
             .addCallback(callback)
             .createLayoutLinearHorizontal(false)
@@ -158,25 +167,33 @@ class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
 
     }
 
-    private fun setupRvBody(data: List<com.frogobox.coreutil.news.model.Article>) {
+    private fun setupRvBody(data: List<Article>) {
 
-        val callback = object : IFrogoBindingAdapter<com.frogobox.coreutil.news.model.Article, ContentArticleVerticalBinding> {
+        val callback = object : IFrogoBindingAdapter<Article, ContentArticleVerticalBinding> {
             override fun onItemClicked(
                 binding: ContentArticleVerticalBinding,
-                data: com.frogobox.coreutil.news.model.Article,
+                data: Article,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.news.model.Article>
+                notifyListener: FrogoRecyclerNotifyListener<Article>
             ) {
-                startActivityExt<NewsDetailActivity, com.frogobox.coreutil.news.model.Article>(NewsDetailActivity.EXTRA_DATA, data)
+                startActivityExt<NewsDetailActivity, Article>(NewsDetailActivity.EXTRA_DATA, data)
             }
 
             override fun onItemLongClicked(
                 binding: ContentArticleVerticalBinding,
-                data: com.frogobox.coreutil.news.model.Article,
+                data: Article,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.news.model.Article>
+                notifyListener: FrogoRecyclerNotifyListener<Article>
             ) {
                 data.description?.let { showToast(it) }
+            }
+
+            override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
+                return oldItem.title == newItem.title
+            }
+
+            override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
+                return oldItem == newItem
             }
 
             override fun setViewBinding(parent: ViewGroup): ContentArticleVerticalBinding {
@@ -189,9 +206,9 @@ class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
 
             override fun setupInitComponent(
                 binding: ContentArticleVerticalBinding,
-                data: com.frogobox.coreutil.news.model.Article,
+                data: Article,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.news.model.Article>
+                notifyListener: FrogoRecyclerNotifyListener<Article>
             ) {
                 binding.apply {
                     tvTitle.text = data.title
@@ -202,7 +219,7 @@ class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
             }
         }
 
-        binding.rvNewsCategory.injectorBinding<com.frogobox.coreutil.news.model.Article, ContentArticleVerticalBinding>()
+        binding.rvNewsCategory.injectorBinding<Article, ContentArticleVerticalBinding>()
             .addData(data)
             .addCallback(callback)
             .createLayoutLinearVertical(false)

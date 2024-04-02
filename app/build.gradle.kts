@@ -90,4 +90,9 @@ dependencies {
     implementation(DependencyGradle.FROGO_SDK)
     implementation(DependencyGradle.FROGO_UI)
     implementation(DependencyGradle.FROGO_RECYCLER_VIEW)
+
+    implementation(Koin.core)
+    implementation(Koin.android)
+    implementation(Koin.androidCompat)
+    implementation(Koin.androidxWorkManager)
 }

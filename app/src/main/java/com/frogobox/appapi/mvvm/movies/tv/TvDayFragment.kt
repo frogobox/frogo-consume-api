@@ -8,6 +8,8 @@ import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ContentItemBinding
 import com.frogobox.appapi.databinding.FragmentTrendingChildBinding
 import com.frogobox.coreutil.movie.MovieUrl
+import com.frogobox.coreutil.movie.model.TrendingMovie
+import com.frogobox.coreutil.movie.model.TrendingTv
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.openDetailImageUri
@@ -61,12 +63,12 @@ class TvDayFragment : FrogoBindFragment<FragmentTrendingChildBinding>() {
                 requireActivity().openDetailImageUri("${MovieUrl.BASE_URL_IMAGE_ORIGNAL}${data.poster_path}")
             }
 
-            override fun onItemLongClicked(
-                binding: ContentItemBinding,
-                data: com.frogobox.coreutil.movie.model.TrendingTv,
-                position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.movie.model.TrendingTv>
-            ) {
+            override fun areItemsTheSame(oldItem: TrendingTv, newItem: TrendingTv): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: TrendingTv, newItem: TrendingTv): Boolean {
+                return oldItem == newItem
             }
 
             override fun setViewBinding(parent: ViewGroup): ContentItemBinding {

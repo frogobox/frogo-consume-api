@@ -8,6 +8,8 @@ import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ContentItemBinding
 import com.frogobox.appapi.databinding.FragmentTrendingChildBinding
 import com.frogobox.coreutil.movie.MovieUrl
+import com.frogobox.coreutil.movie.model.TrendingMovie
+import com.frogobox.coreutil.movie.model.TrendingPerson
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.openDetailImageUri
@@ -66,6 +68,20 @@ class PersonWeekFragment : FrogoBindFragment<FragmentTrendingChildBinding>() {
                 notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.movie.model.TrendingPerson>
             ) {
                 requireActivity().openDetailImageUri("${MovieUrl.BASE_URL_IMAGE_ORIGNAL}${data.profile_path}")
+            }
+
+            override fun areItemsTheSame(
+                oldItem: TrendingPerson,
+                newItem: TrendingPerson
+            ): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(
+                oldItem: TrendingPerson,
+                newItem: TrendingPerson
+            ): Boolean {
+                return oldItem == newItem
             }
 
             override fun setViewBinding(parent: ViewGroup): ContentItemBinding {
