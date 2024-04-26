@@ -1,4 +1,4 @@
-/*
+/**
  * Created by faisalamir on 19/09/21
  * FrogoRecyclerView
  * -----------------------------------------
@@ -31,7 +31,7 @@ object ProjectSetting {
 
     const val VERSION_MAJOR = 2
     const val VERSION_MINOR = 5
-    const val VERSION_PATCH = 3
+    const val VERSION_PATCH = 4
 
     // ---------------------------------------------------------------------------------------------
 

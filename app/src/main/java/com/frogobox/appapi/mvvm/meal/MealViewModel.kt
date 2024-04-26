@@ -8,9 +8,7 @@ import com.frogobox.appapi.source.ApiRepository
 import com.frogobox.appapi.util.isDebug
 import com.frogobox.coreapi.ConsumeApiResponse
 import com.frogobox.coreutil.meal.model.Meal
-import com.frogobox.coreutil.meal.response.MealResponse
-
-/*
+/**
  * Created by faisalamir on 28/07/21
  * Consumable
  * -----------------------------------------
@@ -26,15 +24,15 @@ class MealViewModel(
     private val repository: ApiRepository
 ) : BaseViewModel() {
 
-    val _listData = MutableLiveData<List<com.frogobox.coreutil.meal.model.Meal>>()
-    val listData: LiveData<List<com.frogobox.coreutil.meal.model.Meal>> = _listData
+    val _listData = MutableLiveData<List<Meal>>()
+    val listData: LiveData<List<Meal>> = _listData
 
     fun getListMeals(context: Context, firstLetter: String) {
         val mealApi = repository.consumeTheMealDbApi().usingChuckInterceptor(isDebug, context)
         mealApi.listAllMeal(
             firstLetter,
-            object : ConsumeApiResponse<com.frogobox.coreutil.meal.response.MealResponse<com.frogobox.coreutil.meal.model.Meal>> {
-                override fun onSuccess(data: com.frogobox.coreutil.meal.response.MealResponse<com.frogobox.coreutil.meal.model.Meal>) {
+            object : ConsumeApiResponse<com.frogobox.coreutil.meal.response.MealResponse<Meal>> {
+                override fun onSuccess(data: com.frogobox.coreutil.meal.response.MealResponse<Meal>) {
                     // on Success Request
                     data.meals?.let { _listData.postValue(it) }
                 }

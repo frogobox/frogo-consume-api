@@ -16,6 +16,7 @@ import com.frogobox.appapi.util.Helper
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.startActivityExt
+import com.frogobox.sdk.ext.toJson
 import com.frogobox.sdk.view.FrogoBindActivity
 
 class MainActivity : FrogoBindActivity<ActivityMainBinding>() {
@@ -42,7 +43,7 @@ class MainActivity : FrogoBindActivity<ActivityMainBinding>() {
                 binding: ItemMainBinding,
                 data: MainModel,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<MainModel>
+                notifyListener: FrogoRecyclerNotifyListener<MainModel>,
             ) {
                 setupIntentActivity(data.code, data)
             }
@@ -63,7 +64,7 @@ class MainActivity : FrogoBindActivity<ActivityMainBinding>() {
                 binding: ItemMainBinding,
                 data: MainModel,
                 position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<MainModel>
+                notifyListener: FrogoRecyclerNotifyListener<MainModel>,
             ) {
                 binding.apply {
                     Glide.with(root.context).load(data.image).into(ivIcon)
@@ -84,19 +85,33 @@ class MainActivity : FrogoBindActivity<ActivityMainBinding>() {
     private fun setupIntentActivity(codeActivity: Int, data: MainModel) {
         when (codeActivity) {
             0 -> {
-                startActivityExt<NewsActivity, MainModel>(Constant.EXTRA_MAIN, data)
+                startActivityExt<NewsActivity> { intent ->
+                    intent.putExtra(Constant.EXTRA_MAIN, data.toJson())
+                }
             }
+
             1 -> {
-                startActivityExt<MoviesActivity, MainModel>(Constant.EXTRA_MAIN, data)
+                startActivityExt<MoviesActivity> { intent ->
+                    intent.putExtra(Constant.EXTRA_MAIN, data.toJson())
+                }
             }
+
             2 -> {
-                startActivityExt<SportActivity, MainModel>(Constant.EXTRA_MAIN, data)
+                startActivityExt<SportActivity> { intent ->
+                    intent.putExtra(Constant.EXTRA_MAIN, data.toJson())
+                }
             }
+
             3 -> {
-                startActivityExt<MealActivity, MainModel>(Constant.EXTRA_MAIN, data)
+                startActivityExt<MealActivity> { intent ->
+                    intent.putExtra(Constant.EXTRA_MAIN, data.toJson())
+                }
             }
+
             4 -> {
-                startActivityExt<PixabayActivity, MainModel>(Constant.EXTRA_MAIN, data)
+                startActivityExt<PixabayActivity> { intent ->
+                    intent.putExtra(Constant.EXTRA_MAIN, data.toJson())
+                }
             }
         }
 

@@ -8,15 +8,15 @@ import com.frogobox.appapi.databinding.ActivityNewsBinding
 import com.frogobox.appapi.databinding.ContentArticleHorizontalBinding
 import com.frogobox.appapi.databinding.ContentArticleVerticalBinding
 import com.frogobox.appapi.databinding.ContentCategoryBinding
-import com.frogobox.coreutil.movie.model.TrendingMovie
-import com.frogobox.coreutil.movie.model.TrendingTv
 import com.frogobox.coreutil.news.NewsConstant
 import com.frogobox.coreutil.news.model.Article
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle
+import com.frogobox.sdk.ext.setImageExt
 import com.frogobox.sdk.ext.showToast
 import com.frogobox.sdk.ext.startActivityExt
+import com.frogobox.sdk.ext.toJson
 import com.frogobox.sdk.view.FrogoBindActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -32,7 +32,7 @@ class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
         newsViewModel.apply {
 
             getTopHeadline()
-            getTopHeadline(com.frogobox.coreutil.news.NewsConstant.CATEGORY_HEALTH)
+            getTopHeadline(NewsConstant.CATEGORY_HEALTH)
             setupCategory()
 
             eventShowProgressState.observe(this@NewsActivity) {
@@ -116,7 +116,9 @@ class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
                 position: Int,
                 notifyListener: FrogoRecyclerNotifyListener<Article>
             ) {
-                startActivityExt<NewsDetailActivity, Article>(NewsDetailActivity.EXTRA_DATA, data)
+                startActivityExt<NewsDetailActivity> {
+                    it.putExtra(NewsDetailActivity.EXTRA_DATA, data.toJson())
+                }
             }
 
             override fun onItemLongClicked(
@@ -154,7 +156,7 @@ class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
                     tvTitle.text = data.title
                     tvPublished.text = data.publishedAt
                     tvDescription.text = data.description
-                    Glide.with(root.context).load(data.urlToImage).into(ivUrl)
+                    ivUrl.setImageExt(data.urlToImage)
                 }
             }
         }
@@ -176,7 +178,9 @@ class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
                 position: Int,
                 notifyListener: FrogoRecyclerNotifyListener<Article>
             ) {
-                startActivityExt<NewsDetailActivity, Article>(NewsDetailActivity.EXTRA_DATA, data)
+                startActivityExt<NewsDetailActivity> {
+                    it.putExtra(NewsDetailActivity.EXTRA_DATA, data.toJson())
+                }
             }
 
             override fun onItemLongClicked(
