@@ -87,12 +87,12 @@ dependencies {
     implementation(project(DependencyGradle.FROGO_PATH_CORE_ANDROID_API))
     implementation(project(DependencyGradle.FROGO_PATH_CORE_API))
 
-    implementation(DependencyGradle.FROGO_SDK)
-    implementation(DependencyGradle.FROGO_UI)
-    implementation(DependencyGradle.FROGO_RECYCLER_VIEW)
+    implementation(libs.frogo.sdk)
+    implementation(libs.frogo.ui)
+    implementation(libs.frogo.recyclerview)
 
-    implementation(Koin.core)
-    implementation(Koin.android)
-    implementation(Koin.androidCompat)
-    implementation(Koin.androidxWorkManager)
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.koin.android.compat)
+    implementation(libs.koin.androidx.workmanager)
 }

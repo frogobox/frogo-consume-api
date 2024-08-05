@@ -22,7 +22,7 @@ tasks.withType<KotlinCompile> {
 
 dependencies {
     api(project(DependencyGradle.FROGO_PATH_CORE_UTIL))
-    api(DependencyGradle.FROGO_SDK_CORE)
+    api(libs.frogo.sdk.core)
 }
 
 publishing {
@@ -50,7 +50,7 @@ publishing {
     }
 
     repositories {
-        maven(Util.jitpackUrl)
+        maven("https://jitpack.io")
     }
 
 }

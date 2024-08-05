@@ -21,7 +21,7 @@ tasks.withType<KotlinCompile> {
 }
 
 dependencies {
-    api(Google.gson)
+    api(libs.gson)
 }
 
 publishing {
@@ -49,7 +49,7 @@ publishing {
     }
 
     repositories {
-        maven(Util.jitpackUrl)
+        maven("https://jitpack.io")
     }
 
 }

@@ -53,7 +53,7 @@ android {
 
 dependencies {
     api(project(DependencyGradle.FROGO_PATH_CORE_API))
-    api(DependencyGradle.FROGO_SDK)
+    api(libs.frogo.sdk)
 }
 
 afterEvaluate {
