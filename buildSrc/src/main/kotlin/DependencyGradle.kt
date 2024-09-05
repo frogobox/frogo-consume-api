@@ -13,9 +13,6 @@
 
 object DependencyGradle {
 
-    const val KOTLIN_VERSION = "1.9.23"
-    const val COMPOSE_MULTIPLATFORM_VERSION = "1.6.1"
-
     const val FROGO_PATH_CORE_UTIL = ":${ProjectSetting.MODULE_NAME_CORE_UTIL}"
     const val FROGO_PATH_CORE_API = ":${ProjectSetting.MODULE_NAME_CORE_API}"
     const val FROGO_PATH_CORE_ANDROID_API = ":${ProjectSetting.MODULE_NAME_API}"
