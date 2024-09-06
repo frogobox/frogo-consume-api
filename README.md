@@ -26,7 +26,7 @@
 ## Version Release
 This Is Latest Release
 
-    $version_release = 2.5.4
+    $version_release = 2.5.5
 
 What's New??
 
@@ -70,25 +70,45 @@ allprojects {
 ### Step 2. Add the dependency (build.gradle : Module)
 
 #### <Option 1> Groovy Gradle
+```groovy
+dependencies {
+    // library frogo-consume-api
+    implementation 'com.github.frogobox:frogo-consume-api:2.5.5'
 
-    dependencies {
-        // library frogo-consume-api
-        implementation 'com.github.frogobox:frogo-consume-api:2.5.4'
+    // library frogo-consume-api for desktop
+    implementation 'com.github.frogobox.frogo-consume-api:core-api:2.5.5'
+}
+```
 
-        // library frogo-consume-api for desktop
-        implementation 'com.github.frogobox.frogo-consume-api:core-api:2.5.4'
-    }
 
 #### <Option 2> Kotlin DSL Gradle
+```groovy
+dependencies {
+    // library frogo-consume-api
+    implementation("com.github.frogobox:frogo-consume-api:2.5.5")
 
-    dependencies {
-        // library frogo-consume-api
-        implementation("com.github.frogobox:frogo-consume-api:2.5.4")
+    // library frogo-consume-api for desktop
+    implementation("com.github.frogobox.frogo-consume-api:core-api:2.5.5")
+}
+```
 
-        // library frogo-consume-api for desktop
-        implementation("com.github.frogobox.frogo-consume-api:core-api:2.5.4")
-    }
+#### <Option 3> libs.versions.toml
+```yml
+[versions]
+frogoconsumeapi = "2.5.5"
 
+[libraries]
+frogo-consume-api = { group = "com.github.frogobox", name = "frogo-consume-api", version.ref = "frogoconsumeapi" }
+frogo-consume-api-core = { group = "com.github.frogobox.frogo-consume-api", name = "core-api", version.ref = "frogoconsumeapi" }
+
+dependencies {
+    // library frogo-consume-api
+    implementation(libs.frogo.consume.api)
+
+    // library frogo-consume-api for desktop
+    implementation(libs.frogo.consume.api.core)
+}
+```
 
 ### Step 3. Click Detail Below
 
