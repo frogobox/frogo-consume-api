@@ -4,7 +4,7 @@ import com.frogobox.appapi.source.ApiRepository
 import org.koin.dsl.module
 
 
-/*
+/**
  * Created by faisalamir on 01/05/22
  * FrogoConsumeApi
  * -----------------------------------------

@@ -1,8 +1,8 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
@@ -21,7 +21,6 @@ android {
         vectorDrawables.useSupportLibrary = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        resourceConfigurations += setOf("en", "id")
 
         // Naming APK // AAB
         setProperty("archivesBaseName", "${ProjectSetting.NAME_APK}(${versionName})")
@@ -75,12 +74,13 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    tasks.withType<KotlinCompile> {
-        kotlinOptions {
-            jvmTarget = "17"
-        }
-    }
+}
 
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
+        freeCompilerArgs.add("-opt-in=kotlin.RequiresOptIn")
+    }
 }
 
 dependencies {
@@ -91,6 +91,7 @@ dependencies {
     implementation(libs.frogo.ui)
     implementation(libs.frogo.recyclerview)
 
+    implementation(platform(libs.koin.bom))
     implementation(libs.koin.core)
     implementation(libs.koin.android)
     implementation(libs.koin.android.compat)

@@ -13,7 +13,7 @@ import com.frogobox.coreutil.sport.SportUrl
 import org.koin.dsl.module
 
 
-/*
+/**
  * Created by faisalamir on 01/05/22
  * FrogoConsumeApi
  * -----------------------------------------
@@ -29,23 +29,23 @@ import org.koin.dsl.module
 val consumeApiModule = module {
 
     single {
-        ConsumeNewsApi(com.frogobox.coreutil.news.NewsUrl.API_KEY)
+        ConsumeNewsApi(NewsUrl.API_KEY)
     }
 
     single {
-        ConsumeTheSportDbApi(com.frogobox.coreutil.sport.SportUrl.API_KEY)
+        ConsumeTheSportDbApi(SportUrl.API_KEY)
     }
 
     single {
-        ConsumeTheMealDbApi(com.frogobox.coreutil.meal.MealUrl.API_KEY)
+        ConsumeTheMealDbApi(MealUrl.API_KEY)
     }
 
     single {
-        ConsumePixabayApi(com.frogobox.coreutil.pixabay.PixabayUrl.API_KEY)
+        ConsumePixabayApi(PixabayUrl.API_KEY)
     }
 
     single {
-        ConsumeMovieApi(com.frogobox.coreutil.movie.MovieUrl.API_KEY)
+        ConsumeMovieApi(MovieUrl.API_KEY)
     }
 
 }

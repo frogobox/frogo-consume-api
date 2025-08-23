@@ -29,7 +29,7 @@ object NewsRepository : NewsDataSource {
         isDebug: Boolean,
         chuckerInterceptor: Interceptor
     ): NewsDataSource {
-        newsApiService = FrogoApiClient.create(com.frogobox.coreutil.news.NewsUrl.BASE_URL, isDebug, chuckerInterceptor)
+        newsApiService = FrogoApiClient.create(com.frogobox.coreutil.news.NewsUrl.BASE_URL, isDebug, chuckInterceptor = chuckerInterceptor)
         return this
     }
 

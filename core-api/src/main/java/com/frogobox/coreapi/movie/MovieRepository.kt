@@ -34,7 +34,7 @@ object MovieRepository : MovieDataSource {
         isDebug: Boolean,
         chuckerInterceptor: Interceptor
     ): MovieDataSource {
-        movieApiService = FrogoApiClient.create(com.frogobox.coreutil.movie.MovieUrl.BASE_URL, isDebug, chuckerInterceptor)
+        movieApiService = FrogoApiClient.create(com.frogobox.coreutil.movie.MovieUrl.BASE_URL, isDebug, chuckInterceptor = chuckerInterceptor)
         return this
     }
 
