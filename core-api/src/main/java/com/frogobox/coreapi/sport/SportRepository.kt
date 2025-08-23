@@ -1,19 +1,6 @@
 package com.frogobox.coreapi.sport
 
 
-import com.frogobox.coreutil.sport.response.Contracts
-import com.frogobox.coreutil.sport.response.Countrys
-import com.frogobox.coreutil.sport.response.Events
-import com.frogobox.coreutil.sport.response.FormerTeams
-import com.frogobox.coreutil.sport.response.Honors
-import com.frogobox.coreutil.sport.response.Leagues
-import com.frogobox.coreutil.sport.response.Players
-import com.frogobox.coreutil.sport.response.Results
-import com.frogobox.coreutil.sport.response.Seasons
-import com.frogobox.coreutil.sport.response.Sports
-import com.frogobox.coreutil.sport.response.Tables
-import com.frogobox.coreutil.sport.response.Teams
-import com.frogobox.coreutil.sport.response.Users
 import com.frogobox.coresdk.ext.doApiRequest
 import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coresdk.source.FrogoApiClient
@@ -48,7 +35,7 @@ object SportRepository : SportDataSource {
         isDebug: Boolean,
         chuckerInterceptor: Interceptor
     ): SportDataSource {
-        sportApiService = FrogoApiClient.create(com.frogobox.coreutil.sport.SportUrl.BASE_URL, isDebug, chuckerInterceptor)
+        sportApiService = FrogoApiClient.create(com.frogobox.coreutil.sport.SportUrl.BASE_URL, isDebug, chuckInterceptor = chuckerInterceptor)
         return this
     }
 

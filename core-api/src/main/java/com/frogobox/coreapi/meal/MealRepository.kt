@@ -1,12 +1,5 @@
 package com.frogobox.coreapi.meal
 
-import com.frogobox.coreutil.meal.response.CategoryResponse
-import com.frogobox.coreutil.meal.response.MealResponse
-import com.frogobox.coreutil.meal.model.Area
-import com.frogobox.coreutil.meal.model.Category
-import com.frogobox.coreutil.meal.model.Ingredient
-import com.frogobox.coreutil.meal.model.Meal
-import com.frogobox.coreutil.meal.model.MealFilter
 import com.frogobox.coresdk.ext.doApiRequest
 import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coresdk.source.FrogoApiClient
@@ -39,7 +32,7 @@ object MealRepository : MealDataSource {
         isDebug: Boolean,
         chuckerInterceptor: Interceptor
     ): MealDataSource {
-        mealApiService = FrogoApiClient.create(com.frogobox.coreutil.meal.MealUrl.BASE_URL, isDebug, chuckerInterceptor)
+        mealApiService = FrogoApiClient.create(com.frogobox.coreutil.meal.MealUrl.BASE_URL, isDebug, chuckInterceptor = chuckerInterceptor)
         return this
     }
 

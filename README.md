@@ -1,9 +1,3 @@
-![ScreenShoot Apps](https://raw.githubusercontent.com/amirisback/amirisback/master/docs/image/deprecated.png?raw=true)
-## DEPRECATED
-- Reason Deprecated, Merge library become single library
-- Please Using This : [deltadox-android](https://github.com/deltadox/deltadox-android)
-##
-
 ![ScreenShoot Apps](https://raw.githubusercontent.com/frogobox/frogo-consume-api/master/docs/image/ss_banner.png?raw=true)
 
 ## About This Project
@@ -32,11 +26,11 @@
 ## Version Release
 This Is Latest Release
 
-    $version_release = 2.5.5
+    $version_release = 2.3.0
 
 What's New??
 
-    * Update Code *
+    * Take Back From Graveyard *
     * Available for android and desktop *
     * Migrate frogo-android-sdk to frogo-sdk *
     * Migrate frogo-android-ui-kit to frogo-ui *
@@ -79,10 +73,10 @@ allprojects {
 ```groovy
 dependencies {
     // library frogo-consume-api
-    implementation 'com.github.frogobox:frogo-consume-api:2.5.5'
+    implementation 'com.github.frogobox:frogo-consume-api:2.3.0'
 
     // library frogo-consume-api for desktop
-    implementation 'com.github.frogobox.frogo-consume-api:core-api:2.5.5'
+    implementation 'com.github.frogobox.frogo-consume-api:core-api:2.3.0'
 }
 ```
 
@@ -91,17 +85,17 @@ dependencies {
 ```groovy
 dependencies {
     // library frogo-consume-api
-    implementation("com.github.frogobox:frogo-consume-api:2.5.5")
+    implementation("com.github.frogobox:frogo-consume-api:2.3.0")
 
     // library frogo-consume-api for desktop
-    implementation("com.github.frogobox.frogo-consume-api:core-api:2.5.5")
+    implementation("com.github.frogobox.frogo-consume-api:core-api:2.3.0")
 }
 ```
 
 #### <Option 3> libs.versions.toml
 ```yml
 [versions]
-frogoconsumeapi = "2.5.5"
+frogoconsumeapi = "2.3.0"
 
 [libraries]
 frogo-consume-api = { group = "com.github.frogobox", name = "frogo-consume-api", version.ref = "frogoconsumeapi" }

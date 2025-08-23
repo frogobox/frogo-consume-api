@@ -1,8 +1,5 @@
 package com.frogobox.coreapi.pixabay
 
-import com.frogobox.coreutil.pixabay.model.PixabayImage
-import com.frogobox.coreutil.pixabay.model.PixabayVideo
-import com.frogobox.coreutil.pixabay.response.Response
 import com.frogobox.coresdk.ext.doApiRequest
 import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coresdk.source.FrogoApiClient
@@ -32,7 +29,7 @@ object PixabayRepository : PixabayDataSource {
         isDebug: Boolean,
         chuckerInterceptor: Interceptor
     ): PixabayDataSource {
-        pixabayApiService = FrogoApiClient.create(com.frogobox.coreutil.pixabay.PixabayUrl.BASE_URL, isDebug, chuckerInterceptor)
+        pixabayApiService = FrogoApiClient.create(com.frogobox.coreutil.pixabay.PixabayUrl.BASE_URL, isDebug, chuckInterceptor = chuckerInterceptor)
         return this
     }
 

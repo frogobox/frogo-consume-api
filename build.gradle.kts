@@ -1,14 +1,15 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    id("com.android.application") version "8.3.2" apply false
-    id("com.android.library") version "8.3.2" apply false
-    id("org.jetbrains.kotlin.android") version "1.9.24" apply false
-    id("org.jetbrains.kotlin.jvm") version "1.9.24" apply false
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.jvm.android) apply false
+    alias(libs.plugins.ksp) apply false
 }
 
 buildscript {
     dependencies {
-        classpath("com.github.dcendents:android-maven-gradle-plugin:2.1")
+        classpath(libs.android.maven.gradle.plugin)
     }
 }
 
