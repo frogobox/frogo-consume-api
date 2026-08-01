@@ -19,4 +19,9 @@ import com.frogobox.coreutil.sport.model.FormerTeam
  * com.frogobox.frogoconsumeapi.sport.data.response
  *
  */
-data class FormerTeams(var formerteams: List<com.frogobox.coreutil.sport.model.FormerTeam>? = null)
+import com.google.gson.annotations.SerializedName
+
+data class FormerTeams(
+    @SerializedName("formerteams")
+    var formerteams: List<FormerTeam>? = null
+)

@@ -20,8 +20,8 @@ package com.frogobox.coreutil.movie
 object MovieConstant {
 
     const val QUERY_API_KEY = "api_key"
-    const val QUERY_START_DATE = "end_date"
-    const val QUERY_END_DATE = "start_date"
+    const val QUERY_START_DATE = "start_date"
+    const val QUERY_END_DATE = "end_date"
     const val QUERY_PAGE = "page"
     const val QUERY_COUNTRY = "country"
     const val QUERY_LANGUAGE = "language"

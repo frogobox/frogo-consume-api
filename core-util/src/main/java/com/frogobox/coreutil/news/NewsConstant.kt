@@ -35,7 +35,10 @@ object NewsConstant {
     const val QUERY_SORT_BY = "sortBy"
 
     const val CATEGORY_BUSINESS = "business"
-    const val CATEGORY_ENTERTAIMENT = "entertainment"
+    const val CATEGORY_ENTERTAINMENT = "entertainment"
+
+    @Deprecated("Spelling error, use CATEGORY_ENTERTAINMENT instead", ReplaceWith("CATEGORY_ENTERTAINMENT"))
+    const val CATEGORY_ENTERTAIMENT = CATEGORY_ENTERTAINMENT
     const val CATEGORY_GENERAL = "general"
     const val CATEGORY_HEALTH = "health"
     const val CATEGORY_SCIENCE = "science"

@@ -19,4 +19,9 @@ import com.frogobox.coreutil.sport.model.Team
  * com.frogobox.frogoconsumeapi.sport.response
  *
  */
-data class Teams(var teams: List<com.frogobox.coreutil.sport.model.Team>? = null)
+import com.google.gson.annotations.SerializedName
+
+data class Teams(
+    @SerializedName("teams")
+    var teams: List<Team>? = null
+)

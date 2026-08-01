@@ -19,4 +19,9 @@ import com.frogobox.coreutil.sport.model.Sport
  * com.frogobox.frogoconsumeapi.sport.model.response
  *
  */
-data class Sports(var sports: List<com.frogobox.coreutil.sport.model.Sport>? = null)
+import com.google.gson.annotations.SerializedName
+
+data class Sports(
+    @SerializedName("sports")
+    var sports: List<Sport>? = null
+)

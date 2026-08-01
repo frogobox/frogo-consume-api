@@ -19,4 +19,9 @@ import com.frogobox.coreutil.sport.model.Contract
  * com.frogobox.frogoconsumeapi.sport.data.response
  *
  */
-data class Contracts(var contracts: List<com.frogobox.coreutil.sport.model.Contract>? = null)
+import com.google.gson.annotations.SerializedName
+
+data class Contracts(
+    @SerializedName("contracts")
+    var contracts: List<Contract>? = null
+)

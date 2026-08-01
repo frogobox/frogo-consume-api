@@ -19,11 +19,11 @@ object MealUrl {
     const val PATH_API = "{api_key}/"
     const val API_KEY = "1"
 
-    const val URL_SEARCH_MEAL = "${com.frogobox.coreutil.meal.MealUrl.BASE_PATH}${com.frogobox.coreutil.meal.MealUrl.PATH_API}" + "search.php"
-    const val URL_LOOKUP_MEAL = "${com.frogobox.coreutil.meal.MealUrl.BASE_PATH}${com.frogobox.coreutil.meal.MealUrl.PATH_API}" + "lookup.php"
-    const val URL_RANDOM_MEAL = "${com.frogobox.coreutil.meal.MealUrl.BASE_PATH}${com.frogobox.coreutil.meal.MealUrl.PATH_API}" + "random.php"
-    const val URL_CATEGORIES = "${com.frogobox.coreutil.meal.MealUrl.BASE_PATH}${com.frogobox.coreutil.meal.MealUrl.PATH_API}" + "categories.php"
-    const val URL_LIST = "${com.frogobox.coreutil.meal.MealUrl.BASE_PATH}${com.frogobox.coreutil.meal.MealUrl.PATH_API}" + "list.php"
-    const val URL_FILTER = "${com.frogobox.coreutil.meal.MealUrl.BASE_PATH}${com.frogobox.coreutil.meal.MealUrl.PATH_API}" + "filter.php"
+    const val URL_SEARCH_MEAL = "$BASE_PATH$PATH_API" + "search.php"
+    const val URL_LOOKUP_MEAL = "$BASE_PATH$PATH_API" + "lookup.php"
+    const val URL_RANDOM_MEAL = "$BASE_PATH$PATH_API" + "random.php"
+    const val URL_CATEGORIES = "$BASE_PATH$PATH_API" + "categories.php"
+    const val URL_LIST = "$BASE_PATH$PATH_API" + "list.php"
+    const val URL_FILTER = "$BASE_PATH$PATH_API" + "filter.php"
 
 }

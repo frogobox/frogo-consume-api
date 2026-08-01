@@ -19,4 +19,9 @@ import com.frogobox.coreutil.sport.model.Country
  * com.frogobox.frogoconsumeapi.sport.model.response
  *
  */
-data class Countrys(var countrys: List<com.frogobox.coreutil.sport.model.Country>? = null)
+import com.google.gson.annotations.SerializedName
+
+data class Countrys(
+    @SerializedName("countrys")
+    var countrys: List<Country>? = null
+)

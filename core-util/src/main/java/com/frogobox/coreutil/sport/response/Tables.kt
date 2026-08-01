@@ -19,4 +19,9 @@ import com.frogobox.coreutil.sport.model.Table
  * com.frogobox.frogoconsumeapi.sport.data.response
  *
  */
-data class Tables(var table: List<com.frogobox.coreutil.sport.model.Table>? = null)
+import com.google.gson.annotations.SerializedName
+
+data class Tables(
+    @SerializedName("table")
+    var table: List<Table>? = null
+)

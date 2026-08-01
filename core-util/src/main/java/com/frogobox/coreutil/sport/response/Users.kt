@@ -19,4 +19,9 @@ import com.frogobox.coreutil.sport.model.User
  * com.frogobox.frogoconsumeapi.sport.data.model
  *
  */
-data class Users(var players: List<com.frogobox.coreutil.sport.model.User>? = null)
+import com.google.gson.annotations.SerializedName
+
+data class Users(
+    @SerializedName("users", alternate = ["loved", "players"])
+    var players: List<User>? = null
+)
