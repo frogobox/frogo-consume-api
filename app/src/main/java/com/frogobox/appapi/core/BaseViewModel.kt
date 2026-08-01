@@ -2,7 +2,7 @@ package com.frogobox.appapi.core
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.frogobox.sdk.view.FrogoViewModel2
+import com.frogobox.sdk.view.FrogoViewModel
 
 
 /**
@@ -18,7 +18,7 @@ import com.frogobox.sdk.view.FrogoViewModel2
  *
  */
 
-open class BaseViewModel : FrogoViewModel2() {
+open class BaseViewModel : FrogoViewModel() {
 
     protected var _eventFailed = MutableLiveData<String>()
     var eventFailed: LiveData<String> = _eventFailed

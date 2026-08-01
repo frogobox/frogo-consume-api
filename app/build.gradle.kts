@@ -1,8 +1,16 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.text.SimpleDateFormat
+import java.util.Date
 
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.parcelize)
+}
+
+base {
+    // Naming APK // AAB
+    val timestamp = SimpleDateFormat("dd-MM-yyyy_HH-mm").format(Date())
+    archivesName = "${ProjectSetting.NAME_APK}-[${ProjectSetting.PROJECT_VERSION_NAME}]-$timestamp"
 }
 
 android {
@@ -21,9 +29,6 @@ android {
         vectorDrawables.useSupportLibrary = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-        // Naming APK // AAB
-        setProperty("archivesBaseName", "${ProjectSetting.NAME_APK}(${versionName})")
 
         // Declaration apps name debug mode
         val debugAttribute = "Development"
@@ -67,6 +72,7 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
+        resValues = true
     }
 
     compileOptions {

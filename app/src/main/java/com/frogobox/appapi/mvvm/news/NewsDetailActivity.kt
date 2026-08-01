@@ -25,10 +25,10 @@ class NewsDetailActivity : FrogoBindActivity<ActivityNewsDetailBinding>() {
 
         val extraArticle = getExtraExt<Article>(EXTRA_DATA)
         binding.apply {
-            tvTitle.text = extraArticle.title
-            tvSource.text = extraArticle.source?.name ?: ""
-            tvContent.text = extraArticle.description
-            Glide.with(this@NewsDetailActivity).load(extraArticle.urlToImage).into(ivUrl)
+            tvTitle.text = extraArticle?.title
+            tvSource.text = extraArticle?.source?.name ?: ""
+            tvContent.text = extraArticle?.description
+            Glide.with(this@NewsDetailActivity).load(extraArticle?.urlToImage).into(ivUrl)
         }
     }
 
