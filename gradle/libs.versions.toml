@@ -2,13 +2,11 @@
 agp = "9.3.1"
 kotlin = "2.4.10"
 ksp = "2.3.10"
-androidMavenGradlePlugin = "2.1"
 gson = "2.14.0"
 koin-bom = "4.2.2"
 frogoAndroid = "3.0.5"
 
 [libraries]
-android-maven-gradle-plugin = { group = "com.github.dcendents", name = "android-maven-gradle-plugin", version.ref = "androidMavenGradlePlugin" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 
 # --------------------------------------------------------------------------------------------------

@@ -7,12 +7,6 @@ plugins {
     alias(libs.plugins.ksp) apply false
 }
 
-buildscript {
-    dependencies {
-        classpath(libs.android.maven.gradle.plugin)
-    }
-}
-
 tasks.register("clean", Delete::class) {
     delete(rootProject.layout.buildDirectory)
 }

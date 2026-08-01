@@ -38,10 +38,12 @@ object Helper {
 
     inline fun <reified T> listJsonFromAssets(context: Context, filename: String): MutableList<T> {
         val listData = mutableListOf<T>()
-        val rawJson = getJsonFromAssets(context, filename)
+        val rawJson = getJsonFromAssets(context, filename) ?: return listData
         val typeToken = object : TypeToken<List<T>>() {}.type
-        val data: List<T> = parseArray(rawJson, typeToken)
-        listData.addAll(data)
+        val data: List<T>? = parseArray(rawJson, typeToken)
+        if (data != null) {
+            listData.addAll(data)
+        }
         return listData
     }
 

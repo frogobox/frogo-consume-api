@@ -19,7 +19,11 @@ import okhttp3.Interceptor
 
 interface INewsApi {
 
-    // Switch For Using Chuck Interceptor
+    // Switch For Using Chucker Interceptor
+    fun usingChuckerInterceptor(isDebug: Boolean, chuckerInterceptor: Interceptor): INewsApi =
+        usingChuckInterceptor(isDebug, chuckerInterceptor)
+
+    // Switch For Using Chuck Interceptor (Legacy alias)
     fun usingChuckInterceptor(isDebug: Boolean, chuckerInterceptor: Interceptor): INewsApi
 
     // Get Top Headline
@@ -33,7 +37,25 @@ interface INewsApi {
         callback: FrogoDataResponse<com.frogobox.coreutil.news.response.ArticleResponse>
     )
 
-    // Get Everythings
+    // Get Everything
+    fun getEverything(
+        q: String?,
+        from: String?,
+        to: String?,
+        qInTitle: String?,
+        sources: String?,
+        domains: String?,
+        excludeDomains: String?,
+        language: String?,
+        sortBy: String?,
+        pageSize: Int?,
+        page: Int?,
+        callback: FrogoDataResponse<com.frogobox.coreutil.news.response.ArticleResponse>
+    ) = getEverythings(
+        q, from, to, qInTitle, sources, domains, excludeDomains, language, sortBy, pageSize, page, callback
+    )
+
+    // Get Everythings (Legacy alias)
     fun getEverythings(
         q: String?,
         from: String?,

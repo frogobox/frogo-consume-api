@@ -39,7 +39,7 @@ class MoviesActivity : FrogoBindActivity<ActivityMovieBinding>() {
             clearAnimation()
             itemIconTintList = null
 
-            setOnNavigationItemSelectedListener {
+            setOnItemSelectedListener {
                 when (it.itemId) {
                     R.id.bottom_menu_movie -> {
                         supportActionBar?.title = getString(R.string.title_movie)

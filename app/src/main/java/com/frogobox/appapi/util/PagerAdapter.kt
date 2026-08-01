@@ -22,7 +22,8 @@ import androidx.fragment.app.FragmentPagerAdapter
  *
  */
 
-class PagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
+@Suppress("DEPRECATION")
+class PagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     private val fragments = ArrayList<Fragment>()
     private val titles = ArrayList<String>()
