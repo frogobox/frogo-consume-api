@@ -33,3 +33,6 @@ app/version.properties
 
 # SonarQube
 .sonar/
+.kotlin
+workflow
+buildSrc/.kotlin

@@ -1,10 +1,15 @@
 package com.frogobox.appapi.mvvm.movies.tv
 
-import android.app.Application
+import android.content.Context
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.frogobox.appapi.mvvm.movies.core.BaseMovieApiViewModel
 import com.frogobox.appapi.source.ApiRepository
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.sdk.util.FrogoMutableLiveData
+import com.frogobox.coreutil.movie.model.TrendingTv
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 
 /*
  * Created by faisalamir on 28/07/21
@@ -18,19 +23,23 @@ import com.frogobox.sdk.util.FrogoMutableLiveData
  * All rights reserved
  *
  */
-class TvViewModel(
-    private val context: Application,
-    private val repository: ApiRepository
+@HiltViewModel
+class TvViewModel @Inject constructor(
+    @ApplicationContext context: Context,
+    repository: ApiRepository
 ) : BaseMovieApiViewModel(context, repository) {
 
-    val listDataDay = FrogoMutableLiveData<List<com.frogobox.coreutil.movie.model.TrendingTv>>()
-    val listDataWeek = FrogoMutableLiveData<List<com.frogobox.coreutil.movie.model.TrendingTv>>()
+    private val _listDataDay = MutableLiveData<List<TrendingTv>>()
+    val listDataDay: LiveData<List<TrendingTv>> = _listDataDay
+
+    private val _listDataWeek = MutableLiveData<List<TrendingTv>>()
+    val listDataWeek: LiveData<List<TrendingTv>> = _listDataWeek
 
     fun getTrendingTvDay() {
-        movieApi.getTrendingTvDay(object : ConsumeApiResponse<com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingTv>> {
-            override fun onSuccess(data: com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingTv>) {
+        movieApi.getTrendingTvDay(object : ConsumeApiResponse<com.frogobox.coreutil.movie.response.Trending<TrendingTv>> {
+            override fun onSuccess(data: com.frogobox.coreutil.movie.response.Trending<TrendingTv>) {
                 // On Success
-                data.results?.let { listDataDay.postValue(it) }
+                data.results?.let { _listDataDay.postValue(it) }
             }
 
             override fun onFailed(statusCode: Int, errorMessage: String) {
@@ -55,10 +64,10 @@ class TvViewModel(
     }
 
     fun getTrendingTvWeek() {
-        movieApi.getTrendingTvWeek(object : ConsumeApiResponse<com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingTv>> {
-            override fun onSuccess(data: com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingTv>) {
+        movieApi.getTrendingTvWeek(object : ConsumeApiResponse<com.frogobox.coreutil.movie.response.Trending<TrendingTv>> {
+            override fun onSuccess(data: com.frogobox.coreutil.movie.response.Trending<TrendingTv>) {
                 // On Success
-                data.results?.let { listDataWeek.postValue(it) }
+                data.results?.let { _listDataWeek.postValue(it) }
             }
 
             override fun onFailed(statusCode: Int, errorMessage: String) {

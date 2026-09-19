@@ -6,7 +6,9 @@ import com.frogobox.appapi.databinding.ActivityNewsDetailBinding
 import com.frogobox.coreutil.news.model.Article
 import com.frogobox.sdk.ext.getExtraExt
 import com.frogobox.sdk.view.FrogoBindActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NewsDetailActivity : FrogoBindActivity<ActivityNewsDetailBinding>() {
 
     companion object {
@@ -25,10 +27,10 @@ class NewsDetailActivity : FrogoBindActivity<ActivityNewsDetailBinding>() {
 
         val extraArticle = getExtraExt<Article>(EXTRA_DATA)
         binding.apply {
-            tvTitle.text = extraArticle.title
-            tvSource.text = extraArticle.source?.name ?: ""
-            tvContent.text = extraArticle.description
-            Glide.with(this@NewsDetailActivity).load(extraArticle.urlToImage).into(ivUrl)
+            tvTitle.text = extraArticle?.title
+            tvSource.text = extraArticle?.source?.name ?: ""
+            tvContent.text = extraArticle?.description
+            Glide.with(this@NewsDetailActivity).load(extraArticle?.urlToImage).into(ivUrl)
         }
     }
 

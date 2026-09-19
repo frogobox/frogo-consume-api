@@ -44,7 +44,10 @@ object SportData {
             "https://www.thesportsdb.com/api/v1/json/1/search_all_leagues.php?c=England&s=Soccer"
 
         const val ID_LEAGUE = "idLeague"
-        const val ID_SOCCEL_XML = "idSoccerXML"
+        const val ID_SOCCER_XML = "idSoccerXML"
+
+        @Deprecated("Spelling error, use ID_SOCCER_XML instead", ReplaceWith("ID_SOCCER_XML"))
+        const val ID_SOCCEL_XML = ID_SOCCER_XML
         const val ID_API_FOOTBALL = "idAPIfootball"
         const val STR_SPORT = "strSport"
         const val STR_LEAGUE = "strLeague"
@@ -296,7 +299,10 @@ object SportData {
         const val STR_LEAGUE = "strLeague"
         const val STR_EVENT = "strEvent"
         const val STR_EVENT_POSTER = "strEventPoster"
-        const val STR_PLAYER_TUMB = "strPlayerThumb"
+        const val STR_PLAYER_THUMB = "strPlayerThumb"
+
+        @Deprecated("Spelling error, use STR_PLAYER_THUMB instead", ReplaceWith("STR_PLAYER_THUMB"))
+        const val STR_PLAYER_TUMB = STR_PLAYER_THUMB
         const val STR_TEAM_BADGE = "strTeamBadge"
     }
 

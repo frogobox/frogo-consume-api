@@ -20,4 +20,9 @@ import com.frogobox.coreutil.sport.model.Season
  *
  */
 
-data class Seasons(var seasons: List<com.frogobox.coreutil.sport.model.Season>? = null)
+import com.google.gson.annotations.SerializedName
+
+data class Seasons(
+    @SerializedName("seasons")
+    var seasons: List<Season>? = null
+)

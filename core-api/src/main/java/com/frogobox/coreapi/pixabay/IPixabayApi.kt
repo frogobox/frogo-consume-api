@@ -1,8 +1,5 @@
 package com.frogobox.coreapi.pixabay
 
-import com.frogobox.coreutil.pixabay.model.PixabayImage
-import com.frogobox.coreutil.pixabay.model.PixabayVideo
-import com.frogobox.coreutil.pixabay.response.Response
 import com.frogobox.coresdk.response.FrogoDataResponse
 import okhttp3.Interceptor
 

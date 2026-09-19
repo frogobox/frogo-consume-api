@@ -7,7 +7,9 @@ import com.frogobox.appapi.mvvm.movies.core.MovieFragment
 import com.frogobox.appapi.mvvm.movies.core.PersonFragment
 import com.frogobox.appapi.mvvm.movies.core.TvFragment
 import com.frogobox.sdk.view.FrogoBindActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MoviesActivity : FrogoBindActivity<ActivityMovieBinding>() {
 
     override fun setupViewBinding(): ActivityMovieBinding {
@@ -39,7 +41,7 @@ class MoviesActivity : FrogoBindActivity<ActivityMovieBinding>() {
             clearAnimation()
             itemIconTintList = null
 
-            setOnNavigationItemSelectedListener {
+            setOnItemSelectedListener {
                 when (it.itemId) {
                     R.id.bottom_menu_movie -> {
                         supportActionBar?.title = getString(R.string.title_movie)

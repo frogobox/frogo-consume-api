@@ -4,7 +4,7 @@ import com.frogobox.coreutil.sport.SportData.Country.DATE_FIRST_EVENT
 import com.frogobox.coreutil.sport.SportData.Country.ID_API_FOOTBALL
 import com.frogobox.coreutil.sport.SportData.Country.ID_CUP
 import com.frogobox.coreutil.sport.SportData.Country.ID_LEAGUE
-import com.frogobox.coreutil.sport.SportData.Country.ID_SOCCEL_XML
+import com.frogobox.coreutil.sport.SportData.Country.ID_SOCCER_XML
 import com.frogobox.coreutil.sport.SportData.Country.INT_FORMED_YEAR
 import com.frogobox.coreutil.sport.SportData.Country.STR_BADGE
 import com.frogobox.coreutil.sport.SportData.Country.STR_BANNER
@@ -68,7 +68,7 @@ data class Country(
     @SerializedName(ID_LEAGUE)
     var idLeague: String? = null,
 
-    @SerializedName(ID_SOCCEL_XML)
+    @SerializedName(ID_SOCCER_XML)
     var idSoccerXML: String? = null,
 
     @SerializedName(ID_API_FOOTBALL)

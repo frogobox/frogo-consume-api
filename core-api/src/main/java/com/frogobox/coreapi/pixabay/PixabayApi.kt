@@ -1,10 +1,6 @@
 package com.frogobox.coreapi.pixabay
 
-import com.frogobox.coreutil.pixabay.model.PixabayImage
-import com.frogobox.coreutil.pixabay.model.PixabayVideo
-import com.frogobox.coreutil.pixabay.response.Response
 import com.frogobox.coresdk.response.FrogoDataResponse
-import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
 
 
@@ -22,7 +18,6 @@ import okhttp3.Interceptor
  */
 
 class PixabayApi(
-    private val scheduler: Scheduler?,
     private val apiKey: String
 ) : IPixabayApi {
 
@@ -54,7 +49,6 @@ class PixabayApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.pixabay.response.Response<com.frogobox.coreutil.pixabay.model.PixabayImage>>
     ) {
         pixabayRepository.searchImage(
-            scheduler,
             apiKey,
             q,
             lang,
@@ -90,7 +84,6 @@ class PixabayApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.pixabay.response.Response<com.frogobox.coreutil.pixabay.model.PixabayVideo>>
     ) {
         pixabayRepository.searchVideo(
-            scheduler,
             apiKey,
             q,
             lang,

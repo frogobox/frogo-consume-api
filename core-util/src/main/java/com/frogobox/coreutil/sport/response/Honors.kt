@@ -19,4 +19,9 @@ import com.frogobox.coreutil.sport.model.Honor
  * com.frogobox.frogoconsumeapi.sport.data.response
  *
  */
-data class Honors(var honors: List<com.frogobox.coreutil.sport.model.Honor>? = null)
+import com.google.gson.annotations.SerializedName
+
+data class Honors(
+    @SerializedName("honors")
+    var honors: List<Honor>? = null
+)

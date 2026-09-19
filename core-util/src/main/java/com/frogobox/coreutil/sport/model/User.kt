@@ -11,7 +11,7 @@ import com.frogobox.coreutil.sport.SportData.User.STR_EVENT
 import com.frogobox.coreutil.sport.SportData.User.STR_EVENT_POSTER
 import com.frogobox.coreutil.sport.SportData.User.STR_LEAGUE
 import com.frogobox.coreutil.sport.SportData.User.STR_PLAYER
-import com.frogobox.coreutil.sport.SportData.User.STR_PLAYER_TUMB
+import com.frogobox.coreutil.sport.SportData.User.STR_PLAYER_THUMB
 import com.frogobox.coreutil.sport.SportData.User.STR_REASON
 import com.frogobox.coreutil.sport.SportData.User.STR_TEAM
 import com.frogobox.coreutil.sport.SportData.User.STR_TEAM_BADGE
@@ -79,7 +79,7 @@ data class User(
     @SerializedName(STR_EVENT_POSTER)
     var strEventPoster: String? = null,
 
-    @SerializedName(STR_PLAYER_TUMB)
+    @SerializedName(STR_PLAYER_THUMB)
     var strPlayerThumb: String? = null,
 
     @SerializedName(STR_TEAM_BADGE)
