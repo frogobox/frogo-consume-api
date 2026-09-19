@@ -1,6 +1,5 @@
 package com.frogobox.coreutil.news.response
 
-import com.frogobox.coreutil.news.model.Source
 import com.google.gson.annotations.SerializedName
 
 /**

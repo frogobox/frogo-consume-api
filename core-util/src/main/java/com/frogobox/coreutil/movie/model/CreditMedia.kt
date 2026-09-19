@@ -1,7 +1,7 @@
 package com.frogobox.coreutil.movie.model
 
 import com.google.gson.annotations.SerializedName
-import java.util.*
+import java.util.Objects
 
 data class CreditMedia(
 

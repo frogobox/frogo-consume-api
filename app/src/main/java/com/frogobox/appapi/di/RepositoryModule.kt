@@ -1,8 +1,17 @@
 package com.frogobox.appapi.di
 
+import com.frogobox.api.meal.ConsumeTheMealDbApi
+import com.frogobox.api.movie.ConsumeMovieApi
+import com.frogobox.api.news.ConsumeNewsApi
+import com.frogobox.api.pixabay.ConsumePixabayApi
+import com.frogobox.api.sport.ConsumeTheSportDbApi
+import com.frogobox.appapi.source.ApiDataSource
 import com.frogobox.appapi.source.ApiRepository
-import org.koin.dsl.module
-
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 /**
  * Created by faisalamir on 01/05/22
@@ -17,10 +26,32 @@ import org.koin.dsl.module
  *
  */
 
-val repositoryModule = module {
+@Module
+@InstallIn(SingletonComponent::class)
+object RepositoryModule {
 
-    single {
-        ApiRepository(get(), get(), get(), get(), get())
+    @Provides
+    @Singleton
+    fun provideApiRepository(
+        consumeNewsApi: ConsumeNewsApi,
+        consumePixabayApi: ConsumePixabayApi,
+        consumeMovieApi: ConsumeMovieApi,
+        consumeTheSportDbApi: ConsumeTheSportDbApi,
+        consumeTheMealDbApi: ConsumeTheMealDbApi
+    ): ApiRepository {
+        return ApiRepository(
+            consumeNewsApi,
+            consumePixabayApi,
+            consumeMovieApi,
+            consumeTheSportDbApi,
+            consumeTheMealDbApi
+        )
+    }
+
+    @Provides
+    @Singleton
+    fun provideApiDataSource(apiRepository: ApiRepository): ApiDataSource {
+        return apiRepository
     }
 
 }

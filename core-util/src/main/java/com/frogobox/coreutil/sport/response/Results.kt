@@ -19,4 +19,9 @@ import com.frogobox.coreutil.sport.model.Event
  * com.frogobox.frogoconsumeapi.sport.data.response
  *
  */
-data class Results(var results: List<com.frogobox.coreutil.sport.model.Event>? = null)
+import com.google.gson.annotations.SerializedName
+
+data class Results(
+    @SerializedName("results")
+    var results: List<Event>? = null
+)

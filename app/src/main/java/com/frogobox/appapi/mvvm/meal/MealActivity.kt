@@ -3,9 +3,14 @@ package com.frogobox.appapi.mvvm.meal
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.activity.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ActivityMealBinding
 import com.frogobox.appapi.databinding.ItemGridImageBinding
+import com.frogobox.coresdk.source.Resource
 import com.frogobox.coreutil.meal.model.Meal
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
@@ -13,38 +18,45 @@ import com.frogobox.sdk.ext.openDetailImageUri
 import com.frogobox.sdk.ext.progressViewHandle
 import com.frogobox.sdk.ext.showToast
 import com.frogobox.sdk.view.FrogoBindActivity
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MealActivity : FrogoBindActivity<ActivityMealBinding>() {
 
-    private val mealViewModel: MealViewModel by viewModel()
+    private val mealViewModel: MealViewModel by viewModels()
 
     override fun setupViewBinding(): ActivityMealBinding {
         return ActivityMealBinding.inflate(layoutInflater)
     }
 
     override fun setupViewModel() {
-        mealViewModel.apply {
-
-            eventShowProgressState.observe(this@MealActivity) {
-                binding.progressBar.progressViewHandle(it)
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                mealViewModel.mealsState.collect { resource ->
+                    when (resource) {
+                        is Resource.Loading -> {
+                            binding.progressBar.progressViewHandle(true)
+                        }
+                        is Resource.Success -> {
+                            binding.progressBar.progressViewHandle(false)
+                            resource.result?.meals?.let { setupRv(it) }
+                        }
+                        is Resource.Error -> {
+                            binding.progressBar.progressViewHandle(false)
+                            showToast(resource.message ?: "Failed to load meals")
+                        }
+                    }
+                }
             }
-
-            eventFailed.observe(this@MealActivity) {
-                showToast(it)
-            }
-
-            listData.observe(this@MealActivity) {
-                setupRv(it)
-            }
-
         }
-
     }
 
     override fun onCreateExt(savedInstanceState: Bundle?) {
         setupDetailActivity("Meal Api")
-        mealViewModel.getListMeals(this, "b")
+        if (mealViewModel.listData.value == null) {
+            mealViewModel.getListMealsFlow(this, "b")
+        }
     }
 
     private fun setupRv(data: List<Meal>) {

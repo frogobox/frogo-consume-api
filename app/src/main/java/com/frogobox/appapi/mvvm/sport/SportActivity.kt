@@ -3,9 +3,9 @@ package com.frogobox.appapi.mvvm.sport
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ActivitySportBinding
-import com.frogobox.coreutil.news.model.Article
 import com.frogobox.coreutil.sport.model.Team
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
@@ -13,11 +13,12 @@ import com.frogobox.sdk.ext.progressViewHandle
 import com.frogobox.sdk.ext.showToast
 import com.frogobox.sdk.view.FrogoBindActivity
 import com.frogobox.ui.databinding.FrogoRvGridType3Binding
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SportActivity : FrogoBindActivity<ActivitySportBinding>() {
 
-    private val sportViewModel: SportViewModel by viewModel()
+    private val sportViewModel: SportViewModel by viewModels()
 
     override fun setupViewBinding(): ActivitySportBinding {
         return ActivitySportBinding.inflate(layoutInflater)
@@ -26,7 +27,9 @@ class SportActivity : FrogoBindActivity<ActivitySportBinding>() {
     override fun setupViewModel() {
         sportViewModel.apply {
 
-            searchAllTeam(this@SportActivity)
+            if (listData.value == null) {
+                searchAllTeam(this@SportActivity)
+            }
 
             eventShowProgressState.observe(this@SportActivity) {
                 binding.progressView.progressViewHandle(it)

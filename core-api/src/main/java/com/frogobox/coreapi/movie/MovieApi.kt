@@ -2,7 +2,6 @@ package com.frogobox.coreapi.movie
 
 
 import com.frogobox.coresdk.response.FrogoDataResponse
-import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
 
 
@@ -20,7 +19,6 @@ import okhttp3.Interceptor
  */
 
 class MovieApi(
-    private val scheduler: Scheduler?,
     private val apiKey: String
 ) : IMovieApi {
 
@@ -36,14 +34,14 @@ class MovieApi(
 
     override fun getMovieCertifications(callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Certifications<com.frogobox.coreutil.movie.model.CertificationMovie>>) {
         movieRepository.getMovieCertifications(
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
 
     override fun getTvCertifications(callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Certifications<com.frogobox.coreutil.movie.model.CertificationTv>>) {
         movieRepository.getTvCertifications(
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -55,7 +53,7 @@ class MovieApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Changes>
     ) {
         movieRepository.getMovieChangeList(
-            scheduler, apiKey,
+            apiKey,
             endDate,
             startDate,
             page,
@@ -70,7 +68,7 @@ class MovieApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Changes>
     ) {
         movieRepository.getTvChangeList(
-            scheduler, apiKey,
+            apiKey,
             endDate,
             startDate,
             page,
@@ -85,7 +83,7 @@ class MovieApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Changes>
     ) {
         movieRepository.getPersonChangeList(
-            scheduler, apiKey,
+            apiKey,
             endDate,
             startDate,
             page,
@@ -100,7 +98,7 @@ class MovieApi(
     ) {
         movieRepository.getCollectionDetails(
             collection_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -113,7 +111,7 @@ class MovieApi(
     ) {
         movieRepository.getCollectionImages(
             collection_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -126,7 +124,7 @@ class MovieApi(
     ) {
         movieRepository.getCollectionTranslations(
             collection_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -138,7 +136,7 @@ class MovieApi(
     ) {
         movieRepository.getCompaniesDetails(
             company_id,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -149,7 +147,7 @@ class MovieApi(
     ) {
         movieRepository.getCompaniesAlternativeName(
             company_id,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -157,49 +155,49 @@ class MovieApi(
     override fun getCompaniesImage(company_id: Int, callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.CompaniesImage>) {
         movieRepository.getCompaniesImage(
             company_id,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
 
     override fun getConfigurationApi(callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.ConfigurationApi>) {
         movieRepository.getConfigurationApi(
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
 
     override fun getConfigurationCountries(callback: FrogoDataResponse<List<com.frogobox.coreutil.movie.model.ConfigurationCountry>>) {
         movieRepository.getConfigurationCountries(
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
 
     override fun getConfigurationJobs(callback: FrogoDataResponse<List<com.frogobox.coreutil.movie.model.ConfigurationJob>>) {
         movieRepository.getConfigurationJobs(
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
 
     override fun getConfigurationLanguages(callback: FrogoDataResponse<List<com.frogobox.coreutil.movie.model.ConfigurationLanguage>>) {
         movieRepository.getConfigurationLanguages(
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
 
     override fun getConfigurationTranslations(callback: FrogoDataResponse<List<String>>) {
         movieRepository.getConfigurationTranslations(
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
 
     override fun getConfigurationTimezones(callback: FrogoDataResponse<List<com.frogobox.coreutil.movie.model.ConfigurationTimezone>>) {
         movieRepository.getConfigurationTimezones(
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -207,7 +205,7 @@ class MovieApi(
     override fun getCreditsDetails(credit_id: String, callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Credits>) {
         movieRepository.getCreditsDetails(
             credit_id,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -248,7 +246,7 @@ class MovieApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Discover<com.frogobox.coreutil.movie.model.DiscoverMovie>>
     ) {
         movieRepository.getDiscoverMovie(
-            scheduler, apiKey,
+            apiKey,
             language,
             region,
             sort_by,
@@ -311,7 +309,7 @@ class MovieApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Discover<com.frogobox.coreutil.movie.model.DiscoverTv>>
     ) {
         movieRepository.getDiscoverTv(
-            scheduler, apiKey, language,
+            apiKey, language,
             sort_by,
             air_date_gte,
             air_date_lte,
@@ -345,7 +343,7 @@ class MovieApi(
     ) {
         movieRepository.getFindById(
             external_id,
-            scheduler, apiKey,
+            apiKey,
             external_source,
             language,
             callback
@@ -354,7 +352,7 @@ class MovieApi(
 
     override fun getGenresMovie(language: String?, callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Genres>) {
         movieRepository.getGenresMovie(
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -362,7 +360,7 @@ class MovieApi(
 
     override fun getGenresTv(language: String?, callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Genres>) {
         movieRepository.getGenresTv(
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -371,7 +369,7 @@ class MovieApi(
     override fun getKeywordsDetail(keyword_id: Int, callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.KeywordsDetail>) {
         movieRepository.getKeywordsDetail(
             keyword_id,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -384,7 +382,7 @@ class MovieApi(
     ) {
         movieRepository.getKeywordsMovie(
             keyword_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             include_adult,
             callback
@@ -399,7 +397,7 @@ class MovieApi(
     ) {
         movieRepository.getMoviesDetails(
             movie_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             append_to_response,
             callback
@@ -414,7 +412,7 @@ class MovieApi(
     ) {
         movieRepository.getMoviesAccountState(
             movie_id,
-            scheduler, apiKey,
+            apiKey,
             session_id,
             guest_session_id,
             callback
@@ -428,7 +426,7 @@ class MovieApi(
     ) {
         movieRepository.getMoviesAlternativeTitles(
             movie_id,
-            scheduler, apiKey,
+            apiKey,
             country,
             callback
         )
@@ -443,7 +441,7 @@ class MovieApi(
     ) {
         movieRepository.getMoviesChanges(
             movie_id,
-            scheduler, apiKey,
+            apiKey,
             start_date,
             end_date,
             page,
@@ -454,7 +452,7 @@ class MovieApi(
     override fun getMoviesCredits(movie_id: Int, callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieCredit>) {
         movieRepository.getMoviesCredits(
             movie_id,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -465,7 +463,7 @@ class MovieApi(
     ) {
         movieRepository.getMoviesExternalIds(
             movie_id,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -478,7 +476,7 @@ class MovieApi(
     ) {
         movieRepository.getMoviesImages(
             movie_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             include_image_language,
             callback
@@ -488,7 +486,7 @@ class MovieApi(
     override fun getMoviesKeywords(movie_id: Int, callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieKeywords>) {
         movieRepository.getMoviesKeywords(
             movie_id,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -499,7 +497,7 @@ class MovieApi(
     ) {
         movieRepository.getMoviesReleaseDates(
             movie_id,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -511,7 +509,7 @@ class MovieApi(
     ) {
         movieRepository.getMoviesVideos(
             movie_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -523,7 +521,7 @@ class MovieApi(
     ) {
         movieRepository.getMoviesTranslations(
             movie_id,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -536,7 +534,7 @@ class MovieApi(
     ) {
         movieRepository.getMoviesRecommendations(
             movie_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             page,
             callback
@@ -551,7 +549,7 @@ class MovieApi(
     ) {
         movieRepository.getMoviesSimilarMovies(
             movie_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             page,
             callback
@@ -566,7 +564,7 @@ class MovieApi(
     ) {
         movieRepository.getMoviesReviews(
             movie_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             page,
             callback
@@ -581,7 +579,7 @@ class MovieApi(
     ) {
         movieRepository.getMoviesLists(
             movie_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             page,
             callback
@@ -590,7 +588,7 @@ class MovieApi(
 
     override fun getMoviesLatest(language: String?, callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieLatest>) {
         movieRepository.getMoviesLatest(
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -603,7 +601,7 @@ class MovieApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieNowPlayings>
     ) {
         movieRepository.getMoviesNowPlaying(
-            scheduler, apiKey,
+            apiKey,
             language,
             page,
             region,
@@ -618,7 +616,7 @@ class MovieApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MoviePopulars>
     ) {
         movieRepository.getMoviesPopular(
-            scheduler, apiKey,
+            apiKey,
             language,
             page,
             region,
@@ -633,7 +631,7 @@ class MovieApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieTopRated>
     ) {
         movieRepository.getMoviesTopRated(
-            scheduler, apiKey,
+            apiKey,
             language,
             page,
             region,
@@ -648,7 +646,7 @@ class MovieApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieUpcoming>
     ) {
         movieRepository.getMoviesUpcoming(
-            scheduler, apiKey,
+            apiKey,
             language,
             page,
             region,
@@ -660,7 +658,7 @@ class MovieApi(
         movieRepository.getTrendingAll(
             com.frogobox.coreutil.movie.MovieConstant.VALUE_MEDIA_TYPE_ALL,
             com.frogobox.coreutil.movie.MovieConstant.VALUE_TIME_WINDOW_DAY,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -669,7 +667,7 @@ class MovieApi(
         movieRepository.getTrendingAll(
             com.frogobox.coreutil.movie.MovieConstant.VALUE_MEDIA_TYPE_ALL,
             com.frogobox.coreutil.movie.MovieConstant.VALUE_TIME_WINDOW_WEEK,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -678,7 +676,7 @@ class MovieApi(
         movieRepository.getTrendingMovie(
             com.frogobox.coreutil.movie.MovieConstant.VALUE_MEDIA_TYPE_MOVIE,
             com.frogobox.coreutil.movie.MovieConstant.VALUE_TIME_WINDOW_DAY,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -687,7 +685,7 @@ class MovieApi(
         movieRepository.getTrendingMovie(
             com.frogobox.coreutil.movie.MovieConstant.VALUE_MEDIA_TYPE_MOVIE,
             com.frogobox.coreutil.movie.MovieConstant.VALUE_TIME_WINDOW_WEEK,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -696,7 +694,7 @@ class MovieApi(
         movieRepository.getTrendingPerson(
             com.frogobox.coreutil.movie.MovieConstant.VALUE_MEDIA_TYPE_PERSON,
             com.frogobox.coreutil.movie.MovieConstant.VALUE_TIME_WINDOW_DAY,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -705,7 +703,7 @@ class MovieApi(
         movieRepository.getTrendingPerson(
             com.frogobox.coreutil.movie.MovieConstant.VALUE_MEDIA_TYPE_PERSON,
             com.frogobox.coreutil.movie.MovieConstant.VALUE_TIME_WINDOW_WEEK,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -714,7 +712,7 @@ class MovieApi(
         movieRepository.getTrendingTv(
             com.frogobox.coreutil.movie.MovieConstant.VALUE_MEDIA_TYPE_TV,
             com.frogobox.coreutil.movie.MovieConstant.VALUE_TIME_WINDOW_DAY,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -723,7 +721,7 @@ class MovieApi(
         movieRepository.getTrendingTv(
             com.frogobox.coreutil.movie.MovieConstant.VALUE_MEDIA_TYPE_TV,
             com.frogobox.coreutil.movie.MovieConstant.VALUE_TIME_WINDOW_WEEK,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -731,7 +729,7 @@ class MovieApi(
     override fun getReviews(review_id: String, callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Reviews>) {
         movieRepository.getReviews(
             review_id,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -739,7 +737,7 @@ class MovieApi(
     override fun getNetworkDetail(network_id: Int, callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.NetworkDetail>) {
         movieRepository.getNetworkDetail(
             network_id,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -750,7 +748,7 @@ class MovieApi(
     ) {
         movieRepository.getNetworkAlternativeName(
             network_id,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -758,7 +756,7 @@ class MovieApi(
     override fun getNetworkImage(network_id: Int, callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.NetworkImage>) {
         movieRepository.getNetworkImage(
             network_id,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -769,7 +767,7 @@ class MovieApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.SearchCompanies>
     ) {
         movieRepository.searchCompanies(
-            scheduler, apiKey,
+            apiKey,
             query,
             page,
             callback
@@ -783,7 +781,7 @@ class MovieApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.SearchCollections>
     ) {
         movieRepository.searchCollections(
-            scheduler, apiKey,
+            apiKey,
             query,
             language,
             page,
@@ -797,7 +795,7 @@ class MovieApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.SearchKeywords>
     ) {
         movieRepository.searchKeywords(
-            scheduler, apiKey,
+            apiKey,
             query,
             page,
             callback
@@ -815,7 +813,7 @@ class MovieApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.SearchMovies>
     ) {
         movieRepository.searchMovies(
-            scheduler, apiKey,
+            apiKey,
             query,
             language,
             page,
@@ -836,7 +834,7 @@ class MovieApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.SearchMulti>
     ) {
         movieRepository.searchMultiSearch(
-            scheduler, apiKey,
+            apiKey,
             query,
             language,
             page,
@@ -855,7 +853,7 @@ class MovieApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.SearchPeople>
     ) {
         movieRepository.searchPeople(
-            scheduler, apiKey,
+            apiKey,
             query,
             language,
             page,
@@ -874,7 +872,7 @@ class MovieApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.SearchMovies>
     ) {
         movieRepository.searchTvShows(
-            scheduler, apiKey,
+            apiKey,
             query,
             language,
             page,
@@ -892,7 +890,7 @@ class MovieApi(
     ) {
         movieRepository.getTvDetails(
             tv_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             append_to_response,
             callback
@@ -908,7 +906,7 @@ class MovieApi(
     ) {
         movieRepository.getTvAccountStates(
             tv_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             guest_session_id,
             session_id,
@@ -923,7 +921,7 @@ class MovieApi(
     ) {
         movieRepository.getTvAlternativeTitles(
             tv_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -938,7 +936,7 @@ class MovieApi(
     ) {
         movieRepository.getTvChanges(
             tv_id,
-            scheduler, apiKey,
+            apiKey,
             startDate,
             endDate,
             page,
@@ -953,7 +951,7 @@ class MovieApi(
     ) {
         movieRepository.getTvContentRatings(
             tv_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -966,7 +964,7 @@ class MovieApi(
     ) {
         movieRepository.getTvCredits(
             tv_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -979,7 +977,7 @@ class MovieApi(
     ) {
         movieRepository.getTvEpisodeGroups(
             tv_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -992,7 +990,7 @@ class MovieApi(
     ) {
         movieRepository.getTvExternalIds(
             tv_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -1005,7 +1003,7 @@ class MovieApi(
     ) {
         movieRepository.getTvImages(
             tv_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -1014,7 +1012,7 @@ class MovieApi(
     override fun getTvKeyword(tv_id: Int, callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvKeywords>) {
         movieRepository.getTvKeyword(
             tv_id,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -1027,7 +1025,7 @@ class MovieApi(
     ) {
         movieRepository.getTvRecommendations(
             tv_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             page,
             callback
@@ -1037,7 +1035,7 @@ class MovieApi(
     override fun getTvReviews(tv_id: Int, callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvReviews>) {
         movieRepository.getTvReviews(
             tv_id,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -1048,7 +1046,7 @@ class MovieApi(
     ) {
         movieRepository.getTvScreenedTheatrically(
             tv_id,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -1061,7 +1059,7 @@ class MovieApi(
     ) {
         movieRepository.getTvSimilarTvShows(
             tv_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             page,
             callback
@@ -1071,7 +1069,7 @@ class MovieApi(
     override fun getTvTranslations(tv_id: Int, callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvTranslations>) {
         movieRepository.getTvTranslations(
             tv_id,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -1083,7 +1081,7 @@ class MovieApi(
     ) {
         movieRepository.getTvVideos(
             tv_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -1091,7 +1089,7 @@ class MovieApi(
 
     override fun getTvLatest(language: String?, callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvLatest>) {
         movieRepository.getTvLatest(
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -1103,7 +1101,7 @@ class MovieApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvAiringToday>
     ) {
         movieRepository.getTvAiringToday(
-            scheduler, apiKey,
+            apiKey,
             language,
             page,
             callback
@@ -1116,7 +1114,7 @@ class MovieApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvOnTheAir>
     ) {
         movieRepository.getTvOnTheAir(
-            scheduler, apiKey,
+            apiKey,
             language,
             page,
             callback
@@ -1129,7 +1127,7 @@ class MovieApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvPopular>
     ) {
         movieRepository.getTvPopular(
-            scheduler, apiKey,
+            apiKey,
             language,
             page,
             callback
@@ -1142,7 +1140,7 @@ class MovieApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvTopRated>
     ) {
         movieRepository.getTvTopRated(
-            scheduler, apiKey,
+            apiKey,
             language,
             page,
             callback
@@ -1159,7 +1157,7 @@ class MovieApi(
         movieRepository.getTvSeasonsDetails(
             tv_id,
             season_number,
-            scheduler, apiKey,
+            apiKey,
             language,
             append_to_response,
             callback
@@ -1175,7 +1173,7 @@ class MovieApi(
     ) {
         movieRepository.getTvSeasonsChanges(
             season_id,
-            scheduler, apiKey,
+            apiKey,
             startDate,
             endDate,
             page,
@@ -1194,7 +1192,7 @@ class MovieApi(
         movieRepository.getTvSeasonsAccountStates(
             tv_id,
             season_number,
-            scheduler, apiKey,
+            apiKey,
             language,
             guest_session_id,
             session_id,
@@ -1211,7 +1209,7 @@ class MovieApi(
         movieRepository.getTvSeasonsCredits(
             tv_id,
             season_number,
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -1226,7 +1224,7 @@ class MovieApi(
         movieRepository.getTvSeasonsExternalIds(
             tv_id,
             season_number,
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -1241,7 +1239,7 @@ class MovieApi(
         movieRepository.getTvSeasonsImages(
             tv_id,
             season_number,
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -1256,7 +1254,7 @@ class MovieApi(
         movieRepository.getTvSeasonsVideos(
             tv_id,
             season_number,
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -1274,7 +1272,7 @@ class MovieApi(
             tv_id,
             season_number,
             episode_number,
-            scheduler, apiKey,
+            apiKey,
             language,
             append_to_response,
             callback
@@ -1290,7 +1288,7 @@ class MovieApi(
     ) {
         movieRepository.getTvEpisodeChanges(
             episode_id,
-            scheduler, apiKey,
+            apiKey,
             startDate,
             endDate,
             page,
@@ -1310,7 +1308,7 @@ class MovieApi(
             tv_id,
             season_number,
             episode_number,
-            scheduler, apiKey,
+            apiKey,
             guest_session_id,
             session_id,
             callback
@@ -1327,7 +1325,7 @@ class MovieApi(
             tv_id,
             season_number,
             episode_number,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -1342,7 +1340,7 @@ class MovieApi(
             tv_id,
             season_number,
             episode_number,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -1357,7 +1355,7 @@ class MovieApi(
             tv_id,
             season_number,
             episode_number,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -1372,7 +1370,7 @@ class MovieApi(
             tv_id,
             season_number,
             episode_number,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -1388,7 +1386,7 @@ class MovieApi(
             tv_id,
             season_number,
             episode_number,
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -1401,7 +1399,7 @@ class MovieApi(
     ) {
         movieRepository.getTvEpisodeGroupsDetails(
             id,
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -1414,7 +1412,7 @@ class MovieApi(
     ) {
         movieRepository.getPeopleDetails(
             person_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -1429,7 +1427,7 @@ class MovieApi(
     ) {
         movieRepository.getPeopleChanges(
             person_id,
-            scheduler, apiKey,
+            apiKey,
             endDate,
             page,
             startDate,
@@ -1444,7 +1442,7 @@ class MovieApi(
     ) {
         movieRepository.getPeopleMovieCredits(
             person_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -1457,7 +1455,7 @@ class MovieApi(
     ) {
         movieRepository.getPeopleTvCredits(
             person_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -1470,7 +1468,7 @@ class MovieApi(
     ) {
         movieRepository.getPeopleCombinedCredits(
             person_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -1483,7 +1481,7 @@ class MovieApi(
     ) {
         movieRepository.getPeopleExternalIds(
             person_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -1492,7 +1490,7 @@ class MovieApi(
     override fun getPeopleImages(person_id: Int, callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeopleImages>) {
         movieRepository.getPeopleImages(
             person_id,
-            scheduler, apiKey,
+            apiKey,
             callback
         )
     }
@@ -1505,7 +1503,7 @@ class MovieApi(
     ) {
         movieRepository.getPeopleTaggedImages(
             person_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             page,
             callback
@@ -1519,7 +1517,7 @@ class MovieApi(
     ) {
         movieRepository.getPeopleTranslations(
             person_id,
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -1527,7 +1525,7 @@ class MovieApi(
 
     override fun getPeopleLatest(language: String?, callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeopleLatest>) {
         movieRepository.getPeopleLatest(
-            scheduler, apiKey,
+            apiKey,
             language,
             callback
         )
@@ -1539,7 +1537,7 @@ class MovieApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeoplePopular>
     ) {
         movieRepository.getPeoplePopular(
-            scheduler, apiKey,
+            apiKey,
             language,
             page,
             callback

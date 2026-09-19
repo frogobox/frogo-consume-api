@@ -11,10 +11,12 @@ import com.frogobox.appapi.mvvm.movies.person.PersonDayFragment
 import com.frogobox.appapi.mvvm.movies.person.PersonWeekFragment
 import com.frogobox.appapi.util.PagerAdapter
 import com.frogobox.sdk.view.FrogoBindFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * A simple [Fragment] subclass.
  */
+@AndroidEntryPoint
 class PersonFragment : FrogoBindFragment<FragmentTrendingBinding>() {
 
     override fun setupViewBinding(

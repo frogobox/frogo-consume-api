@@ -2,7 +2,6 @@ package com.frogobox.coreapi.movie
 
 
 import com.frogobox.coresdk.response.FrogoDataResponse
-import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
 
 /**
@@ -30,7 +29,6 @@ interface MovieDataSource {
     // CERTIFICATIONS
     // Get Movie Certifications
     fun getMovieCertifications(
-        scheduler: Scheduler?,
         apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Certifications<com.frogobox.coreutil.movie.model.CertificationMovie>>
     )
@@ -38,7 +36,6 @@ interface MovieDataSource {
     // CERTIFICATIONS
     // Get TV Certifications
     fun getTvCertifications(
-        scheduler: Scheduler?,
         apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Certifications<com.frogobox.coreutil.movie.model.CertificationTv>>
     )
@@ -48,7 +45,6 @@ interface MovieDataSource {
     // CHANGES
     // Get Movie Change List
     fun getMovieChangeList(
-        scheduler: Scheduler?,
         apiKey: String,
         endDate: String?,
         startDate: String?,
@@ -59,7 +55,6 @@ interface MovieDataSource {
     // CHANGES
     // Get TV Change List
     fun getTvChangeList(
-        scheduler: Scheduler?,
         apiKey: String,
         endDate: String?,
         startDate: String?,
@@ -70,7 +65,6 @@ interface MovieDataSource {
     // CHANGES
     // Get Person Change List
     fun getPersonChangeList(
-        scheduler: Scheduler?,
         apiKey: String,
         endDate: String?,
         startDate: String?,
@@ -84,7 +78,6 @@ interface MovieDataSource {
     // Get Details
     fun getCollectionDetails(
         collection_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.CollectionsDetail>
@@ -94,7 +87,6 @@ interface MovieDataSource {
     // Get Images
     fun getCollectionImages(
         collection_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.CollectionsImage>
@@ -104,7 +96,6 @@ interface MovieDataSource {
     // Get Translations
     fun getCollectionTranslations(
         collection_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.CollectionsTranslation>
@@ -116,7 +107,6 @@ interface MovieDataSource {
     // Get Details
     fun getCompaniesDetails(
         company_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.CompaniesDetail>
     )
@@ -125,7 +115,6 @@ interface MovieDataSource {
     // Get Alternative Names
     fun getCompaniesAlternativeName(
         company_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.CompaniesAlternateName>
     )
@@ -134,7 +123,6 @@ interface MovieDataSource {
     // Get Images
     fun getCompaniesImage(
         company_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.CompaniesImage>
     )
@@ -144,7 +132,6 @@ interface MovieDataSource {
     // CONFIGURATION
     // Get API Configuration
     fun getConfigurationApi(
-        scheduler: Scheduler?,
         apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.ConfigurationApi>
     )
@@ -152,7 +139,6 @@ interface MovieDataSource {
     // CONFIGURATION
     // Get Countries
     fun getConfigurationCountries(
-        scheduler: Scheduler?,
         apiKey: String,
         callback: FrogoDataResponse<List<com.frogobox.coreutil.movie.model.ConfigurationCountry>>
     )
@@ -160,7 +146,6 @@ interface MovieDataSource {
     // CONFIGURATION
     // Get Jobs
     fun getConfigurationJobs(
-        scheduler: Scheduler?,
         apiKey: String,
         callback: FrogoDataResponse<List<com.frogobox.coreutil.movie.model.ConfigurationJob>>
     )
@@ -168,7 +153,6 @@ interface MovieDataSource {
     // CONFIGURATION
     // Get Languages
     fun getConfigurationLanguages(
-        scheduler: Scheduler?,
         apiKey: String,
         callback: FrogoDataResponse<List<com.frogobox.coreutil.movie.model.ConfigurationLanguage>>
     )
@@ -176,7 +160,6 @@ interface MovieDataSource {
     // CONFIGURATION
     // Get Primary Translations
     fun getConfigurationTranslations(
-        scheduler: Scheduler?,
         apiKey: String,
         callback: FrogoDataResponse<List<String>>
     )
@@ -184,7 +167,6 @@ interface MovieDataSource {
     // CONFIGURATION
     // Get Timezones
     fun getConfigurationTimezones(
-        scheduler: Scheduler?,
         apiKey: String,
         callback: FrogoDataResponse<List<com.frogobox.coreutil.movie.model.ConfigurationTimezone>>
     )
@@ -195,7 +177,6 @@ interface MovieDataSource {
     // Get Details
     fun getCreditsDetails(
         credit_id: String,
-        scheduler: Scheduler?,
         apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Credits>
     )
@@ -203,7 +184,6 @@ interface MovieDataSource {
     // DISCOVER
     // Movie Discover
     fun getDiscoverMovie(
-        scheduler: Scheduler?,
         apiKey: String,
         language: String?,
         region: String?,
@@ -246,7 +226,6 @@ interface MovieDataSource {
     // DISCOVER
     // TV Discover
     fun getDiscoverTv(
-        scheduler: Scheduler?,
         apiKey: String,
         language: String?,
         sort_by: String?,
@@ -279,7 +258,7 @@ interface MovieDataSource {
     // Find by ID
     fun getFindById(
         external_id: String,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         external_source: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Find>
@@ -290,7 +269,6 @@ interface MovieDataSource {
     // GENRES
     // Get Movie List
     fun getGenresMovie(
-        scheduler: Scheduler?,
         apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Genres>
@@ -299,7 +277,6 @@ interface MovieDataSource {
     // GENRES
     // Get TV List
     fun getGenresTv(
-        scheduler: Scheduler?,
         apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Genres>
@@ -311,7 +288,6 @@ interface MovieDataSource {
     // Get Details
     fun getKeywordsDetail(
         keyword_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.KeywordsDetail>
     )
@@ -320,7 +296,6 @@ interface MovieDataSource {
     // Get Movies
     fun getKeywordsMovie(
         keyword_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         language: String?,
         include_adult: Boolean?,
@@ -333,7 +308,6 @@ interface MovieDataSource {
     // Get Details
     fun getMoviesDetails(
         movie_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         language: String?,
         append_to_response: String?,
@@ -344,7 +318,6 @@ interface MovieDataSource {
     // Get Account States
     fun getMoviesAccountState(
         movie_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         session_id: String,
         guest_session_id: String?,
@@ -355,7 +328,6 @@ interface MovieDataSource {
     // Get Alternative Titles
     fun getMoviesAlternativeTitles(
         movie_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         country: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieAlternativeTitle>
@@ -365,7 +337,6 @@ interface MovieDataSource {
     // Get Changes
     fun getMoviesChanges(
         movie_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         start_date: String?,
         end_date: String?,
@@ -377,7 +348,6 @@ interface MovieDataSource {
     // Get Credits
     fun getMoviesCredits(
         movie_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieCredit>
     )
@@ -386,7 +356,6 @@ interface MovieDataSource {
     // Get External Ids
     fun getMoviesExternalIds(
         movie_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieExternalId>
     )
@@ -395,7 +364,6 @@ interface MovieDataSource {
     // Get Images
     fun getMoviesImages(
         movie_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         language: String?,
         include_image_language: String?,
@@ -406,7 +374,6 @@ interface MovieDataSource {
     // Get Keywords
     fun getMoviesKeywords(
         movie_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieKeywords>
     )
@@ -415,7 +382,6 @@ interface MovieDataSource {
     // Get Release Dates
     fun getMoviesReleaseDates(
         movie_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieReleaseDates>
     )
@@ -424,7 +390,6 @@ interface MovieDataSource {
     // Get Videos
     fun getMoviesVideos(
         movie_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieVideos>
@@ -434,7 +399,6 @@ interface MovieDataSource {
     // Get Translations
     fun getMoviesTranslations(
         movie_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieTranslations>
     )
@@ -443,7 +407,6 @@ interface MovieDataSource {
     // Get Recommendations
     fun getMoviesRecommendations(
         movie_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         language: String?,
         page: Int?,
@@ -454,7 +417,6 @@ interface MovieDataSource {
     // Get Similar Movies
     fun getMoviesSimilarMovies(
         movie_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         language: String?,
         page: Int?,
@@ -465,7 +427,7 @@ interface MovieDataSource {
     // Get Reviews
     fun getMoviesReviews(
         movie_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         page: Int?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieReviews>
@@ -475,7 +437,7 @@ interface MovieDataSource {
     // Get Lists
     fun getMoviesLists(
         movie_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         page: Int?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieLists>
@@ -484,7 +446,7 @@ interface MovieDataSource {
     // MOVIES
     // Get Latest
     fun getMoviesLatest(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.MovieLatest>
     )
@@ -492,7 +454,7 @@ interface MovieDataSource {
     // MOVIES
     // Get Now Playing
     fun getMoviesNowPlaying(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         page: Int?,
         region: String?,
@@ -502,7 +464,7 @@ interface MovieDataSource {
     // MOVIES
     // Get Popular
     fun getMoviesPopular(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         page: Int?,
         region: String?,
@@ -512,7 +474,7 @@ interface MovieDataSource {
     // MOVIES
     // Get Top Rated
     fun getMoviesTopRated(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         page: Int?,
         region: String?,
@@ -522,7 +484,7 @@ interface MovieDataSource {
     // MOVIES
     // Get Upcoming
     fun getMoviesUpcoming(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         page: Int?,
         region: String?,
@@ -536,7 +498,7 @@ interface MovieDataSource {
     fun getTrendingAll(
         media_type: String,
         time_window: String,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingAll>>
     )
 
@@ -545,7 +507,7 @@ interface MovieDataSource {
     fun getTrendingMovie(
         media_type: String,
         time_window: String,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingMovie>>
     )
 
@@ -554,7 +516,7 @@ interface MovieDataSource {
     fun getTrendingPerson(
         media_type: String,
         time_window: String,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingPerson>>
     )
 
@@ -563,7 +525,7 @@ interface MovieDataSource {
     fun getTrendingTv(
         media_type: String,
         time_window: String,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingTv>>
     )
 
@@ -573,7 +535,7 @@ interface MovieDataSource {
     // Get Details
     fun getReviews(
         review_id: String,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.Reviews>
     )
 
@@ -583,7 +545,7 @@ interface MovieDataSource {
     // Get Details
     fun getNetworkDetail(
         network_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.NetworkDetail>
     )
 
@@ -591,7 +553,7 @@ interface MovieDataSource {
     // Get Alternative Names
     fun getNetworkAlternativeName(
         network_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.NetworkAlternativeName>
     )
 
@@ -599,7 +561,7 @@ interface MovieDataSource {
     // Get Images
     fun getNetworkImage(
         network_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.NetworkImage>
     )
 
@@ -608,7 +570,7 @@ interface MovieDataSource {
     // SEARCH
     // Search Companies
     fun searchCompanies(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         query: String,
         page: Int?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.SearchCompanies>
@@ -617,7 +579,7 @@ interface MovieDataSource {
     // SEARCH
     // Search Collections
     fun searchCollections(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         query: String,
         language: String?,
         page: Int?,
@@ -627,7 +589,7 @@ interface MovieDataSource {
     // SEARCH
     // Search Keywords
     fun searchKeywords(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         query: String,
         page: Int?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.SearchKeywords>
@@ -636,7 +598,7 @@ interface MovieDataSource {
     // SEARCH
     // Search Movies
     fun searchMovies(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         query: String,
         language: String?,
         page: Int?,
@@ -650,7 +612,7 @@ interface MovieDataSource {
     // SEARCH
     // Multi Search
     fun searchMultiSearch(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         query: String,
         language: String?,
         page: Int?,
@@ -662,7 +624,7 @@ interface MovieDataSource {
     // SEARCH
     // Search People
     fun searchPeople(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         query: String,
         language: String?,
         page: Int?,
@@ -674,7 +636,7 @@ interface MovieDataSource {
     // SEARCH
     // Search Tv Shows
     fun searchTvShows(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         query: String,
         language: String?,
         page: Int?,
@@ -689,7 +651,7 @@ interface MovieDataSource {
     // Get Details
     fun getTvDetails(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         append_to_response: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvDetails>
@@ -699,7 +661,7 @@ interface MovieDataSource {
     // Get Account States
     fun getTvAccountStates(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         guest_session_id: String?,
         session_id: String?,
@@ -710,7 +672,7 @@ interface MovieDataSource {
     // Get Alternative Titles
     fun getTvAlternativeTitles(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvAlternativeTitles>
     )
@@ -719,7 +681,7 @@ interface MovieDataSource {
     // Get Changes
     fun getTvChanges(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         startDate: String?,
         endDate: String?,
         page: Int?,
@@ -730,7 +692,7 @@ interface MovieDataSource {
     // Get Content Ratings
     fun getTvContentRatings(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvContentRatings>
     )
@@ -739,7 +701,7 @@ interface MovieDataSource {
     // Get Credits
     fun getTvCredits(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvCredits>
     )
@@ -748,7 +710,7 @@ interface MovieDataSource {
     // Get Episode Groups
     fun getTvEpisodeGroups(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvEpisodeGroups>
     )
@@ -757,7 +719,7 @@ interface MovieDataSource {
     // Get External IDs
     fun getTvExternalIds(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvExternalIds>
     )
@@ -766,7 +728,7 @@ interface MovieDataSource {
     // Get Images
     fun getTvImages(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvImages>
     )
@@ -775,7 +737,7 @@ interface MovieDataSource {
     // Get Keyword
     fun getTvKeyword(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvKeywords>
     )
 
@@ -783,7 +745,7 @@ interface MovieDataSource {
     // Get Recommendations
     fun getTvRecommendations(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         page: Int?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvRecommendations>
@@ -793,7 +755,6 @@ interface MovieDataSource {
     // Get Reviews
     fun getTvReviews(
         tv_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvReviews>
     )
@@ -802,7 +763,6 @@ interface MovieDataSource {
     // Get Screened Theatrically
     fun getTvScreenedTheatrically(
         tv_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvScreenedTheatrically>
     )
@@ -811,7 +771,6 @@ interface MovieDataSource {
     // Get Similar TV Shows
     fun getTvSimilarTvShows(
         tv_id: Int,
-        scheduler: Scheduler?,
         apiKey: String,
         language: String?,
         page: Int?,
@@ -822,7 +781,7 @@ interface MovieDataSource {
     // Get Translations
     fun getTvTranslations(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvTranslations>
     )
 
@@ -830,7 +789,7 @@ interface MovieDataSource {
     // Get Videos
     fun getTvVideos(
         tv_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvVideos>
     )
@@ -838,7 +797,7 @@ interface MovieDataSource {
     // TV
     // Get Latest
     fun getTvLatest(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvLatest>
     )
@@ -846,7 +805,7 @@ interface MovieDataSource {
     // TV
     // Get TV Airing Today
     fun getTvAiringToday(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         page: Int?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvAiringToday>
@@ -855,7 +814,7 @@ interface MovieDataSource {
     // TV
     // Get TV On The Air
     fun getTvOnTheAir(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         page: Int?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvOnTheAir>
@@ -864,7 +823,7 @@ interface MovieDataSource {
     // TV
     // Get Popular
     fun getTvPopular(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         page: Int?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvPopular>
@@ -873,7 +832,7 @@ interface MovieDataSource {
     // TV
     // Get Top Rated
     fun getTvTopRated(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         page: Int?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvTopRated>
@@ -886,7 +845,7 @@ interface MovieDataSource {
     fun getTvSeasonsDetails(
         tv_id: Int,
         season_number: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         append_to_response: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvSeasonsDetails>
@@ -896,7 +855,7 @@ interface MovieDataSource {
     // Get Changes
     fun getTvSeasonsChanges(
         season_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         startDate: String?,
         endDate: String?,
         page: Int?,
@@ -908,7 +867,7 @@ interface MovieDataSource {
     fun getTvSeasonsAccountStates(
         tv_id: Int,
         season_number: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         guest_session_id: String?,
         session_id: String?,
@@ -920,7 +879,7 @@ interface MovieDataSource {
     fun getTvSeasonsCredits(
         tv_id: Int,
         season_number: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvSeasonsCredits>
     )
@@ -930,7 +889,7 @@ interface MovieDataSource {
     fun getTvSeasonsExternalIds(
         tv_id: Int,
         season_number: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvSeasonsExternalIds>
     )
@@ -940,7 +899,7 @@ interface MovieDataSource {
     fun getTvSeasonsImages(
         tv_id: Int,
         season_number: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvSeasonsImages>
     )
@@ -950,7 +909,7 @@ interface MovieDataSource {
     fun getTvSeasonsVideos(
         tv_id: Int,
         season_number: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvSeasonsVideos>
     )
@@ -963,7 +922,7 @@ interface MovieDataSource {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         append_to_response: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvEpisodeDetails>
@@ -973,7 +932,7 @@ interface MovieDataSource {
     // Get Changes
     fun getTvEpisodeChanges(
         episode_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         startDate: String?,
         endDate: String?,
         page: Int?,
@@ -986,7 +945,7 @@ interface MovieDataSource {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         guest_session_id: String?,
         session_id: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvEpisodeAccountStates>
@@ -998,7 +957,7 @@ interface MovieDataSource {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvEpisodeCredits>
     )
 
@@ -1008,7 +967,7 @@ interface MovieDataSource {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvEpisodeExternalIds>
     )
 
@@ -1018,7 +977,7 @@ interface MovieDataSource {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvEpisodeImages>
     )
 
@@ -1028,7 +987,7 @@ interface MovieDataSource {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.model.TvEpisodeTranslation>
     )
 
@@ -1038,7 +997,7 @@ interface MovieDataSource {
         tv_id: Int,
         season_number: Int,
         episode_number: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvEpisodeVideos>
     )
@@ -1049,7 +1008,7 @@ interface MovieDataSource {
     // Get Details
     fun getTvEpisodeGroupsDetails(
         id: String?,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.TvEpisodeGroupsDetails>
     )
@@ -1060,7 +1019,7 @@ interface MovieDataSource {
     // Get Details
     fun getPeopleDetails(
         person_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeopleDetails>
     )
@@ -1069,7 +1028,7 @@ interface MovieDataSource {
     // Get Changes
     fun getPeopleChanges(
         person_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         endDate: String?,
         page: Int?,
         startDate: String?,
@@ -1080,7 +1039,7 @@ interface MovieDataSource {
     // Get Movie Credits
     fun getPeopleMovieCredits(
         person_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeopleMovieCredits>
     )
@@ -1089,7 +1048,7 @@ interface MovieDataSource {
     // Get TV Credits
     fun getPeopleTvCredits(
         person_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeopleTvCredits>
     )
@@ -1098,7 +1057,7 @@ interface MovieDataSource {
     // Get Combined Credits
     fun getPeopleCombinedCredits(
         person_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeopleCombinedCredits>
     )
@@ -1107,7 +1066,7 @@ interface MovieDataSource {
     // Get External IDs
     fun getPeopleExternalIds(
         person_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeopleExternalIds>
     )
@@ -1116,7 +1075,7 @@ interface MovieDataSource {
     // Get Images
     fun getPeopleImages(
         person_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeopleImages>
     )
 
@@ -1124,7 +1083,7 @@ interface MovieDataSource {
     // Get Tagged Images
     fun getPeopleTaggedImages(
         person_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         page: Int?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeopleTaggedImages>
@@ -1134,7 +1093,7 @@ interface MovieDataSource {
     // Get Translations
     fun getPeopleTranslations(
         person_id: Int,
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeopleTranslations>
     )
@@ -1142,7 +1101,7 @@ interface MovieDataSource {
     // PEOPLE
     // Get Latest
     fun getPeopleLatest(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeopleLatest>
     )
@@ -1150,7 +1109,7 @@ interface MovieDataSource {
     // PEOPLE
     // Get Popular
     fun getPeoplePopular(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         language: String?,
         page: Int?,
         callback: FrogoDataResponse<com.frogobox.coreutil.movie.response.PeoplePopular>

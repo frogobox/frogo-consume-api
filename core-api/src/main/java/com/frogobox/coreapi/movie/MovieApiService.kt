@@ -1,7 +1,7 @@
 package com.frogobox.coreapi.movie
 
 
-import io.reactivex.rxjava3.core.Observable
+import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -30,14 +30,14 @@ interface MovieApiService {
     @GET(com.frogobox.coreutil.movie.MovieUrl.CERTIFICATION_GET_MOVIE)
     fun getMovieCertifications(
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.Certifications<com.frogobox.coreutil.movie.model.CertificationMovie>>
+    ): Call<com.frogobox.coreutil.movie.response.Certifications<com.frogobox.coreutil.movie.model.CertificationMovie>>
 
     // CERTIFICATIONS
     // Get TV Certifications
     @GET(com.frogobox.coreutil.movie.MovieUrl.CERTIFICATION_GET_TV)
     fun getTvCertifications(
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.Certifications<com.frogobox.coreutil.movie.model.CertificationTv>>
+    ): Call<com.frogobox.coreutil.movie.response.Certifications<com.frogobox.coreutil.movie.model.CertificationTv>>
 
     // ---------------------------------------------------------------------------------------------
 
@@ -49,7 +49,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_END_DATE) endDate: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_START_DATE) startDate: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.Changes>
+    ): Call<com.frogobox.coreutil.movie.response.Changes>
 
     // CHANGES
     // Get TV Change List
@@ -59,7 +59,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_END_DATE) endDate: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_START_DATE) startDate: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.Changes>
+    ): Call<com.frogobox.coreutil.movie.response.Changes>
 
     // CHANGES
     // Get Person Change List
@@ -69,7 +69,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_END_DATE) endDate: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_START_DATE) startDate: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.Changes>
+    ): Call<com.frogobox.coreutil.movie.response.Changes>
 
     // ---------------------------------------------------------------------------------------------
 
@@ -80,7 +80,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_COLLECTION_ID) collection_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.CollectionsDetail>
+    ): Call<com.frogobox.coreutil.movie.response.CollectionsDetail>
 
     // COLLECTION
     // Get Collection Images
@@ -89,16 +89,16 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_COLLECTION_ID) collection_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.CollectionsImage>
+    ): Call<com.frogobox.coreutil.movie.response.CollectionsImage>
 
     // COLLECTION
     // Get Collection Translations
-    @GET(com.frogobox.coreutil.movie.MovieUrl.COLLECTION_GET_TRANSLATTIONS)
+    @GET(com.frogobox.coreutil.movie.MovieUrl.COLLECTION_GET_TRANSLATIONS)
     fun getCollectionTranslations(
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_COLLECTION_ID) collection_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.CollectionsTranslation>
+    ): Call<com.frogobox.coreutil.movie.response.CollectionsTranslation>
 
     // ---------------------------------------------------------------------------------------------
 
@@ -108,7 +108,7 @@ interface MovieApiService {
     fun getCompaniesDetails(
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_COMPANY_ID) company_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.CompaniesDetail>
+    ): Call<com.frogobox.coreutil.movie.response.CompaniesDetail>
 
     // COMPANIES
     // Get Companies Alternative Names
@@ -116,7 +116,7 @@ interface MovieApiService {
     fun getCompaniesAlternativeName(
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_COMPANY_ID) company_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.CompaniesAlternateName>
+    ): Call<com.frogobox.coreutil.movie.response.CompaniesAlternateName>
 
     // COMPANIES
     // Get Companies Images
@@ -124,7 +124,7 @@ interface MovieApiService {
     fun getCompaniesImage(
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_COMPANY_ID) company_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.CompaniesImage>
+    ): Call<com.frogobox.coreutil.movie.response.CompaniesImage>
 
     // ---------------------------------------------------------------------------------------------
 
@@ -133,42 +133,42 @@ interface MovieApiService {
     @GET(com.frogobox.coreutil.movie.MovieUrl.CONFIGURATION_GET_API_CONFIGURATION)
     fun getConfigurationApi(
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.ConfigurationApi>
+    ): Call<com.frogobox.coreutil.movie.response.ConfigurationApi>
 
     // CONFIGURATION
     // Get Countries
     @GET(com.frogobox.coreutil.movie.MovieUrl.CONFIGURATION_GET_COUNTRIES)
     fun getConfigurationCountries(
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<List<com.frogobox.coreutil.movie.model.ConfigurationCountry>>
+    ): Call<List<com.frogobox.coreutil.movie.model.ConfigurationCountry>>
 
     // CONFIGURATION
     // Get Jobs
     @GET(com.frogobox.coreutil.movie.MovieUrl.CONFIGURATION_GET_JOBS)
     fun getConfigurationJobs(
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<List<com.frogobox.coreutil.movie.model.ConfigurationJob>>
+    ): Call<List<com.frogobox.coreutil.movie.model.ConfigurationJob>>
 
     // CONFIGURATION
     // Get Languages
     @GET(com.frogobox.coreutil.movie.MovieUrl.CONFIGURATION_GET_LANGUAGES)
     fun getConfigurationLanguages(
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<List<com.frogobox.coreutil.movie.model.ConfigurationLanguage>>
+    ): Call<List<com.frogobox.coreutil.movie.model.ConfigurationLanguage>>
 
     // CONFIGURATION
     // Get Primary Translations
     @GET(com.frogobox.coreutil.movie.MovieUrl.CONFIGURATION_GET_PRIMARY_TRANSLATIONS)
     fun getConfigurationTranslations(
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<List<String>>
+    ): Call<List<String>>
 
     // CONFIGURATION
     // Get Timezones
     @GET(com.frogobox.coreutil.movie.MovieUrl.CONFIGURATION_GET_TIMEZONES)
     fun getConfigurationTimezones(
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<List<com.frogobox.coreutil.movie.model.ConfigurationTimezone>>
+    ): Call<List<com.frogobox.coreutil.movie.model.ConfigurationTimezone>>
 
     // ---------------------------------------------------------------------------------------------
 
@@ -178,7 +178,7 @@ interface MovieApiService {
     fun getCreditsDetails(
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_CREDIT_ID) credit_id: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.Credits>
+    ): Call<com.frogobox.coreutil.movie.response.Credits>
 
     // ---------------------------------------------------------------------------------------------
 
@@ -219,7 +219,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_WITH_RUNTIME_GTE) with_runtime_gte: Double?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_WITH_RUNTIME_LTE) with_runtime_lte: Double?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_WITH_ORIGINAL_LANGUAGE) with_original_language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.Discover<com.frogobox.coreutil.movie.model.DiscoverMovie>>
+    ): Call<com.frogobox.coreutil.movie.response.Discover<com.frogobox.coreutil.movie.model.DiscoverMovie>>
 
     // DISCOVER
     // TV Discover
@@ -248,7 +248,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_SCREENED_THEATRICALLY) screened_theatrically: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_WITH_COMPANIES) with_companies: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_WITH_KEYWORDS) with_keywords: String?
-    ): Observable<com.frogobox.coreutil.movie.response.Discover<com.frogobox.coreutil.movie.model.DiscoverTv>>
+    ): Call<com.frogobox.coreutil.movie.response.Discover<com.frogobox.coreutil.movie.model.DiscoverTv>>
 
     // ---------------------------------------------------------------------------------------------
 
@@ -260,7 +260,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_EXTERNAL_SOURCE) external_source: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.Find>
+    ): Call<com.frogobox.coreutil.movie.response.Find>
 
     // ---------------------------------------------------------------------------------------------
 
@@ -270,7 +270,7 @@ interface MovieApiService {
     fun getGenresMovie(
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.Genres>
+    ): Call<com.frogobox.coreutil.movie.response.Genres>
 
     // GENRES
     // Get TV List
@@ -278,7 +278,7 @@ interface MovieApiService {
     fun getGenresTv(
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.Genres>
+    ): Call<com.frogobox.coreutil.movie.response.Genres>
 
     // ---------------------------------------------------------------------------------------------
 
@@ -288,7 +288,7 @@ interface MovieApiService {
     fun getKeywordsDetail(
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_KEYWORD_ID) keyword_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.KeywordsDetail>
+    ): Call<com.frogobox.coreutil.movie.response.KeywordsDetail>
 
     // KEYWORDS
     // Get Movies
@@ -298,7 +298,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_INCLUDE_ADULT) include_adult: Boolean?
-    ): Observable<com.frogobox.coreutil.movie.response.KeywordsMovies>
+    ): Call<com.frogobox.coreutil.movie.response.KeywordsMovies>
 
     // ---------------------------------------------------------------------------------------------
 
@@ -310,7 +310,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_APPEND_TO_RESPONSE) append_to_response: String?
-    ): Observable<com.frogobox.coreutil.movie.response.MovieDetail>
+    ): Call<com.frogobox.coreutil.movie.response.MovieDetail>
 
     // MOVIES
     // Get Account States
@@ -320,7 +320,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_SESSION_ID) session_id: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_GUEST_SESSION_ID) guest_session_id: String?
-    ): Observable<com.frogobox.coreutil.movie.response.MovieAccountState>
+    ): Call<com.frogobox.coreutil.movie.response.MovieAccountState>
 
     // MOVIES
     // Get Alternative Titles
@@ -329,7 +329,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_MOVIE_ID) movie_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_COUNTRY) country: String?
-    ): Observable<com.frogobox.coreutil.movie.response.MovieAlternativeTitle>
+    ): Call<com.frogobox.coreutil.movie.response.MovieAlternativeTitle>
 
     // MOVIES
     // Get Changes
@@ -340,7 +340,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_START_DATE) start_date: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_END_DATE) end_date: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.MovieChanges>
+    ): Call<com.frogobox.coreutil.movie.response.MovieChanges>
 
     // MOVIES
     // Get Credits
@@ -348,7 +348,7 @@ interface MovieApiService {
     fun getMoviesCredits(
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_MOVIE_ID) movie_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.MovieCredit>
+    ): Call<com.frogobox.coreutil.movie.response.MovieCredit>
 
     // MOVIES
     // Get External Ids
@@ -356,7 +356,7 @@ interface MovieApiService {
     fun getMoviesExternalIds(
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_MOVIE_ID) movie_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.MovieExternalId>
+    ): Call<com.frogobox.coreutil.movie.response.MovieExternalId>
 
     // MOVIES
     // Get Images
@@ -366,7 +366,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_INCLUDE_IMAGE_LANGUAGE) include_image_language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.MovieImages>
+    ): Call<com.frogobox.coreutil.movie.response.MovieImages>
 
     // MOVIES
     // Get Keywords
@@ -374,7 +374,7 @@ interface MovieApiService {
     fun getMoviesKeywords(
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_MOVIE_ID) movie_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.MovieKeywords>
+    ): Call<com.frogobox.coreutil.movie.response.MovieKeywords>
 
     // MOVIES
     // Get Release Dates
@@ -382,7 +382,7 @@ interface MovieApiService {
     fun getMoviesReleaseDates(
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_MOVIE_ID) movie_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.MovieReleaseDates>
+    ): Call<com.frogobox.coreutil.movie.response.MovieReleaseDates>
 
     // MOVIES
     // Get Videos
@@ -391,7 +391,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_MOVIE_ID) movie_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.MovieVideos>
+    ): Call<com.frogobox.coreutil.movie.response.MovieVideos>
 
     // MOVIES
     // Get Translations
@@ -399,17 +399,17 @@ interface MovieApiService {
     fun getMoviesTranslations(
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_MOVIE_ID) movie_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.MovieTranslations>
+    ): Call<com.frogobox.coreutil.movie.response.MovieTranslations>
 
     // MOVIES
     // Get Recommendations
-    @GET(com.frogobox.coreutil.movie.MovieUrl.MOVIES_GET_RECOMENDATIONS)
+    @GET(com.frogobox.coreutil.movie.MovieUrl.MOVIES_GET_RECOMMENDATIONS)
     fun getMoviesRecommendations(
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_MOVIE_ID) movie_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.MovieRecommendations>
+    ): Call<com.frogobox.coreutil.movie.response.MovieRecommendations>
 
     // MOVIES
     // Get Similar Movies
@@ -419,7 +419,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.MovieSimilarMovies>
+    ): Call<com.frogobox.coreutil.movie.response.MovieSimilarMovies>
 
     // MOVIES
     // Get Reviews
@@ -429,7 +429,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         page: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.MovieReviews>
+    ): Call<com.frogobox.coreutil.movie.response.MovieReviews>
 
     // MOVIES
     // Get Lists
@@ -439,7 +439,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.MovieLists>
+    ): Call<com.frogobox.coreutil.movie.response.MovieLists>
 
     // MOVIES
     // Get Latest
@@ -447,7 +447,7 @@ interface MovieApiService {
     fun getMoviesLatest(
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.MovieLatest>
+    ): Call<com.frogobox.coreutil.movie.response.MovieLatest>
 
     // MOVIES
     // Get Now Playing
@@ -457,7 +457,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_REGION) region: String?
-    ): Observable<com.frogobox.coreutil.movie.response.MovieNowPlayings>
+    ): Call<com.frogobox.coreutil.movie.response.MovieNowPlayings>
 
     // MOVIES
     // Get Popular
@@ -467,7 +467,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_REGION) region: String?
-    ): Observable<com.frogobox.coreutil.movie.response.MoviePopulars>
+    ): Call<com.frogobox.coreutil.movie.response.MoviePopulars>
 
     // MOVIES
     // Get Top Rated
@@ -477,7 +477,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_REGION) region: String?
-    ): Observable<com.frogobox.coreutil.movie.response.MovieTopRated>
+    ): Call<com.frogobox.coreutil.movie.response.MovieTopRated>
 
     // MOVIES
     // Get Upcoming
@@ -487,7 +487,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_REGION) region: String?
-    ): Observable<com.frogobox.coreutil.movie.response.MovieUpcoming>
+    ): Call<com.frogobox.coreutil.movie.response.MovieUpcoming>
 
     // ---------------------------------------------------------------------------------------------
 
@@ -498,7 +498,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_MEDIA_TYPE) media_type: String,
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_TIME_WINDOW) time_window: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingAll>>
+    ): Call<com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingAll>>
 
     // TRENDING
     // Get Trending Movie
@@ -507,7 +507,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_MEDIA_TYPE) media_type: String,
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_TIME_WINDOW) time_window: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingMovie>>
+    ): Call<com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingMovie>>
 
     // TRENDING
     // Get Trending Person
@@ -516,7 +516,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_MEDIA_TYPE) media_type: String,
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_TIME_WINDOW) time_window: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingPerson>>
+    ): Call<com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingPerson>>
 
     // TRENDING
     // Get Trending Movie
@@ -525,7 +525,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_MEDIA_TYPE) media_type: String,
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_TIME_WINDOW) time_window: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingTv>>
+    ): Call<com.frogobox.coreutil.movie.response.Trending<com.frogobox.coreutil.movie.model.TrendingTv>>
 
     // ---------------------------------------------------------------------------------------------
 
@@ -535,7 +535,7 @@ interface MovieApiService {
     fun getReviews(
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_REVIEW_ID) review_id: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.Reviews>
+    ): Call<com.frogobox.coreutil.movie.response.Reviews>
 
     // ---------------------------------------------------------------------------------------------
 
@@ -545,7 +545,7 @@ interface MovieApiService {
     fun getNetworkDetail(
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_NETWORK_ID) network_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.NetworkDetail>
+    ): Call<com.frogobox.coreutil.movie.response.NetworkDetail>
 
     // NETWORKS
     // Get Alternative Names
@@ -553,7 +553,7 @@ interface MovieApiService {
     fun getNetworkAlternativeName(
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_NETWORK_ID) network_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.NetworkAlternativeName>
+    ): Call<com.frogobox.coreutil.movie.response.NetworkAlternativeName>
 
     // NETWORKS
     // Get Images
@@ -561,7 +561,7 @@ interface MovieApiService {
     fun getNetworkImage(
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_NETWORK_ID) network_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.NetworkImage>
+    ): Call<com.frogobox.coreutil.movie.response.NetworkImage>
 
     // ---------------------------------------------------------------------------------------------
 
@@ -572,7 +572,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_QUERY) query: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.SearchCompanies>
+    ): Call<com.frogobox.coreutil.movie.response.SearchCompanies>
 
     // SEARCH
     // Search Collections
@@ -582,7 +582,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_QUERY) query: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.SearchCollections>
+    ): Call<com.frogobox.coreutil.movie.response.SearchCollections>
 
     // SEARCH
     // Search Keywords
@@ -591,7 +591,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_QUERY) query: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.SearchKeywords>
+    ): Call<com.frogobox.coreutil.movie.response.SearchKeywords>
 
     // SEARCH
     // Search Movies
@@ -605,7 +605,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_REGION) region: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_YEAR) year: Int?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PRIMARY_RELEASE_YEAR) primary_release_year: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.SearchMovies>
+    ): Call<com.frogobox.coreutil.movie.response.SearchMovies>
 
     // SEARCH
     // Multi Search
@@ -617,7 +617,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_INCLUDE_ADULT) include_adult: Boolean?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_REGION) region: String?
-    ): Observable<com.frogobox.coreutil.movie.response.SearchMulti>
+    ): Call<com.frogobox.coreutil.movie.response.SearchMulti>
 
     // SEARCH
     // Search People
@@ -629,7 +629,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_INCLUDE_ADULT) include_adult: Boolean?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_REGION) region: String?
-    ): Observable<com.frogobox.coreutil.movie.response.SearchPeople>
+    ): Call<com.frogobox.coreutil.movie.response.SearchPeople>
 
     // SEARCH
     // Search Tv Shows
@@ -641,7 +641,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_INCLUDE_ADULT) include_adult: Boolean?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_FIRST_AIR_DATE_YEAR) first_air_date_year: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.SearchMovies>
+    ): Call<com.frogobox.coreutil.movie.response.SearchMovies>
 
     // ---------------------------------------------------------------------------------------------
 
@@ -653,7 +653,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_APPEND_TO_RESPONSE) append_to_response: String?
-    ): Observable<com.frogobox.coreutil.movie.response.TvDetails>
+    ): Call<com.frogobox.coreutil.movie.response.TvDetails>
 
     // TV
     // Get Account States
@@ -664,7 +664,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_GUEST_SESSION_ID) guest_session_id: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_SESSION_ID) session_id: String?
-    ): Observable<com.frogobox.coreutil.movie.response.TvAccountStates>
+    ): Call<com.frogobox.coreutil.movie.response.TvAccountStates>
 
     // TV
     // Get Alternative Titles
@@ -673,7 +673,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_TV_ID) tv_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.TvAlternativeTitles>
+    ): Call<com.frogobox.coreutil.movie.response.TvAlternativeTitles>
 
     // TV
     // Get Changes
@@ -684,7 +684,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_START_DATE) startDate: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_END_DATE) endDate: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.TvChanges>
+    ): Call<com.frogobox.coreutil.movie.response.TvChanges>
 
     // TV
     // Get Content Ratings
@@ -693,7 +693,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_TV_ID) tv_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.TvContentRatings>
+    ): Call<com.frogobox.coreutil.movie.response.TvContentRatings>
 
     // TV
     // Get Credits
@@ -702,7 +702,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_TV_ID) tv_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.TvCredits>
+    ): Call<com.frogobox.coreutil.movie.response.TvCredits>
 
     // TV
     // Get Episode Groups
@@ -711,7 +711,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_TV_ID) tv_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.TvEpisodeGroups>
+    ): Call<com.frogobox.coreutil.movie.response.TvEpisodeGroups>
 
     // TV
     // Get External IDs
@@ -720,7 +720,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_TV_ID) tv_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.TvExternalIds>
+    ): Call<com.frogobox.coreutil.movie.response.TvExternalIds>
 
     // TV
     // Get Images
@@ -729,7 +729,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_TV_ID) tv_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.TvImages>
+    ): Call<com.frogobox.coreutil.movie.response.TvImages>
 
     // TV
     // Get Keyword
@@ -737,7 +737,7 @@ interface MovieApiService {
     fun getTvKeyword(
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_TV_ID) tv_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.TvKeywords>
+    ): Call<com.frogobox.coreutil.movie.response.TvKeywords>
 
     // TV
     // Get Recommendations
@@ -747,7 +747,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.TvRecommendations>
+    ): Call<com.frogobox.coreutil.movie.response.TvRecommendations>
 
     // TV
     // Get Reviews
@@ -755,7 +755,7 @@ interface MovieApiService {
     fun getTvReviews(
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_TV_ID) tv_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.TvReviews>
+    ): Call<com.frogobox.coreutil.movie.response.TvReviews>
 
     // TV
     // Get Screened Theatrically
@@ -763,17 +763,17 @@ interface MovieApiService {
     fun getTvScreenedTheatrically(
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_TV_ID) tv_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.TvScreenedTheatrically>
+    ): Call<com.frogobox.coreutil.movie.response.TvScreenedTheatrically>
 
     // TV
     // Get Similar TV Shows
-    @GET(com.frogobox.coreutil.movie.MovieUrl.TV_GET_SIMILIAR_TV_SHOWS)
+    @GET(com.frogobox.coreutil.movie.MovieUrl.TV_GET_SIMILAR_TV_SHOWS)
     fun getTvSimilarTvShows(
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_TV_ID) tv_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.TvSimilarTVShows>
+    ): Call<com.frogobox.coreutil.movie.response.TvSimilarTVShows>
 
     // TV
     // Get Translations
@@ -781,7 +781,7 @@ interface MovieApiService {
     fun getTvTranslations(
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_TV_ID) tv_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.TvTranslations>
+    ): Call<com.frogobox.coreutil.movie.response.TvTranslations>
 
     // TV
     // Get Videos
@@ -790,7 +790,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_TV_ID) tv_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.TvVideos>
+    ): Call<com.frogobox.coreutil.movie.response.TvVideos>
 
     // TV
     // Get Latest
@@ -798,7 +798,7 @@ interface MovieApiService {
     fun getTvLatest(
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.TvLatest>
+    ): Call<com.frogobox.coreutil.movie.response.TvLatest>
 
     // TV
     // Get TV Airing Today
@@ -807,7 +807,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.TvAiringToday>
+    ): Call<com.frogobox.coreutil.movie.response.TvAiringToday>
 
     // TV
     // Get TV On The Air
@@ -816,7 +816,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.TvOnTheAir>
+    ): Call<com.frogobox.coreutil.movie.response.TvOnTheAir>
 
     // TV
     // Get Popular
@@ -825,7 +825,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.TvPopular>
+    ): Call<com.frogobox.coreutil.movie.response.TvPopular>
 
     // TV
     // Get Top Rated
@@ -834,7 +834,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.TvTopRated>
+    ): Call<com.frogobox.coreutil.movie.response.TvTopRated>
 
     // ---------------------------------------------------------------------------------------------
 
@@ -847,7 +847,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_APPEND_TO_RESPONSE) append_to_response: String?
-    ): Observable<com.frogobox.coreutil.movie.response.TvSeasonsDetails>
+    ): Call<com.frogobox.coreutil.movie.response.TvSeasonsDetails>
 
     // TV SEASONS
     // Get Changes
@@ -858,7 +858,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_START_DATE) startDate: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_END_DATE) endDate: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.TvSeasonsChanges>
+    ): Call<com.frogobox.coreutil.movie.response.TvSeasonsChanges>
 
     // TV SEASONS
     // Get Account States
@@ -870,7 +870,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_GUEST_SESSION_ID) guest_session_id: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_SESSION_ID) session_id: String?
-    ): Observable<com.frogobox.coreutil.movie.response.TvSeasonsAccountStates>
+    ): Call<com.frogobox.coreutil.movie.response.TvSeasonsAccountStates>
 
     // TV SEASONS
     // Get Credits
@@ -880,7 +880,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_SEASON_NUMBER) season_number: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.TvSeasonsCredits>
+    ): Call<com.frogobox.coreutil.movie.response.TvSeasonsCredits>
 
     // TV SEASONS
     // Get External Ids
@@ -890,7 +890,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_SEASON_NUMBER) season_number: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.TvSeasonsExternalIds>
+    ): Call<com.frogobox.coreutil.movie.response.TvSeasonsExternalIds>
 
     // TV SEASONS
     // Get Images
@@ -900,7 +900,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_SEASON_NUMBER) season_number: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.TvSeasonsImages>
+    ): Call<com.frogobox.coreutil.movie.response.TvSeasonsImages>
 
     // TV SEASONS
     // Get Videos
@@ -910,7 +910,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_SEASON_NUMBER) season_number: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.TvSeasonsVideos>
+    ): Call<com.frogobox.coreutil.movie.response.TvSeasonsVideos>
 
     // ---------------------------------------------------------------------------------------------
 
@@ -924,7 +924,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_APPEND_TO_RESPONSE) append_to_response: String?
-    ): Observable<com.frogobox.coreutil.movie.response.TvEpisodeDetails>
+    ): Call<com.frogobox.coreutil.movie.response.TvEpisodeDetails>
 
     // TV EPISODE
     // Get Changes
@@ -935,7 +935,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_START_DATE) startDate: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_END_DATE) endDate: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.TvEpisodeChanges>
+    ): Call<com.frogobox.coreutil.movie.response.TvEpisodeChanges>
 
     // TV EPISODE
     // Get Account States
@@ -947,7 +947,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_GUEST_SESSION_ID) guest_session_id: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_SESSION_ID) session_id: String?
-    ): Observable<com.frogobox.coreutil.movie.response.TvEpisodeAccountStates>
+    ): Call<com.frogobox.coreutil.movie.response.TvEpisodeAccountStates>
 
     // TV EPISODE
     // Get Credits
@@ -957,7 +957,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_SEASON_NUMBER) season_number: Int,
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_EPISODE_NUMBER) episode_number: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.TvEpisodeCredits>
+    ): Call<com.frogobox.coreutil.movie.response.TvEpisodeCredits>
 
     // TV EPISODE
     // Get External IDs
@@ -967,7 +967,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_SEASON_NUMBER) season_number: Int,
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_EPISODE_NUMBER) episode_number: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.TvEpisodeExternalIds>
+    ): Call<com.frogobox.coreutil.movie.response.TvEpisodeExternalIds>
 
     // TV EPISODE
     // Get Images
@@ -977,7 +977,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_SEASON_NUMBER) season_number: Int,
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_EPISODE_NUMBER) episode_number: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.TvEpisodeImages>
+    ): Call<com.frogobox.coreutil.movie.response.TvEpisodeImages>
 
     // TV EPISODE
     // Get Translations
@@ -987,7 +987,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_SEASON_NUMBER) season_number: Int,
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_EPISODE_NUMBER) episode_number: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.model.TvEpisodeTranslation>
+    ): Call<com.frogobox.coreutil.movie.model.TvEpisodeTranslation>
 
     // TV EPISODE
     // Get Videos
@@ -998,7 +998,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_EPISODE_NUMBER) episode_number: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.TvEpisodeVideos>
+    ): Call<com.frogobox.coreutil.movie.response.TvEpisodeVideos>
 
     // ---------------------------------------------------------------------------------------------
 
@@ -1009,7 +1009,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_ID) id: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.TvEpisodeGroupsDetails>
+    ): Call<com.frogobox.coreutil.movie.response.TvEpisodeGroupsDetails>
 
     // ---------------------------------------------------------------------------------------------
 
@@ -1020,7 +1020,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_PERSON_ID) person_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.PeopleDetails>
+    ): Call<com.frogobox.coreutil.movie.response.PeopleDetails>
 
     // PEOPLE
     // Get Changes
@@ -1031,7 +1031,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_END_DATE) endDate: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_START_DATE) startDate: String?
-    ): Observable<com.frogobox.coreutil.movie.response.PeopleChanges>
+    ): Call<com.frogobox.coreutil.movie.response.PeopleChanges>
 
     // PEOPLE
     // Get Movie Credits
@@ -1040,7 +1040,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_PERSON_ID) person_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.PeopleMovieCredits>
+    ): Call<com.frogobox.coreutil.movie.response.PeopleMovieCredits>
 
     // PEOPLE
     // Get TV Credits
@@ -1049,7 +1049,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_PERSON_ID) person_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.PeopleTvCredits>
+    ): Call<com.frogobox.coreutil.movie.response.PeopleTvCredits>
 
     // PEOPLE
     // Get Combined Credits
@@ -1058,7 +1058,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_PERSON_ID) person_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.PeopleCombinedCredits>
+    ): Call<com.frogobox.coreutil.movie.response.PeopleCombinedCredits>
 
     // PEOPLE
     // Get External IDs
@@ -1067,7 +1067,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_PERSON_ID) person_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.PeopleExternalIds>
+    ): Call<com.frogobox.coreutil.movie.response.PeopleExternalIds>
 
     // PEOPLE
     // Get Images
@@ -1075,7 +1075,7 @@ interface MovieApiService {
     fun getPeopleImages(
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_PERSON_ID) person_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String
-    ): Observable<com.frogobox.coreutil.movie.response.PeopleImages>
+    ): Call<com.frogobox.coreutil.movie.response.PeopleImages>
 
     // PEOPLE
     // Get Tagged Images
@@ -1085,7 +1085,7 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.PeopleTaggedImages>
+    ): Call<com.frogobox.coreutil.movie.response.PeopleTaggedImages>
 
     // PEOPLE
     // Get Translations
@@ -1094,7 +1094,7 @@ interface MovieApiService {
         @Path(com.frogobox.coreutil.movie.MovieConstant.PATH_PERSON_ID) person_id: Int,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.PeopleTranslations>
+    ): Call<com.frogobox.coreutil.movie.response.PeopleTranslations>
 
     // PEOPLE
     // Get Latest
@@ -1102,7 +1102,7 @@ interface MovieApiService {
     fun getPeopleLatest(
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?
-    ): Observable<com.frogobox.coreutil.movie.response.PeopleLatest>
+    ): Call<com.frogobox.coreutil.movie.response.PeopleLatest>
 
     // PEOPLE
     // Get Popular
@@ -1111,6 +1111,6 @@ interface MovieApiService {
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_API_KEY) apiKey: String,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_LANGUAGE) language: String?,
         @Query(com.frogobox.coreutil.movie.MovieConstant.QUERY_PAGE) page: Int?
-    ): Observable<com.frogobox.coreutil.movie.response.PeoplePopular>
+    ): Call<com.frogobox.coreutil.movie.response.PeoplePopular>
 
 }

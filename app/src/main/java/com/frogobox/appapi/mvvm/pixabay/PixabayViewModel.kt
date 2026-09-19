@@ -7,8 +7,8 @@ import com.frogobox.appapi.core.BaseViewModel
 import com.frogobox.appapi.source.ApiRepository
 import com.frogobox.appapi.util.isDebug
 import com.frogobox.coreapi.ConsumeApiResponse
-import com.frogobox.coreutil.pixabay.model.PixabayImage
-import com.frogobox.coreutil.pixabay.response.Response
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 /*
  * Created by faisalamir on 28/07/21
@@ -22,7 +22,8 @@ import com.frogobox.coreutil.pixabay.response.Response
  * All rights reserved
  *
  */
-class PixabayViewModel(
+@HiltViewModel
+class PixabayViewModel @Inject constructor(
     private val repository: ApiRepository
 ) : BaseViewModel() {
 

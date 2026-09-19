@@ -3,12 +3,8 @@ package com.frogobox.api.pixabay
 import android.content.Context
 import com.frogobox.coreapi.pixabay.IPixabayApi
 import com.frogobox.coreapi.pixabay.PixabayApi
-import com.frogobox.coreutil.pixabay.model.PixabayImage
-import com.frogobox.coreutil.pixabay.model.PixabayVideo
-import com.frogobox.coreutil.pixabay.response.Response
 import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.sdk.ext.usingChuck
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import okhttp3.Interceptor
 
 /**
@@ -30,7 +26,7 @@ import okhttp3.Interceptor
  */
 class ConsumePixabayApi(apiKey: String) : IConsumePixabayApi {
 
-    private var pixabayApi = PixabayApi(AndroidSchedulers.mainThread(), apiKey)
+    private var pixabayApi = PixabayApi(apiKey)
 
     override fun usingChuckInterceptor(isDebug: Boolean, context: Context): IPixabayApi {
         return usingChuckInterceptor(isDebug, context.usingChuck())

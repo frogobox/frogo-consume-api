@@ -18,7 +18,9 @@ import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.startActivityExt
 import com.frogobox.sdk.ext.toJson
 import com.frogobox.sdk.view.FrogoBindActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : FrogoBindActivity<ActivityMainBinding>() {
 
     override fun setupViewBinding(): ActivityMainBinding {

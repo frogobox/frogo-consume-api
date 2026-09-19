@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ContentItemBinding
 import com.frogobox.appapi.databinding.FragmentTrendingChildBinding
 import com.frogobox.coreutil.movie.MovieUrl
-import com.frogobox.coreutil.movie.model.TrendingMovie
 import com.frogobox.coreutil.movie.model.TrendingTv
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
@@ -16,12 +16,12 @@ import com.frogobox.sdk.ext.openDetailImageUri
 import com.frogobox.sdk.ext.progressViewHandle
 import com.frogobox.sdk.ext.showToast
 import com.frogobox.sdk.view.FrogoBindFragment
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class TvDayFragment : FrogoBindFragment<FragmentTrendingChildBinding>() {
 
-    private val tvViewModel: TvViewModel by viewModel()
+    private val tvViewModel: TvViewModel by viewModels()
 
     override fun setupViewBinding(
         inflater: LayoutInflater,
@@ -32,7 +32,9 @@ class TvDayFragment : FrogoBindFragment<FragmentTrendingChildBinding>() {
 
     override fun setupViewModel() {
         tvViewModel.apply {
-            getTrendingTvDay()
+            if (listDataDay.value == null) {
+                getTrendingTvDay()
+            }
 
             eventShowProgressState.observe(viewLifecycleOwner) {
                 binding.progressView.progressViewHandle(it)
@@ -60,7 +62,7 @@ class TvDayFragment : FrogoBindFragment<FragmentTrendingChildBinding>() {
                 position: Int,
                 notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.movie.model.TrendingTv>
             ) {
-                requireActivity().openDetailImageUri("${MovieUrl.BASE_URL_IMAGE_ORIGNAL}${data.poster_path}")
+                requireActivity().openDetailImageUri("${MovieUrl.BASE_URL_IMAGE_ORIGINAL}${data.poster_path}")
             }
 
             override fun areItemsTheSame(oldItem: TrendingTv, newItem: TrendingTv): Boolean {
@@ -89,7 +91,7 @@ class TvDayFragment : FrogoBindFragment<FragmentTrendingChildBinding>() {
                     tvTitle.text = data.name
                     tvOverview.text = data.overview
                     Glide.with(root.context)
-                        .load("${MovieUrl.BASE_URL_IMAGE_ORIGNAL}${data.poster_path}")
+                        .load("${MovieUrl.BASE_URL_IMAGE_ORIGINAL}${data.poster_path}")
                         .into(ivPoster)
                 }
             }

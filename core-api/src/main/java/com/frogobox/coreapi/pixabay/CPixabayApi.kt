@@ -1,10 +1,6 @@
 package com.frogobox.coreapi.pixabay
 
-import com.frogobox.coreutil.pixabay.model.PixabayImage
-import com.frogobox.coreutil.pixabay.model.PixabayVideo
-import com.frogobox.coreutil.pixabay.response.Response
 import com.frogobox.coresdk.response.FrogoDataResponse
-import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.Interceptor
 
 
@@ -21,13 +17,9 @@ import okhttp3.Interceptor
  *
  */
 
-class CPixabayApi(usingScheduler: Boolean, apiKey: String) : IPixabayApi {
+class CPixabayApi(apiKey: String) : IPixabayApi {
 
-    private var pixabayApi = if (usingScheduler) {
-        PixabayApi(Schedulers.single(), apiKey)
-    } else {
-        PixabayApi(null, apiKey)
-    }
+    private var pixabayApi = PixabayApi(apiKey)
 
     override fun usingChuckInterceptor(
         isDebug: Boolean,

@@ -6,7 +6,6 @@ import com.frogobox.coreapi.movie.MovieApi
 
 import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.sdk.ext.usingChuck
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import okhttp3.Interceptor
 
 /**
@@ -28,7 +27,7 @@ import okhttp3.Interceptor
  */
 class ConsumeMovieApi(apiKey: String) : IConsumeMovieApi {
 
-    private var movieApi = MovieApi(AndroidSchedulers.mainThread(), apiKey)
+    private var movieApi = MovieApi(apiKey)
 
     override fun usingChuckInterceptor(isDebug: Boolean, context: Context): IMovieApi {
         return usingChuckInterceptor(isDebug, context.usingChuck())

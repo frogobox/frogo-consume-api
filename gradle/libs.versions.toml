@@ -1,33 +1,28 @@
 [versions]
-agp = "8.12.2"
-androidMavenGradlePlugin = "2.1"
-kotlin = "2.2.10"
-ksp = "2.2.10-2.0.2"
-
-gson = "2.13.1"
-
-koin-bom = "4.1.0"
-
-frogoAndroid = "2.3.2"
+agp = "9.4.0"
+kotlin = "2.4.20"
+ksp = "2.3.10"
+gson = "2.14.0"
+hilt = "2.60.1"
+frogoAndroid = "3.0.10"
+androidxActivity = "1.13.0"
+androidxFragment = "1.9.0"
 
 [libraries]
-android-maven-gradle-plugin = { module = "com.github.dcendents:android-maven-gradle-plugin", version.ref = "androidMavenGradlePlugin" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 
 # --------------------------------------------------------------------------------------------------
 
-koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }
-koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin-bom" }
-koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin-bom" }
-koin-android-compat = { module = "io.insert-koin:koin-android-compat", version.ref = "koin-bom" }
-koin-androidx-workmanager = { group = "io.insert-koin", name = "koin-androidx-workmanager", version.ref = "koin-bom" }
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
 
-frogo-sdk = { group = "com.github.frogobox.frogo-sdk", name = "core-sdk-android", version.ref = "frogoAndroid" }
-frogo-sdk-core = { group = "com.github.frogobox.frogo-sdk", name = "core-sdk", version.ref = "frogoAndroid" }
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "androidxActivity" }
+androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "androidxFragment" }
 
-frogo-ui = { group = "com.github.frogobox.frogo-sdk", name = "core-ui-android", version.ref = "frogoAndroid" }
-
-frogo-recyclerview = { group = "com.github.frogobox.frogo-sdk", name = "frogo-recycler-view", version.ref = "frogoAndroid" }
+frogo-sdk = { group = "com.github.frogobox.frogo-sdk", name = "frogo-core-android", version.ref = "frogoAndroid" }
+frogo-sdk-core = { group = "com.github.frogobox.frogo-sdk", name = "frogo-core", version.ref = "frogoAndroid" }
+frogo-ui = { group = "com.github.frogobox.frogo-sdk", name = "frogo-ui-base", version.ref = "frogoAndroid" }
+frogo-recyclerview = { group = "com.github.frogobox.frogo-sdk", name = "frogo-ui-recyclerview", version.ref = "frogoAndroid" }
 
 # --------------------------------------------------------------------------------------------------
 
@@ -35,6 +30,7 @@ frogo-recyclerview = { group = "com.github.frogobox.frogo-sdk", name = "frogo-re
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 jvm-library = { id = "java-library"}
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 jvm-android = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }

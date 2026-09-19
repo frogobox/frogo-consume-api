@@ -21,7 +21,10 @@ object MovieUrl {
     const val VERSION_API_3 = "3"
     const val VERSION_API_4 = "4"
 
-    const val BASE_URL_IMAGE_ORIGNAL = "https://image.tmdb.org/t/p/original"
+    const val BASE_URL_IMAGE_ORIGINAL = "https://image.tmdb.org/t/p/original"
+
+    @Deprecated("Spelling error, use BASE_URL_IMAGE_ORIGINAL instead", ReplaceWith("BASE_URL_IMAGE_ORIGINAL"))
+    const val BASE_URL_IMAGE_ORIGNAL = BASE_URL_IMAGE_ORIGINAL
     const val BASE_URL_IMAGE_W500 = "https://image.tmdb.org/t/p/w500"
 
     // CERTIFICATION
@@ -36,8 +39,11 @@ object MovieUrl {
     // COLLECTION
     const val COLLECTION_GET_DETAIL = "$VERSION_API_3/collection/{collection_id}"
     const val COLLECTION_GET_IMAGES = "$VERSION_API_3/collection/{collection_id}/images"
-    const val COLLECTION_GET_TRANSLATTIONS =
+    const val COLLECTION_GET_TRANSLATIONS =
         "$VERSION_API_3/collection/{collection_id}/translations"
+
+    @Deprecated("Spelling error, use COLLECTION_GET_TRANSLATIONS instead", ReplaceWith("COLLECTION_GET_TRANSLATIONS"))
+    const val COLLECTION_GET_TRANSLATTIONS = COLLECTION_GET_TRANSLATIONS
 
     // COMPANIES
     const val COMPANY_GET_DETAIL = "$VERSION_API_3/company/{company_id}"
@@ -97,7 +103,10 @@ object MovieUrl {
     const val MOVIES_GET_RELEASE_DATE = "$VERSION_API_3/movie/{movie_id}/release_dates"
     const val MOVIES_GET_VIDEOS = "$VERSION_API_3/movie/{movie_id}/videos"
     const val MOVIES_GET_TRANSLATIONS = "$VERSION_API_3/movie/{movie_id}/translations"
-    const val MOVIES_GET_RECOMENDATIONS = "$VERSION_API_3/movie/{movie_id}/recommendations"
+    const val MOVIES_GET_RECOMMENDATIONS = "$VERSION_API_3/movie/{movie_id}/recommendations"
+
+    @Deprecated("Spelling error, use MOVIES_GET_RECOMMENDATIONS instead", ReplaceWith("MOVIES_GET_RECOMMENDATIONS"))
+    const val MOVIES_GET_RECOMENDATIONS = MOVIES_GET_RECOMMENDATIONS
     const val MOVIES_GET_SIMILAR_MOVIES = "$VERSION_API_3/movie/{movie_id}/similar"
     const val MOVIES_GET_REVIEWS = "$VERSION_API_3/movie/{movie_id}/reviews"
     const val MOVIES_GET_LIST = "$VERSION_API_3/movie/{movie_id}/lists"
@@ -157,7 +166,10 @@ object MovieUrl {
     const val TV_GET_RECOMMENDATIONS = "$VERSION_API_3/tv/{tv_id}/recommendations"
     const val TV_GET_REVIEWS = "$VERSION_API_3/tv/{tv_id}/reviews"
     const val TV_GET_SCREENED_THEATRICALLY = "$VERSION_API_3/tv/{tv_id}/screened_theatrically"
-    const val TV_GET_SIMILIAR_TV_SHOWS = "$VERSION_API_3/tv/{tv_id}/similar"
+    const val TV_GET_SIMILAR_TV_SHOWS = "$VERSION_API_3/tv/{tv_id}/similar"
+
+    @Deprecated("Spelling error, use TV_GET_SIMILAR_TV_SHOWS instead", ReplaceWith("TV_GET_SIMILAR_TV_SHOWS"))
+    const val TV_GET_SIMILIAR_TV_SHOWS = TV_GET_SIMILAR_TV_SHOWS
     const val TV_GET_TRANSLATIONS = "$VERSION_API_3/tv/{tv_id}/translations"
     const val TV_GET_VIDEOS = "$VERSION_API_3/tv/{tv_id}/videos"
     const val TV_POST_RATE_TV_SHOW = "$VERSION_API_3/tv/{tv_id}/rating"

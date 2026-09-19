@@ -3,11 +3,16 @@ package com.frogobox.appapi.mvvm.news
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.activity.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ActivityNewsBinding
 import com.frogobox.appapi.databinding.ContentArticleHorizontalBinding
 import com.frogobox.appapi.databinding.ContentArticleVerticalBinding
 import com.frogobox.appapi.databinding.ContentCategoryBinding
+import com.frogobox.coresdk.source.Resource
 import com.frogobox.coreutil.news.NewsConstant
 import com.frogobox.coreutil.news.model.Article
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
@@ -18,11 +23,13 @@ import com.frogobox.sdk.ext.showToast
 import com.frogobox.sdk.ext.startActivityExt
 import com.frogobox.sdk.ext.toJson
 import com.frogobox.sdk.view.FrogoBindActivity
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
 
-    private val newsViewModel: NewsViewModel by viewModel()
+    private val newsViewModel: NewsViewModel by viewModels()
 
     override fun setupViewBinding(): ActivityNewsBinding {
         return ActivityNewsBinding.inflate(layoutInflater)
@@ -31,30 +38,59 @@ class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
     override fun setupViewModel() {
         newsViewModel.apply {
 
-            getTopHeadline()
-            getTopHeadline(NewsConstant.CATEGORY_HEALTH)
-            setupCategory()
-
-            eventShowProgressState.observe(this@NewsActivity) {
-                binding.progressView.progressViewHandle(it)
+            if (listData.value == null) {
+                getTopHeadlineFlow()
             }
-
-            eventFailed.observe(this@NewsActivity) {
-                showToast(it)
+            if (listDataCategory.value == null) {
+                getTopHeadlineFlow(NewsConstant.CATEGORY_HEALTH)
             }
-
-            listData.observe(this@NewsActivity) {
-                setupRvHeader(it)
+            if (listCategory.value == null) {
+                setupCategory()
             }
 
             listCategory.observe(this@NewsActivity) {
                 setupRvCategory(it)
             }
 
-            listDataCategory.observe(this@NewsActivity) {
-                setupRvBody(it)
-            }
+        }
 
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                launch {
+                    newsViewModel.topHeadlineState.collect { resource ->
+                        when (resource) {
+                            is Resource.Loading -> {
+                                binding.progressView.progressViewHandle(true)
+                            }
+                            is Resource.Success -> {
+                                binding.progressView.progressViewHandle(false)
+                                resource.result?.articles?.let { setupRvHeader(it) }
+                            }
+                            is Resource.Error -> {
+                                binding.progressView.progressViewHandle(false)
+                                showToast(resource.message ?: "Failed to load data")
+                            }
+                        }
+                    }
+                }
+                launch {
+                    newsViewModel.categoryHeadlineState.collect { resource ->
+                        when (resource) {
+                            is Resource.Loading -> {
+                                binding.progressView.progressViewHandle(true)
+                            }
+                            is Resource.Success -> {
+                                binding.progressView.progressViewHandle(false)
+                                resource.result?.articles?.let { setupRvBody(it) }
+                            }
+                            is Resource.Error -> {
+                                binding.progressView.progressViewHandle(false)
+                                showToast(resource.message ?: "Failed to load category data")
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -72,7 +108,7 @@ class NewsActivity : FrogoBindActivity<ActivityNewsBinding>() {
                 notifyListener: FrogoRecyclerNotifyListener<String>
             ) {
                 binding.tvCategory.text = "category $data"
-                newsViewModel.getTopHeadline(data)
+                newsViewModel.getTopHeadlineFlow(data)
             }
 
             override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {

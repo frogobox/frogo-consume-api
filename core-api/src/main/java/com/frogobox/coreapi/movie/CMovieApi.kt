@@ -2,7 +2,6 @@ package com.frogobox.coreapi.movie
 
 
 import com.frogobox.coresdk.response.FrogoDataResponse
-import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.Interceptor
 
 
@@ -19,13 +18,9 @@ import okhttp3.Interceptor
  *
  */
 
-class CMovieApi(usingScheduler: Boolean, apiKey: String) : IMovieApi {
+class CMovieApi(apiKey: String) : IMovieApi {
 
-    private var movieApi = if (usingScheduler) {
-        MovieApi(Schedulers.single(), apiKey)
-    } else {
-        MovieApi(null, apiKey)
-    }
+    private var movieApi = MovieApi(apiKey)
 
     override fun usingChuckInterceptor(
         isDebug: Boolean,

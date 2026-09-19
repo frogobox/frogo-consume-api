@@ -14,12 +14,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Consumable">
 
-        <activity android:name=".mvvm.news.NewsDetailActivity"/>
-        <activity android:name=".mvvm.pixabay.PixabayActivity" />
-        <activity android:name=".mvvm.sport.SportActivity" />
-        <activity android:name=".mvvm.movies.MoviesActivity" />
-        <activity android:name=".mvvm.meal.MealActivity" />
-        <activity android:name=".mvvm.news.NewsActivity" />
+        <activity
+            android:name=".mvvm.news.NewsDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mvvm.pixabay.PixabayActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mvvm.sport.SportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mvvm.movies.MoviesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mvvm.meal.MealActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mvvm.news.NewsActivity"
+            android:exported="false" />
 
         <activity
             android:name=".mvvm.main.MainActivity"

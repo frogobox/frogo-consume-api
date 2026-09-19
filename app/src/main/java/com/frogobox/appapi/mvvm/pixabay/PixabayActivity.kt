@@ -3,21 +3,22 @@ package com.frogobox.appapi.mvvm.pixabay
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.frogobox.appapi.databinding.ActivityPixabayBinding
 import com.frogobox.appapi.databinding.ItemGridImageBinding
-import com.frogobox.coreutil.news.model.Article
 import com.frogobox.coreutil.pixabay.model.PixabayImage
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.progressViewHandle
 import com.frogobox.sdk.ext.showToast
 import com.frogobox.sdk.view.FrogoBindActivity
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PixabayActivity : FrogoBindActivity<ActivityPixabayBinding>() {
 
-    private val pixabayViewModel: PixabayViewModel by viewModel()
+    private val pixabayViewModel: PixabayViewModel by viewModels()
 
     override fun setupViewBinding(): ActivityPixabayBinding {
         return ActivityPixabayBinding.inflate(layoutInflater)
@@ -26,7 +27,9 @@ class PixabayActivity : FrogoBindActivity<ActivityPixabayBinding>() {
     override fun setupViewModel() {
         pixabayViewModel.apply {
 
-            searchImage(this@PixabayActivity, "Nature")
+            if (listData.value == null) {
+                searchImage(this@PixabayActivity, "Nature")
+            }
 
             eventShowProgressState.observe(this@PixabayActivity) {
                 binding.progressBar.progressViewHandle(it)

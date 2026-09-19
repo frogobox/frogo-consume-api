@@ -1,9 +1,6 @@
 package com.frogobox.coreapi.pixabay
 
-import com.frogobox.coreutil.pixabay.model.PixabayImage
-import com.frogobox.coreutil.pixabay.model.PixabayVideo
-import com.frogobox.coreutil.pixabay.response.Response
-import io.reactivex.rxjava3.core.Observable
+import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -44,7 +41,7 @@ interface PixabayApiService {
         @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_ORDER) order: String?,
         @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_PAGE) page: Int?,
         @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_PER_PAGE) perPage: Int?
-    ): Observable<com.frogobox.coreutil.pixabay.response.Response<com.frogobox.coreutil.pixabay.model.PixabayImage>>
+    ): Call<com.frogobox.coreutil.pixabay.response.Response<com.frogobox.coreutil.pixabay.model.PixabayImage>>
 
     // Search for Video
     @GET(com.frogobox.coreutil.pixabay.PixabayUrl.PATH_VIDEO)
@@ -62,6 +59,6 @@ interface PixabayApiService {
         @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_ORDER) order: String?,
         @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_PAGE) page: Int?,
         @Query(com.frogobox.coreutil.pixabay.PixabayConstant.QUERY_PER_PAGE) perPage: Int?
-    ): Observable<com.frogobox.coreutil.pixabay.response.Response<com.frogobox.coreutil.pixabay.model.PixabayVideo>>
+    ): Call<com.frogobox.coreutil.pixabay.response.Response<com.frogobox.coreutil.pixabay.model.PixabayVideo>>
 
 }
