@@ -1,21 +1,23 @@
 [versions]
-agp = "9.3.1"
-kotlin = "2.4.10"
+agp = "9.4.0"
+kotlin = "2.4.20"
 ksp = "2.3.10"
 gson = "2.14.0"
-koin-bom = "4.2.2"
-frogoAndroid = "3.0.5"
+hilt = "2.60.1"
+frogoAndroid = "3.0.10"
+androidxActivity = "1.13.0"
+androidxFragment = "1.9.0"
 
 [libraries]
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 
 # --------------------------------------------------------------------------------------------------
 
-koin-bom = { group = "io.insert-koin", name = "koin-bom", version.ref = "koin-bom" }
-koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin-bom" }
-koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin-bom" }
-koin-android-compat = { group = "io.insert-koin", name = "koin-android-compat", version.ref = "koin-bom" }
-koin-androidx-workmanager = { group = "io.insert-koin", name = "koin-androidx-workmanager", version.ref = "koin-bom" }
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "androidxActivity" }
+androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "androidxFragment" }
 
 frogo-sdk = { group = "com.github.frogobox.frogo-sdk", name = "frogo-core-android", version.ref = "frogoAndroid" }
 frogo-sdk-core = { group = "com.github.frogobox.frogo-sdk", name = "frogo-core", version.ref = "frogoAndroid" }
@@ -31,3 +33,4 @@ jvm-library = { id = "java-library"}
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 jvm-android = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }

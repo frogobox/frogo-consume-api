@@ -11,10 +11,12 @@ import com.frogobox.appapi.mvvm.movies.tv.TvDayFragment
 import com.frogobox.appapi.mvvm.movies.tv.TvWeekFragment
 import com.frogobox.appapi.util.PagerAdapter
 import com.frogobox.sdk.view.FrogoBindFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * A simple [Fragment] subclass.
  */
+@AndroidEntryPoint
 class TvFragment : FrogoBindFragment<FragmentTrendingBinding>() {
 
     override fun setupViewBinding(

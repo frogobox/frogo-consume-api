@@ -1,10 +1,7 @@
 package com.frogobox.appapi
 
-import com.frogobox.appapi.core.FrogoKoinApplication
-import com.frogobox.appapi.di.consumeApiModule
-import com.frogobox.appapi.di.repositoryModule
-import com.frogobox.appapi.di.viewModelModule
-import org.koin.core.KoinApplication
+import com.frogobox.sdk.FrogoApplication
+import dagger.hilt.android.HiltAndroidApp
 
 /**
  * Created by faisalamir on 28/07/21
@@ -19,10 +16,5 @@ import org.koin.core.KoinApplication
  *
  */
 
-class ConsumeApp : FrogoKoinApplication() {
-
-    override fun setupKoinModule(koinApplication: KoinApplication) {
-        koinApplication.modules(listOf(repositoryModule, viewModelModule, consumeApiModule))
-    }
-
-}
+@HiltAndroidApp
+class ConsumeApp : FrogoApplication()

@@ -1,7 +1,8 @@
 package com.frogobox.coreapi.news
 
 import com.frogobox.coresdk.response.FrogoDataResponse
-import io.reactivex.rxjava3.core.Scheduler
+import com.frogobox.coresdk.source.Resource
+import kotlinx.coroutines.flow.Flow
 import okhttp3.Interceptor
 
 /**
@@ -28,7 +29,6 @@ interface NewsDataSource {
 
     // Get Top Headline
     fun getTopHeadline(
-        scheduler: Scheduler?,
         apiKey: String,
         q: String?,
         sources: String?,
@@ -39,9 +39,19 @@ interface NewsDataSource {
         callback: FrogoDataResponse<com.frogobox.coreutil.news.response.ArticleResponse>
     )
 
+    // Get Top Headline (Flow)
+    fun getTopHeadlineFlow(
+        apiKey: String,
+        q: String?,
+        sources: String?,
+        category: String?,
+        country: String?,
+        pageSize: Int?,
+        page: Int?
+    ): Flow<Resource<com.frogobox.coreutil.news.response.ArticleResponse?>>
+
     // Get Everythings
     fun getEverythings(
-        scheduler: Scheduler?,
         apiKey: String,
         q: String?,
         from: String?,
@@ -57,14 +67,37 @@ interface NewsDataSource {
         callback: FrogoDataResponse<com.frogobox.coreutil.news.response.ArticleResponse>
     )
 
+    // Get Everythings (Flow)
+    fun getEverythingsFlow(
+        apiKey: String,
+        q: String?,
+        from: String?,
+        to: String?,
+        qInTitle: String?,
+        sources: String?,
+        domains: String?,
+        excludeDomains: String?,
+        language: String?,
+        sortBy: String?,
+        pageSize: Int?,
+        page: Int?
+    ): Flow<Resource<com.frogobox.coreutil.news.response.ArticleResponse?>>
+
     // Get Sources
     fun getSources(
-        scheduler: Scheduler?,
         apiKey: String,
         language: String,
         country: String,
         category: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.news.response.SourceResponse>
     )
+
+    // Get Sources (Flow)
+    fun getSourcesFlow(
+        apiKey: String,
+        language: String,
+        country: String,
+        category: String
+    ): Flow<Resource<com.frogobox.coreutil.news.response.SourceResponse?>>
 
 }

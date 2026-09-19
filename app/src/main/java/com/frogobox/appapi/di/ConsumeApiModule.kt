@@ -10,8 +10,11 @@ import com.frogobox.coreutil.movie.MovieUrl
 import com.frogobox.coreutil.news.NewsUrl
 import com.frogobox.coreutil.pixabay.PixabayUrl
 import com.frogobox.coreutil.sport.SportUrl
-import org.koin.dsl.module
-
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 /**
  * Created by faisalamir on 01/05/22
@@ -26,26 +29,38 @@ import org.koin.dsl.module
  *
  */
 
-val consumeApiModule = module {
+@Module
+@InstallIn(SingletonComponent::class)
+object ConsumeApiModule {
 
-    single {
-        ConsumeNewsApi(NewsUrl.API_KEY)
+    @Provides
+    @Singleton
+    fun provideConsumeNewsApi(): ConsumeNewsApi {
+        return ConsumeNewsApi(NewsUrl.API_KEY)
     }
 
-    single {
-        ConsumeTheSportDbApi(SportUrl.API_KEY)
+    @Provides
+    @Singleton
+    fun provideConsumeTheSportDbApi(): ConsumeTheSportDbApi {
+        return ConsumeTheSportDbApi(SportUrl.API_KEY)
     }
 
-    single {
-        ConsumeTheMealDbApi(MealUrl.API_KEY)
+    @Provides
+    @Singleton
+    fun provideConsumeTheMealDbApi(): ConsumeTheMealDbApi {
+        return ConsumeTheMealDbApi(MealUrl.API_KEY)
     }
 
-    single {
-        ConsumePixabayApi(PixabayUrl.API_KEY)
+    @Provides
+    @Singleton
+    fun provideConsumePixabayApi(): ConsumePixabayApi {
+        return ConsumePixabayApi(PixabayUrl.API_KEY)
     }
 
-    single {
-        ConsumeMovieApi(MovieUrl.API_KEY)
+    @Provides
+    @Singleton
+    fun provideConsumeMovieApi(): ConsumeMovieApi {
+        return ConsumeMovieApi(MovieUrl.API_KEY)
     }
 
 }

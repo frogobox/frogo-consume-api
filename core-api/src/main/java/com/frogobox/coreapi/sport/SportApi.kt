@@ -1,21 +1,7 @@
 package com.frogobox.coreapi.sport
 
 
-import com.frogobox.coreutil.sport.response.Contracts
-import com.frogobox.coreutil.sport.response.Countrys
-import com.frogobox.coreutil.sport.response.Events
-import com.frogobox.coreutil.sport.response.FormerTeams
-import com.frogobox.coreutil.sport.response.Honors
-import com.frogobox.coreutil.sport.response.Leagues
-import com.frogobox.coreutil.sport.response.Players
-import com.frogobox.coreutil.sport.response.Results
-import com.frogobox.coreutil.sport.response.Seasons
-import com.frogobox.coreutil.sport.response.Sports
-import com.frogobox.coreutil.sport.response.Tables
-import com.frogobox.coreutil.sport.response.Teams
-import com.frogobox.coreutil.sport.response.Users
 import com.frogobox.coresdk.response.FrogoDataResponse
-import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
 
 
@@ -33,7 +19,6 @@ import okhttp3.Interceptor
  */
 
 class SportApi(
-    private val scheduler: Scheduler?,
     private val apiKey: String
 ) : ISportApi {
 
@@ -52,7 +37,7 @@ class SportApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Teams>
     ) {
         sportRepository.searchForTeamByName(
-            scheduler, apiKey,
+            apiKey,
             teamName,
             callback
         )
@@ -63,7 +48,7 @@ class SportApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Teams>
     ) {
         sportRepository.searchForTeamByShortCode(
-            scheduler, apiKey,
+            apiKey,
             shortCode,
             callback
         )
@@ -74,7 +59,7 @@ class SportApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Players>
     ) {
         sportRepository.searchForAllPlayer(
-            scheduler, apiKey,
+            apiKey,
             teamName,
             callback
         )
@@ -85,7 +70,7 @@ class SportApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Players>
     ) {
         sportRepository.searchForPlayer(
-            scheduler, apiKey,
+            apiKey,
             playerName,
             callback
         )
@@ -97,7 +82,7 @@ class SportApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Players>
     ) {
         sportRepository.searchForPlayer(
-            scheduler, apiKey,
+            apiKey,
             playerName,
             teamName,
             callback
@@ -109,7 +94,7 @@ class SportApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     ) {
         sportRepository.searchForEvent(
-            scheduler, apiKey,
+            apiKey,
             eventName,
             callback
         )
@@ -121,7 +106,7 @@ class SportApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     ) {
         sportRepository.searchForEvent(
-            scheduler, apiKey,
+            apiKey,
             eventName,
             season,
             callback
@@ -134,7 +119,7 @@ class SportApi(
     ) {
 
         sportRepository.searchForEventFileName(
-            scheduler, apiKey,
+            apiKey,
             eventFileName,
             callback
         )
@@ -142,11 +127,11 @@ class SportApi(
     }
 
     override fun getAllSports(callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Sports>) {
-        sportRepository.getAllSports(scheduler, apiKey, callback)
+        sportRepository.getAllSports(apiKey, callback)
     }
 
     override fun getAllLeagues(callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Leagues>) {
-        sportRepository.getAllLeagues(scheduler, apiKey, callback)
+        sportRepository.getAllLeagues(apiKey, callback)
     }
 
     override fun searchAllLeagues(
@@ -154,7 +139,7 @@ class SportApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Countrys>
     ) {
         sportRepository.searchAllLeagues(
-            scheduler, apiKey,
+            apiKey,
             countryName,
             callback
         )
@@ -166,7 +151,7 @@ class SportApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Countrys>
     ) {
         sportRepository.searchAllLeagues(
-            scheduler, apiKey,
+            apiKey,
             countryName,
             sportName,
             callback
@@ -178,7 +163,7 @@ class SportApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Seasons>
     ) {
         sportRepository.searchAllSeasons(
-            scheduler, apiKey,
+            apiKey,
             idTeam,
             callback
         )
@@ -190,7 +175,7 @@ class SportApi(
     ) {
 
         sportRepository.searchAllTeam(
-            scheduler, apiKey,
+            apiKey,
             league,
             callback
         )
@@ -202,7 +187,7 @@ class SportApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Teams>
     ) {
         sportRepository.searchAllTeam(
-            scheduler, apiKey,
+            apiKey,
             sportName,
             countryName,
             callback
@@ -212,7 +197,7 @@ class SportApi(
     override fun lookupAllTeam(idLeague: String?, callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Teams>) {
 
         sportRepository.lookupAllTeam(
-            scheduler, apiKey,
+            apiKey,
             idLeague,
             callback
         )
@@ -224,7 +209,7 @@ class SportApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Players>
     ) {
         sportRepository.lookupAllPlayer(
-            scheduler, apiKey,
+            apiKey,
             idTeam,
             callback
         )
@@ -232,7 +217,7 @@ class SportApi(
 
     override fun searchLoves(userName: String?, callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Users>) {
         sportRepository.searchLoves(
-            scheduler, apiKey,
+            apiKey,
             userName,
             callback
         )
@@ -243,7 +228,7 @@ class SportApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Leagues>
     ) {
         sportRepository.lookupLeagues(
-            scheduler, apiKey,
+            apiKey,
             idLeague,
             callback
         )
@@ -251,7 +236,7 @@ class SportApi(
 
     override fun lookupTeam(idTeam: String?, callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Teams>) {
         sportRepository.lookupTeam(
-            scheduler, apiKey,
+            apiKey,
             idTeam,
             callback
         )
@@ -259,7 +244,7 @@ class SportApi(
 
     override fun lookupPlayer(idPlayer: String?, callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Players>) {
         sportRepository.lookupPlayer(
-            scheduler, apiKey,
+            apiKey,
             idPlayer,
             callback
         )
@@ -267,7 +252,7 @@ class SportApi(
 
     override fun lookupEvent(idEvent: String?, callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>) {
         sportRepository.lookupEvent(
-            scheduler, apiKey,
+            apiKey,
             idEvent,
             callback
         )
@@ -275,7 +260,7 @@ class SportApi(
 
     override fun lookupHonour(idPlayer: String?, callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Honors>) {
         sportRepository.lookupHonour(
-            scheduler, apiKey,
+            apiKey,
             idPlayer,
             callback
         )
@@ -286,7 +271,7 @@ class SportApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.FormerTeams>
     ) {
         sportRepository.lookupFormerTeam(
-            scheduler, apiKey,
+            apiKey,
             idPlayer,
             callback
         )
@@ -297,7 +282,7 @@ class SportApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Contracts>
     ) {
         sportRepository.lookupContract(
-            scheduler, apiKey,
+            apiKey,
             idPlayer,
             callback
         )
@@ -309,7 +294,7 @@ class SportApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Tables>
     ) {
         sportRepository.lookupTable(
-            scheduler, apiKey,
+            apiKey,
             idLeague,
             season,
             callback
@@ -318,7 +303,7 @@ class SportApi(
 
     override fun eventsNext(idTeam: String?, callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>) {
         sportRepository.eventsNext(
-            scheduler, apiKey,
+            apiKey,
             idTeam,
             callback
         )
@@ -329,7 +314,7 @@ class SportApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     ) {
         sportRepository.eventsNextLeague(
-            scheduler, apiKey,
+            apiKey,
             idLeague,
             callback
         )
@@ -337,7 +322,7 @@ class SportApi(
 
     override fun eventsLast(idTeam: String?, callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Results>) {
         sportRepository.eventsLast(
-            scheduler, apiKey,
+            apiKey,
             idTeam,
             callback
         )
@@ -348,7 +333,7 @@ class SportApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     ) {
         sportRepository.eventsPastLeague(
-            scheduler, apiKey,
+            apiKey,
             idLeague,
             callback
         )
@@ -361,7 +346,7 @@ class SportApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     ) {
         sportRepository.eventsRound(
-            scheduler, apiKey,
+            apiKey,
             idLeague,
             round,
             season,
@@ -375,7 +360,7 @@ class SportApi(
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     ) {
         sportRepository.eventsSeason(
-            scheduler, apiKey,
+            apiKey,
             idLeague,
             season,
             callback

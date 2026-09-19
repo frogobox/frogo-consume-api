@@ -4,7 +4,6 @@ package com.frogobox.coreapi.sport
 import com.frogobox.coresdk.ext.doApiRequest
 import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coresdk.source.FrogoApiClient
-import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
 
 
@@ -40,274 +39,272 @@ object SportRepository : SportDataSource {
     }
 
     override fun searchForTeamByName(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         teamName: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Teams>
     ) {
-        sportApiService.searchForTeamByName(apiKey, teamName).doApiRequest(scheduler, callback) {}
+        sportApiService.searchForTeamByName(apiKey, teamName).doApiRequest(callback)
 
     }
 
     override fun searchForTeamByShortCode(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         shortCode: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Teams>
     ) {
         sportApiService.searchForTeamByShortCode(apiKey, shortCode)
-            .doApiRequest(scheduler, callback) {}
+            .doApiRequest(callback)
     }
 
     override fun searchForAllPlayer(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         teamName: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Players>
     ) {
-        sportApiService.searchForAllPlayer(apiKey, teamName).doApiRequest(scheduler, callback) {}
+        sportApiService.searchForAllPlayer(apiKey, teamName).doApiRequest(callback)
     }
 
     override fun searchForPlayer(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         playerName: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Players>
     ) {
-        sportApiService.searchForPlayer(apiKey, playerName).doApiRequest(scheduler, callback) {}
+        sportApiService.searchForPlayer(apiKey, playerName).doApiRequest(callback)
     }
 
     override fun searchForPlayer(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         playerName: String?,
         teamName: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Players>
     ) {
         sportApiService.searchForPlayer(apiKey, playerName, teamName)
-            .doApiRequest(scheduler, callback) {}
+            .doApiRequest(callback)
     }
 
     override fun searchForEvent(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         eventName: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     ) {
-        sportApiService.searchForEvent(apiKey, eventName).doApiRequest(scheduler, callback) {}
+        sportApiService.searchForEvent(apiKey, eventName).doApiRequest(callback)
     }
 
     override fun searchForEvent(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         eventName: String?,
         season: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     ) {
         sportApiService.searchForEvent(apiKey, eventName, season)
-            .doApiRequest(scheduler, callback) {}
+            .doApiRequest(callback)
     }
 
     override fun searchForEventFileName(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         eventFileName: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     ) {
         sportApiService.searchForEventFileName(apiKey, eventFileName)
-            .doApiRequest(scheduler, callback) {}
+            .doApiRequest(callback)
     }
 
     override fun getAllSports(
-        scheduler: Scheduler?,
         apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Sports>
     ) {
-        sportApiService.getAllSports(apiKey).doApiRequest(scheduler, callback) {}
+        sportApiService.getAllSports(apiKey).doApiRequest(callback)
     }
 
     override fun getAllLeagues(
-        scheduler: Scheduler?,
         apiKey: String,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Leagues>
     ) {
-        sportApiService.getAllLeagues(apiKey).doApiRequest(scheduler, callback) {}
+        sportApiService.getAllLeagues(apiKey).doApiRequest(callback)
     }
 
     override fun searchAllLeagues(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         countryName: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Countrys>
     ) {
-        sportApiService.searchAllLeagues(apiKey, countryName).doApiRequest(scheduler, callback) {}
+        sportApiService.searchAllLeagues(apiKey, countryName).doApiRequest(callback)
     }
 
     override fun searchAllLeagues(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         countryName: String?,
         sportName: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Countrys>
     ) {
         sportApiService.searchAllLeagues(apiKey, countryName, sportName)
-            .doApiRequest(scheduler, callback) {}
+            .doApiRequest(callback)
     }
 
     override fun searchAllSeasons(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         idTeam: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Seasons>
     ) {
-        sportApiService.searchAllSeasons(apiKey, idTeam).doApiRequest(scheduler, callback) {}
+        sportApiService.searchAllSeasons(apiKey, idTeam).doApiRequest(callback)
     }
 
     override fun searchAllTeam(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         league: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Teams>
     ) {
-        sportApiService.searchAllTeam(apiKey, league).doApiRequest(scheduler, callback) {}
+        sportApiService.searchAllTeam(apiKey, league).doApiRequest(callback)
     }
 
     override fun searchAllTeam(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         sportName: String?,
         countryName: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Teams>
     ) {
         sportApiService.searchAllTeam(apiKey, sportName, countryName)
-            .doApiRequest(scheduler, callback) {}
+            .doApiRequest(callback)
     }
 
     override fun lookupAllTeam(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         idLeague: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Teams>
     ) {
-        sportApiService.lookupAllTeam(apiKey, idLeague).doApiRequest(scheduler, callback) {}
+        sportApiService.lookupAllTeam(apiKey, idLeague).doApiRequest(callback)
     }
 
     override fun lookupAllPlayer(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         idTeam: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Players>
     ) {
-        sportApiService.lookupAllPlayer(apiKey, idTeam).doApiRequest(scheduler, callback) {}
+        sportApiService.lookupAllPlayer(apiKey, idTeam).doApiRequest(callback)
     }
 
     override fun searchLoves(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         userName: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Users>
     ) {
-        sportApiService.searchLoves(apiKey, userName).doApiRequest(scheduler, callback) {}
+        sportApiService.searchLoves(apiKey, userName).doApiRequest(callback)
     }
 
     override fun lookupLeagues(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         idLeague: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Leagues>
     ) {
-        sportApiService.lookupLeagues(apiKey, idLeague).doApiRequest(scheduler, callback) {}
+        sportApiService.lookupLeagues(apiKey, idLeague).doApiRequest(callback)
     }
 
     override fun lookupTeam(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         idTeam: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Teams>
     ) {
-        sportApiService.lookupTeam(apiKey, idTeam).doApiRequest(scheduler, callback) {}
+        sportApiService.lookupTeam(apiKey, idTeam).doApiRequest(callback)
     }
 
     override fun lookupPlayer(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         idPlayer: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Players>
     ) {
-        sportApiService.lookupPlayer(apiKey, idPlayer).doApiRequest(scheduler, callback) {}
+        sportApiService.lookupPlayer(apiKey, idPlayer).doApiRequest(callback)
     }
 
     override fun lookupEvent(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         idEvent: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     ) {
-        sportApiService.lookupEvent(apiKey, idEvent).doApiRequest(scheduler, callback) {}
+        sportApiService.lookupEvent(apiKey, idEvent).doApiRequest(callback)
     }
 
     override fun lookupHonour(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         idPlayer: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Honors>
     ) {
-        sportApiService.lookupHonour(apiKey, idPlayer).doApiRequest(scheduler, callback) {}
+        sportApiService.lookupHonour(apiKey, idPlayer).doApiRequest(callback)
     }
 
     override fun lookupFormerTeam(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         idPlayer: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.FormerTeams>
     ) {
-        sportApiService.lookupFormerTeam(apiKey, idPlayer).doApiRequest(scheduler, callback) {}
+        sportApiService.lookupFormerTeam(apiKey, idPlayer).doApiRequest(callback)
     }
 
     override fun lookupContract(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         idPlayer: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Contracts>
     ) {
-        sportApiService.lookupContract(apiKey, idPlayer).doApiRequest(scheduler, callback) {}
+        sportApiService.lookupContract(apiKey, idPlayer).doApiRequest(callback)
     }
 
     override fun lookupTable(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         idLeague: String?,
         season: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Tables>
     ) {
-        sportApiService.lookupTable(apiKey, idLeague, season).doApiRequest(scheduler, callback) {}
+        sportApiService.lookupTable(apiKey, idLeague, season).doApiRequest(callback)
     }
 
     override fun eventsNext(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         idTeam: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     ) {
-        sportApiService.eventsNext(apiKey, idTeam).doApiRequest(scheduler, callback) {}
+        sportApiService.eventsNext(apiKey, idTeam).doApiRequest(callback)
     }
 
     override fun eventsNextLeague(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         idLeague: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     ) {
-        sportApiService.eventsNextLeague(apiKey, idLeague).doApiRequest(scheduler, callback) {}
+        sportApiService.eventsNextLeague(apiKey, idLeague).doApiRequest(callback)
     }
 
     override fun eventsLast(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         idTeam: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Results>
     ) {
-        sportApiService.eventsLast(apiKey, idTeam).doApiRequest(scheduler, callback) {}
+        sportApiService.eventsLast(apiKey, idTeam).doApiRequest(callback)
     }
 
     override fun eventsPastLeague(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         idLeague: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     ) {
-        sportApiService.eventsPastLeague(apiKey, idLeague).doApiRequest(scheduler, callback) {}
+        sportApiService.eventsPastLeague(apiKey, idLeague).doApiRequest(callback)
     }
 
     override fun eventsRound(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         idLeague: String?,
         round: String?,
         season: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     ) {
         sportApiService.eventsRound(apiKey, idLeague, round, season)
-            .doApiRequest(scheduler, callback) {}
+            .doApiRequest(callback)
     }
 
     override fun eventsSeason(
-        scheduler: Scheduler?, apiKey: String,
+        apiKey: String,
         idLeague: String?,
         season: String?,
         callback: FrogoDataResponse<com.frogobox.coreutil.sport.response.Events>
     ) {
-        sportApiService.eventsSeason(apiKey, idLeague, season).doApiRequest(scheduler, callback) {}
+        sportApiService.eventsSeason(apiKey, idLeague, season).doApiRequest(callback)
     }
 }

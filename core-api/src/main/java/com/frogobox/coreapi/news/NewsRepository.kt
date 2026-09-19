@@ -1,9 +1,11 @@
 package com.frogobox.coreapi.news
 
 import com.frogobox.coresdk.ext.doApiRequest
+import com.frogobox.coresdk.ext.fetchAsFlow
 import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coresdk.source.FrogoApiClient
-import io.reactivex.rxjava3.core.Scheduler
+import com.frogobox.coresdk.source.Resource
+import kotlinx.coroutines.flow.Flow
 import okhttp3.Interceptor
 
 
@@ -34,7 +36,6 @@ object NewsRepository : NewsDataSource {
     }
 
     override fun getTopHeadline(
-        scheduler: Scheduler?,
         apiKey: String,
         q: String?,
         sources: String?,
@@ -45,11 +46,24 @@ object NewsRepository : NewsDataSource {
         callback: FrogoDataResponse<com.frogobox.coreutil.news.response.ArticleResponse>
     ) {
         newsApiService.getTopHeadline(apiKey, q, sources, category, country, pageSize, page)
-            .doApiRequest(scheduler, callback) {}
+            .doApiRequest(callback)
+    }
+
+    override fun getTopHeadlineFlow(
+        apiKey: String,
+        q: String?,
+        sources: String?,
+        category: String?,
+        country: String?,
+        pageSize: Int?,
+        page: Int?
+    ): Flow<Resource<com.frogobox.coreutil.news.response.ArticleResponse?>> {
+        return fetchAsFlow {
+            newsApiService.getTopHeadlineSuspend(apiKey, q, sources, category, country, pageSize, page)
+        }
     }
 
     override fun getEverythings(
-        scheduler: Scheduler?,
         apiKey: String,
         q: String?,
         from: String?,
@@ -77,11 +91,42 @@ object NewsRepository : NewsDataSource {
             sortBy,
             pageSize,
             page
-        ).doApiRequest(scheduler, callback) {}
+        ).doApiRequest(callback)
+    }
+
+    override fun getEverythingsFlow(
+        apiKey: String,
+        q: String?,
+        from: String?,
+        to: String?,
+        qInTitle: String?,
+        sources: String?,
+        domains: String?,
+        excludeDomains: String?,
+        language: String?,
+        sortBy: String?,
+        pageSize: Int?,
+        page: Int?
+    ): Flow<Resource<com.frogobox.coreutil.news.response.ArticleResponse?>> {
+        return fetchAsFlow {
+            newsApiService.getEverythingsSuspend(
+                apiKey,
+                q,
+                from,
+                to,
+                qInTitle,
+                sources,
+                domains,
+                excludeDomains,
+                language,
+                sortBy,
+                pageSize,
+                page
+            )
+        }
     }
 
     override fun getSources(
-        scheduler: Scheduler?,
         apiKey: String,
         language: String,
         country: String,
@@ -89,7 +134,18 @@ object NewsRepository : NewsDataSource {
         callback: FrogoDataResponse<com.frogobox.coreutil.news.response.SourceResponse>
     ) {
         newsApiService.getSources(apiKey, language, country, category)
-            .doApiRequest(scheduler, callback) {}
+            .doApiRequest(callback)
+    }
+
+    override fun getSourcesFlow(
+        apiKey: String,
+        language: String,
+        country: String,
+        category: String
+    ): Flow<Resource<com.frogobox.coreutil.news.response.SourceResponse?>> {
+        return fetchAsFlow {
+            newsApiService.getSourcesSuspend(apiKey, language, country, category)
+        }
     }
 
 }

@@ -1,21 +1,7 @@
 package com.frogobox.coreapi.sport
 
 
-import com.frogobox.coreutil.sport.response.Contracts
-import com.frogobox.coreutil.sport.response.Countrys
-import com.frogobox.coreutil.sport.response.Events
-import com.frogobox.coreutil.sport.response.FormerTeams
-import com.frogobox.coreutil.sport.response.Honors
-import com.frogobox.coreutil.sport.response.Leagues
-import com.frogobox.coreutil.sport.response.Players
-import com.frogobox.coreutil.sport.response.Results
-import com.frogobox.coreutil.sport.response.Seasons
-import com.frogobox.coreutil.sport.response.Sports
-import com.frogobox.coreutil.sport.response.Tables
-import com.frogobox.coreutil.sport.response.Teams
-import com.frogobox.coreutil.sport.response.Users
 import com.frogobox.coresdk.response.FrogoDataResponse
-import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.Interceptor
 
 
@@ -32,13 +18,9 @@ import okhttp3.Interceptor
  *
  */
 
-class CTheSportDbApi(usingScheduler: Boolean, apiKey: String) : ISportApi {
+class CTheSportDbApi(apiKey: String) : ISportApi {
 
-    private var sportApi = if (usingScheduler) {
-        SportApi(Schedulers.single(), apiKey)
-    } else {
-        SportApi(null, apiKey)
-    }
+    private var sportApi = SportApi(apiKey)
 
     override fun usingChuckInterceptor(
         isDebug: Boolean,

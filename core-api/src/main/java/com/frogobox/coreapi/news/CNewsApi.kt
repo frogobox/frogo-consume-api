@@ -1,7 +1,8 @@
 package com.frogobox.coreapi.news
 
 import com.frogobox.coresdk.response.FrogoDataResponse
-import io.reactivex.rxjava3.schedulers.Schedulers
+import com.frogobox.coresdk.source.Resource
+import kotlinx.coroutines.flow.Flow
 import okhttp3.Interceptor
 
 
@@ -18,13 +19,9 @@ import okhttp3.Interceptor
  *
  */
 
-class CNewsApi(usingScheduler: Boolean, apiKey: String) : INewsApi {
+class CNewsApi(apiKey: String) : INewsApi {
 
-    private var newsApi = if (usingScheduler) {
-        NewsApi(Schedulers.single(), apiKey)
-    } else {
-        NewsApi(null, apiKey)
-    }
+    private var newsApi = NewsApi(apiKey)
 
     override fun usingChuckInterceptor(
         isDebug: Boolean,
@@ -43,6 +40,17 @@ class CNewsApi(usingScheduler: Boolean, apiKey: String) : INewsApi {
         callback: FrogoDataResponse<com.frogobox.coreutil.news.response.ArticleResponse>
     ) {
         newsApi.getTopHeadline(q, sources, category, country, pageSize, page, callback)
+    }
+
+    override fun getTopHeadlineFlow(
+        q: String?,
+        sources: String?,
+        category: String?,
+        country: String?,
+        pageSize: Int?,
+        page: Int?
+    ): Flow<Resource<com.frogobox.coreutil.news.response.ArticleResponse?>> {
+        return newsApi.getTopHeadlineFlow(q, sources, category, country, pageSize, page)
     }
 
     override fun getEverythings(
@@ -75,6 +83,34 @@ class CNewsApi(usingScheduler: Boolean, apiKey: String) : INewsApi {
         )
     }
 
+    override fun getEverythingsFlow(
+        q: String?,
+        from: String?,
+        to: String?,
+        qInTitle: String?,
+        sources: String?,
+        domains: String?,
+        excludeDomains: String?,
+        language: String?,
+        sortBy: String?,
+        pageSize: Int?,
+        page: Int?
+    ): Flow<Resource<com.frogobox.coreutil.news.response.ArticleResponse?>> {
+        return newsApi.getEverythingsFlow(
+            q,
+            from,
+            to,
+            qInTitle,
+            sources,
+            domains,
+            excludeDomains,
+            language,
+            sortBy,
+            pageSize,
+            page
+        )
+    }
+
     override fun getSources(
         language: String,
         country: String,
@@ -82,6 +118,14 @@ class CNewsApi(usingScheduler: Boolean, apiKey: String) : INewsApi {
         callback: FrogoDataResponse<com.frogobox.coreutil.news.response.SourceResponse>
     ) {
         newsApi.getSources(language, country, category, callback)
+    }
+
+    override fun getSourcesFlow(
+        language: String,
+        country: String,
+        category: String
+    ): Flow<Resource<com.frogobox.coreutil.news.response.SourceResponse?>> {
+        return newsApi.getSourcesFlow(language, country, category)
     }
 
 }

@@ -3,7 +3,6 @@ package com.frogobox.coreapi.pixabay
 import com.frogobox.coresdk.ext.doApiRequest
 import com.frogobox.coresdk.response.FrogoDataResponse
 import com.frogobox.coresdk.source.FrogoApiClient
-import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
 
 
@@ -34,7 +33,6 @@ object PixabayRepository : PixabayDataSource {
     }
 
     override fun searchImage(
-        scheduler: Scheduler?,
         apiKey: String,
         q: String,
         lang: String?,
@@ -68,11 +66,10 @@ object PixabayRepository : PixabayDataSource {
             order,
             page,
             perPage
-        ).doApiRequest(scheduler, callback) {}
+        ).doApiRequest(callback)
     }
 
     override fun searchVideo(
-        scheduler: Scheduler?,
         apiKey: String,
         q: String,
         lang: String?,
@@ -102,6 +99,6 @@ object PixabayRepository : PixabayDataSource {
             order,
             page,
             perPage
-        ).doApiRequest(scheduler, callback) {}
+        ).doApiRequest(callback)
     }
 }

@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.jvm.android) apply false
     alias(libs.plugins.kotlin.parcelize) apply false
     alias(libs.plugins.ksp) apply false
+    alias(libs.plugins.hilt.android) apply false
 }
 
 tasks.register("clean", Delete::class) {

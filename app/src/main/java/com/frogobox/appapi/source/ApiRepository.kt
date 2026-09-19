@@ -20,7 +20,9 @@ import com.frogobox.api.sport.ConsumeTheSportDbApi
  *
  */
 
-class ApiRepository(
+import javax.inject.Inject
+
+class ApiRepository @Inject constructor(
     private val consumeNewsApi: ConsumeNewsApi,
     private val consumePixabayApi: ConsumePixabayApi,
     private val consumeMovieApi: ConsumeMovieApi,

@@ -5,6 +5,8 @@ import java.util.Date
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt.android)
 }
 
 base {
@@ -97,9 +99,9 @@ dependencies {
     implementation(libs.frogo.ui)
     implementation(libs.frogo.recyclerview)
 
-    implementation(platform(libs.koin.bom))
-    implementation(libs.koin.core)
-    implementation(libs.koin.android)
-    implementation(libs.koin.android.compat)
-    implementation(libs.koin.androidx.workmanager)
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.fragment.ktx)
 }

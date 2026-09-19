@@ -1,10 +1,6 @@
 package com.frogobox.coreapi.pixabay
 
-import com.frogobox.coreutil.pixabay.model.PixabayImage
-import com.frogobox.coreutil.pixabay.model.PixabayVideo
-import com.frogobox.coreutil.pixabay.response.Response
 import com.frogobox.coresdk.response.FrogoDataResponse
-import io.reactivex.rxjava3.core.Scheduler
 import okhttp3.Interceptor
 
 /**
@@ -32,7 +28,6 @@ interface PixabayDataSource {
 
     // Search for Image
     fun searchImage(
-        scheduler: Scheduler?,
         apiKey: String,
         q: String,
         lang: String?,
@@ -53,7 +48,6 @@ interface PixabayDataSource {
 
     // Search for Video
     fun searchVideo(
-        scheduler: Scheduler?,
         apiKey: String,
         q: String,
         lang: String?,

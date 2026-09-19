@@ -6,7 +6,9 @@ import com.frogobox.appapi.databinding.ActivityNewsDetailBinding
 import com.frogobox.coreutil.news.model.Article
 import com.frogobox.sdk.ext.getExtraExt
 import com.frogobox.sdk.view.FrogoBindActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NewsDetailActivity : FrogoBindActivity<ActivityNewsDetailBinding>() {
 
     companion object {
