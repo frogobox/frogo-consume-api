@@ -6,13 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.bumptech.glide.Glide
-import com.frogobox.appapi.databinding.ContentItemBinding
+import androidx.recyclerview.widget.GridLayoutManager
 import com.frogobox.appapi.databinding.FragmentTrendingChildBinding
 import com.frogobox.coreutil.movie.MovieUrl
 import com.frogobox.coreutil.movie.model.TrendingPerson
-import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
-import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.openDetailImageUri
 import com.frogobox.sdk.ext.progressViewHandle
 import com.frogobox.sdk.ext.showToast
@@ -57,62 +54,15 @@ class PersonDayFragment : FrogoBindFragment<FragmentTrendingChildBinding>() {
     override fun onViewCreatedExt(view: View, savedInstanceState: Bundle?) {
     }
 
-    private fun setupRV(data: List<com.frogobox.coreutil.movie.model.TrendingPerson>) {
-
-        val adapterCallback = object : IFrogoBindingAdapter<com.frogobox.coreutil.movie.model.TrendingPerson, ContentItemBinding> {
-            override fun onItemClicked(
-                binding: ContentItemBinding,
-                data: com.frogobox.coreutil.movie.model.TrendingPerson,
-                position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.movie.model.TrendingPerson>
-            ) {
-                requireActivity().openDetailImageUri("${MovieUrl.BASE_URL_IMAGE_ORIGINAL}${data.profile_path}")
+    private fun setupRV(data: List<TrendingPerson>) {
+        val adapter = PersonAdapter(
+            onItemClick = { person ->
+                requireActivity().openDetailImageUri("${MovieUrl.BASE_URL_IMAGE_ORIGINAL}${person.profile_path}")
             }
-
-            override fun areItemsTheSame(
-                oldItem: TrendingPerson,
-                newItem: TrendingPerson
-            ): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areContentsTheSame(
-                oldItem: TrendingPerson,
-                newItem: TrendingPerson
-            ): Boolean {
-                return oldItem == newItem
-            }
-
-            override fun setViewBinding(parent: ViewGroup): ContentItemBinding {
-                return ContentItemBinding.inflate(
-                    LayoutInflater.from(parent.context),
-                    parent,
-                    false
-                )
-            }
-
-            override fun setupInitComponent(
-                binding: ContentItemBinding,
-                data: com.frogobox.coreutil.movie.model.TrendingPerson,
-                position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.movie.model.TrendingPerson>
-            ) {
-                binding.apply {
-                    tvTitle.text = data.name
-                    tvOverview.text = data.known_for_department
-                    Glide.with(root.context)
-                        .load("${MovieUrl.BASE_URL_IMAGE_ORIGINAL}${data.profile_path}")
-                        .into(ivPoster)
-                }
-            }
-        }
-
-        binding.frogoRecyclerView.injectorBinding<com.frogobox.coreutil.movie.model.TrendingPerson, ContentItemBinding>()
-            .addData(data)
-            .addCallback(adapterCallback)
-            .createLayoutGrid(2)
-            .build()
-
+        )
+        binding.rvTrending.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.rvTrending.adapter = adapter
+        adapter.submitList(data)
     }
 
 }

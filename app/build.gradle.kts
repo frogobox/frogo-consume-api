@@ -97,7 +97,6 @@ dependencies {
 
     implementation(libs.frogo.sdk)
     implementation(libs.frogo.ui)
-    implementation(libs.frogo.recyclerview)
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)

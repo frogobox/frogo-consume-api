@@ -1,12 +1,12 @@
 [versions]
-agp = "9.4.0"
-kotlin = "2.4.20"
+agp = "9.4.1"
+kotlin = "2.4.21"
 ksp = "2.3.10"
 gson = "2.14.0"
 hilt = "2.60.1"
-frogoAndroid = "3.0.10"
+frogoAndroid = "3.0.11"
 androidxActivity = "1.13.0"
-androidxFragment = "1.9.0"
+androidxFragment = "1.9.1"
 
 [libraries]
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
@@ -22,7 +22,6 @@ androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", ve
 frogo-sdk = { group = "com.github.frogobox.frogo-sdk", name = "frogo-core-android", version.ref = "frogoAndroid" }
 frogo-sdk-core = { group = "com.github.frogobox.frogo-sdk", name = "frogo-core", version.ref = "frogoAndroid" }
 frogo-ui = { group = "com.github.frogobox.frogo-sdk", name = "frogo-ui-base", version.ref = "frogoAndroid" }
-frogo-recyclerview = { group = "com.github.frogobox.frogo-sdk", name = "frogo-ui-recyclerview", version.ref = "frogoAndroid" }
 
 # --------------------------------------------------------------------------------------------------
 

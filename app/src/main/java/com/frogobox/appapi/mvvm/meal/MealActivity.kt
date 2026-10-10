@@ -1,19 +1,14 @@
 package com.frogobox.appapi.mvvm.meal
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.activity.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.bumptech.glide.Glide
+import androidx.recyclerview.widget.GridLayoutManager
 import com.frogobox.appapi.databinding.ActivityMealBinding
-import com.frogobox.appapi.databinding.ItemGridImageBinding
 import com.frogobox.coresdk.source.Resource
 import com.frogobox.coreutil.meal.model.Meal
-import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
-import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.openDetailImageUri
 import com.frogobox.sdk.ext.progressViewHandle
 import com.frogobox.sdk.ext.showToast
@@ -60,62 +55,17 @@ class MealActivity : FrogoBindActivity<ActivityMealBinding>() {
     }
 
     private fun setupRv(data: List<Meal>) {
-
-        val adapterCallback = object : IFrogoBindingAdapter<Meal, ItemGridImageBinding> {
-            override fun areContentsTheSame(oldItem: Meal, newItem: Meal): Boolean {
-                return oldItem == newItem
+        val mealAdapter = MealAdapter(
+            onItemClick = { meal ->
+                openDetailImageUri(meal.strMealThumb ?: "")
+            },
+            onItemLongClick = { meal ->
+                meal.strMeal?.let { showToast(it) }
             }
-
-            override fun areItemsTheSame(oldItem: Meal, newItem: Meal): Boolean {
-                return oldItem.idMeal == newItem.idMeal
-            }
-
-            override fun setViewBinding(parent: ViewGroup): ItemGridImageBinding {
-                return ItemGridImageBinding.inflate(
-                    LayoutInflater.from(parent.context),
-                    parent,
-                    false
-                )
-            }
-
-            override fun setupInitComponent(
-                binding: ItemGridImageBinding,
-                data: Meal,
-                position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<Meal>
-            ) {
-                binding.apply {
-                    Glide.with(root.context).load(data.strMealThumb).into(ivIcon)
-                    tvTitle.text = data.strMeal
-                    tvSub.text = data.strCategory
-                }
-            }
-
-            override fun onItemClicked(
-                binding: ItemGridImageBinding,
-                data: Meal,
-                position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<Meal>
-            ) {
-                openDetailImageUri(data.strMealThumb ?: "")
-            }
-
-            override fun onItemLongClicked(
-                binding: ItemGridImageBinding,
-                data: Meal,
-                position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<Meal>
-            ) {
-                data.strMeal?.let { showToast(it) }
-            }
-
-        }
-
-        binding.frogoRv.injectorBinding<Meal, ItemGridImageBinding>()
-            .addData(data)
-            .addCallback(adapterCallback)
-            .createLayoutGrid(2)
-            .build()
+        )
+        binding.rvMeal.layoutManager = GridLayoutManager(this, 2)
+        binding.rvMeal.adapter = mealAdapter
+        mealAdapter.submitList(data)
     }
 
 }

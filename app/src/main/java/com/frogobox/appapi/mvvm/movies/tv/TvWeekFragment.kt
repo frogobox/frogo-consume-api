@@ -6,13 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.bumptech.glide.Glide
-import com.frogobox.appapi.databinding.ContentItemBinding
+import androidx.recyclerview.widget.GridLayoutManager
 import com.frogobox.appapi.databinding.FragmentTrendingChildBinding
 import com.frogobox.coreutil.movie.MovieUrl
 import com.frogobox.coreutil.movie.model.TrendingTv
-import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
-import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.openDetailImageUri
 import com.frogobox.sdk.ext.progressViewHandle
 import com.frogobox.sdk.ext.showToast
@@ -58,56 +55,13 @@ class TvWeekFragment : FrogoBindFragment<FragmentTrendingChildBinding>() {
 
     }
 
-    private fun setupRV(data: List<com.frogobox.coreutil.movie.model.TrendingTv>) {
-
-        val adapterCallback = object : IFrogoBindingAdapter<com.frogobox.coreutil.movie.model.TrendingTv, ContentItemBinding> {
-            override fun onItemClicked(
-                binding: ContentItemBinding,
-                data: com.frogobox.coreutil.movie.model.TrendingTv,
-                position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.movie.model.TrendingTv>
-            ) {
-                requireActivity().openDetailImageUri("${MovieUrl.BASE_URL_IMAGE_ORIGINAL}${data.poster_path}")
-            }
-
-            override fun areItemsTheSame(oldItem: TrendingTv, newItem: TrendingTv): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areContentsTheSame(oldItem: TrendingTv, newItem: TrendingTv): Boolean {
-                return oldItem == newItem
-            }
-
-            override fun setViewBinding(parent: ViewGroup): ContentItemBinding {
-                return ContentItemBinding.inflate(
-                    LayoutInflater.from(parent.context),
-                    parent,
-                    false
-                )
-            }
-
-            override fun setupInitComponent(
-                binding: ContentItemBinding,
-                data: com.frogobox.coreutil.movie.model.TrendingTv,
-                position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<com.frogobox.coreutil.movie.model.TrendingTv>
-            ) {
-                binding.apply {
-                    tvTitle.text = data.name
-                    tvOverview.text = data.overview
-                    Glide.with(root.context)
-                        .load("${MovieUrl.BASE_URL_IMAGE_ORIGINAL}${data.poster_path}")
-                        .into(ivPoster)
-                }
-            }
+    private fun setupRV(data: List<TrendingTv>) {
+        val adapter = TvAdapter { tv ->
+            requireActivity().openDetailImageUri("${MovieUrl.BASE_URL_IMAGE_ORIGINAL}${tv.poster_path}")
         }
-
-        binding.frogoRecyclerView.injectorBinding<com.frogobox.coreutil.movie.model.TrendingTv, ContentItemBinding>()
-            .addData(data)
-            .addCallback(adapterCallback)
-            .createLayoutGrid(2)
-            .build()
-
+        binding.rvTrending.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.rvTrending.adapter = adapter
+        adapter.submitList(data)
     }
 
 }
