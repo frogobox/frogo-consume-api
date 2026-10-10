@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.frogobox.recycler.widget.FrogoRecyclerView
-        android:id="@+id/frogoRecyclerView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_trending"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"

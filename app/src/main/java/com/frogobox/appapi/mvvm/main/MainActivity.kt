@@ -1,11 +1,8 @@
 package com.frogobox.appapi.mvvm.main
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import com.bumptech.glide.Glide
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.frogobox.appapi.databinding.ActivityMainBinding
-import com.frogobox.appapi.databinding.ItemMainBinding
 import com.frogobox.appapi.mvvm.meal.MealActivity
 import com.frogobox.appapi.mvvm.movies.MoviesActivity
 import com.frogobox.appapi.mvvm.news.NewsActivity
@@ -13,8 +10,6 @@ import com.frogobox.appapi.mvvm.pixabay.PixabayActivity
 import com.frogobox.appapi.mvvm.sport.SportActivity
 import com.frogobox.appapi.util.Constant
 import com.frogobox.appapi.util.Helper
-import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
-import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.sdk.ext.startActivityExt
 import com.frogobox.sdk.ext.toJson
 import com.frogobox.sdk.view.FrogoBindActivity
@@ -39,49 +34,12 @@ class MainActivity : FrogoBindActivity<ActivityMainBinding>() {
     }
 
     private fun setupRV() {
-
-        val adapterCallback = object : IFrogoBindingAdapter<MainModel, ItemMainBinding> {
-            override fun onItemClicked(
-                binding: ItemMainBinding,
-                data: MainModel,
-                position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<MainModel>,
-            ) {
-                setupIntentActivity(data.code, data)
-            }
-
-            override fun areItemsTheSame(oldItem: MainModel, newItem: MainModel): Boolean {
-                return oldItem.code == newItem.code
-            }
-
-            override fun areContentsTheSame(oldItem: MainModel, newItem: MainModel): Boolean {
-                return oldItem == newItem
-            }
-
-            override fun setViewBinding(parent: ViewGroup): ItemMainBinding {
-                return ItemMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-            }
-
-            override fun setupInitComponent(
-                binding: ItemMainBinding,
-                data: MainModel,
-                position: Int,
-                notifyListener: FrogoRecyclerNotifyListener<MainModel>,
-            ) {
-                binding.apply {
-                    Glide.with(root.context).load(data.image).into(ivIcon)
-                    tvTitle.text = data.name
-                    tvLink.text = data.api
-                }
-            }
+        val adapter = MainAdapter { data ->
+            setupIntentActivity(data.code, data)
         }
-
-        binding.rvMain.injectorBinding<MainModel, ItemMainBinding>()
-            .addData(listData())
-            .addCallback(adapterCallback)
-            .createLayoutLinearVertical(false)
-            .build()
-
+        binding.rvMain.layoutManager = LinearLayoutManager(this)
+        binding.rvMain.adapter = adapter
+        adapter.submitList(listData())
     }
 
     private fun setupIntentActivity(codeActivity: Int, data: MainModel) {
